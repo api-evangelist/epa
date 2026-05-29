@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-structure/echo-dfr-dfr058-structure.json",
+  "name": "dfr058",
+  "description": "Inspection Object",
+  "type": "object",
+  "properties": {
+    "ActivityType": {
+      "type": "string",
+      "example": "string"
+    },
+    "CMSFlag": {
+      "type": "string",
+      "description": "Indicates whether a Corrective Measure Study has been recommended.",
+      "example": "Y"
+    },
+    "CompMonitorID": {
+      "type": "string",
+      "example": "12345"
+    },
+    "Date": {
+      "type": "string",
+      "description": "The date of the listed inspection",
+      "example": "09/22/2011"
+    },
+    "EPASystem": {
+      "type": "string",
+      "description": "The EPA data system in which permit and facility records are kept. EPA's Facility Registry System (FRS) links all program database records (such as permit IDs and IDs facilities use in reporting to EPA) together. The following list describes the individual data systems that are linked to from the detailed facility report: \n\n- AFS: Air Facility System for Clean Air Act stationary source programs.\n- ICP: Integrated Compliance Information System for Clean Water Act programs monitoring National Pollutant Discharge Elimination System (NPDES) permits.\n- RCR: Resource Conservation and Recovery Act Information System (RCRAInfo) for tracking the Resource Conservation and Recovery Act (RCRA) programs.\n- NCDB: National Compliance Database System for monitoring national performance of the Toxic Substance Control Act (TSCA); the Emergency Planning and Right-to-Know Act, Section 313 (EPCRA); the Asbestos Hazard Emergency Response (AHERA); and the Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA).\n- TRI: Toxics Release Inventory for Emergency Planning and Community Right-to-Know Act, Section 313 submissions.\n- NEI: National Emissions Inventory database contains information on stationary and mobile sources that emit criteria air pollutants and their precursors, as well as hazardous air pollutants (HAPs). The database includes estimates of annual emissions, by source, of air pollutants in each area of the country, on an annual basis.\n- TSCA: Toxic Substances Control Act addressing the production, importation, use, and disposal of specific chemicals.",
+      "example": "ICP"
+    },
+    "Finding": {
+      "type": "string",
+      "description": "For CAA, includes results of source or performance stack tests or Title V certification review results when applicable; for CWA and RCRA, includes whether violations or compliance issues were found during an inspection, if entered into an EPA system",
+      "example": "string"
+    },
+    "InspectionType": {
+      "type": "string",
+      "description": "A description of the type of inspection undertaken",
+      "example": "Evaluation"
+    },
+    "LeadAgency": {
+      "type": "string",
+      "description": "The lead agency (e.g., EPA, State) conducting the inspection",
+      "example": "State"
+    },
+    "SourceID": {
+      "type": "string",
+      "description": "Unique Identifier assigned by EPA.",
+      "example": "ALR040033"
+    },
+    "Statute": {
+      "type": "string",
+      "description": "The name of the statute associated with each of the permits and identifiers linked to the facility: \n- CAA = the Clean Air Act\n- CWA = the Clean Water Act\n- RCRA = the Resource Conservation and Recovery Act\n- EP313 = the Emergency Planning and Community Right-to-Know Act, Section 313 (also known as the Toxics Release Inventory Program)\n- TSCA = the Toxic Substances Control Act\n- SDWA = the Safe Drinking Water Act",
+      "example": "CWA"
+    }
+  },
+  "required": [
+    "Statute",
+    "SourceID",
+    "EPASystem",
+    "ActivityType",
+    "InspectionType",
+    "LeadAgency",
+    "Date",
+    "CMSFlag",
+    "Finding",
+    "CompMonitorID"
+  ]
+}

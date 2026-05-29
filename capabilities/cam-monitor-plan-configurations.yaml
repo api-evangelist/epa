@@ -1,0 +1,128 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Monitor Plan Management OpenAPI Specification — Configurations
+  description: 'Configurations. 2 operations. Lead operation: operations. Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - Configurations
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_APIKEY_KEY: EPA_APIKEY_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: cam-monitor-plan-configurations
+      baseUri: https://api.epa.gov/easey
+      description: Monitor Plan Management OpenAPI Specification — Configurations business capability. Self-contained, no shared references.
+      authentication:
+        type: apikey
+        key: x-api-key
+        value: '{{env.EPA_APIKEY_KEY}}'
+        placement: header
+      resources:
+        - name: monitor-plan-mgmt-configurations
+          path: /monitor-plan-mgmt/configurations
+          operations:
+            - name: monitorConfigurationsControllergetConfigurations
+              method: GET
+              description: monitorConfigurationsControllergetConfigurations
+              inputParameters:
+                - name: orisCodes
+                  in: query
+                  type: array
+                  required: true
+                  description: Array of oris codes
+                - name: monPlanIds
+                  in: query
+                  type: array
+                  required: false
+                  description: Array of configurations
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: monitor-plan-mgmt-configurations-last-updated
+          path: /monitor-plan-mgmt/configurations/last-updated
+          operations:
+            - name: monitorConfigurationsControllergetLastUpdated
+              method: GET
+              description: monitorConfigurationsControllergetLastUpdated
+              inputParameters:
+                - name: date
+                  in: query
+                  type: string
+                  required: true
+                  description: Date on which activity occurred. Must be within the last year from current date and cannot be in the future.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: cam-monitor-plan-configurations-rest
+      port: 8080
+      description: REST adapter for Monitor Plan Management OpenAPI Specification — Configurations. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/monitor-plan-mgmt/configurations
+          name: monitor-plan-mgmt-configurations
+          description: REST surface for monitorConfigurationsControllergetConfigurations.
+          operations:
+            - method: GET
+              name: monitorConfigurationsControllergetConfigurations
+              description: monitorConfigurationsControllergetConfigurations
+              call: cam-monitor-plan-configurations.monitorConfigurationsControllergetConfigurations
+              with:
+                orisCodes: rest.orisCodes
+                monPlanIds: rest.monPlanIds
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/monitor-plan-mgmt/configurations/last-updated
+          name: monitor-plan-mgmt-configurations-last-updated
+          description: REST surface for monitorConfigurationsControllergetLastUpdated.
+          operations:
+            - method: GET
+              name: monitorConfigurationsControllergetLastUpdated
+              description: monitorConfigurationsControllergetLastUpdated
+              call: cam-monitor-plan-configurations.monitorConfigurationsControllergetLastUpdated
+              with:
+                date: rest.date
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: cam-monitor-plan-configurations-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Monitor Plan Management OpenAPI Specification — Configurations. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: monitorconfigurationscontroller-getconfigurations
+          description: monitorconfigurationscontroller-getconfigurations
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-monitor-plan-configurations.monitorConfigurationsControllergetConfigurations
+          with:
+            orisCodes: tools.orisCodes
+            monPlanIds: tools.monPlanIds
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: monitorconfigurationscontroller-getlastupdated
+          description: monitorconfigurationscontroller-getlastupdated
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-monitor-plan-configurations.monitorConfigurationsControllergetLastUpdated
+          with:
+            date: tools.date
+          outputParameters:
+            - type: object
+              mapping: $.

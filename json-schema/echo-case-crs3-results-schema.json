@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-schema/echo-case-crs3-results-schema.json",
+  "title": "crs3_Results",
+  "description": "The data returned by the service call.",
+  "type": "object",
+  "properties": {
+    "CRCaseInformation": {
+      "$ref": "#/definitions/crs3_CaseInformation"
+    },
+    "CRDefendants": {
+      "items": {
+        "$ref": "#/definitions/crs3_CRDefendants"
+      },
+      "title": "Criminal Enforcement Case Defendants",
+      "type": "array",
+      "xml": {
+        "name": "CRDefendants",
+        "wrapped": true
+      },
+      "example": [
+        "string"
+      ]
+    },
+    "CRDetails": {
+      "items": {
+        "$ref": "#/definitions/crs3_CRDetails"
+      },
+      "title": "Criminal Case Details",
+      "type": "array",
+      "xml": {
+        "name": "CRDetails",
+        "wrapped": true
+      },
+      "example": [
+        "string"
+      ]
+    },
+    "Locations": {
+      "items": {
+        "$ref": "#/definitions/crs3_Locations"
+      },
+      "title": "Locations",
+      "type": "array",
+      "xml": {
+        "name": "Locations",
+        "wrapped": true
+      },
+      "example": [
+        "string"
+      ]
+    },
+    "Message": {
+      "description": "Field to record messages (typically performance-related) about packet processing",
+      "example": "Success",
+      "title": "Message",
+      "type": "string"
+    }
+  },
+  "required": [
+    "Message",
+    "CRCaseInformation",
+    "CRDefendants",
+    "CRDetails",
+    "Locations"
+  ]
+}

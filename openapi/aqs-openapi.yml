@@ -1,0 +1,501 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) API
+  description: |
+    The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+    sample data collected by state, local, tribal and federal air pollution control agencies
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+  - url: https://aqs.epa.gov/data/api
+    description: Production AQS Data Mart API
+tags:
+  - name: Meta Data
+    description: API availability, change history, field definitions, known issues.
+  - name: Lists
+    description: Reference lookups (states, counties, sites, CBSAs, parameter classes, agencies).
+  - name: Monitors
+    description: Monitor metadata filtered by site, county, state, bounding box, or CBSA.
+  - name: Sample Data
+    description: Raw sample observations.
+  - name: Daily Data
+    description: Daily aggregated values.
+  - name: Quarterly Data
+    description: Quarterly aggregated values.
+  - name: Annual Data
+    description: Annual aggregated values.
+  - name: Quality Assurance
+    description: QA performance evaluations, blanks, audits, collocated assessments.
+  - name: Transactions
+    description: Raw transaction-format exports.
+  - name: Sign Up
+    description: Account registration.
+security:
+  - emailKey: []
+components:
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: |
+        AQS requires `email` and `key` query parameters on every request. Register at
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+  parameters:
+    Email:
+      name: email
+      in: query
+      required: true
+      schema: {type: string, format: email}
+      description: Registered email address.
+    Key:
+      name: key
+      in: query
+      required: true
+      schema: {type: string}
+      description: Account-specific access key.
+    Param:
+      name: param
+      in: query
+      required: true
+      schema: {type: string}
+      description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
+    Bdate:
+      name: bdate
+      in: query
+      required: true
+      schema: {type: string, pattern: '^\d{8}$'}
+      description: Begin date (YYYYMMDD).
+    Edate:
+      name: edate
+      in: query
+      required: true
+      schema: {type: string, pattern: '^\d{8}$'}
+      description: End date (YYYYMMDD). Must be in the same year as bdate for most services.
+    State:
+      name: state
+      in: query
+      required: true
+      schema: {type: string, pattern: '^\d{2}$'}
+      description: 2-digit state FIPS code.
+    County:
+      name: county
+      in: query
+      required: true
+      schema: {type: string, pattern: '^\d{3}$'}
+      description: 3-digit county code.
+    Site:
+      name: site
+      in: query
+      required: true
+      schema: {type: string, pattern: '^\d{4}$'}
+      description: 4-digit site code.
+    Cbsa:
+      name: cbsa
+      in: query
+      required: true
+      schema: {type: string, pattern: '^\d{5}$'}
+      description: 5-digit Core Based Statistical Area code.
+    Pqao:
+      name: pqao
+      in: query
+      required: true
+      schema: {type: string}
+      description: Primary Quality Assurance Organization code.
+    Ma:
+      name: ma
+      in: query
+      required: true
+      schema: {type: string}
+      description: Monitoring Agency code.
+    MinLat:
+      name: minlat
+      in: query
+      required: true
+      schema: {type: number, format: float}
+      description: Minimum latitude of bounding box.
+    MaxLat:
+      name: maxlat
+      in: query
+      required: true
+      schema: {type: number, format: float}
+    MinLon:
+      name: minlon
+      in: query
+      required: true
+      schema: {type: number, format: float}
+    MaxLon:
+      name: maxlon
+      in: query
+      required: true
+      schema: {type: number, format: float}
+    Duration:
+      name: duration
+      in: query
+      required: false
+      schema: {type: string}
+      description: 1-character duration code filter.
+    Cbdate:
+      name: cbdate
+      in: query
+      required: false
+      schema: {type: string, pattern: '^\d{8}$'}
+      description: Optional change begin date (returns records updated since cbdate).
+    Cedate:
+      name: cedate
+      in: query
+      required: false
+      schema: {type: string, pattern: '^\d{8}$'}
+      description: Optional change end date.
+  schemas:
+    Header:
+      type: object
+      properties:
+        status: {type: string, example: active}
+        request_time: {type: string, example: string}
+        url: {type: string, example: https://example.com}
+        rows: {type: integer, example: 100}
+        error: {type: array, items: {type: string}, example: [string]}
+    Envelope:
+      type: object
+      required: [Header, Data]
+      properties:
+        Header:
+          type: array
+          items: {$ref: '#/components/schemas/Header'}
+          example:
+            - string
+        Data:
+          type: array
+          items: {type: object}
+          example:
+            - {}
+paths:
+  /metaData/isAvailable:
+    get:
+      tags: [Meta Data]
+      summary: Check API Availability
+      operationId: metaDataIsAvailable
+      parameters:
+        - $ref: '#/components/parameters/Email'
+        - $ref: '#/components/parameters/Key'
+      responses:
+        '200': {description: API status, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {metaDataIsAvailable200Example: {summary: Default metaDataIsAvailable 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /metaData/revisionHistory:
+    get:
+      tags: [Meta Data]
+      summary: Get Revision History
+      operationId: metaDataRevisionHistory
+      parameters:
+        - $ref: '#/components/parameters/Email'
+        - $ref: '#/components/parameters/Key'
+      responses:
+        '200': {description: API change log, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {metaDataRevisionHistory200Example: {summary: Default metaDataRevisionHistory 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /metaData/fieldsByService:
+    get:
+      tags: [Meta Data]
+      summary: List Fields by Service
+      operationId: metaDataFieldsByService
+      parameters:
+        - $ref: '#/components/parameters/Email'
+        - $ref: '#/components/parameters/Key'
+        - name: service
+          in: query
+          required: true
+          schema: {type: string}
+          example: string
+      responses:
+        '200': {description: Field definitions, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {metaDataFieldsByService200Example: {summary: Default metaDataFieldsByService 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /metaData/issues:
+    get:
+      tags: [Meta Data]
+      summary: List Known Issues
+      operationId: metaDataIssues
+      parameters:
+        - $ref: '#/components/parameters/Email'
+        - $ref: '#/components/parameters/Key'
+      responses:
+        '200': {description: Known issues, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {metaDataIssues200Example: {summary: Default metaDataIssues 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /list/states:
+    get:
+      tags: [Lists]
+      summary: List States
+      operationId: listStates
+      parameters: [$ref: '#/components/parameters/Email', $ref: '#/components/parameters/Key']
+      responses: {'200': {description: State FIPS codes, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {listStates200Example: {summary: Default listStates 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /list/countiesByState:
+    get:
+      tags: [Lists]
+      summary: List Counties by State
+      operationId: listCountiesByState
+      parameters:
+        - $ref: '#/components/parameters/Email'
+        - $ref: '#/components/parameters/Key'
+        - $ref: '#/components/parameters/State'
+      responses: {'200': {description: Counties in state, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {listCountiesByState200Example: {summary: Default listCountiesByState 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /list/sitesByCounty:
+    get:
+      tags: [Lists]
+      summary: List Sites by County
+      operationId: listSitesByCounty
+      parameters:
+        - $ref: '#/components/parameters/Email'
+        - $ref: '#/components/parameters/Key'
+        - $ref: '#/components/parameters/State'
+        - $ref: '#/components/parameters/County'
+      responses: {'200': {description: Sites in county, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {listSitesByCounty200Example: {summary: Default listSitesByCounty 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /list/cbsas:
+    get:
+      tags: [Lists]
+      summary: List Core Based Statistical Areas
+      operationId: listCbsas
+      parameters: [$ref: '#/components/parameters/Email', $ref: '#/components/parameters/Key']
+      responses: {'200': {description: CBSA codes, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {listCbsas200Example: {summary: Default listCbsas 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /list/classes:
+    get:
+      tags: [Lists]
+      summary: List Parameter Classes
+      operationId: listClasses
+      parameters: [$ref: '#/components/parameters/Email', $ref: '#/components/parameters/Key']
+      responses: {'200': {description: Parameter class groupings, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {listClasses200Example: {summary: Default listClasses 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /list/parametersByClass:
+    get:
+      tags: [Lists]
+      summary: List Parameters by Class
+      operationId: listParametersByClass
+      parameters:
+        - $ref: '#/components/parameters/Email'
+        - $ref: '#/components/parameters/Key'
+        - name: pc
+          in: query
+          required: true
+          schema: {type: string}
+          example: '88101'
+      responses: {'200': {description: Parameter codes in class, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {listParametersByClass200Example: {summary: Default listParametersByClass 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /list/pqaos:
+    get:
+      tags: [Lists]
+      summary: List Primary Quality Assurance Organizations
+      operationId: listPqaos
+      parameters: [$ref: '#/components/parameters/Email', $ref: '#/components/parameters/Key']
+      responses: {'200': {description: PQAOs, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {listPqaos200Example: {summary: Default listPqaos 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /list/mas:
+    get:
+      tags: [Lists]
+      summary: List Monitoring Agencies
+      operationId: listMas
+      parameters: [$ref: '#/components/parameters/Email', $ref: '#/components/parameters/Key']
+      responses: {'200': {description: Monitoring agencies, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {listMas200Example: {summary: Default listMas 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /monitors/bySite:
+    get:
+      tags: [Monitors]
+      summary: List Monitors by Site
+      operationId: monitorsBySite
+      parameters:
+        - $ref: '#/components/parameters/Email'
+        - $ref: '#/components/parameters/Key'
+        - $ref: '#/components/parameters/Param'
+        - $ref: '#/components/parameters/Bdate'
+        - $ref: '#/components/parameters/Edate'
+        - $ref: '#/components/parameters/State'
+        - $ref: '#/components/parameters/County'
+        - $ref: '#/components/parameters/Site'
+      responses: {'200': {description: Monitors at site, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {monitorsBySite200Example: {summary: Default monitorsBySite 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /monitors/byCounty:
+    get:
+      tags: [Monitors]
+      summary: List Monitors by County
+      operationId: monitorsByCounty
+      parameters:
+        - $ref: '#/components/parameters/Email'
+        - $ref: '#/components/parameters/Key'
+        - $ref: '#/components/parameters/Param'
+        - $ref: '#/components/parameters/Bdate'
+        - $ref: '#/components/parameters/Edate'
+        - $ref: '#/components/parameters/State'
+        - $ref: '#/components/parameters/County'
+      responses: {'200': {description: Monitors in county, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {monitorsByCounty200Example: {summary: Default monitorsByCounty 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /monitors/byState:
+    get:
+      tags: [Monitors]
+      summary: List Monitors by State
+      operationId: monitorsByState
+      parameters:
+        - $ref: '#/components/parameters/Email'
+        - $ref: '#/components/parameters/Key'
+        - $ref: '#/components/parameters/Param'
+        - $ref: '#/components/parameters/Bdate'
+        - $ref: '#/components/parameters/Edate'
+        - $ref: '#/components/parameters/State'
+      responses: {'200': {description: Monitors in state, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {monitorsByState200Example: {summary: Default monitorsByState 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /monitors/byBox:
+    get:
+      tags: [Monitors]
+      summary: List Monitors by Bounding Box
+      operationId: monitorsByBox
+      parameters:
+        - $ref: '#/components/parameters/Email'
+        - $ref: '#/components/parameters/Key'
+        - $ref: '#/components/parameters/Param'
+        - $ref: '#/components/parameters/Bdate'
+        - $ref: '#/components/parameters/Edate'
+        - $ref: '#/components/parameters/MinLat'
+        - $ref: '#/components/parameters/MaxLat'
+        - $ref: '#/components/parameters/MinLon'
+        - $ref: '#/components/parameters/MaxLon'
+      responses: {'200': {description: Monitors in bounding box, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {monitorsByBox200Example: {summary: Default monitorsByBox 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /monitors/byCBSA:
+    get:
+      tags: [Monitors]
+      summary: List Monitors by CBSA
+      operationId: monitorsByCBSA
+      parameters:
+        - $ref: '#/components/parameters/Email'
+        - $ref: '#/components/parameters/Key'
+        - $ref: '#/components/parameters/Param'
+        - $ref: '#/components/parameters/Bdate'
+        - $ref: '#/components/parameters/Edate'
+        - $ref: '#/components/parameters/Cbsa'
+      responses: {'200': {description: Monitors in CBSA, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {monitorsByCBSA200Example: {summary: Default monitorsByCBSA 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /sampleData/bySite:
+    get: {tags: [Sample Data], summary: Get Sample Data by Site, operationId: sampleDataBySite, parameters: [$ref: '#/components/parameters/Email', $ref: '#/components/parameters/Key', $ref: '#/components/parameters/Param', $ref: '#/components/parameters/Bdate', $ref: '#/components/parameters/Edate', $ref: '#/components/parameters/State', $ref: '#/components/parameters/County', $ref: '#/components/parameters/Site', $ref: '#/components/parameters/Duration', $ref: '#/components/parameters/Cbdate', $ref: '#/components/parameters/Cedate'], responses: {'200': {description: Samples at site, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {sampleDataBySite200Example: {summary: Default sampleDataBySite 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}, x-microcks-operation: {delay: 0, dispatcher: FALLBACK}}
+  /sampleData/byCounty:
+    get: {tags: [Sample Data], summary: Get Sample Data by County, operationId: sampleDataByCounty, parameters: [$ref: '#/components/parameters/Email', $ref: '#/components/parameters/Key', $ref: '#/components/parameters/Param', $ref: '#/components/parameters/Bdate', $ref: '#/components/parameters/Edate', $ref: '#/components/parameters/State', $ref: '#/components/parameters/County', $ref: '#/components/parameters/Duration', $ref: '#/components/parameters/Cbdate', $ref: '#/components/parameters/Cedate'], responses: {'200': {description: Samples in county, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {sampleDataByCounty200Example: {summary: Default sampleDataByCounty 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}, x-microcks-operation: {delay: 0, dispatcher: FALLBACK}}
+  /sampleData/byState:
+    get: {tags: [Sample Data], summary: Get Sample Data by State, operationId: sampleDataByState, parameters: [$ref: '#/components/parameters/Email', $ref: '#/components/parameters/Key', $ref: '#/components/parameters/Param', $ref: '#/components/parameters/Bdate', $ref: '#/components/parameters/Edate', $ref: '#/components/parameters/State', $ref: '#/components/parameters/Duration', $ref: '#/components/parameters/Cbdate', $ref: '#/components/parameters/Cedate'], responses: {'200': {description: Samples in state, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {sampleDataByState200Example: {summary: Default sampleDataByState 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}, x-microcks-operation: {delay: 0, dispatcher: FALLBACK}}
+  /sampleData/byBox:
+    get: {tags: [Sample Data], summary: Get Sample Data by Bounding Box, operationId: sampleDataByBox, parameters: [$ref: '#/components/parameters/Email', $ref: '#/components/parameters/Key', $ref: '#/components/parameters/Param', $ref: '#/components/parameters/Bdate', $ref: '#/components/parameters/Edate', $ref: '#/components/parameters/MinLat', $ref: '#/components/parameters/MaxLat', $ref: '#/components/parameters/MinLon', $ref: '#/components/parameters/MaxLon', $ref: '#/components/parameters/Duration', $ref: '#/components/parameters/Cbdate', $ref: '#/components/parameters/Cedate'], responses: {'200': {description: Samples in box, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {sampleDataByBox200Example: {summary: Default sampleDataByBox 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}, x-microcks-operation: {delay: 0, dispatcher: FALLBACK}}
+  /sampleData/byCBSA:
+    get: {tags: [Sample Data], summary: Get Sample Data by CBSA, operationId: sampleDataByCBSA, parameters: [$ref: '#/components/parameters/Email', $ref: '#/components/parameters/Key', $ref: '#/components/parameters/Param', $ref: '#/components/parameters/Bdate', $ref: '#/components/parameters/Edate', $ref: '#/components/parameters/Cbsa', $ref: '#/components/parameters/Duration', $ref: '#/components/parameters/Cbdate', $ref: '#/components/parameters/Cedate'], responses: {'200': {description: Samples in CBSA, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {sampleDataByCBSA200Example: {summary: Default sampleDataByCBSA 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}, x-microcks-operation: {delay: 0, dispatcher: FALLBACK}}
+  /dailyData/bySite:
+    get: {tags: [Daily Data], summary: Get Daily Data by Site, operationId: dailyDataBySite, parameters: [$ref: '#/components/parameters/Email', $ref: '#/components/parameters/Key', $ref: '#/components/parameters/Param', $ref: '#/components/parameters/Bdate', $ref: '#/components/parameters/Edate', $ref: '#/components/parameters/State', $ref: '#/components/parameters/County', $ref: '#/components/parameters/Site', $ref: '#/components/parameters/Cbdate', $ref: '#/components/parameters/Cedate'], responses: {'200': {description: Daily values, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {dailyDataBySite200Example: {summary: Default dailyDataBySite 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}, x-microcks-operation: {delay: 0, dispatcher: FALLBACK}}
+  /dailyData/byCounty:
+    get: {tags: [Daily Data], summary: Get Daily Data by County, operationId: dailyDataByCounty, parameters: [$ref: '#/components/parameters/Email', $ref: '#/components/parameters/Key', $ref: '#/components/parameters/Param', $ref: '#/components/parameters/Bdate', $ref: '#/components/parameters/Edate', $ref: '#/components/parameters/State', $ref: '#/components/parameters/County', $ref: '#/components/parameters/Cbdate', $ref: '#/components/parameters/Cedate'], responses: {'200': {description: Daily values, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {dailyDataByCounty200Example: {summary: Default dailyDataByCounty 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}, x-microcks-operation: {delay: 0, dispatcher: FALLBACK}}
+  /dailyData/byState:
+    get: {tags: [Daily Data], summary: Get Daily Data by State, operationId: dailyDataByState, parameters: [$ref: '#/components/parameters/Email', $ref: '#/components/parameters/Key', $ref: '#/components/parameters/Param', $ref: '#/components/parameters/Bdate', $ref: '#/components/parameters/Edate', $ref: '#/components/parameters/State', $ref: '#/components/parameters/Cbdate', $ref: '#/components/parameters/Cedate'], responses: {'200': {description: Daily values, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {dailyDataByState200Example: {summary: Default dailyDataByState 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}, x-microcks-operation: {delay: 0, dispatcher: FALLBACK}}
+  /dailyData/byBox:
+    get: {tags: [Daily Data], summary: Get Daily Data by Bounding Box, operationId: dailyDataByBox, parameters: [$ref: '#/components/parameters/Email', $ref: '#/components/parameters/Key', $ref: '#/components/parameters/Param', $ref: '#/components/parameters/Bdate', $ref: '#/components/parameters/Edate', $ref: '#/components/parameters/MinLat', $ref: '#/components/parameters/MaxLat', $ref: '#/components/parameters/MinLon', $ref: '#/components/parameters/MaxLon', $ref: '#/components/parameters/Cbdate', $ref: '#/components/parameters/Cedate'], responses: {'200': {description: Daily values, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {dailyDataByBox200Example: {summary: Default dailyDataByBox 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}, x-microcks-operation: {delay: 0, dispatcher: FALLBACK}}
+  /dailyData/byCBSA:
+    get: {tags: [Daily Data], summary: Get Daily Data by CBSA, operationId: dailyDataByCBSA, parameters: [$ref: '#/components/parameters/Email', $ref: '#/components/parameters/Key', $ref: '#/components/parameters/Param', $ref: '#/components/parameters/Bdate', $ref: '#/components/parameters/Edate', $ref: '#/components/parameters/Cbsa', $ref: '#/components/parameters/Cbdate', $ref: '#/components/parameters/Cedate'], responses: {'200': {description: Daily values, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {dailyDataByCBSA200Example: {summary: Default dailyDataByCBSA 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}, x-microcks-operation: {delay: 0, dispatcher: FALLBACK}}
+  /quarterlyData/bySite:
+    get: {tags: [Quarterly Data], summary: Get Quarterly Data by Site, operationId: quarterlyDataBySite, parameters: [$ref: '#/components/parameters/Email', $ref: '#/components/parameters/Key', $ref: '#/components/parameters/Param', $ref: '#/components/parameters/Bdate', $ref: '#/components/parameters/Edate', $ref: '#/components/parameters/State', $ref: '#/components/parameters/County', $ref: '#/components/parameters/Site', $ref: '#/components/parameters/Cbdate', $ref: '#/components/parameters/Cedate'], responses: {'200': {description: Quarterly values, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {quarterlyDataBySite200Example: {summary: Default quarterlyDataBySite 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}, x-microcks-operation: {delay: 0, dispatcher: FALLBACK}}
+  /quarterlyData/byCounty:
+    get: {tags: [Quarterly Data], summary: Get Quarterly Data by County, operationId: quarterlyDataByCounty, parameters: [$ref: '#/components/parameters/Email', $ref: '#/components/parameters/Key', $ref: '#/components/parameters/Param', $ref: '#/components/parameters/Bdate', $ref: '#/components/parameters/Edate', $ref: '#/components/parameters/State', $ref: '#/components/parameters/County', $ref: '#/components/parameters/Cbdate', $ref: '#/components/parameters/Cedate'], responses: {'200': {description: Quarterly values, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {quarterlyDataByCounty200Example: {summary: Default quarterlyDataByCounty 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}, x-microcks-operation: {delay: 0, dispatcher: FALLBACK}}
+  /quarterlyData/byState:
+    get: {tags: [Quarterly Data], summary: Get Quarterly Data by State, operationId: quarterlyDataByState, parameters: [$ref: '#/components/parameters/Email', $ref: '#/components/parameters/Key', $ref: '#/components/parameters/Param', $ref: '#/components/parameters/Bdate', $ref: '#/components/parameters/Edate', $ref: '#/components/parameters/State', $ref: '#/components/parameters/Cbdate', $ref: '#/components/parameters/Cedate'], responses: {'200': {description: Quarterly values, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {quarterlyDataByState200Example: {summary: Default quarterlyDataByState 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}, x-microcks-operation: {delay: 0, dispatcher: FALLBACK}}
+  /quarterlyData/byBox:
+    get: {tags: [Quarterly Data], summary: Get Quarterly Data by Bounding Box, operationId: quarterlyDataByBox, parameters: [$ref: '#/components/parameters/Email', $ref: '#/components/parameters/Key', $ref: '#/components/parameters/Param', $ref: '#/components/parameters/Bdate', $ref: '#/components/parameters/Edate', $ref: '#/components/parameters/MinLat', $ref: '#/components/parameters/MaxLat', $ref: '#/components/parameters/MinLon', $ref: '#/components/parameters/MaxLon', $ref: '#/components/parameters/Cbdate', $ref: '#/components/parameters/Cedate'], responses: {'200': {description: Quarterly values, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {quarterlyDataByBox200Example: {summary: Default quarterlyDataByBox 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}, x-microcks-operation: {delay: 0, dispatcher: FALLBACK}}
+  /quarterlyData/byCBSA:
+    get: {tags: [Quarterly Data], summary: Get Quarterly Data by CBSA, operationId: quarterlyDataByCBSA, parameters: [$ref: '#/components/parameters/Email', $ref: '#/components/parameters/Key', $ref: '#/components/parameters/Param', $ref: '#/components/parameters/Bdate', $ref: '#/components/parameters/Edate', $ref: '#/components/parameters/Cbsa', $ref: '#/components/parameters/Cbdate', $ref: '#/components/parameters/Cedate'], responses: {'200': {description: Quarterly values, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {quarterlyDataByCBSA200Example: {summary: Default quarterlyDataByCBSA 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}, x-microcks-operation: {delay: 0, dispatcher: FALLBACK}}
+  /annualData/bySite:
+    get: {tags: [Annual Data], summary: Get Annual Data by Site, operationId: annualDataBySite, parameters: [$ref: '#/components/parameters/Email', $ref: '#/components/parameters/Key', $ref: '#/components/parameters/Param', $ref: '#/components/parameters/Bdate', $ref: '#/components/parameters/Edate', $ref: '#/components/parameters/State', $ref: '#/components/parameters/County', $ref: '#/components/parameters/Site', $ref: '#/components/parameters/Cbdate', $ref: '#/components/parameters/Cedate'], responses: {'200': {description: Annual values, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {annualDataBySite200Example: {summary: Default annualDataBySite 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}, x-microcks-operation: {delay: 0, dispatcher: FALLBACK}}
+  /annualData/byCounty:
+    get: {tags: [Annual Data], summary: Get Annual Data by County, operationId: annualDataByCounty, parameters: [$ref: '#/components/parameters/Email', $ref: '#/components/parameters/Key', $ref: '#/components/parameters/Param', $ref: '#/components/parameters/Bdate', $ref: '#/components/parameters/Edate', $ref: '#/components/parameters/State', $ref: '#/components/parameters/County', $ref: '#/components/parameters/Cbdate', $ref: '#/components/parameters/Cedate'], responses: {'200': {description: Annual values, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {annualDataByCounty200Example: {summary: Default annualDataByCounty 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}, x-microcks-operation: {delay: 0, dispatcher: FALLBACK}}
+  /annualData/byState:
+    get: {tags: [Annual Data], summary: Get Annual Data by State, operationId: annualDataByState, parameters: [$ref: '#/components/parameters/Email', $ref: '#/components/parameters/Key', $ref: '#/components/parameters/Param', $ref: '#/components/parameters/Bdate', $ref: '#/components/parameters/Edate', $ref: '#/components/parameters/State', $ref: '#/components/parameters/Cbdate', $ref: '#/components/parameters/Cedate'], responses: {'200': {description: Annual values, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {annualDataByState200Example: {summary: Default annualDataByState 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}, x-microcks-operation: {delay: 0, dispatcher: FALLBACK}}
+  /annualData/byBox:
+    get: {tags: [Annual Data], summary: Get Annual Data by Bounding Box, operationId: annualDataByBox, parameters: [$ref: '#/components/parameters/Email', $ref: '#/components/parameters/Key', $ref: '#/components/parameters/Param', $ref: '#/components/parameters/Bdate', $ref: '#/components/parameters/Edate', $ref: '#/components/parameters/MinLat', $ref: '#/components/parameters/MaxLat', $ref: '#/components/parameters/MinLon', $ref: '#/components/parameters/MaxLon', $ref: '#/components/parameters/Cbdate', $ref: '#/components/parameters/Cedate'], responses: {'200': {description: Annual values, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {annualDataByBox200Example: {summary: Default annualDataByBox 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}, x-microcks-operation: {delay: 0, dispatcher: FALLBACK}}
+  /annualData/byCBSA:
+    get: {tags: [Annual Data], summary: Get Annual Data by CBSA, operationId: annualDataByCBSA, parameters: [$ref: '#/components/parameters/Email', $ref: '#/components/parameters/Key', $ref: '#/components/parameters/Param', $ref: '#/components/parameters/Bdate', $ref: '#/components/parameters/Edate', $ref: '#/components/parameters/Cbsa', $ref: '#/components/parameters/Cbdate', $ref: '#/components/parameters/Cedate'], responses: {'200': {description: Annual values, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {annualDataByCBSA200Example: {summary: Default annualDataByCBSA 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}, x-microcks-operation: {delay: 0, dispatcher: FALLBACK}}
+  /qaAnnualPerformanceEvaluations/bySite:
+    get: {tags: [Quality Assurance], summary: QA Annual Performance Evaluations by Site, operationId: qaAnnualBySite, parameters: [$ref: '#/components/parameters/Email', $ref: '#/components/parameters/Key', $ref: '#/components/parameters/Param', $ref: '#/components/parameters/Bdate', $ref: '#/components/parameters/Edate', $ref: '#/components/parameters/State', $ref: '#/components/parameters/County', $ref: '#/components/parameters/Site'], responses: {'200': {description: QA evaluations, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {qaAnnualBySite200Example: {summary: Default qaAnnualBySite 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}, x-microcks-operation: {delay: 0, dispatcher: FALLBACK}}
+  /qaAnnualPerformanceEvaluations/byCounty:
+    get: {tags: [Quality Assurance], summary: QA Annual Performance Evaluations by County, operationId: qaAnnualByCounty, parameters: [$ref: '#/components/parameters/Email', $ref: '#/components/parameters/Key', $ref: '#/components/parameters/Param', $ref: '#/components/parameters/Bdate', $ref: '#/components/parameters/Edate', $ref: '#/components/parameters/State', $ref: '#/components/parameters/County'], responses: {'200': {description: QA evaluations, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {qaAnnualByCounty200Example: {summary: Default qaAnnualByCounty 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}, x-microcks-operation: {delay: 0, dispatcher: FALLBACK}}
+  /qaAnnualPerformanceEvaluations/byState:
+    get: {tags: [Quality Assurance], summary: QA Annual Performance Evaluations by State, operationId: qaAnnualByState, parameters: [$ref: '#/components/parameters/Email', $ref: '#/components/parameters/Key', $ref: '#/components/parameters/Param', $ref: '#/components/parameters/Bdate', $ref: '#/components/parameters/Edate', $ref: '#/components/parameters/State'], responses: {'200': {description: QA evaluations, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {qaAnnualByState200Example: {summary: Default qaAnnualByState 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}, x-microcks-operation: {delay: 0, dispatcher: FALLBACK}}
+  /qaAnnualPerformanceEvaluations/byPQAO:
+    get: {tags: [Quality Assurance], summary: QA Annual Performance Evaluations by PQAO, operationId: qaAnnualByPQAO, parameters: [$ref: '#/components/parameters/Email', $ref: '#/components/parameters/Key', $ref: '#/components/parameters/Param', $ref: '#/components/parameters/Bdate', $ref: '#/components/parameters/Edate', $ref: '#/components/parameters/Pqao'], responses: {'200': {description: QA evaluations, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {qaAnnualByPQAO200Example: {summary: Default qaAnnualByPQAO 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}, x-microcks-operation: {delay: 0, dispatcher: FALLBACK}}
+  /qaAnnualPerformanceEvaluations/byMA:
+    get: {tags: [Quality Assurance], summary: QA Annual Performance Evaluations by Monitoring Agency, operationId: qaAnnualByMA, parameters: [$ref: '#/components/parameters/Email', $ref: '#/components/parameters/Key', $ref: '#/components/parameters/Param', $ref: '#/components/parameters/Bdate', $ref: '#/components/parameters/Edate', $ref: '#/components/parameters/Ma'], responses: {'200': {description: QA evaluations, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {qaAnnualByMA200Example: {summary: Default qaAnnualByMA 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}, x-microcks-operation: {delay: 0, dispatcher: FALLBACK}}
+  /qaBlanks/bySite:
+    get: {tags: [Quality Assurance], summary: QA Blanks by Site, operationId: qaBlanksBySite, parameters: [$ref: '#/components/parameters/Email', $ref: '#/components/parameters/Key', $ref: '#/components/parameters/Param', $ref: '#/components/parameters/Bdate', $ref: '#/components/parameters/Edate', $ref: '#/components/parameters/State', $ref: '#/components/parameters/County', $ref: '#/components/parameters/Site'], responses: {'200': {description: QA blanks, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {qaBlanksBySite200Example: {summary: Default qaBlanksBySite 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}, x-microcks-operation: {delay: 0, dispatcher: FALLBACK}}
+  /qaBlanks/byState:
+    get: {tags: [Quality Assurance], summary: QA Blanks by State, operationId: qaBlanksByState, parameters: [$ref: '#/components/parameters/Email', $ref: '#/components/parameters/Key', $ref: '#/components/parameters/Param', $ref: '#/components/parameters/Bdate', $ref: '#/components/parameters/Edate', $ref: '#/components/parameters/State'], responses: {'200': {description: QA blanks, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {qaBlanksByState200Example: {summary: Default qaBlanksByState 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}, x-microcks-operation: {delay: 0, dispatcher: FALLBACK}}
+  /qaCollocatedAssessments/bySite:
+    get: {tags: [Quality Assurance], summary: QA Collocated Assessments by Site, operationId: qaCollocatedBySite, parameters: [$ref: '#/components/parameters/Email', $ref: '#/components/parameters/Key', $ref: '#/components/parameters/Param', $ref: '#/components/parameters/Bdate', $ref: '#/components/parameters/Edate', $ref: '#/components/parameters/State', $ref: '#/components/parameters/County', $ref: '#/components/parameters/Site'], responses: {'200': {description: QA collocated assessments, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {qaCollocatedBySite200Example: {summary: Default qaCollocatedBySite 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}, x-microcks-operation: {delay: 0, dispatcher: FALLBACK}}
+  /qaFlowRateVerifications/bySite:
+    get: {tags: [Quality Assurance], summary: QA Flow Rate Verifications by Site, operationId: qaFlowRateVerifBySite, parameters: [$ref: '#/components/parameters/Email', $ref: '#/components/parameters/Key', $ref: '#/components/parameters/Param', $ref: '#/components/parameters/Bdate', $ref: '#/components/parameters/Edate', $ref: '#/components/parameters/State', $ref: '#/components/parameters/County', $ref: '#/components/parameters/Site'], responses: {'200': {description: QA flow rate verifications, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {qaFlowRateVerifBySite200Example: {summary: Default qaFlowRateVerifBySite 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}, x-microcks-operation: {delay: 0, dispatcher: FALLBACK}}
+  /qaFlowRateAudits/bySite:
+    get: {tags: [Quality Assurance], summary: QA Flow Rate Audits by Site, operationId: qaFlowRateAuditsBySite, parameters: [$ref: '#/components/parameters/Email', $ref: '#/components/parameters/Key', $ref: '#/components/parameters/Param', $ref: '#/components/parameters/Bdate', $ref: '#/components/parameters/Edate', $ref: '#/components/parameters/State', $ref: '#/components/parameters/County', $ref: '#/components/parameters/Site'], responses: {'200': {description: QA flow rate audits, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {qaFlowRateAuditsBySite200Example: {summary: Default qaFlowRateAuditsBySite 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}, x-microcks-operation: {delay: 0, dispatcher: FALLBACK}}
+  /qaOnePointQcRawData/bySite:
+    get: {tags: [Quality Assurance], summary: QA One Point QC Raw Data by Site, operationId: qaOnePointBySite, parameters: [$ref: '#/components/parameters/Email', $ref: '#/components/parameters/Key', $ref: '#/components/parameters/Param', $ref: '#/components/parameters/Bdate', $ref: '#/components/parameters/Edate', $ref: '#/components/parameters/State', $ref: '#/components/parameters/County', $ref: '#/components/parameters/Site'], responses: {'200': {description: QA one-point QC raw data, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {qaOnePointBySite200Example: {summary: Default qaOnePointBySite 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}, x-microcks-operation: {delay: 0, dispatcher: FALLBACK}}
+  /qaPepAudits/bySite:
+    get: {tags: [Quality Assurance], summary: QA PEP Audits by Site, operationId: qaPepBySite, parameters: [$ref: '#/components/parameters/Email', $ref: '#/components/parameters/Key', $ref: '#/components/parameters/Param', $ref: '#/components/parameters/Bdate', $ref: '#/components/parameters/Edate', $ref: '#/components/parameters/State', $ref: '#/components/parameters/County', $ref: '#/components/parameters/Site'], responses: {'200': {description: QA PEP audits, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {qaPepBySite200Example: {summary: Default qaPepBySite 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}, x-microcks-operation: {delay: 0, dispatcher: FALLBACK}}
+  /transactionsSample/bySite:
+    get: {tags: [Transactions], summary: Transactions Sample by Site, operationId: txSampleBySite, parameters: [$ref: '#/components/parameters/Email', $ref: '#/components/parameters/Key', $ref: '#/components/parameters/Param', $ref: '#/components/parameters/Bdate', $ref: '#/components/parameters/Edate', $ref: '#/components/parameters/State', $ref: '#/components/parameters/County', $ref: '#/components/parameters/Site', $ref: '#/components/parameters/Cbdate', $ref: '#/components/parameters/Cedate'], responses: {'200': {description: Transactions, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {txSampleBySite200Example: {summary: Default txSampleBySite 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}, x-microcks-operation: {delay: 0, dispatcher: FALLBACK}}
+  /transactionsSample/byState:
+    get: {tags: [Transactions], summary: Transactions Sample by State, operationId: txSampleByState, parameters: [$ref: '#/components/parameters/Email', $ref: '#/components/parameters/Key', $ref: '#/components/parameters/Param', $ref: '#/components/parameters/Bdate', $ref: '#/components/parameters/Edate', $ref: '#/components/parameters/State', $ref: '#/components/parameters/Cbdate', $ref: '#/components/parameters/Cedate'], responses: {'200': {description: Transactions, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {txSampleByState200Example: {summary: Default txSampleByState 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}, x-microcks-operation: {delay: 0, dispatcher: FALLBACK}}
+  /transactionsQaAnnualPerformanceEvaluations/byState:
+    get: {tags: [Transactions], summary: Transactions QA Annual by State, operationId: txQaAnnualByState, parameters: [$ref: '#/components/parameters/Email', $ref: '#/components/parameters/Key', $ref: '#/components/parameters/Param', $ref: '#/components/parameters/Bdate', $ref: '#/components/parameters/Edate', $ref: '#/components/parameters/State'], responses: {'200': {description: Transactions, content: {application/json: {schema: {$ref: '#/components/schemas/Envelope'}, examples: {txQaAnnualByState200Example: {summary: Default txQaAnnualByState 200 response, x-microcks-default: true, value: {status: ok, message: Example response}}}}}}}, x-microcks-operation: {delay: 0, dispatcher: FALLBACK}}
+  /signup:
+    get:
+      tags: [Sign Up]
+      summary: Register for API Key
+      operationId: signup
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/Email'
+      responses:
+        '200': {description: Verification email sent.}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK

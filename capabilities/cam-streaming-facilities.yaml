@@ -1,0 +1,135 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Streaming Services OpenAPI Specification — Facilities
+  description: 'Facilities. 1 operations. Lead operation: operations. Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - Facilities
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_APIKEY_KEY: EPA_APIKEY_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: cam-streaming-facilities
+      baseUri: https://api.epa.gov/easey
+      description: Streaming Services OpenAPI Specification — Facilities business capability. Self-contained, no shared references.
+      authentication:
+        type: apikey
+        key: x-api-key
+        value: '{{env.EPA_APIKEY_KEY}}'
+        placement: header
+      resources:
+        - name: streaming-services-facilities-attributes
+          path: /streaming-services/facilities/attributes
+          operations:
+            - name: facilitiesControllerstreamAttributes
+              method: GET
+              description: facilitiesControllerstreamAttributes
+              inputParameters:
+                - name: year
+                  in: query
+                  type: array
+                  required: true
+                  description: The calendar year during which activity occurred.
+                - name: facilityId
+                  in: query
+                  type: array
+                  required: false
+                  description: The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the "ORIS code", "ORISPL code"
+                - name: stateCode
+                  in: query
+                  type: array
+                  required: false
+                  description: Two letter abbreviation for the State.
+                - name: unitType
+                  in: query
+                  type: array
+                  required: false
+                  description: Type of unit or boiler.
+                - name: unitFuelType
+                  in: query
+                  type: array
+                  required: false
+                  description: Primary or Secondary fuel types combusted by the unit.
+                - name: controlTechnologies
+                  in: query
+                  type: array
+                  required: false
+                  description: Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.
+                - name: sourceCategory
+                  in: query
+                  type: array
+                  required: false
+                  description: Description of a unit that classifies it in terms of the primary function of the unit.
+                - name: programCodeInfo
+                  in: query
+                  type: array
+                  required: false
+                  description: Statutory or regulatory based options for tracking and reducing air pollution emissions.
+                - name: exclude
+                  in: query
+                  type: array
+                  required: false
+                  description: Selected items will be excluded from the response
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: cam-streaming-facilities-rest
+      port: 8080
+      description: REST adapter for Streaming Services OpenAPI Specification — Facilities. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/streaming-services/facilities/attributes
+          name: streaming-services-facilities-attributes
+          description: REST surface for facilitiesControllerstreamAttributes.
+          operations:
+            - method: GET
+              name: facilitiesControllerstreamAttributes
+              description: facilitiesControllerstreamAttributes
+              call: cam-streaming-facilities.facilitiesControllerstreamAttributes
+              with:
+                year: rest.year
+                facilityId: rest.facilityId
+                stateCode: rest.stateCode
+                unitType: rest.unitType
+                unitFuelType: rest.unitFuelType
+                controlTechnologies: rest.controlTechnologies
+                sourceCategory: rest.sourceCategory
+                programCodeInfo: rest.programCodeInfo
+                exclude: rest.exclude
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: cam-streaming-facilities-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Streaming Services OpenAPI Specification — Facilities. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: facilitiescontroller-streamattributes
+          description: facilitiescontroller-streamattributes
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-streaming-facilities.facilitiesControllerstreamAttributes
+          with:
+            year: tools.year
+            facilityId: tools.facilityId
+            stateCode: tools.stateCode
+            unitType: tools.unitType
+            unitFuelType: tools.unitFuelType
+            controlTechnologies: tools.controlTechnologies
+            sourceCategory: tools.sourceCategory
+            programCodeInfo: tools.programCodeInfo
+            exclude: tools.exclude
+          outputParameters:
+            - type: object
+              mapping: $.

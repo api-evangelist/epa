@@ -1,0 +1,86 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Monitor Plan Management OpenAPI Specification — Analyzer Ranges
+  description: 'Analyzer Ranges. 1 operations. Lead operation: operations. Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - Analyzer Ranges
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_APIKEY_KEY: EPA_APIKEY_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: cam-monitor-plan-analyzer-ranges
+      baseUri: https://api.epa.gov/easey
+      description: Monitor Plan Management OpenAPI Specification — Analyzer Ranges business capability. Self-contained, no shared references.
+      authentication:
+        type: apikey
+        key: x-api-key
+        value: '{{env.EPA_APIKEY_KEY}}'
+        placement: header
+      resources:
+        - name: monitor-plan-mgmt-locations-locid-components-compid-analyzer-ranges
+          path: /monitor-plan-mgmt/locations/{locId}/components/{compId}/analyzer-ranges
+          operations:
+            - name: analyzerRangeControllergetAnalyzerRanges
+              method: GET
+              description: analyzerRangeControllergetAnalyzerRanges
+              inputParameters:
+                - name: locId
+                  in: path
+                  type: string
+                  required: true
+                  description: locId
+                - name: compId
+                  in: path
+                  type: string
+                  required: true
+                  description: compId
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: cam-monitor-plan-analyzer-ranges-rest
+      port: 8080
+      description: REST adapter for Monitor Plan Management OpenAPI Specification — Analyzer Ranges. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/monitor-plan-mgmt/locations/{locid}/components/{compid}/analyzer-ranges
+          name: monitor-plan-mgmt-locations-locid-components-compid-analyzer-ranges
+          description: REST surface for analyzerRangeControllergetAnalyzerRanges.
+          operations:
+            - method: GET
+              name: analyzerRangeControllergetAnalyzerRanges
+              description: analyzerRangeControllergetAnalyzerRanges
+              call: cam-monitor-plan-analyzer-ranges.analyzerRangeControllergetAnalyzerRanges
+              with:
+                locId: rest.locId
+                compId: rest.compId
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: cam-monitor-plan-analyzer-ranges-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Monitor Plan Management OpenAPI Specification — Analyzer Ranges. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: analyzerrangecontroller-getanalyzerranges
+          description: analyzerrangecontroller-getanalyzerranges
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-monitor-plan-analyzer-ranges.analyzerRangeControllergetAnalyzerRanges
+          with:
+            locId: tools.locId
+            compId: tools.compId
+          outputParameters:
+            - type: object
+              mapping: $.

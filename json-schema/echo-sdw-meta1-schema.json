@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-schema/echo-sdw-meta1-schema.json",
+  "title": "meta1",
+  "description": "Results Object",
+  "type": "object",
+  "properties": {
+    "Message": {
+      "description": "Field to record messages (typically performance-related) about packet processing",
+      "example": "Success",
+      "title": "Message",
+      "type": "string"
+    },
+    "ResultColumns": {
+      "items": {
+        "$ref": "#/definitions/meta3"
+      },
+      "title": "Result Columns",
+      "type": "array",
+      "xml": {
+        "name": "ResultColumns",
+        "wrapped": true
+      },
+      "example": [
+        "string"
+      ]
+    }
+  },
+  "required": [
+    "Message"
+  ]
+}

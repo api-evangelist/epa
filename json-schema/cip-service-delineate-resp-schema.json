@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-schema/cip-service-delineate-resp-schema.json",
+  "title": "delineate_resp",
+  "description": "delineate_resp schema from CIP-service Indexing API",
+  "type": "object",
+  "properties": {
+    "delineated_area": {
+      "obj_type": "delineated_area_properties",
+      "$ref": "#/components/schemas/geojson_featurecollection"
+    },
+    "aggregation_used": {
+      "description": "aggregation logic used in delineation action.",
+      "type": "string",
+      "example": "string"
+    },
+    "flowlines": {
+      "$ref": "#/components/schemas/geojson_featurecollection"
+    },
+    "flowline_count": {
+      "$ref": "#/components/schemas/flowline_count"
+    },
+    "nhdplus_version": {
+      "$ref": "#/components/schemas/nhdplus_version"
+    },
+    "return_code": {
+      "$ref": "#/components/schemas/return_code"
+    },
+    "status_message": {
+      "$ref": "#/components/schemas/status_message"
+    }
+  }
+}

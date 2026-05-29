@@ -1,0 +1,198 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: QA Certification Management OpenAPI Specification — Rata Traverse
+  description: 'Rata Traverse. 2 operations. Lead operation: operations. Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - Rata Traverse
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_APIKEY_KEY: EPA_APIKEY_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: cam-qa-cert-rata-traverse
+      baseUri: https://api.epa.gov/easey
+      description: QA Certification Management OpenAPI Specification — Rata Traverse business capability. Self-contained, no shared references.
+      authentication:
+        type: apikey
+        key: x-api-key
+        value: '{{env.EPA_APIKEY_KEY}}'
+        placement: header
+      resources:
+        - name: qa-certification-mgmt-locations-locid-test-summary-testsumid-rata-rataid-rata-summaries-ratasumid-rata-runs-ratarunid-flow-rata-runs-flowratarunid-rata-traverses
+          path: /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/rata/{rataId}/rata-summaries/{rataSumId}/rata-runs/{rataRunId}/flow-rata-runs/{flowRataRunId}/rata-traverses
+          operations:
+            - name: rataTraverseControllergetRataTraverses
+              method: GET
+              description: rataTraverseControllergetRataTraverses
+              inputParameters:
+                - name: locId
+                  in: path
+                  type: string
+                  required: true
+                  description: locId
+                - name: testSumId
+                  in: path
+                  type: string
+                  required: true
+                  description: testSumId
+                - name: rataId
+                  in: path
+                  type: string
+                  required: true
+                  description: rataId
+                - name: rataSumId
+                  in: path
+                  type: string
+                  required: true
+                  description: rataSumId
+                - name: rataRunId
+                  in: path
+                  type: string
+                  required: true
+                  description: rataRunId
+                - name: flowRataRunId
+                  in: path
+                  type: string
+                  required: true
+                  description: flowRataRunId
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: qa-certification-mgmt-locations-locid-test-summary-testsumid-rata-rataid-rata-summaries-ratasumid-rata-runs-ratarunid-flow-rata-runs-flowratarunid-rata-traverses-id
+          path: /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/rata/{rataId}/rata-summaries/{rataSumId}/rata-runs/{rataRunId}/flow-rata-runs/{flowRataRunId}/rata-traverses/{id}
+          operations:
+            - name: rataTraverseControllergetRataTraverse
+              method: GET
+              description: rataTraverseControllergetRataTraverse
+              inputParameters:
+                - name: locId
+                  in: path
+                  type: string
+                  required: true
+                  description: locId
+                - name: testSumId
+                  in: path
+                  type: string
+                  required: true
+                  description: testSumId
+                - name: rataId
+                  in: path
+                  type: string
+                  required: true
+                  description: rataId
+                - name: rataSumId
+                  in: path
+                  type: string
+                  required: true
+                  description: rataSumId
+                - name: rataRunId
+                  in: path
+                  type: string
+                  required: true
+                  description: rataRunId
+                - name: flowRataRunId
+                  in: path
+                  type: string
+                  required: true
+                  description: flowRataRunId
+                - name: id
+                  in: path
+                  type: string
+                  required: true
+                  description: id
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: cam-qa-cert-rata-traverse-rest
+      port: 8080
+      description: REST adapter for QA Certification Management OpenAPI Specification — Rata Traverse. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/qa-certification-mgmt/locations/{locid}/test-summary/{testsumid}/rata/{rataid}/rata-summaries/{ratasumid}/rata-runs/{ratarunid}/flow-rata-runs/{flowratarunid}/rata-traverses
+          name: qa-certification-mgmt-locations-locid-test-summary-testsumid-rata-rataid-rata-summaries-ratasumid-rata-runs-ratarunid-flow-rata-runs-flowratarunid-rata-traverses
+          description: REST surface for rataTraverseControllergetRataTraverses.
+          operations:
+            - method: GET
+              name: rataTraverseControllergetRataTraverses
+              description: rataTraverseControllergetRataTraverses
+              call: cam-qa-cert-rata-traverse.rataTraverseControllergetRataTraverses
+              with:
+                locId: rest.locId
+                testSumId: rest.testSumId
+                rataId: rest.rataId
+                rataSumId: rest.rataSumId
+                rataRunId: rest.rataRunId
+                flowRataRunId: rest.flowRataRunId
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/qa-certification-mgmt/locations/{locid}/test-summary/{testsumid}/rata/{rataid}/rata-summaries/{ratasumid}/rata-runs/{ratarunid}/flow-rata-runs/{flowratarunid}/rata-traverses/{id}
+          name: qa-certification-mgmt-locations-locid-test-summary-testsumid-rata-rataid-rata-summaries-ratasumid-rata-runs-ratarunid-flow-rata-runs-flowratarunid-rata-traverses-id
+          description: REST surface for rataTraverseControllergetRataTraverse.
+          operations:
+            - method: GET
+              name: rataTraverseControllergetRataTraverse
+              description: rataTraverseControllergetRataTraverse
+              call: cam-qa-cert-rata-traverse.rataTraverseControllergetRataTraverse
+              with:
+                locId: rest.locId
+                testSumId: rest.testSumId
+                rataId: rest.rataId
+                rataSumId: rest.rataSumId
+                rataRunId: rest.rataRunId
+                flowRataRunId: rest.flowRataRunId
+                id: rest.id
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: cam-qa-cert-rata-traverse-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for QA Certification Management OpenAPI Specification — Rata Traverse. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: ratatraversecontroller-getratatraverses
+          description: ratatraversecontroller-getratatraverses
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-qa-cert-rata-traverse.rataTraverseControllergetRataTraverses
+          with:
+            locId: tools.locId
+            testSumId: tools.testSumId
+            rataId: tools.rataId
+            rataSumId: tools.rataSumId
+            rataRunId: tools.rataRunId
+            flowRataRunId: tools.flowRataRunId
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: ratatraversecontroller-getratatraverse
+          description: ratatraversecontroller-getratatraverse
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-qa-cert-rata-traverse.rataTraverseControllergetRataTraverse
+          with:
+            locId: tools.locId
+            testSumId: tools.testSumId
+            rataId: tools.rataId
+            rataSumId: tools.rataSumId
+            rataRunId: tools.rataRunId
+            flowRataRunId: tools.flowRataRunId
+            id: tools.id
+          outputParameters:
+            - type: object
+              mapping: $.

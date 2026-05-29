@@ -1,0 +1,303 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Streaming Services OpenAPI Specification — Emissions
+  description: 'Emissions. 4 operations. Lead operation: operations. Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - Emissions
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_APIKEY_KEY: EPA_APIKEY_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: cam-streaming-emissions
+      baseUri: https://api.epa.gov/easey
+      description: Streaming Services OpenAPI Specification — Emissions business capability. Self-contained, no shared references.
+      authentication:
+        type: apikey
+        key: x-api-key
+        value: '{{env.EPA_APIKEY_KEY}}'
+        placement: header
+      resources:
+        - name: streaming-services-emissions-summary-values
+          path: /streaming-services/emissions/summary-values
+          operations:
+            - name: summaryValueControllersummaryValueStream
+              method: GET
+              description: summaryValueControllersummaryValueStream
+              inputParameters:
+                - name: orisCode
+                  in: query
+                  type: array
+                  required: false
+                  description: orisCode
+                - name: beginYear
+                  in: query
+                  type: number
+                  required: true
+                  description: beginYear
+                - name: beginQuarter
+                  in: query
+                  type: number
+                  required: true
+                  description: beginQuarter
+                - name: endYear
+                  in: query
+                  type: number
+                  required: true
+                  description: endYear
+                - name: endQuarter
+                  in: query
+                  type: number
+                  required: true
+                  description: endQuarter
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: streaming-services-emissions-supplemental-operating
+          path: /streaming-services/emissions/supplemental-operating
+          operations:
+            - name: supplementalOperatingControllersupplementalOperatingStream
+              method: GET
+              description: supplementalOperatingControllersupplementalOperatingStream
+              inputParameters:
+                - name: orisCode
+                  in: query
+                  type: array
+                  required: false
+                  description: orisCode
+                - name: beginYear
+                  in: query
+                  type: number
+                  required: true
+                  description: beginYear
+                - name: beginQuarter
+                  in: query
+                  type: number
+                  required: true
+                  description: beginQuarter
+                - name: endYear
+                  in: query
+                  type: number
+                  required: true
+                  description: endYear
+                - name: endQuarter
+                  in: query
+                  type: number
+                  required: true
+                  description: endQuarter
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: streaming-services-emissions-hourly-derived-values
+          path: /streaming-services/emissions/hourly/derived-values
+          operations:
+            - name: derivedHourlyControllerderivedHourlyStream
+              method: GET
+              description: derivedHourlyControllerderivedHourlyStream
+              inputParameters:
+                - name: orisCode
+                  in: query
+                  type: array
+                  required: true
+                  description: orisCode
+                - name: locationName
+                  in: query
+                  type: array
+                  required: false
+                  description: locationName
+                - name: beginDate
+                  in: query
+                  type: string
+                  required: true
+                  description: beginDate
+                - name: endDate
+                  in: query
+                  type: string
+                  required: true
+                  description: endDate
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: streaming-services-emissions-hourly-operating
+          path: /streaming-services/emissions/hourly/operating
+          operations:
+            - name: hourlyOperatingControllerhourlyOperatingStream
+              method: GET
+              description: hourlyOperatingControllerhourlyOperatingStream
+              inputParameters:
+                - name: orisCode
+                  in: query
+                  type: array
+                  required: true
+                  description: orisCode
+                - name: locationName
+                  in: query
+                  type: array
+                  required: false
+                  description: locationName
+                - name: beginDate
+                  in: query
+                  type: string
+                  required: true
+                  description: beginDate
+                - name: endDate
+                  in: query
+                  type: string
+                  required: true
+                  description: endDate
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: cam-streaming-emissions-rest
+      port: 8080
+      description: REST adapter for Streaming Services OpenAPI Specification — Emissions. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/streaming-services/emissions/summary-values
+          name: streaming-services-emissions-summary-values
+          description: REST surface for summaryValueControllersummaryValueStream.
+          operations:
+            - method: GET
+              name: summaryValueControllersummaryValueStream
+              description: summaryValueControllersummaryValueStream
+              call: cam-streaming-emissions.summaryValueControllersummaryValueStream
+              with:
+                orisCode: rest.orisCode
+                beginYear: rest.beginYear
+                beginQuarter: rest.beginQuarter
+                endYear: rest.endYear
+                endQuarter: rest.endQuarter
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/streaming-services/emissions/supplemental-operating
+          name: streaming-services-emissions-supplemental-operating
+          description: REST surface for supplementalOperatingControllersupplementalOperatingStream.
+          operations:
+            - method: GET
+              name: supplementalOperatingControllersupplementalOperatingStream
+              description: supplementalOperatingControllersupplementalOperatingStream
+              call: cam-streaming-emissions.supplementalOperatingControllersupplementalOperatingStream
+              with:
+                orisCode: rest.orisCode
+                beginYear: rest.beginYear
+                beginQuarter: rest.beginQuarter
+                endYear: rest.endYear
+                endQuarter: rest.endQuarter
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/streaming-services/emissions/hourly/derived-values
+          name: streaming-services-emissions-hourly-derived-values
+          description: REST surface for derivedHourlyControllerderivedHourlyStream.
+          operations:
+            - method: GET
+              name: derivedHourlyControllerderivedHourlyStream
+              description: derivedHourlyControllerderivedHourlyStream
+              call: cam-streaming-emissions.derivedHourlyControllerderivedHourlyStream
+              with:
+                orisCode: rest.orisCode
+                locationName: rest.locationName
+                beginDate: rest.beginDate
+                endDate: rest.endDate
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/streaming-services/emissions/hourly/operating
+          name: streaming-services-emissions-hourly-operating
+          description: REST surface for hourlyOperatingControllerhourlyOperatingStream.
+          operations:
+            - method: GET
+              name: hourlyOperatingControllerhourlyOperatingStream
+              description: hourlyOperatingControllerhourlyOperatingStream
+              call: cam-streaming-emissions.hourlyOperatingControllerhourlyOperatingStream
+              with:
+                orisCode: rest.orisCode
+                locationName: rest.locationName
+                beginDate: rest.beginDate
+                endDate: rest.endDate
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: cam-streaming-emissions-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Streaming Services OpenAPI Specification — Emissions. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: summaryvaluecontroller-summaryvaluestream
+          description: summaryvaluecontroller-summaryvaluestream
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-streaming-emissions.summaryValueControllersummaryValueStream
+          with:
+            orisCode: tools.orisCode
+            beginYear: tools.beginYear
+            beginQuarter: tools.beginQuarter
+            endYear: tools.endYear
+            endQuarter: tools.endQuarter
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: supplementaloperatingcontroller-supplementaloperatingstream
+          description: supplementaloperatingcontroller-supplementaloperatingstream
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-streaming-emissions.supplementalOperatingControllersupplementalOperatingStream
+          with:
+            orisCode: tools.orisCode
+            beginYear: tools.beginYear
+            beginQuarter: tools.beginQuarter
+            endYear: tools.endYear
+            endQuarter: tools.endQuarter
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: derivedhourlycontroller-derivedhourlystream
+          description: derivedhourlycontroller-derivedhourlystream
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-streaming-emissions.derivedHourlyControllerderivedHourlyStream
+          with:
+            orisCode: tools.orisCode
+            locationName: tools.locationName
+            beginDate: tools.beginDate
+            endDate: tools.endDate
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: hourlyoperatingcontroller-hourlyoperatingstream
+          description: hourlyoperatingcontroller-hourlyoperatingstream
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-streaming-emissions.hourlyOperatingControllerhourlyOperatingStream
+          with:
+            orisCode: tools.orisCode
+            locationName: tools.locationName
+            beginDate: tools.beginDate
+            endDate: tools.endDate
+          outputParameters:
+            - type: object
+              mapping: $.

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-schema/echo-dfr-dfr123-results-schema.json",
+  "title": "dfr123_Results",
+  "description": "Results Object",
+  "type": "object",
+  "properties": {
+    "Message": {
+      "description": "Field to record messages (typically performance-related) about packet processing",
+      "example": "Success",
+      "title": "Message",
+      "type": "string"
+    },
+    "Permits": {
+      "items": {
+        "$ref": "#/definitions/dfr018_Permits"
+      },
+      "title": "Permits",
+      "type": "array",
+      "xml": {
+        "name": "Permits",
+        "wrapped": true
+      },
+      "example": [
+        "string"
+      ]
+    },
+    "Reports": {
+      "$ref": "#/definitions/dfr018_Reports"
+    }
+  },
+  "required": [
+    "Message"
+  ]
+}

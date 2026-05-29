@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-structure/echo-effluent-eff02-structure.json",
+  "name": "eff02",
+  "description": "NPDES Violations Object",
+  "type": "object",
+  "properties": {
+    "NPDESViolationId": {
+      "type": "string",
+      "description": "The unique identifier in ICIS-NPDES for the NPDES Violation",
+      "example": "3401214483"
+    },
+    "RNCDetectionCode": {
+      "type": "string",
+      "description": "The code indicating the reportable noncompliance (RNC) detected for a violation:\n- A = Enforcement Order\n- B = Manual 2A4 - Pass-Through\n- C = Chronic Violation\n- D = Manual Other\n- E = Manual 2F - Permit Narrative\n- F = Manual 2G - Violation of Concern\n- G = Manual 2A1 - Effluent Violation\n- H = Chronic Violation, Non-Monthly Average\n- I = Manual 2A2 - Unauthorized Bypass\n- J = Manual 2A3 - Unpermitted Discharge\n- K = Non-receipt Violation, Non-Monthly Average\n- N = Non-Receipt of DMR/Schedule Report\n- P = Enforcement Order, Non-Monthly Average\n- Q = Manual 2B - Pretreatment\n- R = TRC Limitations Exceeded, Non-Monthly Average\n- S = Schedule Violation\n- T = TRC Limitations Exceeded\n- U = Other Violation with TRC Non-Monthly Average\n- V = Other Violation with TRC\n- W = Manual 2E - Deficient Report\n- X = Manual Other Violation with TRC\n- Y = Manual TRC\n- Z = Manual Chronic",
+      "example": "K"
+    },
+    "RNCDetectionDate": {
+      "type": "string",
+      "description": "The date that the exceedance was detected",
+      "example": "28-FEB-16"
+    },
+    "RNCDetectionDesc": {
+      "type": "string",
+      "description": "A description of the reportable noncompliance (RNC) detected",
+      "example": "Non-receipt Violation, Non-Monthly Average"
+    },
+    "RNCResolutionCode": {
+      "type": "string",
+      "description": "The code indicating the resolution of noncompliance (RNC) for a violation",
+      "example": "2"
+    },
+    "RNCResolutionDate": {
+      "type": "string",
+      "description": "The date RNC was marked to its current resolution status. It can be entered manually or automatically",
+      "example": "01-FEB-16"
+    },
+    "RNCResolutionDesc": {
+      "type": "string",
+      "description": "- 1 = Unresolved RNC\n- 2 = Back into Compliance\n- 3 = Due to Formal Enforcement Action Final Order with Compliance Schedule\n- 4 = In Compliance with Formal Enforcement Action Final Order Requirement\n- 5 = Resolved RP by NPDES Closure of Enforcement Action Final Order with Compliance Schedule\n- 6 = Manual Resolution by Enforcement Action\n- 7 = Manual RP - In Compliance with Formal Enforcement Action Order Requirement\n- 8 = Manual Due to Formal Enforcement Action Formal Order\n- 9 = Manual by Back into Compliance\n- A = Manual Unresolved RNC\n- B = Manual by EPA/State/Tribal Action",
+      "example": "RE - Back into Compliance"
+    },
+    "ViolationCode": {
+      "type": "string",
+      "description": "The code identifying which type of Violation has occurred (e.g., D80 = Required Monitoring DMR Value Non-Receipt, E90 = Effluent Violation, C20 = Schedule Event Achieved Late)",
+      "example": "E90"
+    },
+    "ViolationDesc": {
+      "type": "string",
+      "description": "A description of which type of violation has occurred",
+      "example": "Effluent Violation"
+    },
+    "ViolationSeverity": {
+      "type": "string",
+      "description": "- 0 = no violation.\n- 1 = monitoring or reporting violation\n- 2 = effluent violation, i.e., discharge in excess of permitted limit\n- 3 = reportable noncompliance\n- 5 = significant noncompliance",
+      "example": "No Violation"
+    },
+    "ViolationSeverityDesc": {
+      "type": "string",
+      "example": "string"
+    }
+  }
+}

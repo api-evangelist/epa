@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-structure/echo-effluent-eff06-structure.json",
+  "name": "eff06",
+  "description": "Linked Permits Object",
+  "type": "object",
+  "properties": {
+    "CWPCity": {
+      "type": "string",
+      "description": "City in which the facility is located.",
+      "example": "HUNTSVILLE"
+    },
+    "CWPCurrentSNCStatus": {
+      "type": "string",
+      "description": "The type of noncompliance when a major source is in significant violation or a minor source has a Category 1 violation.",
+      "example": "D (DMR NR)"
+    },
+    "CWPMajorMinorStatusFlag": {
+      "type": "string",
+      "description": "Facilities marked \"M\" for major refers to CWA major permittees.\n- M = Major\n- N = Minor",
+      "example": "N"
+    },
+    "CWPName": {
+      "type": "string",
+      "description": "Facility or permit holder name, as maintained in ICIS-NPDES.",
+      "example": "REDSTONE ARSENAL"
+    },
+    "CWPPermitStatusDesc": {
+      "type": "string",
+      "description": "The current stage/status in the NPDES permit life cycle.",
+      "example": "Effective"
+    },
+    "CWPPermitTypeDesc": {
+      "type": "string",
+      "description": "NPDES facility permit classification:\n- NPDES Individual Permit\n- General Permit Covered Facility\n- NPDES Master General Permit\n- Associated Permit Record\n- Individual Industrial User Permit\n- Individual State Issued Permit\n- State Issued Master General Permit\n- Unpermitted Facility",
+      "example": "General Permit Covered Facility"
+    },
+    "CWPState": {
+      "type": "string",
+      "description": "Facility location - two-digit state abbreviation.",
+      "example": "AL"
+    },
+    "CWPStreet": {
+      "type": "string",
+      "description": "Facility street address",
+      "example": "BUILDING 3240 AREA"
+    },
+    "CWPZip": {
+      "type": "string",
+      "description": "Facility ZIP code",
+      "example": "35898"
+    },
+    "SourceId": {
+      "type": "string",
+      "description": "Unique Identifier assigned by EPA.",
+      "example": "ALR040033"
+    }
+  },
+  "required": [
+    "SourceId",
+    "CWPName",
+    "CWPStreet",
+    "CWPCity",
+    "CWPState",
+    "CWPZip",
+    "CWPPermitStatusDesc",
+    "CWPMajorMinorStatusFlag",
+    "CWPPermitTypeDesc",
+    "CWPCurrentSNCStatus"
+  ]
+}

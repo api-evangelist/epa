@@ -1,0 +1,79 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Monitor Plan Management OpenAPI Specification — Units
+  description: 'Units. 1 operations. Lead operation: operations. Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - Units
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_APIKEY_KEY: EPA_APIKEY_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: cam-monitor-plan-units
+      baseUri: https://api.epa.gov/easey
+      description: Monitor Plan Management OpenAPI Specification — Units business capability. Self-contained, no shared references.
+      authentication:
+        type: apikey
+        key: x-api-key
+        value: '{{env.EPA_APIKEY_KEY}}'
+        placement: header
+      resources:
+        - name: monitor-plan-mgmt-units-id
+          path: /monitor-plan-mgmt/units/{id}
+          operations:
+            - name: unitControllergetUnit
+              method: GET
+              description: unitControllergetUnit
+              inputParameters:
+                - name: id
+                  in: path
+                  type: number
+                  required: true
+                  description: id
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: cam-monitor-plan-units-rest
+      port: 8080
+      description: REST adapter for Monitor Plan Management OpenAPI Specification — Units. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/monitor-plan-mgmt/units/{id}
+          name: monitor-plan-mgmt-units-id
+          description: REST surface for unitControllergetUnit.
+          operations:
+            - method: GET
+              name: unitControllergetUnit
+              description: unitControllergetUnit
+              call: cam-monitor-plan-units.unitControllergetUnit
+              with:
+                id: rest.id
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: cam-monitor-plan-units-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Monitor Plan Management OpenAPI Specification — Units. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: unitcontroller-getunit
+          description: unitcontroller-getunit
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-monitor-plan-units.unitControllergetUnit
+          with:
+            id: tools.id
+          outputParameters:
+            - type: object
+              mapping: $.

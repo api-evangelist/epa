@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-structure/cam-monitor-plan-monitor-system-dto-structure.json",
+  "name": "MonitorSystemDTO",
+  "description": "MonitorSystemDTO schema from Monitor Plan Management OpenAPI Specification",
+  "type": "object",
+  "properties": {
+    "monitoringSystemId": {
+      "type": "string",
+      "description": "The three digit code used by the source to identify the monitoring system.",
+      "example": "C42"
+    },
+    "systemTypeCode": {
+      "type": "string",
+      "description": "Code used to identify the type (parameter) of the system.",
+      "example": "FLOW"
+    },
+    "systemDesignationCode": {
+      "type": "string",
+      "description": "Code used to indicate designation of monitoring system as primary, backup etc.",
+      "example": "P"
+    },
+    "fuelCode": {
+      "type": "string",
+      "description": "Code used to identify the type of fuel.",
+      "example": "NFS"
+    },
+    "beginDate": {
+      "type": "datetime",
+      "description": "Date on which information became effective or activity started.",
+      "example": "2007-11-28"
+    },
+    "endDate": {
+      "type": "datetime",
+      "description": "Last date in which information was effective.  This date will be null for active records.",
+      "example": null
+    },
+    "beginHour": {
+      "type": "double",
+      "description": "Hour in which information became effective or activity started.",
+      "example": 17
+    },
+    "endHour": {
+      "type": "double",
+      "description": "Last hour in which information was effective.  This value will be null for active records.",
+      "example": null
+    },
+    "id": {
+      "type": "string",
+      "description": "Unique identifier of a monitoring system record.",
+      "example": "CAMD-4B0DC37051224A7AA9D8CA1E5BE6B4D4"
+    },
+    "locationId": {
+      "type": "string",
+      "description": "Unique identifier of a monitoring location record.",
+      "example": "5770"
+    },
+    "userId": {
+      "type": "string",
+      "description": "User account or source of data that added or updated record.",
+      "example": "abcde"
+    },
+    "addDate": {
+      "type": "string",
+      "description": "Date and time in which record was added.",
+      "example": "2009-02-20"
+    },
+    "updateDate": {
+      "type": "string",
+      "description": "Date and time in which record was last updated.",
+      "example": "2009-02-20"
+    },
+    "active": {
+      "type": "boolean",
+      "description": "Flag for active monitor location record",
+      "example": true
+    },
+    "monitoringSystemComponentData": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/SystemComponentDTO"
+      },
+      "example": [
+        "string"
+      ]
+    },
+    "monitoringSystemFuelFlowData": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/SystemFuelFlowDTO"
+      },
+      "example": [
+        "string"
+      ]
+    }
+  },
+  "required": [
+    "monitoringSystemId",
+    "systemTypeCode",
+    "systemDesignationCode",
+    "fuelCode",
+    "beginDate",
+    "endDate",
+    "beginHour",
+    "endHour",
+    "id",
+    "locationId",
+    "userId",
+    "addDate",
+    "updateDate",
+    "active",
+    "monitoringSystemComponentData",
+    "monitoringSystemFuelFlowData"
+  ]
+}

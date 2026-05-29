@@ -1,0 +1,257 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-structure/echo-effluent-eff01-structure.json",
+  "name": "eff01",
+  "description": "Discharge Monitoring Reports Object",
+  "type": "object",
+  "properties": {
+    "DMREventId": {
+      "type": "string",
+      "description": "The sequence ID identifying the DMR Event.",
+      "example": "3403602486"
+    },
+    "DMRFormValueId": {
+      "type": "string",
+      "description": "The sequence ID identifying the DMR Form Value.",
+      "example": "3444464127"
+    },
+    "DMRUnitCode": {
+      "type": "string",
+      "description": "The code representing the unit of measure applicable to quantity or concentration limits and measurements as entered into ICIS-NPDES",
+      "example": "19"
+    },
+    "DMRUnitDesc": {
+      "type": "string",
+      "description": "The short description of the unit of measure applicable to limit or DMR values",
+      "example": "mg/L"
+    },
+    "DMRValueId": {
+      "type": "string",
+      "description": "The unique identifier for the DMR value generated in ICIS-NPDES",
+      "example": "3420340252"
+    },
+    "DMRValueNmbr": {
+      "type": "string",
+      "description": "The DMR value number reported on the DMR Form",
+      "example": "20"
+    },
+    "DMRValueQualifierCode": {
+      "type": "string",
+      "description": "The unique code identifying the DMR value operator (i.e., <, <=, >, >=, T, E, =). E indicates an estimated value. T indicates too numerous to count",
+      "example": "="
+    },
+    "DMRValueStdUnits": {
+      "type": "string",
+      "description": "The DMR value expressed in standard units, as calculated in ICIS-NPDES",
+      "example": "20"
+    },
+    "DaysLate": {
+      "type": "string",
+      "description": "The number of days the DMR value is late, as generated in ICIS-NPDES",
+      "example": "5"
+    },
+    "ExceedencePct": {
+      "type": "string",
+      "description": "The percent by which the DMR value (or adjusted value) exceeded its limit (or stay) value, as generated in ICIS-NPDES",
+      "example": "0"
+    },
+    "LimitBeginDate": {
+      "type": "string",
+      "description": "The date on which a limit becomes in effect for a particular parameter in a limit set",
+      "example": "01-APR-14"
+    },
+    "LimitEndDate": {
+      "type": "string",
+      "description": "The date on which a limit stops being in effect for a particular parameter in a limit set",
+      "example": "31-MAR-19"
+    },
+    "LimitId": {
+      "type": "string",
+      "description": "The unique identifier for a limit parameter record",
+      "example": "3401161480"
+    },
+    "LimitSetId": {
+      "type": "string",
+      "description": "The unique identifier for a limit set, generated in ICIS-NPDES",
+      "example": "3400122018"
+    },
+    "LimitSetScheduleId": {
+      "type": "string",
+      "description": "The unique identifier of the Limit Set Schedule, generated in ICIS-NPDES",
+      "example": "3400204974"
+    },
+    "LimitTypeCode": {
+      "type": "string",
+      "example": "C1"
+    },
+    "LimitUnitCode": {
+      "type": "string",
+      "description": "The code representing the unit of measure applicable to quantity or concentration limits and measurements as entered by the user",
+      "example": "12"
+    },
+    "LimitUnitDesc": {
+      "type": "string",
+      "description": "The short description of the unit of measure applicable to limit or DMR values",
+      "example": "SU"
+    },
+    "LimitValueId": {
+      "type": "string",
+      "description": "The unique identifier in ICIS-NPDES for the Limit Value",
+      "example": "3401799401"
+    },
+    "LimitValueNmbr": {
+      "type": "string",
+      "description": "The numerical limit for a given parameter",
+      "example": "20"
+    },
+    "LimitValueQualifierCode": {
+      "type": "string",
+      "description": "The unique code identifying the limit value operator (i.e., <, <=, >, >=, T, E, =). E indicates an estimated value. T indicates too numerous to count",
+      "example": "="
+    },
+    "LimitValueStdUnits": {
+      "type": "string",
+      "description": "The limit value expressed in standard units, as calculated in ICIS-NPDES",
+      "example": "20"
+    },
+    "LimitValueTypeCode": {
+      "type": "string",
+      "description": "The code indicating the type of value the limit is given as (i.e., Q1, Q2, C1, C2, C3)",
+      "example": "C1"
+    },
+    "LimitValueTypeDesc": {
+      "type": "string",
+      "description": "The description indicating the type of value the limit is given as (e.g., Concentration, Quantity)",
+      "example": "Concentration1"
+    },
+    "MonitoringPeriodEndDate": {
+      "type": "string",
+      "description": "The date that the monitoring period for the values covered by the DMR Form ends",
+      "example": "30-APR-14"
+    },
+    "NODEDesc": {
+      "type": "string",
+      "example": "string"
+    },
+    "NODICode": {
+      "type": "string",
+      "description": "The unique code indicating why no DMR Value was submitted by the permittee for a Monitoring Period End Date",
+      "example": "C"
+    },
+    "NPDESViolations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/eff02"
+      },
+      "example": [
+        "string"
+      ]
+    },
+    "NmbrOfSubmission": {
+      "type": "string",
+      "description": "The number of months of discharges represented on each DMR for the limit set (e.g., monthly = 1, bi-monthly = 2, quarterly = 3, triannual = 4, semi-annual = 6, annual = 12). This data element will be blank for Unscheduled Limit Sets",
+      "example": "1"
+    },
+    "PermFeatureId": {
+      "type": "string",
+      "description": "The unique identifier in ICIS-NPDES of a permitted feature or outfall",
+      "example": "3400087283"
+    },
+    "StatisticalBaseCode": {
+      "type": "string",
+      "description": "The code representing the unit of measure applicable to the limit and DMR values entered by the user (e.g., 30-day average, daily maximum)",
+      "example": "DC"
+    },
+    "StatisticalBaseDesc": {
+      "type": "string",
+      "example": "string"
+    },
+    "StatisticalBaseTypeCode": {
+      "type": "string",
+      "description": "The code indicating whether the statistical base code is a minimum, average, or maximum for purposes of calculating compliance against the limit value",
+      "example": "MIN"
+    },
+    "StatisticalBaseTypeDesc": {
+      "type": "string",
+      "description": "A short description for indicating whether the statistical base code is a minimum, average, or maximum for purposes of calculating compliance against the limit value",
+      "example": "Minimum"
+    },
+    "StayValueNmbr": {
+      "type": "string",
+      "description": "The numeric limit value imposed during the period of the stay for the limit; if entered, during the stay period, ICIS-NPDES will use this limit value for calculating compliance rather than the actual limit value",
+      "example": "???"
+    },
+    "StdUnitCode": {
+      "type": "string",
+      "description": "The code representing the standard unit of measure applicable to quantity or concentration limits and measurements as entered by the user",
+      "example": "19"
+    },
+    "StdUnitDesc": {
+      "type": "string",
+      "description": "The short description of the standard unit of measure applicable to limit or DMR values",
+      "example": "mg/L"
+    },
+    "ValueReceivedDate": {
+      "type": "string",
+      "description": "The date the DMR value was received by the regulatory authority",
+      "example": "08-MAY-14"
+    },
+    "ValueTypeCode": {
+      "type": "string",
+      "description": "The indication of the limit value type (e.g., Quantity 1, Concentration 2)",
+      "example": "C1"
+    },
+    "ValueTypeDesc": {
+      "type": "string",
+      "description": "The type of value the measured number is given as (e.g., Concentration, Quantity)",
+      "example": "Concentration1"
+    },
+    "VersionNmbr": {
+      "type": "string",
+      "description": "The version of the permit when a modification or reissuance is applied to the permit. Version = 0 indicates the original permit issuance",
+      "example": "0"
+    }
+  },
+  "required": [
+    "VersionNmbr",
+    "PermFeatureId",
+    "LimitSetId",
+    "LimitSetScheduleId",
+    "NmbrOfSubmission",
+    "LimitId",
+    "LimitTypeCode",
+    "LimitBeginDate",
+    "LimitEndDate",
+    "LimitValueId",
+    "LimitValueTypeCode",
+    "LimitValueTypeDesc",
+    "LimitValueNmbr",
+    "LimitUnitCode",
+    "LimitUnitDesc",
+    "StdUnitCode",
+    "StdUnitDesc",
+    "LimitValueStdUnits",
+    "StatisticalBaseCode",
+    "StatisticalBaseDesc",
+    "StatisticalBaseTypeCode",
+    "StatisticalBaseTypeDesc",
+    "LimitValueQualifierCode",
+    "StayValueNmbr",
+    "DMREventId",
+    "MonitoringPeriodEndDate",
+    "DMRFormValueId",
+    "ValueTypeCode",
+    "ValueTypeDesc",
+    "DMRValueId",
+    "DMRValueNmbr",
+    "DMRUnitCode",
+    "DMRUnitDesc",
+    "DMRValueStdUnits",
+    "DMRValueQualifierCode",
+    "ValueReceivedDate",
+    "DaysLate",
+    "NODICode",
+    "NODEDesc",
+    "ExceedencePct"
+  ]
+}

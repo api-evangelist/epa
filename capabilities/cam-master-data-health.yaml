@@ -1,0 +1,72 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Master Data Management OpenAPI Specification — Health
+  description: 'Health. 1 operations. Lead operation: operations. Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - Health
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_APIKEY_KEY: EPA_APIKEY_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: cam-master-data-health
+      baseUri: https://api.epa.gov/easey
+      description: Master Data Management OpenAPI Specification — Health business capability. Self-contained, no shared references.
+      authentication:
+        type: apikey
+        key: x-api-key
+        value: '{{env.EPA_APIKEY_KEY}}'
+        placement: header
+      resources:
+        - name: master-data-mgmt-health
+          path: /master-data-mgmt/health
+          operations:
+            - name: healthControllercheck
+              method: GET
+              description: healthControllercheck
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: cam-master-data-health-rest
+      port: 8080
+      description: REST adapter for Master Data Management OpenAPI Specification — Health. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/master-data-mgmt/health
+          name: master-data-mgmt-health
+          description: REST surface for healthControllercheck.
+          operations:
+            - method: GET
+              name: healthControllercheck
+              description: healthControllercheck
+              call: cam-master-data-health.healthControllercheck
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: cam-master-data-health-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Master Data Management OpenAPI Specification — Health. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: healthcontroller-check
+          description: healthcontroller-check
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-master-data-health.healthControllercheck
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.

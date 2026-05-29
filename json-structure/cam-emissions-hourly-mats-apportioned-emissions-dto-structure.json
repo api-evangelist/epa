@@ -1,0 +1,176 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-structure/cam-emissions-hourly-mats-apportioned-emissions-dto-structure.json",
+  "name": "HourlyMatsApportionedEmissionsDTO",
+  "description": "HourlyMatsApportionedEmissionsDTO schema from Emissions Management OpenAPI Specification",
+  "type": "object",
+  "properties": {
+    "stateCode": {
+      "type": "string",
+      "description": "Two letter abbreviation for the State.",
+      "example": "AK"
+    },
+    "facilityName": {
+      "type": "string",
+      "description": "The name given by the owners and operators to a facility",
+      "example": "Barry"
+    },
+    "facilityId": {
+      "type": "double",
+      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+      "example": 3
+    },
+    "unitId": {
+      "type": "string",
+      "description": "Unique identifier for each unit at a facility.",
+      "example": 5
+    },
+    "unitType": {
+      "type": "string",
+      "description": "Type of unit or boiler.",
+      "example": "Tangentially-fired"
+    },
+    "associatedStacks": {
+      "type": "string",
+      "description": "Stacks associated with the unit.",
+      "example": "CS001"
+    },
+    "primaryFuelInfo": {
+      "type": "string",
+      "description": "The primary type of fuel combusted by the unit.",
+      "example": "Coal"
+    },
+    "secondaryFuelInfo": {
+      "type": "string",
+      "description": "The secondary type of fuel(s) combusted by the unit.",
+      "example": "Diesel Oil"
+    },
+    "so2ControlInfo": {
+      "type": "string",
+      "description": "Method or equipment used by the combustion unit to minimize SO2 emissions.",
+      "example": "Wet Limestone"
+    },
+    "pmControlInfo": {
+      "type": "string",
+      "description": "Method or equipment used by the combustion unit to minimize PM emissions.",
+      "example": "Electrostatic Precipitator"
+    },
+    "noxControlInfo": {
+      "type": "string",
+      "description": "Method or equipment used by the combustion unit to minimize NOx emissions.",
+      "example": "Selective Catalytic Reduction, Low NOx Burner Technology w/ Separated OFA"
+    },
+    "hgControlInfo": {
+      "type": "string",
+      "description": "Method or equipment used by the combustion unit to minimize Hg emissions.",
+      "example": "Catalyst (gold, palladium, or other) used to oxidize mercury"
+    },
+    "date": {
+      "type": "string",
+      "description": "Date on which activity occurred.",
+      "example": "2019-01-01"
+    },
+    "hour": {
+      "type": "double",
+      "description": "Hour in which activity occurred, recorded using local, standard time.",
+      "example": 23
+    },
+    "opTime": {
+      "type": "double",
+      "description": "Any part of an hour in which a unit combusts any fuel.",
+      "example": 0.95
+    },
+    "matsGrossLoad": {
+      "type": "double",
+      "description": "Electrical generation in MW produced by combusting a given heat input of fuel.",
+      "example": 146
+    },
+    "matsHeatInput": {
+      "type": "double",
+      "description": "Quantity of heat in mmBtu calculated by multiplying the quantity of fuel by the fuels heat content.",
+      "example": 1470.2
+    },
+    "hgOutputRate": {
+      "type": "double",
+      "description": "Average Hg hourly emissions rate per gigawatt hour of output (lbs/GWh)",
+      "example": 0.0102
+    },
+    "hgInputRate": {
+      "type": "double",
+      "description": "Average Hg hourly emissions rate (lbs/TBtu)",
+      "example": 0.9236604702
+    },
+    "hgMass": {
+      "type": "double",
+      "description": "Hg mass emissions (lbs)",
+      "example": 0.002703
+    },
+    "hgMassMeasureFlg": {
+      "type": "string",
+      "description": "Describes how the Hg Mass values were determined.",
+      "example": "Measured"
+    },
+    "hclOutputRate": {
+      "type": "double",
+      "description": "Average HCl hourly emissions rate per megawatt hour of output (lbs/MWh)",
+      "example": 0.00452
+    },
+    "hclInputRate": {
+      "type": "double",
+      "description": "Average HCl hourly emissions rate (lbs/mmBtu)",
+      "example": 407.5244879786
+    },
+    "hclMass": {
+      "type": "double",
+      "description": "HCl mass emissions (lbs)",
+      "example": 0.36612
+    },
+    "hclMassMeasureFlg": {
+      "type": "string",
+      "description": "Describes how the HCl Mass values were determined.",
+      "example": "Measured"
+    },
+    "hfOutputRate": {
+      "type": "double",
+      "description": "Average HF hourly emissions rate per megawatt hour of output (lbs/MWh)",
+      "example": 0.0
+    },
+    "hfInputRate": {
+      "type": "double",
+      "description": "Average HF hourly emissions rate (lbs/mmBtu)",
+      "example": 0.0
+    },
+    "hfMass": {
+      "type": "double",
+      "description": "HF mass emissions (lbs)",
+      "example": 0.0
+    },
+    "hfMassMeasureFlg": {
+      "type": "string",
+      "description": "Describes how the HF Mass values were determined.",
+      "example": "string"
+    },
+    "steamLoad": {
+      "type": "double",
+      "description": "Rate of steam pressure generated by a unit or source produced by combusting a given heat input of fuel. (1000 lb/hr)",
+      "example": 387
+    }
+  },
+  "required": [
+    "stateCode",
+    "facilityName",
+    "unitId",
+    "unitType",
+    "associatedStacks",
+    "primaryFuelInfo",
+    "secondaryFuelInfo",
+    "so2ControlInfo",
+    "pmControlInfo",
+    "noxControlInfo",
+    "hgControlInfo",
+    "date",
+    "hgMassMeasureFlg",
+    "hclMassMeasureFlg",
+    "hfMassMeasureFlg"
+  ]
+}

@@ -1,0 +1,177 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-schema/echo-case-crs1-enforcement-conclusions-schema.json",
+  "title": "crs1_EnforcementConclusions",
+  "description": "This section contains information about the conclusion(s) of the civil enforcement case, where it resulted in an order, consent decree, or other enforceable settlement.",
+  "type": "object",
+  "properties": {
+    "ActualTerminationDate": {
+      "description": "The date on which the Final Order was terminated.",
+      "example": "07/09/2011",
+      "title": "Actual Termination Date",
+      "type": "string"
+    },
+    "ComplianceActionCost": {
+      "description": "The total value of all SEPs for all settlements at the enforcement case.",
+      "example": "$279,450",
+      "title": "Compliance Action Cost",
+      "type": "string"
+    },
+    "ComplianceSchedules": {
+      "items": {
+        "$ref": "#/definitions/crs1_ComplianceSchedules"
+      },
+      "title": "Compliance Schedules",
+      "type": "array",
+      "xml": {
+        "name": "ComplianceSchedules",
+        "wrapped": true
+      },
+      "example": [
+        "string"
+      ]
+    },
+    "ComplyingActions": {
+      "items": {
+        "$ref": "#/definitions/crs1_ComplyingActions"
+      },
+      "title": "Complying Actions",
+      "type": "array",
+      "xml": {
+        "name": "ComplyingActions",
+        "wrapped": true
+      },
+      "example": [
+        "string"
+      ]
+    },
+    "CostRecovery": {
+      "description": "For civil enforcement actions, cost recovery awarded is the amount of cost recovery ordered or agreed to be repaid by the responsible party of parties.",
+      "example": "0",
+      "title": "Cost Recovery Amount",
+      "type": "string"
+    },
+    "EnforcementActionClosedDate": {
+      "description": "The date the actions requested in the final order have been completed by the recipient; or the termination date of the final order (if such a date is specified) has passed; or the enforcement action has been withdrawn or dismissed; or the enforcement action has been superseded by, or combined into, another related enforcement action addressing the same violations.",
+      "example": "07/21/2011",
+      "title": "Enforcement Action Closed Date",
+      "type": "string"
+    },
+    "EnforcementConclusionId": {
+      "description": "The system-generated unique identifier of the Final Order to which the Compliance Action belongs.",
+      "example": "2600006100",
+      "title": "Enforcement Conclusion ID",
+      "type": "string"
+    },
+    "EnforcementConclusionName": {
+      "description": "The name of a Final Order associated with an Enforcement Action as assigned by the Lead EPA Attorney for federal actions.",
+      "example": "4 J International",
+      "title": "Enforcement Conclusion Name",
+      "type": "string"
+    },
+    "EnforcementConclusionType": {
+      "description": "A description of the enforcement instrument used by EPA to settle the case.",
+      "example": "Administrative Penalty Order With or Without Injunctive Relief",
+      "title": "Enforcement Conclusion Type",
+      "type": "string"
+    },
+    "FacilitiesInSettlement": {
+      "description": "The unique identification number assigned to a facility in the Facility Registry Service (FRS), for each facility included in the settlement.",
+      "example": "110001928317",
+      "title": "Facilities in Settlement",
+      "type": "string"
+    },
+    "FederalPenalty": {
+      "description": "For civil judicial Enforcement Actions, this amount is the Federal penalty assessed against the defendant(s) as specified in the final entered Consent Decree or Court Order.  For administrative Enforcement Actions, it is the penalty assessed in the Consent/Final Order.  It does not include the amount of the penalty mitigated due to a SEP or the amount shared with the state or local entities.  Interest payments associated with a penalty paid over time are not to be included in this amount.  It is the total Federal amount for each Final Order.",
+      "example": "$65,000.00",
+      "title": "Federal Penalty",
+      "type": "string"
+    },
+    "FinalOrderStatuses": {
+      "items": {
+        "$ref": "#/definitions/crs1_FinalOrderStatuses"
+      },
+      "title": "Final Order Statuses",
+      "type": "array",
+      "xml": {
+        "name": "FinalOrderStatuses",
+        "wrapped": true
+      },
+      "example": [
+        "active"
+      ]
+    },
+    "PollutantReductions": {
+      "items": {
+        "$ref": "#/definitions/crs1_PollutantReductions"
+      },
+      "title": "Pollutant Reductions",
+      "type": "array",
+      "xml": {
+        "name": "PollutantReductions",
+        "wrapped": true
+      },
+      "example": [
+        "string"
+      ]
+    },
+    "SEPCost": {
+      "description": "The total value of all SEPs for all settlements at the enforcement case.",
+      "example": "$4,100.00",
+      "title": "Supplemental Environmental Projects Cost",
+      "type": "string"
+    },
+    "SettlementEnteredDate": {
+      "description": "The civil case date the Final Order is signed by the presiding Judge and entered by the Clerk of the Court; it is the date the Clerk stamps on the document.  For an Administrative Formal EA, this is the Final Order Issued Date; for a Judicial EA, this is the Final Order Entered Date.",
+      "example": "07/09/2011",
+      "title": "Settlement Entered Date",
+      "type": "string"
+    },
+    "SettlementLodgedDate": {
+      "description": "The date the settlement document is given to the Clerk of the Court for lodging in the District Court; it is the date the Clerk stamps on the document. (Federal Judicial EAs only).",
+      "title": "Settlement Lodged Date",
+      "type": "string",
+      "example": "string"
+    },
+    "StatePenalty": {
+      "description": "The dollar penalty amount to be paid to a state or local enforcement authority that is party to a concluded enforcement action.",
+      "example": "$43,000.00",
+      "title": "State Penalty",
+      "type": "string"
+    },
+    "SupplementalEnvironmentalProjects": {
+      "items": {
+        "$ref": "#/definitions/crs1_SupplementalEnvironmentalProjects"
+      },
+      "title": "Supplemental Environmental Projects",
+      "type": "array",
+      "xml": {
+        "name": "SupplementalEnvironmentalProjects",
+        "wrapped": true
+      },
+      "example": [
+        "string"
+      ]
+    }
+  },
+  "required": [
+    "EnforcementConclusionId",
+    "EnforcementConclusionType",
+    "EnforcementConclusionName",
+    "FacilitiesInSettlement",
+    "SettlementEnteredDate",
+    "SettlementLodgedDate",
+    "FederalPenalty",
+    "StatePenalty",
+    "SEPCost",
+    "ComplianceActionCost",
+    "EnforcementActionClosedDate",
+    "ActualTerminationDate",
+    "CostRecovery",
+    "PollutantReductions",
+    "FinalOrderStatuses",
+    "ComplianceSchedules",
+    "ComplyingActions",
+    "SupplementalEnvironmentalProjects"
+  ]
+}

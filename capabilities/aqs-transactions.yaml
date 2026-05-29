@@ -1,0 +1,310 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: EPA Air Quality System (AQS) API — Transactions
+  description: 'Transactions. 3 operations. Lead operation: Transactions Sample by Site. Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - Transactions
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_EMAILKEY_KEY: EPA_EMAILKEY_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: aqs-transactions
+      baseUri: https://aqs.epa.gov/data/api
+      description: EPA Air Quality System (AQS) API — Transactions business capability. Self-contained, no shared references.
+      authentication:
+        type: apikey
+        key: key
+        value: '{{env.EPA_EMAILKEY_KEY}}'
+        placement: query
+      resources:
+        - name: transactionssample-bysite
+          path: /transactionsSample/bySite
+          operations:
+            - name: txSampleBySite
+              method: GET
+              description: Transactions Sample by Site
+              inputParameters:
+                - name: email
+                  in: query
+                  type: string
+                  required: true
+                  description: Registered email address.
+                - name: key
+                  in: query
+                  type: string
+                  required: true
+                  description: Account-specific access key.
+                - name: param
+                  in: query
+                  type: string
+                  required: true
+                  description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
+                - name: bdate
+                  in: query
+                  type: string
+                  required: true
+                  description: Begin date (YYYYMMDD).
+                - name: edate
+                  in: query
+                  type: string
+                  required: true
+                  description: End date (YYYYMMDD). Must be in the same year as bdate for most services.
+                - name: state
+                  in: query
+                  type: string
+                  required: true
+                  description: 2-digit state FIPS code.
+                - name: county
+                  in: query
+                  type: string
+                  required: true
+                  description: 3-digit county code.
+                - name: site
+                  in: query
+                  type: string
+                  required: true
+                  description: 4-digit site code.
+                - name: cbdate
+                  in: query
+                  type: string
+                  required: false
+                  description: Optional change begin date (returns records updated since cbdate).
+                - name: cedate
+                  in: query
+                  type: string
+                  required: false
+                  description: Optional change end date.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: transactionssample-bystate
+          path: /transactionsSample/byState
+          operations:
+            - name: txSampleByState
+              method: GET
+              description: Transactions Sample by State
+              inputParameters:
+                - name: email
+                  in: query
+                  type: string
+                  required: true
+                  description: Registered email address.
+                - name: key
+                  in: query
+                  type: string
+                  required: true
+                  description: Account-specific access key.
+                - name: param
+                  in: query
+                  type: string
+                  required: true
+                  description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
+                - name: bdate
+                  in: query
+                  type: string
+                  required: true
+                  description: Begin date (YYYYMMDD).
+                - name: edate
+                  in: query
+                  type: string
+                  required: true
+                  description: End date (YYYYMMDD). Must be in the same year as bdate for most services.
+                - name: state
+                  in: query
+                  type: string
+                  required: true
+                  description: 2-digit state FIPS code.
+                - name: cbdate
+                  in: query
+                  type: string
+                  required: false
+                  description: Optional change begin date (returns records updated since cbdate).
+                - name: cedate
+                  in: query
+                  type: string
+                  required: false
+                  description: Optional change end date.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: transactionsqaannualperformanceevaluations-bystate
+          path: /transactionsQaAnnualPerformanceEvaluations/byState
+          operations:
+            - name: txQaAnnualByState
+              method: GET
+              description: Transactions QA Annual by State
+              inputParameters:
+                - name: email
+                  in: query
+                  type: string
+                  required: true
+                  description: Registered email address.
+                - name: key
+                  in: query
+                  type: string
+                  required: true
+                  description: Account-specific access key.
+                - name: param
+                  in: query
+                  type: string
+                  required: true
+                  description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
+                - name: bdate
+                  in: query
+                  type: string
+                  required: true
+                  description: Begin date (YYYYMMDD).
+                - name: edate
+                  in: query
+                  type: string
+                  required: true
+                  description: End date (YYYYMMDD). Must be in the same year as bdate for most services.
+                - name: state
+                  in: query
+                  type: string
+                  required: true
+                  description: 2-digit state FIPS code.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: aqs-transactions-rest
+      port: 8080
+      description: REST adapter for EPA Air Quality System (AQS) API — Transactions. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/transactionssample/bysite
+          name: transactionssample-bysite
+          description: REST surface for Transactions Sample by Site.
+          operations:
+            - method: GET
+              name: txSampleBySite
+              description: Transactions Sample by Site
+              call: aqs-transactions.txSampleBySite
+              with:
+                email: rest.email
+                key: rest.key
+                param: rest.param
+                bdate: rest.bdate
+                edate: rest.edate
+                state: rest.state
+                county: rest.county
+                site: rest.site
+                cbdate: rest.cbdate
+                cedate: rest.cedate
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/transactionssample/bystate
+          name: transactionssample-bystate
+          description: REST surface for Transactions Sample by State.
+          operations:
+            - method: GET
+              name: txSampleByState
+              description: Transactions Sample by State
+              call: aqs-transactions.txSampleByState
+              with:
+                email: rest.email
+                key: rest.key
+                param: rest.param
+                bdate: rest.bdate
+                edate: rest.edate
+                state: rest.state
+                cbdate: rest.cbdate
+                cedate: rest.cedate
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/transactionsqaannualperformanceevaluations/bystate
+          name: transactionsqaannualperformanceevaluations-bystate
+          description: REST surface for Transactions QA Annual by State.
+          operations:
+            - method: GET
+              name: txQaAnnualByState
+              description: Transactions QA Annual by State
+              call: aqs-transactions.txQaAnnualByState
+              with:
+                email: rest.email
+                key: rest.key
+                param: rest.param
+                bdate: rest.bdate
+                edate: rest.edate
+                state: rest.state
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: aqs-transactions-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for EPA Air Quality System (AQS) API — Transactions. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: transactions-sample-site
+          description: Transactions Sample by Site
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: aqs-transactions.txSampleBySite
+          with:
+            email: tools.email
+            key: tools.key
+            param: tools.param
+            bdate: tools.bdate
+            edate: tools.edate
+            state: tools.state
+            county: tools.county
+            site: tools.site
+            cbdate: tools.cbdate
+            cedate: tools.cedate
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: transactions-sample-state
+          description: Transactions Sample by State
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: aqs-transactions.txSampleByState
+          with:
+            email: tools.email
+            key: tools.key
+            param: tools.param
+            bdate: tools.bdate
+            edate: tools.edate
+            state: tools.state
+            cbdate: tools.cbdate
+            cedate: tools.cedate
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: transactions-qa-annual-state
+          description: Transactions QA Annual by State
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: aqs-transactions.txQaAnnualByState
+          with:
+            email: tools.email
+            key: tools.key
+            param: tools.param
+            bdate: tools.bdate
+            edate: tools.edate
+            state: tools.state
+          outputParameters:
+            - type: object
+              mapping: $.

@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-structure/cip-service-geojson-feature-structure.json",
+  "name": "geojson_feature",
+  "description": "geojson_feature schema from CIP-service Indexing API",
+  "type": "object",
+  "properties": {
+    "bbox": {
+      "$ref": "#/components/schemas/geojson_bbox"
+    },
+    "geometry": {
+      "$ref": "#/components/schemas/geojson_geometry"
+    },
+    "obj_type": {
+      "type": "string",
+      "example": "string"
+    },
+    "properties": {
+      "oneOf": [
+        {
+          "$ref": "#/components/schemas/event_feature_properties"
+        },
+        {
+          "$ref": "#/components/schemas/indexed_catchment_properties"
+        },
+        {
+          "$ref": "#/components/schemas/indexed_flowline_properties"
+        },
+        {
+          "$ref": "#/components/schemas/navigated_flowline_properties"
+        },
+        {
+          "$ref": "#/components/schemas/delineated_area_properties"
+        },
+        {
+          "$ref": "#/components/schemas/end_point_properties"
+        },
+        {
+          "$ref": "#/components/schemas/indexing_line_properties"
+        }
+      ],
+      "example": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Feature"
+      ],
+      "example": "Feature"
+    }
+  },
+  "required": [
+    "type",
+    "geometry",
+    "properties"
+  ]
+}

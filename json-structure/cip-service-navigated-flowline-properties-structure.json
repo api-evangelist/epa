@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-structure/cip-service-navigated-flowline-properties-structure.json",
+  "name": "navigated_flowline_properties",
+  "description": "navigated_flowline_properties schema from CIP-service Indexing API",
+  "type": "object",
+  "properties": {
+    "nhdplusid": {
+      "$ref": "#/components/schemas/nhdplusid"
+    },
+    "hydroseq": {
+      "$ref": "#/components/schemas/hydroseq"
+    },
+    "fmeasure": {
+      "description": "NHD flowline from measure.",
+      "$ref": "#/components/schemas/measure"
+    },
+    "tmeasure": {
+      "description": "NHD flowline to measure.",
+      "$ref": "#/components/schemas/measure"
+    },
+    "levelpathi": {
+      "type": "int64",
+      "description": "NHDPlus int64 level path identifier.",
+      "example": 0
+    },
+    "terminalpa": {
+      "type": "int64",
+      "description": "NHDPlus int64 terminal path identifier.",
+      "example": 0
+    },
+    "uphydroseq": {
+      "type": "int64",
+      "description": "NHDPlus int64 upstream flowline hydro sequence identifier.",
+      "example": 0
+    },
+    "dnhydroseq": {
+      "type": "int64",
+      "description": "NHDPlus int64 downstream flowline hydro sequence identifier.",
+      "example": 0
+    },
+    "lengthkm": {
+      "type": "double",
+      "description": "length of the navigated flowline in kilometers.",
+      "example": 0.0
+    },
+    "flowtimeday": {
+      "type": "double",
+      "description": "flow time in days of the navigated flowline.",
+      "example": 0.0
+    },
+    "network_distancekm": {
+      "type": "double",
+      "description": "total length from start to the navigated flowline in kilometers.",
+      "example": 0.0
+    },
+    "network_flowtimeday": {
+      "type": "double",
+      "description": "total flow time in days from start to the navigated flowline.",
+      "example": 0.0
+    },
+    "permanent_identifier": {
+      "type": "string",
+      "description": "NHD permanent identifier of the navigated flowline.",
+      "example": "12345"
+    },
+    "reachcode": {
+      "description": "NHD reach code of the navigated flowline",
+      "$ref": "#/components/schemas/reachcode"
+    },
+    "fcode": {
+      "type": "int32",
+      "description": "NHD feature type code of the navigated flowline.",
+      "example": 0
+    },
+    "gnis_id": {
+      "type": "string",
+      "description": "NHD GNIS identifier of the navigated flowline.",
+      "example": "12345"
+    },
+    "gnis_name": {
+      "type": "string",
+      "description": "NHD GNIS name of the navigated flowline.",
+      "example": "EPA Facility"
+    },
+    "wbarea_permanent_identifier": {
+      "type": "string",
+      "description": "NHD permanent identifier of the NHD waterbody feature associated with a flowline artificial path.",
+      "example": "12345"
+    },
+    "navtermination_flag": {
+      "type": "int32",
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "description": "Integer code providing information about the navigated flowline within the context of the navigation. Valid codes are: 0. no termination 1. full termination 2. partial termination 3. coastal termination 4. headwater termination 5. network end termination (non-coastal)\n",
+      "example": 0
+    },
+    "nav_order": {
+      "type": "int32",
+      "description": "rough ordering key placing flowlines in navigated order",
+      "example": 0
+    }
+  }
+}

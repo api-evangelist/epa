@@ -1,0 +1,142 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: QA Certification Management OpenAPI Specification — Protocol Gas
+  description: 'Protocol Gas. 2 operations. Lead operation: operations. Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - Protocol Gas
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_APIKEY_KEY: EPA_APIKEY_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: cam-qa-cert-protocol-gas
+      baseUri: https://api.epa.gov/easey
+      description: QA Certification Management OpenAPI Specification — Protocol Gas business capability. Self-contained, no shared references.
+      authentication:
+        type: apikey
+        key: x-api-key
+        value: '{{env.EPA_APIKEY_KEY}}'
+        placement: header
+      resources:
+        - name: qa-certification-mgmt-locations-locid-test-summary-testsumid-protocol-gases
+          path: /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/protocol-gases
+          operations:
+            - name: protocolGasControllergetProtocolGases
+              method: GET
+              description: protocolGasControllergetProtocolGases
+              inputParameters:
+                - name: locId
+                  in: path
+                  type: string
+                  required: true
+                  description: locId
+                - name: testSumId
+                  in: path
+                  type: string
+                  required: true
+                  description: testSumId
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: qa-certification-mgmt-locations-locid-test-summary-testsumid-protocol-gases-id
+          path: /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/protocol-gases/{id}
+          operations:
+            - name: protocolGasControllergetProtocolGas
+              method: GET
+              description: protocolGasControllergetProtocolGas
+              inputParameters:
+                - name: locId
+                  in: path
+                  type: string
+                  required: true
+                  description: locId
+                - name: testSumId
+                  in: path
+                  type: string
+                  required: true
+                  description: testSumId
+                - name: id
+                  in: path
+                  type: string
+                  required: true
+                  description: id
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: cam-qa-cert-protocol-gas-rest
+      port: 8080
+      description: REST adapter for QA Certification Management OpenAPI Specification — Protocol Gas. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/qa-certification-mgmt/locations/{locid}/test-summary/{testsumid}/protocol-gases
+          name: qa-certification-mgmt-locations-locid-test-summary-testsumid-protocol-gases
+          description: REST surface for protocolGasControllergetProtocolGases.
+          operations:
+            - method: GET
+              name: protocolGasControllergetProtocolGases
+              description: protocolGasControllergetProtocolGases
+              call: cam-qa-cert-protocol-gas.protocolGasControllergetProtocolGases
+              with:
+                locId: rest.locId
+                testSumId: rest.testSumId
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/qa-certification-mgmt/locations/{locid}/test-summary/{testsumid}/protocol-gases/{id}
+          name: qa-certification-mgmt-locations-locid-test-summary-testsumid-protocol-gases-id
+          description: REST surface for protocolGasControllergetProtocolGas.
+          operations:
+            - method: GET
+              name: protocolGasControllergetProtocolGas
+              description: protocolGasControllergetProtocolGas
+              call: cam-qa-cert-protocol-gas.protocolGasControllergetProtocolGas
+              with:
+                locId: rest.locId
+                testSumId: rest.testSumId
+                id: rest.id
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: cam-qa-cert-protocol-gas-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for QA Certification Management OpenAPI Specification — Protocol Gas. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: protocolgascontroller-getprotocolgases
+          description: protocolgascontroller-getprotocolgases
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-qa-cert-protocol-gas.protocolGasControllergetProtocolGases
+          with:
+            locId: tools.locId
+            testSumId: tools.testSumId
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: protocolgascontroller-getprotocolgas
+          description: protocolgascontroller-getprotocolgas
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-qa-cert-protocol-gas.protocolGasControllergetProtocolGas
+          with:
+            locId: tools.locId
+            testSumId: tools.testSumId
+            id: tools.id
+          outputParameters:
+            - type: object
+              mapping: $.

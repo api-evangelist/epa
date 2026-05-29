@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-schema/cip-service-geojson-feature-schema.json",
+  "title": "geojson_feature",
+  "description": "geojson_feature schema from CIP-service Indexing API",
+  "type": [
+    "object",
+    "null"
+  ],
+  "properties": {
+    "bbox": {
+      "$ref": "#/components/schemas/geojson_bbox"
+    },
+    "geometry": {
+      "$ref": "#/components/schemas/geojson_geometry"
+    },
+    "obj_type": {
+      "type": "string",
+      "example": "string"
+    },
+    "properties": {
+      "discriminator": {
+        "propertyName": "obj_type",
+        "mapping": {
+          "event_feature_properties": "#/components/schemas/event_feature_properties",
+          "indexed_catchment_properties": "#/components/schemas/indexed_catchment_properties",
+          "indexed_flowline_properties": "#/components/schemas/indexed_flowline_properties",
+          "navigated_flowline_properties": "#/components/schemas/navigated_flowline_properties",
+          "delineated_area_properties": "#/components/schemas/delineated_area_properties",
+          "end_point_properties": "#/components/schemas/end_point_properties",
+          "indexing_line_properties": "#/components/schemas/indexing_line_properties"
+        }
+      },
+      "oneOf": [
+        {
+          "$ref": "#/components/schemas/event_feature_properties"
+        },
+        {
+          "$ref": "#/components/schemas/indexed_catchment_properties"
+        },
+        {
+          "$ref": "#/components/schemas/indexed_flowline_properties"
+        },
+        {
+          "$ref": "#/components/schemas/navigated_flowline_properties"
+        },
+        {
+          "$ref": "#/components/schemas/delineated_area_properties"
+        },
+        {
+          "$ref": "#/components/schemas/end_point_properties"
+        },
+        {
+          "$ref": "#/components/schemas/indexing_line_properties"
+        }
+      ],
+      "example": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Feature"
+      ],
+      "example": "Feature"
+    }
+  },
+  "required": [
+    "type",
+    "geometry",
+    "properties"
+  ]
+}

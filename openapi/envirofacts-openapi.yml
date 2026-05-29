@@ -1,0 +1,317 @@
+openapi: 3.0.3
+info:
+  title: EPA Envirofacts Data Service API
+  description: |
+    The Envirofacts Data Service API (DMAP-EF) is a programmatic interface for querying the EPA's
+    Envirofacts warehouse. It exposes data from multiple regulatory programs including
+    RCRA (hazardous waste), GHG (greenhouse gases), TRI (toxic release inventory), SEMS (Superfund),
+    NEI (National Emissions Inventory), SDWIS (drinking water) and more, plus UV index forecasts.
+
+    The service uses path-encoded queries instead of conventional query strings. The general pattern is:
+
+    ```
+    /efservice/{table}/{column}{operator}{value}/{join}/{first}:{last}/{sort}/{format}
+    ```
+
+    All components except `{table}` are optional. Queries must complete within 15 minutes.
+  version: '1.0'
+  contact:
+    name: Envirofacts Support
+    url: https://www.epa.gov/enviro
+servers:
+  - url: https://data.epa.gov
+    description: Envirofacts data service
+tags:
+  - name: Data Service
+    description: Generic Envirofacts REST data service supporting any program.table.
+  - name: UV Index
+    description: UV index hourly and daily forecast endpoints.
+  - name: GraphQL
+    description: GraphQL endpoint for complex queries beyond REST capabilities.
+components:
+  parameters:
+    Table:
+      name: table
+      in: path
+      required: true
+      schema: {type: string}
+      description: Envirofacts table in `program.table` format (e.g., `rcra.rcra_facility`, `tri.tri_facility`, `sems.envirofacts_site`).
+    Filter:
+      name: filter
+      in: path
+      required: false
+      schema: {type: string}
+      description: Optional filter clause `{column}{operator}{value}`. Operators include equals, notEquals, lessThan, greaterThan, beginsWith, endsWith, contains, like, in.
+    Range:
+      name: range
+      in: path
+      required: false
+      schema: {type: string, pattern: '^\d+:\d+$'}
+      description: Optional pagination range `first:last` (e.g., `1:100`).
+    Format:
+      name: format
+      in: path
+      required: false
+      schema: {type: string, enum: [JSON, CSV, EXCEL, HTML, JSONP, PARQUET, PDF, XML]}
+      description: Output format (default JSON).
+    Zip:
+      name: ZIP
+      in: path
+      required: true
+      schema: {type: string, pattern: '^\d{5}$'}
+      description: 5-digit ZIP code.
+    City:
+      name: CITY
+      in: path
+      required: true
+      schema: {type: string}
+    State:
+      name: STATE
+      in: path
+      required: true
+      schema: {type: string, pattern: '^[A-Z]{2}$'}
+      description: 2-letter state abbreviation.
+  schemas:
+    Row:
+      type: object
+      additionalProperties: true
+      description: A single Envirofacts row; columns depend on the queried table.
+    UvHourly:
+      type: object
+      properties:
+        CITY: {type: string, example: Raleigh}
+        STATE: {type: string, example: NC}
+        ZIP: {type: string, example: '20460'}
+        DATE_TIME: {type: string, example: string}
+        UV_VALUE: {type: integer, example: 0}
+    UvDaily:
+      type: object
+      properties:
+        CITY: {type: string, example: Raleigh}
+        STATE: {type: string, example: NC}
+        ZIP: {type: string, example: '20460'}
+        DATE: {type: string, example: string}
+        UV_INDEX: {type: integer, example: 0}
+paths:
+  /efservice/{table}/{format}:
+    get:
+      tags: [Data Service]
+      summary: Query Envirofacts Table
+      description: Query any Envirofacts table. Append optional filter, join, range, and sort segments before the format.
+      operationId: efserviceQueryTable
+      parameters:
+        - $ref: '#/components/parameters/Table'
+        - $ref: '#/components/parameters/Format'
+      responses:
+        '200':
+          description: Rows from the requested Envirofacts table.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {$ref: '#/components/schemas/Row'}
+              examples:
+                efserviceQueryTable200Example:
+                  summary: Default efserviceQueryTable 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /efservice/{table}/{filter}/{format}:
+    get:
+      tags: [Data Service]
+      summary: Query Envirofacts Table with Filter
+      operationId: efserviceQueryTableFiltered
+      parameters:
+        - $ref: '#/components/parameters/Table'
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Format'
+      responses:
+        '200':
+          description: Filtered rows.
+          content:
+            application/json:
+              schema: {type: array, items: {$ref: '#/components/schemas/Row'}}
+              examples:
+                efserviceQueryTableFiltered200Example:
+                  summary: Default efserviceQueryTableFiltered 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /efservice/{table}/{filter}/{range}/{format}:
+    get:
+      tags: [Data Service]
+      summary: Query Envirofacts Table with Filter and Pagination
+      operationId: efserviceQueryTablePaginated
+      parameters:
+        - $ref: '#/components/parameters/Table'
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Range'
+        - $ref: '#/components/parameters/Format'
+      responses:
+        '200':
+          description: Paginated filtered rows.
+          content:
+            application/json:
+              schema: {type: array, items: {$ref: '#/components/schemas/Row'}}
+              examples:
+                efserviceQueryTablePaginated200Example:
+                  summary: Default efserviceQueryTablePaginated 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /dmapservice/getEnvirofactsUVHOURLY/ZIP/{ZIP}/{format}:
+    get:
+      tags: [UV Index]
+      summary: Get Hourly UV Forecast by ZIP
+      operationId: uvHourlyByZip
+      parameters:
+        - $ref: '#/components/parameters/Zip'
+        - $ref: '#/components/parameters/Format'
+      responses:
+        '200':
+          description: 24-hour UV index forecast for the ZIP code.
+          content:
+            application/json:
+              schema: {type: array, items: {$ref: '#/components/schemas/UvHourly'}}
+              examples:
+                uvHourlyByZip200Example:
+                  summary: Default uvHourlyByZip 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /dmapservice/getEnvirofactsUVHOURLY/CITY/{CITY}/STATE/{STATE}/{format}:
+    get:
+      tags: [UV Index]
+      summary: Get Hourly UV Forecast by City and State
+      operationId: uvHourlyByCity
+      parameters:
+        - $ref: '#/components/parameters/City'
+        - $ref: '#/components/parameters/State'
+        - $ref: '#/components/parameters/Format'
+      responses:
+        '200':
+          description: 24-hour UV index forecast.
+          content:
+            application/json:
+              schema: {type: array, items: {$ref: '#/components/schemas/UvHourly'}}
+              examples:
+                uvHourlyByCity200Example:
+                  summary: Default uvHourlyByCity 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /dmapservice/getEnvirofactsUVDAILY/ZIP/{ZIP}/{format}:
+    get:
+      tags: [UV Index]
+      summary: Get Daily UV Forecast by ZIP
+      operationId: uvDailyByZip
+      parameters:
+        - $ref: '#/components/parameters/Zip'
+        - $ref: '#/components/parameters/Format'
+      responses:
+        '200':
+          description: Daily peak UV index forecast for the ZIP code.
+          content:
+            application/json:
+              schema: {type: array, items: {$ref: '#/components/schemas/UvDaily'}}
+              examples:
+                uvDailyByZip200Example:
+                  summary: Default uvDailyByZip 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /dmapservice/getEnvirofactsUVDAILY/CITY/{CITY}/STATE/{STATE}/{format}:
+    get:
+      tags: [UV Index]
+      summary: Get Daily UV Forecast by City and State
+      operationId: uvDailyByCity
+      parameters:
+        - $ref: '#/components/parameters/City'
+        - $ref: '#/components/parameters/State'
+        - $ref: '#/components/parameters/Format'
+      responses:
+        '200':
+          description: Daily UV index forecast.
+          content:
+            application/json:
+              schema: {type: array, items: {$ref: '#/components/schemas/UvDaily'}}
+              examples:
+                uvDailyByCity200Example:
+                  summary: Default uvDailyByCity 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /enviro/dmap-graphql-api:
+    post:
+      tags: [GraphQL]
+      summary: Execute Envirofacts GraphQL Query
+      operationId: envirofactsGraphQL
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [query]
+              properties:
+                query: {type: string}
+                variables: {type: object, additionalProperties: true}
+                operationName: {type: string}
+            examples:
+              envirofactsGraphQLRequestExample:
+                summary: Default envirofactsGraphQL request
+                x-microcks-default: true
+                value: {}
+      responses:
+        '200':
+          description: GraphQL response.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data: {type: object, additionalProperties: true}
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message: {type: string}
+              examples:
+                envirofactsGraphQL200Example:
+                  summary: Default envirofactsGraphQL 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK

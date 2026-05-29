@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-schema/cam-streaming-allowance-compliance-dto-schema.json",
+  "title": "AllowanceComplianceDTO",
+  "description": "AllowanceComplianceDTO schema from Streaming Services OpenAPI Specification",
+  "type": "object",
+  "properties": {
+    "programCodeInfo": {
+      "type": "string",
+      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+      "example": "ARP,CSNOX,CSSO2G2,MATS"
+    },
+    "year": {
+      "type": "number",
+      "description": "The calendar year during which activity occurred.",
+      "example": 2020
+    },
+    "accountNumber": {
+      "type": "string",
+      "description": "The unique identification number of an account.",
+      "example": "000003FACLTY"
+    },
+    "accountName": {
+      "type": "string",
+      "description": "The name of the account in which allowances are held.",
+      "example": "Barry"
+    },
+    "facilityName": {
+      "type": "string",
+      "description": "The name given by the owners and operators to a facility",
+      "example": "Barry"
+    },
+    "facilityId": {
+      "type": "number",
+      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+      "example": 3
+    },
+    "unitsAffected": {
+      "type": "string",
+      "description": "unit ID(s) for units at a facility that are affected by a given compliance program.",
+      "example": 31
+    },
+    "allocated": {
+      "type": "number",
+      "description": "The amount of allowances allocated for the calendar year.",
+      "example": 136
+    },
+    "bankedHeld": {
+      "type": "number",
+      "description": "The amount of allowances of vintage years up to but not including the current compliance year held in a compliance account. (This is for NBP, OTC)",
+      "example": 0
+    },
+    "currentHeld": {
+      "type": "number",
+      "description": "The amount of current vintage year allowances held in a compliance account at compliance. (This is for NBP, OTC)",
+      "example": 132
+    },
+    "totalAllowancesHeld": {
+      "type": "number",
+      "description": "The total amount of allowances held in the account at compliance.",
+      "example": 132
+    },
+    "complianceYearEmissions": {
+      "type": "number",
+      "description": "The total amount of pollutant in short tons emitted by the source in a control period.",
+      "example": 132
+    },
+    "otherDeductions": {
+      "type": "number",
+      "description": "The sum of other deductions that may have occurred for the account, including Underutilization, Phase I Extension, Projected Emissions Deduction (for Phase I reports), State Cap Deductions, Deduction of Loaned Allowances, July Confirmation Deduction, and Substitution Control by Contract Deduction.",
+      "example": 0
+    },
+    "totalRequiredDeductions": {
+      "type": "number",
+      "description": "Sum of Compliance year emissions + Other deductions.",
+      "example": 132
+    },
+    "currentDeductions": {
+      "type": "number",
+      "description": "The amount of allowances with the current vintage year deducted at compliance. (This is for NBP, OTC)",
+      "example": 132
+    },
+    "deductOneToOne": {
+      "type": "number",
+      "description": "Banked allowances with a 1 to 1 ratio. (This is for OTC, NBP)",
+      "example": 0
+    },
+    "deductTwoToOne": {
+      "type": "number",
+      "description": "Banked allowances with a 2 to 1 ratio. (This is for OTC, NBP)",
+      "example": 0
+    },
+    "totalAllowancesDeducted": {
+      "type": "number",
+      "description": "The total amount of allowances deducted at compliance.",
+      "example": 132
+    },
+    "carriedOver": {
+      "type": "number",
+      "description": "The amount of allowances remaining in the account following compliance.",
+      "example": 0
+    },
+    "excessEmissions": {
+      "type": "number",
+      "description": "The amount of pollutant in short tons emitted in excess of the number of allowances held.",
+      "example": 0
+    },
+    "ownerOperator": {
+      "type": "string",
+      "description": "The name of any company that owns an allowance account or an affected unit.The name of any company that operates an affected unit.",
+      "example": "Alabama Power Company (Operator)|Alabama Power Company (Owner)"
+    },
+    "stateCode": {
+      "type": "string",
+      "description": "Two letter abbreviation for the State.",
+      "example": "AK"
+    }
+  },
+  "required": [
+    "programCodeInfo",
+    "accountNumber",
+    "accountName",
+    "facilityName",
+    "unitsAffected",
+    "ownerOperator",
+    "stateCode"
+  ]
+}

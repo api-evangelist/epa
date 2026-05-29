@@ -1,0 +1,156 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: QA Certification Management OpenAPI Specification — Cycle Time Injection
+  description: 'Cycle Time Injection. 2 operations. Lead operation: operations. Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - Cycle Time Injection
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_APIKEY_KEY: EPA_APIKEY_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: cam-qa-cert-cycle-time-injection
+      baseUri: https://api.epa.gov/easey
+      description: QA Certification Management OpenAPI Specification — Cycle Time Injection business capability. Self-contained, no shared references.
+      authentication:
+        type: apikey
+        key: x-api-key
+        value: '{{env.EPA_APIKEY_KEY}}'
+        placement: header
+      resources:
+        - name: qa-certification-mgmt-locations-locid-test-summary-testsumid-cycle-time-summaries-cycletimesumid-cycle-time-injections
+          path: /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/cycle-time-summaries/{cycleTimeSumId}/cycle-time-injections
+          operations:
+            - name: cycleTimeInjectionControllergetCycleTimeInjections
+              method: GET
+              description: cycleTimeInjectionControllergetCycleTimeInjections
+              inputParameters:
+                - name: locId
+                  in: path
+                  type: string
+                  required: true
+                  description: locId
+                - name: testSumId
+                  in: path
+                  type: string
+                  required: true
+                  description: testSumId
+                - name: cycleTimeSumId
+                  in: path
+                  type: string
+                  required: true
+                  description: cycleTimeSumId
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: qa-certification-mgmt-locations-locid-test-summary-testsumid-cycle-time-summaries-cycletimesumid-cycle-time-injections-id
+          path: /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/cycle-time-summaries/{cycleTimeSumId}/cycle-time-injections/{id}
+          operations:
+            - name: cycleTimeInjectionControllergetCycleTimeInjection
+              method: GET
+              description: cycleTimeInjectionControllergetCycleTimeInjection
+              inputParameters:
+                - name: locId
+                  in: path
+                  type: string
+                  required: true
+                  description: locId
+                - name: testSumId
+                  in: path
+                  type: string
+                  required: true
+                  description: testSumId
+                - name: cycleTimeSumId
+                  in: path
+                  type: string
+                  required: true
+                  description: cycleTimeSumId
+                - name: id
+                  in: path
+                  type: string
+                  required: true
+                  description: id
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: cam-qa-cert-cycle-time-injection-rest
+      port: 8080
+      description: REST adapter for QA Certification Management OpenAPI Specification — Cycle Time Injection. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/qa-certification-mgmt/locations/{locid}/test-summary/{testsumid}/cycle-time-summaries/{cycletimesumid}/cycle-time-injections
+          name: qa-certification-mgmt-locations-locid-test-summary-testsumid-cycle-time-summaries-cycletimesumid-cycle-time-injections
+          description: REST surface for cycleTimeInjectionControllergetCycleTimeInjections.
+          operations:
+            - method: GET
+              name: cycleTimeInjectionControllergetCycleTimeInjections
+              description: cycleTimeInjectionControllergetCycleTimeInjections
+              call: cam-qa-cert-cycle-time-injection.cycleTimeInjectionControllergetCycleTimeInjections
+              with:
+                locId: rest.locId
+                testSumId: rest.testSumId
+                cycleTimeSumId: rest.cycleTimeSumId
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/qa-certification-mgmt/locations/{locid}/test-summary/{testsumid}/cycle-time-summaries/{cycletimesumid}/cycle-time-injections/{id}
+          name: qa-certification-mgmt-locations-locid-test-summary-testsumid-cycle-time-summaries-cycletimesumid-cycle-time-injections-id
+          description: REST surface for cycleTimeInjectionControllergetCycleTimeInjection.
+          operations:
+            - method: GET
+              name: cycleTimeInjectionControllergetCycleTimeInjection
+              description: cycleTimeInjectionControllergetCycleTimeInjection
+              call: cam-qa-cert-cycle-time-injection.cycleTimeInjectionControllergetCycleTimeInjection
+              with:
+                locId: rest.locId
+                testSumId: rest.testSumId
+                cycleTimeSumId: rest.cycleTimeSumId
+                id: rest.id
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: cam-qa-cert-cycle-time-injection-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for QA Certification Management OpenAPI Specification — Cycle Time Injection. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: cycletimeinjectioncontroller-getcycletimeinjections
+          description: cycletimeinjectioncontroller-getcycletimeinjections
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-qa-cert-cycle-time-injection.cycleTimeInjectionControllergetCycleTimeInjections
+          with:
+            locId: tools.locId
+            testSumId: tools.testSumId
+            cycleTimeSumId: tools.cycleTimeSumId
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: cycletimeinjectioncontroller-getcycletimeinjection
+          description: cycletimeinjectioncontroller-getcycletimeinjection
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-qa-cert-cycle-time-injection.cycleTimeInjectionControllergetCycleTimeInjection
+          with:
+            locId: tools.locId
+            testSumId: tools.testSumId
+            cycleTimeSumId: tools.cycleTimeSumId
+            id: tools.id
+          outputParameters:
+            - type: object
+              mapping: $.

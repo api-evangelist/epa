@@ -1,0 +1,1158 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/master-data-mgmt/health": {
+      "get": {
+        "operationId": "HealthController_check",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "The Health Check is successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "ok"
+                    },
+                    "info": {
+                      "type": "object",
+                      "example": {
+                        "database": {
+                          "status": "up"
+                        }
+                      },
+                      "additionalProperties": {
+                        "type": "object",
+                        "required": [
+                          "status"
+                        ],
+                        "properties": {
+                          "status": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": true
+                      },
+                      "nullable": true
+                    },
+                    "error": {
+                      "type": "object",
+                      "example": {},
+                      "additionalProperties": {
+                        "type": "object",
+                        "required": [
+                          "status"
+                        ],
+                        "properties": {
+                          "status": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": true
+                      },
+                      "nullable": true
+                    },
+                    "details": {
+                      "type": "object",
+                      "example": {
+                        "database": {
+                          "status": "up"
+                        }
+                      },
+                      "additionalProperties": {
+                        "type": "object",
+                        "required": [
+                          "status"
+                        ],
+                        "properties": {
+                          "status": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": true
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "HealthController_check200Example": {
+                    "summary": "Default HealthController_check 200 response",
+                    "x-microcks-default": true,
+                    "value": {
+                      "status": "ok",
+                      "message": "Example response"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "The Health Check is not successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "error"
+                    },
+                    "info": {
+                      "type": "object",
+                      "example": {
+                        "database": {
+                          "status": "up"
+                        }
+                      },
+                      "additionalProperties": {
+                        "type": "object",
+                        "required": [
+                          "status"
+                        ],
+                        "properties": {
+                          "status": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": true
+                      },
+                      "nullable": true
+                    },
+                    "error": {
+                      "type": "object",
+                      "example": {
+                        "redis": {
+                          "status": "down",
+                          "message": "Could not connect"
+                        }
+                      },
+                      "additionalProperties": {
+                        "type": "object",
+                        "required": [
+                          "status"
+                        ],
+                        "properties": {
+                          "status": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": true
+                      },
+                      "nullable": true
+                    },
+                    "details": {
+                      "type": "object",
+                      "example": {
+                        "database": {
+                          "status": "up"
+                        },
+                        "redis": {
+                          "status": "down",
+                          "message": "Could not connect"
+                        }
+                      },
+                      "additionalProperties": {
+                        "type": "object",
+                        "required": [
+                          "status"
+                        ],
+                        "properties": {
+                          "status": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": true
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "HealthController_check503Example": {
+                    "summary": "Default HealthController_check 503 response",
+                    "x-microcks-default": true,
+                    "value": {
+                      "status": "ok",
+                      "message": "Example response"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Health"
+        ],
+        "x-microcks-operation": {
+          "delay": 0,
+          "dispatcher": "FALLBACK"
+        }
+      }
+    },
+    "/master-data-mgmt/account-type-codes": {
+      "get": {
+        "description": "Returns a list of Account Type codes & descriptions.",
+        "operationId": "AccountTypeController_getAccountTypeCodes",
+        "parameters": [
+          {
+            "name": "exclude",
+            "required": false,
+            "in": "query",
+            "style": "pipeDelimited",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "CASURR",
+                  "ENFSURR",
+                  "FACLTY",
+                  "GENERAL",
+                  "OVERDF",
+                  "RESERVE",
+                  "SERDRES",
+                  "SGENRES",
+                  "SHOLD",
+                  "SNSARES",
+                  "SOPTRES",
+                  "SOTHRES",
+                  "SPRMRES",
+                  "SRETIRE",
+                  "SURR",
+                  "UNIT",
+                  "VOLSURR"
+                ]
+              }
+            },
+            "example": [
+              "CASURR"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Data retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/AccountTypeDTO"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "AccountTypeController_getAccountTypeCodes200Example": {
+                    "summary": "Default AccountTypeController_getAccountTypeCodes 200 response",
+                    "x-microcks-default": true,
+                    "value": {
+                      "status": "ok",
+                      "message": "Example response"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKey": []
+          }
+        ],
+        "summary": "",
+        "tags": [
+          "Account Type Codes"
+        ],
+        "x-microcks-operation": {
+          "delay": 0,
+          "dispatcher": "FALLBACK"
+        }
+      }
+    },
+    "/master-data-mgmt/control-codes": {
+      "get": {
+        "description": "Returns list of Control codes & descriptions.",
+        "operationId": "ControlTechnologyController_getControlTechnologies",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Data retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/ControlTechnologyDTO"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "ControlTechnologyController_getControlTechnologies200Example": {
+                    "summary": "Default ControlTechnologyController_getControlTechnologies 200 response",
+                    "x-microcks-default": true,
+                    "value": {
+                      "status": "ok",
+                      "message": "Example response"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKey": []
+          }
+        ],
+        "summary": "",
+        "tags": [
+          "Control Codes"
+        ],
+        "x-microcks-operation": {
+          "delay": 0,
+          "dispatcher": "FALLBACK"
+        }
+      }
+    },
+    "/master-data-mgmt/fuel-type-codes": {
+      "get": {
+        "description": "Returns a list of Fuel Type codes & descriptions.",
+        "operationId": "FuelTypeController_getFuelTypeCodes",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Data retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/FuelTypeDTO"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "FuelTypeController_getFuelTypeCodes200Example": {
+                    "summary": "Default FuelTypeController_getFuelTypeCodes 200 response",
+                    "x-microcks-default": true,
+                    "value": {
+                      "status": "ok",
+                      "message": "Example response"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKey": []
+          }
+        ],
+        "summary": "",
+        "tags": [
+          "Fuel Type Codes"
+        ],
+        "x-microcks-operation": {
+          "delay": 0,
+          "dispatcher": "FALLBACK"
+        }
+      }
+    },
+    "/master-data-mgmt/program-codes": {
+      "get": {
+        "description": "Returns a list of Program codes & descriptions.",
+        "operationId": "ProgramController_getProgramCodes",
+        "parameters": [
+          {
+            "name": "exclude",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ARP",
+                  "CAIRNOX",
+                  "CAIROS",
+                  "CAIRSO2",
+                  "CSNOX",
+                  "CSNOXOS",
+                  "CSOSG1",
+                  "CSOSG2",
+                  "CSOSG2E",
+                  "CSOSG3",
+                  "CSSO2G1",
+                  "CSSO2G2",
+                  "NBP",
+                  "NHNOX",
+                  "NSPS4T",
+                  "OTC",
+                  "RGGI",
+                  "SIPNOX",
+                  "TXSO2"
+                ]
+              }
+            },
+            "example": [
+              "ARP"
+            ]
+          },
+          {
+            "name": "isActive",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "nullable": true,
+              "type": "boolean"
+            },
+            "example": true
+          },
+          {
+            "name": "emissionsUIFilter",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "nullable": true,
+              "type": "boolean"
+            },
+            "example": true
+          },
+          {
+            "name": "allowanceUIFilter",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "nullable": true,
+              "type": "boolean"
+            },
+            "example": true
+          },
+          {
+            "name": "complianceUIFilter",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "nullable": true,
+              "type": "boolean"
+            },
+            "example": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Data retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/ProgramDTO"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "ProgramController_getProgramCodes200Example": {
+                    "summary": "Default ProgramController_getProgramCodes 200 response",
+                    "x-microcks-default": true,
+                    "value": {
+                      "status": "ok",
+                      "message": "Example response"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKey": []
+          }
+        ],
+        "summary": "",
+        "tags": [
+          "Program Codes"
+        ],
+        "x-microcks-operation": {
+          "delay": 0,
+          "dispatcher": "FALLBACK"
+        }
+      }
+    },
+    "/master-data-mgmt/reporting-periods": {
+      "get": {
+        "description": "Returns a list of Reporting Periods.",
+        "operationId": "ReportingPeriodController_getReportingPeriods",
+        "parameters": [
+          {
+            "name": "export",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "nullable": true,
+              "type": "boolean"
+            },
+            "example": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Data retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/ReportingPeriodDTO"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "ReportingPeriodController_getReportingPeriods200Example": {
+                    "summary": "Default ReportingPeriodController_getReportingPeriods 200 response",
+                    "x-microcks-default": true,
+                    "value": {
+                      "status": "ok",
+                      "message": "Example response"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKey": []
+          }
+        ],
+        "summary": "",
+        "tags": [
+          "Reporting Periods"
+        ],
+        "x-microcks-operation": {
+          "delay": 0,
+          "dispatcher": "FALLBACK"
+        }
+      }
+    },
+    "/master-data-mgmt/unit-type-codes": {
+      "get": {
+        "description": "Returns a list of Unit Type codes & descriptions.",
+        "operationId": "UnitTypeController_getUnitTypeCodes",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Data retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/UnitTypeDTO"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "UnitTypeController_getUnitTypeCodes200Example": {
+                    "summary": "Default UnitTypeController_getUnitTypeCodes 200 response",
+                    "x-microcks-default": true,
+                    "value": {
+                      "status": "ok",
+                      "message": "Example response"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKey": []
+          }
+        ],
+        "summary": "",
+        "tags": [
+          "Unit Type Codes"
+        ],
+        "x-microcks-operation": {
+          "delay": 0,
+          "dispatcher": "FALLBACK"
+        }
+      }
+    },
+    "/master-data-mgmt/relationships/list": {
+      "get": {
+        "description": "Returns a list of Master Data relationships available.",
+        "operationId": "RelationshipsController_listRelationships",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Data retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/CodeTableDto"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "RelationshipsController_listRelationships200Example": {
+                    "summary": "Default RelationshipsController_listRelationships 200 response",
+                    "x-microcks-default": true,
+                    "value": {
+                      "status": "ok",
+                      "message": "Example response"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKey": []
+          }
+        ],
+        "summary": "",
+        "tags": [
+          "Relationships"
+        ],
+        "x-microcks-operation": {
+          "delay": 0,
+          "dispatcher": "FALLBACK"
+        }
+      }
+    },
+    "/master-data-mgmt/relationships/{code}": {
+      "get": {
+        "description": "Returns a list of Master Data relationships for the dataset provided.",
+        "operationId": "RelationshipsController_getRelationships",
+        "parameters": [
+          {
+            "name": "code",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "example": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Data retrieved successfully"
+          }
+        },
+        "security": [
+          {
+            "APIKey": []
+          }
+        ],
+        "summary": "",
+        "tags": [
+          "Relationships"
+        ],
+        "x-microcks-operation": {
+          "delay": 0,
+          "dispatcher": "FALLBACK"
+        }
+      }
+    },
+    "/master-data-mgmt/list": {
+      "get": {
+        "description": "Returns a list of Master Data code tables available.",
+        "operationId": "MasterDataController_listCodeTables",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Data retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/CodeTableDto"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "MasterDataController_listCodeTables200Example": {
+                    "summary": "Default MasterDataController_listCodeTables 200 response",
+                    "x-microcks-default": true,
+                    "value": {
+                      "status": "ok",
+                      "message": "Example response"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "APIKey": []
+          }
+        ],
+        "summary": "",
+        "tags": [
+          "Codes & Descriptions"
+        ],
+        "x-microcks-operation": {
+          "delay": 0,
+          "dispatcher": "FALLBACK"
+        }
+      }
+    },
+    "/master-data-mgmt/{code}": {
+      "get": {
+        "description": "Returns a list of Master Data codes & descriptions for the dataset provided.",
+        "operationId": "MasterDataController_getCodeTable",
+        "parameters": [
+          {
+            "name": "code",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "example": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Data retrieved successfully"
+          }
+        },
+        "security": [
+          {
+            "APIKey": []
+          }
+        ],
+        "summary": "",
+        "tags": [
+          "Codes & Descriptions"
+        ],
+        "x-microcks-operation": {
+          "delay": 0,
+          "dispatcher": "FALLBACK"
+        }
+      }
+    }
+  },
+  "info": {
+    "title": "Master Data Management OpenAPI Specification",
+    "description": "Provides reference codes, descriptions, & relationship data for CAMD applications",
+    "version": "v2.0.106 published: Thu Mar 26 2026",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [
+    {
+      "url": "https://api.epa.gov/easey"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "APIKey": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-api-key",
+        "description": "API Key required via \"x-api-key\" request header!"
+      }
+    },
+    "schemas": {
+      "AccountTypeDTO": {
+        "type": "object",
+        "properties": {
+          "accountTypeCode": {
+            "type": "string",
+            "example": "string"
+          },
+          "accountTypeDescription": {
+            "type": "string",
+            "example": "string"
+          },
+          "accountTypeGroupCode": {
+            "type": "string",
+            "example": "string"
+          },
+          "accountTypeGroupDescription": {
+            "type": "string",
+            "example": "string"
+          }
+        },
+        "required": [
+          "accountTypeCode",
+          "accountTypeDescription",
+          "accountTypeGroupCode",
+          "accountTypeGroupDescription"
+        ]
+      },
+      "ControlTechnologyDTO": {
+        "type": "object",
+        "properties": {
+          "controlCode": {
+            "type": "string",
+            "example": "string"
+          },
+          "controlDescription": {
+            "type": "string",
+            "example": "string"
+          },
+          "controlEquipParamCode": {
+            "type": "string",
+            "example": "string"
+          },
+          "controlEquipParamDescription": {
+            "type": "string",
+            "example": "string"
+          }
+        },
+        "required": [
+          "controlCode",
+          "controlDescription",
+          "controlEquipParamCode",
+          "controlEquipParamDescription"
+        ]
+      },
+      "FuelTypeDTO": {
+        "type": "object",
+        "properties": {
+          "fuelTypeCode": {
+            "type": "string",
+            "example": "string"
+          },
+          "fuelTypeDescription": {
+            "type": "string",
+            "example": "string"
+          },
+          "fuelGroupCode": {
+            "type": "string",
+            "example": "string"
+          },
+          "fuelGroupDescription": {
+            "type": "string",
+            "example": "string"
+          }
+        },
+        "required": [
+          "fuelTypeCode",
+          "fuelTypeDescription",
+          "fuelGroupCode",
+          "fuelGroupDescription"
+        ]
+      },
+      "ProgramDTO": {
+        "type": "object",
+        "properties": {
+          "programCode": {
+            "type": "string",
+            "example": "string"
+          },
+          "programDescription": {
+            "type": "string",
+            "example": "string"
+          },
+          "compParameter": {
+            "type": "string",
+            "example": "string"
+          },
+          "programGroupCode": {
+            "type": "string",
+            "example": "string"
+          },
+          "programGroupDescription": {
+            "type": "string",
+            "example": "string"
+          },
+          "ozoneIndicator": {
+            "type": "boolean",
+            "example": true
+          },
+          "annualIndicator": {
+            "type": "boolean",
+            "example": true
+          },
+          "emissionsUIFilter": {
+            "type": "boolean",
+            "example": true
+          },
+          "allowanceUIFilter": {
+            "type": "boolean",
+            "example": true
+          },
+          "complianceUIFilter": {
+            "type": "boolean",
+            "example": true
+          },
+          "retiredIndicator": {
+            "type": "boolean",
+            "example": true
+          },
+          "tradingEndDate": {
+            "type": "string",
+            "example": "string"
+          }
+        },
+        "required": [
+          "programCode",
+          "programDescription",
+          "compParameter",
+          "programGroupCode",
+          "programGroupDescription",
+          "ozoneIndicator",
+          "annualIndicator",
+          "emissionsUIFilter",
+          "allowanceUIFilter",
+          "complianceUIFilter",
+          "retiredIndicator",
+          "tradingEndDate"
+        ]
+      },
+      "ReportingPeriodDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 0.0
+          },
+          "calendarYear": {
+            "type": "number",
+            "example": 2024
+          },
+          "quarter": {
+            "type": "number",
+            "example": 0.0
+          },
+          "beginDate": {
+            "format": "date-time",
+            "type": "string",
+            "example": "2024-01-15T12:00:00Z"
+          },
+          "endDate": {
+            "format": "date-time",
+            "type": "string",
+            "example": "2024-01-15T12:00:00Z"
+          },
+          "periodDescription": {
+            "type": "string",
+            "example": "string"
+          },
+          "periodAbbreviation": {
+            "type": "string",
+            "example": "string"
+          },
+          "archiveInd": {
+            "type": "number",
+            "example": 0.0
+          }
+        },
+        "required": [
+          "id",
+          "calendarYear",
+          "quarter",
+          "beginDate",
+          "endDate",
+          "periodDescription",
+          "periodAbbreviation",
+          "archiveInd"
+        ]
+      },
+      "UnitTypeDTO": {
+        "type": "object",
+        "properties": {
+          "unitTypeCode": {
+            "type": "string",
+            "example": "string"
+          },
+          "unitTypeDescription": {
+            "type": "string",
+            "example": "string"
+          },
+          "unitTypeGroupCode": {
+            "type": "string",
+            "example": "string"
+          },
+          "unitTypeGroupDescription": {
+            "type": "string",
+            "example": "string"
+          },
+          "sortOrder": {
+            "type": "string",
+            "example": "string"
+          }
+        },
+        "required": [
+          "unitTypeCode",
+          "unitTypeDescription",
+          "unitTypeGroupCode",
+          "unitTypeGroupDescription",
+          "sortOrder"
+        ]
+      },
+      "CodeTableDto": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Code",
+            "example": "string"
+          },
+          "name": {
+            "type": "string",
+            "description": "Display Name",
+            "example": "EPA Facility"
+          }
+        },
+        "required": [
+          "code",
+          "name"
+        ]
+      },
+      "DataColumnDTO": {
+        "type": "object",
+        "properties": {
+          "columnOrder": {
+            "type": "number",
+            "example": 0.0
+          },
+          "name": {
+            "type": "string",
+            "example": "EPA Facility"
+          },
+          "alias": {
+            "type": "string",
+            "example": "string"
+          },
+          "displayName": {
+            "type": "string",
+            "example": "EPA Facility"
+          }
+        },
+        "required": [
+          "columnOrder",
+          "name",
+          "alias",
+          "displayName"
+        ]
+      },
+      "DataTableDTO": {
+        "type": "object",
+        "properties": {
+          "tableOrder": {
+            "type": "number",
+            "example": 0.0
+          },
+          "displayName": {
+            "type": "string",
+            "example": "EPA Facility"
+          },
+          "noResultsMessage": {
+            "type": "string",
+            "example": "string"
+          },
+          "columns": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataColumnDTO"
+            },
+            "example": [
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "tableOrder",
+          "displayName",
+          "noResultsMessage",
+          "columns"
+        ]
+      },
+      "DataSetDTO": {
+        "type": "object",
+        "properties": {
+          "dataSetCode": {
+            "type": "string",
+            "example": "string"
+          },
+          "groupCode": {
+            "type": "string",
+            "example": "string"
+          },
+          "displayName": {
+            "type": "string",
+            "example": "EPA Facility"
+          },
+          "noResultsMessage": {
+            "type": "string",
+            "example": "string"
+          },
+          "tables": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataTableDTO"
+            },
+            "example": [
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "dataSetCode",
+          "groupCode",
+          "displayName",
+          "noResultsMessage",
+          "tables"
+        ]
+      }
+    }
+  }
+}

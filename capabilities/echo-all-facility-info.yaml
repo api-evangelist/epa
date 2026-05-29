@@ -1,0 +1,3027 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: U.S. EPA Enforcement and Compliance History Online (ECHO) - All Data — Facility Info
+  description: 'Facility Info. 14 operations. Lead operation: Combined ECHO Download Data Service. Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - Facility Info
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys: {}
+capability:
+  consumes:
+    - type: http
+      namespace: echo-all-facility-info
+      baseUri: https://echodata.epa.gov/echo
+      description: U.S. EPA Enforcement and Compliance History Online (ECHO) - All Data — Facility Info business capability. Self-contained, no shared references.
+      resources:
+        - name: echo-rest-services-get-download
+          path: /echo_rest_services.get_download
+          operations:
+            - name: getechorestservicesgetdownload
+              method: GET
+              description: Combined ECHO Download Data Service
+              inputParameters:
+                - name: output
+                  in: query
+                  type: string
+                  required: false
+                  description: "Output Format Flag.  Enter one of the following keywords:\n- CSV = Facility results formatted as comma delimited file download (default).\n- GEOJSOND = Facility results formatted as GeoJSON feature coll"
+                - name: qid
+                  in: query
+                  type: string
+                  required: true
+                  description: Query ID Selector.  Enter the QueryID number from a previously run query.
+                - name: qcolumns
+                  in: query
+                  type: string
+                  required: false
+                  description: Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a comple
+                - name: p_pretty_print
+                  in: query
+                  type: number
+                  required: false
+                  description: Optional flag to request GeoJSON formatted results to be pretty printed.  Only provide a numeric value when the output needs to be human readable as pretty printing has a performance cost.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: echo-rest-services-get-download
+          path: /echo_rest_services.get_download
+          operations:
+            - name: postechorestservicesgetdownload
+              method: POST
+              description: Combined ECHO Download Data Service
+              inputParameters:
+                - name: output
+                  in: formData
+                  type: string
+                  required: false
+                  description: "Output Format Flag.  Enter one of the following keywords:\n- CSV = Facility results formatted as comma delimited file download (default).\n- GEOJSOND = Facility results formatted as GeoJSON feature coll"
+                - name: qid
+                  in: formData
+                  type: string
+                  required: true
+                  description: Query ID Selector.  Enter the QueryID number from a previously run query.
+                - name: qcolumns
+                  in: formData
+                  type: string
+                  required: false
+                  description: Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a comple
+                - name: p_pretty_print
+                  in: formData
+                  type: number
+                  required: false
+                  description: Optional flag to request GeoJSON formatted results to be pretty printed.  Only provide a numeric value when the output needs to be human readable as pretty printing has a performance cost.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: echo-rest-services-get-facilities
+          path: /echo_rest_services.get_facilities
+          operations:
+            - name: getechorestservicesgetfacilities
+              method: GET
+              description: Combined ECHO Facility Search Service
+              inputParameters:
+                - name: output
+                  in: query
+                  type: string
+                  required: false
+                  description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Paddi"
+                - name: p_fn
+                  in: query
+                  type: string
+                  required: false
+                  description: Facility Name Filter. Enter one or more case-insensitive facility names to filter results.  Provide multiple values as a comma-delimited list.  See p_fntype for additional modifiers.
+                - name: p_sa
+                  in: query
+                  type: string
+                  required: false
+                  description: Facility street address. Enter a complete or partial street address.
+                - name: p_sa1
+                  in: query
+                  type: string
+                  required: false
+                  description: Facility street address. Enter a complete or partial street address.   Note that p_sa1 is culmulative with p_sa.
+                - name: p_ct
+                  in: query
+                  type: string
+                  required: false
+                  description: Facility City Filter. Enter a single case-insensitive city name to filter results.
+                - name: p_co
+                  in: query
+                  type: string
+                  required: false
+                  description: Facility County Filter. Provide a single county name in combination with a state value provided via p_st.
+                - name: p_fips
+                  in: query
+                  type: string
+                  required: false
+                  description: FIPS Code Filter.  Enter a single 5-character Federal Information Processing Standards (FIPS) state + county value to restrict results.  E.g. to limit results to Kenosha County, Wisconsin, use 55059.
+                - name: p_st
+                  in: query
+                  type: string
+                  required: false
+                  description: Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list.
+                - name: p_zip
+                  in: query
+                  type: string
+                  required: false
+                  description: 5-Digit ZIP Code Filter. Provide one or more 5-digit postal zip codes to filter results.  May contain multiple comma-separated values.
+                - name: p_frs
+                  in: query
+                  type: string
+                  required: false
+                  description: Facility Registry Service ID Filter. Enter a single 12-digit FRS identifier to filter results.
+                - name: p_reg
+                  in: query
+                  type: string
+                  required: false
+                  description: EPA Region Filter. Provide a single value of 01 thru 10 to restrict results to a single EPA region.
+                - name: p_sic
+                  in: query
+                  type: string
+                  required: false
+                  description: Standard Industrial Classification (SIC) Code Filter.  Enter a single 4-digit SIC Code to filter results.  If more complex filtering is required, use p_sic2 and p_sic4.
+                - name: p_ncs
+                  in: query
+                  type: string
+                  required: false
+                  description: 'North American Industry Classification System Filter. Enter two to six digits to filter results to facilities having matching NAICS codes.  Digits less than six will match to all codes beginning with '
+                - name: p_pen
+                  in: query
+                  type: string
+                  required: false
+                  description: "Last Penality Date Qualifier Filter.  Enter one of the following:   \n- NEVER = No Penalties\n- ANY = Any Penalty\n- LEXX = Less than or equal to XX months.  Provide a number in place of XX, e.g. \"LE5\" f"
+                - name: p_c1lat
+                  in: query
+                  type: number
+                  required: false
+                  description: In decimal degrees.  Latitude of 1st corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
+                - name: p_c1lon
+                  in: query
+                  type: number
+                  required: false
+                  description: In decimal degrees.  Longitude of 1st corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
+                - name: p_c2lat
+                  in: query
+                  type: number
+                  required: false
+                  description: In decimal degrees.  Latitude of 2nd corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
+                - name: p_c2lon
+                  in: query
+                  type: number
+                  required: false
+                  description: In decimal degrees.  Longitude of 2nd corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
+                - name: p_usmex
+                  in: query
+                  type: string
+                  required: false
+                  description: US-Mexico Border Flag.  Enter Y/N to restrict searches to facilities located within 100KM of the border.
+                - name: p_sic2
+                  in: query
+                  type: string
+                  required: false
+                  description: Standard Industrial Classification (SIC) Code Filter Alternate 2. Enter a wild-card search against SIC codes.  A final wild-card is always present allowing "22" to match all SIC codes beginning with 2
+                - name: p_sic4
+                  in: query
+                  type: string
+                  required: false
+                  description: Standard Industrial Classification (SIC) Code Filter Alternate 3.  Enter the first 2, 3 or 4 SIC code digits to filter results to facilities having those code prefixes.  As this alternative does not u
+                - name: p_fa
+                  in: query
+                  type: string
+                  required: false
+                  description: Federal Agency. 1 character or 5-character values; may contain multiple comma-separated values. ALL will retrieve all facilities where the federal agency code is not null.  Use the Federal Agencies lo
+                - name: p_ff
+                  in: query
+                  type: string
+                  required: false
+                  description: Federal Facility Indicator Flag. Enter Y to restrict searches to federal facilities.
+                - name: p_act
+                  in: query
+                  type: string
+                  required: false
+                  description: Active Permits/Facilities Flag.  Provide Y or N to filter results to facilities with active permits.
+                - name: p_maj
+                  in: query
+                  type: string
+                  required: false
+                  description: Major Facility Flag.  Enter Y to restrict results to Major facilities only.
+                - name: p_mact
+                  in: query
+                  type: string
+                  required: false
+                  description: CAA Maximum Achievable Control Technology (MACT) Subpart codes (alpha ID between 1 and 7 characters) applicable to the facility.
+                - name: p_fea
+                  in: query
+                  type: string
+                  required: false
+                  description: "Formal Enforcement Actions [within / not within] specified date range indicator. The date range is determined by parameters p_fead1 and p_fead2 or by parameter p_feay.\n- W = within date range\n- N = no"
+                - name: p_feay
+                  in: query
+                  type: number
+                  required: false
+                  description: Years (1 to 5) Range.  This value is used to create a date range for Formal Enforcement Actions (FEA). Used along with p_fea (which indicates whether to look within or outside of the date range) to fi
+                - name: p_feaa
+                  in: query
+                  type: string
+                  required: false
+                  description: "Agency associated with Formal Enforcement Actions:\n- E = EPA\n- S = State\n- A = All"
+                - name: p_feac
+                  in: query
+                  type: string
+                  required: false
+                  description: Formal Enforcment Action Last Case Date Limiter Flag.  Enter a value of "Y" to additionally apply the p_feay year filter to the last formal enforcement action case date.  Use the p_fea parameter to co
+                - name: p_fea_5yr
+                  in: query
+                  type: string
+                  required: false
+                  description: A Y value identifies facilities that have had a formal enforcement action within the last 5 years.
+                - name: p_iea
+                  in: query
+                  type: string
+                  required: false
+                  description: "Informal Enforcement Actions [within / not within] specified date range.  The date range is determined by parameters p_iead1 and p_iead2 or by parameter p_ieay.\n- W = within date range\n- N = not withi"
+                - name: p_ieay
+                  in: query
+                  type: number
+                  required: false
+                  description: 'Years (1 to 5) Range.  This value is used to create a date range for Informal Enforcement Actions (IEA). Used along with p_iea (which indicates whether to look within or outside of the date range) to '
+                - name: p_ieaa
+                  in: query
+                  type: string
+                  required: false
+                  description: "Agency associated with Informal Enforcement Actions. If left blank, both agencies are included.\n- E = EPA\n- S = State"
+                - name: p_iea_5yr
+                  in: query
+                  type: string
+                  required: false
+                  description: A Y value identifies facilities that have had an informal enforcement action within the last 5 years.
+                - name: p_cs
+                  in: query
+                  type: number
+                  required: false
+                  description: "Facility Compliance Limiter.  Enter 2, 3 or 4 to limit facilities returned.\n- 2 = Facilities in noncompliance.\n- 3 = Facilities having one or more programs reporting significant noncompliance.\n- 4 = F"
+                - name: p_qiv
+                  in: query
+                  type: string
+                  required: false
+                  description: "Quarters in Noncompliance Limiter.  Enter a coded value to limit results to facilities with given quarter of noncompliance.\n- Z = Zero quarters in noncompliance.\n- GEXX = Replacing XX with a numeric v"
+                - name: p_naa
+                  in: query
+                  type: string
+                  required: false
+                  description: Non-Attainment Area Flag.  Enter a Y or N to filter for or against facilities flagged as non-attainment areas.
+                - name: p_impw
+                  in: query
+                  type: string
+                  required: false
+                  description: Discharging into Impaired Waters Flag. Enter Y to limit results to facilities with discharge to waterbodies listed as impaired in the ATTAINS database.
+                - name: p_trep
+                  in: query
+                  type: string
+                  required: false
+                  description: "Current Toxics Release Inventory (TRI) Reporter Limiter.  Enter one of the following codes to limit results.\n- CURR = Current TRI reporter.\n- NONCURR = Has reported to TRI in the past but not for the "
+                - name: p_ocr
+                  in: query
+                  type: string
+                  required: false
+                  description: "Toxics Release Inventory Pounds of On-Site Chemical Releases Limiter.  Enter a keyword to filter results.\n- Z = Zero pounds of chemical releases.\n- GT0 = More than zero pounds of chemical releases.\n- "
+                - name: p_oct
+                  in: query
+                  type: string
+                  required: false
+                  description: "Toxic Release Inventory Pounds of Off-Site Chemical Releases Limiter.  Enter a keyword to filter results.\n- Z = Zero pounds of chemical releases.\n- GT0 = More than zero pounds of chemical releases.\n- "
+                - name: p_pm
+                  in: query
+                  type: string
+                  required: false
+                  description: "Percent Minority Population Limiter.  Enter a value to restrict results to facilities with a given percentage of minority population within 3-mile radius.\n- NONE = 0%\n- GT5 = greater than 5%\n- GT10 = "
+                - name: p_pd
+                  in: query
+                  type: string
+                  required: false
+                  description: "Population Density Limiter (per sq mile). Enter a value to limit results to facilities located in area of a given population density.\n- NONE = 0 population density per square mile\n- GT100 = More than "
+                - name: p_ico
+                  in: query
+                  type: string
+                  required: false
+                  description: Indian Country Flag.  Enter a "Y" or "N" to restrict searches to facilities inside or outside Indian Country.
+                - name: p_huc
+                  in: query
+                  type: string
+                  required: false
+                  description: 2-, 4-, 6-, or 8-character watershed code. May contain multiple comma-separated values.
+                - name: p_pid
+                  in: query
+                  type: string
+                  required: false
+                  description: Nine-digit permit IDs. May contain up to 2000 comma-separated values.
+                - name: p_med
+                  in: query
+                  type: string
+                  required: false
+                  description: Filter Results by Media.- A = Air- C = CAMD (Clean Air Markets Division)- E = EIS (Emissions Inventory Systems)- G = GHG (Greenhouse Gases)- M = RMP (Risk Management Plan)- R = RCRA (Hazardous Waste)-
+                - name: p_istatute
+                  in: query
+                  type: string
+                  required: false
+                  description: For use in identifying Facilities that have an inspection performed under the entered Statute.
+                - name: p_ysl
+                  in: query
+                  type: string
+                  required: false
+                  description: "Last Facility Inspection [within / not within] Specified Date Range Indicator. The date range is determined by parameters p_idt1 and p_idt2 or by parameter p_ysly.\n- W = within date range\n- N = not wi"
+                - name: p_ysly
+                  in: query
+                  type: number
+                  required: false
+                  description: Number of years (1 to 5) since last facility inspection.  A value of 1 means that it has been inspected within the year.
+                - name: p_ysla
+                  in: query
+                  type: string
+                  required: false
+                  description: "Facility Last Inspection Code Filter.  If left blank, both agencies are included.  Enter a value to limit results:\n- E = EPA\n- S = State"
+                - name: p_qs
+                  in: query
+                  type: string
+                  required: false
+                  description: Quick Search. Allows entry for city, state, and/or zip code.
+                - name: p_sfs
+                  in: query
+                  type: string
+                  required: false
+                  description: Single Facility Search Filter.  Provide a facility name or program system identifier to limit results.  For the all data search, the FRS registry identifier is also searched.
+                - name: p_tribeid
+                  in: query
+                  type: number
+                  required: false
+                  description: Numeric code for tribe (or list of tribes).
+                - name: p_tribename
+                  in: query
+                  type: string
+                  required: false
+                  description: Tribe Name Filter.  Enter a single tribe name to filter results.
+                - name: p_tribedist
+                  in: query
+                  type: number
+                  required: false
+                  description: Proximity to tribal land limiter. Enter an amount of mile between 0 and 25 to filter results.  This parameter is only evaluated if p_tribeid is populated.
+                - name: p_wbd
+                  in: query
+                  type: string
+                  required: false
+                  description: 2-, 4-, 6-, 8-, 10-, or 12-character watershed (WBD from the USGS Watershed Boundary Dataset). May contain multiple comma-separated values.  Uses the FRS Best Pick Coordinate to obtain the WBD12 Huc v
+                - name: p_fntype
+                  in: query
+                  type: string
+                  required: false
+                  description: "Controls type of text search performed on facility name with parameter p_fn.\n- EXACT = Find facilities having the exact provided name(s).\n- BEGINS = Find facilities with names starting with the provid"
+                - name: p_icoo
+                  in: query
+                  type: string
+                  required: false
+                  description: Indian country search and/or flag.  Enter "Y" to set indian country search conditions to return any results found using p_ico, p_fac_ico or p_fac_icoo.  Otherwise only results matching all provided p_
+                - name: p_fac_icos
+                  in: query
+                  type: string
+                  required: false
+                  description: FRS tribal land spatial flag.  Enter "Y" or "N" to include or exclude facilities based on FRS tribal land spatial flag.
+                - name: p_ejscreen
+                  in: query
+                  type: string
+                  required: false
+                  description: Enter "Y" to limit facilities to Census block groups where one of more Environmental Justice indexes above 80th percentile.
+                - name: p_limit_addr
+                  in: query
+                  type: string
+                  required: false
+                  description: 'Limit Address Search Flag.  Enter Y to restrict facility searches to native data source only.  '
+                - name: p_lat
+                  in: query
+                  type: number
+                  required: false
+                  description: Latitude location in decimal degrees.
+                - name: p_long
+                  in: query
+                  type: number
+                  required: false
+                  description: Longitude location in decimal degrees.
+                - name: p_radius
+                  in: query
+                  type: number
+                  required: false
+                  description: Spatial Search Radius.  Enter a radius up to 100 miles in which to spatially search for facilities.
+                - name: p_ejscreen_over80cnt
+                  in: query
+                  type: string
+                  required: false
+                  description: The number of Environmenmt Justice Indicators above the 80th percentile.  Valid values are 1 through 11.
+                - name: p_agoo
+                  in: query
+                  type: string
+                  required: false
+                  description: Indicates whether to AND or OR the Owner/Operator parameter (p_owop) and the federal agency code (p_fa) parameters.
+                - name: p_neiu
+                  in: query
+                  type: string
+                  required: false
+                  description: p_neiu
+                - name: queryset
+                  in: query
+                  type: number
+                  required: false
+                  description: Query Limiter.  Enter a value to limit the number of records returned for each query. Value cannot exceed 70,000.
+                - name: responseset
+                  in: query
+                  type: number
+                  required: false
+                  description: Response Set Limiter. Enter a value to limit the number of records per page. Value cannot exceed 1,000.
+                - name: tablelist
+                  in: query
+                  type: string
+                  required: false
+                  description: Table List Flag. Enter a Y to display the first page of facility results.
+                - name: maplist
+                  in: query
+                  type: string
+                  required: false
+                  description: Map List Flag.  Provide a Y to return mappable coordinates representing the full geographic extent of the queryset (all facilities that met the selection criteria).
+                - name: summarylist
+                  in: query
+                  type: string
+                  required: false
+                  description: Summary List Flag.  Enter a Y to return a list of summary statistics based on the parameters submitted to the query service.
+                - name: callback
+                  in: query
+                  type: string
+                  required: false
+                  description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
+                - name: qcolumns
+                  in: query
+                  type: string
+                  required: false
+                  description: Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a comple
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: echo-rest-services-get-facilities
+          path: /echo_rest_services.get_facilities
+          operations:
+            - name: postechorestservicesgetfacilities
+              method: POST
+              description: Combined ECHO Facility Search Service
+              inputParameters:
+                - name: output
+                  in: formData
+                  type: string
+                  required: false
+                  description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Paddi"
+                - name: p_fn
+                  in: formData
+                  type: string
+                  required: false
+                  description: Facility Name Filter. Enter one or more case-insensitive facility names to filter results.  Provide multiple values as a comma-delimited list.  See p_fntype for additional modifiers.
+                - name: p_sa
+                  in: formData
+                  type: string
+                  required: false
+                  description: Facility street address. Enter a complete or partial street address.
+                - name: p_sa1
+                  in: formData
+                  type: string
+                  required: false
+                  description: Facility street address. Enter a complete or partial street address.   Note that p_sa1 is culmulative with p_sa.
+                - name: p_ct
+                  in: formData
+                  type: string
+                  required: false
+                  description: Facility City Filter. Enter a single case-insensitive city name to filter results.
+                - name: p_co
+                  in: formData
+                  type: string
+                  required: false
+                  description: Facility County Filter. Provide a single county name in combination with a state value provided via p_st.
+                - name: p_fips
+                  in: formData
+                  type: string
+                  required: false
+                  description: FIPS Code Filter.  Enter a single 5-character Federal Information Processing Standards (FIPS) state + county value to restrict results.  E.g. to limit results to Kenosha County, Wisconsin, use 55059.
+                - name: p_st
+                  in: formData
+                  type: string
+                  required: false
+                  description: Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list.
+                - name: p_zip
+                  in: formData
+                  type: string
+                  required: false
+                  description: 5-Digit ZIP Code Filter. Provide one or more 5-digit postal zip codes to filter results.  May contain multiple comma-separated values.
+                - name: p_frs
+                  in: formData
+                  type: string
+                  required: false
+                  description: Facility Registry Service ID Filter. Enter a single 12-digit FRS identifier to filter results.
+                - name: p_reg
+                  in: formData
+                  type: string
+                  required: false
+                  description: EPA Region Filter. Provide a single value of 01 thru 10 to restrict results to a single EPA region.
+                - name: p_sic
+                  in: formData
+                  type: string
+                  required: false
+                  description: Standard Industrial Classification (SIC) Code Filter.  Enter a single 4-digit SIC Code to filter results.  If more complex filtering is required, use p_sic2 and p_sic4.
+                - name: p_ncs
+                  in: formData
+                  type: string
+                  required: false
+                  description: 'North American Industry Classification System Filter. Enter two to six digits to filter results to facilities having matching NAICS codes.  Digits less than six will match to all codes beginning with '
+                - name: p_pen
+                  in: formData
+                  type: string
+                  required: false
+                  description: "Last Penality Date Qualifier Filter.  Enter one of the following:   \n- NEVER = No Penalties\n- ANY = Any Penalty\n- LEXX = Less than or equal to XX months.  Provide a number in place of XX, e.g. \"LE5\" f"
+                - name: p_c1lat
+                  in: formData
+                  type: number
+                  required: false
+                  description: In decimal degrees.  Latitude of 1st corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
+                - name: p_c1lon
+                  in: formData
+                  type: number
+                  required: false
+                  description: In decimal degrees.  Longitude of 1st corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
+                - name: p_c2lat
+                  in: formData
+                  type: number
+                  required: false
+                  description: In decimal degrees.  Latitude of 2nd corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
+                - name: p_c2lon
+                  in: formData
+                  type: number
+                  required: false
+                  description: In decimal degrees.  Longitude of 2nd corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
+                - name: p_usmex
+                  in: formData
+                  type: string
+                  required: false
+                  description: US-Mexico Border Flag.  Enter Y/N to restrict searches to facilities located within 100KM of the border.
+                - name: p_sic2
+                  in: formData
+                  type: string
+                  required: false
+                  description: Standard Industrial Classification (SIC) Code Filter Alternate 2. Enter a wild-card search against SIC codes.  A final wild-card is always present allowing "22" to match all SIC codes beginning with 2
+                - name: p_sic4
+                  in: formData
+                  type: string
+                  required: false
+                  description: Standard Industrial Classification (SIC) Code Filter Alternate 3.  Enter the first 2, 3 or 4 SIC code digits to filter results to facilities having those code prefixes.  As this alternative does not u
+                - name: p_fa
+                  in: formData
+                  type: string
+                  required: false
+                  description: Federal Agency. 1 character or 5-character values; may contain multiple comma-separated values. ALL will retrieve all facilities where the federal agency code is not null.  Use the Federal Agencies lo
+                - name: p_ff
+                  in: formData
+                  type: string
+                  required: false
+                  description: Federal Facility Indicator Flag. Enter Y to restrict searches to federal facilities.
+                - name: p_act
+                  in: formData
+                  type: string
+                  required: false
+                  description: Active Permits/Facilities Flag.  Provide Y or N to filter results to facilities with active permits.
+                - name: p_maj
+                  in: formData
+                  type: string
+                  required: false
+                  description: Major Facility Flag.  Enter Y to restrict results to Major facilities only.
+                - name: p_mact
+                  in: formData
+                  type: string
+                  required: false
+                  description: CAA Maximum Achievable Control Technology (MACT) Subpart codes (alpha ID between 1 and 7 characters) applicable to the facility.
+                - name: p_fea
+                  in: formData
+                  type: string
+                  required: false
+                  description: "Formal Enforcement Actions [within / not within] specified date range indicator. The date range is determined by parameters p_fead1 and p_fead2 or by parameter p_feay.\n- W = within date range\n- N = no"
+                - name: p_feay
+                  in: formData
+                  type: number
+                  required: false
+                  description: Years (1 to 5) Range.  This value is used to create a date range for Formal Enforcement Actions (FEA). Used along with p_fea (which indicates whether to look within or outside of the date range) to fi
+                - name: p_feaa
+                  in: formData
+                  type: string
+                  required: false
+                  description: "Agency associated with Formal Enforcement Actions:\n- E = EPA\n- S = State\n- A = All"
+                - name: p_feac
+                  in: formData
+                  type: string
+                  required: false
+                  description: Formal Enforcment Action Last Case Date Limiter Flag.  Enter a value of "Y" to additionally apply the p_feay year filter to the last formal enforcement action case date.  Use the p_fea parameter to co
+                - name: p_fea_5yr
+                  in: formData
+                  type: string
+                  required: false
+                  description: A Y value identifies facilities that have had a formal enforcement action within the last 5 years.
+                - name: p_iea
+                  in: formData
+                  type: string
+                  required: false
+                  description: "Informal Enforcement Actions [within / not within] specified date range.  The date range is determined by parameters p_iead1 and p_iead2 or by parameter p_ieay.\n- W = within date range\n- N = not withi"
+                - name: p_ieay
+                  in: formData
+                  type: number
+                  required: false
+                  description: 'Years (1 to 5) Range.  This value is used to create a date range for Informal Enforcement Actions (IEA). Used along with p_iea (which indicates whether to look within or outside of the date range) to '
+                - name: p_ieaa
+                  in: formData
+                  type: string
+                  required: false
+                  description: "Agency associated with Informal Enforcement Actions. If left blank, both agencies are included.\n- E = EPA\n- S = State"
+                - name: p_iea_5yr
+                  in: formData
+                  type: string
+                  required: false
+                  description: A Y value identifies facilities that have had an informal enforcement action within the last 5 years.
+                - name: p_cs
+                  in: formData
+                  type: number
+                  required: false
+                  description: "Facility Compliance Limiter.  Enter 2, 3 or 4 to limit facilities returned.\n- 2 = Facilities in noncompliance.\n- 3 = Facilities having one or more programs reporting significant noncompliance.\n- 4 = F"
+                - name: p_qiv
+                  in: formData
+                  type: string
+                  required: false
+                  description: "Quarters in Noncompliance Limiter.  Enter a coded value to limit results to facilities with given quarter of noncompliance.\n- Z = Zero quarters in noncompliance.\n- GEXX = Replacing XX with a numeric v"
+                - name: p_naa
+                  in: formData
+                  type: string
+                  required: false
+                  description: Non-Attainment Area Flag.  Enter a Y or N to filter for or against facilities flagged as non-attainment areas.
+                - name: p_impw
+                  in: formData
+                  type: string
+                  required: false
+                  description: Discharging into Impaired Waters Flag. Enter Y to limit results to facilities with discharge to waterbodies listed as impaired in the ATTAINS database.
+                - name: p_trep
+                  in: formData
+                  type: string
+                  required: false
+                  description: "Current Toxics Release Inventory (TRI) Reporter Limiter.  Enter one of the following codes to limit results.\n- CURR = Current TRI reporter.\n- NONCURR = Has reported to TRI in the past but not for the "
+                - name: p_ocr
+                  in: formData
+                  type: string
+                  required: false
+                  description: "Toxics Release Inventory Pounds of On-Site Chemical Releases Limiter.  Enter a keyword to filter results.\n- Z = Zero pounds of chemical releases.\n- GT0 = More than zero pounds of chemical releases.\n- "
+                - name: p_oct
+                  in: formData
+                  type: string
+                  required: false
+                  description: "Toxic Release Inventory Pounds of Off-Site Chemical Releases Limiter.  Enter a keyword to filter results.\n- Z = Zero pounds of chemical releases.\n- GT0 = More than zero pounds of chemical releases.\n- "
+                - name: p_pm
+                  in: formData
+                  type: string
+                  required: false
+                  description: "Percent Minority Population Limiter.  Enter a value to restrict results to facilities with a given percentage of minority population within 3-mile radius.\n- NONE = 0%\n- GT5 = greater than 5%\n- GT10 = "
+                - name: p_pd
+                  in: formData
+                  type: string
+                  required: false
+                  description: "Population Density Limiter (per sq mile). Enter a value to limit results to facilities located in area of a given population density.\n- NONE = 0 population density per square mile\n- GT100 = More than "
+                - name: p_ico
+                  in: formData
+                  type: string
+                  required: false
+                  description: Indian Country Flag.  Enter a "Y" or "N" to restrict searches to facilities inside or outside Indian Country.
+                - name: p_huc
+                  in: formData
+                  type: string
+                  required: false
+                  description: 2-, 4-, 6-, or 8-character watershed code. May contain multiple comma-separated values.
+                - name: p_pid
+                  in: formData
+                  type: string
+                  required: false
+                  description: Nine-digit permit IDs. May contain up to 2000 comma-separated values.
+                - name: p_med
+                  in: formData
+                  type: string
+                  required: false
+                  description: Filter Results by Media.- A = Air- C = CAMD (Clean Air Markets Division)- E = EIS (Emissions Inventory Systems)- G = GHG (Greenhouse Gases)- M = RMP (Risk Management Plan)- R = RCRA (Hazardous Waste)-
+                - name: p_istatute
+                  in: formData
+                  type: string
+                  required: false
+                  description: For use in identifying Facilities that have an inspection performed under the entered Statute.
+                - name: p_ysl
+                  in: formData
+                  type: string
+                  required: false
+                  description: "Last Facility Inspection [within / not within] Specified Date Range Indicator. The date range is determined by parameters p_idt1 and p_idt2 or by parameter p_ysly.\n- W = within date range\n- N = not wi"
+                - name: p_ysly
+                  in: formData
+                  type: number
+                  required: false
+                  description: Number of years (1 to 5) since last facility inspection.  A value of 1 means that it has been inspected within the year.
+                - name: p_ysla
+                  in: formData
+                  type: string
+                  required: false
+                  description: "Facility Last Inspection Code Filter.  If left blank, both agencies are included.  Enter a value to limit results:\n- E = EPA\n- S = State"
+                - name: p_qs
+                  in: formData
+                  type: string
+                  required: false
+                  description: Quick Search. Allows entry for city, state, and/or zip code.
+                - name: p_sfs
+                  in: formData
+                  type: string
+                  required: false
+                  description: Single Facility Search Filter.  Provide a facility name or program system identifier to limit results.  For the all data search, the FRS registry identifier is also searched.
+                - name: p_tribeid
+                  in: formData
+                  type: number
+                  required: false
+                  description: Numeric code for tribe (or list of tribes).
+                - name: p_tribename
+                  in: formData
+                  type: string
+                  required: false
+                  description: Tribe Name Filter.  Enter a single tribe name to filter results.
+                - name: p_tribedist
+                  in: formData
+                  type: number
+                  required: false
+                  description: Proximity to tribal land limiter. Enter an amount of mile between 0 and 25 to filter results.  This parameter is only evaluated if p_tribeid is populated.
+                - name: p_wbd
+                  in: formData
+                  type: string
+                  required: false
+                  description: 2-, 4-, 6-, 8-, 10-, or 12-character watershed (WBD from the USGS Watershed Boundary Dataset). May contain multiple comma-separated values.  Uses the FRS Best Pick Coordinate to obtain the WBD12 Huc v
+                - name: p_fntype
+                  in: formData
+                  type: string
+                  required: false
+                  description: "Controls type of text search performed on facility name with parameter p_fn.\n- EXACT = Find facilities having the exact provided name(s).\n- BEGINS = Find facilities with names starting with the provid"
+                - name: p_icoo
+                  in: formData
+                  type: string
+                  required: false
+                  description: Indian country search and/or flag.  Enter "Y" to set indian country search conditions to return any results found using p_ico, p_fac_ico or p_fac_icoo.  Otherwise only results matching all provided p_
+                - name: p_fac_icos
+                  in: formData
+                  type: string
+                  required: false
+                  description: FRS tribal land spatial flag.  Enter "Y" or "N" to include or exclude facilities based on FRS tribal land spatial flag.
+                - name: p_ejscreen
+                  in: formData
+                  type: string
+                  required: false
+                  description: Enter "Y" to limit facilities to Census block groups where one of more Environmental Justice indexes above 80th percentile.
+                - name: p_limit_addr
+                  in: formData
+                  type: string
+                  required: false
+                  description: 'Limit Address Search Flag.  Enter Y to restrict facility searches to native data source only.  '
+                - name: p_lat
+                  in: formData
+                  type: number
+                  required: false
+                  description: Latitude location in decimal degrees.
+                - name: p_long
+                  in: formData
+                  type: number
+                  required: false
+                  description: Longitude location in decimal degrees.
+                - name: p_radius
+                  in: formData
+                  type: number
+                  required: false
+                  description: Spatial Search Radius.  Enter a radius up to 100 miles in which to spatially search for facilities.
+                - name: p_ejscreen_over80cnt
+                  in: formData
+                  type: string
+                  required: false
+                  description: The number of Environmenmt Justice Indicators above the 80th percentile.  Valid values are 1 through 11.
+                - name: p_agoo
+                  in: formData
+                  type: string
+                  required: false
+                  description: Indicates whether to AND or OR the Owner/Operator parameter (p_owop) and the federal agency code (p_fa) parameters.
+                - name: p_neiu
+                  in: formData
+                  type: string
+                  required: false
+                  description: p_neiu
+                - name: queryset
+                  in: formData
+                  type: number
+                  required: false
+                  description: Query Limiter.  Enter a value to limit the number of records returned for each query. Value cannot exceed 70,000.
+                - name: responseset
+                  in: formData
+                  type: number
+                  required: false
+                  description: Response Set Limiter. Enter a value to limit the number of records per page. Value cannot exceed 1,000.
+                - name: tablelist
+                  in: formData
+                  type: string
+                  required: false
+                  description: Table List Flag. Enter a Y to display the first page of facility results.
+                - name: maplist
+                  in: formData
+                  type: string
+                  required: false
+                  description: Map List Flag.  Provide a Y to return mappable coordinates representing the full geographic extent of the queryset (all facilities that met the selection criteria).
+                - name: summarylist
+                  in: formData
+                  type: string
+                  required: false
+                  description: Summary List Flag.  Enter a Y to return a list of summary statistics based on the parameters submitted to the query service.
+                - name: callback
+                  in: formData
+                  type: string
+                  required: false
+                  description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
+                - name: qcolumns
+                  in: formData
+                  type: string
+                  required: false
+                  description: Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a comple
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: echo-rest-services-get-facility-info
+          path: /echo_rest_services.get_facility_info
+          operations:
+            - name: getechorestservicesgetfacilityinfo
+              method: GET
+              description: Combined ECHO Facility Enhanced Search Service
+              inputParameters:
+                - name: output
+                  in: query
+                  type: string
+                  required: false
+                  description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Paddi"
+                - name: p_fn
+                  in: query
+                  type: string
+                  required: false
+                  description: Facility Name Filter. Enter one or more case-insensitive facility names to filter results.  Provide multiple values as a comma-delimited list.  See p_fntype for additional modifiers.
+                - name: p_sa
+                  in: query
+                  type: string
+                  required: false
+                  description: Facility street address. Enter a complete or partial street address.
+                - name: p_sa1
+                  in: query
+                  type: string
+                  required: false
+                  description: Facility street address. Enter a complete or partial street address.   Note that p_sa1 is culmulative with p_sa.
+                - name: p_ct
+                  in: query
+                  type: string
+                  required: false
+                  description: Facility City Filter. Enter a single case-insensitive city name to filter results.
+                - name: p_co
+                  in: query
+                  type: string
+                  required: false
+                  description: Facility County Filter. Provide a single county name in combination with a state value provided via p_st.
+                - name: p_fips
+                  in: query
+                  type: string
+                  required: false
+                  description: FIPS Code Filter.  Enter a single 5-character Federal Information Processing Standards (FIPS) state + county value to restrict results.  E.g. to limit results to Kenosha County, Wisconsin, use 55059.
+                - name: p_st
+                  in: query
+                  type: string
+                  required: false
+                  description: Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list.
+                - name: p_zip
+                  in: query
+                  type: string
+                  required: false
+                  description: 5-Digit ZIP Code Filter. Provide one or more 5-digit postal zip codes to filter results.  May contain multiple comma-separated values.
+                - name: p_frs
+                  in: query
+                  type: string
+                  required: false
+                  description: Facility Registry Service ID Filter. Enter a single 12-digit FRS identifier to filter results.
+                - name: p_reg
+                  in: query
+                  type: string
+                  required: false
+                  description: EPA Region Filter. Provide a single value of 01 thru 10 to restrict results to a single EPA region.
+                - name: p_sic
+                  in: query
+                  type: string
+                  required: false
+                  description: Standard Industrial Classification (SIC) Code Filter.  Enter a single 4-digit SIC Code to filter results.  If more complex filtering is required, use p_sic2 and p_sic4.
+                - name: p_ncs
+                  in: query
+                  type: string
+                  required: false
+                  description: 'North American Industry Classification System Filter. Enter two to six digits to filter results to facilities having matching NAICS codes.  Digits less than six will match to all codes beginning with '
+                - name: p_pen
+                  in: query
+                  type: string
+                  required: false
+                  description: "Last Penality Date Qualifier Filter.  Enter one of the following:   \n- NEVER = No Penalties\n- ANY = Any Penalty\n- LEXX = Less than or equal to XX months.  Provide a number in place of XX, e.g. \"LE5\" f"
+                - name: xmin
+                  in: query
+                  type: number
+                  required: false
+                  description: Minimum longitude value in decimal degrees.
+                - name: ymin
+                  in: query
+                  type: number
+                  required: false
+                  description: Minimum latitude value in decimal degrees.
+                - name: xmax
+                  in: query
+                  type: number
+                  required: false
+                  description: Maximum longitude value in decimal degrees.
+                - name: ymax
+                  in: query
+                  type: number
+                  required: false
+                  description: Maximum latitude value in decimal degrees.
+                - name: p_usmex
+                  in: query
+                  type: string
+                  required: false
+                  description: US-Mexico Border Flag.  Enter Y/N to restrict searches to facilities located within 100KM of the border.
+                - name: p_sic2
+                  in: query
+                  type: string
+                  required: false
+                  description: Standard Industrial Classification (SIC) Code Filter Alternate 2. Enter a wild-card search against SIC codes.  A final wild-card is always present allowing "22" to match all SIC codes beginning with 2
+                - name: p_sic4
+                  in: query
+                  type: string
+                  required: false
+                  description: Standard Industrial Classification (SIC) Code Filter Alternate 3.  Enter the first 2, 3 or 4 SIC code digits to filter results to facilities having those code prefixes.  As this alternative does not u
+                - name: p_fa
+                  in: query
+                  type: string
+                  required: false
+                  description: Federal Agency. 1 character or 5-character values; may contain multiple comma-separated values. ALL will retrieve all facilities where the federal agency code is not null.  Use the Federal Agencies lo
+                - name: p_ff
+                  in: query
+                  type: string
+                  required: false
+                  description: Federal Facility Indicator Flag. Enter Y to restrict searches to federal facilities.
+                - name: p_act
+                  in: query
+                  type: string
+                  required: false
+                  description: Active Permits/Facilities Flag.  Provide Y or N to filter results to facilities with active permits.
+                - name: p_maj
+                  in: query
+                  type: string
+                  required: false
+                  description: Major Facility Flag.  Enter Y to restrict results to Major facilities only.
+                - name: p_mact
+                  in: query
+                  type: string
+                  required: false
+                  description: CAA Maximum Achievable Control Technology (MACT) Subpart codes (alpha ID between 1 and 7 characters) applicable to the facility.
+                - name: p_fea
+                  in: query
+                  type: string
+                  required: false
+                  description: "Formal Enforcement Actions [within / not within] specified date range indicator. The date range is determined by parameters p_fead1 and p_fead2 or by parameter p_feay.\n- W = within date range\n- N = no"
+                - name: p_feay
+                  in: query
+                  type: number
+                  required: false
+                  description: Years (1 to 5) Range.  This value is used to create a date range for Formal Enforcement Actions (FEA). Used along with p_fea (which indicates whether to look within or outside of the date range) to fi
+                - name: p_feaa
+                  in: query
+                  type: string
+                  required: false
+                  description: "Agency associated with Formal Enforcement Actions:\n- E = EPA\n- S = State\n- A = All"
+                - name: p_feac
+                  in: query
+                  type: string
+                  required: false
+                  description: Formal Enforcment Action Last Case Date Limiter Flag.  Enter a value of "Y" to additionally apply the p_feay year filter to the last formal enforcement action case date.  Use the p_fea parameter to co
+                - name: p_feac_5yr
+                  in: query
+                  type: string
+                  required: false
+                  description: p_feac_5yr
+                - name: p_iea
+                  in: query
+                  type: string
+                  required: false
+                  description: "Informal Enforcement Actions [within / not within] specified date range.  The date range is determined by parameters p_iead1 and p_iead2 or by parameter p_ieay.\n- W = within date range\n- N = not withi"
+                - name: p_ieay
+                  in: query
+                  type: number
+                  required: false
+                  description: 'Years (1 to 5) Range.  This value is used to create a date range for Informal Enforcement Actions (IEA). Used along with p_iea (which indicates whether to look within or outside of the date range) to '
+                - name: p_ieaa
+                  in: query
+                  type: string
+                  required: false
+                  description: "Agency associated with Informal Enforcement Actions. If left blank, both agencies are included.\n- E = EPA\n- S = State"
+                - name: p_iea_5yr
+                  in: query
+                  type: string
+                  required: false
+                  description: A Y value identifies facilities that have had an informal enforcement action within the last 5 years.
+                - name: p_cs
+                  in: query
+                  type: number
+                  required: false
+                  description: "Facility Compliance Limiter.  Enter 2, 3 or 4 to limit facilities returned.\n- 2 = Facilities in noncompliance.\n- 3 = Facilities having one or more programs reporting significant noncompliance.\n- 4 = F"
+                - name: p_qiv
+                  in: query
+                  type: string
+                  required: false
+                  description: "Quarters in Noncompliance Limiter.  Enter a coded value to limit results to facilities with given quarter of noncompliance.\n- Z = Zero quarters in noncompliance.\n- GEXX = Replacing XX with a numeric v"
+                - name: p_naa
+                  in: query
+                  type: string
+                  required: false
+                  description: Non-Attainment Area Flag.  Enter a Y or N to filter for or against facilities flagged as non-attainment areas.
+                - name: p_impw
+                  in: query
+                  type: string
+                  required: false
+                  description: Discharging into Impaired Waters Flag. Enter Y to limit results to facilities with discharge to waterbodies listed as impaired in the ATTAINS database.
+                - name: p_trep
+                  in: query
+                  type: string
+                  required: false
+                  description: "Current Toxics Release Inventory (TRI) Reporter Limiter.  Enter one of the following codes to limit results.\n- CURR = Current TRI reporter.\n- NONCURR = Has reported to TRI in the past but not for the "
+                - name: p_ocr
+                  in: query
+                  type: string
+                  required: false
+                  description: "Toxics Release Inventory Pounds of On-Site Chemical Releases Limiter.  Enter a keyword to filter results.\n- Z = Zero pounds of chemical releases.\n- GT0 = More than zero pounds of chemical releases.\n- "
+                - name: p_oct
+                  in: query
+                  type: string
+                  required: false
+                  description: "Toxic Release Inventory Pounds of Off-Site Chemical Releases Limiter.  Enter a keyword to filter results.\n- Z = Zero pounds of chemical releases.\n- GT0 = More than zero pounds of chemical releases.\n- "
+                - name: p_pm
+                  in: query
+                  type: string
+                  required: false
+                  description: "Percent Minority Population Limiter.  Enter a value to restrict results to facilities with a given percentage of minority population within 3-mile radius.\n- NONE = 0%\n- GT5 = greater than 5%\n- GT10 = "
+                - name: p_pd
+                  in: query
+                  type: string
+                  required: false
+                  description: "Population Density Limiter (per sq mile). Enter a value to limit results to facilities located in area of a given population density.\n- NONE = 0 population density per square mile\n- GT100 = More than "
+                - name: p_ico
+                  in: query
+                  type: string
+                  required: false
+                  description: Indian Country Flag.  Enter a "Y" or "N" to restrict searches to facilities inside or outside Indian Country.
+                - name: p_huc
+                  in: query
+                  type: string
+                  required: false
+                  description: 2-, 4-, 6-, or 8-character watershed code. May contain multiple comma-separated values.
+                - name: p_pid
+                  in: query
+                  type: string
+                  required: false
+                  description: Nine-digit permit IDs. May contain up to 2000 comma-separated values.
+                - name: p_med
+                  in: query
+                  type: string
+                  required: false
+                  description: Filter Results by Media.- A = Air- C = CAMD (Clean Air Markets Division)- E = EIS (Emissions Inventory Systems)- G = GHG (Greenhouse Gases)- M = RMP (Risk Management Plan)- R = RCRA (Hazardous Waste)-
+                - name: p_istatute
+                  in: query
+                  type: string
+                  required: false
+                  description: For use in identifying Facilities that have an inspection performed under the entered Statute.
+                - name: p_ysl
+                  in: query
+                  type: string
+                  required: false
+                  description: "Last Facility Inspection [within / not within] Specified Date Range Indicator. The date range is determined by parameters p_idt1 and p_idt2 or by parameter p_ysly.\n- W = within date range\n- N = not wi"
+                - name: p_ysly
+                  in: query
+                  type: number
+                  required: false
+                  description: Number of years (1 to 5) since last facility inspection.  A value of 1 means that it has been inspected within the year.
+                - name: p_ysla
+                  in: query
+                  type: string
+                  required: false
+                  description: "Facility Last Inspection Code Filter.  If left blank, both agencies are included.  Enter a value to limit results:\n- E = EPA\n- S = State"
+                - name: p_qs
+                  in: query
+                  type: string
+                  required: false
+                  description: Quick Search. Allows entry for city, state, and/or zip code.
+                - name: p_sfs
+                  in: query
+                  type: string
+                  required: false
+                  description: Single Facility Search Filter.  Provide a facility name or program system identifier to limit results.  For the all data search, the FRS registry identifier is also searched.
+                - name: p_tribeid
+                  in: query
+                  type: number
+                  required: false
+                  description: Numeric code for tribe (or list of tribes).
+                - name: p_tribename
+                  in: query
+                  type: string
+                  required: false
+                  description: Tribe Name Filter.  Enter a single tribe name to filter results.
+                - name: p_tribedist
+                  in: query
+                  type: number
+                  required: false
+                  description: Proximity to tribal land limiter. Enter an amount of mile between 0 and 25 to filter results.  This parameter is only evaluated if p_tribeid is populated.
+                - name: p_wbd
+                  in: query
+                  type: string
+                  required: false
+                  description: 2-, 4-, 6-, 8-, 10-, or 12-character watershed (WBD from the USGS Watershed Boundary Dataset). May contain multiple comma-separated values.  Uses the FRS Best Pick Coordinate to obtain the WBD12 Huc v
+                - name: p_fntype
+                  in: query
+                  type: string
+                  required: false
+                  description: "Controls type of text search performed on facility name with parameter p_fn.\n- EXACT = Find facilities having the exact provided name(s).\n- BEGINS = Find facilities with names starting with the provid"
+                - name: p_icoo
+                  in: query
+                  type: string
+                  required: false
+                  description: Indian country search and/or flag.  Enter "Y" to set indian country search conditions to return any results found using p_ico, p_fac_ico or p_fac_icoo.  Otherwise only results matching all provided p_
+                - name: p_fac_icos
+                  in: query
+                  type: string
+                  required: false
+                  description: FRS tribal land spatial flag.  Enter "Y" or "N" to include or exclude facilities based on FRS tribal land spatial flag.
+                - name: p_ejscreen
+                  in: query
+                  type: string
+                  required: false
+                  description: Enter "Y" to limit facilities to Census block groups where one of more Environmental Justice indexes above 80th percentile.
+                - name: p_limit_addr
+                  in: query
+                  type: string
+                  required: false
+                  description: 'Limit Address Search Flag.  Enter Y to restrict facility searches to native data source only.  '
+                - name: p_lat
+                  in: query
+                  type: number
+                  required: false
+                  description: Latitude location in decimal degrees.
+                - name: p_long
+                  in: query
+                  type: number
+                  required: false
+                  description: Longitude location in decimal degrees.
+                - name: p_radius
+                  in: query
+                  type: number
+                  required: false
+                  description: Spatial Search Radius.  Enter a radius up to 100 miles in which to spatially search for facilities.
+                - name: p_ejscreen_over80cnt
+                  in: query
+                  type: string
+                  required: false
+                  description: The number of Environmenmt Justice Indicators above the 80th percentile.  Valid values are 1 through 11.
+                - name: p_agoo
+                  in: query
+                  type: string
+                  required: false
+                  description: Indicates whether to AND or OR the Owner/Operator parameter (p_owop) and the federal agency code (p_fa) parameters.
+                - name: p_neiu
+                  in: query
+                  type: string
+                  required: false
+                  description: p_neiu
+                - name: responseset
+                  in: query
+                  type: number
+                  required: false
+                  description: Response Set Limiter. Enter a value to limit the number of records per page. Value cannot exceed 1,000.
+                - name: callback
+                  in: query
+                  type: string
+                  required: false
+                  description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
+                - name: qcolumns
+                  in: query
+                  type: string
+                  required: false
+                  description: Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a comple
+                - name: p_pretty_print
+                  in: query
+                  type: number
+                  required: false
+                  description: Optional flag to request GeoJSON formatted results to be pretty printed.  Only provide a numeric value when the output needs to be human readable as pretty printing has a performance cost.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: echo-rest-services-get-facility-info
+          path: /echo_rest_services.get_facility_info
+          operations:
+            - name: postechorestservicesgetfacilityinfo
+              method: POST
+              description: Combined ECHO Facility Enhanced Search Service
+              inputParameters:
+                - name: output
+                  in: formData
+                  type: string
+                  required: false
+                  description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Paddi"
+                - name: p_fn
+                  in: formData
+                  type: string
+                  required: false
+                  description: Facility Name Filter. Enter one or more case-insensitive facility names to filter results.  Provide multiple values as a comma-delimited list.  See p_fntype for additional modifiers.
+                - name: p_sa
+                  in: formData
+                  type: string
+                  required: false
+                  description: Facility street address. Enter a complete or partial street address.
+                - name: p_sa1
+                  in: formData
+                  type: string
+                  required: false
+                  description: Facility street address. Enter a complete or partial street address.   Note that p_sa1 is culmulative with p_sa.
+                - name: p_ct
+                  in: formData
+                  type: string
+                  required: false
+                  description: Facility City Filter. Enter a single case-insensitive city name to filter results.
+                - name: p_co
+                  in: formData
+                  type: string
+                  required: false
+                  description: Facility County Filter. Provide a single county name in combination with a state value provided via p_st.
+                - name: p_fips
+                  in: formData
+                  type: string
+                  required: false
+                  description: FIPS Code Filter.  Enter a single 5-character Federal Information Processing Standards (FIPS) state + county value to restrict results.  E.g. to limit results to Kenosha County, Wisconsin, use 55059.
+                - name: p_st
+                  in: formData
+                  type: string
+                  required: false
+                  description: Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list.
+                - name: p_zip
+                  in: formData
+                  type: string
+                  required: false
+                  description: 5-Digit ZIP Code Filter. Provide one or more 5-digit postal zip codes to filter results.  May contain multiple comma-separated values.
+                - name: p_frs
+                  in: formData
+                  type: string
+                  required: false
+                  description: Facility Registry Service ID Filter. Enter a single 12-digit FRS identifier to filter results.
+                - name: p_reg
+                  in: formData
+                  type: string
+                  required: false
+                  description: EPA Region Filter. Provide a single value of 01 thru 10 to restrict results to a single EPA region.
+                - name: p_sic
+                  in: formData
+                  type: string
+                  required: false
+                  description: Standard Industrial Classification (SIC) Code Filter.  Enter a single 4-digit SIC Code to filter results.  If more complex filtering is required, use p_sic2 and p_sic4.
+                - name: p_ncs
+                  in: formData
+                  type: string
+                  required: false
+                  description: 'North American Industry Classification System Filter. Enter two to six digits to filter results to facilities having matching NAICS codes.  Digits less than six will match to all codes beginning with '
+                - name: p_pen
+                  in: formData
+                  type: string
+                  required: false
+                  description: "Last Penality Date Qualifier Filter.  Enter one of the following:   \n- NEVER = No Penalties\n- ANY = Any Penalty\n- LEXX = Less than or equal to XX months.  Provide a number in place of XX, e.g. \"LE5\" f"
+                - name: xmin
+                  in: formData
+                  type: number
+                  required: false
+                  description: Minimum longitude value in decimal degrees.
+                - name: ymin
+                  in: formData
+                  type: number
+                  required: false
+                  description: Minimum latitude value in decimal degrees.
+                - name: xmax
+                  in: formData
+                  type: number
+                  required: false
+                  description: Maximum longitude value in decimal degrees.
+                - name: ymax
+                  in: formData
+                  type: number
+                  required: false
+                  description: Maximum latitude value in decimal degrees.
+                - name: p_usmex
+                  in: formData
+                  type: string
+                  required: false
+                  description: US-Mexico Border Flag.  Enter Y/N to restrict searches to facilities located within 100KM of the border.
+                - name: p_sic2
+                  in: formData
+                  type: string
+                  required: false
+                  description: Standard Industrial Classification (SIC) Code Filter Alternate 2. Enter a wild-card search against SIC codes.  A final wild-card is always present allowing "22" to match all SIC codes beginning with 2
+                - name: p_sic4
+                  in: formData
+                  type: string
+                  required: false
+                  description: Standard Industrial Classification (SIC) Code Filter Alternate 3.  Enter the first 2, 3 or 4 SIC code digits to filter results to facilities having those code prefixes.  As this alternative does not u
+                - name: p_fa
+                  in: formData
+                  type: string
+                  required: false
+                  description: Federal Agency. 1 character or 5-character values; may contain multiple comma-separated values. ALL will retrieve all facilities where the federal agency code is not null.  Use the Federal Agencies lo
+                - name: p_ff
+                  in: formData
+                  type: string
+                  required: false
+                  description: Federal Facility Indicator Flag. Enter Y to restrict searches to federal facilities.
+                - name: p_act
+                  in: formData
+                  type: string
+                  required: false
+                  description: Active Permits/Facilities Flag.  Provide Y or N to filter results to facilities with active permits.
+                - name: p_maj
+                  in: formData
+                  type: string
+                  required: false
+                  description: Major Facility Flag.  Enter Y to restrict results to Major facilities only.
+                - name: p_mact
+                  in: formData
+                  type: string
+                  required: false
+                  description: CAA Maximum Achievable Control Technology (MACT) Subpart codes (alpha ID between 1 and 7 characters) applicable to the facility.
+                - name: p_fea
+                  in: formData
+                  type: string
+                  required: false
+                  description: "Formal Enforcement Actions [within / not within] specified date range indicator. The date range is determined by parameters p_fead1 and p_fead2 or by parameter p_feay.\n- W = within date range\n- N = no"
+                - name: p_feay
+                  in: formData
+                  type: number
+                  required: false
+                  description: Years (1 to 5) Range.  This value is used to create a date range for Formal Enforcement Actions (FEA). Used along with p_fea (which indicates whether to look within or outside of the date range) to fi
+                - name: p_feaa
+                  in: formData
+                  type: string
+                  required: false
+                  description: "Agency associated with Formal Enforcement Actions:\n- E = EPA\n- S = State\n- A = All"
+                - name: p_feac
+                  in: formData
+                  type: string
+                  required: false
+                  description: Formal Enforcment Action Last Case Date Limiter Flag.  Enter a value of "Y" to additionally apply the p_feay year filter to the last formal enforcement action case date.  Use the p_fea parameter to co
+                - name: p_feac_5yr
+                  in: formData
+                  type: string
+                  required: false
+                  description: p_feac_5yr
+                - name: p_iea
+                  in: formData
+                  type: string
+                  required: false
+                  description: "Informal Enforcement Actions [within / not within] specified date range.  The date range is determined by parameters p_iead1 and p_iead2 or by parameter p_ieay.\n- W = within date range\n- N = not withi"
+                - name: p_ieay
+                  in: formData
+                  type: number
+                  required: false
+                  description: 'Years (1 to 5) Range.  This value is used to create a date range for Informal Enforcement Actions (IEA). Used along with p_iea (which indicates whether to look within or outside of the date range) to '
+                - name: p_ieaa
+                  in: formData
+                  type: string
+                  required: false
+                  description: "Agency associated with Informal Enforcement Actions. If left blank, both agencies are included.\n- E = EPA\n- S = State"
+                - name: p_iea_5yr
+                  in: formData
+                  type: string
+                  required: false
+                  description: A Y value identifies facilities that have had an informal enforcement action within the last 5 years.
+                - name: p_cs
+                  in: formData
+                  type: number
+                  required: false
+                  description: "Facility Compliance Limiter.  Enter 2, 3 or 4 to limit facilities returned.\n- 2 = Facilities in noncompliance.\n- 3 = Facilities having one or more programs reporting significant noncompliance.\n- 4 = F"
+                - name: p_qiv
+                  in: formData
+                  type: string
+                  required: false
+                  description: "Quarters in Noncompliance Limiter.  Enter a coded value to limit results to facilities with given quarter of noncompliance.\n- Z = Zero quarters in noncompliance.\n- GEXX = Replacing XX with a numeric v"
+                - name: p_naa
+                  in: formData
+                  type: string
+                  required: false
+                  description: Non-Attainment Area Flag.  Enter a Y or N to filter for or against facilities flagged as non-attainment areas.
+                - name: p_impw
+                  in: formData
+                  type: string
+                  required: false
+                  description: Discharging into Impaired Waters Flag. Enter Y to limit results to facilities with discharge to waterbodies listed as impaired in the ATTAINS database.
+                - name: p_trep
+                  in: formData
+                  type: string
+                  required: false
+                  description: "Current Toxics Release Inventory (TRI) Reporter Limiter.  Enter one of the following codes to limit results.\n- CURR = Current TRI reporter.\n- NONCURR = Has reported to TRI in the past but not for the "
+                - name: p_ocr
+                  in: formData
+                  type: string
+                  required: false
+                  description: "Toxics Release Inventory Pounds of On-Site Chemical Releases Limiter.  Enter a keyword to filter results.\n- Z = Zero pounds of chemical releases.\n- GT0 = More than zero pounds of chemical releases.\n- "
+                - name: p_oct
+                  in: formData
+                  type: string
+                  required: false
+                  description: "Toxic Release Inventory Pounds of Off-Site Chemical Releases Limiter.  Enter a keyword to filter results.\n- Z = Zero pounds of chemical releases.\n- GT0 = More than zero pounds of chemical releases.\n- "
+                - name: p_pm
+                  in: formData
+                  type: string
+                  required: false
+                  description: "Percent Minority Population Limiter.  Enter a value to restrict results to facilities with a given percentage of minority population within 3-mile radius.\n- NONE = 0%\n- GT5 = greater than 5%\n- GT10 = "
+                - name: p_pd
+                  in: formData
+                  type: string
+                  required: false
+                  description: "Population Density Limiter (per sq mile). Enter a value to limit results to facilities located in area of a given population density.\n- NONE = 0 population density per square mile\n- GT100 = More than "
+                - name: p_ico
+                  in: formData
+                  type: string
+                  required: false
+                  description: Indian Country Flag.  Enter a "Y" or "N" to restrict searches to facilities inside or outside Indian Country.
+                - name: p_huc
+                  in: formData
+                  type: string
+                  required: false
+                  description: 2-, 4-, 6-, or 8-character watershed code. May contain multiple comma-separated values.
+                - name: p_pid
+                  in: formData
+                  type: string
+                  required: false
+                  description: Nine-digit permit IDs. May contain up to 2000 comma-separated values.
+                - name: p_med
+                  in: formData
+                  type: string
+                  required: false
+                  description: Filter Results by Media.- A = Air- C = CAMD (Clean Air Markets Division)- E = EIS (Emissions Inventory Systems)- G = GHG (Greenhouse Gases)- M = RMP (Risk Management Plan)- R = RCRA (Hazardous Waste)-
+                - name: p_istatute
+                  in: formData
+                  type: string
+                  required: false
+                  description: For use in identifying Facilities that have an inspection performed under the entered Statute.
+                - name: p_ysl
+                  in: formData
+                  type: string
+                  required: false
+                  description: "Last Facility Inspection [within / not within] Specified Date Range Indicator. The date range is determined by parameters p_idt1 and p_idt2 or by parameter p_ysly.\n- W = within date range\n- N = not wi"
+                - name: p_ysly
+                  in: formData
+                  type: number
+                  required: false
+                  description: Number of years (1 to 5) since last facility inspection.  A value of 1 means that it has been inspected within the year.
+                - name: p_ysla
+                  in: formData
+                  type: string
+                  required: false
+                  description: "Facility Last Inspection Code Filter.  If left blank, both agencies are included.  Enter a value to limit results:\n- E = EPA\n- S = State"
+                - name: p_qs
+                  in: formData
+                  type: string
+                  required: false
+                  description: Quick Search. Allows entry for city, state, and/or zip code.
+                - name: p_sfs
+                  in: formData
+                  type: string
+                  required: false
+                  description: Single Facility Search Filter.  Provide a facility name or program system identifier to limit results.  For the all data search, the FRS registry identifier is also searched.
+                - name: p_tribeid
+                  in: formData
+                  type: number
+                  required: false
+                  description: Numeric code for tribe (or list of tribes).
+                - name: p_tribename
+                  in: formData
+                  type: string
+                  required: false
+                  description: Tribe Name Filter.  Enter a single tribe name to filter results.
+                - name: p_tribedist
+                  in: formData
+                  type: number
+                  required: false
+                  description: Proximity to tribal land limiter. Enter an amount of mile between 0 and 25 to filter results.  This parameter is only evaluated if p_tribeid is populated.
+                - name: p_wbd
+                  in: formData
+                  type: string
+                  required: false
+                  description: 2-, 4-, 6-, 8-, 10-, or 12-character watershed (WBD from the USGS Watershed Boundary Dataset). May contain multiple comma-separated values.  Uses the FRS Best Pick Coordinate to obtain the WBD12 Huc v
+                - name: p_fntype
+                  in: formData
+                  type: string
+                  required: false
+                  description: "Controls type of text search performed on facility name with parameter p_fn.\n- EXACT = Find facilities having the exact provided name(s).\n- BEGINS = Find facilities with names starting with the provid"
+                - name: p_icoo
+                  in: formData
+                  type: string
+                  required: false
+                  description: Indian country search and/or flag.  Enter "Y" to set indian country search conditions to return any results found using p_ico, p_fac_ico or p_fac_icoo.  Otherwise only results matching all provided p_
+                - name: p_fac_icos
+                  in: formData
+                  type: string
+                  required: false
+                  description: FRS tribal land spatial flag.  Enter "Y" or "N" to include or exclude facilities based on FRS tribal land spatial flag.
+                - name: p_ejscreen
+                  in: formData
+                  type: string
+                  required: false
+                  description: Enter "Y" to limit facilities to Census block groups where one of more Environmental Justice indexes above 80th percentile.
+                - name: p_limit_addr
+                  in: formData
+                  type: string
+                  required: false
+                  description: 'Limit Address Search Flag.  Enter Y to restrict facility searches to native data source only.  '
+                - name: p_lat
+                  in: formData
+                  type: number
+                  required: false
+                  description: Latitude location in decimal degrees.
+                - name: p_long
+                  in: formData
+                  type: number
+                  required: false
+                  description: Longitude location in decimal degrees.
+                - name: p_radius
+                  in: formData
+                  type: number
+                  required: false
+                  description: Spatial Search Radius.  Enter a radius up to 100 miles in which to spatially search for facilities.
+                - name: p_ejscreen_over80cnt
+                  in: formData
+                  type: string
+                  required: false
+                  description: The number of Environmenmt Justice Indicators above the 80th percentile.  Valid values are 1 through 11.
+                - name: p_agoo
+                  in: formData
+                  type: string
+                  required: false
+                  description: Indicates whether to AND or OR the Owner/Operator parameter (p_owop) and the federal agency code (p_fa) parameters.
+                - name: p_neiu
+                  in: formData
+                  type: string
+                  required: false
+                  description: p_neiu
+                - name: responseset
+                  in: formData
+                  type: number
+                  required: false
+                  description: Response Set Limiter. Enter a value to limit the number of records per page. Value cannot exceed 1,000.
+                - name: callback
+                  in: formData
+                  type: string
+                  required: false
+                  description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
+                - name: qcolumns
+                  in: formData
+                  type: string
+                  required: false
+                  description: Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a comple
+                - name: p_pretty_print
+                  in: formData
+                  type: number
+                  required: false
+                  description: Optional flag to request GeoJSON formatted results to be pretty printed.  Only provide a numeric value when the output needs to be human readable as pretty printing has a performance cost.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: echo-rest-services-get-geojson
+          path: /echo_rest_services.get_geojson
+          operations:
+            - name: getechorestservicesgetgeojson
+              method: GET
+              description: Combined ECHO GeoJSON Service
+              inputParameters:
+                - name: output
+                  in: query
+                  type: string
+                  required: false
+                  description: "Output Format Flag.  Enter one of the following keywords:\n- GEOJSON = Facility results formatted as GeoJSON feature collection (default).\n- GEOJSONP = Facility results formatted as GeoJSON feature col"
+                - name: qid
+                  in: query
+                  type: string
+                  required: true
+                  description: Query ID Selector.  Enter the QueryID number from a previously run query.
+                - name: callback
+                  in: query
+                  type: string
+                  required: false
+                  description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
+                - name: newsort
+                  in: query
+                  type: number
+                  required: false
+                  description: Output Sort Column.  Enter the number of the column on which the data will be sorted. If unpopulated results will sort on the first column.
+                - name: descending
+                  in: query
+                  type: string
+                  required: false
+                  description: Output Sort Column Descending Flag.  Enter Y to column identified in the newsort parameter descending.  Enter N to use ascending sort order. Used only when newsort parameter is populated.
+                - name: qcolumns
+                  in: query
+                  type: string
+                  required: false
+                  description: Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a comple
+                - name: p_pretty_print
+                  in: query
+                  type: number
+                  required: false
+                  description: Optional flag to request GeoJSON formatted results to be pretty printed.  Only provide a numeric value when the output needs to be human readable as pretty printing has a performance cost.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: echo-rest-services-get-geojson
+          path: /echo_rest_services.get_geojson
+          operations:
+            - name: postechorestservicesgetgeojson
+              method: POST
+              description: Combined ECHO GeoJSON Service
+              inputParameters:
+                - name: output
+                  in: formData
+                  type: string
+                  required: false
+                  description: "Output Format Flag.  Enter one of the following keywords:\n- GEOJSON = Facility results formatted as GeoJSON feature collection (default).\n- GEOJSONP = Facility results formatted as GeoJSON feature col"
+                - name: qid
+                  in: formData
+                  type: string
+                  required: true
+                  description: Query ID Selector.  Enter the QueryID number from a previously run query.
+                - name: callback
+                  in: formData
+                  type: string
+                  required: false
+                  description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
+                - name: newsort
+                  in: formData
+                  type: number
+                  required: false
+                  description: Output Sort Column.  Enter the number of the column on which the data will be sorted. If unpopulated results will sort on the first column.
+                - name: descending
+                  in: formData
+                  type: string
+                  required: false
+                  description: Output Sort Column Descending Flag.  Enter Y to column identified in the newsort parameter descending.  Enter N to use ascending sort order. Used only when newsort parameter is populated.
+                - name: qcolumns
+                  in: formData
+                  type: string
+                  required: false
+                  description: Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a comple
+                - name: p_pretty_print
+                  in: formData
+                  type: number
+                  required: false
+                  description: Optional flag to request GeoJSON formatted results to be pretty printed.  Only provide a numeric value when the output needs to be human readable as pretty printing has a performance cost.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: echo-rest-services-get-info-clusters
+          path: /echo_rest_services.get_info_clusters
+          operations:
+            - name: getechorestservicesgetinfoclusters
+              method: GET
+              description: Combined ECHO Info Clusters Service
+              inputParameters:
+                - name: output
+                  in: query
+                  type: string
+                  required: false
+                  description: "Output Format Flag.  Enter one of the following keywords:\n- CSV = Facility results formatted as comma delimited file download (default).\n- GEOJSOND = Facility results formatted as GeoJSON feature coll"
+                - name: p_qid
+                  in: query
+                  type: string
+                  required: true
+                  description: Query ID Selector.  Enter the QueryID number from a previously run query.
+                - name: p_pretty_print
+                  in: query
+                  type: number
+                  required: false
+                  description: Optional flag to request GeoJSON formatted results to be pretty printed.  Only provide a numeric value when the output needs to be human readable as pretty printing has a performance cost.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: echo-rest-services-get-info-clusters
+          path: /echo_rest_services.get_info_clusters
+          operations:
+            - name: postechorestservicesgetinfoclusters
+              method: POST
+              description: Combined ECHO Info Clusters Service
+              inputParameters:
+                - name: output
+                  in: formData
+                  type: string
+                  required: false
+                  description: "Output Format Flag.  Enter one of the following keywords:\n- CSV = Facility results formatted as comma delimited file download (default).\n- GEOJSOND = Facility results formatted as GeoJSON feature coll"
+                - name: p_qid
+                  in: formData
+                  type: string
+                  required: true
+                  description: Query ID Selector.  Enter the QueryID number from a previously run query.
+                - name: p_pretty_print
+                  in: formData
+                  type: number
+                  required: false
+                  description: Optional flag to request GeoJSON formatted results to be pretty printed.  Only provide a numeric value when the output needs to be human readable as pretty printing has a performance cost.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: echo-rest-services-get-map
+          path: /echo_rest_services.get_map
+          operations:
+            - name: getechorestservicesgetmap
+              method: GET
+              description: Combined ECHO Map Service
+              inputParameters:
+                - name: output
+                  in: query
+                  type: string
+                  required: false
+                  description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Paddi"
+                - name: qid
+                  in: query
+                  type: string
+                  required: true
+                  description: Query ID Selector.  Enter the QueryID number from a previously run query.
+                - name: callback
+                  in: query
+                  type: string
+                  required: false
+                  description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
+                - name: tablelist
+                  in: query
+                  type: string
+                  required: false
+                  description: Table List Flag. Enter a Y to display the first page of facility results.
+                - name: c1_lat
+                  in: query
+                  type: number
+                  required: false
+                  description: Latitude of 1st corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
+                - name: c1_long
+                  in: query
+                  type: number
+                  required: false
+                  description: Longitude of 1st corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
+                - name: c2_lat
+                  in: query
+                  type: number
+                  required: false
+                  description: Latitude of 2nd corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
+                - name: c2_long
+                  in: query
+                  type: number
+                  required: false
+                  description: Longitude of 2nd corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
+                - name: p_id
+                  in: query
+                  type: string
+                  required: true
+                  description: Identifier for the service.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: echo-rest-services-get-map
+          path: /echo_rest_services.get_map
+          operations:
+            - name: postechorestservicesgetmap
+              method: POST
+              description: Combined ECHO Map Service
+              inputParameters:
+                - name: output
+                  in: formData
+                  type: string
+                  required: false
+                  description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Paddi"
+                - name: qid
+                  in: formData
+                  type: string
+                  required: true
+                  description: Query ID Selector.  Enter the QueryID number from a previously run query.
+                - name: callback
+                  in: formData
+                  type: string
+                  required: false
+                  description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
+                - name: tablelist
+                  in: formData
+                  type: string
+                  required: false
+                  description: Table List Flag. Enter a Y to display the first page of facility results.
+                - name: c1_lat
+                  in: formData
+                  type: number
+                  required: false
+                  description: Latitude of 1st corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
+                - name: c1_long
+                  in: formData
+                  type: number
+                  required: false
+                  description: Longitude of 1st corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
+                - name: c2_lat
+                  in: formData
+                  type: number
+                  required: false
+                  description: Latitude of 2nd corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
+                - name: c2_long
+                  in: formData
+                  type: number
+                  required: false
+                  description: Longitude of 2nd corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided.
+                - name: p_id
+                  in: formData
+                  type: string
+                  required: true
+                  description: Identifier for the service.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: echo-rest-services-get-qid
+          path: /echo_rest_services.get_qid
+          operations:
+            - name: getechorestservicesgetqid
+              method: GET
+              description: Combined ECHO Paginated Results Service
+              inputParameters:
+                - name: output
+                  in: query
+                  type: string
+                  required: false
+                  description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Paddi"
+                - name: qid
+                  in: query
+                  type: string
+                  required: true
+                  description: Query ID Selector.  Enter the QueryID number from a previously run query.
+                - name: pageno
+                  in: query
+                  type: number
+                  required: false
+                  description: Indicates the number of the page to display. It is used only when the results are paginated.
+                - name: callback
+                  in: query
+                  type: string
+                  required: false
+                  description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
+                - name: newsort
+                  in: query
+                  type: number
+                  required: false
+                  description: Output Sort Column.  Enter the number of the column on which the data will be sorted. If unpopulated results will sort on the first column.
+                - name: descending
+                  in: query
+                  type: string
+                  required: false
+                  description: Output Sort Column Descending Flag.  Enter Y to column identified in the newsort parameter descending.  Enter N to use ascending sort order. Used only when newsort parameter is populated.
+                - name: qcolumns
+                  in: query
+                  type: string
+                  required: false
+                  description: Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a comple
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: echo-rest-services-get-qid
+          path: /echo_rest_services.get_qid
+          operations:
+            - name: postechorestservicesgetqid
+              method: POST
+              description: Combined ECHO Paginated Results Service
+              inputParameters:
+                - name: output
+                  in: formData
+                  type: string
+                  required: false
+                  description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Paddi"
+                - name: qid
+                  in: formData
+                  type: string
+                  required: true
+                  description: Query ID Selector.  Enter the QueryID number from a previously run query.
+                - name: pageno
+                  in: formData
+                  type: number
+                  required: false
+                  description: Indicates the number of the page to display. It is used only when the results are paginated.
+                - name: callback
+                  in: formData
+                  type: string
+                  required: false
+                  description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
+                - name: newsort
+                  in: formData
+                  type: number
+                  required: false
+                  description: Output Sort Column.  Enter the number of the column on which the data will be sorted. If unpopulated results will sort on the first column.
+                - name: descending
+                  in: formData
+                  type: string
+                  required: false
+                  description: Output Sort Column Descending Flag.  Enter Y to column identified in the newsort parameter descending.  Enter N to use ascending sort order. Used only when newsort parameter is populated.
+                - name: qcolumns
+                  in: formData
+                  type: string
+                  required: false
+                  description: Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a comple
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: echo-all-facility-info-rest
+      port: 8080
+      description: REST adapter for U.S. EPA Enforcement and Compliance History Online (ECHO) - All Data — Facility Info. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/echo_rest_services.get_download
+          name: echo-rest-services-get-download
+          description: REST surface for Combined ECHO Download Data Service.
+          operations:
+            - method: GET
+              name: getechorestservicesgetdownload
+              description: Combined ECHO Download Data Service
+              call: echo-all-facility-info.getechorestservicesgetdownload
+              with:
+                output: rest.output
+                qid: rest.qid
+                qcolumns: rest.qcolumns
+                p_pretty_print: rest.p_pretty_print
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/echo_rest_services.get_download
+          name: echo-rest-services-get-download
+          description: REST surface for Combined ECHO Download Data Service.
+          operations:
+            - method: POST
+              name: postechorestservicesgetdownload
+              description: Combined ECHO Download Data Service
+              call: echo-all-facility-info.postechorestservicesgetdownload
+              with:
+                output: rest.output
+                qid: rest.qid
+                qcolumns: rest.qcolumns
+                p_pretty_print: rest.p_pretty_print
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/echo_rest_services.get_facilities
+          name: echo-rest-services-get-facilities
+          description: REST surface for Combined ECHO Facility Search Service.
+          operations:
+            - method: GET
+              name: getechorestservicesgetfacilities
+              description: Combined ECHO Facility Search Service
+              call: echo-all-facility-info.getechorestservicesgetfacilities
+              with:
+                output: rest.output
+                p_fn: rest.p_fn
+                p_sa: rest.p_sa
+                p_sa1: rest.p_sa1
+                p_ct: rest.p_ct
+                p_co: rest.p_co
+                p_fips: rest.p_fips
+                p_st: rest.p_st
+                p_zip: rest.p_zip
+                p_frs: rest.p_frs
+                p_reg: rest.p_reg
+                p_sic: rest.p_sic
+                p_ncs: rest.p_ncs
+                p_pen: rest.p_pen
+                p_c1lat: rest.p_c1lat
+                p_c1lon: rest.p_c1lon
+                p_c2lat: rest.p_c2lat
+                p_c2lon: rest.p_c2lon
+                p_usmex: rest.p_usmex
+                p_sic2: rest.p_sic2
+                p_sic4: rest.p_sic4
+                p_fa: rest.p_fa
+                p_ff: rest.p_ff
+                p_act: rest.p_act
+                p_maj: rest.p_maj
+                p_mact: rest.p_mact
+                p_fea: rest.p_fea
+                p_feay: rest.p_feay
+                p_feaa: rest.p_feaa
+                p_feac: rest.p_feac
+                p_fea_5yr: rest.p_fea_5yr
+                p_iea: rest.p_iea
+                p_ieay: rest.p_ieay
+                p_ieaa: rest.p_ieaa
+                p_iea_5yr: rest.p_iea_5yr
+                p_cs: rest.p_cs
+                p_qiv: rest.p_qiv
+                p_naa: rest.p_naa
+                p_impw: rest.p_impw
+                p_trep: rest.p_trep
+                p_ocr: rest.p_ocr
+                p_oct: rest.p_oct
+                p_pm: rest.p_pm
+                p_pd: rest.p_pd
+                p_ico: rest.p_ico
+                p_huc: rest.p_huc
+                p_pid: rest.p_pid
+                p_med: rest.p_med
+                p_istatute: rest.p_istatute
+                p_ysl: rest.p_ysl
+                p_ysly: rest.p_ysly
+                p_ysla: rest.p_ysla
+                p_qs: rest.p_qs
+                p_sfs: rest.p_sfs
+                p_tribeid: rest.p_tribeid
+                p_tribename: rest.p_tribename
+                p_tribedist: rest.p_tribedist
+                p_wbd: rest.p_wbd
+                p_fntype: rest.p_fntype
+                p_icoo: rest.p_icoo
+                p_fac_icos: rest.p_fac_icos
+                p_ejscreen: rest.p_ejscreen
+                p_limit_addr: rest.p_limit_addr
+                p_lat: rest.p_lat
+                p_long: rest.p_long
+                p_radius: rest.p_radius
+                p_ejscreen_over80cnt: rest.p_ejscreen_over80cnt
+                p_agoo: rest.p_agoo
+                p_neiu: rest.p_neiu
+                queryset: rest.queryset
+                responseset: rest.responseset
+                tablelist: rest.tablelist
+                maplist: rest.maplist
+                summarylist: rest.summarylist
+                callback: rest.callback
+                qcolumns: rest.qcolumns
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/echo_rest_services.get_facilities
+          name: echo-rest-services-get-facilities
+          description: REST surface for Combined ECHO Facility Search Service.
+          operations:
+            - method: POST
+              name: postechorestservicesgetfacilities
+              description: Combined ECHO Facility Search Service
+              call: echo-all-facility-info.postechorestservicesgetfacilities
+              with:
+                output: rest.output
+                p_fn: rest.p_fn
+                p_sa: rest.p_sa
+                p_sa1: rest.p_sa1
+                p_ct: rest.p_ct
+                p_co: rest.p_co
+                p_fips: rest.p_fips
+                p_st: rest.p_st
+                p_zip: rest.p_zip
+                p_frs: rest.p_frs
+                p_reg: rest.p_reg
+                p_sic: rest.p_sic
+                p_ncs: rest.p_ncs
+                p_pen: rest.p_pen
+                p_c1lat: rest.p_c1lat
+                p_c1lon: rest.p_c1lon
+                p_c2lat: rest.p_c2lat
+                p_c2lon: rest.p_c2lon
+                p_usmex: rest.p_usmex
+                p_sic2: rest.p_sic2
+                p_sic4: rest.p_sic4
+                p_fa: rest.p_fa
+                p_ff: rest.p_ff
+                p_act: rest.p_act
+                p_maj: rest.p_maj
+                p_mact: rest.p_mact
+                p_fea: rest.p_fea
+                p_feay: rest.p_feay
+                p_feaa: rest.p_feaa
+                p_feac: rest.p_feac
+                p_fea_5yr: rest.p_fea_5yr
+                p_iea: rest.p_iea
+                p_ieay: rest.p_ieay
+                p_ieaa: rest.p_ieaa
+                p_iea_5yr: rest.p_iea_5yr
+                p_cs: rest.p_cs
+                p_qiv: rest.p_qiv
+                p_naa: rest.p_naa
+                p_impw: rest.p_impw
+                p_trep: rest.p_trep
+                p_ocr: rest.p_ocr
+                p_oct: rest.p_oct
+                p_pm: rest.p_pm
+                p_pd: rest.p_pd
+                p_ico: rest.p_ico
+                p_huc: rest.p_huc
+                p_pid: rest.p_pid
+                p_med: rest.p_med
+                p_istatute: rest.p_istatute
+                p_ysl: rest.p_ysl
+                p_ysly: rest.p_ysly
+                p_ysla: rest.p_ysla
+                p_qs: rest.p_qs
+                p_sfs: rest.p_sfs
+                p_tribeid: rest.p_tribeid
+                p_tribename: rest.p_tribename
+                p_tribedist: rest.p_tribedist
+                p_wbd: rest.p_wbd
+                p_fntype: rest.p_fntype
+                p_icoo: rest.p_icoo
+                p_fac_icos: rest.p_fac_icos
+                p_ejscreen: rest.p_ejscreen
+                p_limit_addr: rest.p_limit_addr
+                p_lat: rest.p_lat
+                p_long: rest.p_long
+                p_radius: rest.p_radius
+                p_ejscreen_over80cnt: rest.p_ejscreen_over80cnt
+                p_agoo: rest.p_agoo
+                p_neiu: rest.p_neiu
+                queryset: rest.queryset
+                responseset: rest.responseset
+                tablelist: rest.tablelist
+                maplist: rest.maplist
+                summarylist: rest.summarylist
+                callback: rest.callback
+                qcolumns: rest.qcolumns
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/echo_rest_services.get_facility_info
+          name: echo-rest-services-get-facility-info
+          description: REST surface for Combined ECHO Facility Enhanced Search Service.
+          operations:
+            - method: GET
+              name: getechorestservicesgetfacilityinfo
+              description: Combined ECHO Facility Enhanced Search Service
+              call: echo-all-facility-info.getechorestservicesgetfacilityinfo
+              with:
+                output: rest.output
+                p_fn: rest.p_fn
+                p_sa: rest.p_sa
+                p_sa1: rest.p_sa1
+                p_ct: rest.p_ct
+                p_co: rest.p_co
+                p_fips: rest.p_fips
+                p_st: rest.p_st
+                p_zip: rest.p_zip
+                p_frs: rest.p_frs
+                p_reg: rest.p_reg
+                p_sic: rest.p_sic
+                p_ncs: rest.p_ncs
+                p_pen: rest.p_pen
+                xmin: rest.xmin
+                ymin: rest.ymin
+                xmax: rest.xmax
+                ymax: rest.ymax
+                p_usmex: rest.p_usmex
+                p_sic2: rest.p_sic2
+                p_sic4: rest.p_sic4
+                p_fa: rest.p_fa
+                p_ff: rest.p_ff
+                p_act: rest.p_act
+                p_maj: rest.p_maj
+                p_mact: rest.p_mact
+                p_fea: rest.p_fea
+                p_feay: rest.p_feay
+                p_feaa: rest.p_feaa
+                p_feac: rest.p_feac
+                p_feac_5yr: rest.p_feac_5yr
+                p_iea: rest.p_iea
+                p_ieay: rest.p_ieay
+                p_ieaa: rest.p_ieaa
+                p_iea_5yr: rest.p_iea_5yr
+                p_cs: rest.p_cs
+                p_qiv: rest.p_qiv
+                p_naa: rest.p_naa
+                p_impw: rest.p_impw
+                p_trep: rest.p_trep
+                p_ocr: rest.p_ocr
+                p_oct: rest.p_oct
+                p_pm: rest.p_pm
+                p_pd: rest.p_pd
+                p_ico: rest.p_ico
+                p_huc: rest.p_huc
+                p_pid: rest.p_pid
+                p_med: rest.p_med
+                p_istatute: rest.p_istatute
+                p_ysl: rest.p_ysl
+                p_ysly: rest.p_ysly
+                p_ysla: rest.p_ysla
+                p_qs: rest.p_qs
+                p_sfs: rest.p_sfs
+                p_tribeid: rest.p_tribeid
+                p_tribename: rest.p_tribename
+                p_tribedist: rest.p_tribedist
+                p_wbd: rest.p_wbd
+                p_fntype: rest.p_fntype
+                p_icoo: rest.p_icoo
+                p_fac_icos: rest.p_fac_icos
+                p_ejscreen: rest.p_ejscreen
+                p_limit_addr: rest.p_limit_addr
+                p_lat: rest.p_lat
+                p_long: rest.p_long
+                p_radius: rest.p_radius
+                p_ejscreen_over80cnt: rest.p_ejscreen_over80cnt
+                p_agoo: rest.p_agoo
+                p_neiu: rest.p_neiu
+                responseset: rest.responseset
+                callback: rest.callback
+                qcolumns: rest.qcolumns
+                p_pretty_print: rest.p_pretty_print
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/echo_rest_services.get_facility_info
+          name: echo-rest-services-get-facility-info
+          description: REST surface for Combined ECHO Facility Enhanced Search Service.
+          operations:
+            - method: POST
+              name: postechorestservicesgetfacilityinfo
+              description: Combined ECHO Facility Enhanced Search Service
+              call: echo-all-facility-info.postechorestservicesgetfacilityinfo
+              with:
+                output: rest.output
+                p_fn: rest.p_fn
+                p_sa: rest.p_sa
+                p_sa1: rest.p_sa1
+                p_ct: rest.p_ct
+                p_co: rest.p_co
+                p_fips: rest.p_fips
+                p_st: rest.p_st
+                p_zip: rest.p_zip
+                p_frs: rest.p_frs
+                p_reg: rest.p_reg
+                p_sic: rest.p_sic
+                p_ncs: rest.p_ncs
+                p_pen: rest.p_pen
+                xmin: rest.xmin
+                ymin: rest.ymin
+                xmax: rest.xmax
+                ymax: rest.ymax
+                p_usmex: rest.p_usmex
+                p_sic2: rest.p_sic2
+                p_sic4: rest.p_sic4
+                p_fa: rest.p_fa
+                p_ff: rest.p_ff
+                p_act: rest.p_act
+                p_maj: rest.p_maj
+                p_mact: rest.p_mact
+                p_fea: rest.p_fea
+                p_feay: rest.p_feay
+                p_feaa: rest.p_feaa
+                p_feac: rest.p_feac
+                p_feac_5yr: rest.p_feac_5yr
+                p_iea: rest.p_iea
+                p_ieay: rest.p_ieay
+                p_ieaa: rest.p_ieaa
+                p_iea_5yr: rest.p_iea_5yr
+                p_cs: rest.p_cs
+                p_qiv: rest.p_qiv
+                p_naa: rest.p_naa
+                p_impw: rest.p_impw
+                p_trep: rest.p_trep
+                p_ocr: rest.p_ocr
+                p_oct: rest.p_oct
+                p_pm: rest.p_pm
+                p_pd: rest.p_pd
+                p_ico: rest.p_ico
+                p_huc: rest.p_huc
+                p_pid: rest.p_pid
+                p_med: rest.p_med
+                p_istatute: rest.p_istatute
+                p_ysl: rest.p_ysl
+                p_ysly: rest.p_ysly
+                p_ysla: rest.p_ysla
+                p_qs: rest.p_qs
+                p_sfs: rest.p_sfs
+                p_tribeid: rest.p_tribeid
+                p_tribename: rest.p_tribename
+                p_tribedist: rest.p_tribedist
+                p_wbd: rest.p_wbd
+                p_fntype: rest.p_fntype
+                p_icoo: rest.p_icoo
+                p_fac_icos: rest.p_fac_icos
+                p_ejscreen: rest.p_ejscreen
+                p_limit_addr: rest.p_limit_addr
+                p_lat: rest.p_lat
+                p_long: rest.p_long
+                p_radius: rest.p_radius
+                p_ejscreen_over80cnt: rest.p_ejscreen_over80cnt
+                p_agoo: rest.p_agoo
+                p_neiu: rest.p_neiu
+                responseset: rest.responseset
+                callback: rest.callback
+                qcolumns: rest.qcolumns
+                p_pretty_print: rest.p_pretty_print
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/echo_rest_services.get_geojson
+          name: echo-rest-services-get-geojson
+          description: REST surface for Combined ECHO GeoJSON Service.
+          operations:
+            - method: GET
+              name: getechorestservicesgetgeojson
+              description: Combined ECHO GeoJSON Service
+              call: echo-all-facility-info.getechorestservicesgetgeojson
+              with:
+                output: rest.output
+                qid: rest.qid
+                callback: rest.callback
+                newsort: rest.newsort
+                descending: rest.descending
+                qcolumns: rest.qcolumns
+                p_pretty_print: rest.p_pretty_print
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/echo_rest_services.get_geojson
+          name: echo-rest-services-get-geojson
+          description: REST surface for Combined ECHO GeoJSON Service.
+          operations:
+            - method: POST
+              name: postechorestservicesgetgeojson
+              description: Combined ECHO GeoJSON Service
+              call: echo-all-facility-info.postechorestservicesgetgeojson
+              with:
+                output: rest.output
+                qid: rest.qid
+                callback: rest.callback
+                newsort: rest.newsort
+                descending: rest.descending
+                qcolumns: rest.qcolumns
+                p_pretty_print: rest.p_pretty_print
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/echo_rest_services.get_info_clusters
+          name: echo-rest-services-get-info-clusters
+          description: REST surface for Combined ECHO Info Clusters Service.
+          operations:
+            - method: GET
+              name: getechorestservicesgetinfoclusters
+              description: Combined ECHO Info Clusters Service
+              call: echo-all-facility-info.getechorestservicesgetinfoclusters
+              with:
+                output: rest.output
+                p_qid: rest.p_qid
+                p_pretty_print: rest.p_pretty_print
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/echo_rest_services.get_info_clusters
+          name: echo-rest-services-get-info-clusters
+          description: REST surface for Combined ECHO Info Clusters Service.
+          operations:
+            - method: POST
+              name: postechorestservicesgetinfoclusters
+              description: Combined ECHO Info Clusters Service
+              call: echo-all-facility-info.postechorestservicesgetinfoclusters
+              with:
+                output: rest.output
+                p_qid: rest.p_qid
+                p_pretty_print: rest.p_pretty_print
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/echo_rest_services.get_map
+          name: echo-rest-services-get-map
+          description: REST surface for Combined ECHO Map Service.
+          operations:
+            - method: GET
+              name: getechorestservicesgetmap
+              description: Combined ECHO Map Service
+              call: echo-all-facility-info.getechorestservicesgetmap
+              with:
+                output: rest.output
+                qid: rest.qid
+                callback: rest.callback
+                tablelist: rest.tablelist
+                c1_lat: rest.c1_lat
+                c1_long: rest.c1_long
+                c2_lat: rest.c2_lat
+                c2_long: rest.c2_long
+                p_id: rest.p_id
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/echo_rest_services.get_map
+          name: echo-rest-services-get-map
+          description: REST surface for Combined ECHO Map Service.
+          operations:
+            - method: POST
+              name: postechorestservicesgetmap
+              description: Combined ECHO Map Service
+              call: echo-all-facility-info.postechorestservicesgetmap
+              with:
+                output: rest.output
+                qid: rest.qid
+                callback: rest.callback
+                tablelist: rest.tablelist
+                c1_lat: rest.c1_lat
+                c1_long: rest.c1_long
+                c2_lat: rest.c2_lat
+                c2_long: rest.c2_long
+                p_id: rest.p_id
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/echo_rest_services.get_qid
+          name: echo-rest-services-get-qid
+          description: REST surface for Combined ECHO Paginated Results Service.
+          operations:
+            - method: GET
+              name: getechorestservicesgetqid
+              description: Combined ECHO Paginated Results Service
+              call: echo-all-facility-info.getechorestservicesgetqid
+              with:
+                output: rest.output
+                qid: rest.qid
+                pageno: rest.pageno
+                callback: rest.callback
+                newsort: rest.newsort
+                descending: rest.descending
+                qcolumns: rest.qcolumns
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/echo_rest_services.get_qid
+          name: echo-rest-services-get-qid
+          description: REST surface for Combined ECHO Paginated Results Service.
+          operations:
+            - method: POST
+              name: postechorestservicesgetqid
+              description: Combined ECHO Paginated Results Service
+              call: echo-all-facility-info.postechorestservicesgetqid
+              with:
+                output: rest.output
+                qid: rest.qid
+                pageno: rest.pageno
+                callback: rest.callback
+                newsort: rest.newsort
+                descending: rest.descending
+                qcolumns: rest.qcolumns
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: echo-all-facility-info-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for U.S. EPA Enforcement and Compliance History Online (ECHO) - All Data — Facility Info. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: combined-echo-download-data-service
+          description: Combined ECHO Download Data Service
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: echo-all-facility-info.getechorestservicesgetdownload
+          with:
+            output: tools.output
+            qid: tools.qid
+            qcolumns: tools.qcolumns
+            p_pretty_print: tools.p_pretty_print
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: combined-echo-download-data-service-2
+          description: Combined ECHO Download Data Service
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: echo-all-facility-info.postechorestservicesgetdownload
+          with:
+            output: tools.output
+            qid: tools.qid
+            qcolumns: tools.qcolumns
+            p_pretty_print: tools.p_pretty_print
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: combined-echo-facility-search-service
+          description: Combined ECHO Facility Search Service
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: echo-all-facility-info.getechorestservicesgetfacilities
+          with:
+            output: tools.output
+            p_fn: tools.p_fn
+            p_sa: tools.p_sa
+            p_sa1: tools.p_sa1
+            p_ct: tools.p_ct
+            p_co: tools.p_co
+            p_fips: tools.p_fips
+            p_st: tools.p_st
+            p_zip: tools.p_zip
+            p_frs: tools.p_frs
+            p_reg: tools.p_reg
+            p_sic: tools.p_sic
+            p_ncs: tools.p_ncs
+            p_pen: tools.p_pen
+            p_c1lat: tools.p_c1lat
+            p_c1lon: tools.p_c1lon
+            p_c2lat: tools.p_c2lat
+            p_c2lon: tools.p_c2lon
+            p_usmex: tools.p_usmex
+            p_sic2: tools.p_sic2
+            p_sic4: tools.p_sic4
+            p_fa: tools.p_fa
+            p_ff: tools.p_ff
+            p_act: tools.p_act
+            p_maj: tools.p_maj
+            p_mact: tools.p_mact
+            p_fea: tools.p_fea
+            p_feay: tools.p_feay
+            p_feaa: tools.p_feaa
+            p_feac: tools.p_feac
+            p_fea_5yr: tools.p_fea_5yr
+            p_iea: tools.p_iea
+            p_ieay: tools.p_ieay
+            p_ieaa: tools.p_ieaa
+            p_iea_5yr: tools.p_iea_5yr
+            p_cs: tools.p_cs
+            p_qiv: tools.p_qiv
+            p_naa: tools.p_naa
+            p_impw: tools.p_impw
+            p_trep: tools.p_trep
+            p_ocr: tools.p_ocr
+            p_oct: tools.p_oct
+            p_pm: tools.p_pm
+            p_pd: tools.p_pd
+            p_ico: tools.p_ico
+            p_huc: tools.p_huc
+            p_pid: tools.p_pid
+            p_med: tools.p_med
+            p_istatute: tools.p_istatute
+            p_ysl: tools.p_ysl
+            p_ysly: tools.p_ysly
+            p_ysla: tools.p_ysla
+            p_qs: tools.p_qs
+            p_sfs: tools.p_sfs
+            p_tribeid: tools.p_tribeid
+            p_tribename: tools.p_tribename
+            p_tribedist: tools.p_tribedist
+            p_wbd: tools.p_wbd
+            p_fntype: tools.p_fntype
+            p_icoo: tools.p_icoo
+            p_fac_icos: tools.p_fac_icos
+            p_ejscreen: tools.p_ejscreen
+            p_limit_addr: tools.p_limit_addr
+            p_lat: tools.p_lat
+            p_long: tools.p_long
+            p_radius: tools.p_radius
+            p_ejscreen_over80cnt: tools.p_ejscreen_over80cnt
+            p_agoo: tools.p_agoo
+            p_neiu: tools.p_neiu
+            queryset: tools.queryset
+            responseset: tools.responseset
+            tablelist: tools.tablelist
+            maplist: tools.maplist
+            summarylist: tools.summarylist
+            callback: tools.callback
+            qcolumns: tools.qcolumns
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: combined-echo-facility-search-service-2
+          description: Combined ECHO Facility Search Service
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: false
+          call: echo-all-facility-info.postechorestservicesgetfacilities
+          with:
+            output: tools.output
+            p_fn: tools.p_fn
+            p_sa: tools.p_sa
+            p_sa1: tools.p_sa1
+            p_ct: tools.p_ct
+            p_co: tools.p_co
+            p_fips: tools.p_fips
+            p_st: tools.p_st
+            p_zip: tools.p_zip
+            p_frs: tools.p_frs
+            p_reg: tools.p_reg
+            p_sic: tools.p_sic
+            p_ncs: tools.p_ncs
+            p_pen: tools.p_pen
+            p_c1lat: tools.p_c1lat
+            p_c1lon: tools.p_c1lon
+            p_c2lat: tools.p_c2lat
+            p_c2lon: tools.p_c2lon
+            p_usmex: tools.p_usmex
+            p_sic2: tools.p_sic2
+            p_sic4: tools.p_sic4
+            p_fa: tools.p_fa
+            p_ff: tools.p_ff
+            p_act: tools.p_act
+            p_maj: tools.p_maj
+            p_mact: tools.p_mact
+            p_fea: tools.p_fea
+            p_feay: tools.p_feay
+            p_feaa: tools.p_feaa
+            p_feac: tools.p_feac
+            p_fea_5yr: tools.p_fea_5yr
+            p_iea: tools.p_iea
+            p_ieay: tools.p_ieay
+            p_ieaa: tools.p_ieaa
+            p_iea_5yr: tools.p_iea_5yr
+            p_cs: tools.p_cs
+            p_qiv: tools.p_qiv
+            p_naa: tools.p_naa
+            p_impw: tools.p_impw
+            p_trep: tools.p_trep
+            p_ocr: tools.p_ocr
+            p_oct: tools.p_oct
+            p_pm: tools.p_pm
+            p_pd: tools.p_pd
+            p_ico: tools.p_ico
+            p_huc: tools.p_huc
+            p_pid: tools.p_pid
+            p_med: tools.p_med
+            p_istatute: tools.p_istatute
+            p_ysl: tools.p_ysl
+            p_ysly: tools.p_ysly
+            p_ysla: tools.p_ysla
+            p_qs: tools.p_qs
+            p_sfs: tools.p_sfs
+            p_tribeid: tools.p_tribeid
+            p_tribename: tools.p_tribename
+            p_tribedist: tools.p_tribedist
+            p_wbd: tools.p_wbd
+            p_fntype: tools.p_fntype
+            p_icoo: tools.p_icoo
+            p_fac_icos: tools.p_fac_icos
+            p_ejscreen: tools.p_ejscreen
+            p_limit_addr: tools.p_limit_addr
+            p_lat: tools.p_lat
+            p_long: tools.p_long
+            p_radius: tools.p_radius
+            p_ejscreen_over80cnt: tools.p_ejscreen_over80cnt
+            p_agoo: tools.p_agoo
+            p_neiu: tools.p_neiu
+            queryset: tools.queryset
+            responseset: tools.responseset
+            tablelist: tools.tablelist
+            maplist: tools.maplist
+            summarylist: tools.summarylist
+            callback: tools.callback
+            qcolumns: tools.qcolumns
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: combined-echo-facility-enhanced-search-service
+          description: Combined ECHO Facility Enhanced Search Service
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: echo-all-facility-info.getechorestservicesgetfacilityinfo
+          with:
+            output: tools.output
+            p_fn: tools.p_fn
+            p_sa: tools.p_sa
+            p_sa1: tools.p_sa1
+            p_ct: tools.p_ct
+            p_co: tools.p_co
+            p_fips: tools.p_fips
+            p_st: tools.p_st
+            p_zip: tools.p_zip
+            p_frs: tools.p_frs
+            p_reg: tools.p_reg
+            p_sic: tools.p_sic
+            p_ncs: tools.p_ncs
+            p_pen: tools.p_pen
+            xmin: tools.xmin
+            ymin: tools.ymin
+            xmax: tools.xmax
+            ymax: tools.ymax
+            p_usmex: tools.p_usmex
+            p_sic2: tools.p_sic2
+            p_sic4: tools.p_sic4
+            p_fa: tools.p_fa
+            p_ff: tools.p_ff
+            p_act: tools.p_act
+            p_maj: tools.p_maj
+            p_mact: tools.p_mact
+            p_fea: tools.p_fea
+            p_feay: tools.p_feay
+            p_feaa: tools.p_feaa
+            p_feac: tools.p_feac
+            p_feac_5yr: tools.p_feac_5yr
+            p_iea: tools.p_iea
+            p_ieay: tools.p_ieay
+            p_ieaa: tools.p_ieaa
+            p_iea_5yr: tools.p_iea_5yr
+            p_cs: tools.p_cs
+            p_qiv: tools.p_qiv
+            p_naa: tools.p_naa
+            p_impw: tools.p_impw
+            p_trep: tools.p_trep
+            p_ocr: tools.p_ocr
+            p_oct: tools.p_oct
+            p_pm: tools.p_pm
+            p_pd: tools.p_pd
+            p_ico: tools.p_ico
+            p_huc: tools.p_huc
+            p_pid: tools.p_pid
+            p_med: tools.p_med
+            p_istatute: tools.p_istatute
+            p_ysl: tools.p_ysl
+            p_ysly: tools.p_ysly
+            p_ysla: tools.p_ysla
+            p_qs: tools.p_qs
+            p_sfs: tools.p_sfs
+            p_tribeid: tools.p_tribeid
+            p_tribename: tools.p_tribename
+            p_tribedist: tools.p_tribedist
+            p_wbd: tools.p_wbd
+            p_fntype: tools.p_fntype
+            p_icoo: tools.p_icoo
+            p_fac_icos: tools.p_fac_icos
+            p_ejscreen: tools.p_ejscreen
+            p_limit_addr: tools.p_limit_addr
+            p_lat: tools.p_lat
+            p_long: tools.p_long
+            p_radius: tools.p_radius
+            p_ejscreen_over80cnt: tools.p_ejscreen_over80cnt
+            p_agoo: tools.p_agoo
+            p_neiu: tools.p_neiu
+            responseset: tools.responseset
+            callback: tools.callback
+            qcolumns: tools.qcolumns
+            p_pretty_print: tools.p_pretty_print
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: combined-echo-facility-enhanced-search-service-2
+          description: Combined ECHO Facility Enhanced Search Service
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: false
+          call: echo-all-facility-info.postechorestservicesgetfacilityinfo
+          with:
+            output: tools.output
+            p_fn: tools.p_fn
+            p_sa: tools.p_sa
+            p_sa1: tools.p_sa1
+            p_ct: tools.p_ct
+            p_co: tools.p_co
+            p_fips: tools.p_fips
+            p_st: tools.p_st
+            p_zip: tools.p_zip
+            p_frs: tools.p_frs
+            p_reg: tools.p_reg
+            p_sic: tools.p_sic
+            p_ncs: tools.p_ncs
+            p_pen: tools.p_pen
+            xmin: tools.xmin
+            ymin: tools.ymin
+            xmax: tools.xmax
+            ymax: tools.ymax
+            p_usmex: tools.p_usmex
+            p_sic2: tools.p_sic2
+            p_sic4: tools.p_sic4
+            p_fa: tools.p_fa
+            p_ff: tools.p_ff
+            p_act: tools.p_act
+            p_maj: tools.p_maj
+            p_mact: tools.p_mact
+            p_fea: tools.p_fea
+            p_feay: tools.p_feay
+            p_feaa: tools.p_feaa
+            p_feac: tools.p_feac
+            p_feac_5yr: tools.p_feac_5yr
+            p_iea: tools.p_iea
+            p_ieay: tools.p_ieay
+            p_ieaa: tools.p_ieaa
+            p_iea_5yr: tools.p_iea_5yr
+            p_cs: tools.p_cs
+            p_qiv: tools.p_qiv
+            p_naa: tools.p_naa
+            p_impw: tools.p_impw
+            p_trep: tools.p_trep
+            p_ocr: tools.p_ocr
+            p_oct: tools.p_oct
+            p_pm: tools.p_pm
+            p_pd: tools.p_pd
+            p_ico: tools.p_ico
+            p_huc: tools.p_huc
+            p_pid: tools.p_pid
+            p_med: tools.p_med
+            p_istatute: tools.p_istatute
+            p_ysl: tools.p_ysl
+            p_ysly: tools.p_ysly
+            p_ysla: tools.p_ysla
+            p_qs: tools.p_qs
+            p_sfs: tools.p_sfs
+            p_tribeid: tools.p_tribeid
+            p_tribename: tools.p_tribename
+            p_tribedist: tools.p_tribedist
+            p_wbd: tools.p_wbd
+            p_fntype: tools.p_fntype
+            p_icoo: tools.p_icoo
+            p_fac_icos: tools.p_fac_icos
+            p_ejscreen: tools.p_ejscreen
+            p_limit_addr: tools.p_limit_addr
+            p_lat: tools.p_lat
+            p_long: tools.p_long
+            p_radius: tools.p_radius
+            p_ejscreen_over80cnt: tools.p_ejscreen_over80cnt
+            p_agoo: tools.p_agoo
+            p_neiu: tools.p_neiu
+            responseset: tools.responseset
+            callback: tools.callback
+            qcolumns: tools.qcolumns
+            p_pretty_print: tools.p_pretty_print
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: combined-echo-geojson-service
+          description: Combined ECHO GeoJSON Service
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: echo-all-facility-info.getechorestservicesgetgeojson
+          with:
+            output: tools.output
+            qid: tools.qid
+            callback: tools.callback
+            newsort: tools.newsort
+            descending: tools.descending
+            qcolumns: tools.qcolumns
+            p_pretty_print: tools.p_pretty_print
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: combined-echo-geojson-service-2
+          description: Combined ECHO GeoJSON Service
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: echo-all-facility-info.postechorestservicesgetgeojson
+          with:
+            output: tools.output
+            qid: tools.qid
+            callback: tools.callback
+            newsort: tools.newsort
+            descending: tools.descending
+            qcolumns: tools.qcolumns
+            p_pretty_print: tools.p_pretty_print
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: combined-echo-info-clusters-service
+          description: Combined ECHO Info Clusters Service
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: echo-all-facility-info.getechorestservicesgetinfoclusters
+          with:
+            output: tools.output
+            p_qid: tools.p_qid
+            p_pretty_print: tools.p_pretty_print
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: combined-echo-info-clusters-service-2
+          description: Combined ECHO Info Clusters Service
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: echo-all-facility-info.postechorestservicesgetinfoclusters
+          with:
+            output: tools.output
+            p_qid: tools.p_qid
+            p_pretty_print: tools.p_pretty_print
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: combined-echo-map-service
+          description: Combined ECHO Map Service
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: echo-all-facility-info.getechorestservicesgetmap
+          with:
+            output: tools.output
+            qid: tools.qid
+            callback: tools.callback
+            tablelist: tools.tablelist
+            c1_lat: tools.c1_lat
+            c1_long: tools.c1_long
+            c2_lat: tools.c2_lat
+            c2_long: tools.c2_long
+            p_id: tools.p_id
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: combined-echo-map-service-2
+          description: Combined ECHO Map Service
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: echo-all-facility-info.postechorestservicesgetmap
+          with:
+            output: tools.output
+            qid: tools.qid
+            callback: tools.callback
+            tablelist: tools.tablelist
+            c1_lat: tools.c1_lat
+            c1_long: tools.c1_long
+            c2_lat: tools.c2_lat
+            c2_long: tools.c2_long
+            p_id: tools.p_id
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: combined-echo-paginated-results-service
+          description: Combined ECHO Paginated Results Service
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: echo-all-facility-info.getechorestservicesgetqid
+          with:
+            output: tools.output
+            qid: tools.qid
+            pageno: tools.pageno
+            callback: tools.callback
+            newsort: tools.newsort
+            descending: tools.descending
+            qcolumns: tools.qcolumns
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: combined-echo-paginated-results-service-2
+          description: Combined ECHO Paginated Results Service
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: echo-all-facility-info.postechorestservicesgetqid
+          with:
+            output: tools.output
+            qid: tools.qid
+            pageno: tools.pageno
+            callback: tools.callback
+            newsort: tools.newsort
+            descending: tools.descending
+            qcolumns: tools.qcolumns
+          outputParameters:
+            - type: object
+              mapping: $.

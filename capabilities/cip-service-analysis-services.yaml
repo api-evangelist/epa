@@ -1,0 +1,241 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: CIP-service Indexing API — Analysis Services
+  description: 'Analysis Services. 5 operations. Lead operation: CIP-service Navigation. Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - 'Analysis Services'
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys: {}
+capability:
+  consumes:
+    - type: http
+      namespace: cip-service-analysis-services
+      baseUri: https://localhost:3000
+      description: CIP-service Indexing API — Analysis Services business capability. Self-contained, no shared references.
+      resources:
+        - name: rpc-navigate
+          path: /rpc/navigate
+          operations:
+            - name: navigate
+              method: POST
+              description: CIP-service Navigation
+              inputParameters:
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+                  description: Request body payload.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: rpc-delineate
+          path: /rpc/delineate
+          operations:
+            - name: delineate
+              method: POST
+              description: CIP-service Delineation
+              inputParameters:
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+                  description: Request body payload.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: rpc-pointindexing
+          path: /rpc/pointindexing
+          operations:
+            - name: pointindexing
+              method: POST
+              description: CIP-service Point Indexing
+              inputParameters:
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+                  description: Request body payload.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: rpc-upstreamdownstream
+          path: /rpc/upstreamdownstream
+          operations:
+            - name: upstreamdownstream
+              method: POST
+              description: CIP-service Upstream Downstream
+              inputParameters:
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+                  description: Request body payload.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: rpc-flow-accumulation
+          path: /rpc/flow_accumulation
+          operations:
+            - name: flowaccumulation
+              method: POST
+              description: CIP-service Flow Accumulation
+              inputParameters:
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+                  description: Request body payload.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: cip-service-analysis-services-rest
+      port: 8080
+      description: REST adapter for CIP-service Indexing API — Analysis Services. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/rpc/navigate
+          name: rpc-navigate
+          description: REST surface for CIP-service Navigation.
+          operations:
+            - method: POST
+              name: navigate
+              description: CIP-service Navigation
+              call: cip-service-analysis-services.navigate
+              with:
+                body: rest.body
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/rpc/delineate
+          name: rpc-delineate
+          description: REST surface for CIP-service Delineation.
+          operations:
+            - method: POST
+              name: delineate
+              description: CIP-service Delineation
+              call: cip-service-analysis-services.delineate
+              with:
+                body: rest.body
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/rpc/pointindexing
+          name: rpc-pointindexing
+          description: REST surface for CIP-service Point Indexing.
+          operations:
+            - method: POST
+              name: pointindexing
+              description: CIP-service Point Indexing
+              call: cip-service-analysis-services.pointindexing
+              with:
+                body: rest.body
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/rpc/upstreamdownstream
+          name: rpc-upstreamdownstream
+          description: REST surface for CIP-service Upstream Downstream.
+          operations:
+            - method: POST
+              name: upstreamdownstream
+              description: CIP-service Upstream Downstream
+              call: cip-service-analysis-services.upstreamdownstream
+              with:
+                body: rest.body
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/rpc/flow_accumulation
+          name: rpc-flow-accumulation
+          description: REST surface for CIP-service Flow Accumulation.
+          operations:
+            - method: POST
+              name: flowaccumulation
+              description: CIP-service Flow Accumulation
+              call: cip-service-analysis-services.flowaccumulation
+              with:
+                body: rest.body
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: cip-service-analysis-services-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for CIP-service Indexing API — Analysis Services. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: cip-service-navigation
+          description: CIP-service Navigation
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: cip-service-analysis-services.navigate
+          with:
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: cip-service-delineation
+          description: CIP-service Delineation
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: cip-service-analysis-services.delineate
+          with:
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: cip-service-point-indexing
+          description: CIP-service Point Indexing
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: cip-service-analysis-services.pointindexing
+          with:
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: cip-service-upstream-downstream
+          description: CIP-service Upstream Downstream
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: cip-service-analysis-services.upstreamdownstream
+          with:
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: cip-service-flow-accumulation
+          description: CIP-service Flow Accumulation
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: cip-service-analysis-services.flowaccumulation
+          with:
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.

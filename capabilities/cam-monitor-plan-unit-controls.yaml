@@ -1,0 +1,79 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Monitor Plan Management OpenAPI Specification — Unit Controls
+  description: 'Unit Controls. 1 operations. Lead operation: operations. Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - Unit Controls
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_APIKEY_KEY: EPA_APIKEY_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: cam-monitor-plan-unit-controls
+      baseUri: https://api.epa.gov/easey
+      description: Monitor Plan Management OpenAPI Specification — Unit Controls business capability. Self-contained, no shared references.
+      authentication:
+        type: apikey
+        key: x-api-key
+        value: '{{env.EPA_APIKEY_KEY}}'
+        placement: header
+      resources:
+        - name: monitor-plan-mgmt-units-unitid-unit-controls
+          path: /monitor-plan-mgmt/units/{unitId}/unit-controls
+          operations:
+            - name: unitControlControllergetUnitControls
+              method: GET
+              description: unitControlControllergetUnitControls
+              inputParameters:
+                - name: unitId
+                  in: path
+                  type: number
+                  required: true
+                  description: unitId
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: cam-monitor-plan-unit-controls-rest
+      port: 8080
+      description: REST adapter for Monitor Plan Management OpenAPI Specification — Unit Controls. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/monitor-plan-mgmt/units/{unitid}/unit-controls
+          name: monitor-plan-mgmt-units-unitid-unit-controls
+          description: REST surface for unitControlControllergetUnitControls.
+          operations:
+            - method: GET
+              name: unitControlControllergetUnitControls
+              description: unitControlControllergetUnitControls
+              call: cam-monitor-plan-unit-controls.unitControlControllergetUnitControls
+              with:
+                unitId: rest.unitId
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: cam-monitor-plan-unit-controls-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Monitor Plan Management OpenAPI Specification — Unit Controls. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: unitcontrolcontroller-getunitcontrols
+          description: unitcontrolcontroller-getunitcontrols
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-monitor-plan-unit-controls.unitControlControllergetUnitControls
+          with:
+            unitId: tools.unitId
+          outputParameters:
+            - type: object
+              mapping: $.

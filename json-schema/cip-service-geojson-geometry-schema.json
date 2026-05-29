@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-schema/cip-service-geojson-geometry-schema.json",
+  "title": "geojson_geometry",
+  "description": "geojson_geometry schema from CIP-service Indexing API",
+  "type": [
+    "object",
+    "null"
+  ],
+  "properties": {
+    "coordinates": {
+      "oneOf": [
+        {
+          "$ref": "#/components/schemas/coordinates1"
+        },
+        {
+          "$ref": "#/components/schemas/coordinates2"
+        },
+        {
+          "$ref": "#/components/schemas/coordinates3"
+        },
+        {
+          "type": "array",
+          "title": "GeoJSON Coordinates 4",
+          "items": {
+            "$ref": "#/components/schemas/coordinates3"
+          }
+        }
+      ],
+      "example": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Point",
+        "LineString",
+        "Polygon",
+        "MultiPoint",
+        "MultiLineString",
+        "MultiPolygon"
+      ],
+      "description": "the geometry type",
+      "example": "Point"
+    }
+  }
+}

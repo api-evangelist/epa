@@ -1,0 +1,1003 @@
+{
+  "@context": {
+    "epa": "https://api-evangelist.com/epa/cip-service#",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "GovernmentOrganization": "schema:GovernmentOrganization",
+    "Dataset": "schema:Dataset",
+    "aggregation_engine": {
+      "@id": "epa:aggregation_engine",
+      "@type": "xsd:string"
+    },
+    "cipsrv_domains": "epa:cipsrv_domains",
+    "cipsrv_domains_state": "epa:cipsrv_domains_state",
+    "cipsrv_domains_states": "epa:cipsrv_domains_states",
+    "cipsrv_domains_tribe": "epa:cipsrv_domains_tribe",
+    "cipsrv_domains_tribes": "epa:cipsrv_domains_tribes",
+    "cipsrv_index_rb": "epa:cipsrv_index_rb",
+    "cipsrv_index_resp": "epa:cipsrv_index_resp",
+    "cipsrv_registry_components": "epa:cipsrv_registry_components",
+    "cipsrv_registry": "epa:cipsrv_registry",
+    "coordinates1": "epa:coordinates1",
+    "coordinates2": "epa:coordinates2",
+    "coordinates3": "epa:coordinates3",
+    "delineate_rb": "epa:delineate_rb",
+    "delineate_resp": "epa:delineate_resp",
+    "delineated_area_properties": "epa:delineated_area_properties",
+    "end_point_properties": "epa:end_point_properties",
+    "event_feature_properties": "epa:event_feature_properties",
+    "fcode_allow": {
+      "@id": "epa:fcode_allow",
+      "@type": "xsd:string"
+    },
+    "fcode_deny": {
+      "@id": "epa:fcode_deny",
+      "@type": "xsd:string"
+    },
+    "fill_basin_holes": {
+      "@id": "epa:fill_basin_holes",
+      "@type": "xsd:string"
+    },
+    "flow_accumulation_rb": "epa:flow_accumulation_rb",
+    "flow_accumulation_resp": "epa:flow_accumulation_resp",
+    "flowline_count": {
+      "@id": "epa:flowline_count",
+      "@type": "xsd:string"
+    },
+    "geojson_bbox": "epa:geojson_bbox",
+    "geojson_feature": "epa:geojson_feature",
+    "geojson_featurecollection": "epa:geojson_featurecollection",
+    "geojson_geometry": "epa:geojson_geometry",
+    "globalid": {
+      "@id": "epa:globalid",
+      "@type": "xsd:string"
+    },
+    "hydroseq": {
+      "@id": "epa:hydroseq",
+      "@type": "xsd:string"
+    },
+    "image_format": {
+      "@id": "epa:image_format",
+      "@type": "xsd:string"
+    },
+    "indexed_catchment_properties": "epa:indexed_catchment_properties",
+    "indexed_flowline_properties": "epa:indexed_flowline_properties",
+    "indexing_engine": {
+      "@id": "epa:indexing_engine",
+      "@type": "xsd:string"
+    },
+    "indexing_line_properties": "epa:indexing_line_properties",
+    "indexing_summary": {
+      "@id": "epa:indexing_summary",
+      "@type": "xsd:string"
+    },
+    "known_region": {
+      "@id": "epa:known_region",
+      "@type": "xsd:string"
+    },
+    "linked_data_program": "epa:linked_data_program",
+    "linked_data_wqp": "epa:linked_data_wqp",
+    "max_distancekm": {
+      "@id": "epa:max_distancekm",
+      "@type": "xsd:string"
+    },
+    "max_flowtimeday": {
+      "@id": "epa:max_flowtimeday",
+      "@type": "xsd:string"
+    },
+    "measure": {
+      "@id": "epa:measure",
+      "@type": "xsd:string"
+    },
+    "navigate_rb": "epa:navigate_rb",
+    "navigate_resp": "epa:navigate_resp",
+    "navigated_flowline_properties": "epa:navigated_flowline_properties",
+    "nhdplus_version": {
+      "@id": "epa:nhdplus_version",
+      "@type": "xsd:string"
+    },
+    "nhdplusid": {
+      "@id": "epa:nhdplusid",
+      "@type": "xsd:string"
+    },
+    "ordinate": "epa:ordinate",
+    "permanent_identifier": {
+      "@id": "epa:permanent_identifier",
+      "@type": "xsd:string"
+    },
+    "pointindexing_rb": "epa:pointindexing_rb",
+    "pointindexing_resp": "epa:pointindexing_resp",
+    "randomcatchment_rb": "epa:randomcatchment_rb",
+    "randomcatchment_resp": "epa:randomcatchment_resp",
+    "randomhuc12_rb": "epa:randomhuc12_rb",
+    "randomhuc12_resp": "epa:randomhuc12_resp",
+    "randomnav_rb": "epa:randomnav_rb",
+    "randomnav_resp": "epa:randomnav_resp",
+    "randompoint_rb": "epa:randompoint_rb",
+    "randompoint_resp": "epa:randompoint_resp",
+    "randomppnav_rb": "epa:randomppnav_rb",
+    "randomppnav_resp": "epa:randomppnav_resp",
+    "reachcode": {
+      "@id": "epa:reachcode",
+      "@type": "xsd:string"
+    },
+    "return_code": {
+      "@id": "epa:return_code",
+      "@type": "xsd:string"
+    },
+    "return_delineation_geometry": {
+      "@id": "epa:return_delineation_geometry",
+      "@type": "xsd:string"
+    },
+    "return_flowline_details": {
+      "@id": "epa:return_flowline_details",
+      "@type": "xsd:string"
+    },
+    "return_flowline_geometry": {
+      "@id": "epa:return_flowline_geometry",
+      "@type": "xsd:boolean"
+    },
+    "search_type": {
+      "@id": "epa:search_type",
+      "@type": "xsd:string"
+    },
+    "split_initial_catchment": {
+      "@id": "epa:split_initial_catchment",
+      "@type": "xsd:string"
+    },
+    "start_hydroseq": {
+      "@id": "epa:start_hydroseq",
+      "@type": "xsd:string"
+    },
+    "start_measure": {
+      "@id": "epa:start_measure",
+      "@type": "xsd:string"
+    },
+    "start_nhdplusid": {
+      "@id": "epa:start_nhdplusid",
+      "@type": "xsd:string"
+    },
+    "start_permanent_identifier": {
+      "@id": "epa:start_permanent_identifier",
+      "@type": "xsd:string"
+    },
+    "start_reachcode": {
+      "@id": "epa:start_reachcode",
+      "@type": "xsd:string"
+    },
+    "status_message": {
+      "@id": "epa:status_message",
+      "@type": "xsd:string"
+    },
+    "stop_hydroseq": {
+      "@id": "epa:stop_hydroseq",
+      "@type": "xsd:string"
+    },
+    "stop_measure": {
+      "@id": "epa:stop_measure",
+      "@type": "xsd:string"
+    },
+    "stop_nhdplusid": {
+      "@id": "epa:stop_nhdplusid",
+      "@type": "xsd:string"
+    },
+    "stop_permanent_identifier": {
+      "@id": "epa:stop_permanent_identifier",
+      "@type": "xsd:string"
+    },
+    "stop_reachcode": {
+      "@id": "epa:stop_reachcode",
+      "@type": "xsd:string"
+    },
+    "upstreamdownstream_rb": "epa:upstreamdownstream_rb",
+    "upstreamdownstream_resp": "epa:upstreamdownstream_resp",
+    "wbd_version": {
+      "@id": "epa:wbd_version",
+      "@type": "xsd:string"
+    },
+    "states": {
+      "@id": "epa:states",
+      "@type": "xsd:string"
+    },
+    "tribes": {
+      "@id": "epa:tribes",
+      "@type": "xsd:string"
+    },
+    "geoid": {
+      "@id": "epa:geoid",
+      "@type": "xsd:string"
+    },
+    "stusps": {
+      "@id": "epa:stusps",
+      "@type": "xsd:string"
+    },
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "aiannhns_stem": {
+      "@id": "epa:aiannhns_stem",
+      "@type": "xsd:string"
+    },
+    "aiannhns_namelsad": {
+      "@id": "epa:aiannhns_namelsad",
+      "@type": "xsd:string"
+    },
+    "has_reservation_lands": {
+      "@id": "epa:has_reservation_lands",
+      "@type": "xsd:boolean"
+    },
+    "has_trust_lands": {
+      "@id": "epa:has_trust_lands",
+      "@type": "xsd:boolean"
+    },
+    "points": {
+      "@id": "epa:points",
+      "@type": "xsd:string"
+    },
+    "lines": {
+      "@id": "epa:lines",
+      "@type": "xsd:string"
+    },
+    "areas": {
+      "@id": "epa:areas",
+      "@type": "xsd:string"
+    },
+    "geometry": {
+      "@id": "epa:geometry",
+      "@type": "xsd:string"
+    },
+    "geometry_clip": {
+      "@id": "epa:geometry_clip",
+      "@container": "@list"
+    },
+    "geometry_clip_stage": {
+      "@id": "epa:geometry_clip_stage",
+      "@type": "xsd:string"
+    },
+    "catchment_filter": {
+      "@id": "epa:catchment_filter",
+      "@container": "@list"
+    },
+    "default_point_indexing_method": {
+      "@id": "epa:default_point_indexing_method",
+      "@type": "xsd:string"
+    },
+    "default_line_indexing_method": {
+      "@id": "epa:default_line_indexing_method",
+      "@type": "xsd:string"
+    },
+    "default_line_threshold": {
+      "@id": "epa:default_line_threshold",
+      "@type": "xsd:decimal"
+    },
+    "default_ring_indexing_method": {
+      "@id": "epa:default_ring_indexing_method",
+      "@type": "xsd:string"
+    },
+    "default_ring_areacat_threshold": {
+      "@id": "epa:default_ring_areacat_threshold",
+      "@type": "xsd:decimal"
+    },
+    "default_ring_areaevt_threshold": {
+      "@id": "epa:default_ring_areaevt_threshold",
+      "@type": "xsd:decimal"
+    },
+    "default_area_indexing_method": {
+      "@id": "epa:default_area_indexing_method",
+      "@type": "xsd:string"
+    },
+    "default_areacat_threshold": {
+      "@id": "epa:default_areacat_threshold",
+      "@type": "xsd:decimal"
+    },
+    "default_areaevt_threshold": {
+      "@id": "epa:default_areaevt_threshold",
+      "@type": "xsd:decimal"
+    },
+    "return_indexing_summary": {
+      "@id": "epa:return_indexing_summary",
+      "@type": "xsd:boolean"
+    },
+    "return_indexed_features": {
+      "@id": "epa:return_indexed_features",
+      "@type": "xsd:boolean"
+    },
+    "return_indexed_collection": {
+      "@id": "epa:return_indexed_collection",
+      "@type": "xsd:boolean"
+    },
+    "return_catchment_geometry": {
+      "@id": "epa:return_catchment_geometry",
+      "@type": "xsd:boolean"
+    },
+    "return_flowlines": {
+      "@id": "epa:return_flowlines",
+      "@type": "xsd:boolean"
+    },
+    "return_huc12s": {
+      "@id": "epa:return_huc12s",
+      "@type": "xsd:boolean"
+    },
+    "return_huc12_geometry": {
+      "@id": "epa:return_huc12_geometry",
+      "@type": "xsd:boolean"
+    },
+    "return_full_catchments": {
+      "@id": "epa:return_full_catchments",
+      "@type": "xsd:boolean"
+    },
+    "limit_to_us_catchments": {
+      "@id": "epa:limit_to_us_catchments",
+      "@type": "xsd:boolean"
+    },
+    "indexed_points": {
+      "@id": "epa:indexed_points",
+      "@type": "xsd:string"
+    },
+    "indexed_lines": {
+      "@id": "epa:indexed_lines",
+      "@type": "xsd:string"
+    },
+    "indexed_areas": {
+      "@id": "epa:indexed_areas",
+      "@type": "xsd:string"
+    },
+    "indexed_collection": {
+      "@id": "epa:indexed_collection",
+      "@type": "xsd:string"
+    },
+    "catchment_count": {
+      "@id": "epa:catchment_count",
+      "@type": "xsd:integer"
+    },
+    "catchment_areasqkm": {
+      "@id": "epa:catchment_areasqkm",
+      "@type": "xsd:decimal"
+    },
+    "catchments": {
+      "@id": "epa:catchments",
+      "@type": "xsd:string"
+    },
+    "flowlines": {
+      "@id": "epa:flowlines",
+      "@type": "xsd:string"
+    },
+    "huc12s": {
+      "@id": "epa:huc12s",
+      "@type": "xsd:string"
+    },
+    "component": {
+      "@id": "epa:component",
+      "@type": "xsd:string"
+    },
+    "component_type": {
+      "@id": "epa:component_type",
+      "@type": "xsd:string"
+    },
+    "component_vintage": {
+      "@id": "epa:component_vintage",
+      "@type": "xsd:string"
+    },
+    "installation_date": {
+      "@id": "epa:installation_date",
+      "@type": "xsd:string"
+    },
+    "installer_username": {
+      "@id": "epa:installer_username",
+      "@type": "xsd:string"
+    },
+    "notes": {
+      "@id": "epa:notes",
+      "@type": "xsd:string"
+    },
+    "components": {
+      "@id": "epa:components",
+      "@container": "@list"
+    },
+    "version": {
+      "@id": "epa:version",
+      "@type": "xsd:string"
+    },
+    "delineated_area": {
+      "@id": "epa:delineated_area",
+      "@type": "xsd:string"
+    },
+    "aggregation_used": {
+      "@id": "epa:aggregation_used",
+      "@type": "xsd:string"
+    },
+    "areasqkm": {
+      "@id": "epa:areasqkm",
+      "@type": "xsd:decimal"
+    },
+    "sourcefc": {
+      "@id": "epa:sourcefc",
+      "@type": "xsd:string"
+    },
+    "nhdplus": {
+      "@id": "epa:nhdplus",
+      "@type": "xsd:integer"
+    },
+    "lengthkm": {
+      "@id": "epa:lengthkm",
+      "@type": "xsd:decimal"
+    },
+    "converted_to_ring": {
+      "@id": "epa:converted_to_ring",
+      "@type": "xsd:boolean"
+    },
+    "indexing_method_used": {
+      "@id": "epa:indexing_method_used",
+      "@type": "xsd:string"
+    },
+    "line_threshold_used": {
+      "@id": "epa:line_threshold_used",
+      "@type": "xsd:decimal"
+    },
+    "areacat_threshold_used": {
+      "@id": "epa:areacat_threshold_used",
+      "@type": "xsd:decimal"
+    },
+    "areaevt_threshold_used": {
+      "@id": "epa:areaevt_threshold_used",
+      "@type": "xsd:decimal"
+    },
+    "area_of_interest": {
+      "@id": "epa:area_of_interest",
+      "@type": "xsd:string"
+    },
+    "default_weight": {
+      "@id": "epa:default_weight",
+      "@type": "xsd:decimal"
+    },
+    "output_srid": {
+      "@id": "epa:output_srid",
+      "@type": "xsd:integer"
+    },
+    "flow_accumulation": {
+      "@id": "epa:flow_accumulation",
+      "@type": "xsd:string"
+    },
+    "image_bbox": {
+      "@id": "epa:image_bbox",
+      "@container": "@list"
+    },
+    "max_accumulation": {
+      "@id": "epa:max_accumulation",
+      "@type": "xsd:integer"
+    },
+    "max_accumulation_x": {
+      "@id": "epa:max_accumulation_x",
+      "@type": "xsd:integer"
+    },
+    "max_accumulation_y": {
+      "@id": "epa:max_accumulation_y",
+      "@type": "xsd:integer"
+    },
+    "max_accumulation_pt": {
+      "@id": "epa:max_accumulation_pt",
+      "@type": "xsd:integer"
+    },
+    "raster_srid": {
+      "@id": "epa:raster_srid",
+      "@type": "xsd:integer"
+    },
+    "bbox": {
+      "@id": "epa:bbox",
+      "@type": "xsd:string"
+    },
+    "obj_type": {
+      "@id": "epa:obj_type",
+      "@type": "xsd:string"
+    },
+    "properties": {
+      "@id": "epa:properties",
+      "@type": "xsd:string"
+    },
+    "type": {
+      "@id": "epa:type",
+      "@type": "xsd:string"
+    },
+    "features": {
+      "@id": "epa:features",
+      "@container": "@list"
+    },
+    "coordinates": {
+      "@id": "epa:coordinates",
+      "@type": "xsd:string"
+    },
+    "catchmentstatecode": {
+      "@id": "epa:catchmentstatecode",
+      "@type": "xsd:string"
+    },
+    "xwalk_huc12": {
+      "@id": "epa:xwalk_huc12",
+      "@type": "xsd:string"
+    },
+    "gnis_id": {
+      "@id": "epa:gnis_id",
+      "@type": "xsd:string"
+    },
+    "gnis_name": {
+      "@id": "epa:gnis_name",
+      "@type": "xsd:string"
+    },
+    "fmeasure": {
+      "@id": "epa:fmeasure",
+      "@type": "xsd:string"
+    },
+    "tmeasure": {
+      "@id": "epa:tmeasure",
+      "@type": "xsd:string"
+    },
+    "input_features": {
+      "@id": "epa:input_features"
+    },
+    "source_joinkey": {
+      "@id": "epa:source_joinkey",
+      "@type": "xsd:string"
+    },
+    "organizationidentifier": {
+      "@id": "epa:organizationidentifier",
+      "@type": "xsd:string"
+    },
+    "organizationformalname": {
+      "@id": "epa:organizationformalname",
+      "@type": "xsd:string"
+    },
+    "monitoringlocationidentifier": {
+      "@id": "epa:monitoringlocationidentifier",
+      "@type": "xsd:string"
+    },
+    "monitoringlocationname": {
+      "@id": "epa:monitoringlocationname",
+      "@type": "xsd:string"
+    },
+    "monitoringlocationtypename": {
+      "@id": "epa:monitoringlocationtypename",
+      "@type": "xsd:string"
+    },
+    "monitoringlocationdescription": {
+      "@id": "epa:monitoringlocationdescription",
+      "@type": "xsd:string"
+    },
+    "huceightdigitcode": {
+      "@id": "epa:huceightdigitcode",
+      "@type": "xsd:string"
+    },
+    "drainageareameasure_measureval": {
+      "@id": "epa:drainageareameasure_measureval",
+      "@type": "xsd:decimal"
+    },
+    "drainageareameasure_measureunt": {
+      "@id": "epa:drainageareameasure_measureunt",
+      "@type": "xsd:string"
+    },
+    "contributingdrainageareameasva": {
+      "@id": "epa:contributingdrainageareameasva",
+      "@type": "xsd:string"
+    },
+    "contributingdrainageareameasun": {
+      "@id": "epa:contributingdrainageareameasun",
+      "@type": "xsd:string"
+    },
+    "latitudemeasure": {
+      "@id": "epa:latitudemeasure",
+      "@type": "xsd:decimal"
+    },
+    "longitudemeasure": {
+      "@id": "epa:longitudemeasure",
+      "@type": "xsd:decimal"
+    },
+    "sourcemapscalenumeric": {
+      "@id": "epa:sourcemapscalenumeric",
+      "@type": "xsd:decimal"
+    },
+    "horizontalaccuracymeasureval": {
+      "@id": "epa:horizontalaccuracymeasureval",
+      "@type": "xsd:string"
+    },
+    "horizontalaccuracymeasureunit": {
+      "@id": "epa:horizontalaccuracymeasureunit",
+      "@type": "xsd:string"
+    },
+    "horizontalcollectionmethodname": {
+      "@id": "epa:horizontalcollectionmethodname",
+      "@type": "xsd:string"
+    },
+    "horizontalcoordinatereferences": {
+      "@id": "epa:horizontalcoordinatereferences",
+      "@type": "xsd:string"
+    },
+    "verticalmeasure_measurevalue": {
+      "@id": "epa:verticalmeasure_measurevalue",
+      "@type": "xsd:string"
+    },
+    "verticalmeasure_measureunit": {
+      "@id": "epa:verticalmeasure_measureunit",
+      "@type": "xsd:string"
+    },
+    "verticalaccuracymeasurevalue": {
+      "@id": "epa:verticalaccuracymeasurevalue",
+      "@type": "xsd:string"
+    },
+    "verticalaccuracymeasureunit": {
+      "@id": "epa:verticalaccuracymeasureunit",
+      "@type": "xsd:string"
+    },
+    "verticalcollectionmethodname": {
+      "@id": "epa:verticalcollectionmethodname",
+      "@type": "xsd:string"
+    },
+    "verticalcoordinatereferencesys": {
+      "@id": "epa:verticalcoordinatereferencesys",
+      "@type": "xsd:string"
+    },
+    "countrycode": {
+      "@id": "epa:countrycode",
+      "@type": "xsd:string"
+    },
+    "statecode": {
+      "@id": "epa:statecode",
+      "@type": "xsd:string"
+    },
+    "countycode": {
+      "@id": "epa:countycode",
+      "@type": "xsd:string"
+    },
+    "aquifername": {
+      "@id": "epa:aquifername",
+      "@type": "xsd:string"
+    },
+    "formationtypetext": {
+      "@id": "epa:formationtypetext",
+      "@type": "xsd:string"
+    },
+    "aquifertypename": {
+      "@id": "epa:aquifertypename",
+      "@type": "xsd:string"
+    },
+    "constructiondatetext": {
+      "@id": "epa:constructiondatetext",
+      "@type": "xsd:string"
+    },
+    "welldepthmeasure_measurevalue": {
+      "@id": "epa:welldepthmeasure_measurevalue",
+      "@type": "xsd:string"
+    },
+    "welldepthmeasure_measureunit": {
+      "@id": "epa:welldepthmeasure_measureunit",
+      "@type": "xsd:string"
+    },
+    "wellholedepthmeasure_measureva": {
+      "@id": "epa:wellholedepthmeasure_measureva",
+      "@type": "xsd:string"
+    },
+    "wellholedepthmeasure_measureun": {
+      "@id": "epa:wellholedepthmeasure_measureun",
+      "@type": "xsd:string"
+    },
+    "providername": {
+      "@id": "epa:providername",
+      "@type": "xsd:string"
+    },
+    "nearest_cip_network_distancekm": {
+      "@id": "epa:nearest_cip_network_distancekm",
+      "@type": "xsd:decimal"
+    },
+    "nearest_cip_network_flowtimeday": {
+      "@id": "epa:nearest_cip_network_flowtimeday",
+      "@type": "xsd:decimal"
+    },
+    "nearest_rad_network_distancekm": {
+      "@id": "epa:nearest_rad_network_distancekm",
+      "@type": "xsd:decimal"
+    },
+    "nearest_rad_network_flowtimeday": {
+      "@id": "epa:nearest_rad_network_flowtimeday",
+      "@type": "xsd:decimal"
+    },
+    "levelpathi": {
+      "@id": "epa:levelpathi",
+      "@type": "xsd:integer"
+    },
+    "terminalpa": {
+      "@id": "epa:terminalpa",
+      "@type": "xsd:integer"
+    },
+    "uphydroseq": {
+      "@id": "epa:uphydroseq",
+      "@type": "xsd:integer"
+    },
+    "dnhydroseq": {
+      "@id": "epa:dnhydroseq",
+      "@type": "xsd:integer"
+    },
+    "flowtimeday": {
+      "@id": "epa:flowtimeday",
+      "@type": "xsd:decimal"
+    },
+    "network_distancekm": {
+      "@id": "epa:network_distancekm",
+      "@type": "xsd:decimal"
+    },
+    "network_flowtimeday": {
+      "@id": "epa:network_flowtimeday",
+      "@type": "xsd:decimal"
+    },
+    "fcode": {
+      "@id": "epa:fcode",
+      "@type": "xsd:integer"
+    },
+    "wbarea_permanent_identifier": {
+      "@id": "epa:wbarea_permanent_identifier",
+      "@type": "xsd:string"
+    },
+    "navtermination_flag": {
+      "@id": "epa:navtermination_flag",
+      "@type": "xsd:integer"
+    },
+    "nav_order": {
+      "@id": "epa:nav_order",
+      "@type": "xsd:integer"
+    },
+    "point": {
+      "@id": "epa:point",
+      "@type": "xsd:string"
+    },
+    "distance_max_distkm": {
+      "@id": "epa:distance_max_distkm",
+      "@type": "xsd:string"
+    },
+    "raindrop_snap_max_distkm": {
+      "@id": "epa:raindrop_snap_max_distkm",
+      "@type": "xsd:string"
+    },
+    "raindrop_path_max_distkm": {
+      "@id": "epa:raindrop_path_max_distkm",
+      "@type": "xsd:string"
+    },
+    "limit_innetwork": {
+      "@id": "epa:limit_innetwork",
+      "@type": "xsd:string"
+    },
+    "limit_navigable": {
+      "@id": "epa:limit_navigable",
+      "@type": "xsd:string"
+    },
+    "return_link_path": {
+      "@id": "epa:return_link_path",
+      "@type": "xsd:string"
+    },
+    "known_catchment_nhdplusid": {
+      "@id": "epa:known_catchment_nhdplusid",
+      "@type": "xsd:string"
+    },
+    "path_distance_km": {
+      "@id": "epa:path_distance_km",
+      "@type": "xsd:decimal"
+    },
+    "end_point": {
+      "@id": "epa:end_point",
+      "@type": "xsd:string"
+    },
+    "indexing_line": {
+      "@id": "epa:indexing_line",
+      "@type": "xsd:string"
+    },
+    "region": {
+      "@id": "epa:region",
+      "@type": "xsd:string"
+    },
+    "snap_measure": {
+      "@id": "epa:snap_measure",
+      "@type": "xsd:string"
+    },
+    "catchment": {
+      "@id": "epa:catchment",
+      "@type": "xsd:string"
+    },
+    "huc12": {
+      "@id": "epa:huc12",
+      "@type": "xsd:string"
+    },
+    "navpoint": {
+      "@id": "epa:navpoint",
+      "@type": "xsd:string"
+    },
+    "navpoint1": {
+      "@id": "epa:navpoint1",
+      "@type": "xsd:string"
+    },
+    "navpoint2": {
+      "@id": "epa:navpoint2",
+      "@type": "xsd:string"
+    },
+    "start_source_featureid": {
+      "@id": "epa:start_source_featureid",
+      "@type": "xsd:string"
+    },
+    "start_source_featureid2": {
+      "@id": "epa:start_source_featureid2",
+      "@type": "xsd:string"
+    },
+    "start_source_originator": {
+      "@id": "epa:start_source_originator",
+      "@type": "xsd:string"
+    },
+    "start_source_series": {
+      "@id": "epa:start_source_series",
+      "@type": "xsd:string"
+    },
+    "start_start_date": {
+      "@id": "epa:start_start_date",
+      "@type": "xsd:string"
+    },
+    "start_end_date": {
+      "@id": "epa:start_end_date",
+      "@type": "xsd:string"
+    },
+    "start_permid_joinkey": {
+      "@id": "epa:start_permid_joinkey",
+      "@type": "xsd:string"
+    },
+    "start_source_joinkey": {
+      "@id": "epa:start_source_joinkey",
+      "@type": "xsd:string"
+    },
+    "start_cip_joinkey": {
+      "@id": "epa:start_cip_joinkey",
+      "@type": "xsd:string"
+    },
+    "start_linked_data_program": {
+      "@id": "epa:start_linked_data_program",
+      "@type": "xsd:string"
+    },
+    "start_push_rad_for_permid": {
+      "@id": "epa:start_push_rad_for_permid",
+      "@type": "xsd:string"
+    },
+    "stop_source_featureid": {
+      "@id": "epa:stop_source_featureid",
+      "@type": "xsd:string"
+    },
+    "stop_source_featureid2": {
+      "@id": "epa:stop_source_featureid2",
+      "@type": "xsd:string"
+    },
+    "stop_source_originator": {
+      "@id": "epa:stop_source_originator",
+      "@type": "xsd:string"
+    },
+    "stop_source_series": {
+      "@id": "epa:stop_source_series",
+      "@type": "xsd:string"
+    },
+    "stop_start_date": {
+      "@id": "epa:stop_start_date",
+      "@type": "xsd:string"
+    },
+    "stop_end_date": {
+      "@id": "epa:stop_end_date",
+      "@type": "xsd:string"
+    },
+    "stop_permid_joinkey": {
+      "@id": "epa:stop_permid_joinkey",
+      "@type": "xsd:string"
+    },
+    "stop_source_joinkey": {
+      "@id": "epa:stop_source_joinkey",
+      "@type": "xsd:string"
+    },
+    "stop_cip_joinkey": {
+      "@id": "epa:stop_cip_joinkey",
+      "@type": "xsd:string"
+    },
+    "stop_linked_data_program": {
+      "@id": "epa:stop_linked_data_program",
+      "@type": "xsd:string"
+    },
+    "stop_push_rad_for_permid": {
+      "@id": "epa:stop_push_rad_for_permid",
+      "@type": "xsd:string"
+    },
+    "linked_data_search_list": {
+      "@id": "epa:linked_data_search_list",
+      "@container": "@list"
+    },
+    "search_precision": {
+      "@id": "epa:search_precision",
+      "@type": "xsd:string"
+    },
+    "return_catchments": {
+      "@id": "epa:return_catchments",
+      "@type": "xsd:string"
+    },
+    "return_linked_data_cip": {
+      "@id": "epa:return_linked_data_cip",
+      "@type": "xsd:string"
+    },
+    "return_linked_data_huc12": {
+      "@id": "epa:return_linked_data_huc12",
+      "@type": "xsd:string"
+    },
+    "return_linked_data_source": {
+      "@id": "epa:return_linked_data_source",
+      "@type": "xsd:string"
+    },
+    "return_linked_data_rad": {
+      "@id": "epa:return_linked_data_rad",
+      "@type": "xsd:string"
+    },
+    "return_linked_data_attributes": {
+      "@id": "epa:return_linked_data_attributes",
+      "@type": "xsd:string"
+    },
+    "remove_stop_start_sfids": {
+      "@id": "epa:remove_stop_start_sfids",
+      "@type": "xsd:string"
+    },
+    "push_source_geometry_as_rad": {
+      "@id": "epa:push_source_geometry_as_rad",
+      "@type": "xsd:string"
+    },
+    "linked_data_sfid_found": {
+      "@id": "epa:linked_data_sfid_found"
+    },
+    "linked_data_sfid_count": {
+      "@id": "epa:linked_data_sfid_count",
+      "@type": "xsd:integer"
+    },
+    "linked_data_cip_found": {
+      "@id": "epa:linked_data_cip_found"
+    },
+    "linked_data_cip_count": {
+      "@id": "epa:linked_data_cip_count",
+      "@type": "xsd:integer"
+    },
+    "linked_data_huc12_found": {
+      "@id": "epa:linked_data_huc12_found"
+    },
+    "linked_data_huc12_count": {
+      "@id": "epa:linked_data_huc12_count",
+      "@type": "xsd:integer"
+    },
+    "linked_data_source_points": {
+      "@id": "epa:linked_data_source_points",
+      "@type": "xsd:string"
+    },
+    "linked_data_source_lines": {
+      "@id": "epa:linked_data_source_lines",
+      "@type": "xsd:string"
+    },
+    "linked_data_source_areas": {
+      "@id": "epa:linked_data_source_areas",
+      "@type": "xsd:string"
+    },
+    "linked_data_source_count": {
+      "@id": "epa:linked_data_source_count",
+      "@type": "xsd:integer"
+    },
+    "linked_data_reached_points": {
+      "@id": "epa:linked_data_reached_points",
+      "@type": "xsd:string"
+    },
+    "linked_data_reached_lines": {
+      "@id": "epa:linked_data_reached_lines",
+      "@type": "xsd:string"
+    },
+    "linked_data_reached_areas": {
+      "@id": "epa:linked_data_reached_areas",
+      "@type": "xsd:string"
+    },
+    "linked_data_reached_count": {
+      "@id": "epa:linked_data_reached_count",
+      "@type": "xsd:integer"
+    },
+    "linked_data_attributes": {
+      "@id": "epa:linked_data_attributes"
+    }
+  }
+}

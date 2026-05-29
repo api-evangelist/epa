@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-schema/echo-dfr-dfr054-schema.json",
+  "title": "dfr054",
+  "description": "dfr054 schema from U.S. EPA Enforcement and Compliance History Online (ECHO) - Detailed Facility Report (DFR)",
+  "type": "object",
+  "properties": {
+    "CompActionCost": {
+      "description": "The whole dollar amount of the estimated or actual value of the complying action activities.",
+      "example": "0",
+      "title": "Complying Action Cost",
+      "type": "string"
+    },
+    "FederalPenalty": {
+      "description": "For civil judicial Enforcement Actions, this amount is the Federal penalty assessed against the defendant(s) as specified in the final entered Consent Decree or Court Order.  For administrative Enforcement Actions, it is the penalty assessed in the Consent/Final Order.  It does not include the amount of the penalty mitigated due to a SEP or the amount shared with the state or local entities.  Interest payments associated with a penalty paid over time are not to be included in this amount.  It is the total Federal amount for each Final Order.",
+      "example": "$65,000.00",
+      "title": "Federal Penalty",
+      "type": "string"
+    },
+    "SepCost": {
+      "description": "The total value of all SEPs for all settlements at the enforcement case.",
+      "example": "$4,100.00",
+      "title": "Supplemental Environmental Projects Cost",
+      "type": "string"
+    },
+    "SettlementDate": {
+      "description": "For federal judicial actions, this is the date the settlement document is signed by the presiding judge and entered by the Clerk of the Court. At that point, the settlement becomes a binding court order. For administrative actions, this is the date that the final order is signed and issued by the enforcement authority.",
+      "example": "05/5/2005",
+      "title": "Settlement Date",
+      "type": "string"
+    },
+    "StateLocalPenalty": {
+      "description": "The total dollar penalty amount from all settlements to be paid to a state or local enforcement authority that is party to a concluded enforcement action.",
+      "example": "8450",
+      "title": "State/Local Penalty",
+      "type": "string"
+    },
+    "TotalCostRecovery": {
+      "description": "The amount of the cost recovery ordered or agreed to be repaid by the responsible parties, cost recovery whole dollar amount awarded by the Court and due the the Superfund. For administrative cases, it is the cost recovery whole dollar amount of the Final Order.",
+      "example": "$6,598",
+      "title": "Total Cost Recovery",
+      "type": "string"
+    }
+  },
+  "required": [
+    "TotalCostRecovery",
+    "SettlementDate",
+    "FederalPenalty",
+    "StateLocalPenalty",
+    "SepCost",
+    "CompActionCost"
+  ]
+}

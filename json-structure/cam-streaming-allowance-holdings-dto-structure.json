@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-structure/cam-streaming-allowance-holdings-dto-structure.json",
+  "name": "AllowanceHoldingsDTO",
+  "description": "AllowanceHoldingsDTO schema from Streaming Services OpenAPI Specification",
+  "type": "object",
+  "properties": {
+    "accountNumber": {
+      "type": "string",
+      "description": "The unique identification number of an account.",
+      "example": "000003FACLTY"
+    },
+    "accountName": {
+      "type": "string",
+      "description": "The name of the account in which allowances are held.",
+      "example": "Barry"
+    },
+    "facilityId": {
+      "type": "double",
+      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+      "example": 3
+    },
+    "programCodeInfo": {
+      "type": "string",
+      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+      "example": "ARP,CSNOX,CSSO2G2,MATS"
+    },
+    "vintageYear": {
+      "type": "double",
+      "description": "Year allowance becomes eligible for use in compliance.",
+      "example": 2016
+    },
+    "totalBlock": {
+      "type": "double",
+      "description": "The quantity of allowances as identified by the Start Serial Number through End Serial Number.",
+      "example": 10033
+    },
+    "startBlock": {
+      "type": "double",
+      "description": "The starting serial number of an allowance block.",
+      "example": 266955
+    },
+    "endBlock": {
+      "type": "double",
+      "description": "The ending serial number of an allowance block.",
+      "example": 276987
+    },
+    "stateCode": {
+      "type": "string",
+      "description": "Two letter abbreviation for the State.",
+      "example": "AK"
+    },
+    "epaRegion": {
+      "type": "double",
+      "description": "An EPA Region is a group of U.S. states. EPA Regions are numbered from 1 to 10 and each state belongs to one and only one EPA Region.",
+      "example": 5
+    },
+    "ownerOperator": {
+      "type": "string",
+      "description": "The name of any company that owns an allowance account or an affected unit.The name of any company that operates an affected unit.",
+      "example": "Alabama Power Company (Operator)|Alabama Power Company (Owner)"
+    },
+    "accountType": {
+      "type": "string",
+      "description": "Type of allowance account (Facility, General, etc.).",
+      "example": "Facility Account"
+    }
+  },
+  "required": [
+    "accountNumber",
+    "accountName",
+    "programCodeInfo",
+    "stateCode",
+    "ownerOperator",
+    "accountType"
+  ]
+}

@@ -1,0 +1,569 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: EPA Air Quality System (AQS) API — Sample Data
+  description: 'Sample Data. 5 operations. Lead operation: Get Sample Data by Site. Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - Sample Data
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_EMAILKEY_KEY: EPA_EMAILKEY_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: aqs-sample-data
+      baseUri: https://aqs.epa.gov/data/api
+      description: EPA Air Quality System (AQS) API — Sample Data business capability. Self-contained, no shared references.
+      authentication:
+        type: apikey
+        key: key
+        value: '{{env.EPA_EMAILKEY_KEY}}'
+        placement: query
+      resources:
+        - name: sampledata-bysite
+          path: /sampleData/bySite
+          operations:
+            - name: sampleDataBySite
+              method: GET
+              description: Get Sample Data by Site
+              inputParameters:
+                - name: email
+                  in: query
+                  type: string
+                  required: true
+                  description: Registered email address.
+                - name: key
+                  in: query
+                  type: string
+                  required: true
+                  description: Account-specific access key.
+                - name: param
+                  in: query
+                  type: string
+                  required: true
+                  description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
+                - name: bdate
+                  in: query
+                  type: string
+                  required: true
+                  description: Begin date (YYYYMMDD).
+                - name: edate
+                  in: query
+                  type: string
+                  required: true
+                  description: End date (YYYYMMDD). Must be in the same year as bdate for most services.
+                - name: state
+                  in: query
+                  type: string
+                  required: true
+                  description: 2-digit state FIPS code.
+                - name: county
+                  in: query
+                  type: string
+                  required: true
+                  description: 3-digit county code.
+                - name: site
+                  in: query
+                  type: string
+                  required: true
+                  description: 4-digit site code.
+                - name: duration
+                  in: query
+                  type: string
+                  required: false
+                  description: 1-character duration code filter.
+                - name: cbdate
+                  in: query
+                  type: string
+                  required: false
+                  description: Optional change begin date (returns records updated since cbdate).
+                - name: cedate
+                  in: query
+                  type: string
+                  required: false
+                  description: Optional change end date.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: sampledata-bycounty
+          path: /sampleData/byCounty
+          operations:
+            - name: sampleDataByCounty
+              method: GET
+              description: Get Sample Data by County
+              inputParameters:
+                - name: email
+                  in: query
+                  type: string
+                  required: true
+                  description: Registered email address.
+                - name: key
+                  in: query
+                  type: string
+                  required: true
+                  description: Account-specific access key.
+                - name: param
+                  in: query
+                  type: string
+                  required: true
+                  description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
+                - name: bdate
+                  in: query
+                  type: string
+                  required: true
+                  description: Begin date (YYYYMMDD).
+                - name: edate
+                  in: query
+                  type: string
+                  required: true
+                  description: End date (YYYYMMDD). Must be in the same year as bdate for most services.
+                - name: state
+                  in: query
+                  type: string
+                  required: true
+                  description: 2-digit state FIPS code.
+                - name: county
+                  in: query
+                  type: string
+                  required: true
+                  description: 3-digit county code.
+                - name: duration
+                  in: query
+                  type: string
+                  required: false
+                  description: 1-character duration code filter.
+                - name: cbdate
+                  in: query
+                  type: string
+                  required: false
+                  description: Optional change begin date (returns records updated since cbdate).
+                - name: cedate
+                  in: query
+                  type: string
+                  required: false
+                  description: Optional change end date.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: sampledata-bystate
+          path: /sampleData/byState
+          operations:
+            - name: sampleDataByState
+              method: GET
+              description: Get Sample Data by State
+              inputParameters:
+                - name: email
+                  in: query
+                  type: string
+                  required: true
+                  description: Registered email address.
+                - name: key
+                  in: query
+                  type: string
+                  required: true
+                  description: Account-specific access key.
+                - name: param
+                  in: query
+                  type: string
+                  required: true
+                  description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
+                - name: bdate
+                  in: query
+                  type: string
+                  required: true
+                  description: Begin date (YYYYMMDD).
+                - name: edate
+                  in: query
+                  type: string
+                  required: true
+                  description: End date (YYYYMMDD). Must be in the same year as bdate for most services.
+                - name: state
+                  in: query
+                  type: string
+                  required: true
+                  description: 2-digit state FIPS code.
+                - name: duration
+                  in: query
+                  type: string
+                  required: false
+                  description: 1-character duration code filter.
+                - name: cbdate
+                  in: query
+                  type: string
+                  required: false
+                  description: Optional change begin date (returns records updated since cbdate).
+                - name: cedate
+                  in: query
+                  type: string
+                  required: false
+                  description: Optional change end date.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: sampledata-bybox
+          path: /sampleData/byBox
+          operations:
+            - name: sampleDataByBox
+              method: GET
+              description: Get Sample Data by Bounding Box
+              inputParameters:
+                - name: email
+                  in: query
+                  type: string
+                  required: true
+                  description: Registered email address.
+                - name: key
+                  in: query
+                  type: string
+                  required: true
+                  description: Account-specific access key.
+                - name: param
+                  in: query
+                  type: string
+                  required: true
+                  description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
+                - name: bdate
+                  in: query
+                  type: string
+                  required: true
+                  description: Begin date (YYYYMMDD).
+                - name: edate
+                  in: query
+                  type: string
+                  required: true
+                  description: End date (YYYYMMDD). Must be in the same year as bdate for most services.
+                - name: minlat
+                  in: query
+                  type: number
+                  required: true
+                  description: Minimum latitude of bounding box.
+                - name: maxlat
+                  in: query
+                  type: number
+                  required: true
+                  description: maxlat
+                - name: minlon
+                  in: query
+                  type: number
+                  required: true
+                  description: minlon
+                - name: maxlon
+                  in: query
+                  type: number
+                  required: true
+                  description: maxlon
+                - name: duration
+                  in: query
+                  type: string
+                  required: false
+                  description: 1-character duration code filter.
+                - name: cbdate
+                  in: query
+                  type: string
+                  required: false
+                  description: Optional change begin date (returns records updated since cbdate).
+                - name: cedate
+                  in: query
+                  type: string
+                  required: false
+                  description: Optional change end date.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: sampledata-bycbsa
+          path: /sampleData/byCBSA
+          operations:
+            - name: sampleDataByCBSA
+              method: GET
+              description: Get Sample Data by CBSA
+              inputParameters:
+                - name: email
+                  in: query
+                  type: string
+                  required: true
+                  description: Registered email address.
+                - name: key
+                  in: query
+                  type: string
+                  required: true
+                  description: Account-specific access key.
+                - name: param
+                  in: query
+                  type: string
+                  required: true
+                  description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
+                - name: bdate
+                  in: query
+                  type: string
+                  required: true
+                  description: Begin date (YYYYMMDD).
+                - name: edate
+                  in: query
+                  type: string
+                  required: true
+                  description: End date (YYYYMMDD). Must be in the same year as bdate for most services.
+                - name: cbsa
+                  in: query
+                  type: string
+                  required: true
+                  description: 5-digit Core Based Statistical Area code.
+                - name: duration
+                  in: query
+                  type: string
+                  required: false
+                  description: 1-character duration code filter.
+                - name: cbdate
+                  in: query
+                  type: string
+                  required: false
+                  description: Optional change begin date (returns records updated since cbdate).
+                - name: cedate
+                  in: query
+                  type: string
+                  required: false
+                  description: Optional change end date.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: aqs-sample-data-rest
+      port: 8080
+      description: REST adapter for EPA Air Quality System (AQS) API — Sample Data. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/sampledata/bysite
+          name: sampledata-bysite
+          description: REST surface for Get Sample Data by Site.
+          operations:
+            - method: GET
+              name: sampleDataBySite
+              description: Get Sample Data by Site
+              call: aqs-sample-data.sampleDataBySite
+              with:
+                email: rest.email
+                key: rest.key
+                param: rest.param
+                bdate: rest.bdate
+                edate: rest.edate
+                state: rest.state
+                county: rest.county
+                site: rest.site
+                duration: rest.duration
+                cbdate: rest.cbdate
+                cedate: rest.cedate
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/sampledata/bycounty
+          name: sampledata-bycounty
+          description: REST surface for Get Sample Data by County.
+          operations:
+            - method: GET
+              name: sampleDataByCounty
+              description: Get Sample Data by County
+              call: aqs-sample-data.sampleDataByCounty
+              with:
+                email: rest.email
+                key: rest.key
+                param: rest.param
+                bdate: rest.bdate
+                edate: rest.edate
+                state: rest.state
+                county: rest.county
+                duration: rest.duration
+                cbdate: rest.cbdate
+                cedate: rest.cedate
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/sampledata/bystate
+          name: sampledata-bystate
+          description: REST surface for Get Sample Data by State.
+          operations:
+            - method: GET
+              name: sampleDataByState
+              description: Get Sample Data by State
+              call: aqs-sample-data.sampleDataByState
+              with:
+                email: rest.email
+                key: rest.key
+                param: rest.param
+                bdate: rest.bdate
+                edate: rest.edate
+                state: rest.state
+                duration: rest.duration
+                cbdate: rest.cbdate
+                cedate: rest.cedate
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/sampledata/bybox
+          name: sampledata-bybox
+          description: REST surface for Get Sample Data by Bounding Box.
+          operations:
+            - method: GET
+              name: sampleDataByBox
+              description: Get Sample Data by Bounding Box
+              call: aqs-sample-data.sampleDataByBox
+              with:
+                email: rest.email
+                key: rest.key
+                param: rest.param
+                bdate: rest.bdate
+                edate: rest.edate
+                minlat: rest.minlat
+                maxlat: rest.maxlat
+                minlon: rest.minlon
+                maxlon: rest.maxlon
+                duration: rest.duration
+                cbdate: rest.cbdate
+                cedate: rest.cedate
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/sampledata/bycbsa
+          name: sampledata-bycbsa
+          description: REST surface for Get Sample Data by CBSA.
+          operations:
+            - method: GET
+              name: sampleDataByCBSA
+              description: Get Sample Data by CBSA
+              call: aqs-sample-data.sampleDataByCBSA
+              with:
+                email: rest.email
+                key: rest.key
+                param: rest.param
+                bdate: rest.bdate
+                edate: rest.edate
+                cbsa: rest.cbsa
+                duration: rest.duration
+                cbdate: rest.cbdate
+                cedate: rest.cedate
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: aqs-sample-data-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for EPA Air Quality System (AQS) API — Sample Data. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: get-sample-data-site
+          description: Get Sample Data by Site
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: aqs-sample-data.sampleDataBySite
+          with:
+            email: tools.email
+            key: tools.key
+            param: tools.param
+            bdate: tools.bdate
+            edate: tools.edate
+            state: tools.state
+            county: tools.county
+            site: tools.site
+            duration: tools.duration
+            cbdate: tools.cbdate
+            cedate: tools.cedate
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-sample-data-county
+          description: Get Sample Data by County
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: aqs-sample-data.sampleDataByCounty
+          with:
+            email: tools.email
+            key: tools.key
+            param: tools.param
+            bdate: tools.bdate
+            edate: tools.edate
+            state: tools.state
+            county: tools.county
+            duration: tools.duration
+            cbdate: tools.cbdate
+            cedate: tools.cedate
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-sample-data-state
+          description: Get Sample Data by State
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: aqs-sample-data.sampleDataByState
+          with:
+            email: tools.email
+            key: tools.key
+            param: tools.param
+            bdate: tools.bdate
+            edate: tools.edate
+            state: tools.state
+            duration: tools.duration
+            cbdate: tools.cbdate
+            cedate: tools.cedate
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-sample-data-bounding-box
+          description: Get Sample Data by Bounding Box
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: aqs-sample-data.sampleDataByBox
+          with:
+            email: tools.email
+            key: tools.key
+            param: tools.param
+            bdate: tools.bdate
+            edate: tools.edate
+            minlat: tools.minlat
+            maxlat: tools.maxlat
+            minlon: tools.minlon
+            maxlon: tools.maxlon
+            duration: tools.duration
+            cbdate: tools.cbdate
+            cedate: tools.cedate
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-sample-data-cbsa
+          description: Get Sample Data by CBSA
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: aqs-sample-data.sampleDataByCBSA
+          with:
+            email: tools.email
+            key: tools.key
+            param: tools.param
+            bdate: tools.bdate
+            edate: tools.edate
+            cbsa: tools.cbsa
+            duration: tools.duration
+            cbdate: tools.cbdate
+            cedate: tools.cedate
+          outputParameters:
+            - type: object
+              mapping: $.

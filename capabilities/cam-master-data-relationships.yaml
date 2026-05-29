@@ -1,0 +1,114 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Master Data Management OpenAPI Specification — Relationships
+  description: 'Relationships. 2 operations. Lead operation: . Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - Relationships
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_APIKEY_KEY: EPA_APIKEY_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: cam-master-data-relationships
+      baseUri: https://api.epa.gov/easey
+      description: Master Data Management OpenAPI Specification — Relationships business capability. Self-contained, no shared references.
+      authentication:
+        type: apikey
+        key: x-api-key
+        value: '{{env.EPA_APIKEY_KEY}}'
+        placement: header
+      resources:
+        - name: master-data-mgmt-relationships-list
+          path: /master-data-mgmt/relationships/list
+          operations:
+            - name: relationshipsControllerlistRelationships
+              method: GET
+              description: relationshipsControllerlistRelationships
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: master-data-mgmt-relationships-code
+          path: /master-data-mgmt/relationships/{code}
+          operations:
+            - name: relationshipsControllergetRelationships
+              method: GET
+              description: relationshipsControllergetRelationships
+              inputParameters:
+                - name: code
+                  in: path
+                  type: string
+                  required: true
+                  description: code
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: cam-master-data-relationships-rest
+      port: 8080
+      description: REST adapter for Master Data Management OpenAPI Specification — Relationships. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/master-data-mgmt/relationships/list
+          name: master-data-mgmt-relationships-list
+          description: REST surface for .
+          operations:
+            - method: GET
+              name: relationshipsControllerlistRelationships
+              description: relationshipsControllerlistRelationships
+              call: cam-master-data-relationships.relationshipsControllerlistRelationships
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/master-data-mgmt/relationships/{code}
+          name: master-data-mgmt-relationships-code
+          description: REST surface for .
+          operations:
+            - method: GET
+              name: relationshipsControllergetRelationships
+              description: relationshipsControllergetRelationships
+              call: cam-master-data-relationships.relationshipsControllergetRelationships
+              with:
+                code: rest.code
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: cam-master-data-relationships-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Master Data Management OpenAPI Specification — Relationships. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: relationshipscontroller-listrelationships
+          description: relationshipscontroller-listrelationships
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-master-data-relationships.relationshipsControllerlistRelationships
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: relationshipscontroller-getrelationships
+          description: relationshipscontroller-getrelationships
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-master-data-relationships.relationshipsControllergetRelationships
+          with:
+            code: tools.code
+          outputParameters:
+            - type: object
+              mapping: $.

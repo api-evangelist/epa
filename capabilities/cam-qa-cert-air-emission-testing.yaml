@@ -1,0 +1,142 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: QA Certification Management OpenAPI Specification — Air Emission Testing
+  description: 'Air Emission Testing. 2 operations. Lead operation: operations. Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - Air Emission Testing
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_APIKEY_KEY: EPA_APIKEY_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: cam-qa-cert-air-emission-testing
+      baseUri: https://api.epa.gov/easey
+      description: QA Certification Management OpenAPI Specification — Air Emission Testing business capability. Self-contained, no shared references.
+      authentication:
+        type: apikey
+        key: x-api-key
+        value: '{{env.EPA_APIKEY_KEY}}'
+        placement: header
+      resources:
+        - name: qa-certification-mgmt-locations-locid-test-summary-testsumid-air-emission-testings
+          path: /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/air-emission-testings
+          operations:
+            - name: airEmissionTestingControllergetAirEmissionsTestings
+              method: GET
+              description: airEmissionTestingControllergetAirEmissionsTestings
+              inputParameters:
+                - name: locId
+                  in: path
+                  type: string
+                  required: true
+                  description: locId
+                - name: testSumId
+                  in: path
+                  type: string
+                  required: true
+                  description: testSumId
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: qa-certification-mgmt-locations-locid-test-summary-testsumid-air-emission-testings-id
+          path: /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/air-emission-testings/{id}
+          operations:
+            - name: airEmissionTestingControllergetAirEmissionsTesting
+              method: GET
+              description: airEmissionTestingControllergetAirEmissionsTesting
+              inputParameters:
+                - name: locId
+                  in: path
+                  type: string
+                  required: true
+                  description: locId
+                - name: testSumId
+                  in: path
+                  type: string
+                  required: true
+                  description: testSumId
+                - name: id
+                  in: path
+                  type: string
+                  required: true
+                  description: id
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: cam-qa-cert-air-emission-testing-rest
+      port: 8080
+      description: REST adapter for QA Certification Management OpenAPI Specification — Air Emission Testing. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/qa-certification-mgmt/locations/{locid}/test-summary/{testsumid}/air-emission-testings
+          name: qa-certification-mgmt-locations-locid-test-summary-testsumid-air-emission-testings
+          description: REST surface for airEmissionTestingControllergetAirEmissionsTestings.
+          operations:
+            - method: GET
+              name: airEmissionTestingControllergetAirEmissionsTestings
+              description: airEmissionTestingControllergetAirEmissionsTestings
+              call: cam-qa-cert-air-emission-testing.airEmissionTestingControllergetAirEmissionsTestings
+              with:
+                locId: rest.locId
+                testSumId: rest.testSumId
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/qa-certification-mgmt/locations/{locid}/test-summary/{testsumid}/air-emission-testings/{id}
+          name: qa-certification-mgmt-locations-locid-test-summary-testsumid-air-emission-testings-id
+          description: REST surface for airEmissionTestingControllergetAirEmissionsTesting.
+          operations:
+            - method: GET
+              name: airEmissionTestingControllergetAirEmissionsTesting
+              description: airEmissionTestingControllergetAirEmissionsTesting
+              call: cam-qa-cert-air-emission-testing.airEmissionTestingControllergetAirEmissionsTesting
+              with:
+                locId: rest.locId
+                testSumId: rest.testSumId
+                id: rest.id
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: cam-qa-cert-air-emission-testing-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for QA Certification Management OpenAPI Specification — Air Emission Testing. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: airemissiontestingcontroller-getairemissionstestings
+          description: airemissiontestingcontroller-getairemissionstestings
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-qa-cert-air-emission-testing.airEmissionTestingControllergetAirEmissionsTestings
+          with:
+            locId: tools.locId
+            testSumId: tools.testSumId
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: airemissiontestingcontroller-getairemissionstesting
+          description: airemissiontestingcontroller-getairemissionstesting
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-qa-cert-air-emission-testing.airEmissionTestingControllergetAirEmissionsTesting
+          with:
+            locId: tools.locId
+            testSumId: tools.testSumId
+            id: tools.id
+          outputParameters:
+            - type: object
+              mapping: $.

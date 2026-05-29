@@ -1,0 +1,205 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Emissions Management OpenAPI Specification — Emissions
+  description: 'Emissions. 3 operations. Lead operation: Exports Emissions Data for the Specified Monitor Plan & Reporting Period. Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - Emissions
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_APIKEY_KEY: EPA_APIKEY_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: cam-emissions-emissions
+      baseUri: https://api.epa.gov/easey
+      description: Emissions Management OpenAPI Specification — Emissions business capability. Self-contained, no shared references.
+      authentication:
+        type: apikey
+        key: x-api-key
+        value: '{{env.EPA_APIKEY_KEY}}'
+        placement: header
+      resources:
+        - name: emissions-mgmt-emissions-export
+          path: /emissions-mgmt/emissions/export
+          operations:
+            - name: emissionsControllerexport
+              method: GET
+              description: Exports Emissions Data for the Specified Monitor Plan & Reporting Period
+              inputParameters:
+                - name: monitorPlanId
+                  in: query
+                  type: string
+                  required: true
+                  description: monitorPlanId
+                - name: year
+                  in: query
+                  type: number
+                  required: true
+                  description: year
+                - name: quarter
+                  in: query
+                  type: number
+                  required: true
+                  description: quarter
+                - name: reportedValuesOnly
+                  in: query
+                  type: boolean
+                  required: false
+                  description: reportedValuesOnly
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: emissions-mgmt-emissions-submission-progress
+          path: /emissions-mgmt/emissions/submission-progress
+          operations:
+            - name: emissionsControllersubmissionProgress
+              method: GET
+              description: emissionsControllersubmissionProgress
+              inputParameters:
+                - name: submissionPeriod
+                  in: query
+                  type: string
+                  required: true
+                  description: Date on which activity occurred.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: emissions-mgmt-emissions
+          path: /emissions-mgmt/emissions
+          operations:
+            - name: emissionsControllergetEmissions
+              method: GET
+              description: emissionsControllergetEmissions
+              inputParameters:
+                - name: orisCodes
+                  in: query
+                  type: array
+                  required: true
+                  description: Array of oris codes
+                - name: monPlanIds
+                  in: query
+                  type: array
+                  required: false
+                  description: Array of configurations
+                - name: quarters
+                  in: query
+                  type: array
+                  required: true
+                  description: Array of quarter abbreviations
+                - name: mode
+                  in: query
+                  type: string
+                  required: false
+                  description: Flag to indicate the mode of operation
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: cam-emissions-emissions-rest
+      port: 8080
+      description: REST adapter for Emissions Management OpenAPI Specification — Emissions. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/emissions-mgmt/emissions/export
+          name: emissions-mgmt-emissions-export
+          description: REST surface for Exports Emissions Data for the Specified Monitor Plan & Reporting Period.
+          operations:
+            - method: GET
+              name: emissionsControllerexport
+              description: Exports Emissions Data for the Specified Monitor Plan & Reporting Period
+              call: cam-emissions-emissions.emissionsControllerexport
+              with:
+                monitorPlanId: rest.monitorPlanId
+                year: rest.year
+                quarter: rest.quarter
+                reportedValuesOnly: rest.reportedValuesOnly
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/emissions-mgmt/emissions/submission-progress
+          name: emissions-mgmt-emissions-submission-progress
+          description: REST surface for emissionsControllersubmissionProgress.
+          operations:
+            - method: GET
+              name: emissionsControllersubmissionProgress
+              description: emissionsControllersubmissionProgress
+              call: cam-emissions-emissions.emissionsControllersubmissionProgress
+              with:
+                submissionPeriod: rest.submissionPeriod
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/emissions-mgmt/emissions
+          name: emissions-mgmt-emissions
+          description: REST surface for emissionsControllergetEmissions.
+          operations:
+            - method: GET
+              name: emissionsControllergetEmissions
+              description: emissionsControllergetEmissions
+              call: cam-emissions-emissions.emissionsControllergetEmissions
+              with:
+                orisCodes: rest.orisCodes
+                monPlanIds: rest.monPlanIds
+                quarters: rest.quarters
+                mode: rest.mode
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: cam-emissions-emissions-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Emissions Management OpenAPI Specification — Emissions. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: exports-emissions-data-specified-monitor-plan-reporting-period
+          description: Exports Emissions Data for the Specified Monitor Plan & Reporting Period
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-emissions-emissions.emissionsControllerexport
+          with:
+            monitorPlanId: tools.monitorPlanId
+            year: tools.year
+            quarter: tools.quarter
+            reportedValuesOnly: tools.reportedValuesOnly
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: emissionscontroller-submissionprogress
+          description: emissionscontroller-submissionprogress
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-emissions-emissions.emissionsControllersubmissionProgress
+          with:
+            submissionPeriod: tools.submissionPeriod
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: emissionscontroller-getemissions
+          description: emissionscontroller-getemissions
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-emissions-emissions.emissionsControllergetEmissions
+          with:
+            orisCodes: tools.orisCodes
+            monPlanIds: tools.monPlanIds
+            quarters: tools.quarters
+            mode: tools.mode
+          outputParameters:
+            - type: object
+              mapping: $.

@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-schema/cip-service-pointindexing-resp-schema.json",
+  "title": "pointindexing_resp",
+  "description": "pointindexing_resp schema from CIP-service Indexing API",
+  "type": "object",
+  "properties": {
+    "flowlines": {
+      "oneOf": [
+        {
+          "$ref": "#/components/schemas/geojson_featurecollection"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "example": "string"
+    },
+    "path_distance_km": {
+      "type": "number",
+      "example": 0.0
+    },
+    "end_point": {
+      "oneOf": [
+        {
+          "$ref": "#/components/schemas/geojson_feature"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "example": "string"
+    },
+    "indexing_line": {
+      "oneOf": [
+        {
+          "$ref": "#/components/schemas/geojson_feature"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "example": "string"
+    },
+    "region": {
+      "type": "string",
+      "example": "string"
+    },
+    "nhdplusid": {
+      "$ref": "#/components/schemas/nhdplusid"
+    },
+    "reachcode": {
+      "$ref": "#/components/schemas/reachcode"
+    },
+    "hydroseq": {
+      "$ref": "#/components/schemas/hydroseq"
+    },
+    "snap_measure": {
+      "$ref": "#/components/schemas/measure"
+    },
+    "return_code": {
+      "$ref": "#/components/schemas/return_code"
+    },
+    "status_message": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "example": "active"
+    }
+  }
+}

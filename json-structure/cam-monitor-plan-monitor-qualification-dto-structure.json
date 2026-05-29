@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-structure/cam-monitor-plan-monitor-qualification-dto-structure.json",
+  "name": "MonitorQualificationDTO",
+  "description": "MonitorQualificationDTO schema from Monitor Plan Management OpenAPI Specification",
+  "type": "object",
+  "properties": {
+    "qualificationTypeCode": {
+      "type": "string",
+      "description": "Code used to identify the qualification type.",
+      "example": "LMES"
+    },
+    "beginDate": {
+      "type": "datetime",
+      "description": "Date on which information became effective or activity started.",
+      "example": "2018-05-01"
+    },
+    "endDate": {
+      "type": "datetime",
+      "description": "Last date in which information was effective.  This date will be null for active records.",
+      "example": null
+    },
+    "id": {
+      "type": "string",
+      "description": "Unique identifier of a monitoring qualification record.",
+      "example": "NJCHQLAPA3-82CD1A0A9D2A48BFB5203F82D390183E"
+    },
+    "locationId": {
+      "type": "string",
+      "description": "Unique identifier of a monitoring location record.",
+      "example": "4168"
+    },
+    "userId": {
+      "type": "string",
+      "description": "User account or source of data that added or updated record.",
+      "example": "abcde"
+    },
+    "addDate": {
+      "type": "string",
+      "description": "Date and time in which record was added.",
+      "example": "2018-07-20"
+    },
+    "updateDate": {
+      "type": "string",
+      "description": "Date and time in which record was last updated.",
+      "example": "2018-07-20"
+    },
+    "active": {
+      "type": "boolean",
+      "description": "Flag for active monitor location record",
+      "example": true
+    },
+    "monitoringQualificationLEEData": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/LEEQualificationDTO"
+      },
+      "example": [
+        "string"
+      ]
+    },
+    "monitoringQualificationLMEData": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/LMEQualificationDTO"
+      },
+      "example": [
+        "string"
+      ]
+    },
+    "monitoringQualificationPercentData": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/PCTQualificationDTO"
+      },
+      "example": [
+        "string"
+      ]
+    }
+  },
+  "required": [
+    "qualificationTypeCode",
+    "beginDate",
+    "endDate",
+    "id",
+    "locationId",
+    "userId",
+    "addDate",
+    "updateDate",
+    "active",
+    "monitoringQualificationLEEData",
+    "monitoringQualificationLMEData",
+    "monitoringQualificationPercentData"
+  ]
+}

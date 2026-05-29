@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-schema/echo-dfr-dfr069-schema.json",
+  "title": "dfr069",
+  "description": "Source Object",
+  "type": "object",
+  "properties": {
+    "DateLastInspection": {
+      "description": "The date on which the most recent inspection of the facility took place",
+      "example": "01/13/2007",
+      "title": "Date of Last Inspection",
+      "type": "string"
+    },
+    "EPASystem": {
+      "description": "The EPA data system in which permit and facility records are kept. EPA's Facility Registry System (FRS) links all program database records (such as permit IDs and IDs facilities use in reporting to EPA) together. The following list describes the individual data systems that are linked to from the detailed facility report: \n\n- AFS: Air Facility System for Clean Air Act stationary source programs.\n- ICP: Integrated Compliance Information System for Clean Water Act programs monitoring National Pollutant Discharge Elimination System (NPDES) permits.\n- RCR: Resource Conservation and Recovery Act Information System (RCRAInfo) for tracking the Resource Conservation and Recovery Act (RCRA) programs.\n- NCDB: National Compliance Database System for monitoring national performance of the Toxic Substance Control Act (TSCA); the Emergency Planning and Right-to-Know Act, Section 313 (EPCRA); the Asbestos Hazard Emergency Response (AHERA); and the Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA).\n- TRI: Toxics Release Inventory for Emergency Planning and Community Right-to-Know Act, Section 313 submissions.\n- NEI: National Emissions Inventory database contains information on stationary and mobile sources that emit criteria air pollutants and their precursors, as well as hazardous air pollutants (HAPs). The database includes estimates of annual emissions, by source, of air pollutants in each area of the country, on an annual basis.\n- TSCA: Toxic Substances Control Act addressing the production, importation, use, and disposal of specific chemicals.",
+      "example": "ICP",
+      "title": "EPA Data System",
+      "type": "string"
+    },
+    "FormalEnfActCount": {
+      "description": "The number of formal enforcement actions that have been taken against the facility, under the corresponding statute, within the last five years.",
+      "example": "1",
+      "title": "Formal Enforcement Action Count",
+      "type": "string"
+    },
+    "InspectionCount": {
+      "description": "The total number of inspections pertaining to compliance of the designated statute",
+      "title": "Inspection Count",
+      "type": "string",
+      "example": "string"
+    },
+    "SourceID": {
+      "description": "Unique Identifier assigned by EPA.",
+      "example": "ALR040033",
+      "title": "EPA Source Identifier",
+      "type": "string"
+    },
+    "Statute": {
+      "description": "The name of the statute associated with each of the permits and identifiers linked to the facility: \n- CAA = the Clean Air Act\n- CWA = the Clean Water Act\n- RCRA = the Resource Conservation and Recovery Act\n- EP313 = the Emergency Planning and Community Right-to-Know Act, Section 313 (also known as the Toxics Release Inventory Program)\n- TSCA = the Toxic Substances Control Act\n- SDWA = the Safe Drinking Water Act",
+      "example": "CWA",
+      "title": "Regulatory Statute",
+      "type": "string"
+    },
+    "TotalPenalties": {
+      "description": "The total dollar amount of either assessed or final penalties within the five year time period",
+      "example": "$963,531",
+      "title": "Total Penalties",
+      "type": "string"
+    }
+  },
+  "required": [
+    "Statute",
+    "EPASystem",
+    "SourceID",
+    "InspectionCount",
+    "DateLastInspection",
+    "FormalEnfActCount",
+    "TotalPenalties"
+  ]
+}

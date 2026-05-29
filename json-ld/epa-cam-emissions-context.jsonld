@@ -1,0 +1,337 @@
+{
+  "@context": {
+    "epa": "https://api-evangelist.com/epa/cam-emissions#",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "GovernmentOrganization": "schema:GovernmentOrganization",
+    "Dataset": "schema:Dataset",
+    "AnnualApportionedEmissionsAggregationDTO": "epa:AnnualApportionedEmissionsAggregationDTO",
+    "AnnualApportionedEmissionsFacilityAggregationDTO": "epa:AnnualApportionedEmissionsFacilityAggregationDTO",
+    "AnnualApportionedEmissionsStateAggregationDTO": "epa:AnnualApportionedEmissionsStateAggregationDTO",
+    "AnnualUnitDataView": "epa:AnnualUnitDataView",
+    "ApplicableApportionedEmissionsAttributesDTO": "epa:ApplicableApportionedEmissionsAttributesDTO",
+    "DailyApportionedEmissionsFacilityAggregationDTO": "epa:DailyApportionedEmissionsFacilityAggregationDTO",
+    "DailyApportionedEmissionsNationalAggregationDTO": "epa:DailyApportionedEmissionsNationalAggregationDTO",
+    "DailyApportionedEmissionsStateAggregationDTO": "epa:DailyApportionedEmissionsStateAggregationDTO",
+    "DayUnitDataView": "epa:DayUnitDataView",
+    "EmissionsReviewDTO": "epa:EmissionsReviewDTO",
+    "EmissionsSubmissionsProgressDTO": "epa:EmissionsSubmissionsProgressDTO",
+    "EmissionsViewDTO": "epa:EmissionsViewDTO",
+    "HourUnitDataView": "epa:HourUnitDataView",
+    "HourUnitMatsDataView": "epa:HourUnitMatsDataView",
+    "HourlyApportionedEmissionsDTO": "epa:HourlyApportionedEmissionsDTO",
+    "HourlyApportionedEmissionsFacilityAggregationDTO": "epa:HourlyApportionedEmissionsFacilityAggregationDTO",
+    "HourlyApportionedEmissionsNationalAggregationDTO": "epa:HourlyApportionedEmissionsNationalAggregationDTO",
+    "HourlyApportionedEmissionsStateAggregationDTO": "epa:HourlyApportionedEmissionsStateAggregationDTO",
+    "HourlyMatsApportionedEmissionsDTO": "epa:HourlyMatsApportionedEmissionsDTO",
+    "MonthUnitDataView": "epa:MonthUnitDataView",
+    "MonthlyApportionedEmissionsFacilityAggregationDTO": "epa:MonthlyApportionedEmissionsFacilityAggregationDTO",
+    "MonthlyApportionedEmissionsNationalAggregationDTO": "epa:MonthlyApportionedEmissionsNationalAggregationDTO",
+    "MonthlyApportionedEmissionsStateAggregationDTO": "epa:MonthlyApportionedEmissionsStateAggregationDTO",
+    "OzoneApportionedEmissionsFacilityAggregationDTO": "epa:OzoneApportionedEmissionsFacilityAggregationDTO",
+    "OzoneApportionedEmissionsNationalAggregationDTO": "epa:OzoneApportionedEmissionsNationalAggregationDTO",
+    "OzoneApportionedEmissionsStateAggregationDTO": "epa:OzoneApportionedEmissionsStateAggregationDTO",
+    "OzoneUnitDataView": "epa:OzoneUnitDataView",
+    "QuarterUnitDataView": "epa:QuarterUnitDataView",
+    "QuarterlyApportionedEmissionsFacilityAggregationDTO": "epa:QuarterlyApportionedEmissionsFacilityAggregationDTO",
+    "QuarterlyApportionedEmissionsNationalAggregationDTO": "epa:QuarterlyApportionedEmissionsNationalAggregationDTO",
+    "QuarterlyApportionedEmissionsStateAggregationDTO": "epa:QuarterlyApportionedEmissionsStateAggregationDTO",
+    "grossLoad": {
+      "@id": "epa:grossLoad",
+      "@type": "xsd:decimal"
+    },
+    "steamLoad": {
+      "@id": "epa:steamLoad",
+      "@type": "xsd:decimal"
+    },
+    "so2Mass": {
+      "@id": "epa:so2Mass",
+      "@type": "xsd:decimal"
+    },
+    "co2Mass": {
+      "@id": "epa:co2Mass",
+      "@type": "xsd:decimal"
+    },
+    "noxMass": {
+      "@id": "epa:noxMass",
+      "@type": "xsd:decimal"
+    },
+    "heatInput": {
+      "@id": "epa:heatInput",
+      "@type": "xsd:decimal"
+    },
+    "year": {
+      "@id": "epa:year",
+      "@type": "xsd:decimal"
+    },
+    "facilityId": {
+      "@id": "epa:facilityId",
+      "@type": "xsd:decimal"
+    },
+    "facilityName": {
+      "@id": "epa:facilityName",
+      "@type": "xsd:string"
+    },
+    "stateCode": {
+      "@id": "epa:stateCode",
+      "@type": "xsd:string"
+    },
+    "unit_id": {
+      "@id": "epa:unit_id",
+      "@type": "xsd:string"
+    },
+    "unitId": {
+      "@id": "epa:unitId",
+      "@type": "xsd:string"
+    },
+    "associatedStacks": {
+      "@id": "epa:associatedStacks",
+      "@type": "xsd:string"
+    },
+    "countOpTime": {
+      "@id": "epa:countOpTime",
+      "@type": "xsd:decimal"
+    },
+    "sumOpTime": {
+      "@id": "epa:sumOpTime",
+      "@type": "xsd:decimal"
+    },
+    "so2Rate": {
+      "@id": "epa:so2Rate",
+      "@type": "xsd:decimal"
+    },
+    "co2Rate": {
+      "@id": "epa:co2Rate",
+      "@type": "xsd:decimal"
+    },
+    "noxRate": {
+      "@id": "epa:noxRate",
+      "@type": "xsd:decimal"
+    },
+    "primaryFuelInfo": {
+      "@id": "epa:primaryFuelInfo",
+      "@type": "xsd:string"
+    },
+    "secondaryFuelInfo": {
+      "@id": "epa:secondaryFuelInfo",
+      "@type": "xsd:string"
+    },
+    "unitType": {
+      "@id": "epa:unitType",
+      "@type": "xsd:string"
+    },
+    "so2ControlInfo": {
+      "@id": "epa:so2ControlInfo",
+      "@type": "xsd:string"
+    },
+    "noxControlInfo": {
+      "@id": "epa:noxControlInfo",
+      "@type": "xsd:string"
+    },
+    "pmControlInfo": {
+      "@id": "epa:pmControlInfo",
+      "@type": "xsd:string"
+    },
+    "hgControlInfo": {
+      "@id": "epa:hgControlInfo",
+      "@type": "xsd:string"
+    },
+    "programCodeInfo": {
+      "@id": "epa:programCodeInfo",
+      "@type": "xsd:string"
+    },
+    "programCode": {
+      "@id": "epa:programCode",
+      "@type": "xsd:string"
+    },
+    "unitTypeCode": {
+      "@id": "epa:unitTypeCode",
+      "@type": "xsd:string"
+    },
+    "fuelTypeCode": {
+      "@id": "epa:fuelTypeCode",
+      "@type": "xsd:string"
+    },
+    "controlCode": {
+      "@id": "epa:controlCode",
+      "@type": "xsd:string"
+    },
+    "date": {
+      "@id": "epa:date",
+      "@type": "xsd:string"
+    },
+    "orisCode": {
+      "@id": "epa:orisCode",
+      "@type": "xsd:decimal"
+    },
+    "monPlanId": {
+      "@id": "epa:monPlanId",
+      "@type": "xsd:string"
+    },
+    "configuration": {
+      "@id": "epa:configuration",
+      "@type": "xsd:string"
+    },
+    "evalStatusCode": {
+      "@id": "epa:evalStatusCode",
+      "@type": "xsd:string"
+    },
+    "evalStatusCodeDescription": {
+      "@id": "epa:evalStatusCodeDescription",
+      "@type": "xsd:string"
+    },
+    "severityCode": {
+      "@id": "epa:severityCode",
+      "@type": "xsd:string"
+    },
+    "severityDescription": {
+      "@id": "epa:severityDescription",
+      "@type": "xsd:string"
+    },
+    "submissionAvailabilityCode": {
+      "@id": "epa:submissionAvailabilityCode",
+      "@type": "xsd:string"
+    },
+    "submissionAvailabilityCodeDescription": {
+      "@id": "epa:submissionAvailabilityCodeDescription",
+      "@type": "xsd:string"
+    },
+    "userid": {
+      "@id": "epa:userid",
+      "@type": "xsd:string"
+    },
+    "updateDate": {
+      "@id": "epa:updateDate",
+      "@type": "xsd:string"
+    },
+    "windowStatus": {
+      "@id": "epa:windowStatus",
+      "@type": "xsd:string"
+    },
+    "windowExpiredDate": {
+      "@id": "epa:windowExpiredDate",
+      "@type": "xsd:string"
+    },
+    "periodAbbreviation": {
+      "@id": "epa:periodAbbreviation",
+      "@type": "xsd:string"
+    },
+    "quarterName": {
+      "@id": "epa:quarterName",
+      "@type": "xsd:string"
+    },
+    "quarter": {
+      "@id": "epa:quarter",
+      "@type": "xsd:decimal"
+    },
+    "percentage": {
+      "@id": "epa:percentage",
+      "@type": "xsd:decimal"
+    },
+    "code": {
+      "@id": "epa:code",
+      "@type": "xsd:string"
+    },
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "hour": {
+      "@id": "epa:hour",
+      "@type": "xsd:decimal"
+    },
+    "opTime": {
+      "@id": "epa:opTime",
+      "@type": "xsd:decimal"
+    },
+    "so2MassMeasureFlg": {
+      "@id": "epa:so2MassMeasureFlg",
+      "@type": "xsd:string"
+    },
+    "so2RateMeasureFlg": {
+      "@id": "epa:so2RateMeasureFlg",
+      "@type": "xsd:string"
+    },
+    "co2MassMeasureFlg": {
+      "@id": "epa:co2MassMeasureFlg",
+      "@type": "xsd:string"
+    },
+    "co2RateMeasureFlg": {
+      "@id": "epa:co2RateMeasureFlg",
+      "@type": "xsd:string"
+    },
+    "noxMassMeasureFlg": {
+      "@id": "epa:noxMassMeasureFlg",
+      "@type": "xsd:string"
+    },
+    "noxRateMeasureFlg": {
+      "@id": "epa:noxRateMeasureFlg",
+      "@type": "xsd:string"
+    },
+    "heatInputMeasureFlg": {
+      "@id": "epa:heatInputMeasureFlg",
+      "@type": "xsd:string"
+    },
+    "matsGrossLoad": {
+      "@id": "epa:matsGrossLoad",
+      "@type": "xsd:decimal"
+    },
+    "matsHeatInput": {
+      "@id": "epa:matsHeatInput",
+      "@type": "xsd:decimal"
+    },
+    "hgOutputRate": {
+      "@id": "epa:hgOutputRate",
+      "@type": "xsd:decimal"
+    },
+    "hgInputRate": {
+      "@id": "epa:hgInputRate",
+      "@type": "xsd:decimal"
+    },
+    "hgMass": {
+      "@id": "epa:hgMass",
+      "@type": "xsd:decimal"
+    },
+    "hgMassMeasureFlg": {
+      "@id": "epa:hgMassMeasureFlg",
+      "@type": "xsd:string"
+    },
+    "hclOutputRate": {
+      "@id": "epa:hclOutputRate",
+      "@type": "xsd:decimal"
+    },
+    "hclInputRate": {
+      "@id": "epa:hclInputRate",
+      "@type": "xsd:decimal"
+    },
+    "hclMass": {
+      "@id": "epa:hclMass",
+      "@type": "xsd:decimal"
+    },
+    "hclMassMeasureFlg": {
+      "@id": "epa:hclMassMeasureFlg",
+      "@type": "xsd:string"
+    },
+    "hfOutputRate": {
+      "@id": "epa:hfOutputRate",
+      "@type": "xsd:decimal"
+    },
+    "hfInputRate": {
+      "@id": "epa:hfInputRate",
+      "@type": "xsd:decimal"
+    },
+    "hfMass": {
+      "@id": "epa:hfMass",
+      "@type": "xsd:decimal"
+    },
+    "hfMassMeasureFlg": {
+      "@id": "epa:hfMassMeasureFlg",
+      "@type": "xsd:string"
+    },
+    "month": {
+      "@id": "epa:month",
+      "@type": "xsd:decimal"
+    }
+  }
+}

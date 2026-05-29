@@ -1,0 +1,121 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Monitor Plan Management OpenAPI Specification — Locations
+  description: 'Locations. 2 operations. Lead operation: operations. Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - Locations
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_APIKEY_KEY: EPA_APIKEY_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: cam-monitor-plan-locations
+      baseUri: https://api.epa.gov/easey
+      description: Monitor Plan Management OpenAPI Specification — Locations business capability. Self-contained, no shared references.
+      authentication:
+        type: apikey
+        key: x-api-key
+        value: '{{env.EPA_APIKEY_KEY}}'
+        placement: header
+      resources:
+        - name: monitor-plan-mgmt-locations-locid
+          path: /monitor-plan-mgmt/locations/{locId}
+          operations:
+            - name: monitorLocationControllergetLocation
+              method: GET
+              description: monitorLocationControllergetLocation
+              inputParameters:
+                - name: locId
+                  in: path
+                  type: string
+                  required: true
+                  description: locId
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: monitor-plan-mgmt-locations-locid-relationships
+          path: /monitor-plan-mgmt/locations/{locId}/relationships
+          operations:
+            - name: monitorLocationControllergetLocationRelationships
+              method: GET
+              description: monitorLocationControllergetLocationRelationships
+              inputParameters:
+                - name: locId
+                  in: path
+                  type: string
+                  required: true
+                  description: locId
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: cam-monitor-plan-locations-rest
+      port: 8080
+      description: REST adapter for Monitor Plan Management OpenAPI Specification — Locations. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/monitor-plan-mgmt/locations/{locid}
+          name: monitor-plan-mgmt-locations-locid
+          description: REST surface for monitorLocationControllergetLocation.
+          operations:
+            - method: GET
+              name: monitorLocationControllergetLocation
+              description: monitorLocationControllergetLocation
+              call: cam-monitor-plan-locations.monitorLocationControllergetLocation
+              with:
+                locId: rest.locId
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/monitor-plan-mgmt/locations/{locid}/relationships
+          name: monitor-plan-mgmt-locations-locid-relationships
+          description: REST surface for monitorLocationControllergetLocationRelationships.
+          operations:
+            - method: GET
+              name: monitorLocationControllergetLocationRelationships
+              description: monitorLocationControllergetLocationRelationships
+              call: cam-monitor-plan-locations.monitorLocationControllergetLocationRelationships
+              with:
+                locId: rest.locId
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: cam-monitor-plan-locations-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Monitor Plan Management OpenAPI Specification — Locations. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: monitorlocationcontroller-getlocation
+          description: monitorlocationcontroller-getlocation
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-monitor-plan-locations.monitorLocationControllergetLocation
+          with:
+            locId: tools.locId
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: monitorlocationcontroller-getlocationrelationships
+          description: monitorlocationcontroller-getlocationrelationships
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-monitor-plan-locations.monitorLocationControllergetLocationRelationships
+          with:
+            locId: tools.locId
+          outputParameters:
+            - type: object
+              mapping: $.

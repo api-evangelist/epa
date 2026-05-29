@@ -1,0 +1,534 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: EPA Air Quality System (AQS) API — Daily Data
+  description: 'Daily Data. 5 operations. Lead operation: Get Daily Data by Site. Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - Daily Data
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_EMAILKEY_KEY: EPA_EMAILKEY_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: aqs-daily-data
+      baseUri: https://aqs.epa.gov/data/api
+      description: EPA Air Quality System (AQS) API — Daily Data business capability. Self-contained, no shared references.
+      authentication:
+        type: apikey
+        key: key
+        value: '{{env.EPA_EMAILKEY_KEY}}'
+        placement: query
+      resources:
+        - name: dailydata-bysite
+          path: /dailyData/bySite
+          operations:
+            - name: dailyDataBySite
+              method: GET
+              description: Get Daily Data by Site
+              inputParameters:
+                - name: email
+                  in: query
+                  type: string
+                  required: true
+                  description: Registered email address.
+                - name: key
+                  in: query
+                  type: string
+                  required: true
+                  description: Account-specific access key.
+                - name: param
+                  in: query
+                  type: string
+                  required: true
+                  description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
+                - name: bdate
+                  in: query
+                  type: string
+                  required: true
+                  description: Begin date (YYYYMMDD).
+                - name: edate
+                  in: query
+                  type: string
+                  required: true
+                  description: End date (YYYYMMDD). Must be in the same year as bdate for most services.
+                - name: state
+                  in: query
+                  type: string
+                  required: true
+                  description: 2-digit state FIPS code.
+                - name: county
+                  in: query
+                  type: string
+                  required: true
+                  description: 3-digit county code.
+                - name: site
+                  in: query
+                  type: string
+                  required: true
+                  description: 4-digit site code.
+                - name: cbdate
+                  in: query
+                  type: string
+                  required: false
+                  description: Optional change begin date (returns records updated since cbdate).
+                - name: cedate
+                  in: query
+                  type: string
+                  required: false
+                  description: Optional change end date.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: dailydata-bycounty
+          path: /dailyData/byCounty
+          operations:
+            - name: dailyDataByCounty
+              method: GET
+              description: Get Daily Data by County
+              inputParameters:
+                - name: email
+                  in: query
+                  type: string
+                  required: true
+                  description: Registered email address.
+                - name: key
+                  in: query
+                  type: string
+                  required: true
+                  description: Account-specific access key.
+                - name: param
+                  in: query
+                  type: string
+                  required: true
+                  description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
+                - name: bdate
+                  in: query
+                  type: string
+                  required: true
+                  description: Begin date (YYYYMMDD).
+                - name: edate
+                  in: query
+                  type: string
+                  required: true
+                  description: End date (YYYYMMDD). Must be in the same year as bdate for most services.
+                - name: state
+                  in: query
+                  type: string
+                  required: true
+                  description: 2-digit state FIPS code.
+                - name: county
+                  in: query
+                  type: string
+                  required: true
+                  description: 3-digit county code.
+                - name: cbdate
+                  in: query
+                  type: string
+                  required: false
+                  description: Optional change begin date (returns records updated since cbdate).
+                - name: cedate
+                  in: query
+                  type: string
+                  required: false
+                  description: Optional change end date.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: dailydata-bystate
+          path: /dailyData/byState
+          operations:
+            - name: dailyDataByState
+              method: GET
+              description: Get Daily Data by State
+              inputParameters:
+                - name: email
+                  in: query
+                  type: string
+                  required: true
+                  description: Registered email address.
+                - name: key
+                  in: query
+                  type: string
+                  required: true
+                  description: Account-specific access key.
+                - name: param
+                  in: query
+                  type: string
+                  required: true
+                  description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
+                - name: bdate
+                  in: query
+                  type: string
+                  required: true
+                  description: Begin date (YYYYMMDD).
+                - name: edate
+                  in: query
+                  type: string
+                  required: true
+                  description: End date (YYYYMMDD). Must be in the same year as bdate for most services.
+                - name: state
+                  in: query
+                  type: string
+                  required: true
+                  description: 2-digit state FIPS code.
+                - name: cbdate
+                  in: query
+                  type: string
+                  required: false
+                  description: Optional change begin date (returns records updated since cbdate).
+                - name: cedate
+                  in: query
+                  type: string
+                  required: false
+                  description: Optional change end date.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: dailydata-bybox
+          path: /dailyData/byBox
+          operations:
+            - name: dailyDataByBox
+              method: GET
+              description: Get Daily Data by Bounding Box
+              inputParameters:
+                - name: email
+                  in: query
+                  type: string
+                  required: true
+                  description: Registered email address.
+                - name: key
+                  in: query
+                  type: string
+                  required: true
+                  description: Account-specific access key.
+                - name: param
+                  in: query
+                  type: string
+                  required: true
+                  description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
+                - name: bdate
+                  in: query
+                  type: string
+                  required: true
+                  description: Begin date (YYYYMMDD).
+                - name: edate
+                  in: query
+                  type: string
+                  required: true
+                  description: End date (YYYYMMDD). Must be in the same year as bdate for most services.
+                - name: minlat
+                  in: query
+                  type: number
+                  required: true
+                  description: Minimum latitude of bounding box.
+                - name: maxlat
+                  in: query
+                  type: number
+                  required: true
+                  description: maxlat
+                - name: minlon
+                  in: query
+                  type: number
+                  required: true
+                  description: minlon
+                - name: maxlon
+                  in: query
+                  type: number
+                  required: true
+                  description: maxlon
+                - name: cbdate
+                  in: query
+                  type: string
+                  required: false
+                  description: Optional change begin date (returns records updated since cbdate).
+                - name: cedate
+                  in: query
+                  type: string
+                  required: false
+                  description: Optional change end date.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: dailydata-bycbsa
+          path: /dailyData/byCBSA
+          operations:
+            - name: dailyDataByCBSA
+              method: GET
+              description: Get Daily Data by CBSA
+              inputParameters:
+                - name: email
+                  in: query
+                  type: string
+                  required: true
+                  description: Registered email address.
+                - name: key
+                  in: query
+                  type: string
+                  required: true
+                  description: Account-specific access key.
+                - name: param
+                  in: query
+                  type: string
+                  required: true
+                  description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
+                - name: bdate
+                  in: query
+                  type: string
+                  required: true
+                  description: Begin date (YYYYMMDD).
+                - name: edate
+                  in: query
+                  type: string
+                  required: true
+                  description: End date (YYYYMMDD). Must be in the same year as bdate for most services.
+                - name: cbsa
+                  in: query
+                  type: string
+                  required: true
+                  description: 5-digit Core Based Statistical Area code.
+                - name: cbdate
+                  in: query
+                  type: string
+                  required: false
+                  description: Optional change begin date (returns records updated since cbdate).
+                - name: cedate
+                  in: query
+                  type: string
+                  required: false
+                  description: Optional change end date.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: aqs-daily-data-rest
+      port: 8080
+      description: REST adapter for EPA Air Quality System (AQS) API — Daily Data. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/dailydata/bysite
+          name: dailydata-bysite
+          description: REST surface for Get Daily Data by Site.
+          operations:
+            - method: GET
+              name: dailyDataBySite
+              description: Get Daily Data by Site
+              call: aqs-daily-data.dailyDataBySite
+              with:
+                email: rest.email
+                key: rest.key
+                param: rest.param
+                bdate: rest.bdate
+                edate: rest.edate
+                state: rest.state
+                county: rest.county
+                site: rest.site
+                cbdate: rest.cbdate
+                cedate: rest.cedate
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/dailydata/bycounty
+          name: dailydata-bycounty
+          description: REST surface for Get Daily Data by County.
+          operations:
+            - method: GET
+              name: dailyDataByCounty
+              description: Get Daily Data by County
+              call: aqs-daily-data.dailyDataByCounty
+              with:
+                email: rest.email
+                key: rest.key
+                param: rest.param
+                bdate: rest.bdate
+                edate: rest.edate
+                state: rest.state
+                county: rest.county
+                cbdate: rest.cbdate
+                cedate: rest.cedate
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/dailydata/bystate
+          name: dailydata-bystate
+          description: REST surface for Get Daily Data by State.
+          operations:
+            - method: GET
+              name: dailyDataByState
+              description: Get Daily Data by State
+              call: aqs-daily-data.dailyDataByState
+              with:
+                email: rest.email
+                key: rest.key
+                param: rest.param
+                bdate: rest.bdate
+                edate: rest.edate
+                state: rest.state
+                cbdate: rest.cbdate
+                cedate: rest.cedate
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/dailydata/bybox
+          name: dailydata-bybox
+          description: REST surface for Get Daily Data by Bounding Box.
+          operations:
+            - method: GET
+              name: dailyDataByBox
+              description: Get Daily Data by Bounding Box
+              call: aqs-daily-data.dailyDataByBox
+              with:
+                email: rest.email
+                key: rest.key
+                param: rest.param
+                bdate: rest.bdate
+                edate: rest.edate
+                minlat: rest.minlat
+                maxlat: rest.maxlat
+                minlon: rest.minlon
+                maxlon: rest.maxlon
+                cbdate: rest.cbdate
+                cedate: rest.cedate
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/dailydata/bycbsa
+          name: dailydata-bycbsa
+          description: REST surface for Get Daily Data by CBSA.
+          operations:
+            - method: GET
+              name: dailyDataByCBSA
+              description: Get Daily Data by CBSA
+              call: aqs-daily-data.dailyDataByCBSA
+              with:
+                email: rest.email
+                key: rest.key
+                param: rest.param
+                bdate: rest.bdate
+                edate: rest.edate
+                cbsa: rest.cbsa
+                cbdate: rest.cbdate
+                cedate: rest.cedate
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: aqs-daily-data-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for EPA Air Quality System (AQS) API — Daily Data. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: get-daily-data-site
+          description: Get Daily Data by Site
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: aqs-daily-data.dailyDataBySite
+          with:
+            email: tools.email
+            key: tools.key
+            param: tools.param
+            bdate: tools.bdate
+            edate: tools.edate
+            state: tools.state
+            county: tools.county
+            site: tools.site
+            cbdate: tools.cbdate
+            cedate: tools.cedate
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-daily-data-county
+          description: Get Daily Data by County
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: aqs-daily-data.dailyDataByCounty
+          with:
+            email: tools.email
+            key: tools.key
+            param: tools.param
+            bdate: tools.bdate
+            edate: tools.edate
+            state: tools.state
+            county: tools.county
+            cbdate: tools.cbdate
+            cedate: tools.cedate
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-daily-data-state
+          description: Get Daily Data by State
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: aqs-daily-data.dailyDataByState
+          with:
+            email: tools.email
+            key: tools.key
+            param: tools.param
+            bdate: tools.bdate
+            edate: tools.edate
+            state: tools.state
+            cbdate: tools.cbdate
+            cedate: tools.cedate
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-daily-data-bounding-box
+          description: Get Daily Data by Bounding Box
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: aqs-daily-data.dailyDataByBox
+          with:
+            email: tools.email
+            key: tools.key
+            param: tools.param
+            bdate: tools.bdate
+            edate: tools.edate
+            minlat: tools.minlat
+            maxlat: tools.maxlat
+            minlon: tools.minlon
+            maxlon: tools.maxlon
+            cbdate: tools.cbdate
+            cedate: tools.cedate
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-daily-data-cbsa
+          description: Get Daily Data by CBSA
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: aqs-daily-data.dailyDataByCBSA
+          with:
+            email: tools.email
+            key: tools.key
+            param: tools.param
+            bdate: tools.bdate
+            edate: tools.edate
+            cbsa: tools.cbsa
+            cbdate: tools.cbdate
+            cedate: tools.cedate
+          outputParameters:
+            - type: object
+              mapping: $.

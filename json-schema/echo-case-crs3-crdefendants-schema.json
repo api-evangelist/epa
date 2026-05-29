@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-schema/echo-case-crs3-crdefendants-schema.json",
+  "title": "crs3_CRDefendants",
+  "description": "Provides identifying information about the defendants and courts involved in the criminal enforcement case.",
+  "type": "object",
+  "properties": {
+    "DefendantType": {
+      "description": "The role of each defendant in the criminal enforcement case, either Principal Defendant or Defendant. Multiple defendants (up to fourteen) may be associated with one case, but only one is designated as principal.",
+      "example": "Principal Defendant",
+      "title": "Defendent Type",
+      "type": "string"
+    },
+    "District": {
+      "description": "The United States district courts are the trial courts of the federal court system.",
+      "example": "S.D.",
+      "title": "Court District",
+      "type": "string"
+    },
+    "DocketNumber": {
+      "description": "The number the Clerk of the Court assigned to the case that is filed or to a consent decree when it is lodged. For administrative cases, this number is assigned to the case by the Regional Hearing Clerk.",
+      "example": "04-20324-CR-FOOO",
+      "title": "Court Docket Number",
+      "type": "string"
+    },
+    "Name": {
+      "description": "The name of the case assigned to the enforcement action by the lead attorney. Generally, the primary defendant's name is used as the case name. For civil CERCLA cases, the facility/site name may be used.",
+      "example": "George D. Smith",
+      "title": "Name",
+      "type": "string"
+    },
+    "State": {
+      "description": "The two letter abbreviation that represents the state or state equivalent for the U.S.",
+      "example": "FL",
+      "title": "State",
+      "type": "string"
+    }
+  },
+  "required": [
+    "Name",
+    "DefendantType",
+    "District",
+    "State",
+    "DocketNumber"
+  ]
+}

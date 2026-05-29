@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-schema/echo-rcra-rcra08-schema.json",
+  "title": "rcra08",
+  "description": "Results Object",
+  "type": "object",
+  "properties": {
+    "BadSystemIDs": {
+      "description": "Identifies which passed query system identifiers are invalid.",
+      "type": "string",
+      "example": "12345"
+    },
+    "CVRows": {
+      "description": "Summary count of the number of CWA facilities or SDWA public drinking water systems with current violations.",
+      "example": "0",
+      "type": "string"
+    },
+    "ClusterOutput": {
+      "$ref": "#/definitions/rcra06"
+    },
+    "ClusterRecords": {
+      "description": "Number of clusters returned.",
+      "example": "199",
+      "title": "Cluster Records",
+      "type": "string"
+    },
+    "FEARows": {
+      "description": "Summary count of the number of facilities with a formal enforcement action in the past five years",
+      "example": "1",
+      "type": "string"
+    },
+    "Facilities": {
+      "description": "A complex array of facility information.",
+      "items": {
+        "$ref": "#/definitions/rcra07"
+      },
+      "title": "Facilities",
+      "type": "array",
+      "xml": {
+        "name": "Facilities",
+        "wrapped": true
+      },
+      "example": [
+        "string"
+      ]
+    },
+    "INSPRows": {
+      "description": "Number of facilities with insp_5yr_flag populated (CWP_DATE_LAST_INSPECTION)",
+      "example": "1",
+      "type": "string"
+    },
+    "IconBaseURL": {
+      "description": "URL where all the icons are located",
+      "example": "https://echo.epa.gov/app/map/icons/",
+      "title": "Icon Base URL",
+      "type": "string"
+    },
+    "IndianCountryRows": {
+      "description": "Number of facilities with tribal_flag populated",
+      "example": "0",
+      "title": "Indian Country Row Count",
+      "type": "string"
+    },
+    "InfFEARows": {
+      "description": "Number of facilities with infea_5yr_flag populated (INFORMAL_ENF_ACT_COUNT > 0)",
+      "example": "0",
+      "type": "string"
+    },
+    "Message": {
+      "description": "Field to record messages (typically performance-related) about packet processing",
+      "example": "Success",
+      "title": "Message",
+      "type": "string"
+    },
+    "PopUpBaseURL": {
+      "description": "Combine this URL with the PUC to get popup info",
+      "example": "https://echodata.epa.gov/echo/cwa_rest_services.pop_up?p_id=",
+      "title": "Popup Base URL",
+      "type": "string"
+    },
+    "QueryID": {
+      "description": "Sequential number assigned to entire search result",
+      "example": "245",
+      "title": "Query Identifier",
+      "type": "string"
+    },
+    "QueryParameters": {
+      "description": "A list of submitted query parameters and their values.",
+      "items": {
+        "$ref": "#/definitions/qp0"
+      },
+      "title": "Query Parameters",
+      "type": "array",
+      "xml": {
+        "name": "QueryParameters",
+        "wrapped": true
+      },
+      "example": [
+        "string"
+      ]
+    },
+    "QueryRows": {
+      "description": "Number of query results returned",
+      "example": "5",
+      "title": "Query Row Count",
+      "type": "string"
+    },
+    "SVRows": {
+      "description": "Number of facilities with curr_sv_flag populated (CWP_STATUS = \"Significant Violation\")",
+      "example": "0",
+      "title": "Significant Violation Result Count",
+      "type": "string"
+    },
+    "ServiceBaseURL": {
+      "description": "The base service URL.",
+      "example": "https://echodata.epa.gov/echo/echo_rest_services.get_facility_info",
+      "title": "Service Base URL",
+      "type": "string"
+    },
+    "TotalPenalties": {
+      "description": "The total dollar amount of either assessed or final penalties within the five year time period",
+      "example": "$963,531",
+      "title": "Total Penalties",
+      "type": "string"
+    },
+    "V3Rows": {
+      "description": "Number of facilities having one or more quarters in non-compliance (QNC) in the last three years",
+      "example": "2",
+      "type": "string"
+    }
+  },
+  "required": [
+    "Message",
+    "QueryID",
+    "QueryRows",
+    "IndianCountryRows",
+    "SVRows",
+    "CVRows",
+    "V3Rows",
+    "FEARows",
+    "InfFEARows",
+    "INSPRows",
+    "TotalPenalties",
+    "BadSystemIDs",
+    "IconBaseURL",
+    "PopUpBaseURL",
+    "ServiceBaseURL",
+    "QueryParameters"
+  ]
+}

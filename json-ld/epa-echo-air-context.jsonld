@@ -1,0 +1,818 @@
+{
+  "@context": {
+    "epa": "https://api-evangelist.com/epa/echo-air#",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "GovernmentOrganization": "schema:GovernmentOrganization",
+    "Dataset": "schema:Dataset",
+    "air00": "epa:air00",
+    "air01": "epa:air01",
+    "air02": "epa:air02",
+    "air03": "epa:air03",
+    "air04": "epa:air04",
+    "air05": "epa:air05",
+    "air06": "epa:air06",
+    "air08": "epa:air08",
+    "air09": "epa:air09",
+    "air10": "epa:air10",
+    "air11": "epa:air11",
+    "air12": "epa:air12",
+    "geo": "epa:geo",
+    "meta1": "epa:meta1",
+    "meta3": "epa:meta3",
+    "qp0": "epa:qp0",
+    "CVRows": {
+      "@id": "epa:CVRows",
+      "@type": "xsd:string"
+    },
+    "ClusterCount": {
+      "@id": "epa:ClusterCount",
+      "@type": "xsd:string"
+    },
+    "ClusterIcon": {
+      "@id": "epa:ClusterIcon",
+      "@type": "xsd:string"
+    },
+    "ClusterLatitude": {
+      "@id": "epa:ClusterLatitude",
+      "@type": "xsd:string"
+    },
+    "ClusterLongitude": {
+      "@id": "epa:ClusterLongitude",
+      "@type": "xsd:string"
+    },
+    "ClusterName": {
+      "@id": "epa:ClusterName",
+      "@type": "xsd:string"
+    },
+    "ClusterType": {
+      "@id": "epa:ClusterType",
+      "@type": "xsd:string"
+    },
+    "ClusterValue": {
+      "@id": "epa:ClusterValue",
+      "@type": "xsd:string"
+    },
+    "EPARegionCode": {
+      "@id": "epa:EPARegionCode",
+      "@type": "xsd:string"
+    },
+    "FEARows": {
+      "@id": "epa:FEARows",
+      "@type": "xsd:string"
+    },
+    "INSPRows": {
+      "@id": "epa:INSPRows",
+      "@type": "xsd:string"
+    },
+    "IndianCountryRows": {
+      "@id": "epa:IndianCountryRows",
+      "@type": "xsd:string"
+    },
+    "InfFEARows": {
+      "@id": "epa:InfFEARows",
+      "@type": "xsd:string"
+    },
+    "ObjectId": {
+      "@id": "epa:ObjectId",
+      "@type": "xsd:string"
+    },
+    "SVRows": {
+      "@id": "epa:SVRows",
+      "@type": "xsd:string"
+    },
+    "TotalPenalties": {
+      "@id": "epa:TotalPenalties",
+      "@type": "xsd:string"
+    },
+    "V3Rows": {
+      "@id": "epa:V3Rows",
+      "@type": "xsd:string"
+    },
+    "ClusterData": {
+      "@id": "epa:ClusterData",
+      "@container": "@list"
+    },
+    "CAAstatus": {
+      "@id": "epa:CAAstatus",
+      "@type": "xsd:string"
+    },
+    "FormalCount": {
+      "@id": "epa:FormalCount",
+      "@type": "xsd:string"
+    },
+    "ICON": {
+      "@id": "epa:ICON",
+      "@type": "xsd:string"
+    },
+    "InformalCount": {
+      "@id": "epa:InformalCount",
+      "@type": "xsd:string"
+    },
+    "LAT": {
+      "@id": "epa:LAT",
+      "@type": "xsd:string"
+    },
+    "LON": {
+      "@id": "epa:LON",
+      "@type": "xsd:string"
+    },
+    "LastInsp": {
+      "@id": "epa:LastInsp",
+      "@type": "xsd:string"
+    },
+    "NAME": {
+      "@id": "epa:NAME",
+      "@type": "xsd:string"
+    },
+    "PUV": {
+      "@id": "epa:PUV",
+      "@type": "xsd:string"
+    },
+    "TYPE": {
+      "@id": "epa:TYPE",
+      "@type": "xsd:string"
+    },
+    "AIR3yrComplQtrsHistory": {
+      "@id": "epa:AIR3yrComplQtrsHistory",
+      "@type": "xsd:string"
+    },
+    "AIRCaseIDs": {
+      "@id": "epa:AIRCaseIDs",
+      "@type": "xsd:string"
+    },
+    "AIRCity": {
+      "@id": "epa:AIRCity",
+      "@type": "xsd:string"
+    },
+    "AIRClassification": {
+      "@id": "epa:AIRClassification",
+      "@type": "xsd:string"
+    },
+    "AIRComplStatus": {
+      "@id": "epa:AIRComplStatus",
+      "@type": "xsd:string"
+    },
+    "AIRCounty": {
+      "@id": "epa:AIRCounty",
+      "@type": "xsd:string"
+    },
+    "AIRDaysLastEval": {
+      "@id": "epa:AIRDaysLastEval",
+      "@type": "xsd:string"
+    },
+    "AIREPARegion": {
+      "@id": "epa:AIREPARegion",
+      "@type": "xsd:string"
+    },
+    "AIREvalCnt": {
+      "@id": "epa:AIREvalCnt",
+      "@type": "xsd:string"
+    },
+    "AIRFIPSCode": {
+      "@id": "epa:AIRFIPSCode",
+      "@type": "xsd:string"
+    },
+    "AIRFacilityTypeCode": {
+      "@id": "epa:AIRFacilityTypeCode",
+      "@type": "xsd:string"
+    },
+    "AIRFacilityTypeDesc": {
+      "@id": "epa:AIRFacilityTypeDesc",
+      "@type": "xsd:string"
+    },
+    "AIRFeaCnt": {
+      "@id": "epa:AIRFeaCnt",
+      "@type": "xsd:string"
+    },
+    "AIRHpvStatus": {
+      "@id": "epa:AIRHpvStatus",
+      "@type": "xsd:string"
+    },
+    "AIRIDs": {
+      "@id": "epa:AIRIDs",
+      "@type": "xsd:string"
+    },
+    "AIRIeaCnt": {
+      "@id": "epa:AIRIeaCnt",
+      "@type": "xsd:string"
+    },
+    "AIRIndianCntryFlg": {
+      "@id": "epa:AIRIndianCntryFlg",
+      "@type": "xsd:string"
+    },
+    "AIRLastEvalDate": {
+      "@id": "epa:AIRLastEvalDate",
+      "@type": "xsd:string"
+    },
+    "AIRLastEvalDateEPA": {
+      "@id": "epa:AIRLastEvalDateEPA",
+      "@type": "xsd:string"
+    },
+    "AIRLastEvalDateState": {
+      "@id": "epa:AIRLastEvalDateState",
+      "@type": "xsd:string"
+    },
+    "AIRLastFeaDate": {
+      "@id": "epa:AIRLastFeaDate",
+      "@type": "xsd:string"
+    },
+    "AIRLastFeaDateEPA": {
+      "@id": "epa:AIRLastFeaDateEPA",
+      "@type": "xsd:string"
+    },
+    "AIRLastFeaDateState": {
+      "@id": "epa:AIRLastFeaDateState",
+      "@type": "xsd:string"
+    },
+    "AIRLastIeaDate": {
+      "@id": "epa:AIRLastIeaDate",
+      "@type": "xsd:string"
+    },
+    "AIRLastIeaDateEPA": {
+      "@id": "epa:AIRLastIeaDateEPA",
+      "@type": "xsd:string"
+    },
+    "AIRLastIeaDateState": {
+      "@id": "epa:AIRLastIeaDateState",
+      "@type": "xsd:string"
+    },
+    "AIRLastPenaltyDate": {
+      "@id": "epa:AIRLastPenaltyDate",
+      "@type": "xsd:string"
+    },
+    "AIRLastStckDateEPA": {
+      "@id": "epa:AIRLastStckDateEPA",
+      "@type": "xsd:string"
+    },
+    "AIRLastStckDateState": {
+      "@id": "epa:AIRLastStckDateState",
+      "@type": "xsd:string"
+    },
+    "AIRLastStckTestDate": {
+      "@id": "epa:AIRLastStckTestDate",
+      "@type": "xsd:string"
+    },
+    "AIRLastStckTestResults": {
+      "@id": "epa:AIRLastStckTestResults",
+      "@type": "xsd:string"
+    },
+    "AIRLastViolDate": {
+      "@id": "epa:AIRLastViolDate",
+      "@type": "xsd:string"
+    },
+    "AIRMacts": {
+      "@id": "epa:AIRMacts",
+      "@type": "xsd:string"
+    },
+    "AIRMajorFlag": {
+      "@id": "epa:AIRMajorFlag",
+      "@type": "xsd:string"
+    },
+    "AIRMnthsWithHpv": {
+      "@id": "epa:AIRMnthsWithHpv",
+      "@type": "xsd:string"
+    },
+    "AIRNAICS": {
+      "@id": "epa:AIRNAICS",
+      "@type": "xsd:string"
+    },
+    "AIRName": {
+      "@id": "epa:AIRName",
+      "@type": "xsd:string"
+    },
+    "AIRNsps": {
+      "@id": "epa:AIRNsps",
+      "@type": "xsd:string"
+    },
+    "AIRNspsm": {
+      "@id": "epa:AIRNspsm",
+      "@type": "xsd:string"
+    },
+    "AIRPenalties": {
+      "@id": "epa:AIRPenalties",
+      "@type": "xsd:string"
+    },
+    "AIRPollRecentViol": {
+      "@id": "epa:AIRPollRecentViol",
+      "@type": "xsd:string"
+    },
+    "AIRPrograms": {
+      "@id": "epa:AIRPrograms",
+      "@type": "xsd:string"
+    },
+    "AIRQtrsWithHpv": {
+      "@id": "epa:AIRQtrsWithHpv",
+      "@type": "xsd:string"
+    },
+    "AIRQtrsWithViol": {
+      "@id": "epa:AIRQtrsWithViol",
+      "@type": "xsd:string"
+    },
+    "AIRRecentViolCnt": {
+      "@id": "epa:AIRRecentViolCnt",
+      "@type": "xsd:string"
+    },
+    "AIRStackTest5YrAll": {
+      "@id": "epa:AIRStackTest5YrAll",
+      "@type": "xsd:string"
+    },
+    "AIRStackTest5YrFail": {
+      "@id": "epa:AIRStackTest5YrFail",
+      "@type": "xsd:string"
+    },
+    "AIRState": {
+      "@id": "epa:AIRState",
+      "@type": "xsd:string"
+    },
+    "AIRStatus": {
+      "@id": "epa:AIRStatus",
+      "@type": "xsd:string"
+    },
+    "AIRStreet": {
+      "@id": "epa:AIRStreet",
+      "@type": "xsd:string"
+    },
+    "AIRTRIbalEPAids": {
+      "@id": "epa:AIRTRIbalEPAids",
+      "@type": "xsd:string"
+    },
+    "AIRTRIbalNames": {
+      "@id": "epa:AIRTRIbalNames",
+      "@type": "xsd:string"
+    },
+    "AIRUniverse": {
+      "@id": "epa:AIRUniverse",
+      "@type": "xsd:string"
+    },
+    "AIRZip": {
+      "@id": "epa:AIRZip",
+      "@type": "xsd:string"
+    },
+    "ActiveLower48": {
+      "@id": "epa:ActiveLower48",
+      "@type": "xsd:string"
+    },
+    "CWAIDs": {
+      "@id": "epa:CWAIDs",
+      "@type": "xsd:string"
+    },
+    "CalculatedAccuracyMeters": {
+      "@id": "epa:CalculatedAccuracyMeters",
+      "@type": "xsd:string"
+    },
+    "CamdIDs": {
+      "@id": "epa:CamdIDs",
+      "@type": "xsd:string"
+    },
+    "CensusBlockGroup": {
+      "@id": "epa:CensusBlockGroup",
+      "@type": "xsd:string"
+    },
+    "ChesapeakeBayFlag": {
+      "@id": "epa:ChesapeakeBayFlag",
+      "@type": "xsd:string"
+    },
+    "CollectionMethod": {
+      "@id": "epa:CollectionMethod",
+      "@type": "xsd:string"
+    },
+    "CurrSvFlag": {
+      "@id": "epa:CurrSvFlag",
+      "@type": "xsd:string"
+    },
+    "CurrVioFlag": {
+      "@id": "epa:CurrVioFlag",
+      "@type": "xsd:string"
+    },
+    "EPASystem": {
+      "@id": "epa:EPASystem",
+      "@type": "xsd:string"
+    },
+    "Ea5yrFlag": {
+      "@id": "epa:Ea5yrFlag",
+      "@type": "xsd:string"
+    },
+    "EisIDs": {
+      "@id": "epa:EisIDs",
+      "@type": "xsd:string"
+    },
+    "EjscreenFlag": {
+      "@id": "epa:EjscreenFlag",
+      "@type": "xsd:string"
+    },
+    "EjscreenFlagUs": {
+      "@id": "epa:EjscreenFlagUs",
+      "@type": "xsd:string"
+    },
+    "FacCamdReporter": {
+      "@id": "epa:FacCamdReporter",
+      "@type": "xsd:string"
+    },
+    "FacCountyName": {
+      "@id": "epa:FacCountyName",
+      "@type": "xsd:string"
+    },
+    "FacDerivedHuc": {
+      "@id": "epa:FacDerivedHuc",
+      "@type": "xsd:string"
+    },
+    "FacDerivedTRIbes": {
+      "@id": "epa:FacDerivedTRIbes",
+      "@type": "xsd:string"
+    },
+    "FacDerivedWBD": {
+      "@id": "epa:FacDerivedWBD",
+      "@type": "xsd:string"
+    },
+    "FacDerivedWBDName": {
+      "@id": "epa:FacDerivedWBDName",
+      "@type": "xsd:string"
+    },
+    "FacEisAIRReleases": {
+      "@id": "epa:FacEisAIRReleases",
+      "@type": "xsd:string"
+    },
+    "FacEisReporter": {
+      "@id": "epa:FacEisReporter",
+      "@type": "xsd:string"
+    },
+    "FacFIPSCode": {
+      "@id": "epa:FacFIPSCode",
+      "@type": "xsd:string"
+    },
+    "FacFederalAgencyCode": {
+      "@id": "epa:FacFederalAgencyCode",
+      "@type": "xsd:string"
+    },
+    "FacFederalAgencyName": {
+      "@id": "epa:FacFederalAgencyName",
+      "@type": "xsd:string"
+    },
+    "FacGHGCO2Releases": {
+      "@id": "epa:FacGHGCO2Releases",
+      "@type": "xsd:string"
+    },
+    "FacGHGReporter": {
+      "@id": "epa:FacGHGReporter",
+      "@type": "xsd:string"
+    },
+    "FacIndianCntryFlg": {
+      "@id": "epa:FacIndianCntryFlg",
+      "@type": "xsd:string"
+    },
+    "FacIndianSpatialFlg": {
+      "@id": "epa:FacIndianSpatialFlg",
+      "@type": "xsd:string"
+    },
+    "FacLat": {
+      "@id": "epa:FacLat",
+      "@type": "xsd:string"
+    },
+    "FacLong": {
+      "@id": "epa:FacLong",
+      "@type": "xsd:string"
+    },
+    "FacMapFlg": {
+      "@id": "epa:FacMapFlg",
+      "@type": "xsd:string"
+    },
+    "FacMapIcon": {
+      "@id": "epa:FacMapIcon",
+      "@type": "xsd:string"
+    },
+    "FacNaaFlag": {
+      "@id": "epa:FacNaaFlag",
+      "@type": "xsd:string"
+    },
+    "FacPercentMinority": {
+      "@id": "epa:FacPercentMinority",
+      "@type": "xsd:string"
+    },
+    "FacPopulationDensity": {
+      "@id": "epa:FacPopulationDensity",
+      "@type": "xsd:string"
+    },
+    "FacSICCodes": {
+      "@id": "epa:FacSICCodes",
+      "@type": "xsd:string"
+    },
+    "FacStdCountyName": {
+      "@id": "epa:FacStdCountyName",
+      "@type": "xsd:string"
+    },
+    "FacTRIAIRReleases": {
+      "@id": "epa:FacTRIAIRReleases",
+      "@type": "xsd:string"
+    },
+    "FacTRICarcAIRReleases": {
+      "@id": "epa:FacTRICarcAIRReleases",
+      "@type": "xsd:string"
+    },
+    "FacTRIHapsReleases": {
+      "@id": "epa:FacTRIHapsReleases",
+      "@type": "xsd:string"
+    },
+    "FacTRIReporter": {
+      "@id": "epa:FacTRIReporter",
+      "@type": "xsd:string"
+    },
+    "FacUsMexBorderFlg": {
+      "@id": "epa:FacUsMexBorderFlg",
+      "@type": "xsd:string"
+    },
+    "GHGIDs": {
+      "@id": "epa:GHGIDs",
+      "@type": "xsd:string"
+    },
+    "HasPollRpt": {
+      "@id": "epa:HasPollRpt",
+      "@type": "xsd:string"
+    },
+    "Infea5yrFlag": {
+      "@id": "epa:Infea5yrFlag",
+      "@type": "xsd:string"
+    },
+    "Insp5yrFlag": {
+      "@id": "epa:Insp5yrFlag",
+      "@type": "xsd:string"
+    },
+    "LastDatePce": {
+      "@id": "epa:LastDatePce",
+      "@type": "xsd:string"
+    },
+    "LastDatePceEPA": {
+      "@id": "epa:LastDatePceEPA",
+      "@type": "xsd:string"
+    },
+    "LastDatePceSta": {
+      "@id": "epa:LastDatePceSta",
+      "@type": "xsd:string"
+    },
+    "LocalControlRegionCode": {
+      "@id": "epa:LocalControlRegionCode",
+      "@type": "xsd:string"
+    },
+    "LocalControlRegionName": {
+      "@id": "epa:LocalControlRegionName",
+      "@type": "xsd:string"
+    },
+    "Lower48": {
+      "@id": "epa:Lower48",
+      "@type": "xsd:string"
+    },
+    "MaintPollutantsNaa": {
+      "@id": "epa:MaintPollutantsNaa",
+      "@type": "xsd:string"
+    },
+    "MaintStandardsNaa": {
+      "@id": "epa:MaintStandardsNaa",
+      "@type": "xsd:string"
+    },
+    "MaintStatusNaa": {
+      "@id": "epa:MaintStatusNaa",
+      "@type": "xsd:string"
+    },
+    "Map": {
+      "@id": "epa:Map",
+      "@type": "xsd:string"
+    },
+    "MaxPctileUs": {
+      "@id": "epa:MaxPctileUs",
+      "@type": "xsd:string"
+    },
+    "MaxScore": {
+      "@id": "epa:MaxScore",
+      "@type": "xsd:string"
+    },
+    "NaPollutantsNaa": {
+      "@id": "epa:NaPollutantsNaa",
+      "@type": "xsd:string"
+    },
+    "NaStandardsNaa": {
+      "@id": "epa:NaStandardsNaa",
+      "@type": "xsd:string"
+    },
+    "NaStatusNaa": {
+      "@id": "epa:NaStatusNaa",
+      "@type": "xsd:string"
+    },
+    "NaaCategories": {
+      "@id": "epa:NaaCategories",
+      "@type": "xsd:string"
+    },
+    "NaaPollutants": {
+      "@id": "epa:NaaPollutants",
+      "@type": "xsd:string"
+    },
+    "OtherPermitIDs": {
+      "@id": "epa:OtherPermitIDs",
+      "@type": "xsd:string"
+    },
+    "Over80CountUs": {
+      "@id": "epa:Over80CountUs",
+      "@type": "xsd:string"
+    },
+    "PctileCancerUs": {
+      "@id": "epa:PctileCancerUs",
+      "@type": "xsd:string"
+    },
+    "PctileDpmUs": {
+      "@id": "epa:PctileDpmUs",
+      "@type": "xsd:string"
+    },
+    "PctileO3Us": {
+      "@id": "epa:PctileO3Us",
+      "@type": "xsd:string"
+    },
+    "PctilePctpre1960Us": {
+      "@id": "epa:PctilePctpre1960Us",
+      "@type": "xsd:string"
+    },
+    "PctilePmUs": {
+      "@id": "epa:PctilePmUs",
+      "@type": "xsd:string"
+    },
+    "PctileProximityNPDESUs": {
+      "@id": "epa:PctileProximityNPDESUs",
+      "@type": "xsd:string"
+    },
+    "PctileProximityNplUs": {
+      "@id": "epa:PctileProximityNplUs",
+      "@type": "xsd:string"
+    },
+    "PctileProximityRmpUs": {
+      "@id": "epa:PctileProximityRmpUs",
+      "@type": "xsd:string"
+    },
+    "PctileProximityTsdfUs": {
+      "@id": "epa:PctileProximityTsdfUs",
+      "@type": "xsd:string"
+    },
+    "PctileRespUs": {
+      "@id": "epa:PctileRespUs",
+      "@type": "xsd:string"
+    },
+    "PctileTrafficScoreUs": {
+      "@id": "epa:PctileTrafficScoreUs",
+      "@type": "xsd:string"
+    },
+    "RCRAIDs": {
+      "@id": "epa:RCRAIDs",
+      "@type": "xsd:string"
+    },
+    "ReferencePoint": {
+      "@id": "epa:ReferencePoint",
+      "@type": "xsd:string"
+    },
+    "RegistryID": {
+      "@id": "epa:RegistryID",
+      "@type": "xsd:string"
+    },
+    "RmpIDs": {
+      "@id": "epa:RmpIDs",
+      "@type": "xsd:string"
+    },
+    "SDWAIDs": {
+      "@id": "epa:SDWAIDs",
+      "@type": "xsd:string"
+    },
+    "Score": {
+      "@id": "epa:Score",
+      "@type": "xsd:string"
+    },
+    "SourceID": {
+      "@id": "epa:SourceID",
+      "@type": "xsd:string"
+    },
+    "Statute": {
+      "@id": "epa:Statute",
+      "@type": "xsd:string"
+    },
+    "TRIIDs": {
+      "@id": "epa:TRIIDs",
+      "@type": "xsd:string"
+    },
+    "TRIbalFlag": {
+      "@id": "epa:TRIbalFlag",
+      "@type": "xsd:string"
+    },
+    "ViolFlag": {
+      "@id": "epa:ViolFlag",
+      "@type": "xsd:string"
+    },
+    "WebDocs": {
+      "@id": "epa:WebDocs",
+      "@type": "xsd:string"
+    },
+    "IconBaseURL": {
+      "@id": "epa:IconBaseURL",
+      "@type": "xsd:string"
+    },
+    "MapData": {
+      "@id": "epa:MapData",
+      "@container": "@list"
+    },
+    "PopUpBaseURL": {
+      "@id": "epa:PopUpBaseURL",
+      "@type": "xsd:string"
+    },
+    "QueryID": {
+      "@id": "epa:QueryID",
+      "@type": "xsd:string"
+    },
+    "BadSystemIDs": {
+      "@id": "epa:BadSystemIDs",
+      "@type": "xsd:string"
+    },
+    "Facilities": {
+      "@id": "epa:Facilities",
+      "@container": "@list"
+    },
+    "MapOutput": {
+      "@id": "epa:MapOutput",
+      "@type": "xsd:string"
+    },
+    "Message": {
+      "@id": "epa:Message",
+      "@type": "xsd:string"
+    },
+    "PageNo": {
+      "@id": "epa:PageNo",
+      "@type": "xsd:string"
+    },
+    "QueryRows": {
+      "@id": "epa:QueryRows",
+      "@type": "xsd:string"
+    },
+    "ClusterOutput": {
+      "@id": "epa:ClusterOutput",
+      "@type": "xsd:string"
+    },
+    "ClusterRecords": {
+      "@id": "epa:ClusterRecords",
+      "@type": "xsd:string"
+    },
+    "QueryParameters": {
+      "@id": "epa:QueryParameters",
+      "@container": "@list"
+    },
+    "ServiceBaseURL": {
+      "@id": "epa:ServiceBaseURL",
+      "@type": "xsd:string"
+    },
+    "geometry": {
+      "@id": "epa:geometry",
+      "@type": "xsd:string"
+    },
+    "properties": {
+      "@id": "epa:properties",
+      "@type": "xsd:string"
+    },
+    "type": {
+      "@id": "epa:type",
+      "@type": "xsd:string"
+    },
+    "coordinates": {
+      "@id": "epa:coordinates",
+      "@container": "@list"
+    },
+    "ResultColumns": {
+      "@id": "epa:ResultColumns",
+      "@container": "@list"
+    },
+    "ColumnID": {
+      "@id": "epa:ColumnID",
+      "@type": "xsd:string"
+    },
+    "ColumnName": {
+      "@id": "epa:ColumnName",
+      "@type": "xsd:string"
+    },
+    "DataLength": {
+      "@id": "epa:DataLength",
+      "@type": "xsd:string"
+    },
+    "DataType": {
+      "@id": "epa:DataType",
+      "@type": "xsd:string"
+    },
+    "Description": {
+      "@id": "epa:Description",
+      "@type": "xsd:string"
+    },
+    "ObjectName": {
+      "@id": "epa:ObjectName",
+      "@type": "xsd:string"
+    },
+    "QP": {
+      "@id": "epa:QP",
+      "@type": "xsd:string"
+    },
+    "QV": {
+      "@id": "epa:QV",
+      "@type": "xsd:string"
+    }
+  }
+}

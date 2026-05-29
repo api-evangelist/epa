@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-structure/cam-monitor-plan-component-dto-structure.json",
+  "name": "ComponentDTO",
+  "description": "ComponentDTO schema from Monitor Plan Management OpenAPI Specification",
+  "type": "object",
+  "properties": {
+    "componentId": {
+      "type": "string",
+      "description": "The three digit code assigned by the source to identify the component.",
+      "example": "027"
+    },
+    "componentTypeCode": {
+      "type": "string",
+      "description": "Code used to identify the component type.",
+      "example": "SO2"
+    },
+    "sampleAcquisitionMethodCode": {
+      "type": "string",
+      "description": "Code used to identify the sample acquisition method.",
+      "example": "DOU"
+    },
+    "basisCode": {
+      "type": "string",
+      "description": "Code used to identify the moisture basis.",
+      "example": "W"
+    },
+    "manufacturer": {
+      "type": "string",
+      "description": "Name of the manufacturer or developer of the component.",
+      "maxLength": 25,
+      "example": "TECO"
+    },
+    "modelVersion": {
+      "type": "string",
+      "description": "The model of any hardware component or the version number of the software component.",
+      "maxLength": 15,
+      "example": "43I"
+    },
+    "serialNumber": {
+      "type": "string",
+      "description": "Serial number of the component.",
+      "maxLength": 20,
+      "example": "631819420"
+    },
+    "hgConverterIndicator": {
+      "type": "double",
+      "description": "For an Hg component, indicates whether the analyzer has a converter.",
+      "example": "1"
+    },
+    "id": {
+      "type": "string",
+      "description": "Unique identifier of a monitoring component record.",
+      "example": "CAMD-646D15E327E1480D814D48286DA7F073"
+    },
+    "locationId": {
+      "type": "string",
+      "description": "Unique identifier of a monitoring location record.",
+      "example": "5770"
+    },
+    "userId": {
+      "type": "string",
+      "description": "User account or source of data that added or updated record.",
+      "example": "abcde"
+    },
+    "addDate": {
+      "type": "string",
+      "description": "Date and time in which record was added.",
+      "example": "2009-02-20"
+    },
+    "updateDate": {
+      "type": "string",
+      "description": "Date and time in which record was last updated.",
+      "example": "2009-02-20"
+    },
+    "analyzerRangeData": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/AnalyzerRangeDTO"
+      },
+      "example": [
+        "string"
+      ]
+    }
+  },
+  "required": [
+    "componentId",
+    "componentTypeCode",
+    "sampleAcquisitionMethodCode",
+    "basisCode",
+    "manufacturer",
+    "modelVersion",
+    "serialNumber",
+    "hgConverterIndicator",
+    "id",
+    "locationId",
+    "userId",
+    "addDate",
+    "updateDate",
+    "analyzerRangeData"
+  ]
+}

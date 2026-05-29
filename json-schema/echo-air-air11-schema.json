@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-schema/echo-air-air11-schema.json",
+  "title": "air11",
+  "description": "Map Output Object",
+  "type": "object",
+  "properties": {
+    "IconBaseURL": {
+      "description": "URL where all the icons are located",
+      "example": "https://echo.epa.gov/app/map/icons/",
+      "title": "Icon Base URL",
+      "type": "string"
+    },
+    "MapData": {
+      "description": "An array of facility geospatial information.",
+      "items": {
+        "$ref": "#/definitions/air02"
+      },
+      "title": "Map Data",
+      "type": "array",
+      "xml": {
+        "name": "MapData",
+        "wrapped": true
+      },
+      "example": [
+        "string"
+      ]
+    },
+    "PopUpBaseURL": {
+      "description": "Combine this URL with the PUC to get popup info",
+      "example": "https://echodata.epa.gov/echo/cwa_rest_services.pop_up?p_id=",
+      "title": "Popup Base URL",
+      "type": "string"
+    },
+    "QueryID": {
+      "description": "Sequential number assigned to entire search result",
+      "example": "245",
+      "title": "Query Identifier",
+      "type": "string"
+    }
+  },
+  "required": [
+    "QueryID",
+    "IconBaseURL",
+    "PopUpBaseURL",
+    "MapData"
+  ]
+}

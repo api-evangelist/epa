@@ -1,0 +1,115 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: U.S. Environmental Protection Agency
+providerId: epa
+created: '2026-05-29'
+modified: '2026-05-29'
+reconciled: true
+tags:
+  - Rate Limiting
+  - Government
+  - Environmental
+description: >-
+  The U.S. EPA operates several distinct API surfaces, each with its own
+  rate-limiting regime. The Air Quality System (AQS) Data Mart caps clients at
+  10 requests per minute with a recommended 5-second pause between calls and a
+  per-query row ceiling. The Clean Air Markets (CAM) easey APIs enforce a
+  per-key 1,000 requests/hour quota plus a 15-minute single-request timeout and
+  500-row page maximum. The Envirofacts REST data service does not publish an
+  explicit per-second cap but rejects queries that fail to complete within 15
+  minutes. ECHO, FRS, ATTAINS, How's My Waterway, and most other open Envirofacts-
+  fronted services are public and unauthenticated; reasonable use is expected.
+  Several authenticated surfaces (Grants, FRS Submit, e-Manifest production)
+  require credentials issued by EPA program offices and apply program-specific
+  throttling.
+sources:
+  - https://aqs.epa.gov/aqsweb/documents/data_api.html
+  - https://www.epa.gov/power-sector/cam-api-portal
+  - https://www.epa.gov/enviro/envirofacts-data-service-api
+  - https://www.epa.gov/data/application-programming-interface-api
+  - https://echo.epa.gov/tools/web-services
+  - https://www.epa.gov/frs/facility-registry-service-frs-api
+responseCodes:
+  throttled: 429
+  quotaExceeded: 429
+  requestTimeout: 408
+  serviceUnavailable: 503
+headers:
+  retryAfter: Retry-After
+  requestId: X-Request-Id
+limits:
+  - name: AQS Data Mart — request rate
+    scope: account/key
+    metric: requests_per_minute
+    limit: 10
+    timeFrame: minute
+    notes: AQS documents a maximum of 10 requests per minute, with a 5-second recommended pause between requests; clients must await completion before submitting the next.
+  - name: AQS Data Mart — interval between requests
+    scope: account/key
+    metric: seconds_between_requests
+    limit: 5
+    timeFrame: second
+    notes: Minimum 5-second pause between successive requests.
+  - name: AQS Data Mart — per-query row ceiling
+    scope: query
+    metric: rows_per_query
+    limit: 1000000
+    notes: Queries returning more than 1,000,000 rows are discouraged and may be terminated.
+  - name: AQS Data Mart — parameter codes per request
+    scope: query
+    metric: parameters_per_request
+    limit: 5
+    notes: Maximum of 5 AQS parameter codes per request.
+  - name: Clean Air Markets (easey) — request rate
+    scope: account/key
+    metric: requests_per_hour
+    limit: 1000
+    timeFrame: hour
+    notes: Default per-key rate limit across all CAM streaming, emissions, facilities, accounts, and CAMD services.
+  - name: Clean Air Markets (easey) — request timeout
+    scope: request
+    metric: minutes_per_request
+    limit: 15
+    timeFrame: minute
+    notes: A single CAM API request will time out after 15 minutes.
+  - name: Clean Air Markets (easey) — page size
+    scope: query
+    metric: rows_per_page
+    limit: 500
+    notes: Maximum 500 rows per page for paginated CAM endpoints.
+  - name: Clean Air Markets (easey) — streaming UI download
+    scope: request
+    metric: rows_per_download
+    limit: 1000000
+    notes: 1,000,000 record maximum for streaming services UI downloads; programmatic API has no record cap.
+  - name: Envirofacts Data Service — request timeout
+    scope: request
+    metric: minutes_per_request
+    limit: 15
+    timeFrame: minute
+    notes: Envirofacts queries that fail to complete within 15 minutes are aborted; use pagination to stream large result sets.
+  - name: ECHO Web Services — query ID lifetime
+    scope: query
+    metric: minutes_qid_valid
+    limit: 30
+    timeFrame: minute
+    notes: ECHO get_facilities returns a query_id (QID) that is valid for roughly 30 minutes; subsequent get_qid / get_map / get_download calls must reference it within that window.
+  - name: How's My Waterway, ATTAINS, FRS Query, e-Manifest, Insect Repellents, ELG Search
+    scope: IP
+    metric: varies
+    limit: 'not publicly documented'
+    notes: These public services do not publish a hard per-IP cap. Reasonable, well-behaved use is expected. Heavy scraping may be rate-limited at the edge by api.epa.gov or data.epa.gov.
+policies:
+  - name: ApiKeyRegistration
+    description: AQS requires email-based registration that returns a key by email. CAM requires a key requested via the CAM API Portal. api.data.gov fronts other EPA APIs with its standard X-API-Key sign-up flow (1,000 requests/hour default).
+  - name: ExponentialBackoff
+    description: On 429 or timeout responses, retry with exponential backoff. The AQS docs recommend waiting for one request to complete before issuing the next; CAM recommends honoring Retry-After.
+  - name: Pagination
+    description: Envirofacts pages via path-segment ranges (`1:100`). CAM streaming and v2 endpoints page via offset/limit query parameters. Always page large extracts rather than relying on a single oversize query.
+  - name: BulkDownloads
+    description: For program-wide extracts, prefer the agency's bulk downloads (ECHO Exporter ZIPs, AQS pre-generated annual files, GHGRP downloads) over hammering the live APIs.
+  - name: PrimacyAndStateData
+    description: Several program APIs reflect data forwarded from state primacy agencies; freshness varies by program (AQS data can lag 6+ months from collection).
+  - name: AuthenticatedSubmissions
+    description: Submission APIs (FRS Submit, e-Manifest, Grants) are credentialed via NAAS/CDX and apply program-specific concurrency and throttling on a per-account basis.

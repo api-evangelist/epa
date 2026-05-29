@@ -1,0 +1,513 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Emissions Management OpenAPI Specification — Apportioned Hourly Emissions
+  description: 'Apportioned Hourly Emissions. 4 operations. Lead operation: operations. Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - Apportioned Hourly Emissions
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_APIKEY_KEY: EPA_APIKEY_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: cam-emissions-apportioned-hourly-emissions
+      baseUri: https://api.epa.gov/easey
+      description: Emissions Management OpenAPI Specification — Apportioned Hourly Emissions business capability. Self-contained, no shared references.
+      authentication:
+        type: apikey
+        key: x-api-key
+        value: '{{env.EPA_APIKEY_KEY}}'
+        placement: header
+      resources:
+        - name: emissions-mgmt-emissions-apportioned-hourly
+          path: /emissions-mgmt/emissions/apportioned/hourly
+          operations:
+            - name: hourlyApportionedEmissionsControllergetEmissions
+              method: GET
+              description: hourlyApportionedEmissionsControllergetEmissions
+              inputParameters:
+                - name: stateCode
+                  in: query
+                  type: array
+                  required: false
+                  description: Two letter abbreviation for the State.
+                - name: facilityId
+                  in: query
+                  type: array
+                  required: false
+                  description: The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the "ORIS code", "ORISPL code"
+                - name: unitType
+                  in: query
+                  type: array
+                  required: false
+                  description: Type of unit or boiler.
+                - name: unitFuelType
+                  in: query
+                  type: array
+                  required: false
+                  description: Primary or Secondary fuel types combusted by the unit.
+                - name: controlTechnologies
+                  in: query
+                  type: array
+                  required: false
+                  description: Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.
+                - name: programCodeInfo
+                  in: query
+                  type: array
+                  required: false
+                  description: Statutory or regulatory based options for tracking and reducing air pollution emissions.
+                - name: beginDate
+                  in: query
+                  type: string
+                  required: true
+                  description: Begin date for a given period of a unit's emissions.
+                - name: endDate
+                  in: query
+                  type: string
+                  required: true
+                  description: End date for a given period of a unit's emissions.
+                - name: operatingHoursOnly
+                  in: query
+                  type: boolean
+                  required: false
+                  description: Indicator of whether or not a request should return only data for hours where a unit operated.
+                - name: locationName
+                  in: query
+                  type: array
+                  required: false
+                  description: locationName
+                - name: page
+                  in: query
+                  type: number
+                  required: true
+                  description: Page number of data being requested.
+                - name: perPage
+                  in: query
+                  type: number
+                  required: true
+                  description: Number of results per page.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: emissions-mgmt-emissions-apportioned-hourly-by-facility
+          path: /emissions-mgmt/emissions/apportioned/hourly/by-facility
+          operations:
+            - name: hourlyApportionedEmissionsControllergetEmissionsFacilityAggregation
+              method: GET
+              description: hourlyApportionedEmissionsControllergetEmissionsFacilityAggregation
+              inputParameters:
+                - name: stateCode
+                  in: query
+                  type: array
+                  required: false
+                  description: Two letter abbreviation for the State.
+                - name: facilityId
+                  in: query
+                  type: array
+                  required: false
+                  description: The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the "ORIS code", "ORISPL code"
+                - name: unitType
+                  in: query
+                  type: array
+                  required: false
+                  description: Type of unit or boiler.
+                - name: unitFuelType
+                  in: query
+                  type: array
+                  required: false
+                  description: Primary or Secondary fuel types combusted by the unit.
+                - name: controlTechnologies
+                  in: query
+                  type: array
+                  required: false
+                  description: Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.
+                - name: programCodeInfo
+                  in: query
+                  type: array
+                  required: false
+                  description: Statutory or regulatory based options for tracking and reducing air pollution emissions.
+                - name: beginDate
+                  in: query
+                  type: string
+                  required: true
+                  description: Begin date for a given period of a unit's emissions.
+                - name: endDate
+                  in: query
+                  type: string
+                  required: true
+                  description: End date for a given period of a unit's emissions.
+                - name: operatingHoursOnly
+                  in: query
+                  type: boolean
+                  required: false
+                  description: Indicator of whether or not a request should return only data for hours where a unit operated.
+                - name: locationName
+                  in: query
+                  type: array
+                  required: false
+                  description: locationName
+                - name: page
+                  in: query
+                  type: number
+                  required: true
+                  description: Page number of data being requested.
+                - name: perPage
+                  in: query
+                  type: number
+                  required: true
+                  description: Number of results per page.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: emissions-mgmt-emissions-apportioned-hourly-by-state
+          path: /emissions-mgmt/emissions/apportioned/hourly/by-state
+          operations:
+            - name: hourlyApportionedEmissionsControllergetEmissionsStateAggregation
+              method: GET
+              description: hourlyApportionedEmissionsControllergetEmissionsStateAggregation
+              inputParameters:
+                - name: stateCode
+                  in: query
+                  type: array
+                  required: false
+                  description: Two letter abbreviation for the State.
+                - name: facilityId
+                  in: query
+                  type: array
+                  required: false
+                  description: The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the "ORIS code", "ORISPL code"
+                - name: unitType
+                  in: query
+                  type: array
+                  required: false
+                  description: Type of unit or boiler.
+                - name: unitFuelType
+                  in: query
+                  type: array
+                  required: false
+                  description: Primary or Secondary fuel types combusted by the unit.
+                - name: controlTechnologies
+                  in: query
+                  type: array
+                  required: false
+                  description: Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.
+                - name: programCodeInfo
+                  in: query
+                  type: array
+                  required: false
+                  description: Statutory or regulatory based options for tracking and reducing air pollution emissions.
+                - name: beginDate
+                  in: query
+                  type: string
+                  required: true
+                  description: Begin date for a given period of a unit's emissions.
+                - name: endDate
+                  in: query
+                  type: string
+                  required: true
+                  description: End date for a given period of a unit's emissions.
+                - name: operatingHoursOnly
+                  in: query
+                  type: boolean
+                  required: false
+                  description: Indicator of whether or not a request should return only data for hours where a unit operated.
+                - name: locationName
+                  in: query
+                  type: array
+                  required: false
+                  description: locationName
+                - name: page
+                  in: query
+                  type: number
+                  required: true
+                  description: Page number of data being requested.
+                - name: perPage
+                  in: query
+                  type: number
+                  required: true
+                  description: Number of results per page.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: emissions-mgmt-emissions-apportioned-hourly-nationally
+          path: /emissions-mgmt/emissions/apportioned/hourly/nationally
+          operations:
+            - name: hourlyApportionedEmissionsControllergetEmissionsNationalAggregation
+              method: GET
+              description: hourlyApportionedEmissionsControllergetEmissionsNationalAggregation
+              inputParameters:
+                - name: stateCode
+                  in: query
+                  type: array
+                  required: false
+                  description: Two letter abbreviation for the State.
+                - name: facilityId
+                  in: query
+                  type: array
+                  required: false
+                  description: The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the "ORIS code", "ORISPL code"
+                - name: unitType
+                  in: query
+                  type: array
+                  required: false
+                  description: Type of unit or boiler.
+                - name: unitFuelType
+                  in: query
+                  type: array
+                  required: false
+                  description: Primary or Secondary fuel types combusted by the unit.
+                - name: controlTechnologies
+                  in: query
+                  type: array
+                  required: false
+                  description: Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.
+                - name: programCodeInfo
+                  in: query
+                  type: array
+                  required: false
+                  description: Statutory or regulatory based options for tracking and reducing air pollution emissions.
+                - name: beginDate
+                  in: query
+                  type: string
+                  required: true
+                  description: Begin date for a given period of a unit's emissions.
+                - name: endDate
+                  in: query
+                  type: string
+                  required: true
+                  description: End date for a given period of a unit's emissions.
+                - name: operatingHoursOnly
+                  in: query
+                  type: boolean
+                  required: false
+                  description: Indicator of whether or not a request should return only data for hours where a unit operated.
+                - name: locationName
+                  in: query
+                  type: array
+                  required: false
+                  description: locationName
+                - name: page
+                  in: query
+                  type: number
+                  required: true
+                  description: Page number of data being requested.
+                - name: perPage
+                  in: query
+                  type: number
+                  required: true
+                  description: Number of results per page.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: cam-emissions-apportioned-hourly-emissions-rest
+      port: 8080
+      description: REST adapter for Emissions Management OpenAPI Specification — Apportioned Hourly Emissions. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/emissions-mgmt/emissions/apportioned/hourly
+          name: emissions-mgmt-emissions-apportioned-hourly
+          description: REST surface for hourlyApportionedEmissionsControllergetEmissions.
+          operations:
+            - method: GET
+              name: hourlyApportionedEmissionsControllergetEmissions
+              description: hourlyApportionedEmissionsControllergetEmissions
+              call: cam-emissions-apportioned-hourly-emissions.hourlyApportionedEmissionsControllergetEmissions
+              with:
+                stateCode: rest.stateCode
+                facilityId: rest.facilityId
+                unitType: rest.unitType
+                unitFuelType: rest.unitFuelType
+                controlTechnologies: rest.controlTechnologies
+                programCodeInfo: rest.programCodeInfo
+                beginDate: rest.beginDate
+                endDate: rest.endDate
+                operatingHoursOnly: rest.operatingHoursOnly
+                locationName: rest.locationName
+                page: rest.page
+                perPage: rest.perPage
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/emissions-mgmt/emissions/apportioned/hourly/by-facility
+          name: emissions-mgmt-emissions-apportioned-hourly-by-facility
+          description: REST surface for hourlyApportionedEmissionsControllergetEmissionsFacilityAggregation.
+          operations:
+            - method: GET
+              name: hourlyApportionedEmissionsControllergetEmissionsFacilityAggregation
+              description: hourlyApportionedEmissionsControllergetEmissionsFacilityAggregation
+              call: cam-emissions-apportioned-hourly-emissions.hourlyApportionedEmissionsControllergetEmissionsFacilityAggregation
+              with:
+                stateCode: rest.stateCode
+                facilityId: rest.facilityId
+                unitType: rest.unitType
+                unitFuelType: rest.unitFuelType
+                controlTechnologies: rest.controlTechnologies
+                programCodeInfo: rest.programCodeInfo
+                beginDate: rest.beginDate
+                endDate: rest.endDate
+                operatingHoursOnly: rest.operatingHoursOnly
+                locationName: rest.locationName
+                page: rest.page
+                perPage: rest.perPage
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/emissions-mgmt/emissions/apportioned/hourly/by-state
+          name: emissions-mgmt-emissions-apportioned-hourly-by-state
+          description: REST surface for hourlyApportionedEmissionsControllergetEmissionsStateAggregation.
+          operations:
+            - method: GET
+              name: hourlyApportionedEmissionsControllergetEmissionsStateAggregation
+              description: hourlyApportionedEmissionsControllergetEmissionsStateAggregation
+              call: cam-emissions-apportioned-hourly-emissions.hourlyApportionedEmissionsControllergetEmissionsStateAggregation
+              with:
+                stateCode: rest.stateCode
+                facilityId: rest.facilityId
+                unitType: rest.unitType
+                unitFuelType: rest.unitFuelType
+                controlTechnologies: rest.controlTechnologies
+                programCodeInfo: rest.programCodeInfo
+                beginDate: rest.beginDate
+                endDate: rest.endDate
+                operatingHoursOnly: rest.operatingHoursOnly
+                locationName: rest.locationName
+                page: rest.page
+                perPage: rest.perPage
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/emissions-mgmt/emissions/apportioned/hourly/nationally
+          name: emissions-mgmt-emissions-apportioned-hourly-nationally
+          description: REST surface for hourlyApportionedEmissionsControllergetEmissionsNationalAggregation.
+          operations:
+            - method: GET
+              name: hourlyApportionedEmissionsControllergetEmissionsNationalAggregation
+              description: hourlyApportionedEmissionsControllergetEmissionsNationalAggregation
+              call: cam-emissions-apportioned-hourly-emissions.hourlyApportionedEmissionsControllergetEmissionsNationalAggregation
+              with:
+                stateCode: rest.stateCode
+                facilityId: rest.facilityId
+                unitType: rest.unitType
+                unitFuelType: rest.unitFuelType
+                controlTechnologies: rest.controlTechnologies
+                programCodeInfo: rest.programCodeInfo
+                beginDate: rest.beginDate
+                endDate: rest.endDate
+                operatingHoursOnly: rest.operatingHoursOnly
+                locationName: rest.locationName
+                page: rest.page
+                perPage: rest.perPage
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: cam-emissions-apportioned-hourly-emissions-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Emissions Management OpenAPI Specification — Apportioned Hourly Emissions. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: hourlyapportionedemissionscontroller-getemissions
+          description: hourlyapportionedemissionscontroller-getemissions
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-emissions-apportioned-hourly-emissions.hourlyApportionedEmissionsControllergetEmissions
+          with:
+            stateCode: tools.stateCode
+            facilityId: tools.facilityId
+            unitType: tools.unitType
+            unitFuelType: tools.unitFuelType
+            controlTechnologies: tools.controlTechnologies
+            programCodeInfo: tools.programCodeInfo
+            beginDate: tools.beginDate
+            endDate: tools.endDate
+            operatingHoursOnly: tools.operatingHoursOnly
+            locationName: tools.locationName
+            page: tools.page
+            perPage: tools.perPage
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: hourlyapportionedemissionscontroller-getemissionsfacilityaggregation
+          description: hourlyapportionedemissionscontroller-getemissionsfacilityaggregation
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-emissions-apportioned-hourly-emissions.hourlyApportionedEmissionsControllergetEmissionsFacilityAggregation
+          with:
+            stateCode: tools.stateCode
+            facilityId: tools.facilityId
+            unitType: tools.unitType
+            unitFuelType: tools.unitFuelType
+            controlTechnologies: tools.controlTechnologies
+            programCodeInfo: tools.programCodeInfo
+            beginDate: tools.beginDate
+            endDate: tools.endDate
+            operatingHoursOnly: tools.operatingHoursOnly
+            locationName: tools.locationName
+            page: tools.page
+            perPage: tools.perPage
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: hourlyapportionedemissionscontroller-getemissionsstateaggregation
+          description: hourlyapportionedemissionscontroller-getemissionsstateaggregation
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-emissions-apportioned-hourly-emissions.hourlyApportionedEmissionsControllergetEmissionsStateAggregation
+          with:
+            stateCode: tools.stateCode
+            facilityId: tools.facilityId
+            unitType: tools.unitType
+            unitFuelType: tools.unitFuelType
+            controlTechnologies: tools.controlTechnologies
+            programCodeInfo: tools.programCodeInfo
+            beginDate: tools.beginDate
+            endDate: tools.endDate
+            operatingHoursOnly: tools.operatingHoursOnly
+            locationName: tools.locationName
+            page: tools.page
+            perPage: tools.perPage
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: hourlyapportionedemissionscontroller-getemissionsnationalaggregation
+          description: hourlyapportionedemissionscontroller-getemissionsnationalaggregation
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-emissions-apportioned-hourly-emissions.hourlyApportionedEmissionsControllergetEmissionsNationalAggregation
+          with:
+            stateCode: tools.stateCode
+            facilityId: tools.facilityId
+            unitType: tools.unitType
+            unitFuelType: tools.unitFuelType
+            controlTechnologies: tools.controlTechnologies
+            programCodeInfo: tools.programCodeInfo
+            beginDate: tools.beginDate
+            endDate: tools.endDate
+            operatingHoursOnly: tools.operatingHoursOnly
+            locationName: tools.locationName
+            page: tools.page
+            perPage: tools.perPage
+          outputParameters:
+            - type: object
+              mapping: $.

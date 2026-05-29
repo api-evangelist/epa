@@ -1,0 +1,289 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Facilities Management OpenAPI Specification — Facilities
+  description: 'Facilities. 4 operations. Lead operation: operations. Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - Facilities
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_APIKEY_KEY: EPA_APIKEY_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: cam-facilities-facilities
+      baseUri: https://api.epa.gov/easey
+      description: Facilities Management OpenAPI Specification — Facilities business capability. Self-contained, no shared references.
+      authentication:
+        type: apikey
+        key: x-api-key
+        value: '{{env.EPA_APIKEY_KEY}}'
+        placement: header
+      resources:
+        - name: facilities-mgmt-facilities
+          path: /facilities-mgmt/facilities
+          operations:
+            - name: facilitiesControllergetFacilities
+              method: GET
+              description: facilitiesControllergetFacilities
+              inputParameters:
+                - name: page
+                  in: query
+                  type: number
+                  required: false
+                  description: Page number of data being requested.
+                - name: perPage
+                  in: query
+                  type: number
+                  required: false
+                  description: Number of results per page.
+                - name: stateCode
+                  in: query
+                  type: string
+                  required: false
+                  description: Two letter abbreviation for the State.
+                - name: epaRegion
+                  in: query
+                  type: string
+                  required: false
+                  description: An EPA Region is a group of U.S. states. EPA Regions are numbered from 1 to 10 and each state belongs to one and only one EPA Region.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: facilities-mgmt-facilities-attributes
+          path: /facilities-mgmt/facilities/attributes
+          operations:
+            - name: facilitiesControllergetAllFacilityAttributes
+              method: GET
+              description: facilitiesControllergetAllFacilityAttributes
+              inputParameters:
+                - name: year
+                  in: query
+                  type: array
+                  required: true
+                  description: The calendar year during which activity occurred.
+                - name: facilityId
+                  in: query
+                  type: array
+                  required: false
+                  description: The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the "ORIS code", "ORISPL code"
+                - name: stateCode
+                  in: query
+                  type: array
+                  required: false
+                  description: Two letter abbreviation for the State.
+                - name: unitType
+                  in: query
+                  type: array
+                  required: false
+                  description: Type of unit or boiler.
+                - name: unitFuelType
+                  in: query
+                  type: array
+                  required: false
+                  description: Primary or Secondary fuel types combusted by the unit.
+                - name: controlTechnologies
+                  in: query
+                  type: array
+                  required: false
+                  description: Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.
+                - name: sourceCategory
+                  in: query
+                  type: array
+                  required: false
+                  description: Description of a unit that classifies it in terms of the primary function of the unit.
+                - name: programCodeInfo
+                  in: query
+                  type: array
+                  required: false
+                  description: Statutory or regulatory based options for tracking and reducing air pollution emissions.
+                - name: page
+                  in: query
+                  type: number
+                  required: true
+                  description: Page number of data being requested.
+                - name: perPage
+                  in: query
+                  type: number
+                  required: true
+                  description: Number of results per page.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: facilities-mgmt-facilities-attributes-applicable
+          path: /facilities-mgmt/facilities/attributes/applicable
+          operations:
+            - name: facilitiesControllergetApplicableFacilityAttributes
+              method: GET
+              description: facilitiesControllergetApplicableFacilityAttributes
+              inputParameters:
+                - name: year
+                  in: query
+                  type: array
+                  required: true
+                  description: The calendar year during which activity occurred.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: facilities-mgmt-facilities-id
+          path: /facilities-mgmt/facilities/{id}
+          operations:
+            - name: facilitiesControllergetFacilityById
+              method: GET
+              description: facilitiesControllergetFacilityById
+              inputParameters:
+                - name: id
+                  in: path
+                  type: number
+                  required: true
+                  description: id
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: cam-facilities-facilities-rest
+      port: 8080
+      description: REST adapter for Facilities Management OpenAPI Specification — Facilities. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/facilities-mgmt/facilities
+          name: facilities-mgmt-facilities
+          description: REST surface for facilitiesControllergetFacilities.
+          operations:
+            - method: GET
+              name: facilitiesControllergetFacilities
+              description: facilitiesControllergetFacilities
+              call: cam-facilities-facilities.facilitiesControllergetFacilities
+              with:
+                page: rest.page
+                perPage: rest.perPage
+                stateCode: rest.stateCode
+                epaRegion: rest.epaRegion
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/facilities-mgmt/facilities/attributes
+          name: facilities-mgmt-facilities-attributes
+          description: REST surface for facilitiesControllergetAllFacilityAttributes.
+          operations:
+            - method: GET
+              name: facilitiesControllergetAllFacilityAttributes
+              description: facilitiesControllergetAllFacilityAttributes
+              call: cam-facilities-facilities.facilitiesControllergetAllFacilityAttributes
+              with:
+                year: rest.year
+                facilityId: rest.facilityId
+                stateCode: rest.stateCode
+                unitType: rest.unitType
+                unitFuelType: rest.unitFuelType
+                controlTechnologies: rest.controlTechnologies
+                sourceCategory: rest.sourceCategory
+                programCodeInfo: rest.programCodeInfo
+                page: rest.page
+                perPage: rest.perPage
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/facilities-mgmt/facilities/attributes/applicable
+          name: facilities-mgmt-facilities-attributes-applicable
+          description: REST surface for facilitiesControllergetApplicableFacilityAttributes.
+          operations:
+            - method: GET
+              name: facilitiesControllergetApplicableFacilityAttributes
+              description: facilitiesControllergetApplicableFacilityAttributes
+              call: cam-facilities-facilities.facilitiesControllergetApplicableFacilityAttributes
+              with:
+                year: rest.year
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/facilities-mgmt/facilities/{id}
+          name: facilities-mgmt-facilities-id
+          description: REST surface for facilitiesControllergetFacilityById.
+          operations:
+            - method: GET
+              name: facilitiesControllergetFacilityById
+              description: facilitiesControllergetFacilityById
+              call: cam-facilities-facilities.facilitiesControllergetFacilityById
+              with:
+                id: rest.id
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: cam-facilities-facilities-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Facilities Management OpenAPI Specification — Facilities. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: facilitiescontroller-getfacilities
+          description: facilitiescontroller-getfacilities
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-facilities-facilities.facilitiesControllergetFacilities
+          with:
+            page: tools.page
+            perPage: tools.perPage
+            stateCode: tools.stateCode
+            epaRegion: tools.epaRegion
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: facilitiescontroller-getallfacilityattributes
+          description: facilitiescontroller-getallfacilityattributes
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-facilities-facilities.facilitiesControllergetAllFacilityAttributes
+          with:
+            year: tools.year
+            facilityId: tools.facilityId
+            stateCode: tools.stateCode
+            unitType: tools.unitType
+            unitFuelType: tools.unitFuelType
+            controlTechnologies: tools.controlTechnologies
+            sourceCategory: tools.sourceCategory
+            programCodeInfo: tools.programCodeInfo
+            page: tools.page
+            perPage: tools.perPage
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: facilitiescontroller-getapplicablefacilityattributes
+          description: facilitiescontroller-getapplicablefacilityattributes
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-facilities-facilities.facilitiesControllergetApplicableFacilityAttributes
+          with:
+            year: tools.year
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: facilitiescontroller-getfacilitybyid
+          description: facilitiescontroller-getfacilitybyid
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-facilities-facilities.facilitiesControllergetFacilityById
+          with:
+            id: tools.id
+          outputParameters:
+            - type: object
+              mapping: $.

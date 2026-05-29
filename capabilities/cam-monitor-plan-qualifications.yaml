@@ -1,0 +1,79 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Monitor Plan Management OpenAPI Specification — Qualifications
+  description: 'Qualifications. 1 operations. Lead operation: operations. Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - Qualifications
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_APIKEY_KEY: EPA_APIKEY_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: cam-monitor-plan-qualifications
+      baseUri: https://api.epa.gov/easey
+      description: Monitor Plan Management OpenAPI Specification — Qualifications business capability. Self-contained, no shared references.
+      authentication:
+        type: apikey
+        key: x-api-key
+        value: '{{env.EPA_APIKEY_KEY}}'
+        placement: header
+      resources:
+        - name: monitor-plan-mgmt-locations-locid-qualifications
+          path: /monitor-plan-mgmt/locations/{locId}/qualifications
+          operations:
+            - name: monitorQualificationControllergetQualifications
+              method: GET
+              description: monitorQualificationControllergetQualifications
+              inputParameters:
+                - name: locId
+                  in: path
+                  type: string
+                  required: true
+                  description: locId
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: cam-monitor-plan-qualifications-rest
+      port: 8080
+      description: REST adapter for Monitor Plan Management OpenAPI Specification — Qualifications. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/monitor-plan-mgmt/locations/{locid}/qualifications
+          name: monitor-plan-mgmt-locations-locid-qualifications
+          description: REST surface for monitorQualificationControllergetQualifications.
+          operations:
+            - method: GET
+              name: monitorQualificationControllergetQualifications
+              description: monitorQualificationControllergetQualifications
+              call: cam-monitor-plan-qualifications.monitorQualificationControllergetQualifications
+              with:
+                locId: rest.locId
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: cam-monitor-plan-qualifications-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Monitor Plan Management OpenAPI Specification — Qualifications. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: monitorqualificationcontroller-getqualifications
+          description: monitorqualificationcontroller-getqualifications
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-monitor-plan-qualifications.monitorQualificationControllergetQualifications
+          with:
+            locId: tools.locId
+          outputParameters:
+            - type: object
+              mapping: $.

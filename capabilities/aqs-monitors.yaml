@@ -1,0 +1,464 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: EPA Air Quality System (AQS) API — Monitors
+  description: 'Monitors. 5 operations. Lead operation: List Monitors by Site. Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - Monitors
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_EMAILKEY_KEY: EPA_EMAILKEY_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: aqs-monitors
+      baseUri: https://aqs.epa.gov/data/api
+      description: EPA Air Quality System (AQS) API — Monitors business capability. Self-contained, no shared references.
+      authentication:
+        type: apikey
+        key: key
+        value: '{{env.EPA_EMAILKEY_KEY}}'
+        placement: query
+      resources:
+        - name: monitors-bysite
+          path: /monitors/bySite
+          operations:
+            - name: monitorsBySite
+              method: GET
+              description: List Monitors by Site
+              inputParameters:
+                - name: email
+                  in: query
+                  type: string
+                  required: true
+                  description: Registered email address.
+                - name: key
+                  in: query
+                  type: string
+                  required: true
+                  description: Account-specific access key.
+                - name: param
+                  in: query
+                  type: string
+                  required: true
+                  description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
+                - name: bdate
+                  in: query
+                  type: string
+                  required: true
+                  description: Begin date (YYYYMMDD).
+                - name: edate
+                  in: query
+                  type: string
+                  required: true
+                  description: End date (YYYYMMDD). Must be in the same year as bdate for most services.
+                - name: state
+                  in: query
+                  type: string
+                  required: true
+                  description: 2-digit state FIPS code.
+                - name: county
+                  in: query
+                  type: string
+                  required: true
+                  description: 3-digit county code.
+                - name: site
+                  in: query
+                  type: string
+                  required: true
+                  description: 4-digit site code.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: monitors-bycounty
+          path: /monitors/byCounty
+          operations:
+            - name: monitorsByCounty
+              method: GET
+              description: List Monitors by County
+              inputParameters:
+                - name: email
+                  in: query
+                  type: string
+                  required: true
+                  description: Registered email address.
+                - name: key
+                  in: query
+                  type: string
+                  required: true
+                  description: Account-specific access key.
+                - name: param
+                  in: query
+                  type: string
+                  required: true
+                  description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
+                - name: bdate
+                  in: query
+                  type: string
+                  required: true
+                  description: Begin date (YYYYMMDD).
+                - name: edate
+                  in: query
+                  type: string
+                  required: true
+                  description: End date (YYYYMMDD). Must be in the same year as bdate for most services.
+                - name: state
+                  in: query
+                  type: string
+                  required: true
+                  description: 2-digit state FIPS code.
+                - name: county
+                  in: query
+                  type: string
+                  required: true
+                  description: 3-digit county code.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: monitors-bystate
+          path: /monitors/byState
+          operations:
+            - name: monitorsByState
+              method: GET
+              description: List Monitors by State
+              inputParameters:
+                - name: email
+                  in: query
+                  type: string
+                  required: true
+                  description: Registered email address.
+                - name: key
+                  in: query
+                  type: string
+                  required: true
+                  description: Account-specific access key.
+                - name: param
+                  in: query
+                  type: string
+                  required: true
+                  description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
+                - name: bdate
+                  in: query
+                  type: string
+                  required: true
+                  description: Begin date (YYYYMMDD).
+                - name: edate
+                  in: query
+                  type: string
+                  required: true
+                  description: End date (YYYYMMDD). Must be in the same year as bdate for most services.
+                - name: state
+                  in: query
+                  type: string
+                  required: true
+                  description: 2-digit state FIPS code.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: monitors-bybox
+          path: /monitors/byBox
+          operations:
+            - name: monitorsByBox
+              method: GET
+              description: List Monitors by Bounding Box
+              inputParameters:
+                - name: email
+                  in: query
+                  type: string
+                  required: true
+                  description: Registered email address.
+                - name: key
+                  in: query
+                  type: string
+                  required: true
+                  description: Account-specific access key.
+                - name: param
+                  in: query
+                  type: string
+                  required: true
+                  description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
+                - name: bdate
+                  in: query
+                  type: string
+                  required: true
+                  description: Begin date (YYYYMMDD).
+                - name: edate
+                  in: query
+                  type: string
+                  required: true
+                  description: End date (YYYYMMDD). Must be in the same year as bdate for most services.
+                - name: minlat
+                  in: query
+                  type: number
+                  required: true
+                  description: Minimum latitude of bounding box.
+                - name: maxlat
+                  in: query
+                  type: number
+                  required: true
+                  description: maxlat
+                - name: minlon
+                  in: query
+                  type: number
+                  required: true
+                  description: minlon
+                - name: maxlon
+                  in: query
+                  type: number
+                  required: true
+                  description: maxlon
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: monitors-bycbsa
+          path: /monitors/byCBSA
+          operations:
+            - name: monitorsByCBSA
+              method: GET
+              description: List Monitors by CBSA
+              inputParameters:
+                - name: email
+                  in: query
+                  type: string
+                  required: true
+                  description: Registered email address.
+                - name: key
+                  in: query
+                  type: string
+                  required: true
+                  description: Account-specific access key.
+                - name: param
+                  in: query
+                  type: string
+                  required: true
+                  description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
+                - name: bdate
+                  in: query
+                  type: string
+                  required: true
+                  description: Begin date (YYYYMMDD).
+                - name: edate
+                  in: query
+                  type: string
+                  required: true
+                  description: End date (YYYYMMDD). Must be in the same year as bdate for most services.
+                - name: cbsa
+                  in: query
+                  type: string
+                  required: true
+                  description: 5-digit Core Based Statistical Area code.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: aqs-monitors-rest
+      port: 8080
+      description: REST adapter for EPA Air Quality System (AQS) API — Monitors. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/monitors/bysite
+          name: monitors-bysite
+          description: REST surface for List Monitors by Site.
+          operations:
+            - method: GET
+              name: monitorsBySite
+              description: List Monitors by Site
+              call: aqs-monitors.monitorsBySite
+              with:
+                email: rest.email
+                key: rest.key
+                param: rest.param
+                bdate: rest.bdate
+                edate: rest.edate
+                state: rest.state
+                county: rest.county
+                site: rest.site
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/monitors/bycounty
+          name: monitors-bycounty
+          description: REST surface for List Monitors by County.
+          operations:
+            - method: GET
+              name: monitorsByCounty
+              description: List Monitors by County
+              call: aqs-monitors.monitorsByCounty
+              with:
+                email: rest.email
+                key: rest.key
+                param: rest.param
+                bdate: rest.bdate
+                edate: rest.edate
+                state: rest.state
+                county: rest.county
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/monitors/bystate
+          name: monitors-bystate
+          description: REST surface for List Monitors by State.
+          operations:
+            - method: GET
+              name: monitorsByState
+              description: List Monitors by State
+              call: aqs-monitors.monitorsByState
+              with:
+                email: rest.email
+                key: rest.key
+                param: rest.param
+                bdate: rest.bdate
+                edate: rest.edate
+                state: rest.state
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/monitors/bybox
+          name: monitors-bybox
+          description: REST surface for List Monitors by Bounding Box.
+          operations:
+            - method: GET
+              name: monitorsByBox
+              description: List Monitors by Bounding Box
+              call: aqs-monitors.monitorsByBox
+              with:
+                email: rest.email
+                key: rest.key
+                param: rest.param
+                bdate: rest.bdate
+                edate: rest.edate
+                minlat: rest.minlat
+                maxlat: rest.maxlat
+                minlon: rest.minlon
+                maxlon: rest.maxlon
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/monitors/bycbsa
+          name: monitors-bycbsa
+          description: REST surface for List Monitors by CBSA.
+          operations:
+            - method: GET
+              name: monitorsByCBSA
+              description: List Monitors by CBSA
+              call: aqs-monitors.monitorsByCBSA
+              with:
+                email: rest.email
+                key: rest.key
+                param: rest.param
+                bdate: rest.bdate
+                edate: rest.edate
+                cbsa: rest.cbsa
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: aqs-monitors-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for EPA Air Quality System (AQS) API — Monitors. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: list-monitors-site
+          description: List Monitors by Site
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: aqs-monitors.monitorsBySite
+          with:
+            email: tools.email
+            key: tools.key
+            param: tools.param
+            bdate: tools.bdate
+            edate: tools.edate
+            state: tools.state
+            county: tools.county
+            site: tools.site
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: list-monitors-county
+          description: List Monitors by County
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: aqs-monitors.monitorsByCounty
+          with:
+            email: tools.email
+            key: tools.key
+            param: tools.param
+            bdate: tools.bdate
+            edate: tools.edate
+            state: tools.state
+            county: tools.county
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: list-monitors-state
+          description: List Monitors by State
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: aqs-monitors.monitorsByState
+          with:
+            email: tools.email
+            key: tools.key
+            param: tools.param
+            bdate: tools.bdate
+            edate: tools.edate
+            state: tools.state
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: list-monitors-bounding-box
+          description: List Monitors by Bounding Box
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: aqs-monitors.monitorsByBox
+          with:
+            email: tools.email
+            key: tools.key
+            param: tools.param
+            bdate: tools.bdate
+            edate: tools.edate
+            minlat: tools.minlat
+            maxlat: tools.maxlat
+            minlon: tools.minlon
+            maxlon: tools.maxlon
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: list-monitors-cbsa
+          description: List Monitors by CBSA
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: aqs-monitors.monitorsByCBSA
+          with:
+            email: tools.email
+            key: tools.key
+            param: tools.param
+            bdate: tools.bdate
+            edate: tools.edate
+            cbsa: tools.cbsa
+          outputParameters:
+            - type: object
+              mapping: $.

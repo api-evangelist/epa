@@ -1,0 +1,79 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Monitor Plan Management OpenAPI Specification — Methods
+  description: 'Methods. 1 operations. Lead operation: operations. Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - Methods
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_APIKEY_KEY: EPA_APIKEY_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: cam-monitor-plan-methods
+      baseUri: https://api.epa.gov/easey
+      description: Monitor Plan Management OpenAPI Specification — Methods business capability. Self-contained, no shared references.
+      authentication:
+        type: apikey
+        key: x-api-key
+        value: '{{env.EPA_APIKEY_KEY}}'
+        placement: header
+      resources:
+        - name: monitor-plan-mgmt-locations-locid-methods
+          path: /monitor-plan-mgmt/locations/{locId}/methods
+          operations:
+            - name: monitorMethodControllergetMethods
+              method: GET
+              description: monitorMethodControllergetMethods
+              inputParameters:
+                - name: locId
+                  in: path
+                  type: string
+                  required: true
+                  description: locId
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: cam-monitor-plan-methods-rest
+      port: 8080
+      description: REST adapter for Monitor Plan Management OpenAPI Specification — Methods. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/monitor-plan-mgmt/locations/{locid}/methods
+          name: monitor-plan-mgmt-locations-locid-methods
+          description: REST surface for monitorMethodControllergetMethods.
+          operations:
+            - method: GET
+              name: monitorMethodControllergetMethods
+              description: monitorMethodControllergetMethods
+              call: cam-monitor-plan-methods.monitorMethodControllergetMethods
+              with:
+                locId: rest.locId
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: cam-monitor-plan-methods-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Monitor Plan Management OpenAPI Specification — Methods. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: monitormethodcontroller-getmethods
+          description: monitormethodcontroller-getmethods
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-monitor-plan-methods.monitorMethodControllergetMethods
+          with:
+            locId: tools.locId
+          outputParameters:
+            - type: object
+              mapping: $.

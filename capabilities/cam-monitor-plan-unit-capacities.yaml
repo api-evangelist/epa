@@ -1,0 +1,79 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Monitor Plan Management OpenAPI Specification — Unit Capacities
+  description: 'Unit Capacities. 1 operations. Lead operation: operations. Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - Unit Capacities
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_APIKEY_KEY: EPA_APIKEY_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: cam-monitor-plan-unit-capacities
+      baseUri: https://api.epa.gov/easey
+      description: Monitor Plan Management OpenAPI Specification — Unit Capacities business capability. Self-contained, no shared references.
+      authentication:
+        type: apikey
+        key: x-api-key
+        value: '{{env.EPA_APIKEY_KEY}}'
+        placement: header
+      resources:
+        - name: monitor-plan-mgmt-units-unitid-unit-capacities
+          path: /monitor-plan-mgmt/units/{unitId}/unit-capacities
+          operations:
+            - name: unitCapacityControllergetUnitCapacities
+              method: GET
+              description: unitCapacityControllergetUnitCapacities
+              inputParameters:
+                - name: unitId
+                  in: path
+                  type: number
+                  required: true
+                  description: unitId
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: cam-monitor-plan-unit-capacities-rest
+      port: 8080
+      description: REST adapter for Monitor Plan Management OpenAPI Specification — Unit Capacities. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/monitor-plan-mgmt/units/{unitid}/unit-capacities
+          name: monitor-plan-mgmt-units-unitid-unit-capacities
+          description: REST surface for unitCapacityControllergetUnitCapacities.
+          operations:
+            - method: GET
+              name: unitCapacityControllergetUnitCapacities
+              description: unitCapacityControllergetUnitCapacities
+              call: cam-monitor-plan-unit-capacities.unitCapacityControllergetUnitCapacities
+              with:
+                unitId: rest.unitId
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: cam-monitor-plan-unit-capacities-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Monitor Plan Management OpenAPI Specification — Unit Capacities. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: unitcapacitycontroller-getunitcapacities
+          description: unitcapacitycontroller-getunitcapacities
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-monitor-plan-unit-capacities.unitCapacityControllergetUnitCapacities
+          with:
+            unitId: tools.unitId
+          outputParameters:
+            - type: object
+              mapping: $.

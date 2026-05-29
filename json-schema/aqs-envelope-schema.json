@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-schema/aqs-envelope-schema.json",
+  "title": "Envelope",
+  "description": "Envelope schema from EPA Air Quality System (AQS) API",
+  "type": "object",
+  "properties": {
+    "Header": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Header"
+      },
+      "example": [
+        "string"
+      ]
+    },
+    "Data": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "example": [
+        {}
+      ]
+    }
+  },
+  "required": [
+    "Header",
+    "Data"
+  ]
+}

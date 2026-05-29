@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-schema/echo-case-crs2-results-schema.json",
+  "title": "crs2_Results",
+  "description": "The data returned by the service call.",
+  "type": "object",
+  "properties": {
+    "AFRRows": {
+      "description": "Displays the number of Administrative Formal cases within the search results.",
+      "example": "5",
+      "title": "Administrative Formal Actions Row Count",
+      "type": "string"
+    },
+    "CAARows": {
+      "description": "The number of facilities or cases within the result set that have Clean Air Act (CAA) permits.",
+      "example": "50",
+      "title": "Clean Air Act Count",
+      "type": "string"
+    },
+    "CERCLARows": {
+      "description": "The number of cases within the results set that relate to the Comprehensive Environmental Response, Compensation, and Liability Act (CERCLA).",
+      "example": "50",
+      "title": "Comprehensive Environmental Response, Compensation, and Liability Act Count",
+      "type": "string"
+    },
+    "CWARows": {
+      "description": "The number of facilities or cases within the results set that have Clean Water Act (CWA) permits.",
+      "example": "50",
+      "title": "Clean Water Act Count",
+      "type": "string"
+    },
+    "Cases": {
+      "description": "A summary of the violation(s), environmental problem(s), and a description of the cause of action.",
+      "items": {
+        "$ref": "#/definitions/crs0_Cases"
+      },
+      "title": "Cases",
+      "type": "array",
+      "xml": {
+        "name": "Cases",
+        "wrapped": true
+      },
+      "example": [
+        "string"
+      ]
+    },
+    "CriminalRows": {
+      "description": "Displays the number of criminal enforcement cases within the search results.",
+      "example": "0",
+      "title": "Count of Criminal Cases",
+      "type": "string"
+    },
+    "EPCRARows": {
+      "description": "The number of cases within the results set that relate to the Emergency Planning and Community Right to Know Act (EPCRA).",
+      "example": "50",
+      "title": "Emergency Planning and Community Right to Know Act Count",
+      "type": "string"
+    },
+    "FIFRARows": {
+      "description": "The number of cases within the result set that relate to the Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA).",
+      "example": "50",
+      "title": "Federal Insecticide, Fungicide, and Rodenticide Act Count",
+      "type": "string"
+    },
+    "FedPenRows": {
+      "description": "Displays the number of cases with federal penalty assessed greater than $0.",
+      "example": "3",
+      "title": "Federal Penalty Rows",
+      "type": "string"
+    },
+    "FederalRows": {
+      "description": "The number of facilities or cases within the result set that have a relationship to a Federal facility.",
+      "example": "50",
+      "title": "Federal Related Facility Count",
+      "type": "string"
+    },
+    "JDCRows": {
+      "description": "Displays the number of Judicial cases within the search results.",
+      "example": "2",
+      "title": "Judicial Cases Row Count",
+      "type": "string"
+    },
+    "MapOutput": {
+      "$ref": "#/definitions/crs0_MapOutput"
+    },
+    "Message": {
+      "description": "Field to record messages (typically performance-related) about packet processing",
+      "example": "Success",
+      "title": "Message",
+      "type": "string"
+    },
+    "PageNo": {
+      "description": "The number of pages of results returned",
+      "example": "1",
+      "title": "Page Number",
+      "type": "string"
+    },
+    "QueryID": {
+      "description": "Sequential number assigned to entire search result",
+      "example": "245",
+      "title": "Query Identifier",
+      "type": "string"
+    },
+    "QueryRows": {
+      "description": "Number of query results returned",
+      "example": "5",
+      "title": "Query Row Count",
+      "type": "string"
+    },
+    "RCRARows": {
+      "description": "The number of facilities or cases within the results set that have Resource Conservation and Recovery Action (RCRA) permits.",
+      "example": "50",
+      "title": "Resource Conservation & Recovery Act Count",
+      "type": "string"
+    },
+    "SDWARows": {
+      "description": "The number of facilities or cases within the results set that have Safe Drinking Water Act (SDWA) permits.",
+      "example": "50",
+      "title": "Safe Drinking Water Act Count",
+      "type": "string"
+    },
+    "SEPRows": {
+      "description": "Displays the number of cases with SEP amount greater than $0.",
+      "example": "0",
+      "title": "Number of Cases found with SEP data",
+      "type": "string"
+    },
+    "TSCARows": {
+      "description": "The number of cases within the result set that relate to the Toxic Substances Control Act (TSCA).",
+      "example": "50",
+      "title": "Toxic Substances Control Act Count",
+      "type": "string"
+    }
+  },
+  "required": [
+    "Message",
+    "QueryRows",
+    "JDCRows",
+    "AFRRows",
+    "FedPenRows",
+    "SEPRows",
+    "CriminalRows",
+    "RCRARows",
+    "CWARows",
+    "CAARows",
+    "SDWARows",
+    "EPCRARows",
+    "CERCLARows",
+    "FIFRARows",
+    "TSCARows",
+    "FederalRows",
+    "QueryID",
+    "PageNo"
+  ]
+}

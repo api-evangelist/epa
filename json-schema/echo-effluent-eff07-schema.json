@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-schema/echo-effluent-eff07-schema.json",
+  "title": "eff07",
+  "description": "Parameters Object",
+  "type": "object",
+  "properties": {
+    "CurrentVioStatus": {
+      "description": "The most severe compliance status for an outfall and parameter during the current monitoring period",
+      "example": "In Violation",
+      "title": "Current Violation Status",
+      "type": "string"
+    },
+    "MaxVioStatus": {
+      "description": "The most severe compliance status for an outfall and parameter during the entire selected date range",
+      "example": "In Violation",
+      "title": "Most Severe Compliance Status",
+      "type": "string"
+    },
+    "ParameterCode": {
+      "description": "The unique 5 digit numeric code identifying the parameter. If the code is less than 5 digits in the .CSV, append zeros to the beginning of the number (e.g., 100 is equivalent to 00100)",
+      "example": "00400",
+      "title": "Parameter Code",
+      "type": "string"
+    },
+    "ParameterDesc": {
+      "description": "The pollutant name and form (e.g., dissolved, suspended) associated with the parameter code",
+      "example": "pH",
+      "title": "Parameter Description",
+      "type": "string"
+    }
+  },
+  "required": [
+    "ParameterCode",
+    "ParameterDesc",
+    "MaxVioStatus",
+    "CurrentVioStatus"
+  ]
+}

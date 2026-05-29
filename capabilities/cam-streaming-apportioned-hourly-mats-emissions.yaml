@@ -1,0 +1,135 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Streaming Services OpenAPI Specification — Apportioned Hourly MATS Emissions
+  description: 'Apportioned Hourly MATS Emissions. 1 operations. Lead operation: operations. Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - Apportioned Hourly MATS Emissions
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_APIKEY_KEY: EPA_APIKEY_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: cam-streaming-apportioned-hourly-mats-emissions
+      baseUri: https://api.epa.gov/easey
+      description: Streaming Services OpenAPI Specification — Apportioned Hourly MATS Emissions business capability. Self-contained, no shared references.
+      authentication:
+        type: apikey
+        key: x-api-key
+        value: '{{env.EPA_APIKEY_KEY}}'
+        placement: header
+      resources:
+        - name: streaming-services-emissions-apportioned-mats-hourly
+          path: /streaming-services/emissions/apportioned/mats/hourly
+          operations:
+            - name: hourlyMatsApportionedEmissionsControllerstreamEmissions
+              method: GET
+              description: hourlyMatsApportionedEmissionsControllerstreamEmissions
+              inputParameters:
+                - name: stateCode
+                  in: query
+                  type: array
+                  required: false
+                  description: Two letter abbreviation for the State.
+                - name: facilityId
+                  in: query
+                  type: array
+                  required: false
+                  description: The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the "ORIS code", "ORISPL code"
+                - name: unitType
+                  in: query
+                  type: array
+                  required: false
+                  description: Type of unit or boiler.
+                - name: unitFuelType
+                  in: query
+                  type: array
+                  required: false
+                  description: Primary or Secondary fuel types combusted by the unit.
+                - name: controlTechnologies
+                  in: query
+                  type: array
+                  required: false
+                  description: Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.
+                - name: beginDate
+                  in: query
+                  type: string
+                  required: true
+                  description: Begin date for a given period of a unit's emissions.
+                - name: endDate
+                  in: query
+                  type: string
+                  required: true
+                  description: End date for a given period of a unit's emissions.
+                - name: operatingHoursOnly
+                  in: query
+                  type: boolean
+                  required: false
+                  description: Indicator of whether or not a request should return only data for hours where a unit operated.
+                - name: exclude
+                  in: query
+                  type: array
+                  required: false
+                  description: Selected items will be excluded from the response
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: cam-streaming-apportioned-hourly-mats-emissions-rest
+      port: 8080
+      description: REST adapter for Streaming Services OpenAPI Specification — Apportioned Hourly MATS Emissions. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/streaming-services/emissions/apportioned/mats/hourly
+          name: streaming-services-emissions-apportioned-mats-hourly
+          description: REST surface for hourlyMatsApportionedEmissionsControllerstreamEmissions.
+          operations:
+            - method: GET
+              name: hourlyMatsApportionedEmissionsControllerstreamEmissions
+              description: hourlyMatsApportionedEmissionsControllerstreamEmissions
+              call: cam-streaming-apportioned-hourly-mats-emissions.hourlyMatsApportionedEmissionsControllerstreamEmissions
+              with:
+                stateCode: rest.stateCode
+                facilityId: rest.facilityId
+                unitType: rest.unitType
+                unitFuelType: rest.unitFuelType
+                controlTechnologies: rest.controlTechnologies
+                beginDate: rest.beginDate
+                endDate: rest.endDate
+                operatingHoursOnly: rest.operatingHoursOnly
+                exclude: rest.exclude
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: cam-streaming-apportioned-hourly-mats-emissions-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Streaming Services OpenAPI Specification — Apportioned Hourly MATS Emissions. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: hourlymatsapportionedemissionscontroller-streamemissions
+          description: hourlymatsapportionedemissionscontroller-streamemissions
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-streaming-apportioned-hourly-mats-emissions.hourlyMatsApportionedEmissionsControllerstreamEmissions
+          with:
+            stateCode: tools.stateCode
+            facilityId: tools.facilityId
+            unitType: tools.unitType
+            unitFuelType: tools.unitFuelType
+            controlTechnologies: tools.controlTechnologies
+            beginDate: tools.beginDate
+            endDate: tools.endDate
+            operatingHoursOnly: tools.operatingHoursOnly
+            exclude: tools.exclude
+          outputParameters:
+            - type: object
+              mapping: $.

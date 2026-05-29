@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-structure/echo-case-crs1-pollutant-reductions-structure.json",
+  "name": "crs1_PollutantReductions",
+  "description": "This section provides information relating complying actions and SEPs to their estimated or actual environmental impact on pollutant reduction.",
+  "type": "object",
+  "properties": {
+    "AnnualAmount": {
+      "type": "string",
+      "description": "The amount of reduction or elimination of each pollutant or waste in pounds, kilograms, or liquid measure that resulted from the SEP or Complying Actions.",
+      "example": "61,802"
+    },
+    "ComplyingActionId": {
+      "type": "string",
+      "description": "The unique identifier for an enforceable requirement obliging the defendant/respondent to take or refrain from certain specified actions.",
+      "example": "2600823911"
+    },
+    "EnvironmentalImpactId": {
+      "type": "string",
+      "description": "The system-generated unique identifier of the Environmental Impact record.",
+      "example": "2600004336"
+    },
+    "Media": {
+      "type": "string",
+      "description": "The name/description of the media where the pollutants or waste were emitted/discharged.",
+      "example": "Air"
+    },
+    "Pollutant": {
+      "type": "string",
+      "description": "The name that EPA has selected as its preferred name for a substance (also known as registry name). If the registry name is not available, use the systematic name instead.",
+      "example": "Carbon monoxide"
+    },
+    "SEPId": {
+      "type": "string",
+      "description": "The system-generated unique identifier of the SEP record affiliated with the Environmental Impact.",
+      "example": "12345"
+    },
+    "SEPorComp": {
+      "type": "string",
+      "description": "A flag that indicates whether the quantitative environmental impact pertains to a SEP or Complying Action.",
+      "example": "C"
+    },
+    "Units": {
+      "type": "string",
+      "description": "A code that uniquely identifies the pollutant unit of measurement.",
+      "example": "PNDSYR"
+    }
+  },
+  "required": [
+    "ComplyingActionId",
+    "EnvironmentalImpactId",
+    "SEPId",
+    "Pollutant",
+    "AnnualAmount",
+    "Units",
+    "Media",
+    "SEPorComp"
+  ]
+}

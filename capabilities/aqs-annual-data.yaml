@@ -1,0 +1,534 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: EPA Air Quality System (AQS) API — Annual Data
+  description: 'Annual Data. 5 operations. Lead operation: Get Annual Data by Site. Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - Annual Data
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_EMAILKEY_KEY: EPA_EMAILKEY_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: aqs-annual-data
+      baseUri: https://aqs.epa.gov/data/api
+      description: EPA Air Quality System (AQS) API — Annual Data business capability. Self-contained, no shared references.
+      authentication:
+        type: apikey
+        key: key
+        value: '{{env.EPA_EMAILKEY_KEY}}'
+        placement: query
+      resources:
+        - name: annualdata-bysite
+          path: /annualData/bySite
+          operations:
+            - name: annualDataBySite
+              method: GET
+              description: Get Annual Data by Site
+              inputParameters:
+                - name: email
+                  in: query
+                  type: string
+                  required: true
+                  description: Registered email address.
+                - name: key
+                  in: query
+                  type: string
+                  required: true
+                  description: Account-specific access key.
+                - name: param
+                  in: query
+                  type: string
+                  required: true
+                  description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
+                - name: bdate
+                  in: query
+                  type: string
+                  required: true
+                  description: Begin date (YYYYMMDD).
+                - name: edate
+                  in: query
+                  type: string
+                  required: true
+                  description: End date (YYYYMMDD). Must be in the same year as bdate for most services.
+                - name: state
+                  in: query
+                  type: string
+                  required: true
+                  description: 2-digit state FIPS code.
+                - name: county
+                  in: query
+                  type: string
+                  required: true
+                  description: 3-digit county code.
+                - name: site
+                  in: query
+                  type: string
+                  required: true
+                  description: 4-digit site code.
+                - name: cbdate
+                  in: query
+                  type: string
+                  required: false
+                  description: Optional change begin date (returns records updated since cbdate).
+                - name: cedate
+                  in: query
+                  type: string
+                  required: false
+                  description: Optional change end date.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: annualdata-bycounty
+          path: /annualData/byCounty
+          operations:
+            - name: annualDataByCounty
+              method: GET
+              description: Get Annual Data by County
+              inputParameters:
+                - name: email
+                  in: query
+                  type: string
+                  required: true
+                  description: Registered email address.
+                - name: key
+                  in: query
+                  type: string
+                  required: true
+                  description: Account-specific access key.
+                - name: param
+                  in: query
+                  type: string
+                  required: true
+                  description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
+                - name: bdate
+                  in: query
+                  type: string
+                  required: true
+                  description: Begin date (YYYYMMDD).
+                - name: edate
+                  in: query
+                  type: string
+                  required: true
+                  description: End date (YYYYMMDD). Must be in the same year as bdate for most services.
+                - name: state
+                  in: query
+                  type: string
+                  required: true
+                  description: 2-digit state FIPS code.
+                - name: county
+                  in: query
+                  type: string
+                  required: true
+                  description: 3-digit county code.
+                - name: cbdate
+                  in: query
+                  type: string
+                  required: false
+                  description: Optional change begin date (returns records updated since cbdate).
+                - name: cedate
+                  in: query
+                  type: string
+                  required: false
+                  description: Optional change end date.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: annualdata-bystate
+          path: /annualData/byState
+          operations:
+            - name: annualDataByState
+              method: GET
+              description: Get Annual Data by State
+              inputParameters:
+                - name: email
+                  in: query
+                  type: string
+                  required: true
+                  description: Registered email address.
+                - name: key
+                  in: query
+                  type: string
+                  required: true
+                  description: Account-specific access key.
+                - name: param
+                  in: query
+                  type: string
+                  required: true
+                  description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
+                - name: bdate
+                  in: query
+                  type: string
+                  required: true
+                  description: Begin date (YYYYMMDD).
+                - name: edate
+                  in: query
+                  type: string
+                  required: true
+                  description: End date (YYYYMMDD). Must be in the same year as bdate for most services.
+                - name: state
+                  in: query
+                  type: string
+                  required: true
+                  description: 2-digit state FIPS code.
+                - name: cbdate
+                  in: query
+                  type: string
+                  required: false
+                  description: Optional change begin date (returns records updated since cbdate).
+                - name: cedate
+                  in: query
+                  type: string
+                  required: false
+                  description: Optional change end date.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: annualdata-bybox
+          path: /annualData/byBox
+          operations:
+            - name: annualDataByBox
+              method: GET
+              description: Get Annual Data by Bounding Box
+              inputParameters:
+                - name: email
+                  in: query
+                  type: string
+                  required: true
+                  description: Registered email address.
+                - name: key
+                  in: query
+                  type: string
+                  required: true
+                  description: Account-specific access key.
+                - name: param
+                  in: query
+                  type: string
+                  required: true
+                  description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
+                - name: bdate
+                  in: query
+                  type: string
+                  required: true
+                  description: Begin date (YYYYMMDD).
+                - name: edate
+                  in: query
+                  type: string
+                  required: true
+                  description: End date (YYYYMMDD). Must be in the same year as bdate for most services.
+                - name: minlat
+                  in: query
+                  type: number
+                  required: true
+                  description: Minimum latitude of bounding box.
+                - name: maxlat
+                  in: query
+                  type: number
+                  required: true
+                  description: maxlat
+                - name: minlon
+                  in: query
+                  type: number
+                  required: true
+                  description: minlon
+                - name: maxlon
+                  in: query
+                  type: number
+                  required: true
+                  description: maxlon
+                - name: cbdate
+                  in: query
+                  type: string
+                  required: false
+                  description: Optional change begin date (returns records updated since cbdate).
+                - name: cedate
+                  in: query
+                  type: string
+                  required: false
+                  description: Optional change end date.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: annualdata-bycbsa
+          path: /annualData/byCBSA
+          operations:
+            - name: annualDataByCBSA
+              method: GET
+              description: Get Annual Data by CBSA
+              inputParameters:
+                - name: email
+                  in: query
+                  type: string
+                  required: true
+                  description: Registered email address.
+                - name: key
+                  in: query
+                  type: string
+                  required: true
+                  description: Account-specific access key.
+                - name: param
+                  in: query
+                  type: string
+                  required: true
+                  description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
+                - name: bdate
+                  in: query
+                  type: string
+                  required: true
+                  description: Begin date (YYYYMMDD).
+                - name: edate
+                  in: query
+                  type: string
+                  required: true
+                  description: End date (YYYYMMDD). Must be in the same year as bdate for most services.
+                - name: cbsa
+                  in: query
+                  type: string
+                  required: true
+                  description: 5-digit Core Based Statistical Area code.
+                - name: cbdate
+                  in: query
+                  type: string
+                  required: false
+                  description: Optional change begin date (returns records updated since cbdate).
+                - name: cedate
+                  in: query
+                  type: string
+                  required: false
+                  description: Optional change end date.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: aqs-annual-data-rest
+      port: 8080
+      description: REST adapter for EPA Air Quality System (AQS) API — Annual Data. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/annualdata/bysite
+          name: annualdata-bysite
+          description: REST surface for Get Annual Data by Site.
+          operations:
+            - method: GET
+              name: annualDataBySite
+              description: Get Annual Data by Site
+              call: aqs-annual-data.annualDataBySite
+              with:
+                email: rest.email
+                key: rest.key
+                param: rest.param
+                bdate: rest.bdate
+                edate: rest.edate
+                state: rest.state
+                county: rest.county
+                site: rest.site
+                cbdate: rest.cbdate
+                cedate: rest.cedate
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/annualdata/bycounty
+          name: annualdata-bycounty
+          description: REST surface for Get Annual Data by County.
+          operations:
+            - method: GET
+              name: annualDataByCounty
+              description: Get Annual Data by County
+              call: aqs-annual-data.annualDataByCounty
+              with:
+                email: rest.email
+                key: rest.key
+                param: rest.param
+                bdate: rest.bdate
+                edate: rest.edate
+                state: rest.state
+                county: rest.county
+                cbdate: rest.cbdate
+                cedate: rest.cedate
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/annualdata/bystate
+          name: annualdata-bystate
+          description: REST surface for Get Annual Data by State.
+          operations:
+            - method: GET
+              name: annualDataByState
+              description: Get Annual Data by State
+              call: aqs-annual-data.annualDataByState
+              with:
+                email: rest.email
+                key: rest.key
+                param: rest.param
+                bdate: rest.bdate
+                edate: rest.edate
+                state: rest.state
+                cbdate: rest.cbdate
+                cedate: rest.cedate
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/annualdata/bybox
+          name: annualdata-bybox
+          description: REST surface for Get Annual Data by Bounding Box.
+          operations:
+            - method: GET
+              name: annualDataByBox
+              description: Get Annual Data by Bounding Box
+              call: aqs-annual-data.annualDataByBox
+              with:
+                email: rest.email
+                key: rest.key
+                param: rest.param
+                bdate: rest.bdate
+                edate: rest.edate
+                minlat: rest.minlat
+                maxlat: rest.maxlat
+                minlon: rest.minlon
+                maxlon: rest.maxlon
+                cbdate: rest.cbdate
+                cedate: rest.cedate
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/annualdata/bycbsa
+          name: annualdata-bycbsa
+          description: REST surface for Get Annual Data by CBSA.
+          operations:
+            - method: GET
+              name: annualDataByCBSA
+              description: Get Annual Data by CBSA
+              call: aqs-annual-data.annualDataByCBSA
+              with:
+                email: rest.email
+                key: rest.key
+                param: rest.param
+                bdate: rest.bdate
+                edate: rest.edate
+                cbsa: rest.cbsa
+                cbdate: rest.cbdate
+                cedate: rest.cedate
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: aqs-annual-data-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for EPA Air Quality System (AQS) API — Annual Data. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: get-annual-data-site
+          description: Get Annual Data by Site
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: aqs-annual-data.annualDataBySite
+          with:
+            email: tools.email
+            key: tools.key
+            param: tools.param
+            bdate: tools.bdate
+            edate: tools.edate
+            state: tools.state
+            county: tools.county
+            site: tools.site
+            cbdate: tools.cbdate
+            cedate: tools.cedate
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-annual-data-county
+          description: Get Annual Data by County
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: aqs-annual-data.annualDataByCounty
+          with:
+            email: tools.email
+            key: tools.key
+            param: tools.param
+            bdate: tools.bdate
+            edate: tools.edate
+            state: tools.state
+            county: tools.county
+            cbdate: tools.cbdate
+            cedate: tools.cedate
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-annual-data-state
+          description: Get Annual Data by State
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: aqs-annual-data.annualDataByState
+          with:
+            email: tools.email
+            key: tools.key
+            param: tools.param
+            bdate: tools.bdate
+            edate: tools.edate
+            state: tools.state
+            cbdate: tools.cbdate
+            cedate: tools.cedate
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-annual-data-bounding-box
+          description: Get Annual Data by Bounding Box
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: aqs-annual-data.annualDataByBox
+          with:
+            email: tools.email
+            key: tools.key
+            param: tools.param
+            bdate: tools.bdate
+            edate: tools.edate
+            minlat: tools.minlat
+            maxlat: tools.maxlat
+            minlon: tools.minlon
+            maxlon: tools.maxlon
+            cbdate: tools.cbdate
+            cedate: tools.cedate
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-annual-data-cbsa
+          description: Get Annual Data by CBSA
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: aqs-annual-data.annualDataByCBSA
+          with:
+            email: tools.email
+            key: tools.key
+            param: tools.param
+            bdate: tools.bdate
+            edate: tools.edate
+            cbsa: tools.cbsa
+            cbdate: tools.cbdate
+            cedate: tools.cedate
+          outputParameters:
+            - type: object
+              mapping: $.

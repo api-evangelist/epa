@@ -1,0 +1,713 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-schema/echo-rcra-rcra10-schema.json",
+  "title": "rcra10",
+  "description": "GeoJSON Properties Object",
+  "type": "object",
+  "properties": {
+    "AIRIDs": {
+      "description": "Air Facility System (AFS) ID.",
+      "example": "DC0000001100195254",
+      "title": "AIR Facility System ID",
+      "type": "string"
+    },
+    "ActiveLower48": {
+      "description": "A Y/N indicator indicating that the facility is active and located within the lower 48 contiguous US States.",
+      "type": "string",
+      "example": "string"
+    },
+    "CWAIDs": {
+      "description": "A unique  ID assigned for each record/permit/site/facility within ICIS-NPDES. These identifiers are for used tracking purposes in the individual data systems.",
+      "example": "DC0000001",
+      "title": "CWA IDs",
+      "type": "string"
+    },
+    "CalculatedAccuracyMeters": {
+      "description": "Indicates the calculated accuracy in meters for the facilities geospatial coordinate.  Generally, the accuracy is directly linked to the collection method where GPS methods are more accurate that manual methods like map or photo interpolations.",
+      "example": 50,
+      "title": "Calculated Accuracy in Meters",
+      "type": "number"
+    },
+    "CensusBlockGroup": {
+      "description": "A geographic unit used by the United States Census Bureau, generally defined to contain between 600 and 3,000 people.",
+      "example": "110010096022",
+      "title": "Census Block Group",
+      "type": "string"
+    },
+    "ChemNamesRelLand": {
+      "description": "It is an aggregated field containing all the names found for the current reporting year (2017).",
+      "title": "Chemical Names of TRI Pollutants Released ON-Site",
+      "type": "string",
+      "example": "EPA Facility"
+    },
+    "ChesapeakeBayFlag": {
+      "description": "Displays \"Y\" if the facility is located within the Chesapeake Bay watershed.",
+      "example": "Y",
+      "title": "Chesapeake Bay Flag",
+      "type": "string"
+    },
+    "CleanupActionFlag": {
+      "type": "string",
+      "example": "string"
+    },
+    "CollectionMethod": {
+      "description": "??",
+      "example": "ADDRESS MATCHING-HOUSE NUMBER",
+      "title": "Collection Method",
+      "type": "string"
+    },
+    "CurrSvFlag": {
+      "description": "Indicates if the facility has a current significant violation. 1 = Yes",
+      "example": 1,
+      "title": "Current Significant Violation Flag",
+      "type": "number"
+    },
+    "CurrVioFlag": {
+      "description": "Indicates if the facility has a current violation. 1 = Yes",
+      "example": 1,
+      "title": "Current Violation Flag",
+      "type": "number"
+    },
+    "CurrentVioCnt": {
+      "title": "Count of Current Violations",
+      "type": "string",
+      "example": "string"
+    },
+    "DateLastRecordReview": {
+      "type": "string",
+      "example": "string"
+    },
+    "EPASystem": {
+      "description": "The EPA data system in which permit and facility records are kept. EPA's Facility Registry System (FRS) links all program database records (such as permit IDs and IDs facilities use in reporting to EPA) together. The following list describes the individual data systems that are linked to from the detailed facility report: \n\n- AFS: Air Facility System for Clean Air Act stationary source programs.\n- ICP: Integrated Compliance Information System for Clean Water Act programs monitoring National Pollutant Discharge Elimination System (NPDES) permits.\n- RCR: Resource Conservation and Recovery Act Information System (RCRAInfo) for tracking the Resource Conservation and Recovery Act (RCRA) programs.\n- NCDB: National Compliance Database System for monitoring national performance of the Toxic Substance Control Act (TSCA); the Emergency Planning and Right-to-Know Act, Section 313 (EPCRA); the Asbestos Hazard Emergency Response (AHERA); and the Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA).\n- TRI: Toxics Release Inventory for Emergency Planning and Community Right-to-Know Act, Section 313 submissions.\n- NEI: National Emissions Inventory database contains information on stationary and mobile sources that emit criteria air pollutants and their precursors, as well as hazardous air pollutants (HAPs). The database includes estimates of annual emissions, by source, of air pollutants in each area of the country, on an annual basis.\n- TSCA: Toxic Substances Control Act addressing the production, importation, use, and disposal of specific chemicals.",
+      "example": "ICP",
+      "title": "EPA Data System",
+      "type": "string"
+    },
+    "Ea5yrFlag": {
+      "description": "Indicates if the facility has a formal enforcement action within the last 5 years. 1 = Yes",
+      "example": 0,
+      "type": "number"
+    },
+    "EjscreenFlag": {
+      "description": "A Y/N indicator identifying whether or not the facility is within an Environmental Justice area.",
+      "title": "EJ Screen Flag",
+      "type": "string",
+      "example": "string"
+    },
+    "EjscreenFlagUs": {
+      "description": "A Y/N indicator identifying whether or not the facility is within an Environmental Justice area.",
+      "title": "EJ Screen Flag (US)",
+      "type": "string",
+      "example": "string"
+    },
+    "FacCountyName": {
+      "description": "The facility county name from EPA's Facility Registry System",
+      "example": "Fairfax County",
+      "title": "FRS Facility County Name",
+      "type": "string"
+    },
+    "FacDerivedHuc": {
+      "description": "The 8-digit Hydrologic Unit Code (HUC) of the watershed in which the facility resides. A HUC number is assigned to every watershed in the nation and uniquely identifies the watershed.",
+      "example": "552968",
+      "title": "Watershed (HUC Code)",
+      "type": "string"
+    },
+    "FacDerivedTRIbes": {
+      "description": "The tribes or tribal territories located within 25 miles of the facility's location.",
+      "example": "Cherokee Nation",
+      "title": "FRS Spatially Derived Tribe",
+      "type": "string"
+    },
+    "FacDerivedWBD": {
+      "description": "The Hydrologic Unit Code (HUC-12) of the waterbody in which the facility resides, derived based on location data in FRS.",
+      "example": "20700100204",
+      "title": "12-Digit WBD HUC",
+      "type": "string"
+    },
+    "FacDerivedWBDName": {
+      "description": "The 12 digit Watershed Boundary Dataset Name derived from the FRS Best Pick Coordinate",
+      "example": "Fourmile Run-Potomac River",
+      "title": "FRS Derived Watershed Boundary Dataset (WBD) Name",
+      "type": "string"
+    },
+    "FacFIPSCode": {
+      "description": "The 2-digit Federal Information Processing Standards (FIPS) code to identify the county that a facility is located in.",
+      "example": "55001",
+      "title": "FIPS Code",
+      "type": "string"
+    },
+    "FacFederalAgencyCode": {
+      "description": "Indicates the federal agency, as classified in FRS. Federal agencies are installations that are owned and operated by the U.S. government. The five-character code consists of a letter followed by four numbers. There are four possible letters that can occupy the first character position: C = Civilian Federal Agency; D = Department of Defense; E = Department of Energy; X = Unknown. The second and third characters represent the agency code, while the fourth and fifth characters represent the bureau code.",
+      "example": "E",
+      "title": "Facility Federal Agency Code",
+      "type": "string"
+    },
+    "FacFederalAgencyName": {
+      "description": "Indicates the name of the federal agency, as classified in FRS. Federal agencies are installations that are owned and operated by the U.S. government.",
+      "example": "EPA",
+      "title": "Federal Agency Name",
+      "type": "string"
+    },
+    "FacIndianCntryFlg": {
+      "description": "Flag showing Y/N whether the facility is located in Indian Country.",
+      "title": "Facility Indian Country Flag",
+      "type": "string",
+      "example": "string"
+    },
+    "FacIndianSpatialFlg": {
+      "description": "Returns \u201cY\u201d if a facility is located within a tribal spatial boundary as defined by the U.S. Census Bureau 2010 tribal boundary layer data for tribes in the lower 48 states and Bureau of Land Management Alaska State Office data for native villages in Alaska. Returns \u201cN\u201d if a facility is not located within a tribal or native Alaskan village area.",
+      "example": "Y",
+      "title": "Indian Spatial Flag",
+      "type": "string"
+    },
+    "FacMapFlg": {
+      "description": "Graphical indicator denoting whether geographical data required to map a facility are available.",
+      "example": "Y",
+      "title": "Facility Mapped Flag",
+      "type": "string"
+    },
+    "FacMapIcon": {
+      "description": "The default map icon image file calculated for the facility by the ECHO program.",
+      "example": "CWA-NC-MJ-2.png",
+      "title": "Facility Map Icon",
+      "type": "string"
+    },
+    "FacPercentMinority": {
+      "description": "Percent Minority is the percentage of the population of the given area that is considered minority. Statistics are shown for the area within a 3-mile radius of each facility.",
+      "example": 45.379,
+      "title": "Facility Percent Minority",
+      "type": "number"
+    },
+    "FacPopulationDensity": {
+      "description": "The number of persons per square mile in the profiled area.",
+      "example": 9611.17,
+      "title": "Population Density",
+      "type": "number"
+    },
+    "FacSICCodes": {
+      "description": "Indicates the facility\u2019s or permit's primary Standard Industrial Classification (SIC) Code. The SIC code describes the primary activity of the facility.",
+      "example": "811",
+      "title": "SIC Codes",
+      "type": "string"
+    },
+    "FacStdCountyName": {
+      "description": "The standardized  facility county name from EPA's Facility Registry System",
+      "example": "Fairfax County",
+      "title": "FRS Standardized Facility County Name",
+      "type": "string"
+    },
+    "FacTRILandReleases": {
+      "example": "11.7",
+      "type": "string"
+    },
+    "FacTRIOffSiteTransfers": {
+      "type": "string",
+      "example": "0014"
+    },
+    "FacTRIOnSiteReleases": {
+      "type": "string",
+      "example": "0014"
+    },
+    "FacTRIReporter": {
+      "description": "Indicates whether facility reported to the Toxics Release Inventory (TRI) for the most recent reporting year.",
+      "example": "B",
+      "title": "Facility TRI Reporter",
+      "type": "string"
+    },
+    "FacUsMexBorderFlg": {
+      "description": "A Y/N flag indicating that the facility is within 100KM of the US-Mexico Border.",
+      "example": "Y",
+      "title": "Near US-Mexico Border",
+      "type": "string"
+    },
+    "Infea5yrFlag": {
+      "description": "Indicates if the facility has an informal enforcement action within the last 5 years. 1 = Yes.",
+      "example": 1,
+      "type": "number"
+    },
+    "Insp5yrFlag": {
+      "description": "Indicates if the facility has an inspection within the last 5 years. 1 = Yes",
+      "example": 1,
+      "title": "Inspected Within Last Five Years Flag",
+      "type": "number"
+    },
+    "LastViolationDate": {
+      "example": "5/13/2011",
+      "title": "Date of Last Violation",
+      "type": "string"
+    },
+    "Lower48": {
+      "description": "Flag showing Y/N whether location is within the contiguous (lower 48) United States.",
+      "example": "Y",
+      "title": "Contiguous United States Flag",
+      "type": "string"
+    },
+    "Map": {
+      "description": "No Longer Used.",
+      "title": "Map",
+      "type": "string",
+      "example": "string"
+    },
+    "MaxPctileUs": {
+      "description": "The maximum percentile from all individual EJSCREEN indicators.",
+      "example": 54.7,
+      "type": "number"
+    },
+    "MaxScore": {
+      "description": "[Col. 121]",
+      "example": 1,
+      "title": "Max Score",
+      "type": "number"
+    },
+    "OperatorCode": {
+      "type": "string",
+      "example": "string"
+    },
+    "OperatorDesc": {
+      "type": "string",
+      "example": "string"
+    },
+    "Over80CountUs": {
+      "description": "The number of primary EJSCREEN environmental justice (EJ) indexes exceeding the 80th or higher national percentile for the Census block group that the facility is located in.",
+      "example": 3,
+      "title": "EJ Indexes Above 80th Percentile",
+      "type": "number"
+    },
+    "OwnerCode": {
+      "type": "string",
+      "example": "string"
+    },
+    "OwnerDesc": {
+      "description": "Description of Owner code",
+      "example": "Local Government",
+      "title": "Owner Description",
+      "type": "string"
+    },
+    "PctileCancerUs": {
+      "description": "The national percentile of the census block group for the EJSCREEN NATA air toxics cancer risk indicator.",
+      "example": 99,
+      "type": "number"
+    },
+    "PctileDpmUs": {
+      "description": "The national percentile of the census block group for the EJSCREEN diesel particulate matter indicator.",
+      "example": 99,
+      "type": "number"
+    },
+    "PctileO3Us": {
+      "description": "The national percentile of the census block group for the EJSCREEN ozone indicator.",
+      "example": 52.4,
+      "type": "number"
+    },
+    "PctilePctpre1960Us": {
+      "description": "The national percentile of the census block group for the EJSCREEN Lead paint indicator.",
+      "example": 14.6,
+      "type": "number"
+    },
+    "PctilePmUs": {
+      "description": "The national percentile of the census block group for the EJSCREEN particulate matter indicator.",
+      "example": 52.4,
+      "type": "number"
+    },
+    "PctileProximityNPDESUs": {
+      "description": "The national percentile of the census block group for the EJSCREEN proximity to major direct water dischargers indicator.",
+      "example": 45.3,
+      "type": "number"
+    },
+    "PctileProximityNplUs": {
+      "description": "The national percentile of the census block group for the EJSCREEN proximity to National Priorities List (NPL) sites indicator.",
+      "example": 38.9,
+      "type": "number"
+    },
+    "PctileProximityRmpUs": {
+      "description": "The national percentile of the census block group for the EJSCREEN proximity to Risk Management Plan (RMP) sites indicator.",
+      "example": 54.7,
+      "type": "number"
+    },
+    "PctileProximityTsdfUs": {
+      "description": "The national percentile of the census block group for the EJSCREEN proximity to Treatment Storage and Disposal Facilities (TSDFs) indicator.",
+      "example": 42.4,
+      "type": "number"
+    },
+    "PctileRespUs": {
+      "description": "The national percentile of the census block group for the EJSCREEN NATA respiratory hazard index indicator.",
+      "example": 41.9,
+      "type": "number"
+    },
+    "PctileTrafficScoreUs": {
+      "description": "The national percentile of the census block group for the EJSCREEN Traffic proximity and volume indicator.",
+      "example": 7,
+      "type": "number"
+    },
+    "RCRA3yrComplQtrsHistory": {
+      "description": "The system's 3-year compliance status history by quarter (3-month period) entered in the RCRA program database. Each character represents a quarter of compliance, going from oldest to most recent. Character values correspond to the following compliance statuses:\n_ -\ufffdNo Violation\nV -\ufffdViolation\nS -\ufffdSignificant Violation\nU - Undetermined",
+      "example": "________VVSS",
+      "title": "RCRA 3-Year Compliance History",
+      "type": "string"
+    },
+    "RCRACaseIDs": {
+      "type": "string",
+      "example": "12345"
+    },
+    "RCRACity": {
+      "type": "string",
+      "example": "Raleigh"
+    },
+    "RCRAComplStatus": {
+      "type": "string",
+      "example": "active"
+    },
+    "RCRACounty": {
+      "type": "string",
+      "example": "037"
+    },
+    "RCRADaysLastInspection": {
+      "example": 1247,
+      "type": "number"
+    },
+    "RCRAEPARegion": {
+      "type": "string",
+      "example": "string"
+    },
+    "RCRAFIPSCode": {
+      "type": "string",
+      "example": "string"
+    },
+    "RCRAFeaCnt": {
+      "example": 0,
+      "type": "number"
+    },
+    "RCRAIDs": {
+      "description": "A unique 12-character ID assigned for each record/permit/site/facility within the RCRAInfo database.",
+      "example": "VAD981111784",
+      "title": "Resource Conservation and Recovery Act IDs",
+      "type": "string"
+    },
+    "RCRAIeaCnt": {
+      "example": 0,
+      "type": "number"
+    },
+    "RCRAImpWaterFlg": {
+      "type": "string",
+      "example": "string"
+    },
+    "RCRAIndianCntryFlg": {
+      "type": "string",
+      "example": "string"
+    },
+    "RCRAInspCnt": {
+      "example": 0,
+      "type": "number"
+    },
+    "RCRALandTypeCode": {
+      "type": "string",
+      "example": "string"
+    },
+    "RCRALastFeaDate": {
+      "type": "string",
+      "example": "string"
+    },
+    "RCRALastFeaDateEPA": {
+      "type": "string",
+      "example": "string"
+    },
+    "RCRALastFeaDateState": {
+      "type": "string",
+      "example": "NC"
+    },
+    "RCRALastIeaDate": {
+      "type": "string",
+      "example": "string"
+    },
+    "RCRALastIeaDateEPA": {
+      "type": "string",
+      "example": "string"
+    },
+    "RCRALastIeaDateState": {
+      "type": "string",
+      "example": "NC"
+    },
+    "RCRALastInspDateEPA": {
+      "type": "string",
+      "example": "string"
+    },
+    "RCRALastInspDateState": {
+      "type": "string",
+      "example": "NC"
+    },
+    "RCRALastInspectionDate": {
+      "type": "string",
+      "example": "string"
+    },
+    "RCRALastPenaltyDate": {
+      "description": "Indicates the date on which the most recent assessed (or final) penalty was taken against the facility, entered in the RCRAInfo program database.",
+      "example": "12/12/2016",
+      "title": "RCRA Last Penalty Date",
+      "type": "string"
+    },
+    "RCRAMapIcon": {
+      "type": "string",
+      "example": "string"
+    },
+    "RCRANAICS": {
+      "description": "The RCRA permit's primary North American Industry Classification System (NAICS) Code.",
+      "example": "8111",
+      "title": "RCRA NAICS Code",
+      "type": "string"
+    },
+    "RCRAName": {
+      "type": "string",
+      "example": "EPA Facility"
+    },
+    "RCRAOldestOpenVioDate": {
+      "type": "string",
+      "example": "string"
+    },
+    "RCRAPenalties": {
+      "example": 987,
+      "type": "number"
+    },
+    "RCRAQtrsWithNC": {
+      "type": "number",
+      "example": 0.0
+    },
+    "RCRAQtrsWithSNC": {
+      "type": "number",
+      "example": 0.0
+    },
+    "RCRASNC": {
+      "type": "string",
+      "example": "string"
+    },
+    "RCRAState": {
+      "type": "string",
+      "example": "NC"
+    },
+    "RCRAStateDistrict": {
+      "type": "string",
+      "example": "NC"
+    },
+    "RCRAStatus": {
+      "type": "string",
+      "example": "active"
+    },
+    "RCRAStreet": {
+      "type": "string",
+      "example": "string"
+    },
+    "RCRATRIbalLandCode": {
+      "type": "string",
+      "example": "string"
+    },
+    "RCRAUniverse": {
+      "type": "string",
+      "example": "string"
+    },
+    "RCRAViolationTypes": {
+      "type": "string",
+      "example": "string"
+    },
+    "RCRAZip": {
+      "type": "string",
+      "example": "20460"
+    },
+    "RCRAinfoLandTypeCode": {
+      "type": "string",
+      "example": "string"
+    },
+    "RCRAinfoLandTypeDesc": {
+      "type": "string",
+      "example": "string"
+    },
+    "ReferencePoint": {
+      "description": "??",
+      "example": "ENTRANCE POINT OF A FACILITY OR STATION",
+      "title": "Reference Point",
+      "type": "string"
+    },
+    "RegistryID": {
+      "description": "An internal 12-digit Facility Registry Service (FRS) tracking number used to tie all facility data together in EPA regulatory program databases.",
+      "example": "110020837601",
+      "title": "FRS ID",
+      "type": "string"
+    },
+    "RmpIDs": {
+      "description": "A unique ID assigned to each facility submitting a Risk Management Plan to EPA under the Risk Management Plan Rule.",
+      "example": "110000",
+      "title": "RMP IDs",
+      "type": "string"
+    },
+    "SDWAIDs": {
+      "description": "A unique 9-character ID assigned for each public water system within the Safe Drinking Water Information System (SDWIS).",
+      "example": "DC0000001",
+      "type": "string"
+    },
+    "Score": {
+      "example": 1,
+      "title": "Score",
+      "type": "number"
+    },
+    "SemsIDs": {
+      "type": "string",
+      "example": "12345"
+    },
+    "SourceID": {
+      "description": "Unique Identifier assigned by EPA.",
+      "example": "ALR040033",
+      "title": "EPA Source Identifier",
+      "type": "string"
+    },
+    "Statute": {
+      "description": "The name of the statute associated with each of the permits and identifiers linked to the facility: \n- CAA = the Clean Air Act\n- CWA = the Clean Water Act\n- RCRA = the Resource Conservation and Recovery Act\n- EP313 = the Emergency Planning and Community Right-to-Know Act, Section 313 (also known as the Toxics Release Inventory Program)\n- TSCA = the Toxic Substances Control Act\n- SDWA = the Safe Drinking Water Act",
+      "example": "CWA",
+      "title": "Regulatory Statute",
+      "type": "string"
+    },
+    "TRIIDs": {
+      "description": "A unique 15-character ID assigned for each facility within the Toxics Release Inventory (TRI) program. The format is ZZZZZNNNNNSSSSS, where ZZZZZ = ZIP code, NNNNN = the first 5 consonants of the name, and SSSSS = the first 5 non-blank non-special characters in the street address.",
+      "example": "20011FRTTT5001F",
+      "title": "Toxics Release Inventory Program IDs",
+      "type": "string"
+    },
+    "TRIbalFlag": {
+      "description": "A value of \"1\" indicates that the facility is within an Indian Tribal or Alaskan Native Village area.",
+      "example": 1,
+      "title": "Tribal Lands Flag",
+      "type": "number"
+    },
+    "Tsdf": {
+      "type": "string",
+      "example": "string"
+    },
+    "ViolFlag": {
+      "description": "Indicates if the facility had a violation within the last 3 years. 1 = Yes",
+      "example": 1,
+      "title": "Violation Flag",
+      "type": "number"
+    },
+    "WebDocs": {
+      "description": "Contains flags that identify what web accessible documents are available for the facility.",
+      "example": "C6",
+      "title": "Web Documents",
+      "type": "string"
+    }
+  },
+  "required": [
+    "RCRAName",
+    "SourceID",
+    "RCRAStreet",
+    "RCRACity",
+    "RCRAState",
+    "RCRAStateDistrict",
+    "RCRAZip",
+    "RegistryID",
+    "RCRACounty",
+    "RCRAEPARegion",
+    "FacFederalAgencyName",
+    "RCRALandTypeCode",
+    "FacDerivedHuc",
+    "FacFIPSCode",
+    "FacIndianCntryFlg",
+    "RCRAIndianCntryFlg",
+    "FacIndianSpatialFlg",
+    "FacDerivedTRIbes",
+    "FacUsMexBorderFlg",
+    "FacSICCodes",
+    "RCRANAICS",
+    "RCRAUniverse",
+    "Tsdf",
+    "CleanupActionFlag",
+    "RCRAStatus",
+    "AIRIDs",
+    "CWAIDs",
+    "RCRAIDs",
+    "RmpIDs",
+    "SDWAIDs",
+    "TRIIDs",
+    "SemsIDs",
+    "RCRAComplStatus",
+    "RCRASNC",
+    "RCRAQtrsWithNC",
+    "RCRAViolationTypes",
+    "RCRAQtrsWithSNC",
+    "RCRAOldestOpenVioDate",
+    "RCRAInspCnt",
+    "RCRADaysLastInspection",
+    "RCRALastInspectionDate",
+    "RCRALastInspDateEPA",
+    "RCRALastInspDateState",
+    "DateLastRecordReview",
+    "FacTRILandReleases",
+    "FacTRIOffSiteTransfers",
+    "FacDerivedWBD",
+    "FacDerivedWBDName",
+    "RCRAImpWaterFlg",
+    "ChesapeakeBayFlag",
+    "RCRAIeaCnt",
+    "RCRAFeaCnt",
+    "RCRALastIeaDate",
+    "RCRALastIeaDateState",
+    "RCRALastIeaDateEPA",
+    "RCRALastFeaDate",
+    "RCRALastFeaDateState",
+    "RCRALastFeaDateEPA",
+    "RCRAPenalties",
+    "RCRALastPenaltyDate",
+    "Over80CountUs",
+    "PctilePctpre1960Us",
+    "PctileDpmUs",
+    "PctileCancerUs",
+    "PctileRespUs",
+    "PctileTrafficScoreUs",
+    "PctileProximityNPDESUs",
+    "PctileProximityNplUs",
+    "PctileProximityRmpUs",
+    "PctileProximityTsdfUs",
+    "PctileO3Us",
+    "PctilePmUs",
+    "FacPopulationDensity",
+    "FacPercentMinority",
+    "EPASystem",
+    "Statute",
+    "RCRATRIbalLandCode",
+    "FacFederalAgencyCode",
+    "RCRACaseIDs",
+    "FacTRIReporter",
+    "FacTRIOnSiteReleases",
+    "FacMapFlg",
+    "FacMapIcon",
+    "LastViolationDate",
+    "CurrentVioCnt",
+    "RCRAFIPSCode",
+    "RCRAMapIcon",
+    "RCRA3yrComplQtrsHistory",
+    "CensusBlockGroup",
+    "MaxPctileUs",
+    "EjscreenFlagUs",
+    "EjscreenFlag",
+    "TRIbalFlag",
+    "CurrSvFlag",
+    "ViolFlag",
+    "CurrVioFlag",
+    "Insp5yrFlag",
+    "Ea5yrFlag",
+    "Infea5yrFlag",
+    "Lower48",
+    "ActiveLower48",
+    "CollectionMethod",
+    "ReferencePoint",
+    "CalculatedAccuracyMeters",
+    "Map",
+    "WebDocs",
+    "FacCountyName",
+    "FacStdCountyName",
+    "ChemNamesRelLand",
+    "OwnerCode",
+    "OwnerDesc",
+    "OperatorCode",
+    "OperatorDesc",
+    "RCRAinfoLandTypeCode",
+    "RCRAinfoLandTypeDesc",
+    "Score",
+    "MaxScore"
+  ]
+}

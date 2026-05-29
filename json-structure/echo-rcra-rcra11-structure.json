@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-structure/echo-rcra-rcra11-structure.json",
+  "name": "rcra11",
+  "description": "Map Data Object",
+  "type": "object",
+  "properties": {
+    "FormalCount": {
+      "type": "string",
+      "description": "The number of formal enforcement actions that have been taken against the facility",
+      "example": "1"
+    },
+    "ICON": {
+      "type": "string",
+      "description": "Name of each individual icon file within the URL base",
+      "example": "CAA-IC-MN-N.png"
+    },
+    "InformalCount": {
+      "type": "string",
+      "description": "The number of informal enforcement actions that have been taken against the facility",
+      "example": "1"
+    },
+    "LAT": {
+      "type": "string",
+      "description": "The latitude of the facility in degrees, to four decimal places",
+      "example": "38.798026"
+    },
+    "LON": {
+      "type": "string",
+      "description": "The longitude of the facility in degrees, to four decimal places",
+      "example": "-77.062981"
+    },
+    "LastInsp": {
+      "type": "string",
+      "description": "The unique identifier for the last inspection",
+      "example": "901"
+    },
+    "NAME": {
+      "type": "string",
+      "description": "For DFR, this is the Facility name. The name corresponds to the TYPE value",
+      "example": "VIRGINIA CONCRETE ALEXANDRIA PLANT"
+    },
+    "PUV": {
+      "type": "string",
+      "description": "Pop up value. Combine with PopUpBaseURL to give the popup for the facility",
+      "example": "110001891506"
+    },
+    "RCRAstatus": {
+      "type": "string",
+      "description": "The facility's 3-year compliance status history by quarter (3-month period) entered in the RCRAInfo program database. Each character represents a quarter of compliance, going from oldest to most recent. Character values correspond to the following compliance statuses:\n_ -\ufffdNo Violation\nV -\ufffdViolation\nS -\ufffdSignificant Violation\nU - Undetermined",
+      "example": "________VVSS"
+    },
+    "TYPE": {
+      "type": "string",
+      "description": "For DFR, this is always facility",
+      "example": "Facility"
+    }
+  },
+  "required": [
+    "LAT",
+    "LON",
+    "ICON",
+    "TYPE",
+    "NAME",
+    "PUV",
+    "RCRAstatus",
+    "LastInsp",
+    "FormalCount",
+    "InformalCount"
+  ]
+}

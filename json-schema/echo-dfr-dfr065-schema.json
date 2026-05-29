@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-schema/echo-dfr-dfr065-schema.json",
+  "title": "dfr065",
+  "description": "Action Object",
+  "type": "object",
+  "properties": {
+    "ActionDate": {
+      "description": "Air Facility System (AFS) ID.",
+      "example": "VA0000005151044014",
+      "type": "string"
+    },
+    "ActionType": {
+      "description": "Text description of type of enforcement action. The type of action and description are designated differently in each system, but may be equivalent.",
+      "title": "Formal Actions",
+      "type": "string",
+      "example": "string"
+    },
+    "LeadAgency": {
+      "description": "The lead agency (e.g., EPA, State) conducting the inspection",
+      "example": "State",
+      "title": "Lead Agency",
+      "type": "string"
+    },
+    "PenaltyAmount": {
+      "description": "??",
+      "example": "$1,458",
+      "title": "Penalty Amount",
+      "type": "string"
+    },
+    "PenaltyDesc": {
+      "description": "??",
+      "title": "Penalty Description",
+      "type": "string",
+      "example": "string"
+    },
+    "SourceID": {
+      "description": "Unique Identifier assigned by EPA.",
+      "example": "ALR040033",
+      "title": "EPA Source Identifier",
+      "type": "string"
+    },
+    "Statute": {
+      "description": "The name of the statute associated with each of the permits and identifiers linked to the facility: \n- CAA = the Clean Air Act\n- CWA = the Clean Water Act\n- RCRA = the Resource Conservation and Recovery Act\n- EP313 = the Emergency Planning and Community Right-to-Know Act, Section 313 (also known as the Toxics Release Inventory Program)\n- TSCA = the Toxic Substances Control Act\n- SDWA = the Safe Drinking Water Act",
+      "example": "CWA",
+      "title": "Regulatory Statute",
+      "type": "string"
+    }
+  },
+  "required": [
+    "Statute",
+    "SourceID",
+    "ActionType",
+    "LeadAgency",
+    "ActionDate",
+    "PenaltyAmount",
+    "PenaltyDesc"
+  ]
+}

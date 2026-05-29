@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-structure/echo-case-crs5-results-structure.json",
+  "name": "crs5_Results",
+  "description": "The data returned by the service call.",
+  "type": "object",
+  "properties": {
+    "Cases": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/crs0_Cases"
+      },
+      "description": "A summary of the violation(s), environmental problem(s), and a description of the cause of action.",
+      "example": [
+        "string"
+      ]
+    },
+    "Message": {
+      "type": "string",
+      "description": "Field to record messages (typically performance-related) about packet processing",
+      "example": "Success"
+    },
+    "PageNo": {
+      "type": "string",
+      "description": "The number of pages of results returned",
+      "example": "1"
+    },
+    "QueryID": {
+      "type": "string",
+      "description": "Sequential number assigned to entire search result",
+      "example": "245"
+    },
+    "QueryRows": {
+      "type": "string",
+      "description": "Number of query results returned",
+      "example": "5"
+    }
+  },
+  "required": [
+    "Message",
+    "QueryRows",
+    "QueryID",
+    "PageNo",
+    "Cases"
+  ]
+}

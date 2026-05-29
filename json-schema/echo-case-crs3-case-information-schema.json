@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-schema/echo-case-crs3-case-information-schema.json",
+  "title": "crs3_CaseInformation",
+  "description": "The basic information section contains information that identifies the action and some key descriptive variables, such as case status and case type.",
+  "type": "object",
+  "properties": {
+    "CaseIdentifier": {
+      "description": "A unique number identifying the enforcement action. For EPA civil cases, these numbers begin with either the two digit EPA Region Code, \"HQ\" (headquarters initiated cases), and \"EF\" or \"WF\" (Eastern or Western Field Office CAA Mobile Source Program cases); followed by the fiscal year in which the action was initiated.",
+      "example": "1000",
+      "title": "Case Identifier",
+      "type": "string"
+    },
+    "CaseSummary": {
+      "description": "The summary of the violation environmental problem and a description of the cause of action (basis of legal action).  The summary could be extracted from the referral transmission memo or letter or it could be required as the first section of a revised standardized referral document.",
+      "title": "Case Summary",
+      "type": "string",
+      "example": "string"
+    },
+    "Citations": {
+      "description": "The corresponding regulation in the Code of Federal Regulations (CFR) or U.S. Code (U.S.C.) associated with the enforcement action.",
+      "title": "Citations",
+      "type": "string",
+      "example": "string"
+    },
+    "FiscalYear": {
+      "description": "The fiscal year in which the activity occurred.",
+      "example": "2004",
+      "title": "Fiscal Year",
+      "type": "string"
+    },
+    "Statutes": {
+      "description": "A compilation of all Case Law Statutes applicable to the Case.",
+      "example": "Title 18 U.S. Criminal Code",
+      "title": "Statuetes",
+      "type": "string"
+    }
+  },
+  "required": [
+    "CaseIdentifier",
+    "FiscalYear",
+    "Statutes",
+    "Citations",
+    "CaseSummary"
+  ]
+}

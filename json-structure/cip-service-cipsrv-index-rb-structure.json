@@ -1,0 +1,257 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-structure/cip-service-cipsrv-index-rb-structure.json",
+  "name": "cipsrv_index_rb",
+  "description": "cipsrv_index_rb schema from CIP-service Indexing API",
+  "type": "object",
+  "properties": {
+    "points": {
+      "description": "GeoJSON feature or feature collection of one or more points to index.",
+      "oneOf": [
+        {
+          "$ref": "#/components/schemas/geojson_featurecollection"
+        },
+        {
+          "$ref": "#/components/schemas/geojson_feature"
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "example": "string"
+    },
+    "lines": {
+      "description": "GeoJSON feature or feature collection of one or more line strings to index.",
+      "oneOf": [
+        {
+          "$ref": "#/components/schemas/geojson_featurecollection"
+        },
+        {
+          "$ref": "#/components/schemas/geojson_feature"
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "example": "string"
+    },
+    "areas": {
+      "description": "GeoJSON feature or feature collection of one or more polygons to index.",
+      "oneOf": [
+        {
+          "$ref": "#/components/schemas/geojson_featurecollection"
+        },
+        {
+          "$ref": "#/components/schemas/geojson_feature"
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "example": "string"
+    },
+    "geometry": {
+      "description": "GeoJSON geometry, feature or feature collection of one or more geometries to index.",
+      "oneOf": [
+        {
+          "$ref": "#/components/schemas/geojson_featurecollection"
+        },
+        {
+          "$ref": "#/components/schemas/geojson_feature"
+        },
+        {
+          "$ref": "#/components/schemas/geojson_geometry"
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "example": "string"
+    },
+    "geometry_clip": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "array of clip items to apply to the incoming features.",
+      "example": "string"
+    },
+    "geometry_clip_stage": {
+      "type": "string",
+      "enum": [
+        "BEFORE",
+        "AFTER"
+      ],
+      "description": "flag to control whether to clip features before or after indexing.",
+      "default": "BEFORE",
+      "example": "BEFORE"
+    },
+    "catchment_filter": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Array of filter items to apply to indexing results.  Filter values may include:\n   * USPS codes for the 50 states plus DC, PR, VI, AS, GU and MP.\n   * Tribal keywords: ALLTRIBAL, PARTTRIBAL, NOTRIBAL or TRIBAL < X.\nFor the TRIBAL < X keyword X is a decimal percentage that tribal percentage of the catchment must meet to be included.\n",
+      "example": "string"
+    },
+    "nhdplus_version": {
+      "$ref": "#/components/schemas/nhdplus_version",
+      "default": "nhdplus_h"
+    },
+    "wbd_version": {
+      "$ref": "#/components/schemas/wbd_version",
+      "default": "NP21"
+    },
+    "default_point_indexing_method": {
+      "type": "string",
+      "enum": [
+        "point_simple"
+      ],
+      "description": "Point indexing method to use when point features are received without expressly defining a point indexing method.",
+      "default": "point_simple",
+      "example": "point_simple"
+    },
+    "default_line_indexing_method": {
+      "type": "string",
+      "enum": [
+        "line_simple",
+        "line_levelpath"
+      ],
+      "description": "Line indexing method to use when line features are received without expressly defining a line indexing method.",
+      "default": "line_simple",
+      "example": "line_simple"
+    },
+    "default_line_threshold": {
+      "type": "double",
+      "description": "Linear threshold percentage (0 - 100) to use when linear features are received without expressly defining a linear threshold value.",
+      "minimum": 0,
+      "maximum": 100,
+      "example": "string"
+    },
+    "default_ring_indexing_method": {
+      "type": "string",
+      "enum": [
+        "area_simple",
+        "area_centroid",
+        "area_artpath",
+        "treat_as_lines"
+      ],
+      "description": "Area indexing method to use when linear features that form a closed ring are received without expressly defining a ring indexing method.  To preclude ring processing, set this value to **treat_as_lines**.",
+      "default": "treat_as_lines",
+      "example": "area_simple"
+    },
+    "default_ring_areacat_threshold": {
+      "type": "double",
+      "description": "Area catchment threshold percentage (0 - 100) to use when ring features are received without expressly defining a ring area catchment threshold value.",
+      "minimum": 0,
+      "maximum": 100,
+      "example": "string"
+    },
+    "default_ring_areaevt_threshold": {
+      "type": "double",
+      "description": "Area event threshold percentage (0 - 100) to use when ring features are received without expressly defining a ring area event threshold value.",
+      "minimum": 0,
+      "maximum": 100,
+      "example": "string"
+    },
+    "default_area_indexing_method": {
+      "type": "string",
+      "enum": [
+        "area_simple",
+        "area_centroid",
+        "area_artpath"
+      ],
+      "description": "Area indexing method to use when polygon features are received without expressly defining an area indexing method.",
+      "default": "area_simple",
+      "example": "area_simple"
+    },
+    "default_areacat_threshold": {
+      "type": "double",
+      "description": "Area catchment threshold percentage (0 - 100) to use when area features are received without expressly defining an area catchment threshold value.",
+      "minimum": 0,
+      "maximum": 100,
+      "example": "string"
+    },
+    "default_areaevt_threshold": {
+      "type": "double",
+      "description": "Area event threshold percentage (0 - 100) to use when area features are received without expressly defining an area event threshold value.",
+      "minimum": 0,
+      "maximum": 100,
+      "example": "string"
+    },
+    "known_region": {
+      "oneOf": [
+        {
+          "$ref": "#/components/schemas/known_region"
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "example": "string"
+    },
+    "return_indexing_summary": {
+      "type": "boolean",
+      "description": "Flag as to whether to return a detailed summary of the indexing actions.  Setting this false will slightly improve performance and throughput.",
+      "default": true,
+      "example": "string"
+    },
+    "return_indexed_features": {
+      "type": "boolean",
+      "description": "Flag as to whether to return indexed features in the results payload. Indexing may clip features creating a smaller, different geometry that users may wish to inspect. Setting this false will improve performance when large features are clipped to detailed political borders.\n",
+      "default": true,
+      "example": "string"
+    },
+    "return_indexed_collection": {
+      "type": "boolean",
+      "description": "Flag as to whether to return all indexed features as a single geometry collection. This functionality is meant for users who just wish all the features back in a simple format for easy display purposes.\n",
+      "default": false,
+      "example": "string"
+    },
+    "return_catchment_geometry": {
+      "type": "boolean",
+      "description": "Flag as to whether to return the catchment geometry in the results payload.",
+      "default": true,
+      "example": "string"
+    },
+    "return_flowlines": {
+      "type": "boolean",
+      "description": "Flag as to whether to return a feature collection of flowlines associated with indexed catchments.",
+      "default": true,
+      "example": "string"
+    },
+    "return_huc12s": {
+      "type": "boolean",
+      "description": "Flag as to whether to return a feature collection of HUC12s associated with indexed catchments.",
+      "default": false,
+      "example": "string"
+    },
+    "return_flowline_geometry": {
+      "type": "boolean",
+      "description": "Flag as to return the flowline geometry when flowlines are returned in the results payload.",
+      "default": true,
+      "example": "string"
+    },
+    "return_huc12_geometry": {
+      "type": "boolean",
+      "description": "Flag as to return the HUC12 geometry when HUC12s are returned in the results payload.  Currently non-functional.",
+      "default": true,
+      "example": "string"
+    },
+    "return_full_catchments": {
+      "type": "boolean",
+      "description": "Flag to allow indexing to return full catchments not split by state or national borders.",
+      "default": false,
+      "example": "string"
+    },
+    "limit_to_us_catchments": {
+      "type": "boolean",
+      "description": "Flag to allow indexing to return catchments outside the borders of the United States.",
+      "default": true,
+      "example": "string"
+    }
+  },
+  "required": [
+    "nhdplus_version"
+  ]
+}

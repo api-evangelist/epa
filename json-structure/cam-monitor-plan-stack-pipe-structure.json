@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-structure/cam-monitor-plan-stack-pipe-structure.json",
+  "name": "StackPipe",
+  "description": "StackPipe schema from Monitor Plan Management OpenAPI Specification",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "12345"
+    },
+    "name": {
+      "type": "string",
+      "example": "EPA Facility"
+    },
+    "activeDate": {
+      "type": "datetime",
+      "example": "2024-01-15T12:00:00Z"
+    },
+    "retireDate": {
+      "type": "datetime",
+      "example": "2024-01-15T12:00:00Z"
+    },
+    "facId": {
+      "type": "double",
+      "example": 0.0
+    },
+    "plant": {
+      "$ref": "#/components/schemas/Plant"
+    },
+    "location": {
+      "$ref": "#/components/schemas/MonitorLocation"
+    },
+    "unitStackConfigurations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/UnitStackConfiguration"
+      },
+      "example": [
+        "string"
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "activeDate",
+    "retireDate",
+    "facId",
+    "plant",
+    "location",
+    "unitStackConfigurations"
+  ]
+}

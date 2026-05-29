@@ -1,0 +1,79 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Monitor Plan Management OpenAPI Specification — Reporting Frequencies
+  description: 'Reporting Frequencies. 1 operations. Lead operation: operations. Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - Reporting Frequencies
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_APIKEY_KEY: EPA_APIKEY_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: cam-monitor-plan-reporting-frequencies
+      baseUri: https://api.epa.gov/easey
+      description: Monitor Plan Management OpenAPI Specification — Reporting Frequencies business capability. Self-contained, no shared references.
+      authentication:
+        type: apikey
+        key: x-api-key
+        value: '{{env.EPA_APIKEY_KEY}}'
+        placement: header
+      resources:
+        - name: monitor-plan-mgmt-plans-planid-reporting-frequencies
+          path: /monitor-plan-mgmt/plans/{planId}/reporting-frequencies
+          operations:
+            - name: monitorPlanReportingFrequencyControllergetReportingFreqs
+              method: GET
+              description: monitorPlanReportingFrequencyControllergetReportingFreqs
+              inputParameters:
+                - name: planId
+                  in: path
+                  type: string
+                  required: true
+                  description: planId
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: cam-monitor-plan-reporting-frequencies-rest
+      port: 8080
+      description: REST adapter for Monitor Plan Management OpenAPI Specification — Reporting Frequencies. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/monitor-plan-mgmt/plans/{planid}/reporting-frequencies
+          name: monitor-plan-mgmt-plans-planid-reporting-frequencies
+          description: REST surface for monitorPlanReportingFrequencyControllergetReportingFreqs.
+          operations:
+            - method: GET
+              name: monitorPlanReportingFrequencyControllergetReportingFreqs
+              description: monitorPlanReportingFrequencyControllergetReportingFreqs
+              call: cam-monitor-plan-reporting-frequencies.monitorPlanReportingFrequencyControllergetReportingFreqs
+              with:
+                planId: rest.planId
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: cam-monitor-plan-reporting-frequencies-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Monitor Plan Management OpenAPI Specification — Reporting Frequencies. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: monitorplanreportingfrequencycontroller-getreportingfreqs
+          description: monitorplanreportingfrequencycontroller-getreportingfreqs
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-monitor-plan-reporting-frequencies.monitorPlanReportingFrequencyControllergetReportingFreqs
+          with:
+            planId: tools.planId
+          outputParameters:
+            - type: object
+              mapping: $.

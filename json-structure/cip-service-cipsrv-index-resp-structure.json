@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-structure/cip-service-cipsrv-index-resp-structure.json",
+  "name": "cipsrv_index_resp",
+  "description": "cipsrv_index_resp schema from CIP-service Indexing API",
+  "type": "object",
+  "properties": {
+    "indexed_points": {
+      "description": "Feature collection of point event features processed through CIP indexing.",
+      "$ref": "#/components/schemas/geojson_featurecollection"
+    },
+    "indexed_lines": {
+      "description": "Feature collection of line event features processed through CIP indexing.",
+      "$ref": "#/components/schemas/geojson_featurecollection"
+    },
+    "indexed_areas": {
+      "description": "Feature collection of area event features processed through CIP indexing.",
+      "$ref": "#/components/schemas/geojson_featurecollection"
+    },
+    "indexed_collection": {
+      "description": "Geometry of all event features processed through CIP indexing.",
+      "$ref": "#/components/schemas/geojson_geometry"
+    },
+    "indexing_summary": {
+      "$ref": "#/components/schemas/indexing_summary"
+    },
+    "catchment_count": {
+      "type": "int32",
+      "example": 100
+    },
+    "catchment_areasqkm": {
+      "type": "double",
+      "example": 0.0
+    },
+    "nhdplus_version": {
+      "$ref": "#/components/schemas/nhdplus_version"
+    },
+    "catchments": {
+      "$ref": "#/components/schemas/geojson_featurecollection"
+    },
+    "flowlines": {
+      "$ref": "#/components/schemas/geojson_featurecollection"
+    },
+    "huc12s": {
+      "$ref": "#/components/schemas/geojson_featurecollection"
+    },
+    "return_code": {
+      "$ref": "#/components/schemas/return_code"
+    },
+    "status_message": {
+      "$ref": "#/components/schemas/status_message"
+    }
+  }
+}

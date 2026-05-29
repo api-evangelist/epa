@@ -1,0 +1,170 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: QA Certification Management OpenAPI Specification — Appendix E Heat Input From Gas
+  description: 'Appendix E Heat Input From Gas. 2 operations. Lead operation: operations. Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - Appendix E Heat Input From Gas
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_APIKEY_KEY: EPA_APIKEY_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: cam-qa-cert-appendix-e-heat-input-from-gas
+      baseUri: https://api.epa.gov/easey
+      description: QA Certification Management OpenAPI Specification — Appendix E Heat Input From Gas business capability. Self-contained, no shared references.
+      authentication:
+        type: apikey
+        key: x-api-key
+        value: '{{env.EPA_APIKEY_KEY}}'
+        placement: header
+      resources:
+        - name: qa-certification-mgmt-locations-locid-test-summary-testsumid-appendix-e-correlation-test-summaries-appecorrtestsumid-appendix-e-correlation-test-runs-appecorrtestrunid-appendix-e-heat-input-from-gases
+          path: /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/appendix-e-correlation-test-summaries/{appECorrTestSumId}/appendix-e-correlation-test-runs/{appECorrTestRunId}/appendix-e-heat-input-from-gases
+          operations:
+            - name: appEHeatInputFromGasControllergetAppEHeatInputFromGases
+              method: GET
+              description: appEHeatInputFromGasControllergetAppEHeatInputFromGases
+              inputParameters:
+                - name: locId
+                  in: path
+                  type: string
+                  required: true
+                  description: locId
+                - name: testSumId
+                  in: path
+                  type: string
+                  required: true
+                  description: testSumId
+                - name: appECorrTestSumId
+                  in: path
+                  type: string
+                  required: true
+                  description: appECorrTestSumId
+                - name: appECorrTestRunId
+                  in: path
+                  type: string
+                  required: true
+                  description: appECorrTestRunId
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: qa-certification-mgmt-locations-locid-test-summary-testsumid-appendix-e-correlation-test-summaries-appecorrtestsumid-appendix-e-correlation-test-runs-appecorrtestrunid-appendix-e-heat-input-from-gases-id
+          path: /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/appendix-e-correlation-test-summaries/{appECorrTestSumId}/appendix-e-correlation-test-runs/{appECorrTestRunId}/appendix-e-heat-input-from-gases/{id}
+          operations:
+            - name: appEHeatInputFromGasControllergetAppEHeatInputFromGas
+              method: GET
+              description: appEHeatInputFromGasControllergetAppEHeatInputFromGas
+              inputParameters:
+                - name: locId
+                  in: path
+                  type: string
+                  required: true
+                  description: locId
+                - name: testSumId
+                  in: path
+                  type: string
+                  required: true
+                  description: testSumId
+                - name: appECorrTestSumId
+                  in: path
+                  type: string
+                  required: true
+                  description: appECorrTestSumId
+                - name: appECorrTestRunId
+                  in: path
+                  type: string
+                  required: true
+                  description: appECorrTestRunId
+                - name: id
+                  in: path
+                  type: string
+                  required: true
+                  description: id
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: cam-qa-cert-appendix-e-heat-input-from-gas-rest
+      port: 8080
+      description: REST adapter for QA Certification Management OpenAPI Specification — Appendix E Heat Input From Gas. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/qa-certification-mgmt/locations/{locid}/test-summary/{testsumid}/appendix-e-correlation-test-summaries/{appecorrtestsumid}/appendix-e-correlation-test-runs/{appecorrtestrunid}/appendix-e-heat-input-from-gases
+          name: qa-certification-mgmt-locations-locid-test-summary-testsumid-appendix-e-correlation-test-summaries-appecorrtestsumid-appendix-e-correlation-test-runs-appecorrtestrunid-appendix-e-heat-input-from-gases
+          description: REST surface for appEHeatInputFromGasControllergetAppEHeatInputFromGases.
+          operations:
+            - method: GET
+              name: appEHeatInputFromGasControllergetAppEHeatInputFromGases
+              description: appEHeatInputFromGasControllergetAppEHeatInputFromGases
+              call: cam-qa-cert-appendix-e-heat-input-from-gas.appEHeatInputFromGasControllergetAppEHeatInputFromGases
+              with:
+                locId: rest.locId
+                testSumId: rest.testSumId
+                appECorrTestSumId: rest.appECorrTestSumId
+                appECorrTestRunId: rest.appECorrTestRunId
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/qa-certification-mgmt/locations/{locid}/test-summary/{testsumid}/appendix-e-correlation-test-summaries/{appecorrtestsumid}/appendix-e-correlation-test-runs/{appecorrtestrunid}/appendix-e-heat-input-from-gases/{id}
+          name: qa-certification-mgmt-locations-locid-test-summary-testsumid-appendix-e-correlation-test-summaries-appecorrtestsumid-appendix-e-correlation-test-runs-appecorrtestrunid-appendix-e-heat-input-from-gases-id
+          description: REST surface for appEHeatInputFromGasControllergetAppEHeatInputFromGas.
+          operations:
+            - method: GET
+              name: appEHeatInputFromGasControllergetAppEHeatInputFromGas
+              description: appEHeatInputFromGasControllergetAppEHeatInputFromGas
+              call: cam-qa-cert-appendix-e-heat-input-from-gas.appEHeatInputFromGasControllergetAppEHeatInputFromGas
+              with:
+                locId: rest.locId
+                testSumId: rest.testSumId
+                appECorrTestSumId: rest.appECorrTestSumId
+                appECorrTestRunId: rest.appECorrTestRunId
+                id: rest.id
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: cam-qa-cert-appendix-e-heat-input-from-gas-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for QA Certification Management OpenAPI Specification — Appendix E Heat Input From Gas. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: appeheatinputfromgascontroller-getappeheatinputfromgases
+          description: appeheatinputfromgascontroller-getappeheatinputfromgases
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-qa-cert-appendix-e-heat-input-from-gas.appEHeatInputFromGasControllergetAppEHeatInputFromGases
+          with:
+            locId: tools.locId
+            testSumId: tools.testSumId
+            appECorrTestSumId: tools.appECorrTestSumId
+            appECorrTestRunId: tools.appECorrTestRunId
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: appeheatinputfromgascontroller-getappeheatinputfromgas
+          description: appeheatinputfromgascontroller-getappeheatinputfromgas
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-qa-cert-appendix-e-heat-input-from-gas.appEHeatInputFromGasControllergetAppEHeatInputFromGas
+          with:
+            locId: tools.locId
+            testSumId: tools.testSumId
+            appECorrTestSumId: tools.appECorrTestSumId
+            appECorrTestRunId: tools.appECorrTestRunId
+            id: tools.id
+          outputParameters:
+            - type: object
+              mapping: $.

@@ -1,0 +1,177 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: CAMD Administrative & General Services OpenAPI Specification — Reports
+  description: 'Reports. 2 operations. Lead operation: . Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - Reports
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_APIKEY_KEY: EPA_APIKEY_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: cam-camd-services-reports
+      baseUri: https://api.epa.gov/easey
+      description: CAMD Administrative & General Services OpenAPI Specification — Reports business capability. Self-contained, no shared references.
+      authentication:
+        type: apikey
+        key: x-api-key
+        value: '{{env.EPA_APIKEY_KEY}}'
+        placement: header
+      resources:
+        - name: camd-services-reports-list
+          path: /camd-services/reports/list
+          operations:
+            - name: reportControllergetAvailableReports
+              method: GET
+              description: reportControllergetAvailableReports
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: camd-services-reports
+          path: /camd-services/reports
+          operations:
+            - name: reportControllergetReport
+              method: GET
+              description: reportControllergetReport
+              inputParameters:
+                - name: reportCode
+                  in: query
+                  type: string
+                  required: true
+                  description: reportCode
+                - name: facilityId
+                  in: query
+                  type: number
+                  required: true
+                  description: facilityId
+                - name: monitorPlanId
+                  in: query
+                  type: string
+                  required: false
+                  description: monitorPlanId
+                - name: testId
+                  in: query
+                  type: array
+                  required: false
+                  description: testId
+                - name: qceId
+                  in: query
+                  type: array
+                  required: false
+                  description: qceId
+                - name: teeId
+                  in: query
+                  type: array
+                  required: false
+                  description: teeId
+                - name: year
+                  in: query
+                  type: number
+                  required: false
+                  description: year
+                - name: quarter
+                  in: query
+                  type: number
+                  required: false
+                  description: quarter
+                - name: locationId
+                  in: query
+                  type: string
+                  required: false
+                  description: locationId
+                - name: reportingPeriodIds
+                  in: query
+                  type: string
+                  required: false
+                  description: reportingPeriodIds
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: cam-camd-services-reports-rest
+      port: 8080
+      description: REST adapter for CAMD Administrative & General Services OpenAPI Specification — Reports. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/camd-services/reports/list
+          name: camd-services-reports-list
+          description: REST surface for .
+          operations:
+            - method: GET
+              name: reportControllergetAvailableReports
+              description: reportControllergetAvailableReports
+              call: cam-camd-services-reports.reportControllergetAvailableReports
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/camd-services/reports
+          name: camd-services-reports
+          description: REST surface for .
+          operations:
+            - method: GET
+              name: reportControllergetReport
+              description: reportControllergetReport
+              call: cam-camd-services-reports.reportControllergetReport
+              with:
+                reportCode: rest.reportCode
+                facilityId: rest.facilityId
+                monitorPlanId: rest.monitorPlanId
+                testId: rest.testId
+                qceId: rest.qceId
+                teeId: rest.teeId
+                year: rest.year
+                quarter: rest.quarter
+                locationId: rest.locationId
+                reportingPeriodIds: rest.reportingPeriodIds
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: cam-camd-services-reports-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for CAMD Administrative & General Services OpenAPI Specification — Reports. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: reportcontroller-getavailablereports
+          description: reportcontroller-getavailablereports
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-camd-services-reports.reportControllergetAvailableReports
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: reportcontroller-getreport
+          description: reportcontroller-getreport
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-camd-services-reports.reportControllergetReport
+          with:
+            reportCode: tools.reportCode
+            facilityId: tools.facilityId
+            monitorPlanId: tools.monitorPlanId
+            testId: tools.testId
+            qceId: tools.qceId
+            teeId: tools.teeId
+            year: tools.year
+            quarter: tools.quarter
+            locationId: tools.locationId
+            reportingPeriodIds: tools.reportingPeriodIds
+          outputParameters:
+            - type: object
+              mapping: $.

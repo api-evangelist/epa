@@ -1,0 +1,278 @@
+{
+  "@context": {
+    "epa": "https://api-evangelist.com/epa/cam-account#",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "GovernmentOrganization": "schema:GovernmentOrganization",
+    "Dataset": "schema:Dataset",
+    "AccountAttributesDTO": "epa:AccountAttributesDTO",
+    "AccountDTO": "epa:AccountDTO",
+    "AllowanceComplianceDTO": "epa:AllowanceComplianceDTO",
+    "AllowanceHoldingsDTO": "epa:AllowanceHoldingsDTO",
+    "AllowanceTransactionsDTO": "epa:AllowanceTransactionsDTO",
+    "ApplicableAccountAttributesDTO": "epa:ApplicableAccountAttributesDTO",
+    "ApplicableAllowanceComplianceAttributesDTO": "epa:ApplicableAllowanceComplianceAttributesDTO",
+    "ApplicableAllowanceHoldingsAttributesDTO": "epa:ApplicableAllowanceHoldingsAttributesDTO",
+    "ApplicableAllowanceTransactionsAttributesDTO": "epa:ApplicableAllowanceTransactionsAttributesDTO",
+    "ApplicableComplianceAttributesDTO": "epa:ApplicableComplianceAttributesDTO",
+    "EmissionsComplianceDTO": "epa:EmissionsComplianceDTO",
+    "OwnerOperatorsDTO": "epa:OwnerOperatorsDTO",
+    "accountNumber": {
+      "@id": "epa:accountNumber",
+      "@type": "xsd:string"
+    },
+    "accountName": {
+      "@id": "epa:accountName",
+      "@type": "xsd:string"
+    },
+    "programCodeInfo": {
+      "@id": "epa:programCodeInfo",
+      "@type": "xsd:string"
+    },
+    "accountType": {
+      "@id": "epa:accountType",
+      "@type": "xsd:string"
+    },
+    "facilityId": {
+      "@id": "epa:facilityId",
+      "@type": "xsd:decimal"
+    },
+    "unitId": {
+      "@id": "epa:unitId",
+      "@type": "xsd:string"
+    },
+    "ownerOperator": {
+      "@id": "epa:ownerOperator",
+      "@type": "xsd:string"
+    },
+    "stateCode": {
+      "@id": "epa:stateCode",
+      "@type": "xsd:string"
+    },
+    "epaRegion": {
+      "@id": "epa:epaRegion",
+      "@type": "xsd:decimal"
+    },
+    "nercRegion": {
+      "@id": "epa:nercRegion",
+      "@type": "xsd:string"
+    },
+    "year": {
+      "@id": "epa:year",
+      "@type": "xsd:decimal"
+    },
+    "facilityName": {
+      "@id": "epa:facilityName",
+      "@type": "xsd:string"
+    },
+    "unitsAffected": {
+      "@id": "epa:unitsAffected",
+      "@type": "xsd:string"
+    },
+    "allocated": {
+      "@id": "epa:allocated",
+      "@type": "xsd:decimal"
+    },
+    "bankedHeld": {
+      "@id": "epa:bankedHeld",
+      "@type": "xsd:decimal"
+    },
+    "currentHeld": {
+      "@id": "epa:currentHeld",
+      "@type": "xsd:decimal"
+    },
+    "totalAllowancesHeld": {
+      "@id": "epa:totalAllowancesHeld",
+      "@type": "xsd:decimal"
+    },
+    "complianceYearEmissions": {
+      "@id": "epa:complianceYearEmissions",
+      "@type": "xsd:decimal"
+    },
+    "otherDeductions": {
+      "@id": "epa:otherDeductions",
+      "@type": "xsd:decimal"
+    },
+    "totalRequiredDeductions": {
+      "@id": "epa:totalRequiredDeductions",
+      "@type": "xsd:decimal"
+    },
+    "currentDeductions": {
+      "@id": "epa:currentDeductions",
+      "@type": "xsd:decimal"
+    },
+    "deductOneToOne": {
+      "@id": "epa:deductOneToOne",
+      "@type": "xsd:decimal"
+    },
+    "deductTwoToOne": {
+      "@id": "epa:deductTwoToOne",
+      "@type": "xsd:decimal"
+    },
+    "totalAllowancesDeducted": {
+      "@id": "epa:totalAllowancesDeducted",
+      "@type": "xsd:decimal"
+    },
+    "carriedOver": {
+      "@id": "epa:carriedOver",
+      "@type": "xsd:decimal"
+    },
+    "excessEmissions": {
+      "@id": "epa:excessEmissions",
+      "@type": "xsd:decimal"
+    },
+    "vintageYear": {
+      "@id": "epa:vintageYear",
+      "@type": "xsd:decimal"
+    },
+    "totalBlock": {
+      "@id": "epa:totalBlock",
+      "@type": "xsd:decimal"
+    },
+    "startBlock": {
+      "@id": "epa:startBlock",
+      "@type": "xsd:decimal"
+    },
+    "endBlock": {
+      "@id": "epa:endBlock",
+      "@type": "xsd:decimal"
+    },
+    "transactionId": {
+      "@id": "epa:transactionId",
+      "@type": "xsd:decimal"
+    },
+    "transactionTotal": {
+      "@id": "epa:transactionTotal",
+      "@type": "xsd:decimal"
+    },
+    "transactionType": {
+      "@id": "epa:transactionType",
+      "@type": "xsd:string"
+    },
+    "sellAccountNumber": {
+      "@id": "epa:sellAccountNumber",
+      "@type": "xsd:string"
+    },
+    "sellAccountName": {
+      "@id": "epa:sellAccountName",
+      "@type": "xsd:string"
+    },
+    "sellAccountType": {
+      "@id": "epa:sellAccountType",
+      "@type": "xsd:string"
+    },
+    "sellFacilityName": {
+      "@id": "epa:sellFacilityName",
+      "@type": "xsd:string"
+    },
+    "sellFacilityId": {
+      "@id": "epa:sellFacilityId",
+      "@type": "xsd:decimal"
+    },
+    "sellState": {
+      "@id": "epa:sellState",
+      "@type": "xsd:string"
+    },
+    "sellEpaRegion": {
+      "@id": "epa:sellEpaRegion",
+      "@type": "xsd:decimal"
+    },
+    "sellSourceCategory": {
+      "@id": "epa:sellSourceCategory",
+      "@type": "xsd:string"
+    },
+    "sellOwner": {
+      "@id": "epa:sellOwner",
+      "@type": "xsd:string"
+    },
+    "buyAccountNumber": {
+      "@id": "epa:buyAccountNumber",
+      "@type": "xsd:string"
+    },
+    "buyAccountName": {
+      "@id": "epa:buyAccountName",
+      "@type": "xsd:string"
+    },
+    "buyAccountType": {
+      "@id": "epa:buyAccountType",
+      "@type": "xsd:string"
+    },
+    "buyFacilityName": {
+      "@id": "epa:buyFacilityName",
+      "@type": "xsd:string"
+    },
+    "buyFacilityId": {
+      "@id": "epa:buyFacilityId",
+      "@type": "xsd:decimal"
+    },
+    "buyState": {
+      "@id": "epa:buyState",
+      "@type": "xsd:string"
+    },
+    "buyEpaRegion": {
+      "@id": "epa:buyEpaRegion",
+      "@type": "xsd:decimal"
+    },
+    "buySourceCategory": {
+      "@id": "epa:buySourceCategory",
+      "@type": "xsd:string"
+    },
+    "buyOwner": {
+      "@id": "epa:buyOwner",
+      "@type": "xsd:string"
+    },
+    "transactionDate": {
+      "@id": "epa:transactionDate",
+      "@type": "xsd:string"
+    },
+    "programCode": {
+      "@id": "epa:programCode",
+      "@type": "xsd:string"
+    },
+    "accountTypeCode": {
+      "@id": "epa:accountTypeCode",
+      "@type": "xsd:string"
+    },
+    "buyAccountTypeCode": {
+      "@id": "epa:buyAccountTypeCode",
+      "@type": "xsd:string"
+    },
+    "sellAccountTypeCode": {
+      "@id": "epa:sellAccountTypeCode",
+      "@type": "xsd:string"
+    },
+    "transactionTypeCode": {
+      "@id": "epa:transactionTypeCode",
+      "@type": "xsd:string"
+    },
+    "complianceApproach": {
+      "@id": "epa:complianceApproach",
+      "@type": "xsd:string"
+    },
+    "avgPlanId": {
+      "@id": "epa:avgPlanId",
+      "@type": "xsd:decimal"
+    },
+    "emissionsLimitDisplay": {
+      "@id": "epa:emissionsLimitDisplay",
+      "@type": "xsd:decimal"
+    },
+    "actualEmissionsRate": {
+      "@id": "epa:actualEmissionsRate",
+      "@type": "xsd:decimal"
+    },
+    "avgPlanActual": {
+      "@id": "epa:avgPlanActual",
+      "@type": "xsd:decimal"
+    },
+    "inCompliance": {
+      "@id": "epa:inCompliance",
+      "@type": "xsd:string"
+    },
+    "ownType": {
+      "@id": "epa:ownType",
+      "@type": "xsd:string"
+    }
+  }
+}

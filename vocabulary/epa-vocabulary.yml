@@ -1,0 +1,129 @@
+name: EPA Vocabulary
+description: >-
+  Controlled vocabulary spanning the U.S. Environmental Protection Agency's public
+  data and API surface — Envirofacts, AQS, ECHO, TRI, ATTAINS, FRS, Clean Air Markets,
+  CIP, CSB, ELG, How's My Waterway, and the broader regulatory programs the agency
+  operates under the Clean Air Act, Clean Water Act, RCRA, Safe Drinking Water Act,
+  CERCLA/Superfund, EPCRA, and TSCA.
+url: https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/vocabulary/epa-vocabulary.yml
+created: '2026-05-29'
+modified: '2026-05-29'
+
+domains:
+  - name: AirQuality
+    description: Ambient air monitoring data — criteria pollutants, hazardous air pollutants, monitors, sites, and quality assurance.
+  - name: WaterQuality
+    description: Surface water and drinking water condition assessments, dischargers, watersheds, and impairments.
+  - name: HazardousWaste
+    description: RCRA-regulated waste generators, handlers, treatment/storage/disposal facilities, and manifests.
+  - name: ToxicRelease
+    description: TRI Form R / Form A facility-level reporting on releases and transfers of listed toxic chemicals.
+  - name: Compliance
+    description: ECHO enforcement actions, civil and criminal cases, inspections, and violations.
+  - name: Facilities
+    description: Facility Registry Service master records and program-specific facility data.
+  - name: ChemicalSafety
+    description: CTX/CompTox chemical, hazard, exposure, and bioactivity data.
+  - name: SuperfundCleanup
+    description: SEMS and Superfund site cleanup status, contaminants, and remediation milestones.
+  - name: ClimateAndGHG
+    description: Greenhouse gas emissions reported under GHG Reporting Program, plus FrEDI and related climate impacts.
+  - name: PowerSector
+    description: Clean Air Markets — emissions, allowances, monitoring plans, QA/cert for fossil power plants.
+  - name: DrinkingWater
+    description: SDWIS public water system inventory, violations, and sampling.
+  - name: Watersheds
+    description: WATERS, StreamCat, ATTAINS, How's My Waterway — assessment units, impairments, TMDLs.
+  - name: SchoolBusReform
+    description: Clean School Bus program — rebate eligibility, awards, fleet electrification.
+  - name: WaterSense
+    description: Effluent guidelines (ELG) search, water-efficient product labelling.
+
+programs:
+  - name: CleanAirAct
+    abbr: CAA
+    description: 42 U.S.C. § 7401 — National air quality standards, mobile sources, hazardous air pollutants.
+  - name: CleanWaterAct
+    abbr: CWA
+    description: 33 U.S.C. § 1251 — NPDES discharge permits, water quality standards, dredge-and-fill.
+  - name: ResourceConservationAndRecoveryAct
+    abbr: RCRA
+    description: 42 U.S.C. § 6901 — Hazardous and solid waste management.
+  - name: SafeDrinkingWaterAct
+    abbr: SDWA
+    description: 42 U.S.C. § 300f — Public water system protection and primacy.
+  - name: ComprehensiveEnvironmentalResponseCompensationAndLiabilityAct
+    abbr: CERCLA
+    description: 42 U.S.C. § 9601 — Superfund cleanup of hazardous substance releases.
+  - name: EmergencyPlanningAndCommunityRightToKnowAct
+    abbr: EPCRA
+    description: 42 U.S.C. § 11001 — TRI reporting, Local Emergency Planning Committees.
+  - name: ToxicSubstancesControlAct
+    abbr: TSCA
+    description: 15 U.S.C. § 2601 — Chemical risk management and Section 8(a)/(d)/(e) reporting.
+  - name: NationalEnvironmentalPolicyAct
+    abbr: NEPA
+    description: 42 U.S.C. § 4321 — Environmental impact statements and assessments.
+
+dataSystems:
+  - name: Envirofacts
+    description: Cross-program data warehouse aggregating RCRA, TRI, SDWIS, NEI, GHG, and more.
+  - name: AQS
+    fullName: Air Quality System
+    description: Ambient air pollution monitoring data from state, local, tribal, and federal agencies.
+  - name: ECHO
+    fullName: Enforcement and Compliance History Online
+    description: Public access to inspection, violation, and enforcement data for regulated facilities.
+  - name: FRS
+    fullName: Facility Registry Service
+    description: Master inventory of EPA-regulated facilities cross-walked across programs.
+  - name: TRI
+    fullName: Toxics Release Inventory
+    description: Facility-level releases and transfers of TRI-listed chemicals.
+  - name: ATTAINS
+    fullName: Assessment, Total Maximum Daily Load Tracking and Implementation System
+    description: State water quality assessments, impaired waters, TMDLs, and actions.
+  - name: SDWIS
+    fullName: Safe Drinking Water Information System
+    description: Public water system inventory, sampling results, violations.
+  - name: NEI
+    fullName: National Emissions Inventory
+    description: Triennial air pollutant emissions inventory for all source categories.
+  - name: GHGRP
+    fullName: Greenhouse Gas Reporting Program
+    description: Annual GHG emissions reported by large emitting facilities.
+  - name: CAMD
+    fullName: Clean Air Markets Division
+    description: Acid Rain Program, Cross-State Air Pollution Rule, MATS — continuous emissions monitoring.
+  - name: SEMS
+    fullName: Superfund Enterprise Management System
+    description: Superfund site management, cleanup phases, and milestones.
+  - name: CTX
+    fullName: Center for Computational Toxicology and Exposure APIs
+    description: Chemical, hazard, bioactivity, and exposure data for thousands of chemicals.
+
+operationalConcepts:
+  - name: Pagination
+    description: Most EPA APIs page via offset/limit or first:last range path segments (Envirofacts).
+  - name: ApiKeyAuthentication
+    description: AQS, CAM, and api.data.gov-fronted APIs require an email and key or X-API-Key header.
+  - name: NoAuthentication
+    description: Envirofacts, ECHO, How's My Waterway, and several public data services are anonymously accessible.
+  - name: BulkDownload
+    description: Many programs publish bulk CSV / Parquet / ZIP downloads alongside the API for large extracts.
+  - name: GraphQL
+    description: Envirofacts publishes a GraphQL endpoint for complex cross-table joins.
+  - name: GovernanceAndPrimacy
+    description: Many EPA programs are co-administered by state agencies that hold primacy; data flows through state portals into national systems.
+
+formats:
+  - JSON
+  - JSONP
+  - XML
+  - CSV
+  - Excel
+  - PDF
+  - HTML
+  - Parquet
+  - GeoJSON
+  - SHP

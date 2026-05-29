@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-structure/echo-effluent-eff04-structure.json",
+  "name": "eff04",
+  "description": "Permit Features Object",
+  "type": "object",
+  "properties": {
+    "Parameters": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/eff03"
+      },
+      "description": "Array of Effuent Limit Parameters",
+      "example": [
+        "string"
+      ]
+    },
+    "PermFeatureNmbr": {
+      "type": "string",
+      "description": "A three-character code in ICIS-NPDES that identifies the point of discharge (e.g., outfall) for a facility. A NPDES permit may have multiple points of discharge. If the code is less than three characters in the .CSV, append zeros to the beginning of the number (e.g., 1 is equivalent to 001)",
+      "example": "001"
+    },
+    "PermFeatureTypeCode": {
+      "type": "string",
+      "description": "The code indicating the type of permitted feature (e.g., EXO)",
+      "example": "EXO"
+    },
+    "PermFeatureTypeDesc": {
+      "type": "string",
+      "description": "The description indicating the type of permitted feature (e.g., External Outfall, Internal Outfall, Sum)",
+      "example": "External Outfall"
+    }
+  },
+  "required": [
+    "PermFeatureNmbr",
+    "PermFeatureTypeCode",
+    "Parameters",
+    "PermFeatureTypeDesc"
+  ]
+}

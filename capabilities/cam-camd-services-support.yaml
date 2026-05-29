@@ -1,0 +1,79 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: CAMD Administrative & General Services OpenAPI Specification — Support
+  description: 'Support. 1 operations. Lead operation: . Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - Support
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_APIKEY_KEY: EPA_APIKEY_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: cam-camd-services-support
+      baseUri: https://api.epa.gov/easey
+      description: CAMD Administrative & General Services OpenAPI Specification — Support business capability. Self-contained, no shared references.
+      authentication:
+        type: apikey
+        key: x-api-key
+        value: '{{env.EPA_APIKEY_KEY}}'
+        placement: header
+      resources:
+        - name: camd-services-support-email-emailrecipientlist
+          path: /camd-services/support/email/emailRecipientList
+          operations:
+            - name: mailControllergetEmailRecipientList
+              method: POST
+              description: mailControllergetEmailRecipientList
+              inputParameters:
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+                  description: Request body payload.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: cam-camd-services-support-rest
+      port: 8080
+      description: REST adapter for CAMD Administrative & General Services OpenAPI Specification — Support. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/camd-services/support/email/emailrecipientlist
+          name: camd-services-support-email-emailrecipientlist
+          description: REST surface for .
+          operations:
+            - method: POST
+              name: mailControllergetEmailRecipientList
+              description: mailControllergetEmailRecipientList
+              call: cam-camd-services-support.mailControllergetEmailRecipientList
+              with:
+                body: rest.body
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: cam-camd-services-support-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for CAMD Administrative & General Services OpenAPI Specification — Support. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: mailcontroller-getemailrecipientlist
+          description: mailcontroller-getemailrecipientlist
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: cam-camd-services-support.mailControllergetEmailRecipientList
+          with:
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.

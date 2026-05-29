@@ -1,0 +1,141 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: US EPA How's My Waterway — How's My Waterway
+  description: "How's My Waterway. 3 operations. Lead operation: operations. Self-contained Naftiko capability covering one EPA business surface."
+  tags:
+    - EPA
+    - How's My Waterway
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_USERNAME: EPA_USERNAME
+capability:
+  consumes:
+    - type: http
+      namespace: mywaterway-how-s-my-waterway
+      baseUri: https://mywaterway-stage.app.cloud.gov
+      description: US EPA How's My Waterway — How's My Waterway business capability. Self-contained, no shared references.
+      authentication:
+        type: basic
+        username: '{{env.EPA_USERNAME}}'
+        password: '{{env.EPA_PASSWORD}}'
+      resources:
+        - name: api-configfiles
+          path: /api/configFiles
+          operations:
+            - name: getapiconfigfiles
+              method: GET
+              description: getapiconfigfiles
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-health
+          path: /api/health
+          operations:
+            - name: getapihealth
+              method: GET
+              description: getapihealth
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-supportedbrowsers
+          path: /api/supportedBrowsers
+          operations:
+            - name: getapisupportedbrowsers
+              method: GET
+              description: getapisupportedbrowsers
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: mywaterway-how-s-my-waterway-rest
+      port: 8080
+      description: REST adapter for US EPA How's My Waterway — How's My Waterway. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/api/configfiles
+          name: api-configfiles
+          description: REST surface for getapiconfigfiles.
+          operations:
+            - method: GET
+              name: getapiconfigfiles
+              description: getapiconfigfiles
+              call: mywaterway-how-s-my-waterway.getapiconfigfiles
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/health
+          name: api-health
+          description: REST surface for getapihealth.
+          operations:
+            - method: GET
+              name: getapihealth
+              description: getapihealth
+              call: mywaterway-how-s-my-waterway.getapihealth
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/supportedbrowsers
+          name: api-supportedbrowsers
+          description: REST surface for getapisupportedbrowsers.
+          operations:
+            - method: GET
+              name: getapisupportedbrowsers
+              description: getapisupportedbrowsers
+              call: mywaterway-how-s-my-waterway.getapisupportedbrowsers
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: mywaterway-how-s-my-waterway-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for US EPA How's My Waterway — How's My Waterway. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: op
+          description: op
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: mywaterway-how-s-my-waterway.getapiconfigfiles
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: op-2
+          description: op-2
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: mywaterway-how-s-my-waterway.getapihealth
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: op-3
+          description: op-3
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: mywaterway-how-s-my-waterway.getapisupportedbrowsers
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.

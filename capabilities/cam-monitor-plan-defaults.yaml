@@ -1,0 +1,79 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Monitor Plan Management OpenAPI Specification — Defaults
+  description: 'Defaults. 1 operations. Lead operation: operations. Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - Defaults
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_APIKEY_KEY: EPA_APIKEY_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: cam-monitor-plan-defaults
+      baseUri: https://api.epa.gov/easey
+      description: Monitor Plan Management OpenAPI Specification — Defaults business capability. Self-contained, no shared references.
+      authentication:
+        type: apikey
+        key: x-api-key
+        value: '{{env.EPA_APIKEY_KEY}}'
+        placement: header
+      resources:
+        - name: monitor-plan-mgmt-locations-locid-defaults
+          path: /monitor-plan-mgmt/locations/{locId}/defaults
+          operations:
+            - name: monitorDefaultControllergetDefaults
+              method: GET
+              description: monitorDefaultControllergetDefaults
+              inputParameters:
+                - name: locId
+                  in: path
+                  type: string
+                  required: true
+                  description: locId
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: cam-monitor-plan-defaults-rest
+      port: 8080
+      description: REST adapter for Monitor Plan Management OpenAPI Specification — Defaults. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/monitor-plan-mgmt/locations/{locid}/defaults
+          name: monitor-plan-mgmt-locations-locid-defaults
+          description: REST surface for monitorDefaultControllergetDefaults.
+          operations:
+            - method: GET
+              name: monitorDefaultControllergetDefaults
+              description: monitorDefaultControllergetDefaults
+              call: cam-monitor-plan-defaults.monitorDefaultControllergetDefaults
+              with:
+                locId: rest.locId
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: cam-monitor-plan-defaults-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Monitor Plan Management OpenAPI Specification — Defaults. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: monitordefaultcontroller-getdefaults
+          description: monitordefaultcontroller-getdefaults
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-monitor-plan-defaults.monitorDefaultControllergetDefaults
+          with:
+            locId: tools.locId
+          outputParameters:
+            - type: object
+              mapping: $.

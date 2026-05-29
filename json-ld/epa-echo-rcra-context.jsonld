@@ -1,0 +1,723 @@
+{
+  "@context": {
+    "epa": "https://api-evangelist.com/epa/echo-rcra#",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "GovernmentOrganization": "schema:GovernmentOrganization",
+    "Dataset": "schema:Dataset",
+    "geo": "epa:geo",
+    "meta1": "epa:meta1",
+    "meta3": "epa:meta3",
+    "qp0": "epa:qp0",
+    "rcra01": "epa:rcra01",
+    "rcra02": "epa:rcra02",
+    "rcra03": "epa:rcra03",
+    "rcra04": "epa:rcra04",
+    "rcra05": "epa:rcra05",
+    "rcra06": "epa:rcra06",
+    "rcra07": "epa:rcra07",
+    "rcra08": "epa:rcra08",
+    "rcra09": "epa:rcra09",
+    "rcra10": "epa:rcra10",
+    "rcra11": "epa:rcra11",
+    "rcra12": "epa:rcra12",
+    "rcra13": "epa:rcra13",
+    "coordinates": {
+      "@id": "epa:coordinates",
+      "@container": "@list"
+    },
+    "type": {
+      "@id": "epa:type",
+      "@type": "xsd:string"
+    },
+    "Message": {
+      "@id": "epa:Message",
+      "@type": "xsd:string"
+    },
+    "ResultColumns": {
+      "@id": "epa:ResultColumns",
+      "@container": "@list"
+    },
+    "ColumnID": {
+      "@id": "epa:ColumnID",
+      "@type": "xsd:string"
+    },
+    "ColumnName": {
+      "@id": "epa:ColumnName",
+      "@type": "xsd:string"
+    },
+    "DataLength": {
+      "@id": "epa:DataLength",
+      "@type": "xsd:string"
+    },
+    "DataType": {
+      "@id": "epa:DataType",
+      "@type": "xsd:string"
+    },
+    "Description": {
+      "@id": "epa:Description",
+      "@type": "xsd:string"
+    },
+    "ObjectName": {
+      "@id": "epa:ObjectName",
+      "@type": "xsd:string"
+    },
+    "QP": {
+      "@id": "epa:QP",
+      "@type": "xsd:string"
+    },
+    "QV": {
+      "@id": "epa:QV",
+      "@type": "xsd:string"
+    },
+    "AIRIDs": {
+      "@id": "epa:AIRIDs",
+      "@type": "xsd:string"
+    },
+    "ActiveLower48": {
+      "@id": "epa:ActiveLower48",
+      "@type": "xsd:string"
+    },
+    "CWAIDs": {
+      "@id": "epa:CWAIDs",
+      "@type": "xsd:string"
+    },
+    "CalculatedAccuracyMeters": {
+      "@id": "epa:CalculatedAccuracyMeters",
+      "@type": "xsd:string"
+    },
+    "CensusBlockGroup": {
+      "@id": "epa:CensusBlockGroup",
+      "@type": "xsd:string"
+    },
+    "ChemNamesRelLand": {
+      "@id": "epa:ChemNamesRelLand",
+      "@type": "xsd:string"
+    },
+    "ChesapeakeBayFlag": {
+      "@id": "epa:ChesapeakeBayFlag",
+      "@type": "xsd:string"
+    },
+    "CleanupActionFlag": {
+      "@id": "epa:CleanupActionFlag",
+      "@type": "xsd:string"
+    },
+    "CollectionMethod": {
+      "@id": "epa:CollectionMethod",
+      "@type": "xsd:string"
+    },
+    "CurrSvFlag": {
+      "@id": "epa:CurrSvFlag",
+      "@type": "xsd:string"
+    },
+    "CurrVioFlag": {
+      "@id": "epa:CurrVioFlag",
+      "@type": "xsd:string"
+    },
+    "CurrentVioCnt": {
+      "@id": "epa:CurrentVioCnt",
+      "@type": "xsd:string"
+    },
+    "DateLastRecordReview": {
+      "@id": "epa:DateLastRecordReview",
+      "@type": "xsd:string"
+    },
+    "EPASystem": {
+      "@id": "epa:EPASystem",
+      "@type": "xsd:string"
+    },
+    "Ea5yrFlag": {
+      "@id": "epa:Ea5yrFlag",
+      "@type": "xsd:string"
+    },
+    "EjscreenFlag": {
+      "@id": "epa:EjscreenFlag",
+      "@type": "xsd:string"
+    },
+    "EjscreenFlagUs": {
+      "@id": "epa:EjscreenFlagUs",
+      "@type": "xsd:string"
+    },
+    "FacCountyName": {
+      "@id": "epa:FacCountyName",
+      "@type": "xsd:string"
+    },
+    "FacDerivedHuc": {
+      "@id": "epa:FacDerivedHuc",
+      "@type": "xsd:string"
+    },
+    "FacDerivedTRIbes": {
+      "@id": "epa:FacDerivedTRIbes",
+      "@type": "xsd:string"
+    },
+    "FacDerivedWBD": {
+      "@id": "epa:FacDerivedWBD",
+      "@type": "xsd:string"
+    },
+    "FacDerivedWBDName": {
+      "@id": "epa:FacDerivedWBDName",
+      "@type": "xsd:string"
+    },
+    "FacFIPSCode": {
+      "@id": "epa:FacFIPSCode",
+      "@type": "xsd:string"
+    },
+    "FacFederalAgencyCode": {
+      "@id": "epa:FacFederalAgencyCode",
+      "@type": "xsd:string"
+    },
+    "FacFederalAgencyName": {
+      "@id": "epa:FacFederalAgencyName",
+      "@type": "xsd:string"
+    },
+    "FacIndianCntryFlg": {
+      "@id": "epa:FacIndianCntryFlg",
+      "@type": "xsd:string"
+    },
+    "FacIndianSpatialFlg": {
+      "@id": "epa:FacIndianSpatialFlg",
+      "@type": "xsd:string"
+    },
+    "FacLat": {
+      "@id": "epa:FacLat",
+      "@type": "xsd:string"
+    },
+    "FacLong": {
+      "@id": "epa:FacLong",
+      "@type": "xsd:string"
+    },
+    "FacMapFlg": {
+      "@id": "epa:FacMapFlg",
+      "@type": "xsd:string"
+    },
+    "FacMapIcon": {
+      "@id": "epa:FacMapIcon",
+      "@type": "xsd:string"
+    },
+    "FacPercentMinority": {
+      "@id": "epa:FacPercentMinority",
+      "@type": "xsd:string"
+    },
+    "FacPopulationDensity": {
+      "@id": "epa:FacPopulationDensity",
+      "@type": "xsd:string"
+    },
+    "FacSICCodes": {
+      "@id": "epa:FacSICCodes",
+      "@type": "xsd:string"
+    },
+    "FacStdCountyName": {
+      "@id": "epa:FacStdCountyName",
+      "@type": "xsd:string"
+    },
+    "FacTRILandReleases": {
+      "@id": "epa:FacTRILandReleases",
+      "@type": "xsd:string"
+    },
+    "FacTRIOffSiteTransfers": {
+      "@id": "epa:FacTRIOffSiteTransfers",
+      "@type": "xsd:string"
+    },
+    "FacTRIOnSiteReleases": {
+      "@id": "epa:FacTRIOnSiteReleases",
+      "@type": "xsd:string"
+    },
+    "FacTRIReporter": {
+      "@id": "epa:FacTRIReporter",
+      "@type": "xsd:string"
+    },
+    "FacUsMexBorderFlg": {
+      "@id": "epa:FacUsMexBorderFlg",
+      "@type": "xsd:string"
+    },
+    "Infea5yrFlag": {
+      "@id": "epa:Infea5yrFlag",
+      "@type": "xsd:string"
+    },
+    "Insp5yrFlag": {
+      "@id": "epa:Insp5yrFlag",
+      "@type": "xsd:string"
+    },
+    "LastViolationDate": {
+      "@id": "epa:LastViolationDate",
+      "@type": "xsd:string"
+    },
+    "Lower48": {
+      "@id": "epa:Lower48",
+      "@type": "xsd:string"
+    },
+    "Map": {
+      "@id": "epa:Map",
+      "@type": "xsd:string"
+    },
+    "MaxPctileUs": {
+      "@id": "epa:MaxPctileUs",
+      "@type": "xsd:string"
+    },
+    "MaxScore": {
+      "@id": "epa:MaxScore",
+      "@type": "xsd:string"
+    },
+    "OperatorCode": {
+      "@id": "epa:OperatorCode",
+      "@type": "xsd:string"
+    },
+    "OperatorDesc": {
+      "@id": "epa:OperatorDesc",
+      "@type": "xsd:string"
+    },
+    "Over80CountUs": {
+      "@id": "epa:Over80CountUs",
+      "@type": "xsd:string"
+    },
+    "OwnerCode": {
+      "@id": "epa:OwnerCode",
+      "@type": "xsd:string"
+    },
+    "OwnerDesc": {
+      "@id": "epa:OwnerDesc",
+      "@type": "xsd:string"
+    },
+    "PctileCancerUs": {
+      "@id": "epa:PctileCancerUs",
+      "@type": "xsd:string"
+    },
+    "PctileDpmUs": {
+      "@id": "epa:PctileDpmUs",
+      "@type": "xsd:string"
+    },
+    "PctileO3Us": {
+      "@id": "epa:PctileO3Us",
+      "@type": "xsd:string"
+    },
+    "PctilePctpre1960Us": {
+      "@id": "epa:PctilePctpre1960Us",
+      "@type": "xsd:string"
+    },
+    "PctilePmUs": {
+      "@id": "epa:PctilePmUs",
+      "@type": "xsd:string"
+    },
+    "PctileProximityNPDESUs": {
+      "@id": "epa:PctileProximityNPDESUs",
+      "@type": "xsd:string"
+    },
+    "PctileProximityNplUs": {
+      "@id": "epa:PctileProximityNplUs",
+      "@type": "xsd:string"
+    },
+    "PctileProximityRmpUs": {
+      "@id": "epa:PctileProximityRmpUs",
+      "@type": "xsd:string"
+    },
+    "PctileProximityTsdfUs": {
+      "@id": "epa:PctileProximityTsdfUs",
+      "@type": "xsd:string"
+    },
+    "PctileRespUs": {
+      "@id": "epa:PctileRespUs",
+      "@type": "xsd:string"
+    },
+    "PctileTrafficScoreUs": {
+      "@id": "epa:PctileTrafficScoreUs",
+      "@type": "xsd:string"
+    },
+    "RCRA3yrComplQtrsHistory": {
+      "@id": "epa:RCRA3yrComplQtrsHistory",
+      "@type": "xsd:string"
+    },
+    "RCRACaseIDs": {
+      "@id": "epa:RCRACaseIDs",
+      "@type": "xsd:string"
+    },
+    "RCRACity": {
+      "@id": "epa:RCRACity",
+      "@type": "xsd:string"
+    },
+    "RCRAComplStatus": {
+      "@id": "epa:RCRAComplStatus",
+      "@type": "xsd:string"
+    },
+    "RCRACounty": {
+      "@id": "epa:RCRACounty",
+      "@type": "xsd:string"
+    },
+    "RCRADaysLastInspection": {
+      "@id": "epa:RCRADaysLastInspection",
+      "@type": "xsd:string"
+    },
+    "RCRAEPARegion": {
+      "@id": "epa:RCRAEPARegion",
+      "@type": "xsd:string"
+    },
+    "RCRAFIPSCode": {
+      "@id": "epa:RCRAFIPSCode",
+      "@type": "xsd:string"
+    },
+    "RCRAFeaCnt": {
+      "@id": "epa:RCRAFeaCnt",
+      "@type": "xsd:string"
+    },
+    "RCRAIDs": {
+      "@id": "epa:RCRAIDs",
+      "@type": "xsd:string"
+    },
+    "RCRAIeaCnt": {
+      "@id": "epa:RCRAIeaCnt",
+      "@type": "xsd:string"
+    },
+    "RCRAImpWaterFlg": {
+      "@id": "epa:RCRAImpWaterFlg",
+      "@type": "xsd:string"
+    },
+    "RCRAIndianCntryFlg": {
+      "@id": "epa:RCRAIndianCntryFlg",
+      "@type": "xsd:string"
+    },
+    "RCRAInspCnt": {
+      "@id": "epa:RCRAInspCnt",
+      "@type": "xsd:string"
+    },
+    "RCRALandTypeCode": {
+      "@id": "epa:RCRALandTypeCode",
+      "@type": "xsd:string"
+    },
+    "RCRALastFeaDate": {
+      "@id": "epa:RCRALastFeaDate",
+      "@type": "xsd:string"
+    },
+    "RCRALastFeaDateEPA": {
+      "@id": "epa:RCRALastFeaDateEPA",
+      "@type": "xsd:string"
+    },
+    "RCRALastFeaDateState": {
+      "@id": "epa:RCRALastFeaDateState",
+      "@type": "xsd:string"
+    },
+    "RCRALastIeaDate": {
+      "@id": "epa:RCRALastIeaDate",
+      "@type": "xsd:string"
+    },
+    "RCRALastIeaDateEPA": {
+      "@id": "epa:RCRALastIeaDateEPA",
+      "@type": "xsd:string"
+    },
+    "RCRALastIeaDateState": {
+      "@id": "epa:RCRALastIeaDateState",
+      "@type": "xsd:string"
+    },
+    "RCRALastInspDateEPA": {
+      "@id": "epa:RCRALastInspDateEPA",
+      "@type": "xsd:string"
+    },
+    "RCRALastInspDateState": {
+      "@id": "epa:RCRALastInspDateState",
+      "@type": "xsd:string"
+    },
+    "RCRALastInspectionDate": {
+      "@id": "epa:RCRALastInspectionDate",
+      "@type": "xsd:string"
+    },
+    "RCRALastPenaltyDate": {
+      "@id": "epa:RCRALastPenaltyDate",
+      "@type": "xsd:string"
+    },
+    "RCRAMapIcon": {
+      "@id": "epa:RCRAMapIcon",
+      "@type": "xsd:string"
+    },
+    "RCRANAICS": {
+      "@id": "epa:RCRANAICS",
+      "@type": "xsd:string"
+    },
+    "RCRAName": {
+      "@id": "epa:RCRAName",
+      "@type": "xsd:string"
+    },
+    "RCRAOldestOpenVioDate": {
+      "@id": "epa:RCRAOldestOpenVioDate",
+      "@type": "xsd:string"
+    },
+    "RCRAPenalties": {
+      "@id": "epa:RCRAPenalties",
+      "@type": "xsd:string"
+    },
+    "RCRAQtrsWithNC": {
+      "@id": "epa:RCRAQtrsWithNC",
+      "@type": "xsd:string"
+    },
+    "RCRAQtrsWithSNC": {
+      "@id": "epa:RCRAQtrsWithSNC",
+      "@type": "xsd:string"
+    },
+    "RCRASNC": {
+      "@id": "epa:RCRASNC",
+      "@type": "xsd:string"
+    },
+    "RCRAState": {
+      "@id": "epa:RCRAState",
+      "@type": "xsd:string"
+    },
+    "RCRAStateDistrict": {
+      "@id": "epa:RCRAStateDistrict",
+      "@type": "xsd:string"
+    },
+    "RCRAStatus": {
+      "@id": "epa:RCRAStatus",
+      "@type": "xsd:string"
+    },
+    "RCRAStreet": {
+      "@id": "epa:RCRAStreet",
+      "@type": "xsd:string"
+    },
+    "RCRATRIbalLandCode": {
+      "@id": "epa:RCRATRIbalLandCode",
+      "@type": "xsd:string"
+    },
+    "RCRAUniverse": {
+      "@id": "epa:RCRAUniverse",
+      "@type": "xsd:string"
+    },
+    "RCRAViolationTypes": {
+      "@id": "epa:RCRAViolationTypes",
+      "@type": "xsd:string"
+    },
+    "RCRAZip": {
+      "@id": "epa:RCRAZip",
+      "@type": "xsd:string"
+    },
+    "RCRAinfoLandTypeCode": {
+      "@id": "epa:RCRAinfoLandTypeCode",
+      "@type": "xsd:string"
+    },
+    "RCRAinfoLandTypeDesc": {
+      "@id": "epa:RCRAinfoLandTypeDesc",
+      "@type": "xsd:string"
+    },
+    "ReferencePoint": {
+      "@id": "epa:ReferencePoint",
+      "@type": "xsd:string"
+    },
+    "RegistryID": {
+      "@id": "epa:RegistryID",
+      "@type": "xsd:string"
+    },
+    "RmpIDs": {
+      "@id": "epa:RmpIDs",
+      "@type": "xsd:string"
+    },
+    "SDWAIDs": {
+      "@id": "epa:SDWAIDs",
+      "@type": "xsd:string"
+    },
+    "Score": {
+      "@id": "epa:Score",
+      "@type": "xsd:string"
+    },
+    "SemsIDs": {
+      "@id": "epa:SemsIDs",
+      "@type": "xsd:string"
+    },
+    "SourceID": {
+      "@id": "epa:SourceID",
+      "@type": "xsd:string"
+    },
+    "Statute": {
+      "@id": "epa:Statute",
+      "@type": "xsd:string"
+    },
+    "TRIIDs": {
+      "@id": "epa:TRIIDs",
+      "@type": "xsd:string"
+    },
+    "TRIbalFlag": {
+      "@id": "epa:TRIbalFlag",
+      "@type": "xsd:string"
+    },
+    "Tsdf": {
+      "@id": "epa:Tsdf",
+      "@type": "xsd:string"
+    },
+    "ViolFlag": {
+      "@id": "epa:ViolFlag",
+      "@type": "xsd:string"
+    },
+    "WebDocs": {
+      "@id": "epa:WebDocs",
+      "@type": "xsd:string"
+    },
+    "FormalCount": {
+      "@id": "epa:FormalCount",
+      "@type": "xsd:string"
+    },
+    "ICON": {
+      "@id": "epa:ICON",
+      "@type": "xsd:string"
+    },
+    "InformalCount": {
+      "@id": "epa:InformalCount",
+      "@type": "xsd:string"
+    },
+    "LAT": {
+      "@id": "epa:LAT",
+      "@type": "xsd:string"
+    },
+    "LON": {
+      "@id": "epa:LON",
+      "@type": "xsd:string"
+    },
+    "LastInsp": {
+      "@id": "epa:LastInsp",
+      "@type": "xsd:string"
+    },
+    "NAME": {
+      "@id": "epa:NAME",
+      "@type": "xsd:string"
+    },
+    "PUV": {
+      "@id": "epa:PUV",
+      "@type": "xsd:string"
+    },
+    "RCRAstatus": {
+      "@id": "epa:RCRAstatus",
+      "@type": "xsd:string"
+    },
+    "TYPE": {
+      "@id": "epa:TYPE",
+      "@type": "xsd:string"
+    },
+    "IconBaseURL": {
+      "@id": "epa:IconBaseURL",
+      "@type": "xsd:string"
+    },
+    "MapData": {
+      "@id": "epa:MapData",
+      "@container": "@list"
+    },
+    "PopUpBaseURL": {
+      "@id": "epa:PopUpBaseURL",
+      "@type": "xsd:string"
+    },
+    "QueryID": {
+      "@id": "epa:QueryID",
+      "@type": "xsd:string"
+    },
+    "BadSystemIDs": {
+      "@id": "epa:BadSystemIDs",
+      "@type": "xsd:string"
+    },
+    "CVRows": {
+      "@id": "epa:CVRows",
+      "@type": "xsd:string"
+    },
+    "FEARows": {
+      "@id": "epa:FEARows",
+      "@type": "xsd:string"
+    },
+    "Facilities": {
+      "@id": "epa:Facilities",
+      "@container": "@list"
+    },
+    "INSPRows": {
+      "@id": "epa:INSPRows",
+      "@type": "xsd:string"
+    },
+    "IndianCountryRows": {
+      "@id": "epa:IndianCountryRows",
+      "@type": "xsd:string"
+    },
+    "InfFEARows": {
+      "@id": "epa:InfFEARows",
+      "@type": "xsd:string"
+    },
+    "MapOutput": {
+      "@id": "epa:MapOutput",
+      "@type": "xsd:string"
+    },
+    "PageNo": {
+      "@id": "epa:PageNo",
+      "@type": "xsd:string"
+    },
+    "QueryRows": {
+      "@id": "epa:QueryRows",
+      "@type": "xsd:string"
+    },
+    "SVRows": {
+      "@id": "epa:SVRows",
+      "@type": "xsd:string"
+    },
+    "TotalPenalties": {
+      "@id": "epa:TotalPenalties",
+      "@type": "xsd:string"
+    },
+    "V3Rows": {
+      "@id": "epa:V3Rows",
+      "@type": "xsd:string"
+    },
+    "ClusterCount": {
+      "@id": "epa:ClusterCount",
+      "@type": "xsd:string"
+    },
+    "ClusterIcon": {
+      "@id": "epa:ClusterIcon",
+      "@type": "xsd:string"
+    },
+    "ClusterLatitude": {
+      "@id": "epa:ClusterLatitude",
+      "@type": "xsd:string"
+    },
+    "ClusterLongitude": {
+      "@id": "epa:ClusterLongitude",
+      "@type": "xsd:string"
+    },
+    "ClusterName": {
+      "@id": "epa:ClusterName",
+      "@type": "xsd:string"
+    },
+    "ClusterType": {
+      "@id": "epa:ClusterType",
+      "@type": "xsd:string"
+    },
+    "ClusterValue": {
+      "@id": "epa:ClusterValue",
+      "@type": "xsd:string"
+    },
+    "EPARegionCode": {
+      "@id": "epa:EPARegionCode",
+      "@type": "xsd:string"
+    },
+    "ObjectId": {
+      "@id": "epa:ObjectId",
+      "@type": "xsd:string"
+    },
+    "ClusterData": {
+      "@id": "epa:ClusterData",
+      "@container": "@list"
+    },
+    "ClusterOutput": {
+      "@id": "epa:ClusterOutput",
+      "@type": "xsd:string"
+    },
+    "ClusterRecords": {
+      "@id": "epa:ClusterRecords",
+      "@type": "xsd:string"
+    },
+    "QueryParameters": {
+      "@id": "epa:QueryParameters",
+      "@container": "@list"
+    },
+    "ServiceBaseURL": {
+      "@id": "epa:ServiceBaseURL",
+      "@type": "xsd:string"
+    },
+    "geometry": {
+      "@id": "epa:geometry",
+      "@type": "xsd:string"
+    },
+    "properties": {
+      "@id": "epa:properties",
+      "@type": "xsd:string"
+    }
+  }
+}

@@ -1,0 +1,79 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Emissions Management OpenAPI Specification — Apportioned Emissions
+  description: 'Apportioned Emissions. 1 operations. Lead operation: operations. Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - Apportioned Emissions
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_APIKEY_KEY: EPA_APIKEY_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: cam-emissions-apportioned-emissions
+      baseUri: https://api.epa.gov/easey
+      description: Emissions Management OpenAPI Specification — Apportioned Emissions business capability. Self-contained, no shared references.
+      authentication:
+        type: apikey
+        key: x-api-key
+        value: '{{env.EPA_APIKEY_KEY}}'
+        placement: header
+      resources:
+        - name: emissions-mgmt-emissions-apportioned-attributes-applicable
+          path: /emissions-mgmt/emissions/apportioned/attributes/applicable
+          operations:
+            - name: apportionedEmissionsControllergetApplicableApportionedEmissionsAttributes
+              method: GET
+              description: apportionedEmissionsControllergetApplicableApportionedEmissionsAttributes
+              inputParameters:
+                - name: year
+                  in: query
+                  type: array
+                  required: true
+                  description: The calendar year during which activity occurred.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: cam-emissions-apportioned-emissions-rest
+      port: 8080
+      description: REST adapter for Emissions Management OpenAPI Specification — Apportioned Emissions. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/emissions-mgmt/emissions/apportioned/attributes/applicable
+          name: emissions-mgmt-emissions-apportioned-attributes-applicable
+          description: REST surface for apportionedEmissionsControllergetApplicableApportionedEmissionsAttributes.
+          operations:
+            - method: GET
+              name: apportionedEmissionsControllergetApplicableApportionedEmissionsAttributes
+              description: apportionedEmissionsControllergetApplicableApportionedEmissionsAttributes
+              call: cam-emissions-apportioned-emissions.apportionedEmissionsControllergetApplicableApportionedEmissionsAttributes
+              with:
+                year: rest.year
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: cam-emissions-apportioned-emissions-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Emissions Management OpenAPI Specification — Apportioned Emissions. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: apportionedemissionscontroller-getapplicableapportionedemissionsattributes
+          description: apportionedemissionscontroller-getapplicableapportionedemissionsattributes
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-emissions-apportioned-emissions.apportionedEmissionsControllergetApplicableApportionedEmissionsAttributes
+          with:
+            year: tools.year
+          outputParameters:
+            - type: object
+              mapping: $.

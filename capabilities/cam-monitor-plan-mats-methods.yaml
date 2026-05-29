@@ -1,0 +1,79 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Monitor Plan Management OpenAPI Specification — MATS Methods
+  description: 'MATS Methods. 1 operations. Lead operation: operations. Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - MATS Methods
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_APIKEY_KEY: EPA_APIKEY_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: cam-monitor-plan-mats-methods
+      baseUri: https://api.epa.gov/easey
+      description: Monitor Plan Management OpenAPI Specification — MATS Methods business capability. Self-contained, no shared references.
+      authentication:
+        type: apikey
+        key: x-api-key
+        value: '{{env.EPA_APIKEY_KEY}}'
+        placement: header
+      resources:
+        - name: monitor-plan-mgmt-locations-locid-mats-methods
+          path: /monitor-plan-mgmt/locations/{locId}/mats-methods
+          operations:
+            - name: matsMethodControllergetMethods
+              method: GET
+              description: matsMethodControllergetMethods
+              inputParameters:
+                - name: locId
+                  in: path
+                  type: string
+                  required: true
+                  description: locId
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: cam-monitor-plan-mats-methods-rest
+      port: 8080
+      description: REST adapter for Monitor Plan Management OpenAPI Specification — MATS Methods. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/monitor-plan-mgmt/locations/{locid}/mats-methods
+          name: monitor-plan-mgmt-locations-locid-mats-methods
+          description: REST surface for matsMethodControllergetMethods.
+          operations:
+            - method: GET
+              name: matsMethodControllergetMethods
+              description: matsMethodControllergetMethods
+              call: cam-monitor-plan-mats-methods.matsMethodControllergetMethods
+              with:
+                locId: rest.locId
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: cam-monitor-plan-mats-methods-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Monitor Plan Management OpenAPI Specification — MATS Methods. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: matsmethodcontroller-getmethods
+          description: matsmethodcontroller-getmethods
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-monitor-plan-mats-methods.matsMethodControllergetMethods
+          with:
+            locId: tools.locId
+          outputParameters:
+            - type: object
+              mapping: $.

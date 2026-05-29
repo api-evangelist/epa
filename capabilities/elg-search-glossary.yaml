@@ -1,0 +1,71 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: U.S. EPA WaterSense — Glossary
+  description: 'Glossary. 1 operations. Lead operation: Glossary. Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - Glossary
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_USERNAME: EPA_USERNAME
+capability:
+  consumes:
+    - type: http
+      namespace: elg-search-glossary
+      baseUri: https://owapps-stage.app.cloud.gov/elg
+      description: U.S. EPA WaterSense — Glossary business capability. Self-contained, no shared references.
+      authentication:
+        type: basic
+        username: '{{env.EPA_USERNAME}}'
+        password: '{{env.EPA_PASSWORD}}'
+      resources:
+        - name: api-glossary
+          path: /api/glossary
+          operations:
+            - name: getapiglossary
+              method: GET
+              description: Glossary
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: elg-search-glossary-rest
+      port: 8080
+      description: REST adapter for U.S. EPA WaterSense — Glossary. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/api/glossary
+          name: api-glossary
+          description: REST surface for Glossary.
+          operations:
+            - method: GET
+              name: getapiglossary
+              description: Glossary
+              call: elg-search-glossary.getapiglossary
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: elg-search-glossary-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for U.S. EPA WaterSense — Glossary. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: glossary
+          description: Glossary
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: elg-search-glossary.getapiglossary
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.

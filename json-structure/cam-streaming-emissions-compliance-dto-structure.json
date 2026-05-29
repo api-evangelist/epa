@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-structure/cam-streaming-emissions-compliance-dto-structure.json",
+  "name": "EmissionsComplianceDTO",
+  "description": "EmissionsComplianceDTO schema from Streaming Services OpenAPI Specification",
+  "type": "object",
+  "properties": {
+    "year": {
+      "type": "double",
+      "description": "The calendar year during which activity occurred.",
+      "example": 2020
+    },
+    "facilityName": {
+      "type": "string",
+      "description": "The name given by the owners and operators to a facility",
+      "example": "Barry"
+    },
+    "facilityId": {
+      "type": "double",
+      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+      "example": 3
+    },
+    "unitId": {
+      "type": "string",
+      "description": "Unique identifier for each unit at a facility.",
+      "example": 5
+    },
+    "ownerOperator": {
+      "type": "string",
+      "description": "The name of any company that owns an allowance account or an affected unit.The name of any company that operates an affected unit.",
+      "example": "Alabama Power Company (Operator)|Alabama Power Company (Owner)"
+    },
+    "stateCode": {
+      "type": "string",
+      "description": "Two letter abbreviation for the State.",
+      "example": "AK"
+    },
+    "complianceApproach": {
+      "type": "string",
+      "description": "For ARP NOx, approach used to meet compliance requirements (averaging plan, standard limit, or alternative limit).",
+      "example": "Averaging Plan"
+    },
+    "avgPlanId": {
+      "type": "double",
+      "description": "For ARP NOx, the unique identification number that associates a group of units with a single averaging plan.",
+      "example": 492
+    },
+    "emissionsLimitDisplay": {
+      "type": "double",
+      "description": "For ARP NOx, the applicable emissions limit based on compliance plan. May either be unit-specific or part of an averaging plan. (lb/mmBtu)",
+      "example": 0.55
+    },
+    "actualEmissionsRate": {
+      "type": "double",
+      "description": "For ARP NOx, the actual rate at which a pollutant was emitted during a given time period for a single unit. (lb/mmBtu)",
+      "example": 0.5
+    },
+    "avgPlanActual": {
+      "type": "double",
+      "description": "For ARP NOx, the average actual rate at which a pollutant was emitted during a given time period for the group of units in the averaging plan. (lb/mmBtu)",
+      "example": 0.55
+    },
+    "inCompliance": {
+      "type": "string",
+      "description": "A facility is in compliance if, at the end of the compliance period, the facility owns enough allowances to cover the amount of pollutant emitted (or for ARP NOx, the actual emissions rate of the pollutant was below the emissions limit).",
+      "example": "YES"
+    }
+  },
+  "required": [
+    "facilityName",
+    "unitId",
+    "ownerOperator",
+    "stateCode",
+    "complianceApproach",
+    "inCompliance"
+  ]
+}

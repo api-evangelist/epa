@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-structure/echo-case-crs3-results-structure.json",
+  "name": "crs3_Results",
+  "description": "The data returned by the service call.",
+  "type": "object",
+  "properties": {
+    "CRCaseInformation": {
+      "$ref": "#/definitions/crs3_CaseInformation"
+    },
+    "CRDefendants": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/crs3_CRDefendants"
+      },
+      "example": [
+        "string"
+      ]
+    },
+    "CRDetails": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/crs3_CRDetails"
+      },
+      "example": [
+        "string"
+      ]
+    },
+    "Locations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/crs3_Locations"
+      },
+      "example": [
+        "string"
+      ]
+    },
+    "Message": {
+      "type": "string",
+      "description": "Field to record messages (typically performance-related) about packet processing",
+      "example": "Success"
+    }
+  },
+  "required": [
+    "Message",
+    "CRCaseInformation",
+    "CRDefendants",
+    "CRDetails",
+    "Locations"
+  ]
+}

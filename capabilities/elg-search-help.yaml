@@ -1,0 +1,71 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: U.S. EPA WaterSense — Help
+  description: 'Help. 1 operations. Lead operation: Help. Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - Help
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_USERNAME: EPA_USERNAME
+capability:
+  consumes:
+    - type: http
+      namespace: elg-search-help
+      baseUri: https://owapps-stage.app.cloud.gov/elg
+      description: U.S. EPA WaterSense — Help business capability. Self-contained, no shared references.
+      authentication:
+        type: basic
+        username: '{{env.EPA_USERNAME}}'
+        password: '{{env.EPA_PASSWORD}}'
+      resources:
+        - name: api-help
+          path: /api/help
+          operations:
+            - name: getapihelp
+              method: GET
+              description: Help
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: elg-search-help-rest
+      port: 8080
+      description: REST adapter for U.S. EPA WaterSense — Help. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/api/help
+          name: api-help
+          description: REST surface for Help.
+          operations:
+            - method: GET
+              name: getapihelp
+              description: Help
+              call: elg-search-help.getapihelp
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: elg-search-help-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for U.S. EPA WaterSense — Help. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: help
+          description: Help
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: elg-search-help.getapihelp
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.

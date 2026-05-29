@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-structure/echo-dfr-dfr110-structure.json",
+  "name": "dfr110",
+  "description": "Violations Object",
+  "type": "object",
+  "properties": {
+    "CompliancePeriodBeginDate": {
+      "type": "string",
+      "description": "The beginning date of the time period during which a violation took place. For some violations this period corresponds to a regular water quality monitoring period, such as a month or quarter; in other cases it may initially be open-ended, and remain that way until the violation is resolved, i.e. until EPA or the state files a resolving enforcement action to indicate that either the system has returned to compliance or no further action is necessary.",
+      "example": "1/17/2015"
+    },
+    "CompliancePeriodEndDate": {
+      "type": "string",
+      "description": "The end date of the time period during which a violation took place. For some violations this period corresponds to a regular water quality monitoring period, such as a month or quarter; in other cases it may initially be open-ended, and remain that way until the violation is resolved, i.e. until EPA or the state files a resolving enforcement action to indicate that either the system has returned to compliance or no further action is necessary.",
+      "example": "5/28/2015"
+    },
+    "ContaminantName": {
+      "type": "string",
+      "description": "City",
+      "example": "ALEXANDRIA"
+    },
+    "EnforcementActions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/dfr109"
+      },
+      "example": [
+        "string"
+      ]
+    },
+    "FederalMCL": {
+      "type": "string",
+      "description": "Maximum contaminant levels (MCLs) or maximum residual disinfectant levels (MRDLs), which specify the highest concentrations of contaminants or disinfectants, respectively, allowed in drinking water; or of treatment technique (TT) rules, which specify required processes intended to reduce the amounts of contaminants in drinking water.",
+      "example": "string"
+    },
+    "FederalRule": {
+      "type": "string",
+      "description": "???",
+      "example": "Lead and Copper Rule"
+    },
+    "ResolvedDate": {
+      "type": "string",
+      "description": "The resolved date of the drinking water violation (MM/DD/YYYY)",
+      "example": "02/16/2017"
+    },
+    "SourceID": {
+      "type": "string",
+      "description": "Unique Identifier assigned by EPA.",
+      "example": "ALR040033"
+    },
+    "StateMCL": {
+      "type": "string",
+      "description": "County",
+      "example": "CAROLINE"
+    },
+    "Status": {
+      "type": "string",
+      "description": "Describes the status of the drinking water violation. Violation statuses include:\n- Resolved: The violation has at least one resolving enforcement action. In SDWIS, this indicates that either the system has returned to compliance from the violation, the rule that was violated was no longer applicable, or no further action was needed.\n- Archived: The violation is not Resolved, but is more than five years past its compliance period end date. In keeping with the Enforcement Response Policy, the violation no longer contributes to the public water system's overall compliance status. Unresolved violations are also marked as Archived when a system ceases operations (becomes inactive).\n- Addressed: The violation is not Resolved or Archived, and is addressed by one or more formal enforcement actions.\n- Unaddressed: The violation is not Resolved or Archived, and has not been addressed by formal enforcement.",
+      "example": "Resolved"
+    },
+    "ViolationCategoryCode": {
+      "type": "string",
+      "description": "Categories of violations that may be reported",
+      "example": "MR"
+    },
+    "ViolationCategoryDesc": {
+      "type": "string",
+      "description": "A description of the violation category.",
+      "example": "Monitoring and Reporting"
+    },
+    "ViolationID": {
+      "type": "string",
+      "description": "An identifer from SDWA that uniquely identifies the violation.",
+      "example": "1221223"
+    },
+    "ViolationMeasure": {
+      "type": "string",
+      "description": "A numeric value that represents the analytical result of a contaminant that exceeded the Maximum Contaminant Level (MCL) for that contaminant.",
+      "example": "string"
+    }
+  },
+  "required": [
+    "SourceID",
+    "CompliancePeriodBeginDate",
+    "CompliancePeriodEndDate",
+    "ViolationID",
+    "FederalRule",
+    "ContaminantName",
+    "ViolationCategoryCode",
+    "ViolationCategoryDesc",
+    "ViolationMeasure",
+    "StateMCL",
+    "FederalMCL",
+    "Status",
+    "ResolvedDate",
+    "EnforcementActions"
+  ]
+}

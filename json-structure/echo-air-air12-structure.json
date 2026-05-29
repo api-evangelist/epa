@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-structure/echo-air-air12-structure.json",
+  "name": "air12",
+  "description": "Results Object",
+  "type": "object",
+  "properties": {
+    "Facilities": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/air03"
+      },
+      "description": "A complex array of facility information.",
+      "example": [
+        "string"
+      ]
+    },
+    "Message": {
+      "type": "string",
+      "description": "Field to record messages (typically performance-related) about packet processing",
+      "example": "Success"
+    },
+    "PageNo": {
+      "type": "string",
+      "description": "The number of pages of results returned",
+      "example": "1"
+    },
+    "QueryID": {
+      "type": "string",
+      "description": "Sequential number assigned to entire search result",
+      "example": "245"
+    },
+    "QueryRows": {
+      "type": "string",
+      "description": "Number of query results returned",
+      "example": "5"
+    }
+  },
+  "required": [
+    "Message",
+    "QueryRows",
+    "QueryID",
+    "PageNo",
+    "Facilities"
+  ]
+}

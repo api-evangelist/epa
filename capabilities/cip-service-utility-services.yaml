@@ -1,0 +1,241 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: CIP-service Indexing API — Utility Services
+  description: 'Utility Services. 5 operations. Lead operation: CIP-service Utility Random Catchment. Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - 'Utility Services'
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys: {}
+capability:
+  consumes:
+    - type: http
+      namespace: cip-service-utility-services
+      baseUri: https://localhost:3000
+      description: CIP-service Indexing API — Utility Services business capability. Self-contained, no shared references.
+      resources:
+        - name: rpc-randomcatchment
+          path: /rpc/randomcatchment
+          operations:
+            - name: randomcatchment
+              method: POST
+              description: CIP-service Utility Random Catchment
+              inputParameters:
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+                  description: Request body payload.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: rpc-randomhuc12
+          path: /rpc/randomhuc12
+          operations:
+            - name: randomhuc12
+              method: POST
+              description: CIP-service Utility Random HUC12
+              inputParameters:
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+                  description: Request body payload.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: rpc-randomnav
+          path: /rpc/randomnav
+          operations:
+            - name: randomnav
+              method: POST
+              description: CIP-service Utility Random Nav Location
+              inputParameters:
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+                  description: Request body payload.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: rpc-randompoint
+          path: /rpc/randompoint
+          operations:
+            - name: randompoint
+              method: POST
+              description: CIP-service Utility Random Point
+              inputParameters:
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+                  description: Request body payload.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: rpc-randomppnav
+          path: /rpc/randomppnav
+          operations:
+            - name: randomppnav
+              method: POST
+              description: CIP-service Utility Random PP Nav Locations
+              inputParameters:
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+                  description: Request body payload.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: cip-service-utility-services-rest
+      port: 8080
+      description: REST adapter for CIP-service Indexing API — Utility Services. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/rpc/randomcatchment
+          name: rpc-randomcatchment
+          description: REST surface for CIP-service Utility Random Catchment.
+          operations:
+            - method: POST
+              name: randomcatchment
+              description: CIP-service Utility Random Catchment
+              call: cip-service-utility-services.randomcatchment
+              with:
+                body: rest.body
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/rpc/randomhuc12
+          name: rpc-randomhuc12
+          description: REST surface for CIP-service Utility Random HUC12.
+          operations:
+            - method: POST
+              name: randomhuc12
+              description: CIP-service Utility Random HUC12
+              call: cip-service-utility-services.randomhuc12
+              with:
+                body: rest.body
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/rpc/randomnav
+          name: rpc-randomnav
+          description: REST surface for CIP-service Utility Random Nav Location.
+          operations:
+            - method: POST
+              name: randomnav
+              description: CIP-service Utility Random Nav Location
+              call: cip-service-utility-services.randomnav
+              with:
+                body: rest.body
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/rpc/randompoint
+          name: rpc-randompoint
+          description: REST surface for CIP-service Utility Random Point.
+          operations:
+            - method: POST
+              name: randompoint
+              description: CIP-service Utility Random Point
+              call: cip-service-utility-services.randompoint
+              with:
+                body: rest.body
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/rpc/randomppnav
+          name: rpc-randomppnav
+          description: REST surface for CIP-service Utility Random PP Nav Locations.
+          operations:
+            - method: POST
+              name: randomppnav
+              description: CIP-service Utility Random PP Nav Locations
+              call: cip-service-utility-services.randomppnav
+              with:
+                body: rest.body
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: cip-service-utility-services-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for CIP-service Indexing API — Utility Services. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: cip-service-utility-random-catchment
+          description: CIP-service Utility Random Catchment
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: cip-service-utility-services.randomcatchment
+          with:
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: cip-service-utility-random-huc12
+          description: CIP-service Utility Random HUC12
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: cip-service-utility-services.randomhuc12
+          with:
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: cip-service-utility-random-nav-location
+          description: CIP-service Utility Random Nav Location
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: cip-service-utility-services.randomnav
+          with:
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: cip-service-utility-random-point
+          description: CIP-service Utility Random Point
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: cip-service-utility-services.randompoint
+          with:
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: cip-service-utility-random-pp-nav-locations
+          description: CIP-service Utility Random PP Nav Locations
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: cip-service-utility-services.randomppnav
+          with:
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.

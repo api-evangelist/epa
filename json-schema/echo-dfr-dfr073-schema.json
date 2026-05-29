@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-schema/echo-dfr-dfr073-schema.json",
+  "title": "dfr073",
+  "description": "Map Output Object",
+  "type": "object",
+  "properties": {
+    "CenterLatitude": {
+      "description": "The latitude of the facility in degrees, to four decimal places.",
+      "example": "38.798026",
+      "type": "string"
+    },
+    "CenterLongitude": {
+      "description": "The longitude of the facility in degrees, to four decimal places.",
+      "example": "-77.062981",
+      "type": "string"
+    },
+    "IconBaseURL": {
+      "description": "URL where all the icons are located",
+      "example": "https://echo.epa.gov/app/map/icons/",
+      "title": "Icon Base URL",
+      "type": "string"
+    },
+    "MapData": {
+      "description": "An array of facility geospatial information.",
+      "items": {
+        "$ref": "#/definitions/dfr018_MapData"
+      },
+      "title": "Map Data",
+      "type": "array",
+      "xml": {
+        "name": "MapData",
+        "wrapped": true
+      },
+      "example": [
+        "string"
+      ]
+    },
+    "PopUpBaseURL": {
+      "description": "Combine this URL with the PUC to get popup info",
+      "example": "https://echodata.epa.gov/echo/cwa_rest_services.pop_up?p_id=",
+      "title": "Popup Base URL",
+      "type": "string"
+    }
+  },
+  "required": [
+    "IconBaseURL",
+    "PopUpBaseURL",
+    "CenterLatitude",
+    "CenterLongitude",
+    "MapData"
+  ]
+}

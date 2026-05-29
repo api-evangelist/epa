@@ -1,0 +1,79 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Monitor Plan Management OpenAPI Specification — Unit Fuels
+  description: 'Unit Fuels. 1 operations. Lead operation: operations. Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - Unit Fuels
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_APIKEY_KEY: EPA_APIKEY_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: cam-monitor-plan-unit-fuels
+      baseUri: https://api.epa.gov/easey
+      description: Monitor Plan Management OpenAPI Specification — Unit Fuels business capability. Self-contained, no shared references.
+      authentication:
+        type: apikey
+        key: x-api-key
+        value: '{{env.EPA_APIKEY_KEY}}'
+        placement: header
+      resources:
+        - name: monitor-plan-mgmt-units-unitid-unit-fuels
+          path: /monitor-plan-mgmt/units/{unitId}/unit-fuels
+          operations:
+            - name: unitFuelControllergetUnitFuels
+              method: GET
+              description: unitFuelControllergetUnitFuels
+              inputParameters:
+                - name: unitId
+                  in: path
+                  type: number
+                  required: true
+                  description: unitId
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: cam-monitor-plan-unit-fuels-rest
+      port: 8080
+      description: REST adapter for Monitor Plan Management OpenAPI Specification — Unit Fuels. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/monitor-plan-mgmt/units/{unitid}/unit-fuels
+          name: monitor-plan-mgmt-units-unitid-unit-fuels
+          description: REST surface for unitFuelControllergetUnitFuels.
+          operations:
+            - method: GET
+              name: unitFuelControllergetUnitFuels
+              description: unitFuelControllergetUnitFuels
+              call: cam-monitor-plan-unit-fuels.unitFuelControllergetUnitFuels
+              with:
+                unitId: rest.unitId
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: cam-monitor-plan-unit-fuels-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Monitor Plan Management OpenAPI Specification — Unit Fuels. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: unitfuelcontroller-getunitfuels
+          description: unitfuelcontroller-getunitfuels
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-monitor-plan-unit-fuels.unitFuelControllergetUnitFuels
+          with:
+            unitId: tools.unitId
+          outputParameters:
+            - type: object
+              mapping: $.

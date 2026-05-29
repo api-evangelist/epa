@@ -1,0 +1,142 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: QA Certification Management OpenAPI Specification — Fuel Flow To Load Test
+  description: 'Fuel Flow To Load Test. 2 operations. Lead operation: operations. Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - Fuel Flow To Load Test
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_APIKEY_KEY: EPA_APIKEY_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: cam-qa-cert-fuel-flow-to-load-test
+      baseUri: https://api.epa.gov/easey
+      description: QA Certification Management OpenAPI Specification — Fuel Flow To Load Test business capability. Self-contained, no shared references.
+      authentication:
+        type: apikey
+        key: x-api-key
+        value: '{{env.EPA_APIKEY_KEY}}'
+        placement: header
+      resources:
+        - name: qa-certification-mgmt-locations-locid-test-summary-testsumid-fuel-flow-to-load-tests
+          path: /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/fuel-flow-to-load-tests
+          operations:
+            - name: fuelFlowToLoadTestControllergetFuelFlowToLoadTests
+              method: GET
+              description: fuelFlowToLoadTestControllergetFuelFlowToLoadTests
+              inputParameters:
+                - name: locId
+                  in: path
+                  type: string
+                  required: true
+                  description: locId
+                - name: testSumId
+                  in: path
+                  type: string
+                  required: true
+                  description: testSumId
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: qa-certification-mgmt-locations-locid-test-summary-testsumid-fuel-flow-to-load-tests-id
+          path: /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/fuel-flow-to-load-tests/{id}
+          operations:
+            - name: fuelFlowToLoadTestControllergetFuelFlowToLoadTest
+              method: GET
+              description: fuelFlowToLoadTestControllergetFuelFlowToLoadTest
+              inputParameters:
+                - name: locId
+                  in: path
+                  type: string
+                  required: true
+                  description: locId
+                - name: testSumId
+                  in: path
+                  type: string
+                  required: true
+                  description: testSumId
+                - name: id
+                  in: path
+                  type: string
+                  required: true
+                  description: id
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: cam-qa-cert-fuel-flow-to-load-test-rest
+      port: 8080
+      description: REST adapter for QA Certification Management OpenAPI Specification — Fuel Flow To Load Test. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/qa-certification-mgmt/locations/{locid}/test-summary/{testsumid}/fuel-flow-to-load-tests
+          name: qa-certification-mgmt-locations-locid-test-summary-testsumid-fuel-flow-to-load-tests
+          description: REST surface for fuelFlowToLoadTestControllergetFuelFlowToLoadTests.
+          operations:
+            - method: GET
+              name: fuelFlowToLoadTestControllergetFuelFlowToLoadTests
+              description: fuelFlowToLoadTestControllergetFuelFlowToLoadTests
+              call: cam-qa-cert-fuel-flow-to-load-test.fuelFlowToLoadTestControllergetFuelFlowToLoadTests
+              with:
+                locId: rest.locId
+                testSumId: rest.testSumId
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/qa-certification-mgmt/locations/{locid}/test-summary/{testsumid}/fuel-flow-to-load-tests/{id}
+          name: qa-certification-mgmt-locations-locid-test-summary-testsumid-fuel-flow-to-load-tests-id
+          description: REST surface for fuelFlowToLoadTestControllergetFuelFlowToLoadTest.
+          operations:
+            - method: GET
+              name: fuelFlowToLoadTestControllergetFuelFlowToLoadTest
+              description: fuelFlowToLoadTestControllergetFuelFlowToLoadTest
+              call: cam-qa-cert-fuel-flow-to-load-test.fuelFlowToLoadTestControllergetFuelFlowToLoadTest
+              with:
+                locId: rest.locId
+                testSumId: rest.testSumId
+                id: rest.id
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: cam-qa-cert-fuel-flow-to-load-test-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for QA Certification Management OpenAPI Specification — Fuel Flow To Load Test. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: fuelflowtoloadtestcontroller-getfuelflowtoloadtests
+          description: fuelflowtoloadtestcontroller-getfuelflowtoloadtests
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-qa-cert-fuel-flow-to-load-test.fuelFlowToLoadTestControllergetFuelFlowToLoadTests
+          with:
+            locId: tools.locId
+            testSumId: tools.testSumId
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: fuelflowtoloadtestcontroller-getfuelflowtoloadtest
+          description: fuelflowtoloadtestcontroller-getfuelflowtoloadtest
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-qa-cert-fuel-flow-to-load-test.fuelFlowToLoadTestControllergetFuelFlowToLoadTest
+          with:
+            locId: tools.locId
+            testSumId: tools.testSumId
+            id: tools.id
+          outputParameters:
+            - type: object
+              mapping: $.

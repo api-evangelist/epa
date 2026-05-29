@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-schema/cip-service-pointindexing-rb-schema.json",
+  "title": "pointindexing_rb",
+  "description": "pointindexing_rb schema from CIP-service Indexing API",
+  "type": "object",
+  "properties": {
+    "point": {
+      "oneOf": [
+        {
+          "$ref": "#/components/schemas/geojson_featurecollection"
+        },
+        {
+          "$ref": "#/components/schemas/geojson_feature"
+        },
+        {
+          "$ref": "#/components/schemas/geojson_geometry"
+        }
+      ],
+      "example": "string"
+    },
+    "indexing_engine": {
+      "oneOf": [
+        {
+          "$ref": "#/components/schemas/indexing_engine"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "example": "string"
+    },
+    "fcode_allow": {
+      "oneOf": [
+        {
+          "$ref": "#/components/schemas/fcode_allow"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "example": "string"
+    },
+    "fcode_deny": {
+      "oneOf": [
+        {
+          "$ref": "#/components/schemas/fcode_deny"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "example": "string"
+    },
+    "distance_max_distkm": {
+      "description": "Maximum distance in kilometers the DISTANCE engine uses to find a reach measure candidate.",
+      "oneOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "example": "string"
+    },
+    "raindrop_snap_max_distkm": {
+      "description": "Maximum distance in kilometers the RAINDROP engine uses to snap to the final reach measure candidate.",
+      "oneOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "example": "string"
+    },
+    "raindrop_path_max_distkm": {
+      "description": "Maximum distance in kilometers the RAINDROP engine will travel towards a final candidate.",
+      "oneOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "example": "string"
+    },
+    "limit_innetwork": {
+      "description": "Flag to limit results to innetwork flowlines.",
+      "oneOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "example": "string"
+    },
+    "limit_navigable": {
+      "description": "Flag to limit results to navigable flowlines.",
+      "oneOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "example": "string"
+    },
+    "return_link_path": {
+      "description": "Flag whether to return a geometry representing the indexing path from start to candidate.",
+      "oneOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "example": "string"
+    },
+    "known_region": {
+      "oneOf": [
+        {
+          "$ref": "#/components/schemas/known_region"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "example": "string"
+    },
+    "known_catchment_nhdplusid": {
+      "description": "In some scenarios users may know the catchment NHDPlusID in which they desire to index.  Providing the value bypasses the cost of determining the catchment via spatial intersection.",
+      "oneOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "example": "12345"
+    },
+    "nhdplus_version": {
+      "default": "nhdplus_h",
+      "$ref": "#/components/schemas/nhdplus_version"
+    }
+  }
+}

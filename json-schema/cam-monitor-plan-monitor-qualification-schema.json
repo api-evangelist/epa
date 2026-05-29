@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-schema/cam-monitor-plan-monitor-qualification-schema.json",
+  "title": "MonitorQualification",
+  "description": "MonitorQualification schema from Monitor Plan Management OpenAPI Specification",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "12345"
+    },
+    "locationId": {
+      "type": "string",
+      "example": "12345"
+    },
+    "qualificationTypeCode": {
+      "type": "string",
+      "example": "string"
+    },
+    "beginDate": {
+      "format": "date-time",
+      "type": "string",
+      "example": "2024-01-15T12:00:00Z"
+    },
+    "endDate": {
+      "format": "date-time",
+      "type": "string",
+      "example": "2024-01-15T12:00:00Z"
+    },
+    "userId": {
+      "type": "string",
+      "example": "12345"
+    },
+    "addDate": {
+      "format": "date-time",
+      "type": "string",
+      "example": "2024-01-15T12:00:00Z"
+    },
+    "updateDate": {
+      "format": "date-time",
+      "type": "string",
+      "example": "2024-01-15T12:00:00Z"
+    },
+    "location": {
+      "$ref": "#/components/schemas/MonitorLocation"
+    },
+    "leeQualifications": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/LEEQualification"
+      },
+      "example": [
+        "string"
+      ]
+    },
+    "lmeQualifications": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/LMEQualification"
+      },
+      "example": [
+        "string"
+      ]
+    },
+    "pctQualifications": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/PCTQualification"
+      },
+      "example": [
+        "string"
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "locationId",
+    "qualificationTypeCode",
+    "beginDate",
+    "endDate",
+    "userId",
+    "addDate",
+    "updateDate",
+    "location",
+    "leeQualifications",
+    "lmeQualifications",
+    "pctQualifications"
+  ]
+}

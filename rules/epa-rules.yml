@@ -1,0 +1,237 @@
+# EPA Spectral Ruleset
+#
+# Opinionated rules for EPA OpenAPI specifications generated from the patterns
+# observed across the AQS, Envirofacts, ECHO (Air/CWA/SDW/RCRA/Case/DFR/Effluent/All),
+# Clean Air Markets (CAM), CIP service, CSB rebate, ELG search, How's My Waterway,
+# and other EPA APIs.
+extends: [["@stoplight/spectral-rulesets/dist/oas", "off"]]
+formats: [oas3, oas3_0]
+rules:
+  # ---------------------------------------------------------------------------
+  # INFO / METADATA
+  # ---------------------------------------------------------------------------
+  epa-info-title-required:
+    description: API title must be defined.
+    severity: error
+    given: $.info
+    then: { field: title, function: truthy }
+  epa-info-title-mentions-epa:
+    description: Title should reference EPA or the underlying program (AQS, ECHO, CAM, etc.).
+    severity: warn
+    given: $.info.title
+    then:
+      function: pattern
+      functionOptions:
+        match: "(?i)(EPA|AQS|ECHO|Envirofacts|Clean Air Markets|CAM|ATTAINS|FRS|TRI|CIP|CSB|ELG|WaterSense|How's My Waterway)"
+  epa-info-description-required:
+    description: API description must be defined and >= 50 chars.
+    severity: warn
+    given: $.info
+    then:
+      - { field: description, function: truthy }
+      - field: description
+        function: length
+        functionOptions: { min: 50 }
+  epa-info-version-required:
+    description: API version must be defined.
+    severity: error
+    given: $.info
+    then: { field: version, function: truthy }
+  epa-info-contact-required:
+    description: Contact (name and url or email) should be defined.
+    severity: warn
+    given: $.info
+    then: { field: contact, function: truthy }
+
+  # ---------------------------------------------------------------------------
+  # OPENAPI VERSION
+  # ---------------------------------------------------------------------------
+  epa-openapi-version-3:
+    description: Specs should be OpenAPI 3.x.
+    severity: warn
+    given: $
+    then:
+      field: openapi
+      function: pattern
+      functionOptions: { match: "^3\\." }
+
+  # ---------------------------------------------------------------------------
+  # SERVERS
+  # ---------------------------------------------------------------------------
+  epa-servers-defined:
+    description: At least one server entry should be defined.
+    severity: warn
+    given: $
+    then: { field: servers, function: truthy }
+  epa-servers-https:
+    description: Server URLs must use HTTPS.
+    severity: error
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions: { match: "^https://" }
+
+  # ---------------------------------------------------------------------------
+  # PATHS
+  # ---------------------------------------------------------------------------
+  epa-paths-no-trailing-slash:
+    description: Paths should not end with a trailing slash.
+    severity: warn
+    given: $.paths
+    then:
+      field: "@key"
+      function: pattern
+      functionOptions: { notMatch: ".+/$" }
+  epa-paths-no-query-string:
+    description: Paths must not embed query strings.
+    severity: error
+    given: $.paths
+    then:
+      field: "@key"
+      function: pattern
+      functionOptions: { notMatch: "\\?" }
+
+  # ---------------------------------------------------------------------------
+  # OPERATIONS
+  # ---------------------------------------------------------------------------
+  epa-operation-summary-required:
+    description: Every operation must have a summary.
+    severity: error
+    given: $.paths[*][get,post,put,delete,patch]
+    then: { field: summary, function: truthy }
+  epa-operation-summary-title-case:
+    description: Operation summaries should be in Title Case.
+    severity: warn
+    given: $.paths[*][get,post,put,delete,patch].summary
+    then:
+      function: pattern
+      functionOptions: { match: "^[A-Z]" }
+  epa-operation-operationid-required:
+    description: Every operation must have an operationId.
+    severity: error
+    given: $.paths[*][get,post,put,delete,patch]
+    then: { field: operationId, function: truthy }
+  epa-operation-operationid-camel:
+    description: operationId should be camelCase (start lowercase, no spaces).
+    severity: warn
+    given: $.paths[*][get,post,put,delete,patch].operationId
+    then:
+      function: pattern
+      functionOptions: { match: "^[a-z][a-zA-Z0-9]*$" }
+  epa-operation-tags-required:
+    description: Operations should be tagged.
+    severity: warn
+    given: $.paths[*][get,post,put,delete,patch]
+    then: { field: tags, function: truthy }
+
+  # ---------------------------------------------------------------------------
+  # TAGS
+  # ---------------------------------------------------------------------------
+  epa-global-tags-defined:
+    description: Spec should declare a global tags array with descriptions.
+    severity: warn
+    given: $
+    then: { field: tags, function: truthy }
+  epa-tag-description-required:
+    description: Tags should have descriptions.
+    severity: warn
+    given: $.tags[*]
+    then: { field: description, function: truthy }
+  epa-tag-title-case:
+    description: Tag names should be Title Case.
+    severity: warn
+    given: $.tags[*].name
+    then:
+      function: pattern
+      functionOptions: { match: "^[A-Z]" }
+
+  # ---------------------------------------------------------------------------
+  # PARAMETERS
+  # ---------------------------------------------------------------------------
+  epa-parameter-description-required:
+    description: Parameters should be described.
+    severity: warn
+    given: "$.paths[*][get,post,put,delete,patch].parameters[*]"
+    then: { field: description, function: truthy }
+  epa-parameter-no-secrets-in-path:
+    description: Secrets (key, token, password) should not be in path parameters.
+    severity: error
+    given: "$.paths[*][get,post,put,delete,patch].parameters[?(@.in=='path')].name"
+    then:
+      function: pattern
+      functionOptions: { notMatch: "(?i)(key|secret|password|token)" }
+
+  # ---------------------------------------------------------------------------
+  # RESPONSES
+  # ---------------------------------------------------------------------------
+  epa-response-2xx-required:
+    description: Every operation must define at least one 2xx response.
+    severity: error
+    given: $.paths[*][get,post,put,delete,patch].responses
+    then:
+      function: pattern
+      functionOptions: { match: "^[23]" }
+      field: "@key"
+  epa-response-description-required:
+    description: Every response must have a description.
+    severity: error
+    given: $.paths[*][get,post,put,delete,patch].responses[*]
+    then: { field: description, function: truthy }
+  epa-response-json-content:
+    description: 2xx responses should expose application/json content for parseable APIs.
+    severity: info
+    given: "$.paths[*][get,post,put,delete,patch].responses[?(@property.match(/^2/))].content"
+    then: { field: application/json, function: truthy }
+
+  # ---------------------------------------------------------------------------
+  # SCHEMAS
+  # ---------------------------------------------------------------------------
+  epa-schema-type-required:
+    description: Top-level schemas should declare a type.
+    severity: warn
+    given: $.components.schemas[*]
+    then: { field: type, function: truthy }
+  epa-schema-description-required:
+    description: Top-level schemas should have a description.
+    severity: info
+    given: $.components.schemas[*]
+    then: { field: description, function: truthy }
+
+  # ---------------------------------------------------------------------------
+  # SECURITY
+  # ---------------------------------------------------------------------------
+  epa-security-schemes-defined:
+    description: Specs requiring authentication should define securitySchemes.
+    severity: warn
+    given: $.components
+    then: { field: securitySchemes, function: truthy }
+  epa-security-scheme-description:
+    description: Each security scheme should be described.
+    severity: warn
+    given: $.components.securitySchemes[*]
+    then: { field: description, function: truthy }
+
+  # ---------------------------------------------------------------------------
+  # HTTP METHOD CONVENTIONS
+  # ---------------------------------------------------------------------------
+  epa-get-no-request-body:
+    description: GET operations must not define a requestBody.
+    severity: error
+    given: $.paths[*].get
+    then: { field: requestBody, function: falsy }
+  epa-delete-no-request-body:
+    description: DELETE operations must not define a requestBody.
+    severity: warn
+    given: $.paths[*].delete
+    then: { field: requestBody, function: falsy }
+
+  # ---------------------------------------------------------------------------
+  # GENERAL QUALITY
+  # ---------------------------------------------------------------------------
+  epa-deprecated-flagged:
+    description: Deprecated operations must use the deprecated field, not text in description only.
+    severity: info
+    given: "$.paths[*][get,post,put,delete,patch].description"
+    then:
+      function: pattern
+      functionOptions: { notMatch: "(?i)deprecated" }

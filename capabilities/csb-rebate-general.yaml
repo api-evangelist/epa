@@ -1,0 +1,3776 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: epa-csb-server — general
+  description: 'general. 87 operations. Lead operation: /login. Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - General
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys: {}
+capability:
+  consumes:
+    - type: http
+      namespace: csb-rebate-general
+      baseUri: https://example.com
+      description: epa-csb-server — general business capability. Self-contained, no shared references.
+      resources:
+        - name: login
+          path: /login
+          operations:
+            - name: getlogin
+              method: GET
+              description: /login
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: login-assert
+          path: /login/assert
+          operations:
+            - name: postloginassert
+              method: POST
+              description: /login/assert
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: login-fail
+          path: /login/fail
+          operations:
+            - name: getloginfail
+              method: GET
+              description: /login/fail
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: logout
+          path: /logout
+          operations:
+            - name: getlogout
+              method: GET
+              description: /logout
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: logout-callback
+          path: /logout/callback
+          operations:
+            - name: getlogoutcallback
+              method: GET
+              description: /logout/callback
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: logout-callback
+          path: /logout/callback
+          operations:
+            - name: postlogoutcallback
+              method: POST
+              description: /logout/callback
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: metadata
+          path: /metadata
+          operations:
+            - name: getmetadata
+              method: GET
+              description: /metadata
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-user
+          path: /api/user
+          operations:
+            - name: getapiuser
+              method: GET
+              description: Get user data from EPA Gateway/Login.gov.
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-config-public
+          path: /api/config/public
+          operations:
+            - name: getapiconfigpublic
+              method: GET
+              description: Get CSB App Specific Public Configuration (csb App Login Status and Static Content)
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-config-private
+          path: /api/config/private
+          operations:
+            - name: getapiconfigprivate
+              method: GET
+              description: Get CSB App Specific Private Configuration (form Open Enrollment Status, Etc.)
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-bap-sam
+          path: /api/bap/sam
+          operations:
+            - name: getapibapsam
+              method: GET
+              description: Get User's SAM.gov Data from the BAP.
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-bap-submissions
+          path: /api/bap/submissions
+          operations:
+            - name: getapibapsubmissions
+              method: GET
+              description: Get User's Form Submissions Statuses from the BAP.
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2022-district-rebateid
+          path: /api/formio/2022/district/{rebateId}
+          operations:
+            - name: getapiformio2022districtrebateid
+              method: GET
+              description: Get the School District Info Associated with a Provided CSB Rebate ID
+              inputParameters:
+                - name: rebateId
+                  in: path
+                  type: string
+                  required: true
+                  description: The CSB Rebate ID
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2022-s3-formtype-mongoid-combokey-storage-s3
+          path: /api/formio/2022/s3/{formType}/{mongoId}/{comboKey}/storage/s3
+          operations:
+            - name: getapiformio2022s3formtypemongoidcombokeystorages3
+              method: GET
+              description: Download Formio File Attachment from S3 for a 2022 Submission.
+              inputParameters:
+                - name: formType
+                  in: path
+                  type: string
+                  required: true
+                  description: The Formio form type (frf, prf, crf).
+                - name: mongoId
+                  in: path
+                  type: string
+                  required: true
+                  description: The Formio submission's MongoDB ObjectId.
+                - name: comboKey
+                  in: path
+                  type: string
+                  required: true
+                  description: The SAM.gov entity's UEI/EFTI combo key.
+                - name: bucket
+                  in: query
+                  type: string
+                  required: true
+                  description: The S3 bucket name where the file is stored.
+                - name: key
+                  in: query
+                  type: string
+                  required: true
+                  description: The S3 object key for the file.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2022-s3-formtype-mongoid-combokey-storage-s3
+          path: /api/formio/2022/s3/{formType}/{mongoId}/{comboKey}/storage/s3
+          operations:
+            - name: postapiformio2022s3formtypemongoidcombokeystorages3
+              method: POST
+              description: Upload Formio File Attachment to S3 for a 2022 Submission.
+              inputParameters:
+                - name: formType
+                  in: path
+                  type: string
+                  required: true
+                  description: The Formio form type (frf, prf, crf).
+                - name: mongoId
+                  in: path
+                  type: string
+                  required: true
+                  description: The Formio submission's MongoDB ObjectId.
+                - name: comboKey
+                  in: path
+                  type: string
+                  required: true
+                  description: The SAM.gov entity's UEI/EFTI combo key.
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+                  description: Request body payload.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2022-s3-formtype-mongoid-combokey-storage-s3
+          path: /api/formio/2022/s3/{formType}/{mongoId}/{comboKey}/storage/s3
+          operations:
+            - name: deleteapiformio2022s3formtypemongoidcombokeystorages3
+              method: DELETE
+              description: Delete Formio File Attachment from S3 for a 2022 Submission.
+              inputParameters:
+                - name: formType
+                  in: path
+                  type: string
+                  required: true
+                  description: The Formio form type (frf, prf, crf).
+                - name: mongoId
+                  in: path
+                  type: string
+                  required: true
+                  description: The Formio submission's MongoDB ObjectId.
+                - name: comboKey
+                  in: path
+                  type: string
+                  required: true
+                  description: The SAM.gov entity's UEI/EFTI combo key.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2022-pdf-formtype-mongoid
+          path: /api/formio/2022/pdf/{formType}/{mongoId}
+          operations:
+            - name: getapiformio2022pdfformtypemongoid
+              method: GET
+              description: Download a PDF of a 2022 Form Submission.
+              inputParameters:
+                - name: formType
+                  in: path
+                  type: string
+                  required: true
+                  description: The Formio form type (frf, prf, crf).
+                - name: mongoId
+                  in: path
+                  type: string
+                  required: true
+                  description: The Formio submission's MongoDB ObjectId.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2022-frf-submissions
+          path: /api/formio/2022/frf-submissions
+          operations:
+            - name: getapiformio2022frfsubmissions
+              method: GET
+              description: Get User's 2022 FRF Submissions from Formio.
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2022-frf-submission
+          path: /api/formio/2022/frf-submission
+          operations:
+            - name: postapiformio2022frfsubmission
+              method: POST
+              description: Post a New 2022 FRF Submission to Formio.
+              inputParameters:
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+                  description: Request body payload.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2022-frf-submission-mongoid
+          path: /api/formio/2022/frf-submission/{mongoId}
+          operations:
+            - name: getapiformio2022frfsubmissionmongoid
+              method: GET
+              description: Get an Existing 2022 FRF's Schema and Submission Data from Formio.
+              inputParameters:
+                - name: mongoId
+                  in: path
+                  type: string
+                  required: true
+                  description: The Formio submission's MongoDB ObjectId.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2022-frf-submission-mongoid
+          path: /api/formio/2022/frf-submission/{mongoId}
+          operations:
+            - name: postapiformio2022frfsubmissionmongoid
+              method: POST
+              description: Post an Update to an Existing Draft 2022 FRF Submission to Formio.
+              inputParameters:
+                - name: mongoId
+                  in: path
+                  type: string
+                  required: true
+                  description: The Formio submission's MongoDB ObjectId.
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+                  description: Request body payload.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2022-prf-submissions
+          path: /api/formio/2022/prf-submissions
+          operations:
+            - name: getapiformio2022prfsubmissions
+              method: GET
+              description: Get User's 2022 PRF Submissions from Formio.
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2022-prf-submission
+          path: /api/formio/2022/prf-submission
+          operations:
+            - name: postapiformio2022prfsubmission
+              method: POST
+              description: Post a New 2022 PRF Submission to Formio.
+              inputParameters:
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+                  description: Request body payload.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2022-prf-submission-rebateid
+          path: /api/formio/2022/prf-submission/{rebateId}
+          operations:
+            - name: getapiformio2022prfsubmissionrebateid
+              method: GET
+              description: Get an Existing 2022 PRF's Schema and Submission Data from Formio.
+              inputParameters:
+                - name: rebateId
+                  in: path
+                  type: string
+                  required: true
+                  description: The CSB Rebate ID
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2022-prf-submission-rebateid
+          path: /api/formio/2022/prf-submission/{rebateId}
+          operations:
+            - name: postapiformio2022prfsubmissionrebateid
+              method: POST
+              description: Post an Update to an Existing Draft 2022 PRF Submission to Formio.
+              inputParameters:
+                - name: rebateId
+                  in: path
+                  type: string
+                  required: true
+                  description: The CSB Rebate ID
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+                  description: Request body payload.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2022-delete-prf-submission
+          path: /api/formio/2022/delete-prf-submission
+          operations:
+            - name: postapiformio2022deleteprfsubmission
+              method: POST
+              description: Delete an Existing 2022 PRF Submission from Formio.
+              inputParameters:
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+                  description: Request body payload.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2022-crf-submissions
+          path: /api/formio/2022/crf-submissions
+          operations:
+            - name: getapiformio2022crfsubmissions
+              method: GET
+              description: Get User's 2022 CRF Submissions from Formio.
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2022-crf-submission
+          path: /api/formio/2022/crf-submission
+          operations:
+            - name: postapiformio2022crfsubmission
+              method: POST
+              description: Post a New 2022 CRF Submission to Formio.
+              inputParameters:
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+                  description: Request body payload.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2022-crf-submission-rebateid
+          path: /api/formio/2022/crf-submission/{rebateId}
+          operations:
+            - name: getapiformio2022crfsubmissionrebateid
+              method: GET
+              description: Get an Existing 2022 CRF's Schema and Submission Data from Formio.
+              inputParameters:
+                - name: rebateId
+                  in: path
+                  type: string
+                  required: true
+                  description: The CSB Rebate ID
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2022-crf-submission-rebateid
+          path: /api/formio/2022/crf-submission/{rebateId}
+          operations:
+            - name: postapiformio2022crfsubmissionrebateid
+              method: POST
+              description: Post an Update to an Existing Draft 2022 CRF Submission to Formio.
+              inputParameters:
+                - name: rebateId
+                  in: path
+                  type: string
+                  required: true
+                  description: The CSB Rebate ID
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+                  description: Request body payload.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2022-changes
+          path: /api/formio/2022/changes
+          operations:
+            - name: getapiformio2022changes
+              method: GET
+              description: Get User's 2022 Change Request Form Submissions from Formio.
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2023-check-vin-vin
+          path: /api/formio/2023/check-vin/{vin}
+          operations:
+            - name: getapiformio2023checkvinvin
+              method: GET
+              description: Check for Duplicate VINs in the BAP.
+              inputParameters:
+                - name: vin
+                  in: path
+                  type: string
+                  required: true
+                  description: The bus VIN to search for.
+                - name: rebateId
+                  in: query
+                  type: string
+                  required: false
+                  description: The CSB Rebate ID of the current submission.
+                - name: debug
+                  in: query
+                  type: boolean
+                  required: false
+                  description: Return debug info from the BAP in the response.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2023-nces-searchtext
+          path: /api/formio/2023/nces/{searchText}
+          operations:
+            - name: getapiformio2023ncessearchtext
+              method: GET
+              description: Search 2023 NCES Data with the Provided NCES ID and Return a Match.
+              inputParameters:
+                - name: searchText
+                  in: path
+                  type: string
+                  required: true
+                  description: The NCES ID to search for.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2023-district-rebateid
+          path: /api/formio/2023/district/{rebateId}
+          operations:
+            - name: getapiformio2023districtrebateid
+              method: GET
+              description: Get the School District Info Associated with a Provided CSB Rebate ID
+              inputParameters:
+                - name: rebateId
+                  in: path
+                  type: string
+                  required: true
+                  description: The CSB Rebate ID
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2023-contacts-rebateid
+          path: /api/formio/2023/contacts/{rebateId}
+          operations:
+            - name: getapiformio2023contactsrebateid
+              method: GET
+              description: Get Contacts Associated with a Provided CSB Rebate ID
+              inputParameters:
+                - name: rebateId
+                  in: path
+                  type: string
+                  required: true
+                  description: The CSB Rebate ID
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2023-s3-formtype-mongoid-combokey-storage-s3
+          path: /api/formio/2023/s3/{formType}/{mongoId}/{comboKey}/storage/s3
+          operations:
+            - name: getapiformio2023s3formtypemongoidcombokeystorages3
+              method: GET
+              description: Download Formio File Attachment from S3 for a 2023 Submission.
+              inputParameters:
+                - name: formType
+                  in: path
+                  type: string
+                  required: true
+                  description: The Formio form type (frf, prf, crf).
+                - name: mongoId
+                  in: path
+                  type: string
+                  required: true
+                  description: The Formio submission's MongoDB ObjectId.
+                - name: comboKey
+                  in: path
+                  type: string
+                  required: true
+                  description: The SAM.gov entity's UEI/EFTI combo key.
+                - name: bucket
+                  in: query
+                  type: string
+                  required: true
+                  description: The S3 bucket name where the file is stored.
+                - name: key
+                  in: query
+                  type: string
+                  required: true
+                  description: The S3 object key for the file.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2023-s3-formtype-mongoid-combokey-storage-s3
+          path: /api/formio/2023/s3/{formType}/{mongoId}/{comboKey}/storage/s3
+          operations:
+            - name: postapiformio2023s3formtypemongoidcombokeystorages3
+              method: POST
+              description: Upload Formio File Attachment to S3 for a 2023 Submission.
+              inputParameters:
+                - name: formType
+                  in: path
+                  type: string
+                  required: true
+                  description: The Formio form type (frf, prf, crf).
+                - name: mongoId
+                  in: path
+                  type: string
+                  required: true
+                  description: The Formio submission's MongoDB ObjectId.
+                - name: comboKey
+                  in: path
+                  type: string
+                  required: true
+                  description: The SAM.gov entity's UEI/EFTI combo key.
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+                  description: Request body payload.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2023-s3-formtype-mongoid-combokey-storage-s3
+          path: /api/formio/2023/s3/{formType}/{mongoId}/{comboKey}/storage/s3
+          operations:
+            - name: deleteapiformio2023s3formtypemongoidcombokeystorages3
+              method: DELETE
+              description: Delete Formio File Attachment from S3 for a 2023 Submission.
+              inputParameters:
+                - name: formType
+                  in: path
+                  type: string
+                  required: true
+                  description: The Formio form type (frf, prf, crf).
+                - name: mongoId
+                  in: path
+                  type: string
+                  required: true
+                  description: The Formio submission's MongoDB ObjectId.
+                - name: comboKey
+                  in: path
+                  type: string
+                  required: true
+                  description: The SAM.gov entity's UEI/EFTI combo key.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2023-pdf-formtype-mongoid
+          path: /api/formio/2023/pdf/{formType}/{mongoId}
+          operations:
+            - name: getapiformio2023pdfformtypemongoid
+              method: GET
+              description: Download a PDF of a 2023 Form Submission.
+              inputParameters:
+                - name: formType
+                  in: path
+                  type: string
+                  required: true
+                  description: The Formio form type (frf, prf, crf).
+                - name: mongoId
+                  in: path
+                  type: string
+                  required: true
+                  description: The Formio submission's MongoDB ObjectId.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2023-frf-submissions
+          path: /api/formio/2023/frf-submissions
+          operations:
+            - name: getapiformio2023frfsubmissions
+              method: GET
+              description: Get User's 2023 FRF Submissions from Formio.
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2023-frf-submission
+          path: /api/formio/2023/frf-submission
+          operations:
+            - name: postapiformio2023frfsubmission
+              method: POST
+              description: Post a New 2023 FRF Submission to Formio.
+              inputParameters:
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+                  description: Request body payload.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2023-frf-submission-mongoid
+          path: /api/formio/2023/frf-submission/{mongoId}
+          operations:
+            - name: getapiformio2023frfsubmissionmongoid
+              method: GET
+              description: Get an Existing 2023 FRF's Schema and Submission Data from Formio.
+              inputParameters:
+                - name: mongoId
+                  in: path
+                  type: string
+                  required: true
+                  description: The Formio submission's MongoDB ObjectId.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2023-frf-submission-mongoid
+          path: /api/formio/2023/frf-submission/{mongoId}
+          operations:
+            - name: postapiformio2023frfsubmissionmongoid
+              method: POST
+              description: Post an Update to an Existing Draft 2023 FRF Submission to Formio.
+              inputParameters:
+                - name: mongoId
+                  in: path
+                  type: string
+                  required: true
+                  description: The Formio submission's MongoDB ObjectId.
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+                  description: Request body payload.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2023-prf-submissions
+          path: /api/formio/2023/prf-submissions
+          operations:
+            - name: getapiformio2023prfsubmissions
+              method: GET
+              description: Get User's 2023 PRF Submissions from Formio.
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2023-prf-submission
+          path: /api/formio/2023/prf-submission
+          operations:
+            - name: postapiformio2023prfsubmission
+              method: POST
+              description: Post a New 2023 PRF Submission to Formio.
+              inputParameters:
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+                  description: Request body payload.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2023-prf-submission-rebateid
+          path: /api/formio/2023/prf-submission/{rebateId}
+          operations:
+            - name: getapiformio2023prfsubmissionrebateid
+              method: GET
+              description: Get an Existing 2023 PRF's Schema and Submission Data from Formio.
+              inputParameters:
+                - name: rebateId
+                  in: path
+                  type: string
+                  required: true
+                  description: The CSB Rebate ID
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2023-prf-submission-rebateid
+          path: /api/formio/2023/prf-submission/{rebateId}
+          operations:
+            - name: postapiformio2023prfsubmissionrebateid
+              method: POST
+              description: Post an Update to an Existing Draft 2023 PRF Submission to Formio.
+              inputParameters:
+                - name: rebateId
+                  in: path
+                  type: string
+                  required: true
+                  description: The CSB Rebate ID
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+                  description: Request body payload.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2023-delete-prf-submission
+          path: /api/formio/2023/delete-prf-submission
+          operations:
+            - name: postapiformio2023deleteprfsubmission
+              method: POST
+              description: Delete an Existing 2023 PRF Submission from Formio.
+              inputParameters:
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+                  description: Request body payload.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2023-crf-submissions
+          path: /api/formio/2023/crf-submissions
+          operations:
+            - name: getapiformio2023crfsubmissions
+              method: GET
+              description: Get User's 2023 CRF Submissions from Formio.
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2023-crf-submission
+          path: /api/formio/2023/crf-submission
+          operations:
+            - name: postapiformio2023crfsubmission
+              method: POST
+              description: Post a New 2023 CRF Submission to Formio.
+              inputParameters:
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+                  description: Request body payload.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2023-crf-submission-rebateid
+          path: /api/formio/2023/crf-submission/{rebateId}
+          operations:
+            - name: getapiformio2023crfsubmissionrebateid
+              method: GET
+              description: Get an Existing 2023 CRF's Schema and Submission Data from Formio.
+              inputParameters:
+                - name: rebateId
+                  in: path
+                  type: string
+                  required: true
+                  description: The CSB Rebate ID
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2023-crf-submission-rebateid
+          path: /api/formio/2023/crf-submission/{rebateId}
+          operations:
+            - name: postapiformio2023crfsubmissionrebateid
+              method: POST
+              description: Post an Update to an Existing Draft 2023 CRF Submission to Formio.
+              inputParameters:
+                - name: rebateId
+                  in: path
+                  type: string
+                  required: true
+                  description: The CSB Rebate ID
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+                  description: Request body payload.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2023-changes
+          path: /api/formio/2023/changes
+          operations:
+            - name: getapiformio2023changes
+              method: GET
+              description: Get User's 2023 Change Request Form Submissions from Formio.
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2023-change
+          path: /api/formio/2023/change
+          operations:
+            - name: getapiformio2023change
+              method: GET
+              description: Get the 2023 Change Request Form's Schema from Formio.
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2023-change
+          path: /api/formio/2023/change
+          operations:
+            - name: postapiformio2023change
+              method: POST
+              description: Post a New 2023 Change Request Form Submission to Formio.
+              inputParameters:
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+                  description: Request body payload.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2023-change-mongoid
+          path: /api/formio/2023/change/{mongoId}
+          operations:
+            - name: getapiformio2023changemongoid
+              method: GET
+              description: Get an Existing 2023 Change Request Form's Schema and Submission Data from Formio.
+              inputParameters:
+                - name: mongoId
+                  in: path
+                  type: string
+                  required: true
+                  description: The Formio submission's MongoDB ObjectId.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2024-nces-searchtext
+          path: /api/formio/2024/nces/{searchText}
+          operations:
+            - name: getapiformio2024ncessearchtext
+              method: GET
+              description: Search 2024 NCES Data with the Provided NCES ID and Return a Match.
+              inputParameters:
+                - name: searchText
+                  in: path
+                  type: string
+                  required: true
+                  description: The NCES ID to search for.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2024-district-rebateid
+          path: /api/formio/2024/district/{rebateId}
+          operations:
+            - name: getapiformio2024districtrebateid
+              method: GET
+              description: Get the School District Info Associated with a Provided CSB Rebate ID
+              inputParameters:
+                - name: rebateId
+                  in: path
+                  type: string
+                  required: true
+                  description: The CSB Rebate ID
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2024-s3-formtype-mongoid-combokey-storage-s3
+          path: /api/formio/2024/s3/{formType}/{mongoId}/{comboKey}/storage/s3
+          operations:
+            - name: getapiformio2024s3formtypemongoidcombokeystorages3
+              method: GET
+              description: Download Formio File Attachment from S3 for a 2024 Submission.
+              inputParameters:
+                - name: formType
+                  in: path
+                  type: string
+                  required: true
+                  description: The Formio form type (frf, prf, crf).
+                - name: mongoId
+                  in: path
+                  type: string
+                  required: true
+                  description: The Formio submission's MongoDB ObjectId.
+                - name: comboKey
+                  in: path
+                  type: string
+                  required: true
+                  description: The SAM.gov entity's UEI/EFTI combo key.
+                - name: bucket
+                  in: query
+                  type: string
+                  required: true
+                  description: The S3 bucket name where the file is stored.
+                - name: key
+                  in: query
+                  type: string
+                  required: true
+                  description: The S3 object key for the file.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2024-s3-formtype-mongoid-combokey-storage-s3
+          path: /api/formio/2024/s3/{formType}/{mongoId}/{comboKey}/storage/s3
+          operations:
+            - name: postapiformio2024s3formtypemongoidcombokeystorages3
+              method: POST
+              description: Upload Formio File Attachment to S3 for a 2024 Submission.
+              inputParameters:
+                - name: formType
+                  in: path
+                  type: string
+                  required: true
+                  description: The Formio form type (frf, prf, crf).
+                - name: mongoId
+                  in: path
+                  type: string
+                  required: true
+                  description: The Formio submission's MongoDB ObjectId.
+                - name: comboKey
+                  in: path
+                  type: string
+                  required: true
+                  description: The SAM.gov entity's UEI/EFTI combo key.
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+                  description: Request body payload.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2024-s3-formtype-mongoid-combokey-storage-s3
+          path: /api/formio/2024/s3/{formType}/{mongoId}/{comboKey}/storage/s3
+          operations:
+            - name: deleteapiformio2024s3formtypemongoidcombokeystorages3
+              method: DELETE
+              description: Delete Formio File Attachment from S3 for a 2024 Submission.
+              inputParameters:
+                - name: formType
+                  in: path
+                  type: string
+                  required: true
+                  description: The Formio form type (frf, prf, crf).
+                - name: mongoId
+                  in: path
+                  type: string
+                  required: true
+                  description: The Formio submission's MongoDB ObjectId.
+                - name: comboKey
+                  in: path
+                  type: string
+                  required: true
+                  description: The SAM.gov entity's UEI/EFTI combo key.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2024-pdf-formtype-mongoid
+          path: /api/formio/2024/pdf/{formType}/{mongoId}
+          operations:
+            - name: getapiformio2024pdfformtypemongoid
+              method: GET
+              description: Download a PDF of a 2024 Form Submission.
+              inputParameters:
+                - name: formType
+                  in: path
+                  type: string
+                  required: true
+                  description: The Formio form type (frf, prf, crf).
+                - name: mongoId
+                  in: path
+                  type: string
+                  required: true
+                  description: The Formio submission's MongoDB ObjectId.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2024-frf-submissions
+          path: /api/formio/2024/frf-submissions
+          operations:
+            - name: getapiformio2024frfsubmissions
+              method: GET
+              description: Get User's 2024 FRF Submissions from Formio.
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2024-frf-submission
+          path: /api/formio/2024/frf-submission
+          operations:
+            - name: postapiformio2024frfsubmission
+              method: POST
+              description: Post a New 2024 FRF Submission to Formio.
+              inputParameters:
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+                  description: Request body payload.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2024-frf-submission-mongoid
+          path: /api/formio/2024/frf-submission/{mongoId}
+          operations:
+            - name: getapiformio2024frfsubmissionmongoid
+              method: GET
+              description: Get an Existing 2024 FRF's Schema and Submission Data from Formio.
+              inputParameters:
+                - name: mongoId
+                  in: path
+                  type: string
+                  required: true
+                  description: The Formio submission's MongoDB ObjectId.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2024-frf-submission-mongoid
+          path: /api/formio/2024/frf-submission/{mongoId}
+          operations:
+            - name: postapiformio2024frfsubmissionmongoid
+              method: POST
+              description: Post an Update to an Existing Draft 2024 FRF Submission to Formio.
+              inputParameters:
+                - name: mongoId
+                  in: path
+                  type: string
+                  required: true
+                  description: The Formio submission's MongoDB ObjectId.
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+                  description: Request body payload.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2024-changes
+          path: /api/formio/2024/changes
+          operations:
+            - name: getapiformio2024changes
+              method: GET
+              description: Get User's 2024 Change Request Form Submissions from Formio.
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2024-change
+          path: /api/formio/2024/change
+          operations:
+            - name: getapiformio2024change
+              method: GET
+              description: Get the 2024 Change Request Form's Schema from Formio.
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2024-change
+          path: /api/formio/2024/change
+          operations:
+            - name: postapiformio2024change
+              method: POST
+              description: Post a New 2024 Change Request Form Submission to Formio.
+              inputParameters:
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+                  description: Request body payload.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-formio-2024-change-mongoid
+          path: /api/formio/2024/change/{mongoId}
+          operations:
+            - name: getapiformio2024changemongoid
+              method: GET
+              description: Get an Existing 2024 Change Request Form's Schema and Submission Data from Formio.
+              inputParameters:
+                - name: mongoId
+                  in: path
+                  type: string
+                  required: true
+                  description: The Formio submission's MongoDB ObjectId.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-help-formio-s3-rebateyear-formtype-storage-s3
+          path: /api/help/formio/s3/{rebateYear}/{formType}/storage/s3
+          operations:
+            - name: getapihelpformios3rebateyearformtypestorages3
+              method: GET
+              description: Download Formio File Attachment from S3 for a Submission.
+              inputParameters:
+                - name: rebateYear
+                  in: path
+                  type: string
+                  required: true
+                  description: The Clean School Bus Rebate year (2022, 2023, 2024).
+                - name: formType
+                  in: path
+                  type: string
+                  required: true
+                  description: The Formio form type (frf, prf, crf).
+                - name: bucket
+                  in: query
+                  type: string
+                  required: true
+                  description: The S3 bucket name where the file is stored.
+                - name: key
+                  in: query
+                  type: string
+                  required: true
+                  description: The S3 object key for the file.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-help-formio-submission-rebateyear-formtype-id
+          path: /api/help/formio/submission/{rebateYear}/{formType}/{id}
+          operations:
+            - name: getapihelpformiosubmissionrebateyearformtypeid
+              method: GET
+              description: Get an Existing Form's Submission Data from Formio.
+              inputParameters:
+                - name: rebateYear
+                  in: path
+                  type: string
+                  required: true
+                  description: The Clean School Bus Rebate year (2022, 2023, 2024).
+                - name: formType
+                  in: path
+                  type: string
+                  required: true
+                  description: The Formio form type (frf, prf, crf).
+                - name: id
+                  in: path
+                  type: string
+                  required: true
+                  description: The CSB Rebate ID or Formio MongoDB ObjectId.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-help-formio-submission-rebateyear-formtype-id
+          path: /api/help/formio/submission/{rebateYear}/{formType}/{id}
+          operations:
+            - name: postapihelpformiosubmissionrebateyearformtypeid
+              method: POST
+              description: Post an Update to an Existing Form Submission to Formio (change Submission to 'draft').
+              inputParameters:
+                - name: rebateYear
+                  in: path
+                  type: string
+                  required: true
+                  description: The Clean School Bus Rebate year (2022, 2023, 2024).
+                - name: formType
+                  in: path
+                  type: string
+                  required: true
+                  description: The Formio form type (frf, prf, crf).
+                - name: id
+                  in: path
+                  type: string
+                  required: true
+                  description: The CSB Rebate ID or Formio MongoDB ObjectId.
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+                  description: Request body payload.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-help-formio-actions-formid-mongoid
+          path: /api/help/formio/actions/{formId}/{mongoId}
+          operations:
+            - name: getapihelpformioactionsformidmongoid
+              method: GET
+              description: Get All Actions Associated with a Form's Submission from Formio.
+              inputParameters:
+                - name: formId
+                  in: path
+                  type: string
+                  required: true
+                  description: The Formio form's MongoDB ObjectId.
+                - name: mongoId
+                  in: path
+                  type: string
+                  required: true
+                  description: The Formio submission's MongoDB ObjectId.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-help-formio-pdf-formid-mongoid
+          path: /api/help/formio/pdf/{formId}/{mongoId}
+          operations:
+            - name: getapihelpformiopdfformidmongoid
+              method: GET
+              description: Get a PDF of an Existing Form's Submission from Formio.
+              inputParameters:
+                - name: formId
+                  in: path
+                  type: string
+                  required: true
+                  description: The Formio form's MongoDB ObjectId.
+                - name: mongoId
+                  in: path
+                  type: string
+                  required: true
+                  description: The Formio submission's MongoDB ObjectId.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-status-app
+          path: /api/status/app
+          operations:
+            - name: getapistatusapp
+              method: GET
+              description: CSB App Health Check.
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-status-bap-sam
+          path: /api/status/bap/sam
+          operations:
+            - name: getapistatusbapsam
+              method: GET
+              description: CSB SAM.gov Connection Check.
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-status-formio-2022-frf
+          path: /api/status/formio/2022/frf
+          operations:
+            - name: getapistatusformio2022frf
+              method: GET
+              description: CSB Formio 2022 FRF Schema Check.
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-status-formio-2022-prf
+          path: /api/status/formio/2022/prf
+          operations:
+            - name: getapistatusformio2022prf
+              method: GET
+              description: CSB Formio 2022 PRF Schema Check.
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-status-formio-2022-crf
+          path: /api/status/formio/2022/crf
+          operations:
+            - name: getapistatusformio2022crf
+              method: GET
+              description: CSB Formio 2022 CRF Schema Check.
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-status-formio-2022-change
+          path: /api/status/formio/2022/change
+          operations:
+            - name: getapistatusformio2022change
+              method: GET
+              description: CSB Formio 2022 Change Request Form Schema Check.
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-status-formio-2023-frf
+          path: /api/status/formio/2023/frf
+          operations:
+            - name: getapistatusformio2023frf
+              method: GET
+              description: CSB Formio 2023 FRF Schema Check.
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-status-formio-2023-prf
+          path: /api/status/formio/2023/prf
+          operations:
+            - name: getapistatusformio2023prf
+              method: GET
+              description: CSB Formio 2023 PRF Schema Check.
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-status-formio-2023-crf
+          path: /api/status/formio/2023/crf
+          operations:
+            - name: getapistatusformio2023crf
+              method: GET
+              description: CSB Formio 2023 CRF Schema Check.
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-status-formio-2023-change
+          path: /api/status/formio/2023/change
+          operations:
+            - name: getapistatusformio2023change
+              method: GET
+              description: CSB Formio 2023 Change Request Form Schema Check.
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-status-formio-2024-frf
+          path: /api/status/formio/2024/frf
+          operations:
+            - name: getapistatusformio2024frf
+              method: GET
+              description: CSB Formio 2024 FRF Schema Check.
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: api-status-formio-2024-change
+          path: /api/status/formio/2024/change
+          operations:
+            - name: getapistatusformio2024change
+              method: GET
+              description: CSB Formio 2024 Change Request Form Schema Check.
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: csb-rebate-general-rest
+      port: 8080
+      description: REST adapter for epa-csb-server — general. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/login
+          name: login
+          description: REST surface for /login.
+          operations:
+            - method: GET
+              name: getlogin
+              description: /login
+              call: csb-rebate-general.getlogin
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/login/assert
+          name: login-assert
+          description: REST surface for /login/assert.
+          operations:
+            - method: POST
+              name: postloginassert
+              description: /login/assert
+              call: csb-rebate-general.postloginassert
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/login/fail
+          name: login-fail
+          description: REST surface for /login/fail.
+          operations:
+            - method: GET
+              name: getloginfail
+              description: /login/fail
+              call: csb-rebate-general.getloginfail
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/logout
+          name: logout
+          description: REST surface for /logout.
+          operations:
+            - method: GET
+              name: getlogout
+              description: /logout
+              call: csb-rebate-general.getlogout
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/logout/callback
+          name: logout-callback
+          description: REST surface for /logout/callback.
+          operations:
+            - method: GET
+              name: getlogoutcallback
+              description: /logout/callback
+              call: csb-rebate-general.getlogoutcallback
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/logout/callback
+          name: logout-callback
+          description: REST surface for /logout/callback.
+          operations:
+            - method: POST
+              name: postlogoutcallback
+              description: /logout/callback
+              call: csb-rebate-general.postlogoutcallback
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/metadata
+          name: metadata
+          description: REST surface for /metadata.
+          operations:
+            - method: GET
+              name: getmetadata
+              description: /metadata
+              call: csb-rebate-general.getmetadata
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/user
+          name: api-user
+          description: REST surface for Get user data from EPA Gateway/Login.gov..
+          operations:
+            - method: GET
+              name: getapiuser
+              description: Get user data from EPA Gateway/Login.gov.
+              call: csb-rebate-general.getapiuser
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/config/public
+          name: api-config-public
+          description: REST surface for Get CSB App Specific Public Configuration (csb App Login Status and Static Content).
+          operations:
+            - method: GET
+              name: getapiconfigpublic
+              description: Get CSB App Specific Public Configuration (csb App Login Status and Static Content)
+              call: csb-rebate-general.getapiconfigpublic
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/config/private
+          name: api-config-private
+          description: REST surface for Get CSB App Specific Private Configuration (form Open Enrollment Status, Etc.).
+          operations:
+            - method: GET
+              name: getapiconfigprivate
+              description: Get CSB App Specific Private Configuration (form Open Enrollment Status, Etc.)
+              call: csb-rebate-general.getapiconfigprivate
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/bap/sam
+          name: api-bap-sam
+          description: REST surface for Get User's SAM.gov Data from the BAP..
+          operations:
+            - method: GET
+              name: getapibapsam
+              description: Get User's SAM.gov Data from the BAP.
+              call: csb-rebate-general.getapibapsam
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/bap/submissions
+          name: api-bap-submissions
+          description: REST surface for Get User's Form Submissions Statuses from the BAP..
+          operations:
+            - method: GET
+              name: getapibapsubmissions
+              description: Get User's Form Submissions Statuses from the BAP.
+              call: csb-rebate-general.getapibapsubmissions
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2022/district/{rebateid}
+          name: api-formio-2022-district-rebateid
+          description: REST surface for Get the School District Info Associated with a Provided CSB Rebate ID.
+          operations:
+            - method: GET
+              name: getapiformio2022districtrebateid
+              description: Get the School District Info Associated with a Provided CSB Rebate ID
+              call: csb-rebate-general.getapiformio2022districtrebateid
+              with:
+                rebateId: rest.rebateId
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2022/s3/{formtype}/{mongoid}/{combokey}/storage/s3
+          name: api-formio-2022-s3-formtype-mongoid-combokey-storage-s3
+          description: REST surface for Download Formio File Attachment from S3 for a 2022 Submission..
+          operations:
+            - method: GET
+              name: getapiformio2022s3formtypemongoidcombokeystorages3
+              description: Download Formio File Attachment from S3 for a 2022 Submission.
+              call: csb-rebate-general.getapiformio2022s3formtypemongoidcombokeystorages3
+              with:
+                formType: rest.formType
+                mongoId: rest.mongoId
+                comboKey: rest.comboKey
+                bucket: rest.bucket
+                key: rest.key
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2022/s3/{formtype}/{mongoid}/{combokey}/storage/s3
+          name: api-formio-2022-s3-formtype-mongoid-combokey-storage-s3
+          description: REST surface for Upload Formio File Attachment to S3 for a 2022 Submission..
+          operations:
+            - method: POST
+              name: postapiformio2022s3formtypemongoidcombokeystorages3
+              description: Upload Formio File Attachment to S3 for a 2022 Submission.
+              call: csb-rebate-general.postapiformio2022s3formtypemongoidcombokeystorages3
+              with:
+                formType: rest.formType
+                mongoId: rest.mongoId
+                comboKey: rest.comboKey
+                body: rest.body
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2022/s3/{formtype}/{mongoid}/{combokey}/storage/s3
+          name: api-formio-2022-s3-formtype-mongoid-combokey-storage-s3
+          description: REST surface for Delete Formio File Attachment from S3 for a 2022 Submission..
+          operations:
+            - method: DELETE
+              name: deleteapiformio2022s3formtypemongoidcombokeystorages3
+              description: Delete Formio File Attachment from S3 for a 2022 Submission.
+              call: csb-rebate-general.deleteapiformio2022s3formtypemongoidcombokeystorages3
+              with:
+                formType: rest.formType
+                mongoId: rest.mongoId
+                comboKey: rest.comboKey
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2022/pdf/{formtype}/{mongoid}
+          name: api-formio-2022-pdf-formtype-mongoid
+          description: REST surface for Download a PDF of a 2022 Form Submission..
+          operations:
+            - method: GET
+              name: getapiformio2022pdfformtypemongoid
+              description: Download a PDF of a 2022 Form Submission.
+              call: csb-rebate-general.getapiformio2022pdfformtypemongoid
+              with:
+                formType: rest.formType
+                mongoId: rest.mongoId
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2022/frf-submissions
+          name: api-formio-2022-frf-submissions
+          description: REST surface for Get User's 2022 FRF Submissions from Formio..
+          operations:
+            - method: GET
+              name: getapiformio2022frfsubmissions
+              description: Get User's 2022 FRF Submissions from Formio.
+              call: csb-rebate-general.getapiformio2022frfsubmissions
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2022/frf-submission
+          name: api-formio-2022-frf-submission
+          description: REST surface for Post a New 2022 FRF Submission to Formio..
+          operations:
+            - method: POST
+              name: postapiformio2022frfsubmission
+              description: Post a New 2022 FRF Submission to Formio.
+              call: csb-rebate-general.postapiformio2022frfsubmission
+              with:
+                body: rest.body
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2022/frf-submission/{mongoid}
+          name: api-formio-2022-frf-submission-mongoid
+          description: REST surface for Get an Existing 2022 FRF's Schema and Submission Data from Formio..
+          operations:
+            - method: GET
+              name: getapiformio2022frfsubmissionmongoid
+              description: Get an Existing 2022 FRF's Schema and Submission Data from Formio.
+              call: csb-rebate-general.getapiformio2022frfsubmissionmongoid
+              with:
+                mongoId: rest.mongoId
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2022/frf-submission/{mongoid}
+          name: api-formio-2022-frf-submission-mongoid
+          description: REST surface for Post an Update to an Existing Draft 2022 FRF Submission to Formio..
+          operations:
+            - method: POST
+              name: postapiformio2022frfsubmissionmongoid
+              description: Post an Update to an Existing Draft 2022 FRF Submission to Formio.
+              call: csb-rebate-general.postapiformio2022frfsubmissionmongoid
+              with:
+                mongoId: rest.mongoId
+                body: rest.body
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2022/prf-submissions
+          name: api-formio-2022-prf-submissions
+          description: REST surface for Get User's 2022 PRF Submissions from Formio..
+          operations:
+            - method: GET
+              name: getapiformio2022prfsubmissions
+              description: Get User's 2022 PRF Submissions from Formio.
+              call: csb-rebate-general.getapiformio2022prfsubmissions
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2022/prf-submission
+          name: api-formio-2022-prf-submission
+          description: REST surface for Post a New 2022 PRF Submission to Formio..
+          operations:
+            - method: POST
+              name: postapiformio2022prfsubmission
+              description: Post a New 2022 PRF Submission to Formio.
+              call: csb-rebate-general.postapiformio2022prfsubmission
+              with:
+                body: rest.body
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2022/prf-submission/{rebateid}
+          name: api-formio-2022-prf-submission-rebateid
+          description: REST surface for Get an Existing 2022 PRF's Schema and Submission Data from Formio..
+          operations:
+            - method: GET
+              name: getapiformio2022prfsubmissionrebateid
+              description: Get an Existing 2022 PRF's Schema and Submission Data from Formio.
+              call: csb-rebate-general.getapiformio2022prfsubmissionrebateid
+              with:
+                rebateId: rest.rebateId
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2022/prf-submission/{rebateid}
+          name: api-formio-2022-prf-submission-rebateid
+          description: REST surface for Post an Update to an Existing Draft 2022 PRF Submission to Formio..
+          operations:
+            - method: POST
+              name: postapiformio2022prfsubmissionrebateid
+              description: Post an Update to an Existing Draft 2022 PRF Submission to Formio.
+              call: csb-rebate-general.postapiformio2022prfsubmissionrebateid
+              with:
+                rebateId: rest.rebateId
+                body: rest.body
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2022/delete-prf-submission
+          name: api-formio-2022-delete-prf-submission
+          description: REST surface for Delete an Existing 2022 PRF Submission from Formio..
+          operations:
+            - method: POST
+              name: postapiformio2022deleteprfsubmission
+              description: Delete an Existing 2022 PRF Submission from Formio.
+              call: csb-rebate-general.postapiformio2022deleteprfsubmission
+              with:
+                body: rest.body
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2022/crf-submissions
+          name: api-formio-2022-crf-submissions
+          description: REST surface for Get User's 2022 CRF Submissions from Formio..
+          operations:
+            - method: GET
+              name: getapiformio2022crfsubmissions
+              description: Get User's 2022 CRF Submissions from Formio.
+              call: csb-rebate-general.getapiformio2022crfsubmissions
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2022/crf-submission
+          name: api-formio-2022-crf-submission
+          description: REST surface for Post a New 2022 CRF Submission to Formio..
+          operations:
+            - method: POST
+              name: postapiformio2022crfsubmission
+              description: Post a New 2022 CRF Submission to Formio.
+              call: csb-rebate-general.postapiformio2022crfsubmission
+              with:
+                body: rest.body
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2022/crf-submission/{rebateid}
+          name: api-formio-2022-crf-submission-rebateid
+          description: REST surface for Get an Existing 2022 CRF's Schema and Submission Data from Formio..
+          operations:
+            - method: GET
+              name: getapiformio2022crfsubmissionrebateid
+              description: Get an Existing 2022 CRF's Schema and Submission Data from Formio.
+              call: csb-rebate-general.getapiformio2022crfsubmissionrebateid
+              with:
+                rebateId: rest.rebateId
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2022/crf-submission/{rebateid}
+          name: api-formio-2022-crf-submission-rebateid
+          description: REST surface for Post an Update to an Existing Draft 2022 CRF Submission to Formio..
+          operations:
+            - method: POST
+              name: postapiformio2022crfsubmissionrebateid
+              description: Post an Update to an Existing Draft 2022 CRF Submission to Formio.
+              call: csb-rebate-general.postapiformio2022crfsubmissionrebateid
+              with:
+                rebateId: rest.rebateId
+                body: rest.body
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2022/changes
+          name: api-formio-2022-changes
+          description: REST surface for Get User's 2022 Change Request Form Submissions from Formio..
+          operations:
+            - method: GET
+              name: getapiformio2022changes
+              description: Get User's 2022 Change Request Form Submissions from Formio.
+              call: csb-rebate-general.getapiformio2022changes
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2023/check-vin/{vin}
+          name: api-formio-2023-check-vin-vin
+          description: REST surface for Check for Duplicate VINs in the BAP..
+          operations:
+            - method: GET
+              name: getapiformio2023checkvinvin
+              description: Check for Duplicate VINs in the BAP.
+              call: csb-rebate-general.getapiformio2023checkvinvin
+              with:
+                vin: rest.vin
+                rebateId: rest.rebateId
+                debug: rest.debug
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2023/nces/{searchtext}
+          name: api-formio-2023-nces-searchtext
+          description: REST surface for Search 2023 NCES Data with the Provided NCES ID and Return a Match..
+          operations:
+            - method: GET
+              name: getapiformio2023ncessearchtext
+              description: Search 2023 NCES Data with the Provided NCES ID and Return a Match.
+              call: csb-rebate-general.getapiformio2023ncessearchtext
+              with:
+                searchText: rest.searchText
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2023/district/{rebateid}
+          name: api-formio-2023-district-rebateid
+          description: REST surface for Get the School District Info Associated with a Provided CSB Rebate ID.
+          operations:
+            - method: GET
+              name: getapiformio2023districtrebateid
+              description: Get the School District Info Associated with a Provided CSB Rebate ID
+              call: csb-rebate-general.getapiformio2023districtrebateid
+              with:
+                rebateId: rest.rebateId
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2023/contacts/{rebateid}
+          name: api-formio-2023-contacts-rebateid
+          description: REST surface for Get Contacts Associated with a Provided CSB Rebate ID.
+          operations:
+            - method: GET
+              name: getapiformio2023contactsrebateid
+              description: Get Contacts Associated with a Provided CSB Rebate ID
+              call: csb-rebate-general.getapiformio2023contactsrebateid
+              with:
+                rebateId: rest.rebateId
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2023/s3/{formtype}/{mongoid}/{combokey}/storage/s3
+          name: api-formio-2023-s3-formtype-mongoid-combokey-storage-s3
+          description: REST surface for Download Formio File Attachment from S3 for a 2023 Submission..
+          operations:
+            - method: GET
+              name: getapiformio2023s3formtypemongoidcombokeystorages3
+              description: Download Formio File Attachment from S3 for a 2023 Submission.
+              call: csb-rebate-general.getapiformio2023s3formtypemongoidcombokeystorages3
+              with:
+                formType: rest.formType
+                mongoId: rest.mongoId
+                comboKey: rest.comboKey
+                bucket: rest.bucket
+                key: rest.key
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2023/s3/{formtype}/{mongoid}/{combokey}/storage/s3
+          name: api-formio-2023-s3-formtype-mongoid-combokey-storage-s3
+          description: REST surface for Upload Formio File Attachment to S3 for a 2023 Submission..
+          operations:
+            - method: POST
+              name: postapiformio2023s3formtypemongoidcombokeystorages3
+              description: Upload Formio File Attachment to S3 for a 2023 Submission.
+              call: csb-rebate-general.postapiformio2023s3formtypemongoidcombokeystorages3
+              with:
+                formType: rest.formType
+                mongoId: rest.mongoId
+                comboKey: rest.comboKey
+                body: rest.body
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2023/s3/{formtype}/{mongoid}/{combokey}/storage/s3
+          name: api-formio-2023-s3-formtype-mongoid-combokey-storage-s3
+          description: REST surface for Delete Formio File Attachment from S3 for a 2023 Submission..
+          operations:
+            - method: DELETE
+              name: deleteapiformio2023s3formtypemongoidcombokeystorages3
+              description: Delete Formio File Attachment from S3 for a 2023 Submission.
+              call: csb-rebate-general.deleteapiformio2023s3formtypemongoidcombokeystorages3
+              with:
+                formType: rest.formType
+                mongoId: rest.mongoId
+                comboKey: rest.comboKey
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2023/pdf/{formtype}/{mongoid}
+          name: api-formio-2023-pdf-formtype-mongoid
+          description: REST surface for Download a PDF of a 2023 Form Submission..
+          operations:
+            - method: GET
+              name: getapiformio2023pdfformtypemongoid
+              description: Download a PDF of a 2023 Form Submission.
+              call: csb-rebate-general.getapiformio2023pdfformtypemongoid
+              with:
+                formType: rest.formType
+                mongoId: rest.mongoId
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2023/frf-submissions
+          name: api-formio-2023-frf-submissions
+          description: REST surface for Get User's 2023 FRF Submissions from Formio..
+          operations:
+            - method: GET
+              name: getapiformio2023frfsubmissions
+              description: Get User's 2023 FRF Submissions from Formio.
+              call: csb-rebate-general.getapiformio2023frfsubmissions
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2023/frf-submission
+          name: api-formio-2023-frf-submission
+          description: REST surface for Post a New 2023 FRF Submission to Formio..
+          operations:
+            - method: POST
+              name: postapiformio2023frfsubmission
+              description: Post a New 2023 FRF Submission to Formio.
+              call: csb-rebate-general.postapiformio2023frfsubmission
+              with:
+                body: rest.body
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2023/frf-submission/{mongoid}
+          name: api-formio-2023-frf-submission-mongoid
+          description: REST surface for Get an Existing 2023 FRF's Schema and Submission Data from Formio..
+          operations:
+            - method: GET
+              name: getapiformio2023frfsubmissionmongoid
+              description: Get an Existing 2023 FRF's Schema and Submission Data from Formio.
+              call: csb-rebate-general.getapiformio2023frfsubmissionmongoid
+              with:
+                mongoId: rest.mongoId
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2023/frf-submission/{mongoid}
+          name: api-formio-2023-frf-submission-mongoid
+          description: REST surface for Post an Update to an Existing Draft 2023 FRF Submission to Formio..
+          operations:
+            - method: POST
+              name: postapiformio2023frfsubmissionmongoid
+              description: Post an Update to an Existing Draft 2023 FRF Submission to Formio.
+              call: csb-rebate-general.postapiformio2023frfsubmissionmongoid
+              with:
+                mongoId: rest.mongoId
+                body: rest.body
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2023/prf-submissions
+          name: api-formio-2023-prf-submissions
+          description: REST surface for Get User's 2023 PRF Submissions from Formio..
+          operations:
+            - method: GET
+              name: getapiformio2023prfsubmissions
+              description: Get User's 2023 PRF Submissions from Formio.
+              call: csb-rebate-general.getapiformio2023prfsubmissions
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2023/prf-submission
+          name: api-formio-2023-prf-submission
+          description: REST surface for Post a New 2023 PRF Submission to Formio..
+          operations:
+            - method: POST
+              name: postapiformio2023prfsubmission
+              description: Post a New 2023 PRF Submission to Formio.
+              call: csb-rebate-general.postapiformio2023prfsubmission
+              with:
+                body: rest.body
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2023/prf-submission/{rebateid}
+          name: api-formio-2023-prf-submission-rebateid
+          description: REST surface for Get an Existing 2023 PRF's Schema and Submission Data from Formio..
+          operations:
+            - method: GET
+              name: getapiformio2023prfsubmissionrebateid
+              description: Get an Existing 2023 PRF's Schema and Submission Data from Formio.
+              call: csb-rebate-general.getapiformio2023prfsubmissionrebateid
+              with:
+                rebateId: rest.rebateId
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2023/prf-submission/{rebateid}
+          name: api-formio-2023-prf-submission-rebateid
+          description: REST surface for Post an Update to an Existing Draft 2023 PRF Submission to Formio..
+          operations:
+            - method: POST
+              name: postapiformio2023prfsubmissionrebateid
+              description: Post an Update to an Existing Draft 2023 PRF Submission to Formio.
+              call: csb-rebate-general.postapiformio2023prfsubmissionrebateid
+              with:
+                rebateId: rest.rebateId
+                body: rest.body
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2023/delete-prf-submission
+          name: api-formio-2023-delete-prf-submission
+          description: REST surface for Delete an Existing 2023 PRF Submission from Formio..
+          operations:
+            - method: POST
+              name: postapiformio2023deleteprfsubmission
+              description: Delete an Existing 2023 PRF Submission from Formio.
+              call: csb-rebate-general.postapiformio2023deleteprfsubmission
+              with:
+                body: rest.body
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2023/crf-submissions
+          name: api-formio-2023-crf-submissions
+          description: REST surface for Get User's 2023 CRF Submissions from Formio..
+          operations:
+            - method: GET
+              name: getapiformio2023crfsubmissions
+              description: Get User's 2023 CRF Submissions from Formio.
+              call: csb-rebate-general.getapiformio2023crfsubmissions
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2023/crf-submission
+          name: api-formio-2023-crf-submission
+          description: REST surface for Post a New 2023 CRF Submission to Formio..
+          operations:
+            - method: POST
+              name: postapiformio2023crfsubmission
+              description: Post a New 2023 CRF Submission to Formio.
+              call: csb-rebate-general.postapiformio2023crfsubmission
+              with:
+                body: rest.body
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2023/crf-submission/{rebateid}
+          name: api-formio-2023-crf-submission-rebateid
+          description: REST surface for Get an Existing 2023 CRF's Schema and Submission Data from Formio..
+          operations:
+            - method: GET
+              name: getapiformio2023crfsubmissionrebateid
+              description: Get an Existing 2023 CRF's Schema and Submission Data from Formio.
+              call: csb-rebate-general.getapiformio2023crfsubmissionrebateid
+              with:
+                rebateId: rest.rebateId
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2023/crf-submission/{rebateid}
+          name: api-formio-2023-crf-submission-rebateid
+          description: REST surface for Post an Update to an Existing Draft 2023 CRF Submission to Formio..
+          operations:
+            - method: POST
+              name: postapiformio2023crfsubmissionrebateid
+              description: Post an Update to an Existing Draft 2023 CRF Submission to Formio.
+              call: csb-rebate-general.postapiformio2023crfsubmissionrebateid
+              with:
+                rebateId: rest.rebateId
+                body: rest.body
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2023/changes
+          name: api-formio-2023-changes
+          description: REST surface for Get User's 2023 Change Request Form Submissions from Formio..
+          operations:
+            - method: GET
+              name: getapiformio2023changes
+              description: Get User's 2023 Change Request Form Submissions from Formio.
+              call: csb-rebate-general.getapiformio2023changes
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2023/change
+          name: api-formio-2023-change
+          description: REST surface for Get the 2023 Change Request Form's Schema from Formio..
+          operations:
+            - method: GET
+              name: getapiformio2023change
+              description: Get the 2023 Change Request Form's Schema from Formio.
+              call: csb-rebate-general.getapiformio2023change
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2023/change
+          name: api-formio-2023-change
+          description: REST surface for Post a New 2023 Change Request Form Submission to Formio..
+          operations:
+            - method: POST
+              name: postapiformio2023change
+              description: Post a New 2023 Change Request Form Submission to Formio.
+              call: csb-rebate-general.postapiformio2023change
+              with:
+                body: rest.body
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2023/change/{mongoid}
+          name: api-formio-2023-change-mongoid
+          description: REST surface for Get an Existing 2023 Change Request Form's Schema and Submission Data from Formio..
+          operations:
+            - method: GET
+              name: getapiformio2023changemongoid
+              description: Get an Existing 2023 Change Request Form's Schema and Submission Data from Formio.
+              call: csb-rebate-general.getapiformio2023changemongoid
+              with:
+                mongoId: rest.mongoId
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2024/nces/{searchtext}
+          name: api-formio-2024-nces-searchtext
+          description: REST surface for Search 2024 NCES Data with the Provided NCES ID and Return a Match..
+          operations:
+            - method: GET
+              name: getapiformio2024ncessearchtext
+              description: Search 2024 NCES Data with the Provided NCES ID and Return a Match.
+              call: csb-rebate-general.getapiformio2024ncessearchtext
+              with:
+                searchText: rest.searchText
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2024/district/{rebateid}
+          name: api-formio-2024-district-rebateid
+          description: REST surface for Get the School District Info Associated with a Provided CSB Rebate ID.
+          operations:
+            - method: GET
+              name: getapiformio2024districtrebateid
+              description: Get the School District Info Associated with a Provided CSB Rebate ID
+              call: csb-rebate-general.getapiformio2024districtrebateid
+              with:
+                rebateId: rest.rebateId
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2024/s3/{formtype}/{mongoid}/{combokey}/storage/s3
+          name: api-formio-2024-s3-formtype-mongoid-combokey-storage-s3
+          description: REST surface for Download Formio File Attachment from S3 for a 2024 Submission..
+          operations:
+            - method: GET
+              name: getapiformio2024s3formtypemongoidcombokeystorages3
+              description: Download Formio File Attachment from S3 for a 2024 Submission.
+              call: csb-rebate-general.getapiformio2024s3formtypemongoidcombokeystorages3
+              with:
+                formType: rest.formType
+                mongoId: rest.mongoId
+                comboKey: rest.comboKey
+                bucket: rest.bucket
+                key: rest.key
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2024/s3/{formtype}/{mongoid}/{combokey}/storage/s3
+          name: api-formio-2024-s3-formtype-mongoid-combokey-storage-s3
+          description: REST surface for Upload Formio File Attachment to S3 for a 2024 Submission..
+          operations:
+            - method: POST
+              name: postapiformio2024s3formtypemongoidcombokeystorages3
+              description: Upload Formio File Attachment to S3 for a 2024 Submission.
+              call: csb-rebate-general.postapiformio2024s3formtypemongoidcombokeystorages3
+              with:
+                formType: rest.formType
+                mongoId: rest.mongoId
+                comboKey: rest.comboKey
+                body: rest.body
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2024/s3/{formtype}/{mongoid}/{combokey}/storage/s3
+          name: api-formio-2024-s3-formtype-mongoid-combokey-storage-s3
+          description: REST surface for Delete Formio File Attachment from S3 for a 2024 Submission..
+          operations:
+            - method: DELETE
+              name: deleteapiformio2024s3formtypemongoidcombokeystorages3
+              description: Delete Formio File Attachment from S3 for a 2024 Submission.
+              call: csb-rebate-general.deleteapiformio2024s3formtypemongoidcombokeystorages3
+              with:
+                formType: rest.formType
+                mongoId: rest.mongoId
+                comboKey: rest.comboKey
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2024/pdf/{formtype}/{mongoid}
+          name: api-formio-2024-pdf-formtype-mongoid
+          description: REST surface for Download a PDF of a 2024 Form Submission..
+          operations:
+            - method: GET
+              name: getapiformio2024pdfformtypemongoid
+              description: Download a PDF of a 2024 Form Submission.
+              call: csb-rebate-general.getapiformio2024pdfformtypemongoid
+              with:
+                formType: rest.formType
+                mongoId: rest.mongoId
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2024/frf-submissions
+          name: api-formio-2024-frf-submissions
+          description: REST surface for Get User's 2024 FRF Submissions from Formio..
+          operations:
+            - method: GET
+              name: getapiformio2024frfsubmissions
+              description: Get User's 2024 FRF Submissions from Formio.
+              call: csb-rebate-general.getapiformio2024frfsubmissions
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2024/frf-submission
+          name: api-formio-2024-frf-submission
+          description: REST surface for Post a New 2024 FRF Submission to Formio..
+          operations:
+            - method: POST
+              name: postapiformio2024frfsubmission
+              description: Post a New 2024 FRF Submission to Formio.
+              call: csb-rebate-general.postapiformio2024frfsubmission
+              with:
+                body: rest.body
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2024/frf-submission/{mongoid}
+          name: api-formio-2024-frf-submission-mongoid
+          description: REST surface for Get an Existing 2024 FRF's Schema and Submission Data from Formio..
+          operations:
+            - method: GET
+              name: getapiformio2024frfsubmissionmongoid
+              description: Get an Existing 2024 FRF's Schema and Submission Data from Formio.
+              call: csb-rebate-general.getapiformio2024frfsubmissionmongoid
+              with:
+                mongoId: rest.mongoId
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2024/frf-submission/{mongoid}
+          name: api-formio-2024-frf-submission-mongoid
+          description: REST surface for Post an Update to an Existing Draft 2024 FRF Submission to Formio..
+          operations:
+            - method: POST
+              name: postapiformio2024frfsubmissionmongoid
+              description: Post an Update to an Existing Draft 2024 FRF Submission to Formio.
+              call: csb-rebate-general.postapiformio2024frfsubmissionmongoid
+              with:
+                mongoId: rest.mongoId
+                body: rest.body
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2024/changes
+          name: api-formio-2024-changes
+          description: REST surface for Get User's 2024 Change Request Form Submissions from Formio..
+          operations:
+            - method: GET
+              name: getapiformio2024changes
+              description: Get User's 2024 Change Request Form Submissions from Formio.
+              call: csb-rebate-general.getapiformio2024changes
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2024/change
+          name: api-formio-2024-change
+          description: REST surface for Get the 2024 Change Request Form's Schema from Formio..
+          operations:
+            - method: GET
+              name: getapiformio2024change
+              description: Get the 2024 Change Request Form's Schema from Formio.
+              call: csb-rebate-general.getapiformio2024change
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2024/change
+          name: api-formio-2024-change
+          description: REST surface for Post a New 2024 Change Request Form Submission to Formio..
+          operations:
+            - method: POST
+              name: postapiformio2024change
+              description: Post a New 2024 Change Request Form Submission to Formio.
+              call: csb-rebate-general.postapiformio2024change
+              with:
+                body: rest.body
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/formio/2024/change/{mongoid}
+          name: api-formio-2024-change-mongoid
+          description: REST surface for Get an Existing 2024 Change Request Form's Schema and Submission Data from Formio..
+          operations:
+            - method: GET
+              name: getapiformio2024changemongoid
+              description: Get an Existing 2024 Change Request Form's Schema and Submission Data from Formio.
+              call: csb-rebate-general.getapiformio2024changemongoid
+              with:
+                mongoId: rest.mongoId
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/help/formio/s3/{rebateyear}/{formtype}/storage/s3
+          name: api-help-formio-s3-rebateyear-formtype-storage-s3
+          description: REST surface for Download Formio File Attachment from S3 for a Submission..
+          operations:
+            - method: GET
+              name: getapihelpformios3rebateyearformtypestorages3
+              description: Download Formio File Attachment from S3 for a Submission.
+              call: csb-rebate-general.getapihelpformios3rebateyearformtypestorages3
+              with:
+                rebateYear: rest.rebateYear
+                formType: rest.formType
+                bucket: rest.bucket
+                key: rest.key
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/help/formio/submission/{rebateyear}/{formtype}/{id}
+          name: api-help-formio-submission-rebateyear-formtype-id
+          description: REST surface for Get an Existing Form's Submission Data from Formio..
+          operations:
+            - method: GET
+              name: getapihelpformiosubmissionrebateyearformtypeid
+              description: Get an Existing Form's Submission Data from Formio.
+              call: csb-rebate-general.getapihelpformiosubmissionrebateyearformtypeid
+              with:
+                rebateYear: rest.rebateYear
+                formType: rest.formType
+                id: rest.id
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/help/formio/submission/{rebateyear}/{formtype}/{id}
+          name: api-help-formio-submission-rebateyear-formtype-id
+          description: REST surface for Post an Update to an Existing Form Submission to Formio (change Submission to 'draft')..
+          operations:
+            - method: POST
+              name: postapihelpformiosubmissionrebateyearformtypeid
+              description: Post an Update to an Existing Form Submission to Formio (change Submission to 'draft').
+              call: csb-rebate-general.postapihelpformiosubmissionrebateyearformtypeid
+              with:
+                rebateYear: rest.rebateYear
+                formType: rest.formType
+                id: rest.id
+                body: rest.body
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/help/formio/actions/{formid}/{mongoid}
+          name: api-help-formio-actions-formid-mongoid
+          description: REST surface for Get All Actions Associated with a Form's Submission from Formio..
+          operations:
+            - method: GET
+              name: getapihelpformioactionsformidmongoid
+              description: Get All Actions Associated with a Form's Submission from Formio.
+              call: csb-rebate-general.getapihelpformioactionsformidmongoid
+              with:
+                formId: rest.formId
+                mongoId: rest.mongoId
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/help/formio/pdf/{formid}/{mongoid}
+          name: api-help-formio-pdf-formid-mongoid
+          description: REST surface for Get a PDF of an Existing Form's Submission from Formio..
+          operations:
+            - method: GET
+              name: getapihelpformiopdfformidmongoid
+              description: Get a PDF of an Existing Form's Submission from Formio.
+              call: csb-rebate-general.getapihelpformiopdfformidmongoid
+              with:
+                formId: rest.formId
+                mongoId: rest.mongoId
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/status/app
+          name: api-status-app
+          description: REST surface for CSB App Health Check..
+          operations:
+            - method: GET
+              name: getapistatusapp
+              description: CSB App Health Check.
+              call: csb-rebate-general.getapistatusapp
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/status/bap/sam
+          name: api-status-bap-sam
+          description: REST surface for CSB SAM.gov Connection Check..
+          operations:
+            - method: GET
+              name: getapistatusbapsam
+              description: CSB SAM.gov Connection Check.
+              call: csb-rebate-general.getapistatusbapsam
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/status/formio/2022/frf
+          name: api-status-formio-2022-frf
+          description: REST surface for CSB Formio 2022 FRF Schema Check..
+          operations:
+            - method: GET
+              name: getapistatusformio2022frf
+              description: CSB Formio 2022 FRF Schema Check.
+              call: csb-rebate-general.getapistatusformio2022frf
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/status/formio/2022/prf
+          name: api-status-formio-2022-prf
+          description: REST surface for CSB Formio 2022 PRF Schema Check..
+          operations:
+            - method: GET
+              name: getapistatusformio2022prf
+              description: CSB Formio 2022 PRF Schema Check.
+              call: csb-rebate-general.getapistatusformio2022prf
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/status/formio/2022/crf
+          name: api-status-formio-2022-crf
+          description: REST surface for CSB Formio 2022 CRF Schema Check..
+          operations:
+            - method: GET
+              name: getapistatusformio2022crf
+              description: CSB Formio 2022 CRF Schema Check.
+              call: csb-rebate-general.getapistatusformio2022crf
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/status/formio/2022/change
+          name: api-status-formio-2022-change
+          description: REST surface for CSB Formio 2022 Change Request Form Schema Check..
+          operations:
+            - method: GET
+              name: getapistatusformio2022change
+              description: CSB Formio 2022 Change Request Form Schema Check.
+              call: csb-rebate-general.getapistatusformio2022change
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/status/formio/2023/frf
+          name: api-status-formio-2023-frf
+          description: REST surface for CSB Formio 2023 FRF Schema Check..
+          operations:
+            - method: GET
+              name: getapistatusformio2023frf
+              description: CSB Formio 2023 FRF Schema Check.
+              call: csb-rebate-general.getapistatusformio2023frf
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/status/formio/2023/prf
+          name: api-status-formio-2023-prf
+          description: REST surface for CSB Formio 2023 PRF Schema Check..
+          operations:
+            - method: GET
+              name: getapistatusformio2023prf
+              description: CSB Formio 2023 PRF Schema Check.
+              call: csb-rebate-general.getapistatusformio2023prf
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/status/formio/2023/crf
+          name: api-status-formio-2023-crf
+          description: REST surface for CSB Formio 2023 CRF Schema Check..
+          operations:
+            - method: GET
+              name: getapistatusformio2023crf
+              description: CSB Formio 2023 CRF Schema Check.
+              call: csb-rebate-general.getapistatusformio2023crf
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/status/formio/2023/change
+          name: api-status-formio-2023-change
+          description: REST surface for CSB Formio 2023 Change Request Form Schema Check..
+          operations:
+            - method: GET
+              name: getapistatusformio2023change
+              description: CSB Formio 2023 Change Request Form Schema Check.
+              call: csb-rebate-general.getapistatusformio2023change
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/status/formio/2024/frf
+          name: api-status-formio-2024-frf
+          description: REST surface for CSB Formio 2024 FRF Schema Check..
+          operations:
+            - method: GET
+              name: getapistatusformio2024frf
+              description: CSB Formio 2024 FRF Schema Check.
+              call: csb-rebate-general.getapistatusformio2024frf
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/api/status/formio/2024/change
+          name: api-status-formio-2024-change
+          description: REST surface for CSB Formio 2024 Change Request Form Schema Check..
+          operations:
+            - method: GET
+              name: getapistatusformio2024change
+              description: CSB Formio 2024 Change Request Form Schema Check.
+              call: csb-rebate-general.getapistatusformio2024change
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: csb-rebate-general-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for epa-csb-server — general. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: login
+          description: /login
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getlogin
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: login-assert
+          description: /login/assert
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: csb-rebate-general.postloginassert
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: login-fail
+          description: /login/fail
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getloginfail
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: logout
+          description: /logout
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getlogout
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: logout-callback
+          description: /logout/callback
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getlogoutcallback
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: logout-callback-2
+          description: /logout/callback
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: csb-rebate-general.postlogoutcallback
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: metadata
+          description: /metadata
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getmetadata
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-user-data-epa-gateway-login-gov
+          description: Get user data from EPA Gateway/Login.gov.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapiuser
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-csb-app-specific-public-configuration-csb-app-login-status-static-content
+          description: Get CSB App Specific Public Configuration (csb App Login Status and Static Content)
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapiconfigpublic
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-csb-app-specific-private-configuration-form-open-enrollment-status-etc
+          description: Get CSB App Specific Private Configuration (form Open Enrollment Status, Etc.)
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapiconfigprivate
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-user-s-sam-gov-data-bap
+          description: Get User's SAM.gov Data from the BAP.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapibapsam
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-user-s-form-submissions-statuses-bap
+          description: Get User's Form Submissions Statuses from the BAP.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapibapsubmissions
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-school-district-info-associated-provided-csb-rebate-id
+          description: Get the School District Info Associated with a Provided CSB Rebate ID
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapiformio2022districtrebateid
+          with:
+            rebateId: tools.rebateId
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: download-formio-file-attachment-s3-2022-submission
+          description: Download Formio File Attachment from S3 for a 2022 Submission.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapiformio2022s3formtypemongoidcombokeystorages3
+          with:
+            formType: tools.formType
+            mongoId: tools.mongoId
+            comboKey: tools.comboKey
+            bucket: tools.bucket
+            key: tools.key
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: upload-formio-file-attachment-s3-2022-submission
+          description: Upload Formio File Attachment to S3 for a 2022 Submission.
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: csb-rebate-general.postapiformio2022s3formtypemongoidcombokeystorages3
+          with:
+            formType: tools.formType
+            mongoId: tools.mongoId
+            comboKey: tools.comboKey
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: delete-formio-file-attachment-s3-2022-submission
+          description: Delete Formio File Attachment from S3 for a 2022 Submission.
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: csb-rebate-general.deleteapiformio2022s3formtypemongoidcombokeystorages3
+          with:
+            formType: tools.formType
+            mongoId: tools.mongoId
+            comboKey: tools.comboKey
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: download-pdf-2022-form-submission
+          description: Download a PDF of a 2022 Form Submission.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapiformio2022pdfformtypemongoid
+          with:
+            formType: tools.formType
+            mongoId: tools.mongoId
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-user-s-2022-frf-submissions-formio
+          description: Get User's 2022 FRF Submissions from Formio.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapiformio2022frfsubmissions
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: post-new-2022-frf-submission-formio
+          description: Post a New 2022 FRF Submission to Formio.
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: csb-rebate-general.postapiformio2022frfsubmission
+          with:
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-existing-2022-frf-s-schema-submission-data-formio
+          description: Get an Existing 2022 FRF's Schema and Submission Data from Formio.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapiformio2022frfsubmissionmongoid
+          with:
+            mongoId: tools.mongoId
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: post-update-existing-draft-2022-frf-submission-formio
+          description: Post an Update to an Existing Draft 2022 FRF Submission to Formio.
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: csb-rebate-general.postapiformio2022frfsubmissionmongoid
+          with:
+            mongoId: tools.mongoId
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-user-s-2022-prf-submissions-formio
+          description: Get User's 2022 PRF Submissions from Formio.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapiformio2022prfsubmissions
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: post-new-2022-prf-submission-formio
+          description: Post a New 2022 PRF Submission to Formio.
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: csb-rebate-general.postapiformio2022prfsubmission
+          with:
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-existing-2022-prf-s-schema-submission-data-formio
+          description: Get an Existing 2022 PRF's Schema and Submission Data from Formio.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapiformio2022prfsubmissionrebateid
+          with:
+            rebateId: tools.rebateId
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: post-update-existing-draft-2022-prf-submission-formio
+          description: Post an Update to an Existing Draft 2022 PRF Submission to Formio.
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: csb-rebate-general.postapiformio2022prfsubmissionrebateid
+          with:
+            rebateId: tools.rebateId
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: delete-existing-2022-prf-submission-formio
+          description: Delete an Existing 2022 PRF Submission from Formio.
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: csb-rebate-general.postapiformio2022deleteprfsubmission
+          with:
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-user-s-2022-crf-submissions-formio
+          description: Get User's 2022 CRF Submissions from Formio.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapiformio2022crfsubmissions
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: post-new-2022-crf-submission-formio
+          description: Post a New 2022 CRF Submission to Formio.
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: csb-rebate-general.postapiformio2022crfsubmission
+          with:
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-existing-2022-crf-s-schema-submission-data-formio
+          description: Get an Existing 2022 CRF's Schema and Submission Data from Formio.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapiformio2022crfsubmissionrebateid
+          with:
+            rebateId: tools.rebateId
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: post-update-existing-draft-2022-crf-submission-formio
+          description: Post an Update to an Existing Draft 2022 CRF Submission to Formio.
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: csb-rebate-general.postapiformio2022crfsubmissionrebateid
+          with:
+            rebateId: tools.rebateId
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-user-s-2022-change-request-form-submissions-formio
+          description: Get User's 2022 Change Request Form Submissions from Formio.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapiformio2022changes
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: check-duplicate-vins-bap
+          description: Check for Duplicate VINs in the BAP.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapiformio2023checkvinvin
+          with:
+            vin: tools.vin
+            rebateId: tools.rebateId
+            debug: tools.debug
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: search-2023-nces-data-provided-nces-id-return-match
+          description: Search 2023 NCES Data with the Provided NCES ID and Return a Match.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapiformio2023ncessearchtext
+          with:
+            searchText: tools.searchText
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-school-district-info-associated-provided-csb-rebate-id-2
+          description: Get the School District Info Associated with a Provided CSB Rebate ID
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapiformio2023districtrebateid
+          with:
+            rebateId: tools.rebateId
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-contacts-associated-provided-csb-rebate-id
+          description: Get Contacts Associated with a Provided CSB Rebate ID
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapiformio2023contactsrebateid
+          with:
+            rebateId: tools.rebateId
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: download-formio-file-attachment-s3-2023-submission
+          description: Download Formio File Attachment from S3 for a 2023 Submission.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapiformio2023s3formtypemongoidcombokeystorages3
+          with:
+            formType: tools.formType
+            mongoId: tools.mongoId
+            comboKey: tools.comboKey
+            bucket: tools.bucket
+            key: tools.key
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: upload-formio-file-attachment-s3-2023-submission
+          description: Upload Formio File Attachment to S3 for a 2023 Submission.
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: csb-rebate-general.postapiformio2023s3formtypemongoidcombokeystorages3
+          with:
+            formType: tools.formType
+            mongoId: tools.mongoId
+            comboKey: tools.comboKey
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: delete-formio-file-attachment-s3-2023-submission
+          description: Delete Formio File Attachment from S3 for a 2023 Submission.
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: csb-rebate-general.deleteapiformio2023s3formtypemongoidcombokeystorages3
+          with:
+            formType: tools.formType
+            mongoId: tools.mongoId
+            comboKey: tools.comboKey
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: download-pdf-2023-form-submission
+          description: Download a PDF of a 2023 Form Submission.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapiformio2023pdfformtypemongoid
+          with:
+            formType: tools.formType
+            mongoId: tools.mongoId
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-user-s-2023-frf-submissions-formio
+          description: Get User's 2023 FRF Submissions from Formio.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapiformio2023frfsubmissions
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: post-new-2023-frf-submission-formio
+          description: Post a New 2023 FRF Submission to Formio.
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: csb-rebate-general.postapiformio2023frfsubmission
+          with:
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-existing-2023-frf-s-schema-submission-data-formio
+          description: Get an Existing 2023 FRF's Schema and Submission Data from Formio.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapiformio2023frfsubmissionmongoid
+          with:
+            mongoId: tools.mongoId
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: post-update-existing-draft-2023-frf-submission-formio
+          description: Post an Update to an Existing Draft 2023 FRF Submission to Formio.
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: csb-rebate-general.postapiformio2023frfsubmissionmongoid
+          with:
+            mongoId: tools.mongoId
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-user-s-2023-prf-submissions-formio
+          description: Get User's 2023 PRF Submissions from Formio.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapiformio2023prfsubmissions
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: post-new-2023-prf-submission-formio
+          description: Post a New 2023 PRF Submission to Formio.
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: csb-rebate-general.postapiformio2023prfsubmission
+          with:
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-existing-2023-prf-s-schema-submission-data-formio
+          description: Get an Existing 2023 PRF's Schema and Submission Data from Formio.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapiformio2023prfsubmissionrebateid
+          with:
+            rebateId: tools.rebateId
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: post-update-existing-draft-2023-prf-submission-formio
+          description: Post an Update to an Existing Draft 2023 PRF Submission to Formio.
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: csb-rebate-general.postapiformio2023prfsubmissionrebateid
+          with:
+            rebateId: tools.rebateId
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: delete-existing-2023-prf-submission-formio
+          description: Delete an Existing 2023 PRF Submission from Formio.
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: csb-rebate-general.postapiformio2023deleteprfsubmission
+          with:
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-user-s-2023-crf-submissions-formio
+          description: Get User's 2023 CRF Submissions from Formio.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapiformio2023crfsubmissions
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: post-new-2023-crf-submission-formio
+          description: Post a New 2023 CRF Submission to Formio.
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: csb-rebate-general.postapiformio2023crfsubmission
+          with:
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-existing-2023-crf-s-schema-submission-data-formio
+          description: Get an Existing 2023 CRF's Schema and Submission Data from Formio.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapiformio2023crfsubmissionrebateid
+          with:
+            rebateId: tools.rebateId
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: post-update-existing-draft-2023-crf-submission-formio
+          description: Post an Update to an Existing Draft 2023 CRF Submission to Formio.
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: csb-rebate-general.postapiformio2023crfsubmissionrebateid
+          with:
+            rebateId: tools.rebateId
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-user-s-2023-change-request-form-submissions-formio
+          description: Get User's 2023 Change Request Form Submissions from Formio.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapiformio2023changes
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-2023-change-request-form-s-schema-formio
+          description: Get the 2023 Change Request Form's Schema from Formio.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapiformio2023change
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: post-new-2023-change-request-form-submission-formio
+          description: Post a New 2023 Change Request Form Submission to Formio.
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: csb-rebate-general.postapiformio2023change
+          with:
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-existing-2023-change-request-form-s-schema-submission-data-formio
+          description: Get an Existing 2023 Change Request Form's Schema and Submission Data from Formio.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapiformio2023changemongoid
+          with:
+            mongoId: tools.mongoId
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: search-2024-nces-data-provided-nces-id-return-match
+          description: Search 2024 NCES Data with the Provided NCES ID and Return a Match.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapiformio2024ncessearchtext
+          with:
+            searchText: tools.searchText
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-school-district-info-associated-provided-csb-rebate-id-3
+          description: Get the School District Info Associated with a Provided CSB Rebate ID
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapiformio2024districtrebateid
+          with:
+            rebateId: tools.rebateId
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: download-formio-file-attachment-s3-2024-submission
+          description: Download Formio File Attachment from S3 for a 2024 Submission.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapiformio2024s3formtypemongoidcombokeystorages3
+          with:
+            formType: tools.formType
+            mongoId: tools.mongoId
+            comboKey: tools.comboKey
+            bucket: tools.bucket
+            key: tools.key
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: upload-formio-file-attachment-s3-2024-submission
+          description: Upload Formio File Attachment to S3 for a 2024 Submission.
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: csb-rebate-general.postapiformio2024s3formtypemongoidcombokeystorages3
+          with:
+            formType: tools.formType
+            mongoId: tools.mongoId
+            comboKey: tools.comboKey
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: delete-formio-file-attachment-s3-2024-submission
+          description: Delete Formio File Attachment from S3 for a 2024 Submission.
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: csb-rebate-general.deleteapiformio2024s3formtypemongoidcombokeystorages3
+          with:
+            formType: tools.formType
+            mongoId: tools.mongoId
+            comboKey: tools.comboKey
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: download-pdf-2024-form-submission
+          description: Download a PDF of a 2024 Form Submission.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapiformio2024pdfformtypemongoid
+          with:
+            formType: tools.formType
+            mongoId: tools.mongoId
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-user-s-2024-frf-submissions-formio
+          description: Get User's 2024 FRF Submissions from Formio.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapiformio2024frfsubmissions
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: post-new-2024-frf-submission-formio
+          description: Post a New 2024 FRF Submission to Formio.
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: csb-rebate-general.postapiformio2024frfsubmission
+          with:
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-existing-2024-frf-s-schema-submission-data-formio
+          description: Get an Existing 2024 FRF's Schema and Submission Data from Formio.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapiformio2024frfsubmissionmongoid
+          with:
+            mongoId: tools.mongoId
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: post-update-existing-draft-2024-frf-submission-formio
+          description: Post an Update to an Existing Draft 2024 FRF Submission to Formio.
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: csb-rebate-general.postapiformio2024frfsubmissionmongoid
+          with:
+            mongoId: tools.mongoId
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-user-s-2024-change-request-form-submissions-formio
+          description: Get User's 2024 Change Request Form Submissions from Formio.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapiformio2024changes
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-2024-change-request-form-s-schema-formio
+          description: Get the 2024 Change Request Form's Schema from Formio.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapiformio2024change
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: post-new-2024-change-request-form-submission-formio
+          description: Post a New 2024 Change Request Form Submission to Formio.
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: csb-rebate-general.postapiformio2024change
+          with:
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-existing-2024-change-request-form-s-schema-submission-data-formio
+          description: Get an Existing 2024 Change Request Form's Schema and Submission Data from Formio.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapiformio2024changemongoid
+          with:
+            mongoId: tools.mongoId
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: download-formio-file-attachment-s3-submission
+          description: Download Formio File Attachment from S3 for a Submission.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapihelpformios3rebateyearformtypestorages3
+          with:
+            rebateYear: tools.rebateYear
+            formType: tools.formType
+            bucket: tools.bucket
+            key: tools.key
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-existing-form-s-submission-data-formio
+          description: Get an Existing Form's Submission Data from Formio.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapihelpformiosubmissionrebateyearformtypeid
+          with:
+            rebateYear: tools.rebateYear
+            formType: tools.formType
+            id: tools.id
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: post-update-existing-form-submission-formio-change-submission-draft
+          description: Post an Update to an Existing Form Submission to Formio (change Submission to 'draft').
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: csb-rebate-general.postapihelpformiosubmissionrebateyearformtypeid
+          with:
+            rebateYear: tools.rebateYear
+            formType: tools.formType
+            id: tools.id
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-all-actions-associated-form-s-submission-formio
+          description: Get All Actions Associated with a Form's Submission from Formio.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapihelpformioactionsformidmongoid
+          with:
+            formId: tools.formId
+            mongoId: tools.mongoId
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-pdf-existing-form-s-submission-formio
+          description: Get a PDF of an Existing Form's Submission from Formio.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapihelpformiopdfformidmongoid
+          with:
+            formId: tools.formId
+            mongoId: tools.mongoId
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: csb-app-health-check
+          description: CSB App Health Check.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapistatusapp
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: csb-sam-gov-connection-check
+          description: CSB SAM.gov Connection Check.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapistatusbapsam
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: csb-formio-2022-frf-schema-check
+          description: CSB Formio 2022 FRF Schema Check.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapistatusformio2022frf
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: csb-formio-2022-prf-schema-check
+          description: CSB Formio 2022 PRF Schema Check.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapistatusformio2022prf
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: csb-formio-2022-crf-schema-check
+          description: CSB Formio 2022 CRF Schema Check.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapistatusformio2022crf
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: csb-formio-2022-change-request-form-schema-check
+          description: CSB Formio 2022 Change Request Form Schema Check.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapistatusformio2022change
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: csb-formio-2023-frf-schema-check
+          description: CSB Formio 2023 FRF Schema Check.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapistatusformio2023frf
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: csb-formio-2023-prf-schema-check
+          description: CSB Formio 2023 PRF Schema Check.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapistatusformio2023prf
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: csb-formio-2023-crf-schema-check
+          description: CSB Formio 2023 CRF Schema Check.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapistatusformio2023crf
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: csb-formio-2023-change-request-form-schema-check
+          description: CSB Formio 2023 Change Request Form Schema Check.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapistatusformio2023change
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: csb-formio-2024-frf-schema-check
+          description: CSB Formio 2024 FRF Schema Check.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapistatusformio2024frf
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: csb-formio-2024-change-request-form-schema-check
+          description: CSB Formio 2024 Change Request Form Schema Check.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: csb-rebate-general.getapistatusformio2024change
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.

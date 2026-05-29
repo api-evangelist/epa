@@ -1,0 +1,86 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Monitor Plan Management OpenAPI Specification — LEE Qualifications
+  description: 'LEE Qualifications. 1 operations. Lead operation: operations. Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - LEE Qualifications
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_APIKEY_KEY: EPA_APIKEY_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: cam-monitor-plan-lee-qualifications
+      baseUri: https://api.epa.gov/easey
+      description: Monitor Plan Management OpenAPI Specification — LEE Qualifications business capability. Self-contained, no shared references.
+      authentication:
+        type: apikey
+        key: x-api-key
+        value: '{{env.EPA_APIKEY_KEY}}'
+        placement: header
+      resources:
+        - name: monitor-plan-mgmt-locations-locid-qualifications-qualid-lee-qualifications
+          path: /monitor-plan-mgmt/locations/{locId}/qualifications/{qualId}/lee-qualifications
+          operations:
+            - name: lEEQualificationControllergetLEEQualifications
+              method: GET
+              description: lEEQualificationControllergetLEEQualifications
+              inputParameters:
+                - name: locId
+                  in: path
+                  type: string
+                  required: true
+                  description: locId
+                - name: qualId
+                  in: path
+                  type: string
+                  required: true
+                  description: qualId
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: cam-monitor-plan-lee-qualifications-rest
+      port: 8080
+      description: REST adapter for Monitor Plan Management OpenAPI Specification — LEE Qualifications. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/monitor-plan-mgmt/locations/{locid}/qualifications/{qualid}/lee-qualifications
+          name: monitor-plan-mgmt-locations-locid-qualifications-qualid-lee-qualifications
+          description: REST surface for lEEQualificationControllergetLEEQualifications.
+          operations:
+            - method: GET
+              name: lEEQualificationControllergetLEEQualifications
+              description: lEEQualificationControllergetLEEQualifications
+              call: cam-monitor-plan-lee-qualifications.lEEQualificationControllergetLEEQualifications
+              with:
+                locId: rest.locId
+                qualId: rest.qualId
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: cam-monitor-plan-lee-qualifications-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Monitor Plan Management OpenAPI Specification — LEE Qualifications. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: leequalificationcontroller-getleequalifications
+          description: leequalificationcontroller-getleequalifications
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-monitor-plan-lee-qualifications.lEEQualificationControllergetLEEQualifications
+          with:
+            locId: tools.locId
+            qualId: tools.qualId
+          outputParameters:
+            - type: object
+              mapping: $.

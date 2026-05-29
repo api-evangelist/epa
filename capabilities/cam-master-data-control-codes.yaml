@@ -1,0 +1,72 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Master Data Management OpenAPI Specification — Control Codes
+  description: 'Control Codes. 1 operations. Lead operation: . Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - Control Codes
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_APIKEY_KEY: EPA_APIKEY_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: cam-master-data-control-codes
+      baseUri: https://api.epa.gov/easey
+      description: Master Data Management OpenAPI Specification — Control Codes business capability. Self-contained, no shared references.
+      authentication:
+        type: apikey
+        key: x-api-key
+        value: '{{env.EPA_APIKEY_KEY}}'
+        placement: header
+      resources:
+        - name: master-data-mgmt-control-codes
+          path: /master-data-mgmt/control-codes
+          operations:
+            - name: controlTechnologyControllergetControlTechnologies
+              method: GET
+              description: controlTechnologyControllergetControlTechnologies
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: cam-master-data-control-codes-rest
+      port: 8080
+      description: REST adapter for Master Data Management OpenAPI Specification — Control Codes. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/master-data-mgmt/control-codes
+          name: master-data-mgmt-control-codes
+          description: REST surface for .
+          operations:
+            - method: GET
+              name: controlTechnologyControllergetControlTechnologies
+              description: controlTechnologyControllergetControlTechnologies
+              call: cam-master-data-control-codes.controlTechnologyControllergetControlTechnologies
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: cam-master-data-control-codes-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Master Data Management OpenAPI Specification — Control Codes. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: controltechnologycontroller-getcontroltechnologies
+          description: controltechnologycontroller-getcontroltechnologies
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-master-data-control-codes.controlTechnologyControllergetControlTechnologies
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: $.

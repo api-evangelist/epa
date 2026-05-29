@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-schema/cam-monitor-plan-unit-schema.json",
+  "title": "Unit",
+  "description": "Unit schema from Monitor Plan Management OpenAPI Specification",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "number",
+      "example": 0.0
+    },
+    "name": {
+      "type": "string",
+      "example": "EPA Facility"
+    },
+    "description": {
+      "type": "string",
+      "example": "string"
+    },
+    "commercialOperationDate": {
+      "format": "date-time",
+      "type": "string",
+      "example": "2024-01-15T12:00:00Z"
+    },
+    "operationDate": {
+      "format": "date-time",
+      "type": "string",
+      "example": "2024-01-15T12:00:00Z"
+    },
+    "nonLoadBasedIndicator": {
+      "type": "number",
+      "example": 0.0
+    },
+    "facId": {
+      "type": "number",
+      "example": 0.0
+    },
+    "userId": {
+      "type": "string",
+      "example": "12345"
+    },
+    "addDate": {
+      "format": "date-time",
+      "type": "string",
+      "example": "2024-01-15T12:00:00Z"
+    },
+    "updateDate": {
+      "format": "date-time",
+      "type": "string",
+      "example": "2024-01-15T12:00:00Z"
+    },
+    "plant": {
+      "$ref": "#/components/schemas/Plant"
+    },
+    "location": {
+      "$ref": "#/components/schemas/MonitorLocation"
+    },
+    "unitBoilerType": {
+      "$ref": "#/components/schemas/UnitBoilerType"
+    },
+    "opStatuses": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/UnitOpStatus"
+      },
+      "example": [
+        "active"
+      ]
+    },
+    "unitFuels": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/UnitFuel"
+      },
+      "example": [
+        "string"
+      ]
+    },
+    "unitControls": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/UnitControl"
+      },
+      "example": [
+        "string"
+      ]
+    },
+    "unitCapacities": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/UnitCapacity"
+      },
+      "example": [
+        "string"
+      ]
+    },
+    "unitPrograms": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/UnitProgram"
+      },
+      "example": [
+        "string"
+      ]
+    },
+    "unitStackConfigurations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/UnitStackConfiguration"
+      },
+      "example": [
+        "string"
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "description",
+    "operationDate",
+    "nonLoadBasedIndicator",
+    "facId",
+    "userId",
+    "addDate",
+    "updateDate",
+    "plant",
+    "location",
+    "unitBoilerType",
+    "opStatuses",
+    "unitFuels",
+    "unitControls",
+    "unitCapacities",
+    "unitPrograms",
+    "unitStackConfigurations"
+  ]
+}

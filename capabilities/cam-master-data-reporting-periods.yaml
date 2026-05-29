@@ -1,0 +1,79 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Master Data Management OpenAPI Specification — Reporting Periods
+  description: 'Reporting Periods. 1 operations. Lead operation: . Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - Reporting Periods
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_APIKEY_KEY: EPA_APIKEY_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: cam-master-data-reporting-periods
+      baseUri: https://api.epa.gov/easey
+      description: Master Data Management OpenAPI Specification — Reporting Periods business capability. Self-contained, no shared references.
+      authentication:
+        type: apikey
+        key: x-api-key
+        value: '{{env.EPA_APIKEY_KEY}}'
+        placement: header
+      resources:
+        - name: master-data-mgmt-reporting-periods
+          path: /master-data-mgmt/reporting-periods
+          operations:
+            - name: reportingPeriodControllergetReportingPeriods
+              method: GET
+              description: reportingPeriodControllergetReportingPeriods
+              inputParameters:
+                - name: export
+                  in: query
+                  type: boolean
+                  required: false
+                  description: export
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: cam-master-data-reporting-periods-rest
+      port: 8080
+      description: REST adapter for Master Data Management OpenAPI Specification — Reporting Periods. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/master-data-mgmt/reporting-periods
+          name: master-data-mgmt-reporting-periods
+          description: REST surface for .
+          operations:
+            - method: GET
+              name: reportingPeriodControllergetReportingPeriods
+              description: reportingPeriodControllergetReportingPeriods
+              call: cam-master-data-reporting-periods.reportingPeriodControllergetReportingPeriods
+              with:
+                export: rest.export
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: cam-master-data-reporting-periods-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Master Data Management OpenAPI Specification — Reporting Periods. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: reportingperiodcontroller-getreportingperiods
+          description: reportingperiodcontroller-getreportingperiods
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-master-data-reporting-periods.reportingPeriodControllergetReportingPeriods
+          with:
+            export: tools.export
+          outputParameters:
+            - type: object
+              mapping: $.

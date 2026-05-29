@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-schema/cam-monitor-plan-component-dto-schema.json",
+  "title": "ComponentDTO",
+  "description": "ComponentDTO schema from Monitor Plan Management OpenAPI Specification",
+  "type": "object",
+  "properties": {
+    "componentId": {
+      "type": "string",
+      "description": "The three digit code assigned by the source to identify the component.",
+      "example": "027"
+    },
+    "componentTypeCode": {
+      "type": "string",
+      "description": "Code used to identify the component type.",
+      "example": "SO2"
+    },
+    "sampleAcquisitionMethodCode": {
+      "type": "string",
+      "description": "Code used to identify the sample acquisition method.",
+      "example": "DOU"
+    },
+    "basisCode": {
+      "type": "string",
+      "description": "Code used to identify the moisture basis.",
+      "example": "W"
+    },
+    "manufacturer": {
+      "type": "string",
+      "maxLength": 25,
+      "description": "Name of the manufacturer or developer of the component.",
+      "example": "TECO"
+    },
+    "modelVersion": {
+      "type": "string",
+      "maxLength": 15,
+      "description": "The model of any hardware component or the version number of the software component.",
+      "example": "43I"
+    },
+    "serialNumber": {
+      "type": "string",
+      "maxLength": 20,
+      "description": "Serial number of the component.",
+      "example": "631819420"
+    },
+    "hgConverterIndicator": {
+      "type": "number",
+      "description": "For an Hg component, indicates whether the analyzer has a converter.",
+      "example": "1"
+    },
+    "id": {
+      "type": "string",
+      "description": "Unique identifier of a monitoring component record.",
+      "example": "CAMD-646D15E327E1480D814D48286DA7F073"
+    },
+    "locationId": {
+      "type": "string",
+      "description": "Unique identifier of a monitoring location record.",
+      "example": "5770"
+    },
+    "userId": {
+      "type": "string",
+      "description": "User account or source of data that added or updated record.",
+      "example": "abcde"
+    },
+    "addDate": {
+      "type": "string",
+      "description": "Date and time in which record was added.",
+      "example": "2009-02-20"
+    },
+    "updateDate": {
+      "type": "string",
+      "description": "Date and time in which record was last updated.",
+      "example": "2009-02-20"
+    },
+    "analyzerRangeData": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/AnalyzerRangeDTO"
+      },
+      "example": [
+        "string"
+      ]
+    }
+  },
+  "required": [
+    "componentId",
+    "componentTypeCode",
+    "sampleAcquisitionMethodCode",
+    "basisCode",
+    "manufacturer",
+    "modelVersion",
+    "serialNumber",
+    "hgConverterIndicator",
+    "id",
+    "locationId",
+    "userId",
+    "addDate",
+    "updateDate",
+    "analyzerRangeData"
+  ]
+}

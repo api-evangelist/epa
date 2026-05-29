@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-structure/echo-dfr-dfr060-structure.json",
+  "name": "dfr060",
+  "description": "Source Object",
+  "type": "object",
+  "properties": {
+    "CurrentAsOf": {
+      "type": "string",
+      "description": "The most recent date or calendar year quarter of record maintained in the data system for which the Current SNC/HPV status applies. A quarter could be any of the following 3-month periods:\n- January-March\n- April-June\n- July-September\n- October-December",
+      "example": "05/21/2016"
+    },
+    "CurrentSNC": {
+      "type": "string",
+      "description": "The current Significant Noncompliance (SNC) or High Priority Violator (HPV) status for the facility during the most current quarter. SNC is used for RCRA and CWA, and HPV is used for CAA. Each program has its own specific criteria for making this determination. The value of Yes indicates the facility is in SNC or HPV for the permit or site in question and may pose a more severe level of environmental threat. The value of No indicates the permit or site is not considered in SNC or HPV. If the facility is Non-Federally Reportable within AFS or if it is classified as minor within PCS, the field reads N/A. The value of N/A in this field indicates Not Applicable because compliance data for these facilities are not required to be reported to the national program database",
+      "example": "No"
+    },
+    "Description": {
+      "type": "string",
+      "description": "The text description for the event that results in the permit or site being in Significant Noncompliance (SNC) or in High Priority Violation (HPV)",
+      "example": "string"
+    },
+    "QtrsInNC": {
+      "type": "string",
+      "description": "The number of quarters, out of the last twelve quarters, in which the permit or site is considered either with violations, in non-compliance (NC) status, or in Significant Noncompliance (SNC) or High Priority Violation (HPV) status",
+      "example": "1"
+    },
+    "SourceID": {
+      "type": "string",
+      "description": "Unique Identifier assigned by EPA.",
+      "example": "ALR040033"
+    },
+    "Statute": {
+      "type": "string",
+      "description": "The name of the statute associated with each of the permits and identifiers linked to the facility: \n- CAA = the Clean Air Act\n- CWA = the Clean Water Act\n- RCRA = the Resource Conservation and Recovery Act\n- EP313 = the Emergency Planning and Community Right-to-Know Act, Section 313 (also known as the Toxics Release Inventory Program)\n- TSCA = the Toxic Substances Control Act\n- SDWA = the Safe Drinking Water Act",
+      "example": "CWA"
+    }
+  },
+  "required": [
+    "Statute",
+    "SourceID",
+    "CurrentSNC",
+    "Description",
+    "CurrentAsOf",
+    "QtrsInNC"
+  ]
+}

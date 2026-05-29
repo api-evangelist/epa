@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-structure/echo-case-crs2-results-structure.json",
+  "name": "crs2_Results",
+  "description": "The data returned by the service call.",
+  "type": "object",
+  "properties": {
+    "AFRRows": {
+      "type": "string",
+      "description": "Displays the number of Administrative Formal cases within the search results.",
+      "example": "5"
+    },
+    "CAARows": {
+      "type": "string",
+      "description": "The number of facilities or cases within the result set that have Clean Air Act (CAA) permits.",
+      "example": "50"
+    },
+    "CERCLARows": {
+      "type": "string",
+      "description": "The number of cases within the results set that relate to the Comprehensive Environmental Response, Compensation, and Liability Act (CERCLA).",
+      "example": "50"
+    },
+    "CWARows": {
+      "type": "string",
+      "description": "The number of facilities or cases within the results set that have Clean Water Act (CWA) permits.",
+      "example": "50"
+    },
+    "Cases": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/crs0_Cases"
+      },
+      "description": "A summary of the violation(s), environmental problem(s), and a description of the cause of action.",
+      "example": [
+        "string"
+      ]
+    },
+    "CriminalRows": {
+      "type": "string",
+      "description": "Displays the number of criminal enforcement cases within the search results.",
+      "example": "0"
+    },
+    "EPCRARows": {
+      "type": "string",
+      "description": "The number of cases within the results set that relate to the Emergency Planning and Community Right to Know Act (EPCRA).",
+      "example": "50"
+    },
+    "FIFRARows": {
+      "type": "string",
+      "description": "The number of cases within the result set that relate to the Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA).",
+      "example": "50"
+    },
+    "FedPenRows": {
+      "type": "string",
+      "description": "Displays the number of cases with federal penalty assessed greater than $0.",
+      "example": "3"
+    },
+    "FederalRows": {
+      "type": "string",
+      "description": "The number of facilities or cases within the result set that have a relationship to a Federal facility.",
+      "example": "50"
+    },
+    "JDCRows": {
+      "type": "string",
+      "description": "Displays the number of Judicial cases within the search results.",
+      "example": "2"
+    },
+    "MapOutput": {
+      "$ref": "#/definitions/crs0_MapOutput"
+    },
+    "Message": {
+      "type": "string",
+      "description": "Field to record messages (typically performance-related) about packet processing",
+      "example": "Success"
+    },
+    "PageNo": {
+      "type": "string",
+      "description": "The number of pages of results returned",
+      "example": "1"
+    },
+    "QueryID": {
+      "type": "string",
+      "description": "Sequential number assigned to entire search result",
+      "example": "245"
+    },
+    "QueryRows": {
+      "type": "string",
+      "description": "Number of query results returned",
+      "example": "5"
+    },
+    "RCRARows": {
+      "type": "string",
+      "description": "The number of facilities or cases within the results set that have Resource Conservation and Recovery Action (RCRA) permits.",
+      "example": "50"
+    },
+    "SDWARows": {
+      "type": "string",
+      "description": "The number of facilities or cases within the results set that have Safe Drinking Water Act (SDWA) permits.",
+      "example": "50"
+    },
+    "SEPRows": {
+      "type": "string",
+      "description": "Displays the number of cases with SEP amount greater than $0.",
+      "example": "0"
+    },
+    "TSCARows": {
+      "type": "string",
+      "description": "The number of cases within the result set that relate to the Toxic Substances Control Act (TSCA).",
+      "example": "50"
+    }
+  },
+  "required": [
+    "Message",
+    "QueryRows",
+    "JDCRows",
+    "AFRRows",
+    "FedPenRows",
+    "SEPRows",
+    "CriminalRows",
+    "RCRARows",
+    "CWARows",
+    "CAARows",
+    "SDWARows",
+    "EPCRARows",
+    "CERCLARows",
+    "FIFRARows",
+    "TSCARows",
+    "FederalRows",
+    "QueryID",
+    "PageNo"
+  ]
+}

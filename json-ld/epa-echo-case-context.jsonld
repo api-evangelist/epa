@@ -1,0 +1,907 @@
+{
+  "@context": {
+    "epa": "https://api-evangelist.com/epa/echo-case#",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "GovernmentOrganization": "schema:GovernmentOrganization",
+    "Dataset": "schema:Dataset",
+    "crs0_Cases": "epa:crs0_Cases",
+    "crs0_ClusterData": "epa:crs0_ClusterData",
+    "crs0_ClusterOutput": "epa:crs0_ClusterOutput",
+    "crs0_get_case_info.Results": "epa:crs0_get_case_info.Results",
+    "crs0_get_cases_from_facility.CaseNumber": "epa:crs0_get_cases_from_facility.CaseNumber",
+    "crs0_get_cases_from_facility.CaseNumbers": "epa:crs0_get_cases_from_facility.CaseNumbers",
+    "crs0_get_cases_from_facility.Results": "epa:crs0_get_cases_from_facility.Results",
+    "crs0_get_facilities_from_case.RegistryID": "epa:crs0_get_facilities_from_case.RegistryID",
+    "crs0_get_facilities_from_case.RegistryIDs": "epa:crs0_get_facilities_from_case.RegistryIDs",
+    "crs0_get_facilities_from_case.Results": "epa:crs0_get_facilities_from_case.Results",
+    "crs0_MapData": "epa:crs0_MapData",
+    "crs0_MapOutput": "epa:crs0_MapOutput",
+    "crs1_CAEDDocuments": "epa:crs1_CAEDDocuments",
+    "crs1_CaseInformation": "epa:crs1_CaseInformation",
+    "crs1_CaseMilestones": "epa:crs1_CaseMilestones",
+    "crs1_Citations": "epa:crs1_Citations",
+    "crs1_ComplianceSchedules": "epa:crs1_ComplianceSchedules",
+    "crs1_ComplyingActions": "epa:crs1_ComplyingActions",
+    "crs1_Defendants": "epa:crs1_Defendants",
+    "crs1_EnforcementConclusions": "epa:crs1_EnforcementConclusions",
+    "crs1_Facilities": "epa:crs1_Facilities",
+    "crs1_FinalOrderStatuses": "epa:crs1_FinalOrderStatuses",
+    "crs1_LawsAndSections": "epa:crs1_LawsAndSections",
+    "crs1_PollutantReductions": "epa:crs1_PollutantReductions",
+    "crs1_Pollutants": "epa:crs1_Pollutants",
+    "crs1_ProgramLinks": "epa:crs1_ProgramLinks",
+    "crs1_RelatedActivities": "epa:crs1_RelatedActivities",
+    "crs1_Results": "epa:crs1_Results",
+    "crs1_SupplementalEnvironmentalProjects": "epa:crs1_SupplementalEnvironmentalProjects",
+    "crs2_Results": "epa:crs2_Results",
+    "crs3_CaseInformation": "epa:crs3_CaseInformation",
+    "crs3_CRDefendants": "epa:crs3_CRDefendants",
+    "crs3_CRDetails": "epa:crs3_CRDetails",
+    "crs3_Locations": "epa:crs3_Locations",
+    "crs3_Results": "epa:crs3_Results",
+    "crs5_Results": "epa:crs5_Results",
+    "met1": "epa:met1",
+    "met2": "epa:met2",
+    "qp0": "epa:qp0",
+    "rlk00_LuValues": "epa:rlk00_LuValues",
+    "rlk51_Results": "epa:rlk51_Results",
+    "ActivityId": {
+      "@id": "epa:ActivityId",
+      "@type": "xsd:string"
+    },
+    "CaaFlag": {
+      "@id": "epa:CaaFlag",
+      "@type": "xsd:string"
+    },
+    "CaseCategoryCode": {
+      "@id": "epa:CaseCategoryCode",
+      "@type": "xsd:string"
+    },
+    "CaseCategoryDesc": {
+      "@id": "epa:CaseCategoryDesc",
+      "@type": "xsd:string"
+    },
+    "CaseName": {
+      "@id": "epa:CaseName",
+      "@type": "xsd:string"
+    },
+    "CaseNumber": {
+      "@id": "epa:CaseNumber",
+      "@type": "xsd:string"
+    },
+    "CaseStatusCode": {
+      "@id": "epa:CaseStatusCode",
+      "@type": "xsd:string"
+    },
+    "CaseStatusDesc": {
+      "@id": "epa:CaseStatusDesc",
+      "@type": "xsd:string"
+    },
+    "CerclaFlag": {
+      "@id": "epa:CerclaFlag",
+      "@type": "xsd:string"
+    },
+    "CivilCriminalIndicator": {
+      "@id": "epa:CivilCriminalIndicator",
+      "@type": "xsd:string"
+    },
+    "CostRecovery": {
+      "@id": "epa:CostRecovery",
+      "@type": "xsd:string"
+    },
+    "CourtDocketNumber": {
+      "@id": "epa:CourtDocketNumber",
+      "@type": "xsd:string"
+    },
+    "CwaFlag": {
+      "@id": "epa:CwaFlag",
+      "@type": "xsd:string"
+    },
+    "DOJDocketNmbr": {
+      "@id": "epa:DOJDocketNmbr",
+      "@type": "xsd:string"
+    },
+    "DateClosed": {
+      "@id": "epa:DateClosed",
+      "@type": "xsd:string"
+    },
+    "DateFiled": {
+      "@id": "epa:DateFiled",
+      "@type": "xsd:string"
+    },
+    "DateLodged": {
+      "@id": "epa:DateLodged",
+      "@type": "xsd:string"
+    },
+    "EnfOutcome": {
+      "@id": "epa:EnfOutcome",
+      "@type": "xsd:string"
+    },
+    "EpcraFlag": {
+      "@id": "epa:EpcraFlag",
+      "@type": "xsd:string"
+    },
+    "FedPenalty": {
+      "@id": "epa:FedPenalty",
+      "@type": "xsd:string"
+    },
+    "FederalFlag": {
+      "@id": "epa:FederalFlag",
+      "@type": "xsd:string"
+    },
+    "FifraFlag": {
+      "@id": "epa:FifraFlag",
+      "@type": "xsd:string"
+    },
+    "Lead": {
+      "@id": "epa:Lead",
+      "@type": "xsd:string"
+    },
+    "MaxScore": {
+      "@id": "epa:MaxScore",
+      "@type": "xsd:string"
+    },
+    "PrimaryLaw": {
+      "@id": "epa:PrimaryLaw",
+      "@type": "xsd:string"
+    },
+    "PrimaryNAICSCode": {
+      "@id": "epa:PrimaryNAICSCode",
+      "@type": "xsd:string"
+    },
+    "PrimarySICCode": {
+      "@id": "epa:PrimarySICCode",
+      "@type": "xsd:string"
+    },
+    "PrimarySection": {
+      "@id": "epa:PrimarySection",
+      "@type": "xsd:string"
+    },
+    "ProsecutionSummaryId": {
+      "@id": "epa:ProsecutionSummaryId",
+      "@type": "xsd:string"
+    },
+    "RcraFlag": {
+      "@id": "epa:RcraFlag",
+      "@type": "xsd:string"
+    },
+    "SEPCategories": {
+      "@id": "epa:SEPCategories",
+      "@type": "xsd:string"
+    },
+    "SEPCost": {
+      "@id": "epa:SEPCost",
+      "@type": "xsd:string"
+    },
+    "SEPTexts": {
+      "@id": "epa:SEPTexts",
+      "@type": "xsd:string"
+    },
+    "SdwaFlag": {
+      "@id": "epa:SdwaFlag",
+      "@type": "xsd:string"
+    },
+    "SettlementCnt": {
+      "@id": "epa:SettlementCnt",
+      "@type": "xsd:string"
+    },
+    "SettlementDate": {
+      "@id": "epa:SettlementDate",
+      "@type": "xsd:string"
+    },
+    "StateLocPenaltyAmt": {
+      "@id": "epa:StateLocPenaltyAmt",
+      "@type": "xsd:string"
+    },
+    "TotalCompActionAmt": {
+      "@id": "epa:TotalCompActionAmt",
+      "@type": "xsd:string"
+    },
+    "TribalLandFlag": {
+      "@id": "epa:TribalLandFlag",
+      "@type": "xsd:string"
+    },
+    "TscaFlag": {
+      "@id": "epa:TscaFlag",
+      "@type": "xsd:string"
+    },
+    "AFRRows": {
+      "@id": "epa:AFRRows",
+      "@type": "xsd:string"
+    },
+    "CAARows": {
+      "@id": "epa:CAARows",
+      "@type": "xsd:string"
+    },
+    "CERCLARows": {
+      "@id": "epa:CERCLARows",
+      "@type": "xsd:string"
+    },
+    "CWARows": {
+      "@id": "epa:CWARows",
+      "@type": "xsd:string"
+    },
+    "ClusterCount": {
+      "@id": "epa:ClusterCount",
+      "@type": "xsd:string"
+    },
+    "ClusterIcon": {
+      "@id": "epa:ClusterIcon",
+      "@type": "xsd:string"
+    },
+    "ClusterLatitude": {
+      "@id": "epa:ClusterLatitude",
+      "@type": "xsd:string"
+    },
+    "ClusterLongitude": {
+      "@id": "epa:ClusterLongitude",
+      "@type": "xsd:string"
+    },
+    "ClusterName": {
+      "@id": "epa:ClusterName",
+      "@type": "xsd:string"
+    },
+    "ClusterType": {
+      "@id": "epa:ClusterType",
+      "@type": "xsd:string"
+    },
+    "ClusterValue": {
+      "@id": "epa:ClusterValue",
+      "@type": "xsd:string"
+    },
+    "CriminalRows": {
+      "@id": "epa:CriminalRows",
+      "@type": "xsd:string"
+    },
+    "EPCRARows": {
+      "@id": "epa:EPCRARows",
+      "@type": "xsd:string"
+    },
+    "FIFRARows": {
+      "@id": "epa:FIFRARows",
+      "@type": "xsd:string"
+    },
+    "FedPenRows": {
+      "@id": "epa:FedPenRows",
+      "@type": "xsd:string"
+    },
+    "FederalRows": {
+      "@id": "epa:FederalRows",
+      "@type": "xsd:string"
+    },
+    "JDCRows": {
+      "@id": "epa:JDCRows",
+      "@type": "xsd:string"
+    },
+    "ObjectId": {
+      "@id": "epa:ObjectId",
+      "@type": "xsd:string"
+    },
+    "RCRARows": {
+      "@id": "epa:RCRARows",
+      "@type": "xsd:string"
+    },
+    "SDWARows": {
+      "@id": "epa:SDWARows",
+      "@type": "xsd:string"
+    },
+    "SEPRows": {
+      "@id": "epa:SEPRows",
+      "@type": "xsd:string"
+    },
+    "TSCARows": {
+      "@id": "epa:TSCARows",
+      "@type": "xsd:string"
+    },
+    "ClusterData": {
+      "@id": "epa:ClusterData",
+      "@container": "@list"
+    },
+    "Cases": {
+      "@id": "epa:Cases",
+      "@container": "@list"
+    },
+    "ClusterOutput": {
+      "@id": "epa:ClusterOutput",
+      "@type": "xsd:string"
+    },
+    "ClusterRecords": {
+      "@id": "epa:ClusterRecords",
+      "@type": "xsd:string"
+    },
+    "MapLocations": {
+      "@id": "epa:MapLocations",
+      "@type": "xsd:string"
+    },
+    "Message": {
+      "@id": "epa:Message",
+      "@type": "xsd:string"
+    },
+    "QueryParameters": {
+      "@id": "epa:QueryParameters",
+      "@container": "@list"
+    },
+    "QueryRows": {
+      "@id": "epa:QueryRows",
+      "@type": "xsd:string"
+    },
+    "CaseNumbers": {
+      "@id": "epa:CaseNumbers",
+      "@container": "@list"
+    },
+    "Results": {
+      "@id": "epa:Results",
+      "@type": "xsd:string"
+    },
+    "RegistryID": {
+      "@id": "epa:RegistryID",
+      "@type": "xsd:string"
+    },
+    "RegistryIDs": {
+      "@id": "epa:RegistryIDs",
+      "@container": "@list"
+    },
+    "ICON": {
+      "@id": "epa:ICON",
+      "@type": "xsd:string"
+    },
+    "LAT": {
+      "@id": "epa:LAT",
+      "@type": "xsd:string"
+    },
+    "LON": {
+      "@id": "epa:LON",
+      "@type": "xsd:string"
+    },
+    "NAME": {
+      "@id": "epa:NAME",
+      "@type": "xsd:string"
+    },
+    "PUV": {
+      "@id": "epa:PUV",
+      "@type": "xsd:string"
+    },
+    "TYPE": {
+      "@id": "epa:TYPE",
+      "@type": "xsd:string"
+    },
+    "VALUE": {
+      "@id": "epa:VALUE",
+      "@type": "xsd:string"
+    },
+    "IconBaseURL": {
+      "@id": "epa:IconBaseURL",
+      "@type": "xsd:string"
+    },
+    "MapData": {
+      "@id": "epa:MapData",
+      "@container": "@list"
+    },
+    "PopUpBaseURL": {
+      "@id": "epa:PopUpBaseURL",
+      "@type": "xsd:string"
+    },
+    "QueryID": {
+      "@id": "epa:QueryID",
+      "@type": "xsd:string"
+    },
+    "DocumentLink": {
+      "@id": "epa:DocumentLink",
+      "@type": "xsd:string"
+    },
+    "EPAProgram": {
+      "@id": "epa:EPAProgram",
+      "@type": "xsd:string"
+    },
+    "FacilityName": {
+      "@id": "epa:FacilityName",
+      "@type": "xsd:string"
+    },
+    "PublishDate": {
+      "@id": "epa:PublishDate",
+      "@type": "xsd:string"
+    },
+    "Branch": {
+      "@id": "epa:Branch",
+      "@type": "xsd:string"
+    },
+    "CaseStatus": {
+      "@id": "epa:CaseStatus",
+      "@type": "xsd:string"
+    },
+    "CaseStatusDate": {
+      "@id": "epa:CaseStatusDate",
+      "@type": "xsd:string"
+    },
+    "CaseSummary": {
+      "@id": "epa:CaseSummary",
+      "@type": "xsd:string"
+    },
+    "CaseType": {
+      "@id": "epa:CaseType",
+      "@type": "xsd:string"
+    },
+    "DOJDocketNumber": {
+      "@id": "epa:DOJDocketNumber",
+      "@type": "xsd:string"
+    },
+    "EnforcementOutcome": {
+      "@id": "epa:EnforcementOutcome",
+      "@type": "xsd:string"
+    },
+    "EnforcementType": {
+      "@id": "epa:EnforcementType",
+      "@type": "xsd:string"
+    },
+    "HeadquartersDivision": {
+      "@id": "epa:HeadquartersDivision",
+      "@type": "xsd:string"
+    },
+    "MultiMediaCase": {
+      "@id": "epa:MultiMediaCase",
+      "@type": "xsd:string"
+    },
+    "RegionalDocketNumber": {
+      "@id": "epa:RegionalDocketNumber",
+      "@type": "xsd:string"
+    },
+    "ReliefSought": {
+      "@id": "epa:ReliefSought",
+      "@type": "xsd:string"
+    },
+    "ResultVolDisclosure": {
+      "@id": "epa:ResultVolDisclosure",
+      "@type": "xsd:string"
+    },
+    "TotalComplianceActionCost": {
+      "@id": "epa:TotalComplianceActionCost",
+      "@type": "xsd:string"
+    },
+    "TotalCostRecovery": {
+      "@id": "epa:TotalCostRecovery",
+      "@type": "xsd:string"
+    },
+    "TotalFederalPenalty": {
+      "@id": "epa:TotalFederalPenalty",
+      "@type": "xsd:string"
+    },
+    "TotalSEPCost": {
+      "@id": "epa:TotalSEPCost",
+      "@type": "xsd:string"
+    },
+    "TotalStatePenalty": {
+      "@id": "epa:TotalStatePenalty",
+      "@type": "xsd:string"
+    },
+    "Violations": {
+      "@id": "epa:Violations",
+      "@type": "xsd:string"
+    },
+    "ActualDate": {
+      "@id": "epa:ActualDate",
+      "@type": "xsd:string"
+    },
+    "Event": {
+      "@id": "epa:Event",
+      "@type": "xsd:string"
+    },
+    "Programs": {
+      "@id": "epa:Programs",
+      "@type": "xsd:string"
+    },
+    "Sections": {
+      "@id": "epa:Sections",
+      "@type": "xsd:string"
+    },
+    "Title": {
+      "@id": "epa:Title",
+      "@type": "xsd:string"
+    },
+    "EventAmount": {
+      "@id": "epa:EventAmount",
+      "@type": "xsd:string"
+    },
+    "FacilityFRSID": {
+      "@id": "epa:FacilityFRSID",
+      "@type": "xsd:string"
+    },
+    "ScheduleCommentText": {
+      "@id": "epa:ScheduleCommentText",
+      "@type": "xsd:string"
+    },
+    "ScheduleDate": {
+      "@id": "epa:ScheduleDate",
+      "@type": "xsd:string"
+    },
+    "ScheduleEventDescription": {
+      "@id": "epa:ScheduleEventDescription",
+      "@type": "xsd:string"
+    },
+    "ScheduleNumber": {
+      "@id": "epa:ScheduleNumber",
+      "@type": "xsd:string"
+    },
+    "ComplyingActionCategory": {
+      "@id": "epa:ComplyingActionCategory",
+      "@type": "xsd:string"
+    },
+    "ComplyingActionDescription": {
+      "@id": "epa:ComplyingActionDescription",
+      "@type": "xsd:string"
+    },
+    "ComplyingActionId": {
+      "@id": "epa:ComplyingActionId",
+      "@type": "xsd:string"
+    },
+    "ComplyingActionType": {
+      "@id": "epa:ComplyingActionType",
+      "@type": "xsd:string"
+    },
+    "DefendantName": {
+      "@id": "epa:DefendantName",
+      "@type": "xsd:string"
+    },
+    "NamedInComplaint": {
+      "@id": "epa:NamedInComplaint",
+      "@type": "xsd:string"
+    },
+    "NamedInSettlement": {
+      "@id": "epa:NamedInSettlement",
+      "@type": "xsd:string"
+    },
+    "ActualTerminationDate": {
+      "@id": "epa:ActualTerminationDate",
+      "@type": "xsd:string"
+    },
+    "ComplianceActionCost": {
+      "@id": "epa:ComplianceActionCost",
+      "@type": "xsd:string"
+    },
+    "ComplianceSchedules": {
+      "@id": "epa:ComplianceSchedules",
+      "@container": "@list"
+    },
+    "ComplyingActions": {
+      "@id": "epa:ComplyingActions",
+      "@container": "@list"
+    },
+    "EnforcementActionClosedDate": {
+      "@id": "epa:EnforcementActionClosedDate",
+      "@type": "xsd:string"
+    },
+    "EnforcementConclusionId": {
+      "@id": "epa:EnforcementConclusionId",
+      "@type": "xsd:string"
+    },
+    "EnforcementConclusionName": {
+      "@id": "epa:EnforcementConclusionName",
+      "@type": "xsd:string"
+    },
+    "EnforcementConclusionType": {
+      "@id": "epa:EnforcementConclusionType",
+      "@type": "xsd:string"
+    },
+    "FacilitiesInSettlement": {
+      "@id": "epa:FacilitiesInSettlement",
+      "@type": "xsd:string"
+    },
+    "FederalPenalty": {
+      "@id": "epa:FederalPenalty",
+      "@type": "xsd:string"
+    },
+    "FinalOrderStatuses": {
+      "@id": "epa:FinalOrderStatuses",
+      "@container": "@list"
+    },
+    "PollutantReductions": {
+      "@id": "epa:PollutantReductions",
+      "@container": "@list"
+    },
+    "SettlementEnteredDate": {
+      "@id": "epa:SettlementEnteredDate",
+      "@type": "xsd:string"
+    },
+    "SettlementLodgedDate": {
+      "@id": "epa:SettlementLodgedDate",
+      "@type": "xsd:string"
+    },
+    "StatePenalty": {
+      "@id": "epa:StatePenalty",
+      "@type": "xsd:string"
+    },
+    "SupplementalEnvironmentalProjects": {
+      "@id": "epa:SupplementalEnvironmentalProjects",
+      "@container": "@list"
+    },
+    "FRSNumber": {
+      "@id": "epa:FRSNumber",
+      "@type": "xsd:string"
+    },
+    "FacilityAddress": {
+      "@id": "epa:FacilityAddress",
+      "@type": "xsd:string"
+    },
+    "FacilityCity": {
+      "@id": "epa:FacilityCity",
+      "@type": "xsd:string"
+    },
+    "FacilityState": {
+      "@id": "epa:FacilityState",
+      "@type": "xsd:string"
+    },
+    "FacilityZip": {
+      "@id": "epa:FacilityZip",
+      "@type": "xsd:string"
+    },
+    "NAICSCodes": {
+      "@id": "epa:NAICSCodes",
+      "@type": "xsd:string"
+    },
+    "SICCodes": {
+      "@id": "epa:SICCodes",
+      "@type": "xsd:string"
+    },
+    "FiscalYear": {
+      "@id": "epa:FiscalYear",
+      "@type": "xsd:string"
+    },
+    "Q1StatusDescription": {
+      "@id": "epa:Q1StatusDescription",
+      "@type": "xsd:string"
+    },
+    "Q2StatusDescription": {
+      "@id": "epa:Q2StatusDescription",
+      "@type": "xsd:string"
+    },
+    "Q3StatusDescription": {
+      "@id": "epa:Q3StatusDescription",
+      "@type": "xsd:string"
+    },
+    "Q4StatusDescription": {
+      "@id": "epa:Q4StatusDescription",
+      "@type": "xsd:string"
+    },
+    "Law": {
+      "@id": "epa:Law",
+      "@type": "xsd:string"
+    },
+    "AnnualAmount": {
+      "@id": "epa:AnnualAmount",
+      "@type": "xsd:string"
+    },
+    "EnvironmentalImpactId": {
+      "@id": "epa:EnvironmentalImpactId",
+      "@type": "xsd:string"
+    },
+    "Media": {
+      "@id": "epa:Media",
+      "@type": "xsd:string"
+    },
+    "Pollutant": {
+      "@id": "epa:Pollutant",
+      "@type": "xsd:string"
+    },
+    "SEPId": {
+      "@id": "epa:SEPId",
+      "@type": "xsd:string"
+    },
+    "SEPorComp": {
+      "@id": "epa:SEPorComp",
+      "@type": "xsd:string"
+    },
+    "Units": {
+      "@id": "epa:Units",
+      "@type": "xsd:string"
+    },
+    "ChemicalAbstractNumber": {
+      "@id": "epa:ChemicalAbstractNumber",
+      "@type": "xsd:string"
+    },
+    "PollutantName": {
+      "@id": "epa:PollutantName",
+      "@type": "xsd:string"
+    },
+    "Program": {
+      "@id": "epa:Program",
+      "@type": "xsd:string"
+    },
+    "ProgramID": {
+      "@id": "epa:ProgramID",
+      "@type": "xsd:string"
+    },
+    "Description": {
+      "@id": "epa:Description",
+      "@type": "xsd:string"
+    },
+    "CAEDDocuments": {
+      "@id": "epa:CAEDDocuments",
+      "@container": "@list"
+    },
+    "CaseInformation": {
+      "@id": "epa:CaseInformation",
+      "@type": "xsd:string"
+    },
+    "CaseMilestones": {
+      "@id": "epa:CaseMilestones",
+      "@container": "@list"
+    },
+    "Citations": {
+      "@id": "epa:Citations",
+      "@container": "@list"
+    },
+    "Defendants": {
+      "@id": "epa:Defendants",
+      "@container": "@list"
+    },
+    "EnforcementConclusions": {
+      "@id": "epa:EnforcementConclusions",
+      "@container": "@list"
+    },
+    "Facilities": {
+      "@id": "epa:Facilities",
+      "@container": "@list"
+    },
+    "LawsAndSections": {
+      "@id": "epa:LawsAndSections",
+      "@container": "@list"
+    },
+    "Pollutants": {
+      "@id": "epa:Pollutants",
+      "@container": "@list"
+    },
+    "ProgramLinks": {
+      "@id": "epa:ProgramLinks",
+      "@container": "@list"
+    },
+    "RelatedActivities": {
+      "@id": "epa:RelatedActivities",
+      "@container": "@list"
+    },
+    "Category": {
+      "@id": "epa:Category",
+      "@type": "xsd:string"
+    },
+    "SEPAmount": {
+      "@id": "epa:SEPAmount",
+      "@type": "xsd:string"
+    },
+    "SEPText": {
+      "@id": "epa:SEPText",
+      "@type": "xsd:string"
+    },
+    "MapOutput": {
+      "@id": "epa:MapOutput",
+      "@type": "xsd:string"
+    },
+    "PageNo": {
+      "@id": "epa:PageNo",
+      "@type": "xsd:string"
+    },
+    "CaseIdentifier": {
+      "@id": "epa:CaseIdentifier",
+      "@type": "xsd:string"
+    },
+    "Statutes": {
+      "@id": "epa:Statutes",
+      "@type": "xsd:string"
+    },
+    "DefendantType": {
+      "@id": "epa:DefendantType",
+      "@type": "xsd:string"
+    },
+    "District": {
+      "@id": "epa:District",
+      "@type": "xsd:string"
+    },
+    "DocketNumber": {
+      "@id": "epa:DocketNumber",
+      "@type": "xsd:string"
+    },
+    "Name": {
+      "@id": "epa:Name",
+      "@type": "xsd:string"
+    },
+    "State": {
+      "@id": "epa:State",
+      "@type": "xsd:string"
+    },
+    "DetailCitations": {
+      "@id": "epa:DetailCitations",
+      "@type": "xsd:string"
+    },
+    "DetailDate": {
+      "@id": "epa:DetailDate",
+      "@type": "xsd:string"
+    },
+    "DetailDesc": {
+      "@id": "epa:DetailDesc",
+      "@type": "xsd:string"
+    },
+    "City": {
+      "@id": "epa:City",
+      "@type": "xsd:string"
+    },
+    "County": {
+      "@id": "epa:County",
+      "@type": "xsd:string"
+    },
+    "EPARegion": {
+      "@id": "epa:EPARegion",
+      "@type": "xsd:string"
+    },
+    "Latitude": {
+      "@id": "epa:Latitude",
+      "@type": "xsd:string"
+    },
+    "Longitude": {
+      "@id": "epa:Longitude",
+      "@type": "xsd:string"
+    },
+    "Zip": {
+      "@id": "epa:Zip",
+      "@type": "xsd:string"
+    },
+    "CRCaseInformation": {
+      "@id": "epa:CRCaseInformation",
+      "@type": "xsd:string"
+    },
+    "CRDefendants": {
+      "@id": "epa:CRDefendants",
+      "@container": "@list"
+    },
+    "CRDetails": {
+      "@id": "epa:CRDetails",
+      "@container": "@list"
+    },
+    "Locations": {
+      "@id": "epa:Locations",
+      "@container": "@list"
+    },
+    "ResultColumns": {
+      "@id": "epa:ResultColumns",
+      "@container": "@list"
+    },
+    "ColumnID": {
+      "@id": "epa:ColumnID",
+      "@type": "xsd:string"
+    },
+    "ColumnName": {
+      "@id": "epa:ColumnName",
+      "@type": "xsd:string"
+    },
+    "DataLength": {
+      "@id": "epa:DataLength",
+      "@type": "xsd:string"
+    },
+    "DataType": {
+      "@id": "epa:DataType",
+      "@type": "xsd:string"
+    },
+    "ObjectName": {
+      "@id": "epa:ObjectName",
+      "@type": "xsd:string"
+    },
+    "QP": {
+      "@id": "epa:QP",
+      "@type": "xsd:string"
+    },
+    "QV": {
+      "@id": "epa:QV",
+      "@type": "xsd:string"
+    },
+    "ValueCode": {
+      "@id": "epa:ValueCode",
+      "@type": "xsd:string"
+    },
+    "ValueDescription": {
+      "@id": "epa:ValueDescription",
+      "@type": "xsd:string"
+    },
+    "LuValues": {
+      "@id": "epa:LuValues",
+      "@container": "@list"
+    }
+  }
+}

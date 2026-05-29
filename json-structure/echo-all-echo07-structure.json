@@ -1,0 +1,1171 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/epa/refs/heads/main/json-structure/echo-all-echo07-structure.json",
+  "name": "echo07",
+  "description": "Facilities Object",
+  "type": "object",
+  "properties": {
+    "AIRFlag": {
+      "type": "string",
+      "description": "Indicates whether the facility has a Clean Air Act (CAA) permit.",
+      "example": "Y"
+    },
+    "AIRIDs": {
+      "type": "string",
+      "description": "Air Facility System (AFS) ID.",
+      "example": "DC0000001100195254"
+    },
+    "ActiveLower48": {
+      "type": "string",
+      "description": "A Y/N indicator indicating that the facility is active and located within the lower 48 contiguous US States.",
+      "example": "string"
+    },
+    "BiosolidsFlag": {
+      "type": "string",
+      "description": "A Yes/No field to indicate permits with biosolids management and compliance information.",
+      "example": "12345"
+    },
+    "CAA3yrComplQtrsHistory": {
+      "type": "string",
+      "description": "The facility's 3-year compliance status history by quarter (3-month period) entered in the CAA program database. Each character represents a quarter of compliance, going from oldest to most recent. Character values correspond to the following compliance statuses:\n_ -\ufffdNo Violation Identified\nV -\ufffdViolation Identified\nS -\ufffdHigh Priority Violation\nU - Undetermined",
+      "example": "________VVSS"
+    },
+    "CAAComplianceStatus": {
+      "type": "string",
+      "description": "An indication of the facility's compliance status under the Clean Air Act. When a source has a high priority violation (HPV), the specific type of HPV will be displayed. If more than one type applies to a source, this order of priority is used to determine which type appears:\nViolation Unaddressed, EPA has Lead Enforcement\nViolation Unaddressed, State has Lead Enforcement\nViolation Unaddressed, Local has Lead Enforcement\nViolation Addressed, EPA has Lead Enforcement\nViolation Addressed, State has Lead Enforcement\nViolation Addressed, Local has Lead Enforcement\nWhen there is no Federally-Reportable Violation determination date in the past year and no open High Priority Violation in the most recent quarter in the data system of record, \u201cNot Available\u201d is displayed.",
+      "example": "Violation Identified"
+    },
+    "CAADateLastFormalAction": {
+      "type": "string",
+      "description": "The effective date of the most recent listed enforcement action entered into the CAA program database.",
+      "example": "12/12/2016"
+    },
+    "CAADaysLastEvaluation": {
+      "type": "string",
+      "description": "The number of days since a CAA Full Compliance Evaluation (FCE) was completed.",
+      "example": "7051"
+    },
+    "CAAEvaluationCount": {
+      "type": "string",
+      "description": "The number of inspections/compliance evaluations under the Clean Air Act, occurring at the facility within the last five years",
+      "example": "0"
+    },
+    "CAAFormalActionCount": {
+      "type": "string",
+      "description": "Indicates the number of enforcement actions taken against the facility within the last five years under the Clean Air Act.",
+      "example": "string"
+    },
+    "CAAHpvFlag": {
+      "type": "string",
+      "description": "The High Priority Violator (HPV) status for the facility during the most recent quarter reflects the time the records were extracted from the program data system. \"Y\" indicates the facility is in HPV for the permit or site in question and may pose a more severe level of environmental threat. \"N\" indicates the permit or site is not considered in HPV.",
+      "example": "Y"
+    },
+    "CAAInformalCount": {
+      "type": "string",
+      "description": "Indicates the number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years under the Clean Air Act.",
+      "example": "string"
+    },
+    "CAALastPenaltyAmt": {
+      "type": "string",
+      "description": "The amount of the most recent penalty entered into the CAA program database.",
+      "example": "$17014"
+    },
+    "CAALastPenaltyDate": {
+      "type": "string",
+      "description": "The effective date of the most recent penalty entered into the CAA program database.",
+      "example": "12/12/2016"
+    },
+    "CAANAICS": {
+      "type": "string",
+      "description": "The CAA permit's primary North American Industry Classification System (NAICS) Codes.",
+      "example": "8111"
+    },
+    "CAAPenalties": {
+      "type": "string",
+      "description": "The total dollar amount of assessed (or final) penalties taken against the facility within the last five years under the Clean Air Act.",
+      "example": "string"
+    },
+    "CAAPermitTypes": {
+      "type": "string",
+      "description": "ICIS AIR Permit Types associated with the FRS Facility:\n- Major\n- Federally Reportable Minor\n- Other Minor\n- Synthetic Minor\n- NULL",
+      "example": "Minor Emissions"
+    },
+    "CAAQtrsWithNC": {
+      "type": "string",
+      "description": "The number of quarters, out of the last twelve quarters, in which the CAA permit is considered in violation.",
+      "example": "8"
+    },
+    "CAASICs": {
+      "type": "string",
+      "description": "The CAA permit's primary Standard Industrial Classification (SIC) Codes.",
+      "example": "5496"
+    },
+    "CWA13qtrsComplHistory": {
+      "type": "string",
+      "description": "The facility's 3-year compliance status history by quarter (3-month period) entered in the CWA program database. Each character represents a quarter of compliance, going from oldest to most recent. Character values correspond to the following compliance statuses:\n_ -\ufffdNo Violation\nV -\ufffdViolation\nS -\ufffdSignificant Violation\nU - Undetermined",
+      "example": "________VVSS"
+    },
+    "CWA13qtrsEfflntExceedances": {
+      "type": "string",
+      "description": "The number of effluent violations at the facility in the past 13 quarters.",
+      "example": "15"
+    },
+    "CWA3YrQncrCodes": {
+      "type": "string",
+      "description": "No longer used.  Will be deleted in nthe future.",
+      "example": "S"
+    },
+    "CWAComplianceStatus": {
+      "type": "string",
+      "description": "An indication of the facility's compliance status under the Clean Water Act. When a major source is in significant noncompliance (SNC) or a non-major source has a Category I violation, the specific type of SNC/Category I will be displayed. If more than one type applies to a facility, this order of priority is used to determine which code appears:\nS(CSchVio) - an enforcement action has been issued, and the facility is not meeting its compliance schedule\nE(EffViol) - effluent violations of monthly average limits\nX(EffNMth) - effluent violations of non-monthly average limits\nT(CSchRpt) - compliance schedule reporting violation\nD(DMR NR) - non-receipt of discharge monitoring report",
+      "example": "No Violation"
+    },
+    "CWAComplianceTracking": {
+      "type": "string",
+      "description": "The Compliance Tracking classifications which can assist in interpreting the facility's compliance status, particularly for non-major standard permittees.",
+      "example": "On"
+    },
+    "CWADateLastFormalAction": {
+      "type": "string",
+      "description": "The effective date of the most recent listed enforcement action entered into the CWA program database.",
+      "example": "12/12/2016"
+    },
+    "CWADaysLastInspection": {
+      "type": "string",
+      "description": "The number of days since a CWA inspection was completed.",
+      "example": "184"
+    },
+    "CWAFormalActionCount": {
+      "type": "string",
+      "description": "Indicates the number of enforcement actions taken against the facility within the last five years under the Clean Water Act.",
+      "example": "2"
+    },
+    "CWAInformalCount": {
+      "type": "string",
+      "description": "Indicates the number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years under the Clean Water Act.",
+      "example": "1"
+    },
+    "CWAInspectionCount": {
+      "type": "string",
+      "description": "The number of inspections/compliance evaluations under the Clean Water Act, occurring at the facility within the last five years.",
+      "example": "0"
+    },
+    "CWALastPenaltyAmt": {
+      "type": "string",
+      "description": "The amount of the most recent penalty entered into the CWA program database.",
+      "example": "1000.0"
+    },
+    "CWALastPenaltyDate": {
+      "type": "string",
+      "description": "The effective date of the most recent penalty entered into the CWA program database.",
+      "example": "12/12/2016"
+    },
+    "CWANAICS": {
+      "type": "string",
+      "description": "The CWA permit's primary North American Industry Classification System (NAICS) Codes.",
+      "example": "8111"
+    },
+    "CWAPenalties": {
+      "type": "string",
+      "description": "The total dollar amount of assessed (or final) penalties taken against the facility within the last five years under the Clean Water Act.",
+      "example": "string"
+    },
+    "CWAPermitTypes": {
+      "type": "string",
+      "description": "Indicates the facility's permit type or designation.\n- Major\n- Minor",
+      "example": "string"
+    },
+    "CWAQtrsWithNC": {
+      "type": "string",
+      "description": "The number of quarters, out of the last twelve quarters, in which the CWA permit is considered in violation.",
+      "example": "8"
+    },
+    "CWASICs": {
+      "type": "string",
+      "description": "The CWA permit's primary Standard Industrial Classification (SIC) Codes.",
+      "example": "4596"
+    },
+    "CWASNCFlag": {
+      "type": "string",
+      "description": "The CWA Significant Non-compliance (SNC) status for the facility during the most recent quarter reflects the time the records were extracted from the program data systems. \"Y\" indicates the facility is in SNC for the permit or site in question and may pose a more severe level of environmental threat. \"N\" indicates the permit or site is not considered in SNC.",
+      "example": "Y"
+    },
+    "CamdIDs": {
+      "type": "string",
+      "description": "Facility identifiers for the Clean Air Markets Division database.",
+      "example": "12345"
+    },
+    "CensusBlockGroup": {
+      "type": "string",
+      "description": "A geographic unit used by the United States Census Bureau, generally defined to contain between 600 and 3,000 people.",
+      "example": "110010096022"
+    },
+    "CurrSvFlag": {
+      "type": "string",
+      "description": "Indicates if the facility has a current significant violation. 1 = Yes",
+      "example": "0"
+    },
+    "CurrVioFlag": {
+      "type": "string",
+      "description": "Indicates if the facility has a current violation. 1 = Yes",
+      "example": "0"
+    },
+    "DfrUrl": {
+      "type": "string",
+      "description": "The URL to the facility's Detailed Facility Report.",
+      "example": "https://example.com"
+    },
+    "Ea5yrFlag": {
+      "type": "string",
+      "description": "Indicates if the facility has a formal enforcement action within the last 5 years. 1 = Yes",
+      "example": "0"
+    },
+    "EffChartsFlag": {
+      "type": "string",
+      "example": "string"
+    },
+    "EisFlag": {
+      "type": "string",
+      "description": "Indicates whether the facility reports to the Emissions Inventory System (EIS).",
+      "example": "Y"
+    },
+    "EisIDs": {
+      "type": "string",
+      "description": "A unique ID assigned for each facility within EPA\u2019s Emissions Inventory System (EIS) Database.",
+      "example": "12620001"
+    },
+    "EjscreenFlag": {
+      "type": "string",
+      "description": "A Y/N indicator identifying whether or not the facility is within an Environmental Justice area.",
+      "example": "string"
+    },
+    "EjscreenFlagUs": {
+      "type": "string",
+      "description": "A Y/N indicator identifying whether or not the facility is within an Environmental Justice area.",
+      "example": "string"
+    },
+    "EpcraInspections5yr": {
+      "type": "string",
+      "description": "From ICIS FE&C, the number of EPCRA inspections at the facility in the past five years.",
+      "example": "2"
+    },
+    "Fac3yrComplianceHistory": {
+      "type": "string",
+      "description": "The system's 3-year compliance status history by quarter (3-month period). Each character represents a quarter of compliance, going from oldest to most recent. Character values correspond to the following compliance statuses:\n_ -\ufffdNo Violation\nV -\ufffdViolation\nS -\ufffdSignificant Violation\nU - Undetermined",
+      "example": "________VVSS"
+    },
+    "FacAccuracyMeters": {
+      "type": "string",
+      "description": "The estimate of accuracy, in meters, based on provided spatial metadata and quality assurance routines for the provided facility coordinate.",
+      "example": "35900"
+    },
+    "FacActiveFlag": {
+      "type": "string",
+      "description": "Indicates whether any of the associated ICIS-Air, ICIS-NPDES, RCRAInfo or SDWIS permits/facilities are in an active status.",
+      "example": "Y"
+    },
+    "FacChesapeakeBayFlg": {
+      "type": "string",
+      "description": "Indicates whether the facility, based on the facility spatial coordinate, is within the Chesapeake Bay watershed.",
+      "example": "Y"
+    },
+    "FacCity": {
+      "type": "string",
+      "description": "The city where the facility is located.",
+      "example": "ALEXANDRIA"
+    },
+    "FacCollectionMethod": {
+      "type": "string",
+      "description": "Indicates the collection method used (GPS, Photo Interpolation, Address Geocode, etc) to determine a facility's spatial coodinate.",
+      "example": "State Centroid"
+    },
+    "FacComplianceStatus": {
+      "type": "string",
+      "description": "An indication of the facility's known overall compliance status. Status codes include:\nSNC/Serious Viol [significant noncompliance (SNC), high priority violation (HPV), or serious violator, depending on statute]\nIn Violation (in violation of an environmental regulation)\nNo Violation (no violations recorded in the national systems of record)\nNot Available\nUnknown",
+      "example": "No Violation"
+    },
+    "FacCounty": {
+      "type": "string",
+      "description": "The county where the facility is located.",
+      "example": "ALEXANDRIA CITY"
+    },
+    "FacDateLastFormalActEPA": {
+      "type": "string",
+      "description": "Indicates the effective date of the most recent listed formal enforcement action taken against the facility.",
+      "example": "12/12/2016"
+    },
+    "FacDateLastFormalActSt": {
+      "type": "string",
+      "description": "The effective date of the most recent listed formal enforcement action taken against the facility by a state agency.",
+      "example": "12/12/2016"
+    },
+    "FacDateLastFormalAction": {
+      "type": "string",
+      "description": "Indicates the effective date of the most recent listed enforcement action taken against the facility.",
+      "example": "5/7/2009"
+    },
+    "FacDateLastInformalActEPA": {
+      "type": "string",
+      "description": "Indicates the effective date of the most recent listed informal enforcement action taken against the facility.",
+      "example": "12/12/2016"
+    },
+    "FacDateLastInformalActSt": {
+      "type": "string",
+      "description": "The effective date of the most recent listed informal enforcement action taken against the facility by a state agency.",
+      "example": "12/12/2016"
+    },
+    "FacDateLastInformalAction": {
+      "type": "string",
+      "description": "The date of the most recent informal action or NOV taken recorded in AFS, ICIS-NPDES, RCRA Info or SDWIS.",
+      "example": "8/6/2008"
+    },
+    "FacDateLastInspection": {
+      "type": "string",
+      "description": "The date on which most recent inspection of the facility took place. For the Clean Air Act, the date on which a Full Inspection (FCE) was completed. This date may or may not correspond to an actual site visit. A series of partial on- or off-site inspections may have been conducted during the fiscal year as part of this FCE.",
+      "example": "12/18/2012"
+    },
+    "FacDateLastInspectionEPA": {
+      "type": "string",
+      "description": "The date of the facility's last inspection.",
+      "example": "12/12/2016"
+    },
+    "FacDateLastInspectionState": {
+      "type": "string",
+      "description": "The date on which the most recent \"olfficial\"  inspection of the facility by a state agency took place.",
+      "example": "12/12/2016"
+    },
+    "FacDateLastPenalty": {
+      "type": "string",
+      "description": "Indicates the date on which the most recent assessed (or final) penalty was taken against the facility.",
+      "example": "2/19/2011"
+    },
+    "FacDaysLastInspection": {
+      "type": "string",
+      "description": "The number of days from the last ECHO refresh to the date on which the most recent inspection of the facility took place based on data recorded into AFS, ICIS-NPDES, or RCRA Info.",
+      "example": "1197"
+    },
+    "FacDerivedCb2010": {
+      "type": "string",
+      "description": "The 2010 Census Block derived from the facility coordinate.",
+      "example": "450850003003069"
+    },
+    "FacDerivedCd113": {
+      "type": "string",
+      "description": "The 113th Congressional District derived from the facility coordinate.",
+      "example": "05"
+    },
+    "FacDerivedHuc": {
+      "type": "string",
+      "description": "The 8-digit Hydrologic Unit Code (HUC) of the watershed in which the facility resides. A HUC number is assigned to every watershed in the nation and uniquely identifies the watershed.",
+      "example": "552968"
+    },
+    "FacDerivedRadWBDHu12": {
+      "type": "string",
+      "description": "The 12-digit Watershed Boundary Dataset code derived from Reach Indexing the facility's spatial coordinate against the 12 digit Watershed Boundary Dataset from USGS.",
+      "example": "41201040603"
+    },
+    "FacDerivedRadWBDHu12Name": {
+      "type": "string",
+      "description": "The 12 digit Watershed Boundary Dataset name derived from Reach Indexing the facility's spatial coordinate against the 12 digit Watershed Boundary Dataset from USGS.",
+      "example": "Cayuga Creek"
+    },
+    "FacDerivedRadWBDHu8": {
+      "type": "string",
+      "description": "The 8-digit Watershed Hydrologic Unit Code (HUC) derived from Reach Indexing the facility's spatial coordinate against the 12 digit Watershed Boundary Dataset from USGS.",
+      "example": "4120104"
+    },
+    "FacDerivedRadWBDHu8Name": {
+      "type": "string",
+      "description": "The 8 digit watershed name derived from Reach Indexing the facility's spatial coordinate against the 12 digit Watershed Boundary Dataset from USGS.",
+      "example": "Niagra"
+    },
+    "FacDerivedStctyFIPS": {
+      "type": "string",
+      "description": "The Federal Information Processing Standard (FIPS) code which uniquely identifies the state and county in which the facility is located.",
+      "example": "string"
+    },
+    "FacDerivedTRIbes": {
+      "type": "string",
+      "description": "The tribes or tribal territories located within 25 miles of the facility's location.",
+      "example": "Cherokee Nation"
+    },
+    "FacDerivedWBD": {
+      "type": "string",
+      "description": "The Hydrologic Unit Code (HUC-12) of the waterbody in which the facility resides, derived based on location data in FRS.",
+      "example": "20700100204"
+    },
+    "FacDerivedWBDHu12Name": {
+      "type": "string",
+      "description": "The Watershed Boundary Dataset name derived from the facility coordinate.",
+      "example": "Cayuga Creek"
+    },
+    "FacDerivedWBDHu8": {
+      "type": "string",
+      "description": "Spatially derived HUC based on the facility's geographic coordinates in FRS.",
+      "example": "2070003"
+    },
+    "FacDerivedWBDHu8Name": {
+      "type": "string",
+      "description": "The name of the hydrologic unit in which the facility is located within, derived spatially based on the facility's geographic coordinates in FRS.",
+      "example": "Cacapon-Town"
+    },
+    "FacDerivedZip": {
+      "type": "string",
+      "description": "The ZIP Code derived from the facility coordinate.",
+      "example": "22126"
+    },
+    "FacEPARegion": {
+      "type": "string",
+      "description": "The EPA region where the facility is located. EPA has 10 regional offices that execute programs within several states and territories",
+      "example": "03"
+    },
+    "FacFIPSCode": {
+      "type": "string",
+      "description": "The 2-digit Federal Information Processing Standards (FIPS) code to identify the county that a facility is located in.",
+      "example": "55001"
+    },
+    "FacFederalAgency": {
+      "type": "string",
+      "description": "The facility's federal agency code.",
+      "example": "D5700"
+    },
+    "FacFederalAgencyName": {
+      "type": "string",
+      "description": "Indicates the name of the federal agency, as classified in FRS. Federal agencies are installations that are owned and operated by the U.S. government.",
+      "example": "EPA"
+    },
+    "FacFederalFlg": {
+      "type": "string",
+      "description": "Indicates whether the facility is part of a federal agency.",
+      "example": "Y"
+    },
+    "FacFormalActionCount": {
+      "type": "string",
+      "description": "Indicates the total number of enforcement actions taken against the facility within the last five years. NA indicates that this measure is not applicable for facilities with no associated CAA, CWA, or RCRA permits",
+      "example": "0"
+    },
+    "FacImpWaterFlg": {
+      "type": "string",
+      "description": "Indicates whether or not the facility discharges directly into category 4 or 5 impaired water, as designated under section 303(d) of the Clean Water Act.",
+      "example": "Y"
+    },
+    "FacIndianCntryFlg": {
+      "type": "string",
+      "description": "Flag showing Y/N whether the facility is located in Indian Country.",
+      "example": "string"
+    },
+    "FacIndianSpatialFlg": {
+      "type": "string",
+      "description": "Returns \u201cY\u201d if a facility is located within a tribal spatial boundary as defined by the U.S. Census Bureau 2010 tribal boundary layer data for tribes in the lower 48 states and Bureau of Land Management Alaska State Office data for native villages in Alaska. Returns \u201cN\u201d if a facility is not located within a tribal or native Alaskan village area.",
+      "example": "Y"
+    },
+    "FacInformalCount": {
+      "type": "string",
+      "description": "Indicates the total number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years",
+      "example": "0"
+    },
+    "FacInspectionCount": {
+      "type": "string",
+      "description": "The number of inspections/compliance evaluations that have occurred at the facility, under the AIR, CWA, and RCRA, within the last five years. The last 5 years will include data from the 20 most recently completed quarters, plus data from the current quarter up until the refresh date. This count only includes inspection types that are counted as inspections in official counts.",
+      "example": "1"
+    },
+    "FacLastPenaltyAmt": {
+      "type": "string",
+      "description": "Indicates the dollar amount of the most recent assessed (or final) penalty taken against the facility.",
+      "example": "$200"
+    },
+    "FacLat": {
+      "type": "string",
+      "description": "The latitude of the facility in decimal degrees expressed using the NAD83 horizontal datum. The coordinate comes from the FRS EPA Locational Reference Tables (LRT) file which represents the most accurate value for the facility based on the available spatial metadata.",
+      "example": "38.803076"
+    },
+    "FacLong": {
+      "type": "string",
+      "description": "The longitude of the facility in decimal degrees expressed using the NAD83 horizontal datum. The coordinate comes from the FRS EPA Locational Reference Tables (LRT) file which represents the most accurate value for the facility based on the available spatial metadata.",
+      "example": "-77.085951"
+    },
+    "FacMajorFlag": {
+      "type": "string",
+      "description": "Indicates whether the facility is designated as a \u201cmajor\u201d (usually a large facility).",
+      "example": "Y"
+    },
+    "FacMapFlg": {
+      "type": "string",
+      "description": "Graphical indicator denoting whether geographical data required to map a facility are available.",
+      "example": "Y"
+    },
+    "FacMapIcon": {
+      "type": "string",
+      "description": "The default map icon image file calculated for the facility by the ECHO program.",
+      "example": "CWA-NC-MJ-2.png"
+    },
+    "FacMyrtkUniverse": {
+      "type": "string",
+      "description": "A 3-digit combination of Y/N flags indicating if the facility is considered a Right-to-Know Network (RTKNet) CAA (position 1), NPDES (position 2), or RCRA facility (position 3).",
+      "example": "NNN"
+    },
+    "FacNAICSCodes": {
+      "type": "string",
+      "description": "The facility's North American Industry Classification System (NAICS) Codes.",
+      "example": "8111 8134"
+    },
+    "FacNaaFlag": {
+      "type": "string",
+      "description": "Indicates whether the facility is located in a nonattainment area of the country, where air pollution levels persistently exceed the national ambient air quality standards. This flag does not indicate whether or not the facility has violated national ambient area quality standards.",
+      "example": "Y"
+    },
+    "FacName": {
+      "type": "string",
+      "description": "Name of facility",
+      "example": "W M A T A CENTRAL MAINT FAC"
+    },
+    "FacPenaltyCount": {
+      "type": "string",
+      "description": "The total number of penalties assessed (or final) taken against the facility within the last five years",
+      "example": "2"
+    },
+    "FacPercentMinority": {
+      "type": "string",
+      "description": "Percent Minority is the percentage of the population of the given area that is considered minority. Statistics are shown for the area within a 3-mile radius of each facility.",
+      "example": "45.379"
+    },
+    "FacPopDen": {
+      "type": "string",
+      "description": "The number of persons per square mile in the area being profiled. This field is the ratio of total persons (displayed in the Total Persons field) to total land area (displayed in the Land Area field).",
+      "example": "6716.34"
+    },
+    "FacProgramsWithSNC": {
+      "type": "string",
+      "description": "The number of programs (CAA, CWA, SDWA, RCRA) related to the facility that have a current serious violation.",
+      "example": "2"
+    },
+    "FacQtrsWithNC": {
+      "type": "string",
+      "description": "The number of quarters, out of the last twelve quarters, in which the facility is considered in violation.",
+      "example": "8"
+    },
+    "FacReferencePoint": {
+      "type": "string",
+      "description": "A description of the location for the provided facility coordinate.",
+      "example": "CENTER OF A FACILITY OR STATION"
+    },
+    "FacSICCodes": {
+      "type": "string",
+      "description": "Indicates the facility\u2019s or permit's primary Standard Industrial Classification (SIC) Code. The SIC code describes the primary activity of the facility.",
+      "example": "811"
+    },
+    "FacSNCFlg": {
+      "type": "string",
+      "description": "The Significant Non-compliance (SNC) status for the facility during the most recent quarter reflects the time the records were extracted from the program data systems. \"Y\" indicates the facility is in SNC for the permit or site in question and may pose a more severe level of environmental threat. \"N\" indicates the permit or site is not considered in SNC.",
+      "example": "Y"
+    },
+    "FacState": {
+      "type": "string",
+      "description": "Facility state",
+      "example": "VA"
+    },
+    "FacStdCountyName": {
+      "type": "string",
+      "description": "The standardized  facility county name from EPA's Facility Registry System",
+      "example": "Fairfax County"
+    },
+    "FacStreet": {
+      "type": "string",
+      "description": "Street address where facility is located, as maintained by each data system. Certain data systems also maintain mailing address information, which is not used in this report. The street address may differ across EPA databases due to differences in reported information (e.g., use of mailing address), change in ownership, use of parent or subsidiary address, etc.",
+      "example": "3101 EISENHOWER AVENUE"
+    },
+    "FacTotalPenalties": {
+      "type": "string",
+      "description": "The total dollar amount of either assessed (or final) penalties taken against the facility within the last five years",
+      "example": "$850"
+    },
+    "FacUsMexBorderFlg": {
+      "type": "string",
+      "description": "A Y/N flag indicating that the facility is within 100KM of the US-Mexico Border.",
+      "example": "Y"
+    },
+    "FacZip": {
+      "type": "string",
+      "description": "Facility ZIP code",
+      "example": "22314"
+    },
+    "FecCaseIDs": {
+      "type": "string",
+      "description": "All Case Numbers of Federal Enforcement Cases relating to the Facility from the ICIS System",
+      "example": "12345"
+    },
+    "FecLastCaseDate": {
+      "type": "string",
+      "description": "The date of the latest Federal Enforcement Case related to this Facility in the ICIS system.",
+      "example": "12/12/2016"
+    },
+    "FecNumberOfCases": {
+      "type": "string",
+      "description": "The total number of Federal Enforcement Cases in the last 5 years related to this Facility in the ICIS system.",
+      "example": "1"
+    },
+    "FecTotalPenalties": {
+      "type": "string",
+      "description": "The total Federal Enforcement Case penalties assessed against this facility in the last 5 years.",
+      "example": "$34400"
+    },
+    "FifraInspections5yr": {
+      "type": "string",
+      "description": "From ICIS FE&C, the number of FIFRA inspections at the facility in the past five years.",
+      "example": "2"
+    },
+    "GHGCO2Releases": {
+      "type": "string",
+      "description": "The sum of total release amounts of all linked Greenhouse Gas IDs reported as \"metric tons of CO2 equivalents\"",
+      "example": "string"
+    },
+    "GHGFlag": {
+      "type": "string",
+      "description": "Indicates whether the facility has a Greenhouse Gas (GHG) permit.",
+      "example": "Y"
+    },
+    "GHGIDs": {
+      "type": "string",
+      "description": "A unique ID assigned for each facility within EPA\u2019s Greenhouse Gas Reporting Program (GHGRP) Emissions Data Sets.",
+      "example": "110000"
+    },
+    "HasPollRpt": {
+      "type": "string",
+      "description": "???",
+      "example": "Y"
+    },
+    "Infea5yrFlag": {
+      "type": "string",
+      "description": "Indicates if the facility has an informal enforcement action within the last 5 years. 1 = Yes.",
+      "example": "0"
+    },
+    "Insp5yrFlag": {
+      "type": "string",
+      "description": "Indicates if the facility has an inspection within the last 5 years. 1 = Yes",
+      "example": "1"
+    },
+    "Lower48": {
+      "type": "string",
+      "description": "Flag showing Y/N whether location is within the contiguous (lower 48) United States.",
+      "example": "Y"
+    },
+    "MaxPctileUs": {
+      "type": "string",
+      "description": "The maximum percentile from all individual EJSCREEN indicators.",
+      "example": "98"
+    },
+    "MaxScore": {
+      "type": "string",
+      "description": "A sorting score for internal use.",
+      "example": "1"
+    },
+    "NC": {
+      "type": "string",
+      "description": "Indicates whether or not the permit or site is considered either in Non-compliance (NC), Significant Non-compliance (SNC) or High Priority violation (HPV) status.",
+      "example": "Y"
+    },
+    "NPDESFlag": {
+      "type": "string",
+      "description": "Indicates whether the facility has a Clean Water Act (CWA) permit.",
+      "example": "Y"
+    },
+    "NPDESIDs": {
+      "type": "string",
+      "description": "Clean Water Act ID from the ICIS-NPDES (Integrated Compliance Information System - National Pollutant Discharge Elimination System)",
+      "example": "12345"
+    },
+    "NaaCategories": {
+      "type": "string",
+      "description": "The nonattainment area categories that the facility is in, derived spatially based on the facility's geographic coordinates in FRS.\ufffd",
+      "example": "8-HOUR OZONE(2015)"
+    },
+    "NaaPollutants": {
+      "type": "string",
+      "description": "All criteria pollutants that the facility is in nonattainment for.",
+      "example": "OZONE"
+    },
+    "ObjectId": {
+      "type": "string",
+      "description": "Sequential number assigned to each facility or cluster returned.",
+      "example": "1"
+    },
+    "Over80CountUs": {
+      "type": "string",
+      "description": "The number of primary EJSCREEN environmental justice (EJ) indexes exceeding the 80th or higher national percentile for the Census block group that the facility is located in.",
+      "example": "3"
+    },
+    "PctileCancerUs": {
+      "type": "string",
+      "description": "The national percentile of the census block group for the EJSCREEN NATA air toxics cancer risk indicator.",
+      "example": "99"
+    },
+    "PctileDpmUs": {
+      "type": "string",
+      "description": "The national percentile of the census block group for the EJSCREEN diesel particulate matter indicator.",
+      "example": "99"
+    },
+    "PctileO3Us": {
+      "type": "string",
+      "description": "The national percentile of the census block group for the EJSCREEN ozone indicator.",
+      "example": "94"
+    },
+    "PctilePctpre1960Us": {
+      "type": "string",
+      "description": "The national percentile of the census block group for the EJSCREEN Lead paint indicator.",
+      "example": "14.6"
+    },
+    "PctilePmUs": {
+      "type": "string",
+      "description": "The national percentile of the census block group for the EJSCREEN particulate matter indicator.",
+      "example": "93"
+    },
+    "PctileProximityNPDESUs": {
+      "type": "string",
+      "description": "The national percentile of the census block group for the EJSCREEN proximity to major direct water dischargers indicator.",
+      "example": "23.7"
+    },
+    "PctileProximityNplUs": {
+      "type": "string",
+      "description": "The national percentile of the census block group for the EJSCREEN proximity to National Priorities List (NPL) sites indicator.",
+      "example": "96"
+    },
+    "PctileProximityRmpUs": {
+      "type": "string",
+      "description": "The national percentile of the census block group for the EJSCREEN proximity to Risk Management Plan (RMP) sites indicator.",
+      "example": "91"
+    },
+    "PctileProximityTsdfUs": {
+      "type": "string",
+      "description": "The national percentile of the census block group for the EJSCREEN proximity to Treatment Storage and Disposal Facilities (TSDFs) indicator.",
+      "example": "82"
+    },
+    "PctileRespUs": {
+      "type": "string",
+      "description": "The national percentile of the census block group for the EJSCREEN NATA respiratory hazard index indicator.",
+      "example": "99"
+    },
+    "PctileTrafficScoreUs": {
+      "type": "string",
+      "description": "The national percentile of the census block group for the EJSCREEN Traffic proximity and volume indicator.",
+      "example": "92"
+    },
+    "RCRA3yrComplQtrsHistory": {
+      "type": "string",
+      "description": "The system's 3-year compliance status history by quarter (3-month period) entered in the RCRA program database. Each character represents a quarter of compliance, going from oldest to most recent. Character values correspond to the following compliance statuses:\n_ -\ufffdNo Violation\nV -\ufffdViolation\nS -\ufffdSignificant Violation\nU - Undetermined",
+      "example": "________VVSS"
+    },
+    "RCRAComplianceStatus": {
+      "type": "string",
+      "description": "An indication of the facility's compliance status under the Resource Conservation and Recovery Act (Significant Violation = Significant Noncomplier, Noncompliance, or No Violation).",
+      "example": "No Violation"
+    },
+    "RCRADateLastFormalAction": {
+      "type": "string",
+      "description": "The effective date of the most recent listed enforcement action entered into the RCRA program database.",
+      "example": "12/12/2016"
+    },
+    "RCRADaysLastEvaluation": {
+      "type": "string",
+      "description": "The number of days since a RCRA inspection was completed.",
+      "example": "6848"
+    },
+    "RCRAFlag": {
+      "type": "string",
+      "description": "Indicates whether the facility has a Resource Conservation and Recovery Action (RCRA) permit.",
+      "example": "Y"
+    },
+    "RCRAFormalActionCount": {
+      "type": "string",
+      "description": "Indicates the number of enforcement actions taken against the facility within the last five years under the Resource Conservation and Recovery Act.",
+      "example": "5"
+    },
+    "RCRAIDs": {
+      "type": "string",
+      "description": "A unique 12-character ID assigned for each record/permit/site/facility within the RCRAInfo database.",
+      "example": "VAD981111784"
+    },
+    "RCRAInformalCount": {
+      "type": "string",
+      "description": "Indicates the number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years under the Resource Conservation and Recovery Act.",
+      "example": "3"
+    },
+    "RCRAInspectionCount": {
+      "type": "string",
+      "description": "The number of inspections/compliance evaluations under the Resource Conservation and Recovery Act, occurring at the facility within the last five years",
+      "example": "1"
+    },
+    "RCRALastPenaltyAmt": {
+      "type": "string",
+      "description": "The amount of the most recent penalty entered into the RCRA program database.",
+      "example": "1000.0"
+    },
+    "RCRALastPenaltyDate": {
+      "type": "string",
+      "description": "Indicates the date on which the most recent assessed (or final) penalty was taken against the facility, entered in the RCRAInfo program database.",
+      "example": "12/12/2016"
+    },
+    "RCRANAICS": {
+      "type": "string",
+      "description": "The RCRA permit's primary North American Industry Classification System (NAICS) Code.",
+      "example": "8111"
+    },
+    "RCRAPenalties": {
+      "type": "string",
+      "description": "The total dollar amount of assessed (or final) penalties taken against the facility within the last five years, entered in the RCRAInfo program database.",
+      "example": "$987"
+    },
+    "RCRAPermitTypes": {
+      "type": "string",
+      "description": "RCRA Facility Types include:\n- TSDF = Treatment, Storage and Disposal facility\n- LQG = Large Quantity Generator\n- SQG = Small Quantity Generator\n- CESQG = Conditionally-Exempt Small Quantity Generator\n- Operating TSDF\n- Transporters",
+      "example": "LQG"
+    },
+    "RCRAQtrsWithNC": {
+      "type": "string",
+      "description": "The number of quarters, out of the last twelve quarters, in which the RCRA permit is considered in violation.",
+      "example": "8"
+    },
+    "RCRASNCFlag": {
+      "type": "string",
+      "description": "The RCRA Significant Non-compliance (SNC) status for the facility during the most recent quarter reflects the time the records were extracted from the program data systems. \"Y\" indicates the facility is in SNC for the permit or site in question and may pose a more severe level of environmental threat. \"N\" indicates the permit or site is not considered in SNC.",
+      "example": "Y"
+    },
+    "RegistryID": {
+      "type": "string",
+      "description": "An internal 12-digit Facility Registry Service (FRS) tracking number used to tie all facility data together in EPA regulatory program databases.",
+      "example": "110020837601"
+    },
+    "RmpIDs": {
+      "type": "string",
+      "description": "A unique ID assigned to each facility submitting a Risk Management Plan to EPA under the Risk Management Plan Rule.",
+      "example": "110000"
+    },
+    "SDWA3yrComplQtrsHistory": {
+      "type": "string",
+      "description": "The system's 3-year compliance status history by quarter (3-month period). Each character represents a quarter of compliance, going from oldest to most recent. Character values correspond to the following compliance statuses:\n_ - No Violation Identified\nV - Noncompliance\nS - Significant Noncompliance\nU - Undetermined",
+      "example": "____SS__VVUU"
+    },
+    "SDWAComplianceStatus": {
+      "type": "string",
+      "description": "An indication of the facility's compliance status under the Safe Drinking Water Act (Serious Violator, Noncompliance, or No Violation).",
+      "example": "No Violation"
+    },
+    "SDWAFormalActionCount": {
+      "type": "string",
+      "description": "Indicates the number of enforcement actions taken against the facility within the last five years under the Safe Drinking Water Act",
+      "example": "11"
+    },
+    "SDWAIDs": {
+      "type": "string",
+      "description": "A unique 9-character ID assigned for each public water system within the Safe Drinking Water Information System (SDWIS).",
+      "example": "DC0000001"
+    },
+    "SDWAInformalCount": {
+      "type": "string",
+      "description": "Indicates the number of informal enforcement actions/notices of violations (NOVs) taken against the facility within the last five years under the Safe Drinking Water Act",
+      "example": "2"
+    },
+    "SDWAInspections5yr": {
+      "type": "string",
+      "description": "The number of SDWA inspections at the facility in the past five years.",
+      "example": "2"
+    },
+    "SDWAQtrsWithNC": {
+      "type": "string",
+      "description": "The number of quarters, out of the last twelve quarters, in which the SDWA permit is considered in violation.",
+      "example": "8"
+    },
+    "SDWASNCFlag": {
+      "type": "string",
+      "description": "Indicates whether the Water System has a Serious Violation.",
+      "example": "Y"
+    },
+    "SDWASystemTypes": {
+      "type": "string",
+      "description": "SDWIS System Types",
+      "example": "string"
+    },
+    "SDWISFlag": {
+      "type": "string",
+      "description": "Indicates whether the facility has a Safe Drinking Water Information System (SDWIS) ID.",
+      "example": "Y"
+    },
+    "Score": {
+      "type": "string",
+      "example": "1"
+    },
+    "SemsFlag": {
+      "type": "string",
+      "example": "string"
+    },
+    "SemsIDs": {
+      "type": "string",
+      "example": "12345"
+    },
+    "SourceID": {
+      "type": "string",
+      "description": "Unique Identifier assigned by EPA.",
+      "example": "ALR040033"
+    },
+    "TRIFlag": {
+      "type": "string",
+      "description": "Indicates whether the facility has a Toxics Release Inventory (TRI) permit.",
+      "example": "Y"
+    },
+    "TRIIDs": {
+      "type": "string",
+      "description": "A unique 15-character ID assigned for each facility within the Toxics Release Inventory (TRI) program. The format is ZZZZZNNNNNSSSSS, where ZZZZZ = ZIP code, NNNNN = the first 5 consonants of the name, and SSSSS = the first 5 non-blank non-special characters in the street address.",
+      "example": "20011FRTTT5001F"
+    },
+    "TRIOffSiteTransfers": {
+      "type": "string",
+      "description": "Total pounds per year transferred off-site.",
+      "example": "0"
+    },
+    "TRIOnSiteReleases": {
+      "type": "string",
+      "description": "Total pounds per year released for Air Emissions, Surface Water Discharges, Underground Injections and Releases to Land.",
+      "example": "11987"
+    },
+    "TRIReleasesTransfers": {
+      "type": "string",
+      "description": "Total chemical releases, in pounds, as reported to the Toxics Release Inventory (TRI) by the facility for the most recent reporting year",
+      "example": "170878"
+    },
+    "TRIReporter": {
+      "type": "string",
+      "description": "Indicates whether or not the facility reported to the Toxics Release Inventory (TRI) for the most recent reporting year.",
+      "example": "Y"
+    },
+    "TRIReporterInPast": {
+      "type": "string",
+      "description": "A 'Y' indicates a TRI Reporter from a prior year.",
+      "example": "Y"
+    },
+    "TRIbalFlag": {
+      "type": "string",
+      "description": "A flag indicating that the facility is within a tribal area.",
+      "example": "1"
+    },
+    "TscaFlag": {
+      "type": "string",
+      "description": "Flag indicating whether or not a facility has a TSCA ID",
+      "example": "string"
+    },
+    "TscaIDs": {
+      "type": "string",
+      "description": "Toxic Substances Control Act ID assigned to a facility",
+      "example": "12345"
+    },
+    "TscaInspections5yr": {
+      "type": "string",
+      "description": "From ICIS FE&C, the number of TSCA inspections at the facility in the past five years.",
+      "example": "2"
+    },
+    "ViolFlag": {
+      "type": "string",
+      "description": "Indicates if the facility had a violation within the last 3 years. 1 = Yes",
+      "example": "1"
+    },
+    "WebDocs": {
+      "type": "string",
+      "description": "Contains flags that identify what web accessible documents are available for the facility.",
+      "example": "C6"
+    }
+  },
+  "required": [
+    "ObjectId",
+    "FacName",
+    "FacStreet",
+    "FacCity",
+    "FacState",
+    "FacZip",
+    "RegistryID",
+    "FacCounty",
+    "FacEPARegion",
+    "FacFederalFlg",
+    "FacFederalAgencyName",
+    "FacIndianCntryFlg",
+    "FacIndianSpatialFlg",
+    "FacDerivedTRIbes",
+    "FacSICCodes",
+    "FacNAICSCodes",
+    "FacLat",
+    "FacLong",
+    "AIRIDs",
+    "CamdIDs",
+    "NPDESIDs",
+    "RCRAIDs",
+    "RmpIDs",
+    "SDWAIDs",
+    "TRIIDs",
+    "EisIDs",
+    "GHGIDs",
+    "TscaIDs",
+    "SemsIDs",
+    "CAAPermitTypes",
+    "CWAPermitTypes",
+    "RCRAPermitTypes",
+    "SDWASystemTypes",
+    "FacSNCFlg",
+    "FacQtrsWithNC",
+    "FacComplianceStatus",
+    "CAAComplianceStatus",
+    "CWAComplianceStatus",
+    "RCRAComplianceStatus",
+    "SDWAComplianceStatus",
+    "FacInspectionCount",
+    "FacDaysLastInspection",
+    "FacDateLastInspection",
+    "CAAEvaluationCount",
+    "CWAInspectionCount",
+    "RCRAInspectionCount",
+    "Over80CountUs",
+    "PctilePctpre1960Us",
+    "PctileDpmUs",
+    "PctileCancerUs",
+    "PctileRespUs",
+    "PctileTrafficScoreUs",
+    "PctileProximityNPDESUs",
+    "PctileProximityNplUs",
+    "PctileProximityRmpUs",
+    "PctileProximityTsdfUs",
+    "PctileO3Us",
+    "PctilePmUs",
+    "FacPopDen",
+    "FacPercentMinority",
+    "FacInformalCount",
+    "CAAInformalCount",
+    "CWAInformalCount",
+    "RCRAInformalCount",
+    "SDWAInformalCount",
+    "FacFormalActionCount",
+    "FacDateLastFormalAction",
+    "CAAFormalActionCount",
+    "CWAFormalActionCount",
+    "RCRAFormalActionCount",
+    "SDWAFormalActionCount",
+    "FacTotalPenalties",
+    "FacPenaltyCount",
+    "FacDateLastPenalty",
+    "FacLastPenaltyAmt",
+    "CAAPenalties",
+    "CWAPenalties",
+    "RCRAPenalties",
+    "GHGCO2Releases",
+    "TRIReleasesTransfers",
+    "FacDerivedWBDHu8",
+    "FacDerivedWBDHu8Name",
+    "FacDerivedRadWBDHu8",
+    "FacDerivedRadWBDHu8Name",
+    "FacMajorFlag",
+    "FacDateLastInformalAction",
+    "Fac3yrComplianceHistory",
+    "CAA3yrComplQtrsHistory",
+    "CWA13qtrsComplHistory",
+    "RCRA3yrComplQtrsHistory",
+    "SDWA3yrComplQtrsHistory",
+    "FecCaseIDs",
+    "FacFIPSCode",
+    "FacUsMexBorderFlg",
+    "FacChesapeakeBayFlg",
+    "FacNaaFlag",
+    "FacMapIcon",
+    "FacCollectionMethod",
+    "FacReferencePoint",
+    "FacAccuracyMeters",
+    "FacDerivedHuc",
+    "FacDerivedWBD",
+    "FacDerivedStctyFIPS",
+    "FacDerivedZip",
+    "FacDerivedCd113",
+    "FacDerivedCb2010",
+    "FacActiveFlag",
+    "FacMyrtkUniverse",
+    "FacProgramsWithSNC",
+    "AIRFlag",
+    "NPDESFlag",
+    "SDWISFlag",
+    "RCRAFlag",
+    "TRIFlag",
+    "GHGFlag",
+    "CAANAICS",
+    "CAASICs",
+    "CAADaysLastEvaluation",
+    "CAADateLastFormalAction",
+    "CAALastPenaltyDate",
+    "CAALastPenaltyAmt",
+    "CAAQtrsWithNC",
+    "CAAHpvFlag",
+    "CWAComplianceTracking",
+    "CWANAICS",
+    "CWASICs",
+    "CWADaysLastInspection",
+    "CWADateLastFormalAction",
+    "CWALastPenaltyDate",
+    "CWALastPenaltyAmt",
+    "CWAQtrsWithNC",
+    "CWASNCFlag",
+    "CWA13qtrsEfflntExceedances",
+    "CWA3YrQncrCodes",
+    "RCRANAICS",
+    "RCRADaysLastEvaluation",
+    "RCRADateLastFormalAction",
+    "RCRALastPenaltyDate",
+    "RCRALastPenaltyAmt",
+    "RCRAQtrsWithNC",
+    "RCRASNCFlag",
+    "SDWASNCFlag",
+    "TRIOnSiteReleases",
+    "TRIOffSiteTransfers",
+    "TRIReporterInPast",
+    "FecNumberOfCases",
+    "FecLastCaseDate",
+    "FecTotalPenalties",
+    "DfrUrl",
+    "FacDateLastInspectionEPA",
+    "FacDateLastInspectionState",
+    "FacDateLastFormalActEPA",
+    "FacDateLastFormalActSt",
+    "FacDateLastInformalActEPA",
+    "FacDateLastInformalActSt",
+    "FacFederalAgency",
+    "TRIReporter",
+    "FacImpWaterFlg",
+    "SourceID",
+    "NC",
+    "FacMapFlg",
+    "HasPollRpt",
+    "CensusBlockGroup",
+    "MaxPctileUs",
+    "EjscreenFlagUs",
+    "EjscreenFlag",
+    "TRIbalFlag",
+    "CurrSvFlag",
+    "ViolFlag",
+    "CurrVioFlag",
+    "Insp5yrFlag",
+    "Ea5yrFlag",
+    "Infea5yrFlag",
+    "Lower48",
+    "ActiveLower48",
+    "FacDerivedWBDHu12Name",
+    "FacDerivedRadWBDHu12",
+    "FacDerivedRadWBDHu12Name",
+    "EisFlag",
+    "TscaFlag",
+    "WebDocs",
+    "NaaCategories",
+    "NaaPollutants",
+    "EpcraInspections5yr",
+    "FifraInspections5yr",
+    "TscaInspections5yr",
+    "SDWAInspections5yr",
+    "SDWAQtrsWithNC",
+    "BiosolidsFlag",
+    "FacStdCountyName",
+    "EffChartsFlag",
+    "SemsFlag",
+    "Score",
+    "MaxScore"
+  ]
+}

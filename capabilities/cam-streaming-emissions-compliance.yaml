@@ -1,0 +1,107 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Streaming Services OpenAPI Specification — Emissions Compliance
+  description: 'Emissions Compliance. 1 operations. Lead operation: operations. Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - Emissions Compliance
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_APIKEY_KEY: EPA_APIKEY_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: cam-streaming-emissions-compliance
+      baseUri: https://api.epa.gov/easey
+      description: Streaming Services OpenAPI Specification — Emissions Compliance business capability. Self-contained, no shared references.
+      authentication:
+        type: apikey
+        key: x-api-key
+        value: '{{env.EPA_APIKEY_KEY}}'
+        placement: header
+      resources:
+        - name: streaming-services-emissions-compliance
+          path: /streaming-services/emissions-compliance
+          operations:
+            - name: emissionsComplianceControllerstreamEmissionsCompliance
+              method: GET
+              description: emissionsComplianceControllerstreamEmissionsCompliance
+              inputParameters:
+                - name: stateCode
+                  in: query
+                  type: array
+                  required: false
+                  description: Two letter abbreviation for the State.
+                - name: facilityId
+                  in: query
+                  type: array
+                  required: false
+                  description: The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the "ORIS code", "ORISPL code"
+                - name: ownerOperator
+                  in: query
+                  type: array
+                  required: false
+                  description: The name of any company that owns an allowance account or an affected unit.The name of any company that operates an affected unit.
+                - name: year
+                  in: query
+                  type: array
+                  required: false
+                  description: The calendar year during which activity occurred.
+                - name: exclude
+                  in: query
+                  type: array
+                  required: false
+                  description: Selected items will be excluded from the response
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: cam-streaming-emissions-compliance-rest
+      port: 8080
+      description: REST adapter for Streaming Services OpenAPI Specification — Emissions Compliance. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/streaming-services/emissions-compliance
+          name: streaming-services-emissions-compliance
+          description: REST surface for emissionsComplianceControllerstreamEmissionsCompliance.
+          operations:
+            - method: GET
+              name: emissionsComplianceControllerstreamEmissionsCompliance
+              description: emissionsComplianceControllerstreamEmissionsCompliance
+              call: cam-streaming-emissions-compliance.emissionsComplianceControllerstreamEmissionsCompliance
+              with:
+                stateCode: rest.stateCode
+                facilityId: rest.facilityId
+                ownerOperator: rest.ownerOperator
+                year: rest.year
+                exclude: rest.exclude
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: cam-streaming-emissions-compliance-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Streaming Services OpenAPI Specification — Emissions Compliance. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: emissionscompliancecontroller-streamemissionscompliance
+          description: emissionscompliancecontroller-streamemissionscompliance
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-streaming-emissions-compliance.emissionsComplianceControllerstreamEmissionsCompliance
+          with:
+            stateCode: tools.stateCode
+            facilityId: tools.facilityId
+            ownerOperator: tools.ownerOperator
+            year: tools.year
+            exclude: tools.exclude
+          outputParameters:
+            - type: object
+              mapping: $.

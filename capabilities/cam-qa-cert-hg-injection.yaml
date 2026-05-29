@@ -1,0 +1,156 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: QA Certification Management OpenAPI Specification — Hg Injection
+  description: 'Hg Injection. 2 operations. Lead operation: operations. Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - Hg Injection
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_APIKEY_KEY: EPA_APIKEY_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: cam-qa-cert-hg-injection
+      baseUri: https://api.epa.gov/easey
+      description: QA Certification Management OpenAPI Specification — Hg Injection business capability. Self-contained, no shared references.
+      authentication:
+        type: apikey
+        key: x-api-key
+        value: '{{env.EPA_APIKEY_KEY}}'
+        placement: header
+      resources:
+        - name: qa-certification-mgmt-locations-locid-test-summary-testsumid-hg-summaries-hgtestsumid-hg-injections
+          path: /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/hg-summaries/{hgTestSumId}/hg-injections
+          operations:
+            - name: hgInjectionControllergetHgInjections
+              method: GET
+              description: hgInjectionControllergetHgInjections
+              inputParameters:
+                - name: locId
+                  in: path
+                  type: string
+                  required: true
+                  description: locId
+                - name: testSumId
+                  in: path
+                  type: string
+                  required: true
+                  description: testSumId
+                - name: hgTestSumId
+                  in: path
+                  type: string
+                  required: true
+                  description: hgTestSumId
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: qa-certification-mgmt-locations-locid-test-summary-testsumid-hg-summaries-hgtestsumid-hg-injections-id
+          path: /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/hg-summaries/{hgTestSumId}/hg-injections/{id}
+          operations:
+            - name: hgInjectionControllergetHgInjection
+              method: GET
+              description: hgInjectionControllergetHgInjection
+              inputParameters:
+                - name: locId
+                  in: path
+                  type: string
+                  required: true
+                  description: locId
+                - name: testSumId
+                  in: path
+                  type: string
+                  required: true
+                  description: testSumId
+                - name: hgTestSumId
+                  in: path
+                  type: string
+                  required: true
+                  description: hgTestSumId
+                - name: id
+                  in: path
+                  type: string
+                  required: true
+                  description: id
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: cam-qa-cert-hg-injection-rest
+      port: 8080
+      description: REST adapter for QA Certification Management OpenAPI Specification — Hg Injection. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/qa-certification-mgmt/locations/{locid}/test-summary/{testsumid}/hg-summaries/{hgtestsumid}/hg-injections
+          name: qa-certification-mgmt-locations-locid-test-summary-testsumid-hg-summaries-hgtestsumid-hg-injections
+          description: REST surface for hgInjectionControllergetHgInjections.
+          operations:
+            - method: GET
+              name: hgInjectionControllergetHgInjections
+              description: hgInjectionControllergetHgInjections
+              call: cam-qa-cert-hg-injection.hgInjectionControllergetHgInjections
+              with:
+                locId: rest.locId
+                testSumId: rest.testSumId
+                hgTestSumId: rest.hgTestSumId
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/qa-certification-mgmt/locations/{locid}/test-summary/{testsumid}/hg-summaries/{hgtestsumid}/hg-injections/{id}
+          name: qa-certification-mgmt-locations-locid-test-summary-testsumid-hg-summaries-hgtestsumid-hg-injections-id
+          description: REST surface for hgInjectionControllergetHgInjection.
+          operations:
+            - method: GET
+              name: hgInjectionControllergetHgInjection
+              description: hgInjectionControllergetHgInjection
+              call: cam-qa-cert-hg-injection.hgInjectionControllergetHgInjection
+              with:
+                locId: rest.locId
+                testSumId: rest.testSumId
+                hgTestSumId: rest.hgTestSumId
+                id: rest.id
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: cam-qa-cert-hg-injection-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for QA Certification Management OpenAPI Specification — Hg Injection. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: hginjectioncontroller-gethginjections
+          description: hginjectioncontroller-gethginjections
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-qa-cert-hg-injection.hgInjectionControllergetHgInjections
+          with:
+            locId: tools.locId
+            testSumId: tools.testSumId
+            hgTestSumId: tools.hgTestSumId
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: hginjectioncontroller-gethginjection
+          description: hginjectioncontroller-gethginjection
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-qa-cert-hg-injection.hgInjectionControllergetHgInjection
+          with:
+            locId: tools.locId
+            testSumId: tools.testSumId
+            hgTestSumId: tools.hgTestSumId
+            id: tools.id
+          outputParameters:
+            - type: object
+              mapping: $.

@@ -1,0 +1,142 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: QA Certification Management OpenAPI Specification — Flow To Load Check
+  description: 'Flow To Load Check. 2 operations. Lead operation: operations. Self-contained Naftiko capability covering one EPA business surface.'
+  tags:
+    - EPA
+    - Flow To Load Check
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      EPA_APIKEY_KEY: EPA_APIKEY_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: cam-qa-cert-flow-to-load-check
+      baseUri: https://api.epa.gov/easey
+      description: QA Certification Management OpenAPI Specification — Flow To Load Check business capability. Self-contained, no shared references.
+      authentication:
+        type: apikey
+        key: x-api-key
+        value: '{{env.EPA_APIKEY_KEY}}'
+        placement: header
+      resources:
+        - name: qa-certification-mgmt-locations-locid-test-summary-testsumid-flow-to-load-checks
+          path: /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/flow-to-load-checks
+          operations:
+            - name: flowToLoadCheckControllergetFlowToLoadChecks
+              method: GET
+              description: flowToLoadCheckControllergetFlowToLoadChecks
+              inputParameters:
+                - name: locId
+                  in: path
+                  type: string
+                  required: true
+                  description: locId
+                - name: testSumId
+                  in: path
+                  type: string
+                  required: true
+                  description: testSumId
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: qa-certification-mgmt-locations-locid-test-summary-testsumid-flow-to-load-checks-id
+          path: /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/flow-to-load-checks/{id}
+          operations:
+            - name: flowToLoadCheckControllergetFlowToLoadCheck
+              method: GET
+              description: flowToLoadCheckControllergetFlowToLoadCheck
+              inputParameters:
+                - name: locId
+                  in: path
+                  type: string
+                  required: true
+                  description: locId
+                - name: testSumId
+                  in: path
+                  type: string
+                  required: true
+                  description: testSumId
+                - name: id
+                  in: path
+                  type: string
+                  required: true
+                  description: id
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+  exposes:
+    - type: rest
+      namespace: cam-qa-cert-flow-to-load-check-rest
+      port: 8080
+      description: REST adapter for QA Certification Management OpenAPI Specification — Flow To Load Check. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/qa-certification-mgmt/locations/{locid}/test-summary/{testsumid}/flow-to-load-checks
+          name: qa-certification-mgmt-locations-locid-test-summary-testsumid-flow-to-load-checks
+          description: REST surface for flowToLoadCheckControllergetFlowToLoadChecks.
+          operations:
+            - method: GET
+              name: flowToLoadCheckControllergetFlowToLoadChecks
+              description: flowToLoadCheckControllergetFlowToLoadChecks
+              call: cam-qa-cert-flow-to-load-check.flowToLoadCheckControllergetFlowToLoadChecks
+              with:
+                locId: rest.locId
+                testSumId: rest.testSumId
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/qa-certification-mgmt/locations/{locid}/test-summary/{testsumid}/flow-to-load-checks/{id}
+          name: qa-certification-mgmt-locations-locid-test-summary-testsumid-flow-to-load-checks-id
+          description: REST surface for flowToLoadCheckControllergetFlowToLoadCheck.
+          operations:
+            - method: GET
+              name: flowToLoadCheckControllergetFlowToLoadCheck
+              description: flowToLoadCheckControllergetFlowToLoadCheck
+              call: cam-qa-cert-flow-to-load-check.flowToLoadCheckControllergetFlowToLoadCheck
+              with:
+                locId: rest.locId
+                testSumId: rest.testSumId
+                id: rest.id
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: cam-qa-cert-flow-to-load-check-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for QA Certification Management OpenAPI Specification — Flow To Load Check. One tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: flowtoloadcheckcontroller-getflowtoloadchecks
+          description: flowtoloadcheckcontroller-getflowtoloadchecks
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-qa-cert-flow-to-load-check.flowToLoadCheckControllergetFlowToLoadChecks
+          with:
+            locId: tools.locId
+            testSumId: tools.testSumId
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: flowtoloadcheckcontroller-getflowtoloadcheck
+          description: flowtoloadcheckcontroller-getflowtoloadcheck
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: cam-qa-cert-flow-to-load-check.flowToLoadCheckControllergetFlowToLoadCheck
+          with:
+            locId: tools.locId
+            testSumId: tools.testSumId
+            id: tools.id
+          outputParameters:
+            - type: object
+              mapping: $.
