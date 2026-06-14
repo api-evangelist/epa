@@ -1,0 +1,869 @@
+"""
+EPA (U.S. Environmental Protection Agency) — Conceptual GraphQL Schema
+Derived from Envirofacts, ECHO, AQS, FRS, EJScreen, TRI, SEMS, SDWIS, RCRA, and GHGRP REST APIs.
+This is a conceptual schema representing data available through EPA's public APIs.
+"""
+
+schema {
+  query: Query
+}
+
+# ---------------------------------------------------------------------------
+# Root Query
+# ---------------------------------------------------------------------------
+
+type Query {
+  "Look up a facility by its EPA Facility Registry System registry ID."
+  facilityRegistryRecord(registryId: ID!): FacilityRegistryRecord
+
+  "Search for facilities by name, location, or program."
+  facilities(
+    name: String
+    state: String
+    city: String
+    zip: String
+    naicsCode: String
+    program: ProgramType
+    limit: Int
+    offset: Int
+  ): [FacilityRegistryRecord!]!
+
+  "Retrieve an air quality monitoring station by AQS site ID."
+  airQualityStation(stateCode: String!, countyCode: String!, siteNumber: String!): AirQualityStation
+
+  "List air quality stations with optional geographic or parameter filters."
+  airQualityStations(
+    state: String
+    county: String
+    parameterCode: String
+    active: Boolean
+    limit: Int
+  ): [AirQualityStation!]!
+
+  "Get current AQI readings for a geographic area."
+  airQualityReadings(
+    state: String
+    county: String
+    cbsa: String
+    parameterCode: String
+    beginDate: String
+    endDate: String
+    limit: Int
+  ): [AirQualityReading!]!
+
+  "Look up a specific NPDES permit."
+  npdesPermit(permitNumber: ID!): NPDESPermit
+
+  "Search for NPDES permits."
+  npdesPermits(
+    state: String
+    permitType: String
+    facilityName: String
+    limit: Int
+    offset: Int
+  ): [NPDESPermit!]!
+
+  "Look up a Superfund site by CERCLIS ID."
+  superfundSite(cerclisId: ID!): SuperfundSite
+
+  "Search for Superfund sites."
+  superfundSites(
+    state: String
+    nplStatus: NPLStatus
+    cleanup: Boolean
+    limit: Int
+    offset: Int
+  ): [SuperfundSite!]!
+
+  "Retrieve Toxics Release Inventory data for a facility-year."
+  toxicsReleaseInventory(trifid: ID!, year: Int!): ToxicsReleaseInventory
+
+  "Search TRI by facility, chemical, or geography."
+  toxicsReleaseInventories(
+    state: String
+    year: Int
+    chemicalName: String
+    industry: String
+    limit: Int
+    offset: Int
+  ): [ToxicsReleaseInventory!]!
+
+  "Get a GHG reporting facility."
+  ghgFacility(facilityId: ID!): GHGFacility
+
+  "Search GHG reporting facilities."
+  ghgFacilities(
+    state: String
+    year: Int
+    subpart: String
+    limit: Int
+    offset: Int
+  ): [GHGFacility!]!
+
+  "EJScreen indices for a geographic location."
+  ejScreen(latitude: Float!, longitude: Float!, radius: Float): EJScreen
+
+  "Retrieve a Safe Drinking Water Act public water system."
+  sdwaSystem(pwsid: ID!): SDWASystem
+
+  "Search drinking water systems."
+  sdwaSystems(
+    state: String
+    systemType: SDWASystemType
+    limit: Int
+    offset: Int
+  ): [SDWASystem!]!
+
+  "Look up a RCRA hazardous waste facility."
+  rcraFacility(handlerId: ID!): RCRAFacility
+
+  "Search RCRA facilities."
+  rcraFacilities(
+    state: String
+    active: Boolean
+    generatorStatus: String
+    limit: Int
+    offset: Int
+  ): [RCRAFacility!]!
+
+  "Retrieve ECHO enforcement cases."
+  enforcementAction(caseNumber: ID!): EnforcementAction
+
+  "Search enforcement actions."
+  enforcementActions(
+    state: String
+    program: ProgramType
+    afterDate: String
+    beforeDate: String
+    limit: Int
+    offset: Int
+  ): [EnforcementAction!]!
+
+  "Get a specific pollutant by EPA parameter code."
+  pollutant(parameterCode: ID!): Pollutant
+
+  "List all NAAQS standards."
+  naaqsStandards: [NAAQS!]!
+
+  "Climate indicator time series."
+  climateIndicator(indicatorId: ID!): ClimateIndicator
+
+  "List all climate indicators."
+  climateIndicators: [ClimateIndicator!]!
+}
+
+# ---------------------------------------------------------------------------
+# Enumerations
+# ---------------------------------------------------------------------------
+
+enum ProgramType {
+  CAA
+  CWA
+  RCRA
+  SDWA
+  TRI
+  CERCLA
+  EPCRA
+  TSCA
+  GHGRP
+}
+
+enum NPLStatus {
+  PROPOSED
+  FINAL
+  DELETED
+  NOT_NPL
+}
+
+enum SDWASystemType {
+  CWS
+  NTNCWS
+  TNCWS
+}
+
+enum AQILevel {
+  GOOD
+  MODERATE
+  UNHEALTHY_FOR_SENSITIVE_GROUPS
+  UNHEALTHY
+  VERY_UNHEALTHY
+  HAZARDOUS
+}
+
+enum ReleaseMedia {
+  AIR_FUGITIVE
+  AIR_STACK
+  WATER_SURFACE
+  UNDERGROUND_INJECTION
+  LAND_DISPOSAL
+  OFFSITE_TRANSFER
+}
+
+enum GHGSubpart {
+  SUBPART_A
+  SUBPART_C
+  SUBPART_D
+  SUBPART_G
+  SUBPART_H
+  SUBPART_P
+  SUBPART_Q
+  SUBPART_R
+  SUBPART_S
+  SUBPART_W
+  SUBPART_Y
+  SUBPART_Z
+  SUBPART_AA
+  SUBPART_BB
+  SUBPART_CC
+  SUBPART_DD
+}
+
+enum ComplianceStatus {
+  IN_COMPLIANCE
+  VIOLATION
+  UNKNOWN
+  NOT_APPLICABLE
+}
+
+enum CleanupPhase {
+  SITE_ASSESSMENT
+  RI_FS
+  PROPOSED_PLAN
+  ROD
+  REMEDIAL_DESIGN
+  REMEDIAL_ACTION
+  CONSTRUCTION_COMPLETE
+  DELETION
+  POST_DELETION
+}
+
+# ---------------------------------------------------------------------------
+# Facility Registry
+# ---------------------------------------------------------------------------
+
+"Master EPA facility record linking a site across all regulatory programs."
+type FacilityRegistryRecord {
+  registryId: ID!
+  facilityName: String!
+  location: FacilityLocation
+  naicsCode: String
+  naicsDescription: String
+  sicCode: String
+  programs: [ProgramType!]!
+  airQualityStations: [AirQualityStation!]!
+  npdesPermits: [NPDESPermit!]!
+  rcraFacility: RCRAFacility
+  sdwaSystems: [SDWASystem!]!
+  triReports(year: Int): [TRIReport!]!
+  ghgEmissions(year: Int): [GHGEmission!]!
+  superfundSites: [SuperfundSite!]!
+  complianceRecords(programs: [ProgramType!]): [ComplianceRecord!]!
+  inspectionRecords(afterDate: String, limit: Int): [InspectionRecord!]!
+  enforcementActions(limit: Int): [EnforcementAction!]!
+  ejScreen: EJScreen
+}
+
+"Geocoded physical location for a facility."
+type FacilityLocation {
+  streetAddress: String
+  city: String
+  state: String
+  zip: String
+  county: String
+  fips: String
+  latitude: Float
+  longitude: Float
+  horizontalAccuracy: String
+  referencePoint: String
+}
+
+# ---------------------------------------------------------------------------
+# Air Quality (AQS)
+# ---------------------------------------------------------------------------
+
+"An EPA AQS ambient air monitoring site."
+type AirQualityStation {
+  siteId: ID!
+  stateCode: String!
+  countyCode: String!
+  siteNumber: String!
+  localSiteName: String
+  address: String
+  city: String
+  state: String
+  latitude: Float
+  longitude: Float
+  elevation: Float
+  landUse: String
+  locationSetting: String
+  openDate: String
+  closeDate: String
+  ownerAgency: String
+  monitors: [AirMonitor!]!
+  readings(parameterCode: String, beginDate: String, endDate: String, limit: Int): [AirQualityReading!]!
+}
+
+"An individual monitoring instrument at an AQS station."
+type AirMonitor {
+  monitorId: ID!
+  station: AirQualityStation!
+  parameterCode: String!
+  parameterName: String!
+  methodCode: String
+  methodDescription: String
+  scaleCode: String
+  measurementScale: String
+  reportingUnits: String
+  openDate: String
+  closeDate: String
+  lastSampleDate: String
+  pollutant: Pollutant
+}
+
+"A single ambient air quality measurement or aggregate."
+type AirQualityReading {
+  readingId: ID!
+  station: AirQualityStation
+  monitor: AirMonitor
+  parameterCode: String!
+  parameterName: String!
+  sampleDate: String!
+  sampleTime: String
+  sampleDuration: String
+  reportingUnits: String
+  value: Float
+  nullDataCode: String
+  qualifier: String
+  aqiValue: Int
+  aqiCategory: AQICategory
+  pollutant: Pollutant
+}
+
+"AQI color-coded category with breakpoints."
+type AQICategory {
+  level: AQILevel!
+  description: String!
+  colorHex: String
+  lowerBreakpoint: Float
+  upperBreakpoint: Float
+  pollutantCode: String
+  healthMessage: String
+}
+
+"An EPA-regulated air or water pollutant / parameter."
+type Pollutant {
+  parameterCode: ID!
+  parameterName: String!
+  casNumber: String
+  commonName: String
+  units: String
+  isHazardousAirPollutant: Boolean
+  isCriteriaPollutant: Boolean
+  naaqsStandard: NAAQS
+  pollutantLevels: [PollutantLevel!]!
+}
+
+"A measured concentration of a pollutant with context."
+type PollutantLevel {
+  pollutant: Pollutant!
+  value: Float!
+  units: String!
+  sampleDate: String
+  facility: FacilityRegistryRecord
+  media: String
+}
+
+"A National Ambient Air Quality Standard (NAAQS) primary or secondary standard."
+type NAAQS {
+  standardId: ID!
+  pollutantName: String!
+  parameterCode: String
+  standard: Float!
+  units: String!
+  averagingPeriod: String!
+  type: String
+  revisionYear: Int
+  effectiveDate: String
+}
+
+"A point-source air emission quantity from the National Emissions Inventory."
+type AirEmission {
+  emissionId: ID!
+  facility: FacilityRegistryRecord
+  pollutant: Pollutant
+  year: Int!
+  emissionsTonsPerYear: Float
+  emissionsMethod: String
+  sourceType: String
+}
+
+"A Clean Air Act Title V or minor-source operating permit."
+type CAAPermit {
+  permitId: ID!
+  facilityRegistryRecord: FacilityRegistryRecord
+  permitType: String
+  programCode: String
+  issueDate: String
+  expirationDate: String
+  status: String
+  agency: String
+}
+
+# ---------------------------------------------------------------------------
+# Water Quality (CWA / NPDES)
+# ---------------------------------------------------------------------------
+
+"A named water body: river, lake, estuary, or coastal segment."
+type WaterBody {
+  waterBodyId: ID!
+  name: String!
+  type: String
+  state: String
+  huc12: String
+  uses: [String!]
+  classification: String
+  impaired: Boolean
+  impairedCauses: [String!]
+  samples(limit: Int): [WaterQualitySample!]!
+}
+
+"A field water-quality sample with chemical and biological results."
+type WaterQualitySample {
+  sampleId: ID!
+  waterBody: WaterBody
+  sampleDate: String!
+  sampleType: String
+  collectionMethod: String
+  organization: String
+  results: [PollutantLevel!]!
+}
+
+"A general NPDES or CWA permit."
+type WaterPermit {
+  permitId: ID!
+  permitNumber: String!
+  facilityName: String
+  state: String
+  permitType: String
+  issueDate: String
+  expirationDate: String
+  status: String
+  facility: FacilityRegistryRecord
+}
+
+"A detailed NPDES individual or general permit with limits and discharge points."
+type NPDESPermit {
+  permitNumber: ID!
+  facilityName: String!
+  facility: FacilityRegistryRecord
+  state: String!
+  permitType: String
+  majorMinor: String
+  issueDate: String
+  expirationDate: String
+  status: String
+  outfallCount: Int
+  dischargeMonitoringReports(year: Int, limit: Int): [DischargeMonitoringReport!]!
+  violations(limit: Int): [Violation!]!
+  complianceStatus: ComplianceStatus
+}
+
+"An NPDES Discharge Monitoring Report (DMR) submission."
+type DischargeMonitoringReport {
+  reportId: ID!
+  permit: NPDESPermit
+  reportingPeriod: String!
+  dueDate: String
+  receivedDate: String
+  parameterName: String!
+  parameterCode: String
+  outfallNumber: String
+  measurementType: String
+  measuredValue: Float
+  limitValue: Float
+  units: String
+  exceedance: Boolean
+  exceedancePercentage: Float
+}
+
+"An EPA-registered underground injection control well."
+type UICWell {
+  wellId: ID!
+  facility: FacilityRegistryRecord
+  wellType: String
+  wellStatus: String
+  state: String
+  county: String
+  latitude: Float
+  longitude: Float
+  injectionZone: String
+  operatingStatus: String
+}
+
+# ---------------------------------------------------------------------------
+# Safe Drinking Water (SDWIS)
+# ---------------------------------------------------------------------------
+
+"A public water system regulated under the Safe Drinking Water Act."
+type SDWASystem {
+  pwsid: ID!
+  systemName: String!
+  systemType: SDWASystemType
+  state: String
+  city: String
+  zip: String
+  principalCountyServed: String
+  populationServed: Int
+  primarySourceCode: String
+  primarySource: String
+  activityCode: String
+  samples(limit: Int): [SDWASample!]!
+  leadCopperResults(limit: Int): [LeadCopper!]!
+  violations(limit: Int): [Violation!]!
+}
+
+"A drinking-water sample with contaminant measurements."
+type SDWASample {
+  sampleId: ID!
+  system: SDWASystem
+  sampleDate: String!
+  analyteName: String!
+  analyteCode: String
+  result: Float
+  units: String
+  mcl: Float
+  exceedsMCL: Boolean
+}
+
+"A lead and copper monitoring result under the Lead and Copper Rule."
+type LeadCopper {
+  resultId: ID!
+  system: SDWASystem
+  sampleYear: Int!
+  contaminant: String!
+  ninetiethPercentile: Float
+  actionLevel: Float
+  exceedsActionLevel: Boolean
+  samplesCollected: Int
+}
+
+# ---------------------------------------------------------------------------
+# Hazardous Waste (RCRA)
+# ---------------------------------------------------------------------------
+
+"An EPA RCRA-regulated hazardous waste handler, generator, or TSD facility."
+type RCRAFacility {
+  handlerId: ID!
+  facilityName: String!
+  location: FacilityLocation
+  generatorStatus: String
+  tsdActivity: Boolean
+  universalWasteActivity: Boolean
+  usedOilActivity: Boolean
+  manifests(limit: Int): [HazardousWasteManifest!]!
+  inspections(limit: Int): [InspectionRecord!]!
+  violations(limit: Int): [Violation!]!
+  complianceStatus: ComplianceStatus
+  facility: FacilityRegistryRecord
+}
+
+"A hazardous waste manifest tracking shipment from generator to disposal."
+type HazardousWasteManifest {
+  manifestId: ID!
+  generatorFacility: RCRAFacility
+  tsdfFacility: RCRAFacility
+  shipmentDate: String
+  receivedDate: String
+  wasteDescription: String
+  epaWasteCode: [String!]
+  quantityKg: Float
+  transporters: [String!]
+}
+
+# ---------------------------------------------------------------------------
+# Toxics Release Inventory (TRI)
+# ---------------------------------------------------------------------------
+
+"A TRI facility participating in toxic chemical release reporting."
+type ChemicalFacility {
+  trifid: ID!
+  facilityName: String!
+  location: FacilityLocation
+  naicsCode: String
+  naicsDescription: String
+  triReports(year: Int): [TRIReport!]!
+  facility: FacilityRegistryRecord
+}
+
+"A facility-level TRI data submission year."
+type ToxicsReleaseInventory {
+  trifid: ID!
+  year: Int!
+  facility: ChemicalFacility
+  triReports: [TRIReport!]!
+}
+
+"An annual TRI Form R or Form A submission for a single chemical."
+type TRIReport {
+  reportId: ID!
+  trifid: ID!
+  year: Int!
+  chemicalName: String!
+  casNumber: String
+  classification: String
+  triChemicals: [TRIChemical!]!
+  totalProductionRelatedWasteLbs: Float
+  recyclingLbs: Float
+  energyRecoveryLbs: Float
+  treatmentLbs: Float
+}
+
+"Detailed release quantities for a TRI chemical across media."
+type TRIChemical {
+  chemicalId: ID!
+  report: TRIReport
+  chemicalName: String!
+  casNumber: String
+  releaseMedia: ReleaseMedia
+  totalAirEmissionsLbs: Float
+  fugitiveAirLbs: Float
+  stackAirLbs: Float
+  totalWaterDischargesLbs: Float
+  surfaceWaterLbs: Float
+  undergroundInjectionLbs: Float
+  totalLandfillDisposalLbs: Float
+  offsiteTransferLbs: Float
+  totalReleaseLbs: Float
+}
+
+# ---------------------------------------------------------------------------
+# Superfund / CERCLA (SEMS)
+# ---------------------------------------------------------------------------
+
+"An EPA Superfund site tracked in SEMS (CERCLIS replacement)."
+type SuperfundSite {
+  cerclisId: ID!
+  siteName: String!
+  location: FacilityLocation
+  nplStatus: NPLStatus!
+  proposedDate: String
+  listedDate: String
+  constructionCompletionDate: String
+  deletionDate: String
+  siteScore: Float
+  hrsScore: Float
+  cleanupStatus: CleanupStatus
+  cleanupActions: [CleanupAction!]!
+  responsibleParties: [String!]
+}
+
+"Current remedial phase and milestone for a Superfund site."
+type CleanupStatus {
+  site: SuperfundSite
+  currentPhase: CleanupPhase!
+  milestoneDate: String
+  constructionComplete: Boolean
+  reuse: String
+  notes: String
+}
+
+"An individual response action (e.g., removal or remedial action) at a Superfund site."
+type CleanupAction {
+  actionId: ID!
+  site: SuperfundSite
+  actionType: String
+  medium: String
+  startDate: String
+  completionDate: String
+  cost: Float
+  contractor: String
+  notes: String
+}
+
+# ---------------------------------------------------------------------------
+# Greenhouse Gas Reporting (GHGRP)
+# ---------------------------------------------------------------------------
+
+"A GHG-reporting large stationary source under 40 CFR Part 98."
+type GHGFacility {
+  facilityId: ID!
+  facilityName: String!
+  location: FacilityLocation
+  naicsCode: String
+  industry: String
+  ghgEmissions(year: Int): [GHGEmission!]!
+  facility: FacilityRegistryRecord
+}
+
+"Annual greenhouse gas emissions for a facility by subpart."
+type GHGEmission {
+  emissionId: ID!
+  ghgFacility: GHGFacility
+  year: Int!
+  subpart: GHGSubpart
+  subpartName: String
+  co2EquivalentMT: Float
+  co2MT: Float
+  ch4MT: Float
+  n2oMT: Float
+  hfcMT: Float
+  pfcMT: Float
+  sf6MT: Float
+}
+
+# ---------------------------------------------------------------------------
+# Compliance and Enforcement (ECHO)
+# ---------------------------------------------------------------------------
+
+"Quarterly compliance status for a facility under a specific program."
+type ComplianceRecord {
+  recordId: ID!
+  facility: FacilityRegistryRecord
+  program: ProgramType!
+  reportingPeriod: String!
+  quarterlyStatus: [ComplianceStatus!]!
+  violations: [Violation!]!
+}
+
+"An EPA or state inspection of a regulated facility."
+type InspectionRecord {
+  inspectionId: ID!
+  facility: FacilityRegistryRecord
+  inspectionDate: String!
+  inspectionType: String
+  program: ProgramType
+  agency: String
+  findings: String
+  violations: [Violation!]!
+}
+
+"A specific regulatory violation identified at a facility."
+type Violation {
+  violationId: ID!
+  facility: FacilityRegistryRecord
+  program: ProgramType
+  violationType: String!
+  violationCode: String
+  violationDate: String
+  resolvedDate: String
+  isResolved: Boolean
+  enforcementActions: [EnforcementAction!]!
+}
+
+"A formal or informal EPA/state enforcement action."
+type EnforcementAction {
+  caseNumber: ID!
+  caseName: String
+  program: ProgramType
+  caseType: String
+  agency: String
+  fileDate: String
+  settleDate: String
+  closedDate: String
+  status: String
+  penalties: [Penalty!]!
+  violations: [Violation!]!
+  facilities: [FacilityRegistryRecord!]!
+}
+
+"A penalty assessed and collected as part of an enforcement action."
+type Penalty {
+  penaltyId: ID!
+  enforcementAction: EnforcementAction
+  assessedAmount: Float
+  paidAmount: Float
+  assessDate: String
+  paidDate: String
+  penaltyType: String
+  supplementalEnvironmentalProject: Boolean
+  sepAmount: Float
+}
+
+# ---------------------------------------------------------------------------
+# Environmental Justice (EJScreen)
+# ---------------------------------------------------------------------------
+
+"EJScreen environmental justice indices for a census block group."
+type EJScreen {
+  geoid: ID!
+  latitude: Float
+  longitude: Float
+  state: String
+  county: String
+  tractFips: String
+  demographics: DemographicData
+  environmentalIndices: [EnvironmentalIndex!]!
+  healthRisks: [HealthRisk!]!
+  pm25Percentile: Float
+  ozonePercentile: Float
+  dieselPmPercentile: Float
+  airToxicsCancerRiskPercentile: Float
+  airToxicsRespiratoryHazardPercentile: Float
+  trafficProximityPercentile: Float
+  leadPaintIndicatorPercentile: Float
+  superfundProximityPercentile: Float
+  rmpFacilityProximityPercentile: Float
+  hazardousWasteProximityPercentile: Float
+  wasteWaterDischargePercentile: Float
+  drinkingWaterNonCompliancePercentile: Float
+  lowIncomePercentile: Float
+  peopleOfColorPercentile: Float
+  ejIndexOverall: Float
+}
+
+"Census demographic variables for an EJScreen geography."
+type DemographicData {
+  geoid: ID!
+  totalPopulation: Int
+  percentPeopleOfColor: Float
+  percentLowIncome: Float
+  percentUninsured: Float
+  percentLinguisticallyIsolated: Float
+  percentLessThanHSEducation: Float
+  percentUnder5: Float
+  percentOver64: Float
+  unemploymentRate: Float
+}
+
+"An individual environmental burden or exposure indicator from EJScreen."
+type EnvironmentalIndex {
+  indicatorId: ID!
+  indicatorName: String!
+  value: Float
+  units: String
+  percentile: Float
+  nationalAverageValue: Float
+}
+
+"A cancer or non-cancer health risk estimate for a geography."
+type HealthRisk {
+  riskId: ID!
+  riskType: String
+  pollutant: Pollutant
+  riskEstimate: Float
+  unit: String
+  percentile: Float
+}
+
+# ---------------------------------------------------------------------------
+# Climate Indicators
+# ---------------------------------------------------------------------------
+
+"An EPA-tracked climate change indicator with historical time series."
+type ClimateIndicator {
+  indicatorId: ID!
+  name: String!
+  description: String
+  units: String
+  source: String
+  updateFrequency: String
+  dataPoints: [ClimateDataPoint!]!
+}
+
+"A single observation in a climate indicator time series."
+type ClimateDataPoint {
+  year: Int!
+  value: Float
+  anomaly: Float
+  uncertainty: Float
+}
