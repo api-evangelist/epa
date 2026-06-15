@@ -1,0 +1,203 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Facilities Management OpenAPI Specification",
+    "version": "v2.0.153 published: Thu Mar 26 2026"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Health",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "HealthController_check",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/facilities-mgmt/health"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Facilities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "FacilitiesController_getFacilities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/facilities-mgmt/facilities",
+            "params": [
+              {
+                "name": "page",
+                "value": "0",
+                "type": "query",
+                "description": "Page number of data being requested."
+              },
+              {
+                "name": "perPage",
+                "value": "0",
+                "type": "query",
+                "description": "Number of results per page."
+              },
+              {
+                "name": "stateCode",
+                "value": "AL",
+                "type": "query",
+                "description": "Two letter abbreviation for the State."
+              },
+              {
+                "name": "epaRegion",
+                "value": "string",
+                "type": "query",
+                "description": "An EPA Region is a group of U.S. states. EPA Regions are numbered from 1 to 10 and each state belongs to one and only one EPA Region."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "FacilitiesController_getAllFacilityAttributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/facilities-mgmt/facilities/attributes",
+            "params": [
+              {
+                "name": "year",
+                "value": "2024",
+                "type": "query",
+                "description": "The calendar year during which activity occurred."
+              },
+              {
+                "name": "facilityId",
+                "value": "0",
+                "type": "query",
+                "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting."
+              },
+              {
+                "name": "stateCode",
+                "value": "AL",
+                "type": "query",
+                "description": "Two letter abbreviation for the State."
+              },
+              {
+                "name": "unitType",
+                "value": "Arch-fired boiler",
+                "type": "query",
+                "description": "Type of unit or boiler."
+              },
+              {
+                "name": "unitFuelType",
+                "value": "Coal",
+                "type": "query",
+                "description": "Primary or Secondary fuel types combusted by the unit."
+              },
+              {
+                "name": "controlTechnologies",
+                "value": "Additives to Enhance PAC and Existing Equipment Performance",
+                "type": "query",
+                "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions."
+              },
+              {
+                "name": "sourceCategory",
+                "value": "Automotive Stampings",
+                "type": "query",
+                "description": "Description of a unit that classifies it in terms of the primary function of the unit."
+              },
+              {
+                "name": "programCodeInfo",
+                "value": "ARP",
+                "type": "query",
+                "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions."
+              },
+              {
+                "name": "page",
+                "value": "0",
+                "type": "query",
+                "description": "Page number of data being requested."
+              },
+              {
+                "name": "perPage",
+                "value": "0",
+                "type": "query",
+                "description": "Number of results per page."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "FacilitiesController_getApplicableFacilityAttributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/facilities-mgmt/facilities/attributes/applicable",
+            "params": [
+              {
+                "name": "year",
+                "value": "2024",
+                "type": "query",
+                "description": "The calendar year during which activity occurred."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "FacilitiesController_getFacilityById",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/facilities-mgmt/facilities/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "0",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

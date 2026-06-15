@@ -1,0 +1,317 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Master Data Management OpenAPI Specification",
+    "version": "v2.0.106 published: Thu Mar 26 2026"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Health",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "HealthController_check",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/master-data-mgmt/health"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Account Type Codes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AccountTypeController_getAccountTypeCodes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/master-data-mgmt/account-type-codes",
+            "params": [
+              {
+                "name": "exclude",
+                "value": "CASURR",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a list of Account Type codes & descriptions."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Control Codes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ControlTechnologyController_getControlTechnologies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/master-data-mgmt/control-codes",
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns list of Control codes & descriptions."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Fuel Type Codes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "FuelTypeController_getFuelTypeCodes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/master-data-mgmt/fuel-type-codes",
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a list of Fuel Type codes & descriptions."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Program Codes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ProgramController_getProgramCodes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/master-data-mgmt/program-codes",
+            "params": [
+              {
+                "name": "exclude",
+                "value": "ARP",
+                "type": "query"
+              },
+              {
+                "name": "isActive",
+                "value": "true",
+                "type": "query"
+              },
+              {
+                "name": "emissionsUIFilter",
+                "value": "true",
+                "type": "query"
+              },
+              {
+                "name": "allowanceUIFilter",
+                "value": "true",
+                "type": "query"
+              },
+              {
+                "name": "complianceUIFilter",
+                "value": "true",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a list of Program codes & descriptions."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Reporting Periods",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ReportingPeriodController_getReportingPeriods",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/master-data-mgmt/reporting-periods",
+            "params": [
+              {
+                "name": "export",
+                "value": "true",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a list of Reporting Periods."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Unit Type Codes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "UnitTypeController_getUnitTypeCodes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/master-data-mgmt/unit-type-codes",
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a list of Unit Type codes & descriptions."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Relationships",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "RelationshipsController_listRelationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/master-data-mgmt/relationships/list",
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a list of Master Data relationships available."
+        },
+        {
+          "info": {
+            "name": "RelationshipsController_getRelationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/master-data-mgmt/relationships/:code",
+            "params": [
+              {
+                "name": "code",
+                "value": "string",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a list of Master Data relationships for the dataset provided."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Codes & Descriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "MasterDataController_listCodeTables",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/master-data-mgmt/list",
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a list of Master Data code tables available."
+        },
+        {
+          "info": {
+            "name": "MasterDataController_getCodeTable",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/master-data-mgmt/:code",
+            "params": [
+              {
+                "name": "code",
+                "value": "string",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a list of Master Data codes & descriptions for the dataset provided."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

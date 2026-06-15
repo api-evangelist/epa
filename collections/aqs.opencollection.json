@@ -1,0 +1,2966 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "EPA Air Quality System (AQS) API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Meta Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Check API Availability",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/metaData/isAvailable",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              }
+            ]
+          },
+          "docs": "Check API Availability"
+        },
+        {
+          "info": {
+            "name": "Get Revision History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/metaData/revisionHistory",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              }
+            ]
+          },
+          "docs": "Get Revision History"
+        },
+        {
+          "info": {
+            "name": "List Fields by Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/metaData/fieldsByService",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "service",
+                "value": "string",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Fields by Service"
+        },
+        {
+          "info": {
+            "name": "List Known Issues",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/metaData/issues",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              }
+            ]
+          },
+          "docs": "List Known Issues"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Lists",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List States",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/list/states",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              }
+            ]
+          },
+          "docs": "List States"
+        },
+        {
+          "info": {
+            "name": "List Counties by State",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/list/countiesByState",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "2-digit state FIPS code."
+              }
+            ]
+          },
+          "docs": "List Counties by State"
+        },
+        {
+          "info": {
+            "name": "List Sites by County",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/list/sitesByCounty",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "2-digit state FIPS code."
+              },
+              {
+                "name": "county",
+                "value": "",
+                "type": "query",
+                "description": "3-digit county code."
+              }
+            ]
+          },
+          "docs": "List Sites by County"
+        },
+        {
+          "info": {
+            "name": "List Core Based Statistical Areas",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/list/cbsas",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              }
+            ]
+          },
+          "docs": "List Core Based Statistical Areas"
+        },
+        {
+          "info": {
+            "name": "List Parameter Classes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/list/classes",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              }
+            ]
+          },
+          "docs": "List Parameter Classes"
+        },
+        {
+          "info": {
+            "name": "List Parameters by Class",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/list/parametersByClass",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "pc",
+                "value": "88101",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Parameters by Class"
+        },
+        {
+          "info": {
+            "name": "List Primary Quality Assurance Organizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/list/pqaos",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              }
+            ]
+          },
+          "docs": "List Primary Quality Assurance Organizations"
+        },
+        {
+          "info": {
+            "name": "List Monitoring Agencies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/list/mas",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              }
+            ]
+          },
+          "docs": "List Monitoring Agencies"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Monitors",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Monitors by Site",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/monitors/bySite",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "param",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of up to 5 AQS 5-digit parameter codes."
+              },
+              {
+                "name": "bdate",
+                "value": "",
+                "type": "query",
+                "description": "Begin date (YYYYMMDD)."
+              },
+              {
+                "name": "edate",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYYMMDD). Must be in the same year as bdate for most services."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "2-digit state FIPS code."
+              },
+              {
+                "name": "county",
+                "value": "",
+                "type": "query",
+                "description": "3-digit county code."
+              },
+              {
+                "name": "site",
+                "value": "",
+                "type": "query",
+                "description": "4-digit site code."
+              }
+            ]
+          },
+          "docs": "List Monitors by Site"
+        },
+        {
+          "info": {
+            "name": "List Monitors by County",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/monitors/byCounty",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "param",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of up to 5 AQS 5-digit parameter codes."
+              },
+              {
+                "name": "bdate",
+                "value": "",
+                "type": "query",
+                "description": "Begin date (YYYYMMDD)."
+              },
+              {
+                "name": "edate",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYYMMDD). Must be in the same year as bdate for most services."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "2-digit state FIPS code."
+              },
+              {
+                "name": "county",
+                "value": "",
+                "type": "query",
+                "description": "3-digit county code."
+              }
+            ]
+          },
+          "docs": "List Monitors by County"
+        },
+        {
+          "info": {
+            "name": "List Monitors by State",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/monitors/byState",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "param",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of up to 5 AQS 5-digit parameter codes."
+              },
+              {
+                "name": "bdate",
+                "value": "",
+                "type": "query",
+                "description": "Begin date (YYYYMMDD)."
+              },
+              {
+                "name": "edate",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYYMMDD). Must be in the same year as bdate for most services."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "2-digit state FIPS code."
+              }
+            ]
+          },
+          "docs": "List Monitors by State"
+        },
+        {
+          "info": {
+            "name": "List Monitors by Bounding Box",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/monitors/byBox",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "param",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of up to 5 AQS 5-digit parameter codes."
+              },
+              {
+                "name": "bdate",
+                "value": "",
+                "type": "query",
+                "description": "Begin date (YYYYMMDD)."
+              },
+              {
+                "name": "edate",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYYMMDD). Must be in the same year as bdate for most services."
+              },
+              {
+                "name": "minlat",
+                "value": "",
+                "type": "query",
+                "description": "Minimum latitude of bounding box."
+              },
+              {
+                "name": "maxlat",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "minlon",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "maxlon",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Monitors by Bounding Box"
+        },
+        {
+          "info": {
+            "name": "List Monitors by CBSA",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/monitors/byCBSA",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "param",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of up to 5 AQS 5-digit parameter codes."
+              },
+              {
+                "name": "bdate",
+                "value": "",
+                "type": "query",
+                "description": "Begin date (YYYYMMDD)."
+              },
+              {
+                "name": "edate",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYYMMDD). Must be in the same year as bdate for most services."
+              },
+              {
+                "name": "cbsa",
+                "value": "",
+                "type": "query",
+                "description": "5-digit Core Based Statistical Area code."
+              }
+            ]
+          },
+          "docs": "List Monitors by CBSA"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Sample Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Sample Data by Site",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/sampleData/bySite",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "param",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of up to 5 AQS 5-digit parameter codes."
+              },
+              {
+                "name": "bdate",
+                "value": "",
+                "type": "query",
+                "description": "Begin date (YYYYMMDD)."
+              },
+              {
+                "name": "edate",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYYMMDD). Must be in the same year as bdate for most services."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "2-digit state FIPS code."
+              },
+              {
+                "name": "county",
+                "value": "",
+                "type": "query",
+                "description": "3-digit county code."
+              },
+              {
+                "name": "site",
+                "value": "",
+                "type": "query",
+                "description": "4-digit site code."
+              },
+              {
+                "name": "duration",
+                "value": "",
+                "type": "query",
+                "description": "1-character duration code filter."
+              },
+              {
+                "name": "cbdate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change begin date (returns records updated since cbdate)."
+              },
+              {
+                "name": "cedate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change end date."
+              }
+            ]
+          },
+          "docs": "Get Sample Data by Site"
+        },
+        {
+          "info": {
+            "name": "Get Sample Data by County",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/sampleData/byCounty",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "param",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of up to 5 AQS 5-digit parameter codes."
+              },
+              {
+                "name": "bdate",
+                "value": "",
+                "type": "query",
+                "description": "Begin date (YYYYMMDD)."
+              },
+              {
+                "name": "edate",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYYMMDD). Must be in the same year as bdate for most services."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "2-digit state FIPS code."
+              },
+              {
+                "name": "county",
+                "value": "",
+                "type": "query",
+                "description": "3-digit county code."
+              },
+              {
+                "name": "duration",
+                "value": "",
+                "type": "query",
+                "description": "1-character duration code filter."
+              },
+              {
+                "name": "cbdate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change begin date (returns records updated since cbdate)."
+              },
+              {
+                "name": "cedate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change end date."
+              }
+            ]
+          },
+          "docs": "Get Sample Data by County"
+        },
+        {
+          "info": {
+            "name": "Get Sample Data by State",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/sampleData/byState",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "param",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of up to 5 AQS 5-digit parameter codes."
+              },
+              {
+                "name": "bdate",
+                "value": "",
+                "type": "query",
+                "description": "Begin date (YYYYMMDD)."
+              },
+              {
+                "name": "edate",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYYMMDD). Must be in the same year as bdate for most services."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "2-digit state FIPS code."
+              },
+              {
+                "name": "duration",
+                "value": "",
+                "type": "query",
+                "description": "1-character duration code filter."
+              },
+              {
+                "name": "cbdate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change begin date (returns records updated since cbdate)."
+              },
+              {
+                "name": "cedate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change end date."
+              }
+            ]
+          },
+          "docs": "Get Sample Data by State"
+        },
+        {
+          "info": {
+            "name": "Get Sample Data by Bounding Box",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/sampleData/byBox",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "param",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of up to 5 AQS 5-digit parameter codes."
+              },
+              {
+                "name": "bdate",
+                "value": "",
+                "type": "query",
+                "description": "Begin date (YYYYMMDD)."
+              },
+              {
+                "name": "edate",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYYMMDD). Must be in the same year as bdate for most services."
+              },
+              {
+                "name": "minlat",
+                "value": "",
+                "type": "query",
+                "description": "Minimum latitude of bounding box."
+              },
+              {
+                "name": "maxlat",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "minlon",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "maxlon",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "duration",
+                "value": "",
+                "type": "query",
+                "description": "1-character duration code filter."
+              },
+              {
+                "name": "cbdate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change begin date (returns records updated since cbdate)."
+              },
+              {
+                "name": "cedate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change end date."
+              }
+            ]
+          },
+          "docs": "Get Sample Data by Bounding Box"
+        },
+        {
+          "info": {
+            "name": "Get Sample Data by CBSA",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/sampleData/byCBSA",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "param",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of up to 5 AQS 5-digit parameter codes."
+              },
+              {
+                "name": "bdate",
+                "value": "",
+                "type": "query",
+                "description": "Begin date (YYYYMMDD)."
+              },
+              {
+                "name": "edate",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYYMMDD). Must be in the same year as bdate for most services."
+              },
+              {
+                "name": "cbsa",
+                "value": "",
+                "type": "query",
+                "description": "5-digit Core Based Statistical Area code."
+              },
+              {
+                "name": "duration",
+                "value": "",
+                "type": "query",
+                "description": "1-character duration code filter."
+              },
+              {
+                "name": "cbdate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change begin date (returns records updated since cbdate)."
+              },
+              {
+                "name": "cedate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change end date."
+              }
+            ]
+          },
+          "docs": "Get Sample Data by CBSA"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Daily Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Daily Data by Site",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/dailyData/bySite",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "param",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of up to 5 AQS 5-digit parameter codes."
+              },
+              {
+                "name": "bdate",
+                "value": "",
+                "type": "query",
+                "description": "Begin date (YYYYMMDD)."
+              },
+              {
+                "name": "edate",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYYMMDD). Must be in the same year as bdate for most services."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "2-digit state FIPS code."
+              },
+              {
+                "name": "county",
+                "value": "",
+                "type": "query",
+                "description": "3-digit county code."
+              },
+              {
+                "name": "site",
+                "value": "",
+                "type": "query",
+                "description": "4-digit site code."
+              },
+              {
+                "name": "cbdate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change begin date (returns records updated since cbdate)."
+              },
+              {
+                "name": "cedate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change end date."
+              }
+            ]
+          },
+          "docs": "Get Daily Data by Site"
+        },
+        {
+          "info": {
+            "name": "Get Daily Data by County",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/dailyData/byCounty",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "param",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of up to 5 AQS 5-digit parameter codes."
+              },
+              {
+                "name": "bdate",
+                "value": "",
+                "type": "query",
+                "description": "Begin date (YYYYMMDD)."
+              },
+              {
+                "name": "edate",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYYMMDD). Must be in the same year as bdate for most services."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "2-digit state FIPS code."
+              },
+              {
+                "name": "county",
+                "value": "",
+                "type": "query",
+                "description": "3-digit county code."
+              },
+              {
+                "name": "cbdate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change begin date (returns records updated since cbdate)."
+              },
+              {
+                "name": "cedate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change end date."
+              }
+            ]
+          },
+          "docs": "Get Daily Data by County"
+        },
+        {
+          "info": {
+            "name": "Get Daily Data by State",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/dailyData/byState",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "param",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of up to 5 AQS 5-digit parameter codes."
+              },
+              {
+                "name": "bdate",
+                "value": "",
+                "type": "query",
+                "description": "Begin date (YYYYMMDD)."
+              },
+              {
+                "name": "edate",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYYMMDD). Must be in the same year as bdate for most services."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "2-digit state FIPS code."
+              },
+              {
+                "name": "cbdate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change begin date (returns records updated since cbdate)."
+              },
+              {
+                "name": "cedate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change end date."
+              }
+            ]
+          },
+          "docs": "Get Daily Data by State"
+        },
+        {
+          "info": {
+            "name": "Get Daily Data by Bounding Box",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/dailyData/byBox",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "param",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of up to 5 AQS 5-digit parameter codes."
+              },
+              {
+                "name": "bdate",
+                "value": "",
+                "type": "query",
+                "description": "Begin date (YYYYMMDD)."
+              },
+              {
+                "name": "edate",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYYMMDD). Must be in the same year as bdate for most services."
+              },
+              {
+                "name": "minlat",
+                "value": "",
+                "type": "query",
+                "description": "Minimum latitude of bounding box."
+              },
+              {
+                "name": "maxlat",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "minlon",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "maxlon",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "cbdate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change begin date (returns records updated since cbdate)."
+              },
+              {
+                "name": "cedate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change end date."
+              }
+            ]
+          },
+          "docs": "Get Daily Data by Bounding Box"
+        },
+        {
+          "info": {
+            "name": "Get Daily Data by CBSA",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/dailyData/byCBSA",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "param",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of up to 5 AQS 5-digit parameter codes."
+              },
+              {
+                "name": "bdate",
+                "value": "",
+                "type": "query",
+                "description": "Begin date (YYYYMMDD)."
+              },
+              {
+                "name": "edate",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYYMMDD). Must be in the same year as bdate for most services."
+              },
+              {
+                "name": "cbsa",
+                "value": "",
+                "type": "query",
+                "description": "5-digit Core Based Statistical Area code."
+              },
+              {
+                "name": "cbdate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change begin date (returns records updated since cbdate)."
+              },
+              {
+                "name": "cedate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change end date."
+              }
+            ]
+          },
+          "docs": "Get Daily Data by CBSA"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Quarterly Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Quarterly Data by Site",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/quarterlyData/bySite",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "param",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of up to 5 AQS 5-digit parameter codes."
+              },
+              {
+                "name": "bdate",
+                "value": "",
+                "type": "query",
+                "description": "Begin date (YYYYMMDD)."
+              },
+              {
+                "name": "edate",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYYMMDD). Must be in the same year as bdate for most services."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "2-digit state FIPS code."
+              },
+              {
+                "name": "county",
+                "value": "",
+                "type": "query",
+                "description": "3-digit county code."
+              },
+              {
+                "name": "site",
+                "value": "",
+                "type": "query",
+                "description": "4-digit site code."
+              },
+              {
+                "name": "cbdate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change begin date (returns records updated since cbdate)."
+              },
+              {
+                "name": "cedate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change end date."
+              }
+            ]
+          },
+          "docs": "Get Quarterly Data by Site"
+        },
+        {
+          "info": {
+            "name": "Get Quarterly Data by County",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/quarterlyData/byCounty",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "param",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of up to 5 AQS 5-digit parameter codes."
+              },
+              {
+                "name": "bdate",
+                "value": "",
+                "type": "query",
+                "description": "Begin date (YYYYMMDD)."
+              },
+              {
+                "name": "edate",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYYMMDD). Must be in the same year as bdate for most services."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "2-digit state FIPS code."
+              },
+              {
+                "name": "county",
+                "value": "",
+                "type": "query",
+                "description": "3-digit county code."
+              },
+              {
+                "name": "cbdate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change begin date (returns records updated since cbdate)."
+              },
+              {
+                "name": "cedate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change end date."
+              }
+            ]
+          },
+          "docs": "Get Quarterly Data by County"
+        },
+        {
+          "info": {
+            "name": "Get Quarterly Data by State",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/quarterlyData/byState",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "param",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of up to 5 AQS 5-digit parameter codes."
+              },
+              {
+                "name": "bdate",
+                "value": "",
+                "type": "query",
+                "description": "Begin date (YYYYMMDD)."
+              },
+              {
+                "name": "edate",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYYMMDD). Must be in the same year as bdate for most services."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "2-digit state FIPS code."
+              },
+              {
+                "name": "cbdate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change begin date (returns records updated since cbdate)."
+              },
+              {
+                "name": "cedate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change end date."
+              }
+            ]
+          },
+          "docs": "Get Quarterly Data by State"
+        },
+        {
+          "info": {
+            "name": "Get Quarterly Data by Bounding Box",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/quarterlyData/byBox",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "param",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of up to 5 AQS 5-digit parameter codes."
+              },
+              {
+                "name": "bdate",
+                "value": "",
+                "type": "query",
+                "description": "Begin date (YYYYMMDD)."
+              },
+              {
+                "name": "edate",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYYMMDD). Must be in the same year as bdate for most services."
+              },
+              {
+                "name": "minlat",
+                "value": "",
+                "type": "query",
+                "description": "Minimum latitude of bounding box."
+              },
+              {
+                "name": "maxlat",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "minlon",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "maxlon",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "cbdate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change begin date (returns records updated since cbdate)."
+              },
+              {
+                "name": "cedate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change end date."
+              }
+            ]
+          },
+          "docs": "Get Quarterly Data by Bounding Box"
+        },
+        {
+          "info": {
+            "name": "Get Quarterly Data by CBSA",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/quarterlyData/byCBSA",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "param",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of up to 5 AQS 5-digit parameter codes."
+              },
+              {
+                "name": "bdate",
+                "value": "",
+                "type": "query",
+                "description": "Begin date (YYYYMMDD)."
+              },
+              {
+                "name": "edate",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYYMMDD). Must be in the same year as bdate for most services."
+              },
+              {
+                "name": "cbsa",
+                "value": "",
+                "type": "query",
+                "description": "5-digit Core Based Statistical Area code."
+              },
+              {
+                "name": "cbdate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change begin date (returns records updated since cbdate)."
+              },
+              {
+                "name": "cedate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change end date."
+              }
+            ]
+          },
+          "docs": "Get Quarterly Data by CBSA"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Annual Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Annual Data by Site",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/annualData/bySite",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "param",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of up to 5 AQS 5-digit parameter codes."
+              },
+              {
+                "name": "bdate",
+                "value": "",
+                "type": "query",
+                "description": "Begin date (YYYYMMDD)."
+              },
+              {
+                "name": "edate",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYYMMDD). Must be in the same year as bdate for most services."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "2-digit state FIPS code."
+              },
+              {
+                "name": "county",
+                "value": "",
+                "type": "query",
+                "description": "3-digit county code."
+              },
+              {
+                "name": "site",
+                "value": "",
+                "type": "query",
+                "description": "4-digit site code."
+              },
+              {
+                "name": "cbdate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change begin date (returns records updated since cbdate)."
+              },
+              {
+                "name": "cedate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change end date."
+              }
+            ]
+          },
+          "docs": "Get Annual Data by Site"
+        },
+        {
+          "info": {
+            "name": "Get Annual Data by County",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/annualData/byCounty",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "param",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of up to 5 AQS 5-digit parameter codes."
+              },
+              {
+                "name": "bdate",
+                "value": "",
+                "type": "query",
+                "description": "Begin date (YYYYMMDD)."
+              },
+              {
+                "name": "edate",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYYMMDD). Must be in the same year as bdate for most services."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "2-digit state FIPS code."
+              },
+              {
+                "name": "county",
+                "value": "",
+                "type": "query",
+                "description": "3-digit county code."
+              },
+              {
+                "name": "cbdate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change begin date (returns records updated since cbdate)."
+              },
+              {
+                "name": "cedate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change end date."
+              }
+            ]
+          },
+          "docs": "Get Annual Data by County"
+        },
+        {
+          "info": {
+            "name": "Get Annual Data by State",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/annualData/byState",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "param",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of up to 5 AQS 5-digit parameter codes."
+              },
+              {
+                "name": "bdate",
+                "value": "",
+                "type": "query",
+                "description": "Begin date (YYYYMMDD)."
+              },
+              {
+                "name": "edate",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYYMMDD). Must be in the same year as bdate for most services."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "2-digit state FIPS code."
+              },
+              {
+                "name": "cbdate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change begin date (returns records updated since cbdate)."
+              },
+              {
+                "name": "cedate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change end date."
+              }
+            ]
+          },
+          "docs": "Get Annual Data by State"
+        },
+        {
+          "info": {
+            "name": "Get Annual Data by Bounding Box",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/annualData/byBox",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "param",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of up to 5 AQS 5-digit parameter codes."
+              },
+              {
+                "name": "bdate",
+                "value": "",
+                "type": "query",
+                "description": "Begin date (YYYYMMDD)."
+              },
+              {
+                "name": "edate",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYYMMDD). Must be in the same year as bdate for most services."
+              },
+              {
+                "name": "minlat",
+                "value": "",
+                "type": "query",
+                "description": "Minimum latitude of bounding box."
+              },
+              {
+                "name": "maxlat",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "minlon",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "maxlon",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "cbdate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change begin date (returns records updated since cbdate)."
+              },
+              {
+                "name": "cedate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change end date."
+              }
+            ]
+          },
+          "docs": "Get Annual Data by Bounding Box"
+        },
+        {
+          "info": {
+            "name": "Get Annual Data by CBSA",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/annualData/byCBSA",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "param",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of up to 5 AQS 5-digit parameter codes."
+              },
+              {
+                "name": "bdate",
+                "value": "",
+                "type": "query",
+                "description": "Begin date (YYYYMMDD)."
+              },
+              {
+                "name": "edate",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYYMMDD). Must be in the same year as bdate for most services."
+              },
+              {
+                "name": "cbsa",
+                "value": "",
+                "type": "query",
+                "description": "5-digit Core Based Statistical Area code."
+              },
+              {
+                "name": "cbdate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change begin date (returns records updated since cbdate)."
+              },
+              {
+                "name": "cedate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change end date."
+              }
+            ]
+          },
+          "docs": "Get Annual Data by CBSA"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Quality Assurance",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "QA Annual Performance Evaluations by Site",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/qaAnnualPerformanceEvaluations/bySite",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "param",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of up to 5 AQS 5-digit parameter codes."
+              },
+              {
+                "name": "bdate",
+                "value": "",
+                "type": "query",
+                "description": "Begin date (YYYYMMDD)."
+              },
+              {
+                "name": "edate",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYYMMDD). Must be in the same year as bdate for most services."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "2-digit state FIPS code."
+              },
+              {
+                "name": "county",
+                "value": "",
+                "type": "query",
+                "description": "3-digit county code."
+              },
+              {
+                "name": "site",
+                "value": "",
+                "type": "query",
+                "description": "4-digit site code."
+              }
+            ]
+          },
+          "docs": "QA Annual Performance Evaluations by Site"
+        },
+        {
+          "info": {
+            "name": "QA Annual Performance Evaluations by County",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/qaAnnualPerformanceEvaluations/byCounty",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "param",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of up to 5 AQS 5-digit parameter codes."
+              },
+              {
+                "name": "bdate",
+                "value": "",
+                "type": "query",
+                "description": "Begin date (YYYYMMDD)."
+              },
+              {
+                "name": "edate",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYYMMDD). Must be in the same year as bdate for most services."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "2-digit state FIPS code."
+              },
+              {
+                "name": "county",
+                "value": "",
+                "type": "query",
+                "description": "3-digit county code."
+              }
+            ]
+          },
+          "docs": "QA Annual Performance Evaluations by County"
+        },
+        {
+          "info": {
+            "name": "QA Annual Performance Evaluations by State",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/qaAnnualPerformanceEvaluations/byState",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "param",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of up to 5 AQS 5-digit parameter codes."
+              },
+              {
+                "name": "bdate",
+                "value": "",
+                "type": "query",
+                "description": "Begin date (YYYYMMDD)."
+              },
+              {
+                "name": "edate",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYYMMDD). Must be in the same year as bdate for most services."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "2-digit state FIPS code."
+              }
+            ]
+          },
+          "docs": "QA Annual Performance Evaluations by State"
+        },
+        {
+          "info": {
+            "name": "QA Annual Performance Evaluations by PQAO",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/qaAnnualPerformanceEvaluations/byPQAO",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "param",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of up to 5 AQS 5-digit parameter codes."
+              },
+              {
+                "name": "bdate",
+                "value": "",
+                "type": "query",
+                "description": "Begin date (YYYYMMDD)."
+              },
+              {
+                "name": "edate",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYYMMDD). Must be in the same year as bdate for most services."
+              },
+              {
+                "name": "pqao",
+                "value": "",
+                "type": "query",
+                "description": "Primary Quality Assurance Organization code."
+              }
+            ]
+          },
+          "docs": "QA Annual Performance Evaluations by PQAO"
+        },
+        {
+          "info": {
+            "name": "QA Annual Performance Evaluations by Monitoring Agency",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/qaAnnualPerformanceEvaluations/byMA",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "param",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of up to 5 AQS 5-digit parameter codes."
+              },
+              {
+                "name": "bdate",
+                "value": "",
+                "type": "query",
+                "description": "Begin date (YYYYMMDD)."
+              },
+              {
+                "name": "edate",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYYMMDD). Must be in the same year as bdate for most services."
+              },
+              {
+                "name": "ma",
+                "value": "",
+                "type": "query",
+                "description": "Monitoring Agency code."
+              }
+            ]
+          },
+          "docs": "QA Annual Performance Evaluations by Monitoring Agency"
+        },
+        {
+          "info": {
+            "name": "QA Blanks by Site",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/qaBlanks/bySite",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "param",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of up to 5 AQS 5-digit parameter codes."
+              },
+              {
+                "name": "bdate",
+                "value": "",
+                "type": "query",
+                "description": "Begin date (YYYYMMDD)."
+              },
+              {
+                "name": "edate",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYYMMDD). Must be in the same year as bdate for most services."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "2-digit state FIPS code."
+              },
+              {
+                "name": "county",
+                "value": "",
+                "type": "query",
+                "description": "3-digit county code."
+              },
+              {
+                "name": "site",
+                "value": "",
+                "type": "query",
+                "description": "4-digit site code."
+              }
+            ]
+          },
+          "docs": "QA Blanks by Site"
+        },
+        {
+          "info": {
+            "name": "QA Blanks by State",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/qaBlanks/byState",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "param",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of up to 5 AQS 5-digit parameter codes."
+              },
+              {
+                "name": "bdate",
+                "value": "",
+                "type": "query",
+                "description": "Begin date (YYYYMMDD)."
+              },
+              {
+                "name": "edate",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYYMMDD). Must be in the same year as bdate for most services."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "2-digit state FIPS code."
+              }
+            ]
+          },
+          "docs": "QA Blanks by State"
+        },
+        {
+          "info": {
+            "name": "QA Collocated Assessments by Site",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/qaCollocatedAssessments/bySite",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "param",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of up to 5 AQS 5-digit parameter codes."
+              },
+              {
+                "name": "bdate",
+                "value": "",
+                "type": "query",
+                "description": "Begin date (YYYYMMDD)."
+              },
+              {
+                "name": "edate",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYYMMDD). Must be in the same year as bdate for most services."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "2-digit state FIPS code."
+              },
+              {
+                "name": "county",
+                "value": "",
+                "type": "query",
+                "description": "3-digit county code."
+              },
+              {
+                "name": "site",
+                "value": "",
+                "type": "query",
+                "description": "4-digit site code."
+              }
+            ]
+          },
+          "docs": "QA Collocated Assessments by Site"
+        },
+        {
+          "info": {
+            "name": "QA Flow Rate Verifications by Site",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/qaFlowRateVerifications/bySite",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "param",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of up to 5 AQS 5-digit parameter codes."
+              },
+              {
+                "name": "bdate",
+                "value": "",
+                "type": "query",
+                "description": "Begin date (YYYYMMDD)."
+              },
+              {
+                "name": "edate",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYYMMDD). Must be in the same year as bdate for most services."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "2-digit state FIPS code."
+              },
+              {
+                "name": "county",
+                "value": "",
+                "type": "query",
+                "description": "3-digit county code."
+              },
+              {
+                "name": "site",
+                "value": "",
+                "type": "query",
+                "description": "4-digit site code."
+              }
+            ]
+          },
+          "docs": "QA Flow Rate Verifications by Site"
+        },
+        {
+          "info": {
+            "name": "QA Flow Rate Audits by Site",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/qaFlowRateAudits/bySite",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "param",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of up to 5 AQS 5-digit parameter codes."
+              },
+              {
+                "name": "bdate",
+                "value": "",
+                "type": "query",
+                "description": "Begin date (YYYYMMDD)."
+              },
+              {
+                "name": "edate",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYYMMDD). Must be in the same year as bdate for most services."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "2-digit state FIPS code."
+              },
+              {
+                "name": "county",
+                "value": "",
+                "type": "query",
+                "description": "3-digit county code."
+              },
+              {
+                "name": "site",
+                "value": "",
+                "type": "query",
+                "description": "4-digit site code."
+              }
+            ]
+          },
+          "docs": "QA Flow Rate Audits by Site"
+        },
+        {
+          "info": {
+            "name": "QA One Point QC Raw Data by Site",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/qaOnePointQcRawData/bySite",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "param",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of up to 5 AQS 5-digit parameter codes."
+              },
+              {
+                "name": "bdate",
+                "value": "",
+                "type": "query",
+                "description": "Begin date (YYYYMMDD)."
+              },
+              {
+                "name": "edate",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYYMMDD). Must be in the same year as bdate for most services."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "2-digit state FIPS code."
+              },
+              {
+                "name": "county",
+                "value": "",
+                "type": "query",
+                "description": "3-digit county code."
+              },
+              {
+                "name": "site",
+                "value": "",
+                "type": "query",
+                "description": "4-digit site code."
+              }
+            ]
+          },
+          "docs": "QA One Point QC Raw Data by Site"
+        },
+        {
+          "info": {
+            "name": "QA PEP Audits by Site",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/qaPepAudits/bySite",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "param",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of up to 5 AQS 5-digit parameter codes."
+              },
+              {
+                "name": "bdate",
+                "value": "",
+                "type": "query",
+                "description": "Begin date (YYYYMMDD)."
+              },
+              {
+                "name": "edate",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYYMMDD). Must be in the same year as bdate for most services."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "2-digit state FIPS code."
+              },
+              {
+                "name": "county",
+                "value": "",
+                "type": "query",
+                "description": "3-digit county code."
+              },
+              {
+                "name": "site",
+                "value": "",
+                "type": "query",
+                "description": "4-digit site code."
+              }
+            ]
+          },
+          "docs": "QA PEP Audits by Site"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Transactions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Transactions Sample by Site",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/transactionsSample/bySite",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "param",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of up to 5 AQS 5-digit parameter codes."
+              },
+              {
+                "name": "bdate",
+                "value": "",
+                "type": "query",
+                "description": "Begin date (YYYYMMDD)."
+              },
+              {
+                "name": "edate",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYYMMDD). Must be in the same year as bdate for most services."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "2-digit state FIPS code."
+              },
+              {
+                "name": "county",
+                "value": "",
+                "type": "query",
+                "description": "3-digit county code."
+              },
+              {
+                "name": "site",
+                "value": "",
+                "type": "query",
+                "description": "4-digit site code."
+              },
+              {
+                "name": "cbdate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change begin date (returns records updated since cbdate)."
+              },
+              {
+                "name": "cedate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change end date."
+              }
+            ]
+          },
+          "docs": "Transactions Sample by Site"
+        },
+        {
+          "info": {
+            "name": "Transactions Sample by State",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/transactionsSample/byState",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "param",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of up to 5 AQS 5-digit parameter codes."
+              },
+              {
+                "name": "bdate",
+                "value": "",
+                "type": "query",
+                "description": "Begin date (YYYYMMDD)."
+              },
+              {
+                "name": "edate",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYYMMDD). Must be in the same year as bdate for most services."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "2-digit state FIPS code."
+              },
+              {
+                "name": "cbdate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change begin date (returns records updated since cbdate)."
+              },
+              {
+                "name": "cedate",
+                "value": "",
+                "type": "query",
+                "description": "Optional change end date."
+              }
+            ]
+          },
+          "docs": "Transactions Sample by State"
+        },
+        {
+          "info": {
+            "name": "Transactions QA Annual by State",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/transactionsQaAnnualPerformanceEvaluations/byState",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "param",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of up to 5 AQS 5-digit parameter codes."
+              },
+              {
+                "name": "bdate",
+                "value": "",
+                "type": "query",
+                "description": "Begin date (YYYYMMDD)."
+              },
+              {
+                "name": "edate",
+                "value": "",
+                "type": "query",
+                "description": "End date (YYYYMMDD). Must be in the same year as bdate for most services."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "2-digit state FIPS code."
+              }
+            ]
+          },
+          "docs": "Transactions QA Annual by State"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Sign Up",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Register for API Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/signup",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              }
+            ]
+          },
+          "docs": "Register for API Key"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

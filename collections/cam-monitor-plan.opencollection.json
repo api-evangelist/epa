@@ -1,0 +1,978 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Monitor Plan Management OpenAPI Specification",
+    "version": "v2.0.118 published: Thu Mar 26 2026"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Health",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "HealthController_check",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/monitor-plan-mgmt/health"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Plans",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "MonitorPlanController_exportMonitorPlan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/monitor-plan-mgmt/plans/export",
+            "params": [
+              {
+                "name": "planId",
+                "value": "12345",
+                "type": "query",
+                "description": "The Monintor Plan Summary ID is a unique identifier for a monitor plan record"
+              },
+              {
+                "name": "reportedValuesOnly",
+                "value": "true",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "MonitorPlanController_getMonitorPlan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/monitor-plan-mgmt/plans/:planId",
+            "params": [
+              {
+                "name": "planId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Comments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "MonitorPlanCommentController_getComments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/monitor-plan-mgmt/plans/:planId/comments",
+            "params": [
+              {
+                "name": "planId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Locations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "MonitorLocationController_getLocation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/monitor-plan-mgmt/locations/:locId",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "MonitorLocationController_getLocationRelationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/monitor-plan-mgmt/locations/:locId/relationships",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Attributes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "MonitorAttributeController_getAttributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/monitor-plan-mgmt/locations/:locId/attributes",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Unit Capacities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "UnitCapacityController_getUnitCapacities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/monitor-plan-mgmt/units/:unitId/unit-capacities",
+            "params": [
+              {
+                "name": "unitId",
+                "value": "0",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Unit Controls",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "UnitControlController_getUnitControls",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/monitor-plan-mgmt/units/:unitId/unit-controls",
+            "params": [
+              {
+                "name": "unitId",
+                "value": "0",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Unit Fuels",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "UnitFuelController_getUnitFuels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/monitor-plan-mgmt/units/:unitId/unit-fuels",
+            "params": [
+              {
+                "name": "unitId",
+                "value": "0",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Methods",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "MonitorMethodController_getMethods",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/monitor-plan-mgmt/locations/:locId/methods",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "MATS Methods",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "MatsMethodController_getMethods",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/monitor-plan-mgmt/locations/:locId/mats-methods",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Formulas",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "MonitorFormulaController_getFormulas",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/monitor-plan-mgmt/locations/:locId/formulas",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Defaults",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "MonitorDefaultController_getDefaults",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/monitor-plan-mgmt/locations/:locId/defaults",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Spans",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "MonitorSpanController_getSpans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/monitor-plan-mgmt/locations/:locId/spans",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Rectangular Duct WAF",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "DuctWafController_getDuctWafs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/monitor-plan-mgmt/locations/:locId/duct-wafs",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Loads",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "MonitorLoadController_getLoads",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/monitor-plan-mgmt/locations/:locId/loads",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Components",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ComponentController_getComponents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/monitor-plan-mgmt/locations/:locId/components",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Analyzer Ranges",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AnalyzerRangeController_getAnalyzerRanges",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/monitor-plan-mgmt/locations/:locId/components/:compId/analyzer-ranges",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "compId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Systems",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "MonitorSystemController_getSystems",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/monitor-plan-mgmt/locations/:locId/systems",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "System Fuel Flows",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SystemFuelFlowController_getFuelFlows",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/monitor-plan-mgmt/locations/:locId/systems/:sysId/fuel-flows",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "sysId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "System Components",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SystemComponentController_getComponents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/monitor-plan-mgmt/locations/:locId/systems/:sysId/components",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "sysId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Qualifications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "MonitorQualificationController_getQualifications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/monitor-plan-mgmt/locations/:locId/qualifications",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "LEE Qualifications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "LEEQualificationController_getLEEQualifications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/monitor-plan-mgmt/locations/:locId/qualifications/:qualId/lee-qualifications",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "qualId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "LME Qualifications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "LMEQualificationController_getLMEQualifications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/monitor-plan-mgmt/locations/:locId/qualifications/:qualId/lme-qualifications",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "qualId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "PCT Qualifications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "PCTQualificationController_getPCTQualifications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/monitor-plan-mgmt/locations/:locId/qualifications/:qualId/pct-qualifications",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "qualId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Reporting Frequencies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "MonitorPlanReportingFrequencyController_getReportingFreqs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/monitor-plan-mgmt/plans/:planId/reporting-frequencies",
+            "params": [
+              {
+                "name": "planId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Configurations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "MonitorConfigurationsController_getConfigurations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/monitor-plan-mgmt/configurations",
+            "params": [
+              {
+                "name": "orisCodes",
+                "value": "0",
+                "type": "query",
+                "description": "Array of oris codes"
+              },
+              {
+                "name": "monPlanIds",
+                "value": "12345",
+                "type": "query",
+                "description": "Array of configurations"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "MonitorConfigurationsController_getLastUpdated",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/monitor-plan-mgmt/configurations/last-updated",
+            "params": [
+              {
+                "name": "date",
+                "value": "2019-01-01",
+                "type": "query",
+                "description": "Date on which activity occurred. Must be within the last year from current date and cannot be in the future."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Units",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "UnitController_getUnit",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/monitor-plan-mgmt/units/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "0",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Unit Programs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "UnitProgramController_getUnitProgramsByUnitRecordId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/monitor-plan-mgmt/units/:unitId/unit-programs",
+            "params": [
+              {
+                "name": "unitId",
+                "value": "0",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

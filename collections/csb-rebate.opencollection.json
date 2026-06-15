@@ -1,0 +1,1603 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "epa-csb-server",
+    "version": "8.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "/login",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/login"
+      },
+      "docs": "/login"
+    },
+    {
+      "info": {
+        "name": "/login/assert",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/login/assert"
+      },
+      "docs": "/login/assert"
+    },
+    {
+      "info": {
+        "name": "/login/fail",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/login/fail"
+      },
+      "docs": "/login/fail"
+    },
+    {
+      "info": {
+        "name": "/logout",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/logout"
+      },
+      "docs": "/logout"
+    },
+    {
+      "info": {
+        "name": "/logout/callback",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/logout/callback"
+      },
+      "docs": "/logout/callback"
+    },
+    {
+      "info": {
+        "name": "/logout/callback",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/logout/callback"
+      },
+      "docs": "/logout/callback"
+    },
+    {
+      "info": {
+        "name": "/metadata",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/metadata"
+      },
+      "docs": "/metadata"
+    },
+    {
+      "info": {
+        "name": "Get user data from EPA Gateway/Login.gov.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/user"
+      },
+      "docs": "Get user data from EPA Gateway/Login.gov."
+    },
+    {
+      "info": {
+        "name": "Get CSB App Specific Public Configuration (csb App Login Status and Static Content)",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/config/public"
+      },
+      "docs": "Get CSB App Specific Public Configuration (csb App Login Status and Static Content)"
+    },
+    {
+      "info": {
+        "name": "Get CSB App Specific Private Configuration (form Open Enrollment Status, Etc.)",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/config/private"
+      },
+      "docs": "Get CSB App Specific Private Configuration (form Open Enrollment Status, Etc.)"
+    },
+    {
+      "info": {
+        "name": "Get User's SAM.gov Data from the BAP.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/bap/sam"
+      },
+      "docs": "Get User's SAM.gov Data from the BAP."
+    },
+    {
+      "info": {
+        "name": "Get User's Form Submissions Statuses from the BAP.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/bap/submissions"
+      },
+      "docs": "Get User's Form Submissions Statuses from the BAP."
+    },
+    {
+      "info": {
+        "name": "Get the School District Info Associated with a Provided CSB Rebate ID",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/formio/2022/district/:rebateId",
+        "params": [
+          {
+            "name": "rebateId",
+            "value": "000000",
+            "type": "path",
+            "description": "The CSB Rebate ID"
+          }
+        ]
+      },
+      "docs": "Get the School District Info Associated with a Provided CSB Rebate ID"
+    },
+    {
+      "info": {
+        "name": "Download Formio File Attachment from S3 for a 2022 Submission.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/formio/2022/s3/:formType/:mongoId/:comboKey/storage/s3",
+        "params": [
+          {
+            "name": "formType",
+            "value": "frf",
+            "type": "path",
+            "description": "The Formio form type (frf, prf, crf)."
+          },
+          {
+            "name": "mongoId",
+            "value": "000000000000000000000000",
+            "type": "path",
+            "description": "The Formio submission's MongoDB ObjectId."
+          },
+          {
+            "name": "comboKey",
+            "value": "0000000000000000",
+            "type": "path",
+            "description": "The SAM.gov entity's UEI/EFTI combo key."
+          },
+          {
+            "name": "bucket",
+            "value": "cleanschoolbus",
+            "type": "query",
+            "description": "The S3 bucket name where the file is stored."
+          },
+          {
+            "name": "key",
+            "value": "placeholder-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.png",
+            "type": "query",
+            "description": "The S3 object key for the file."
+          }
+        ]
+      },
+      "docs": "Download Formio File Attachment from S3 for a 2022 Submission."
+    },
+    {
+      "info": {
+        "name": "Upload Formio File Attachment to S3 for a 2022 Submission.",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/formio/2022/s3/:formType/:mongoId/:comboKey/storage/s3",
+        "params": [
+          {
+            "name": "formType",
+            "value": "frf",
+            "type": "path",
+            "description": "The Formio form type (frf, prf, crf)."
+          },
+          {
+            "name": "mongoId",
+            "value": "000000000000000000000000",
+            "type": "path",
+            "description": "The Formio submission's MongoDB ObjectId."
+          },
+          {
+            "name": "comboKey",
+            "value": "0000000000000000",
+            "type": "path",
+            "description": "The SAM.gov entity's UEI/EFTI combo key."
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Upload Formio File Attachment to S3 for a 2022 Submission."
+    },
+    {
+      "info": {
+        "name": "Delete Formio File Attachment from S3 for a 2022 Submission.",
+        "type": "http"
+      },
+      "http": {
+        "method": "DELETE",
+        "url": "{{baseUrl}}/api/formio/2022/s3/:formType/:mongoId/:comboKey/storage/s3",
+        "params": [
+          {
+            "name": "formType",
+            "value": "frf",
+            "type": "path",
+            "description": "The Formio form type (frf, prf, crf)."
+          },
+          {
+            "name": "mongoId",
+            "value": "000000000000000000000000",
+            "type": "path",
+            "description": "The Formio submission's MongoDB ObjectId."
+          },
+          {
+            "name": "comboKey",
+            "value": "0000000000000000",
+            "type": "path",
+            "description": "The SAM.gov entity's UEI/EFTI combo key."
+          }
+        ]
+      },
+      "docs": "Delete Formio File Attachment from S3 for a 2022 Submission."
+    },
+    {
+      "info": {
+        "name": "Download a PDF of a 2022 Form Submission.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/formio/2022/pdf/:formType/:mongoId",
+        "params": [
+          {
+            "name": "formType",
+            "value": "frf",
+            "type": "path",
+            "description": "The Formio form type (frf, prf, crf)."
+          },
+          {
+            "name": "mongoId",
+            "value": "000000000000000000000000",
+            "type": "path",
+            "description": "The Formio submission's MongoDB ObjectId."
+          }
+        ]
+      },
+      "docs": "Download a PDF of a 2022 Form Submission."
+    },
+    {
+      "info": {
+        "name": "Get User's 2022 FRF Submissions from Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/formio/2022/frf-submissions"
+      },
+      "docs": "Get User's 2022 FRF Submissions from Formio."
+    },
+    {
+      "info": {
+        "name": "Post a New 2022 FRF Submission to Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/formio/2022/frf-submission",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Post a New 2022 FRF Submission to Formio."
+    },
+    {
+      "info": {
+        "name": "Get an Existing 2022 FRF's Schema and Submission Data from Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/formio/2022/frf-submission/:mongoId",
+        "params": [
+          {
+            "name": "mongoId",
+            "value": "000000000000000000000000",
+            "type": "path",
+            "description": "The Formio submission's MongoDB ObjectId."
+          }
+        ]
+      },
+      "docs": "Get an Existing 2022 FRF's Schema and Submission Data from Formio."
+    },
+    {
+      "info": {
+        "name": "Post an Update to an Existing Draft 2022 FRF Submission to Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/formio/2022/frf-submission/:mongoId",
+        "params": [
+          {
+            "name": "mongoId",
+            "value": "000000000000000000000000",
+            "type": "path",
+            "description": "The Formio submission's MongoDB ObjectId."
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Post an Update to an Existing Draft 2022 FRF Submission to Formio."
+    },
+    {
+      "info": {
+        "name": "Get User's 2022 PRF Submissions from Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/formio/2022/prf-submissions"
+      },
+      "docs": "Get User's 2022 PRF Submissions from Formio."
+    },
+    {
+      "info": {
+        "name": "Post a New 2022 PRF Submission to Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/formio/2022/prf-submission",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Post a New 2022 PRF Submission to Formio."
+    },
+    {
+      "info": {
+        "name": "Get an Existing 2022 PRF's Schema and Submission Data from Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/formio/2022/prf-submission/:rebateId",
+        "params": [
+          {
+            "name": "rebateId",
+            "value": "000000",
+            "type": "path",
+            "description": "The CSB Rebate ID"
+          }
+        ]
+      },
+      "docs": "Get an Existing 2022 PRF's Schema and Submission Data from Formio."
+    },
+    {
+      "info": {
+        "name": "Post an Update to an Existing Draft 2022 PRF Submission to Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/formio/2022/prf-submission/:rebateId",
+        "params": [
+          {
+            "name": "rebateId",
+            "value": "000000",
+            "type": "path",
+            "description": "The CSB Rebate ID"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Post an Update to an Existing Draft 2022 PRF Submission to Formio."
+    },
+    {
+      "info": {
+        "name": "Delete an Existing 2022 PRF Submission from Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/formio/2022/delete-prf-submission",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Delete an Existing 2022 PRF Submission from Formio."
+    },
+    {
+      "info": {
+        "name": "Get User's 2022 CRF Submissions from Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/formio/2022/crf-submissions"
+      },
+      "docs": "Get User's 2022 CRF Submissions from Formio."
+    },
+    {
+      "info": {
+        "name": "Post a New 2022 CRF Submission to Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/formio/2022/crf-submission",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Post a New 2022 CRF Submission to Formio."
+    },
+    {
+      "info": {
+        "name": "Get an Existing 2022 CRF's Schema and Submission Data from Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/formio/2022/crf-submission/:rebateId",
+        "params": [
+          {
+            "name": "rebateId",
+            "value": "000000",
+            "type": "path",
+            "description": "The CSB Rebate ID"
+          }
+        ]
+      },
+      "docs": "Get an Existing 2022 CRF's Schema and Submission Data from Formio."
+    },
+    {
+      "info": {
+        "name": "Post an Update to an Existing Draft 2022 CRF Submission to Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/formio/2022/crf-submission/:rebateId",
+        "params": [
+          {
+            "name": "rebateId",
+            "value": "000000",
+            "type": "path",
+            "description": "The CSB Rebate ID"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Post an Update to an Existing Draft 2022 CRF Submission to Formio."
+    },
+    {
+      "info": {
+        "name": "Get User's 2022 Change Request Form Submissions from Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/formio/2022/changes"
+      },
+      "docs": "Get User's 2022 Change Request Form Submissions from Formio."
+    },
+    {
+      "info": {
+        "name": "Check for Duplicate VINs in the BAP.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/formio/2023/check-vin/:vin",
+        "params": [
+          {
+            "name": "vin",
+            "value": "11111111111111111",
+            "type": "path",
+            "description": "The bus VIN to search for."
+          },
+          {
+            "name": "rebateId",
+            "value": "123456",
+            "type": "query",
+            "description": "The CSB Rebate ID of the current submission."
+          },
+          {
+            "name": "debug",
+            "value": "true",
+            "type": "query",
+            "description": "Return debug info from the BAP in the response."
+          }
+        ]
+      },
+      "docs": "Check for Duplicate VINs in the BAP."
+    },
+    {
+      "info": {
+        "name": "Search 2023 NCES Data with the Provided NCES ID and Return a Match.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/formio/2023/nces/:searchText",
+        "params": [
+          {
+            "name": "searchText",
+            "value": "A999999",
+            "type": "path",
+            "description": "The NCES ID to search for."
+          }
+        ]
+      },
+      "docs": "Search 2023 NCES Data with the Provided NCES ID and Return a Match."
+    },
+    {
+      "info": {
+        "name": "Get the School District Info Associated with a Provided CSB Rebate ID",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/formio/2023/district/:rebateId",
+        "params": [
+          {
+            "name": "rebateId",
+            "value": "000000",
+            "type": "path",
+            "description": "The CSB Rebate ID"
+          }
+        ]
+      },
+      "docs": "Get the School District Info Associated with a Provided CSB Rebate ID"
+    },
+    {
+      "info": {
+        "name": "Get Contacts Associated with a Provided CSB Rebate ID",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/formio/2023/contacts/:rebateId",
+        "params": [
+          {
+            "name": "rebateId",
+            "value": "000000",
+            "type": "path",
+            "description": "The CSB Rebate ID"
+          }
+        ]
+      },
+      "docs": "Get Contacts Associated with a Provided CSB Rebate ID"
+    },
+    {
+      "info": {
+        "name": "Download Formio File Attachment from S3 for a 2023 Submission.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/formio/2023/s3/:formType/:mongoId/:comboKey/storage/s3",
+        "params": [
+          {
+            "name": "formType",
+            "value": "frf",
+            "type": "path",
+            "description": "The Formio form type (frf, prf, crf)."
+          },
+          {
+            "name": "mongoId",
+            "value": "000000000000000000000000",
+            "type": "path",
+            "description": "The Formio submission's MongoDB ObjectId."
+          },
+          {
+            "name": "comboKey",
+            "value": "0000000000000000",
+            "type": "path",
+            "description": "The SAM.gov entity's UEI/EFTI combo key."
+          },
+          {
+            "name": "bucket",
+            "value": "cleanschoolbus",
+            "type": "query",
+            "description": "The S3 bucket name where the file is stored."
+          },
+          {
+            "name": "key",
+            "value": "placeholder-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.png",
+            "type": "query",
+            "description": "The S3 object key for the file."
+          }
+        ]
+      },
+      "docs": "Download Formio File Attachment from S3 for a 2023 Submission."
+    },
+    {
+      "info": {
+        "name": "Upload Formio File Attachment to S3 for a 2023 Submission.",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/formio/2023/s3/:formType/:mongoId/:comboKey/storage/s3",
+        "params": [
+          {
+            "name": "formType",
+            "value": "frf",
+            "type": "path",
+            "description": "The Formio form type (frf, prf, crf)."
+          },
+          {
+            "name": "mongoId",
+            "value": "000000000000000000000000",
+            "type": "path",
+            "description": "The Formio submission's MongoDB ObjectId."
+          },
+          {
+            "name": "comboKey",
+            "value": "0000000000000000",
+            "type": "path",
+            "description": "The SAM.gov entity's UEI/EFTI combo key."
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Upload Formio File Attachment to S3 for a 2023 Submission."
+    },
+    {
+      "info": {
+        "name": "Delete Formio File Attachment from S3 for a 2023 Submission.",
+        "type": "http"
+      },
+      "http": {
+        "method": "DELETE",
+        "url": "{{baseUrl}}/api/formio/2023/s3/:formType/:mongoId/:comboKey/storage/s3",
+        "params": [
+          {
+            "name": "formType",
+            "value": "frf",
+            "type": "path",
+            "description": "The Formio form type (frf, prf, crf)."
+          },
+          {
+            "name": "mongoId",
+            "value": "000000000000000000000000",
+            "type": "path",
+            "description": "The Formio submission's MongoDB ObjectId."
+          },
+          {
+            "name": "comboKey",
+            "value": "0000000000000000",
+            "type": "path",
+            "description": "The SAM.gov entity's UEI/EFTI combo key."
+          }
+        ]
+      },
+      "docs": "Delete Formio File Attachment from S3 for a 2023 Submission."
+    },
+    {
+      "info": {
+        "name": "Download a PDF of a 2023 Form Submission.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/formio/2023/pdf/:formType/:mongoId",
+        "params": [
+          {
+            "name": "formType",
+            "value": "frf",
+            "type": "path",
+            "description": "The Formio form type (frf, prf, crf)."
+          },
+          {
+            "name": "mongoId",
+            "value": "000000000000000000000000",
+            "type": "path",
+            "description": "The Formio submission's MongoDB ObjectId."
+          }
+        ]
+      },
+      "docs": "Download a PDF of a 2023 Form Submission."
+    },
+    {
+      "info": {
+        "name": "Get User's 2023 FRF Submissions from Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/formio/2023/frf-submissions"
+      },
+      "docs": "Get User's 2023 FRF Submissions from Formio."
+    },
+    {
+      "info": {
+        "name": "Post a New 2023 FRF Submission to Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/formio/2023/frf-submission",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Post a New 2023 FRF Submission to Formio."
+    },
+    {
+      "info": {
+        "name": "Get an Existing 2023 FRF's Schema and Submission Data from Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/formio/2023/frf-submission/:mongoId",
+        "params": [
+          {
+            "name": "mongoId",
+            "value": "000000000000000000000000",
+            "type": "path",
+            "description": "The Formio submission's MongoDB ObjectId."
+          }
+        ]
+      },
+      "docs": "Get an Existing 2023 FRF's Schema and Submission Data from Formio."
+    },
+    {
+      "info": {
+        "name": "Post an Update to an Existing Draft 2023 FRF Submission to Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/formio/2023/frf-submission/:mongoId",
+        "params": [
+          {
+            "name": "mongoId",
+            "value": "000000000000000000000000",
+            "type": "path",
+            "description": "The Formio submission's MongoDB ObjectId."
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Post an Update to an Existing Draft 2023 FRF Submission to Formio."
+    },
+    {
+      "info": {
+        "name": "Get User's 2023 PRF Submissions from Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/formio/2023/prf-submissions"
+      },
+      "docs": "Get User's 2023 PRF Submissions from Formio."
+    },
+    {
+      "info": {
+        "name": "Post a New 2023 PRF Submission to Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/formio/2023/prf-submission",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Post a New 2023 PRF Submission to Formio."
+    },
+    {
+      "info": {
+        "name": "Get an Existing 2023 PRF's Schema and Submission Data from Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/formio/2023/prf-submission/:rebateId",
+        "params": [
+          {
+            "name": "rebateId",
+            "value": "000000",
+            "type": "path",
+            "description": "The CSB Rebate ID"
+          }
+        ]
+      },
+      "docs": "Get an Existing 2023 PRF's Schema and Submission Data from Formio."
+    },
+    {
+      "info": {
+        "name": "Post an Update to an Existing Draft 2023 PRF Submission to Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/formio/2023/prf-submission/:rebateId",
+        "params": [
+          {
+            "name": "rebateId",
+            "value": "000000",
+            "type": "path",
+            "description": "The CSB Rebate ID"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Post an Update to an Existing Draft 2023 PRF Submission to Formio."
+    },
+    {
+      "info": {
+        "name": "Delete an Existing 2023 PRF Submission from Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/formio/2023/delete-prf-submission",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Delete an Existing 2023 PRF Submission from Formio."
+    },
+    {
+      "info": {
+        "name": "Get User's 2023 CRF Submissions from Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/formio/2023/crf-submissions"
+      },
+      "docs": "Get User's 2023 CRF Submissions from Formio."
+    },
+    {
+      "info": {
+        "name": "Post a New 2023 CRF Submission to Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/formio/2023/crf-submission",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Post a New 2023 CRF Submission to Formio."
+    },
+    {
+      "info": {
+        "name": "Get an Existing 2023 CRF's Schema and Submission Data from Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/formio/2023/crf-submission/:rebateId",
+        "params": [
+          {
+            "name": "rebateId",
+            "value": "000000",
+            "type": "path",
+            "description": "The CSB Rebate ID"
+          }
+        ]
+      },
+      "docs": "Get an Existing 2023 CRF's Schema and Submission Data from Formio."
+    },
+    {
+      "info": {
+        "name": "Post an Update to an Existing Draft 2023 CRF Submission to Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/formio/2023/crf-submission/:rebateId",
+        "params": [
+          {
+            "name": "rebateId",
+            "value": "000000",
+            "type": "path",
+            "description": "The CSB Rebate ID"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Post an Update to an Existing Draft 2023 CRF Submission to Formio."
+    },
+    {
+      "info": {
+        "name": "Get User's 2023 Change Request Form Submissions from Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/formio/2023/changes"
+      },
+      "docs": "Get User's 2023 Change Request Form Submissions from Formio."
+    },
+    {
+      "info": {
+        "name": "Get the 2023 Change Request Form's Schema from Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/formio/2023/change"
+      },
+      "docs": "Get the 2023 Change Request Form's Schema from Formio."
+    },
+    {
+      "info": {
+        "name": "Post a New 2023 Change Request Form Submission to Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/formio/2023/change",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Post a New 2023 Change Request Form Submission to Formio."
+    },
+    {
+      "info": {
+        "name": "Get an Existing 2023 Change Request Form's Schema and Submission Data from Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/formio/2023/change/:mongoId",
+        "params": [
+          {
+            "name": "mongoId",
+            "value": "000000000000000000000000",
+            "type": "path",
+            "description": "The Formio submission's MongoDB ObjectId."
+          }
+        ]
+      },
+      "docs": "Get an Existing 2023 Change Request Form's Schema and Submission Data from Formio."
+    },
+    {
+      "info": {
+        "name": "Search 2024 NCES Data with the Provided NCES ID and Return a Match.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/formio/2024/nces/:searchText",
+        "params": [
+          {
+            "name": "searchText",
+            "value": "A999999",
+            "type": "path",
+            "description": "The NCES ID to search for."
+          }
+        ]
+      },
+      "docs": "Search 2024 NCES Data with the Provided NCES ID and Return a Match."
+    },
+    {
+      "info": {
+        "name": "Get the School District Info Associated with a Provided CSB Rebate ID",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/formio/2024/district/:rebateId",
+        "params": [
+          {
+            "name": "rebateId",
+            "value": "000000",
+            "type": "path",
+            "description": "The CSB Rebate ID"
+          }
+        ]
+      },
+      "docs": "Get the School District Info Associated with a Provided CSB Rebate ID"
+    },
+    {
+      "info": {
+        "name": "Download Formio File Attachment from S3 for a 2024 Submission.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/formio/2024/s3/:formType/:mongoId/:comboKey/storage/s3",
+        "params": [
+          {
+            "name": "formType",
+            "value": "frf",
+            "type": "path",
+            "description": "The Formio form type (frf, prf, crf)."
+          },
+          {
+            "name": "mongoId",
+            "value": "000000000000000000000000",
+            "type": "path",
+            "description": "The Formio submission's MongoDB ObjectId."
+          },
+          {
+            "name": "comboKey",
+            "value": "0000000000000000",
+            "type": "path",
+            "description": "The SAM.gov entity's UEI/EFTI combo key."
+          },
+          {
+            "name": "bucket",
+            "value": "cleanschoolbus",
+            "type": "query",
+            "description": "The S3 bucket name where the file is stored."
+          },
+          {
+            "name": "key",
+            "value": "placeholder-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.png",
+            "type": "query",
+            "description": "The S3 object key for the file."
+          }
+        ]
+      },
+      "docs": "Download Formio File Attachment from S3 for a 2024 Submission."
+    },
+    {
+      "info": {
+        "name": "Upload Formio File Attachment to S3 for a 2024 Submission.",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/formio/2024/s3/:formType/:mongoId/:comboKey/storage/s3",
+        "params": [
+          {
+            "name": "formType",
+            "value": "frf",
+            "type": "path",
+            "description": "The Formio form type (frf, prf, crf)."
+          },
+          {
+            "name": "mongoId",
+            "value": "000000000000000000000000",
+            "type": "path",
+            "description": "The Formio submission's MongoDB ObjectId."
+          },
+          {
+            "name": "comboKey",
+            "value": "0000000000000000",
+            "type": "path",
+            "description": "The SAM.gov entity's UEI/EFTI combo key."
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Upload Formio File Attachment to S3 for a 2024 Submission."
+    },
+    {
+      "info": {
+        "name": "Delete Formio File Attachment from S3 for a 2024 Submission.",
+        "type": "http"
+      },
+      "http": {
+        "method": "DELETE",
+        "url": "{{baseUrl}}/api/formio/2024/s3/:formType/:mongoId/:comboKey/storage/s3",
+        "params": [
+          {
+            "name": "formType",
+            "value": "frf",
+            "type": "path",
+            "description": "The Formio form type (frf, prf, crf)."
+          },
+          {
+            "name": "mongoId",
+            "value": "000000000000000000000000",
+            "type": "path",
+            "description": "The Formio submission's MongoDB ObjectId."
+          },
+          {
+            "name": "comboKey",
+            "value": "0000000000000000",
+            "type": "path",
+            "description": "The SAM.gov entity's UEI/EFTI combo key."
+          }
+        ]
+      },
+      "docs": "Delete Formio File Attachment from S3 for a 2024 Submission."
+    },
+    {
+      "info": {
+        "name": "Download a PDF of a 2024 Form Submission.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/formio/2024/pdf/:formType/:mongoId",
+        "params": [
+          {
+            "name": "formType",
+            "value": "frf",
+            "type": "path",
+            "description": "The Formio form type (frf, prf, crf)."
+          },
+          {
+            "name": "mongoId",
+            "value": "000000000000000000000000",
+            "type": "path",
+            "description": "The Formio submission's MongoDB ObjectId."
+          }
+        ]
+      },
+      "docs": "Download a PDF of a 2024 Form Submission."
+    },
+    {
+      "info": {
+        "name": "Get User's 2024 FRF Submissions from Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/formio/2024/frf-submissions"
+      },
+      "docs": "Get User's 2024 FRF Submissions from Formio."
+    },
+    {
+      "info": {
+        "name": "Post a New 2024 FRF Submission to Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/formio/2024/frf-submission",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Post a New 2024 FRF Submission to Formio."
+    },
+    {
+      "info": {
+        "name": "Get an Existing 2024 FRF's Schema and Submission Data from Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/formio/2024/frf-submission/:mongoId",
+        "params": [
+          {
+            "name": "mongoId",
+            "value": "000000000000000000000000",
+            "type": "path",
+            "description": "The Formio submission's MongoDB ObjectId."
+          }
+        ]
+      },
+      "docs": "Get an Existing 2024 FRF's Schema and Submission Data from Formio."
+    },
+    {
+      "info": {
+        "name": "Post an Update to an Existing Draft 2024 FRF Submission to Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/formio/2024/frf-submission/:mongoId",
+        "params": [
+          {
+            "name": "mongoId",
+            "value": "000000000000000000000000",
+            "type": "path",
+            "description": "The Formio submission's MongoDB ObjectId."
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Post an Update to an Existing Draft 2024 FRF Submission to Formio."
+    },
+    {
+      "info": {
+        "name": "Get User's 2024 Change Request Form Submissions from Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/formio/2024/changes"
+      },
+      "docs": "Get User's 2024 Change Request Form Submissions from Formio."
+    },
+    {
+      "info": {
+        "name": "Get the 2024 Change Request Form's Schema from Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/formio/2024/change"
+      },
+      "docs": "Get the 2024 Change Request Form's Schema from Formio."
+    },
+    {
+      "info": {
+        "name": "Post a New 2024 Change Request Form Submission to Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/formio/2024/change",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Post a New 2024 Change Request Form Submission to Formio."
+    },
+    {
+      "info": {
+        "name": "Get an Existing 2024 Change Request Form's Schema and Submission Data from Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/formio/2024/change/:mongoId",
+        "params": [
+          {
+            "name": "mongoId",
+            "value": "000000000000000000000000",
+            "type": "path",
+            "description": "The Formio submission's MongoDB ObjectId."
+          }
+        ]
+      },
+      "docs": "Get an Existing 2024 Change Request Form's Schema and Submission Data from Formio."
+    },
+    {
+      "info": {
+        "name": "Download Formio File Attachment from S3 for a Submission.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/help/formio/s3/:rebateYear/:formType/storage/s3",
+        "params": [
+          {
+            "name": "rebateYear",
+            "value": "2022",
+            "type": "path",
+            "description": "The Clean School Bus Rebate year (2022, 2023, 2024)."
+          },
+          {
+            "name": "formType",
+            "value": "frf",
+            "type": "path",
+            "description": "The Formio form type (frf, prf, crf)."
+          },
+          {
+            "name": "bucket",
+            "value": "cleanschoolbus",
+            "type": "query",
+            "description": "The S3 bucket name where the file is stored."
+          },
+          {
+            "name": "key",
+            "value": "placeholder-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.png",
+            "type": "query",
+            "description": "The S3 object key for the file."
+          }
+        ]
+      },
+      "docs": "Download Formio File Attachment from S3 for a Submission."
+    },
+    {
+      "info": {
+        "name": "Get an Existing Form's Submission Data from Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/help/formio/submission/:rebateYear/:formType/:id",
+        "params": [
+          {
+            "name": "rebateYear",
+            "value": "2022",
+            "type": "path",
+            "description": "The Clean School Bus Rebate year (2022, 2023, 2024)."
+          },
+          {
+            "name": "formType",
+            "value": "frf",
+            "type": "path",
+            "description": "The Formio form type (frf, prf, crf)."
+          },
+          {
+            "name": "id",
+            "value": "000000",
+            "type": "path",
+            "description": "The CSB Rebate ID or Formio MongoDB ObjectId."
+          }
+        ]
+      },
+      "docs": "Get an Existing Form's Submission Data from Formio."
+    },
+    {
+      "info": {
+        "name": "Post an Update to an Existing Form Submission to Formio (change Submission to 'draft').",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/help/formio/submission/:rebateYear/:formType/:id",
+        "params": [
+          {
+            "name": "rebateYear",
+            "value": "2022",
+            "type": "path",
+            "description": "The Clean School Bus Rebate year (2022, 2023, 2024)."
+          },
+          {
+            "name": "formType",
+            "value": "frf",
+            "type": "path",
+            "description": "The Formio form type (frf, prf, crf)."
+          },
+          {
+            "name": "id",
+            "value": "000000000000000000000000",
+            "type": "path",
+            "description": "The CSB Rebate ID or Formio MongoDB ObjectId."
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Post an Update to an Existing Form Submission to Formio (change Submission to 'draft')."
+    },
+    {
+      "info": {
+        "name": "Get All Actions Associated with a Form's Submission from Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/help/formio/actions/:formId/:mongoId",
+        "params": [
+          {
+            "name": "formId",
+            "value": "000000000000000000000000",
+            "type": "path",
+            "description": "The Formio form's MongoDB ObjectId."
+          },
+          {
+            "name": "mongoId",
+            "value": "000000000000000000000000",
+            "type": "path",
+            "description": "The Formio submission's MongoDB ObjectId."
+          }
+        ]
+      },
+      "docs": "Get All Actions Associated with a Form's Submission from Formio."
+    },
+    {
+      "info": {
+        "name": "Get a PDF of an Existing Form's Submission from Formio.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/help/formio/pdf/:formId/:mongoId",
+        "params": [
+          {
+            "name": "formId",
+            "value": "000000000000000000000000",
+            "type": "path",
+            "description": "The Formio form's MongoDB ObjectId."
+          },
+          {
+            "name": "mongoId",
+            "value": "000000000000000000000000",
+            "type": "path",
+            "description": "The Formio submission's MongoDB ObjectId."
+          }
+        ]
+      },
+      "docs": "Get a PDF of an Existing Form's Submission from Formio."
+    },
+    {
+      "info": {
+        "name": "CSB App Health Check.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/status/app"
+      },
+      "docs": "CSB App Health Check."
+    },
+    {
+      "info": {
+        "name": "CSB SAM.gov Connection Check.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/status/bap/sam"
+      },
+      "docs": "CSB SAM.gov Connection Check."
+    },
+    {
+      "info": {
+        "name": "CSB Formio 2022 FRF Schema Check.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/status/formio/2022/frf"
+      },
+      "docs": "CSB Formio 2022 FRF Schema Check."
+    },
+    {
+      "info": {
+        "name": "CSB Formio 2022 PRF Schema Check.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/status/formio/2022/prf"
+      },
+      "docs": "CSB Formio 2022 PRF Schema Check."
+    },
+    {
+      "info": {
+        "name": "CSB Formio 2022 CRF Schema Check.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/status/formio/2022/crf"
+      },
+      "docs": "CSB Formio 2022 CRF Schema Check."
+    },
+    {
+      "info": {
+        "name": "CSB Formio 2022 Change Request Form Schema Check.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/status/formio/2022/change"
+      },
+      "docs": "CSB Formio 2022 Change Request Form Schema Check."
+    },
+    {
+      "info": {
+        "name": "CSB Formio 2023 FRF Schema Check.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/status/formio/2023/frf"
+      },
+      "docs": "CSB Formio 2023 FRF Schema Check."
+    },
+    {
+      "info": {
+        "name": "CSB Formio 2023 PRF Schema Check.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/status/formio/2023/prf"
+      },
+      "docs": "CSB Formio 2023 PRF Schema Check."
+    },
+    {
+      "info": {
+        "name": "CSB Formio 2023 CRF Schema Check.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/status/formio/2023/crf"
+      },
+      "docs": "CSB Formio 2023 CRF Schema Check."
+    },
+    {
+      "info": {
+        "name": "CSB Formio 2023 Change Request Form Schema Check.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/status/formio/2023/change"
+      },
+      "docs": "CSB Formio 2023 Change Request Form Schema Check."
+    },
+    {
+      "info": {
+        "name": "CSB Formio 2024 FRF Schema Check.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/status/formio/2024/frf"
+      },
+      "docs": "CSB Formio 2024 FRF Schema Check."
+    },
+    {
+      "info": {
+        "name": "CSB Formio 2024 Change Request Form Schema Check.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/status/formio/2024/change"
+      },
+      "docs": "CSB Formio 2024 Change Request Form Schema Check."
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,954 @@
+{
+  "item": [
+    {
+      "id": "45c228a8-3849-4a08-94f6-8db8bab70fc0",
+      "name": "Data Service",
+      "description": {
+        "content": "Generic Envirofacts REST data service supporting any program.table.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "15313e3f-f2c9-41be-9844-38281e50cf39",
+          "name": "Query Envirofacts Table",
+          "request": {
+            "name": "Query Envirofacts Table",
+            "description": {
+              "content": "Query any Envirofacts table. Append optional filter, join, range, and sort segments before the format.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "efservice",
+                ":table",
+                ":format"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "table",
+                  "description": "(Required) Envirofacts table in `program.table` format (e.g., `rcra.rcra_facility`, `tri.tri_facility`, `sems.envirofacts_site`)."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "format",
+                  "description": "Output format (default JSON)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fcd99ef8-f7dd-43eb-8272-fb68f0b5867d",
+              "name": "Rows from the requested Envirofacts table.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "efservice",
+                    ":table",
+                    ":format"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "table",
+                      "description": "(Required) Envirofacts table in `program.table` format (e.g., `rcra.rcra_facility`, `tri.tri_facility`, `sems.envirofacts_site`)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "format",
+                      "description": "Output format (default JSON)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"message\": \"Example response\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e739b106-e051-4fd2-aac6-c8e28db2761f",
+          "name": "Query Envirofacts Table with Filter",
+          "request": {
+            "name": "Query Envirofacts Table with Filter",
+            "description": {},
+            "url": {
+              "path": [
+                "efservice",
+                ":table",
+                ":filter",
+                ":format"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "table",
+                  "description": "(Required) Envirofacts table in `program.table` format (e.g., `rcra.rcra_facility`, `tri.tri_facility`, `sems.envirofacts_site`)."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "filter",
+                  "description": "Optional filter clause `{column}{operator}{value}`. Operators include equals, notEquals, lessThan, greaterThan, beginsWith, endsWith, contains, like, in."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "format",
+                  "description": "Output format (default JSON)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "83463f5c-1a32-4407-a717-27bf283fd457",
+              "name": "Filtered rows.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "efservice",
+                    ":table",
+                    ":filter",
+                    ":format"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "table",
+                      "description": "(Required) Envirofacts table in `program.table` format (e.g., `rcra.rcra_facility`, `tri.tri_facility`, `sems.envirofacts_site`)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "filter",
+                      "description": "Optional filter clause `{column}{operator}{value}`. Operators include equals, notEquals, lessThan, greaterThan, beginsWith, endsWith, contains, like, in."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "format",
+                      "description": "Output format (default JSON)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"message\": \"Example response\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "18c4ff2b-8bf2-4306-9f94-83c8a66fbb13",
+          "name": "Query Envirofacts Table with Filter and Pagination",
+          "request": {
+            "name": "Query Envirofacts Table with Filter and Pagination",
+            "description": {},
+            "url": {
+              "path": [
+                "efservice",
+                ":table",
+                ":filter",
+                ":range",
+                ":format"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "table",
+                  "description": "(Required) Envirofacts table in `program.table` format (e.g., `rcra.rcra_facility`, `tri.tri_facility`, `sems.envirofacts_site`)."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "filter",
+                  "description": "Optional filter clause `{column}{operator}{value}`. Operators include equals, notEquals, lessThan, greaterThan, beginsWith, endsWith, contains, like, in."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "range",
+                  "description": "Optional pagination range `first:last` (e.g., `1:100`)."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "format",
+                  "description": "Output format (default JSON)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d1dbdb01-3db1-41fc-a2b9-d212fcfd70db",
+              "name": "Paginated filtered rows.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "efservice",
+                    ":table",
+                    ":filter",
+                    ":range",
+                    ":format"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "table",
+                      "description": "(Required) Envirofacts table in `program.table` format (e.g., `rcra.rcra_facility`, `tri.tri_facility`, `sems.envirofacts_site`)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "filter",
+                      "description": "Optional filter clause `{column}{operator}{value}`. Operators include equals, notEquals, lessThan, greaterThan, beginsWith, endsWith, contains, like, in."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "range",
+                      "description": "Optional pagination range `first:last` (e.g., `1:100`)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "format",
+                      "description": "Output format (default JSON)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"message\": \"Example response\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "3e0718d9-ec22-4d7a-9d19-885a06cab7d5",
+      "name": "UV Index",
+      "description": {
+        "content": "UV index hourly and daily forecast endpoints.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a05c91b2-99f4-4bd8-8092-b1dd3fff0e5f",
+          "name": "Get Hourly UV Forecast by ZIP",
+          "request": {
+            "name": "Get Hourly UV Forecast by ZIP",
+            "description": {},
+            "url": {
+              "path": [
+                "dmapservice",
+                "getEnvirofactsUVHOURLY",
+                "ZIP",
+                ":ZIP",
+                ":format"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ZIP",
+                  "description": "(Required) 5-digit ZIP code."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "format",
+                  "description": "Output format (default JSON)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f361602e-2410-4943-a5a6-420c16f872cd",
+              "name": "24-hour UV index forecast for the ZIP code.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dmapservice",
+                    "getEnvirofactsUVHOURLY",
+                    "ZIP",
+                    ":ZIP",
+                    ":format"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ZIP",
+                      "description": "(Required) 5-digit ZIP code."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "format",
+                      "description": "Output format (default JSON)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"message\": \"Example response\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ae879534-450a-49af-9afe-fed4a7e5c6b2",
+          "name": "Get Hourly UV Forecast by City and State",
+          "request": {
+            "name": "Get Hourly UV Forecast by City and State",
+            "description": {},
+            "url": {
+              "path": [
+                "dmapservice",
+                "getEnvirofactsUVHOURLY",
+                "CITY",
+                ":CITY",
+                "STATE",
+                ":STATE",
+                ":format"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "CITY",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "STATE",
+                  "description": "(Required) 2-letter state abbreviation."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "format",
+                  "description": "Output format (default JSON)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4685a1c7-9a09-44ed-bedd-6b110c7eebdd",
+              "name": "24-hour UV index forecast.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dmapservice",
+                    "getEnvirofactsUVHOURLY",
+                    "CITY",
+                    ":CITY",
+                    "STATE",
+                    ":STATE",
+                    ":format"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "CITY",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "STATE",
+                      "description": "(Required) 2-letter state abbreviation."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "format",
+                      "description": "Output format (default JSON)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"message\": \"Example response\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a950ecf6-8f7e-4001-916e-b2aba0f40003",
+          "name": "Get Daily UV Forecast by ZIP",
+          "request": {
+            "name": "Get Daily UV Forecast by ZIP",
+            "description": {},
+            "url": {
+              "path": [
+                "dmapservice",
+                "getEnvirofactsUVDAILY",
+                "ZIP",
+                ":ZIP",
+                ":format"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ZIP",
+                  "description": "(Required) 5-digit ZIP code."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "format",
+                  "description": "Output format (default JSON)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "824cb85d-b9c1-425f-8af3-326ae2fdb852",
+              "name": "Daily peak UV index forecast for the ZIP code.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dmapservice",
+                    "getEnvirofactsUVDAILY",
+                    "ZIP",
+                    ":ZIP",
+                    ":format"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ZIP",
+                      "description": "(Required) 5-digit ZIP code."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "format",
+                      "description": "Output format (default JSON)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"message\": \"Example response\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9e76e3e6-3936-4a25-ab89-4010b32e2702",
+          "name": "Get Daily UV Forecast by City and State",
+          "request": {
+            "name": "Get Daily UV Forecast by City and State",
+            "description": {},
+            "url": {
+              "path": [
+                "dmapservice",
+                "getEnvirofactsUVDAILY",
+                "CITY",
+                ":CITY",
+                "STATE",
+                ":STATE",
+                ":format"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "CITY",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "STATE",
+                  "description": "(Required) 2-letter state abbreviation."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "format",
+                  "description": "Output format (default JSON)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d5a1a73f-ad69-4fa6-8cb3-ca2daaacfae0",
+              "name": "Daily UV index forecast.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dmapservice",
+                    "getEnvirofactsUVDAILY",
+                    "CITY",
+                    ":CITY",
+                    "STATE",
+                    ":STATE",
+                    ":format"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "CITY",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "STATE",
+                      "description": "(Required) 2-letter state abbreviation."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "format",
+                      "description": "Output format (default JSON)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"message\": \"Example response\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "8495d42f-0b2c-4b6c-b8dd-84da46c98eca",
+      "name": "GraphQL",
+      "description": {
+        "content": "GraphQL endpoint for complex queries beyond REST capabilities.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d5c9152d-6430-4912-8a67-0d6549f008eb",
+          "name": "Execute Envirofacts GraphQL Query",
+          "request": {
+            "name": "Execute Envirofacts GraphQL Query",
+            "description": {},
+            "url": {
+              "path": [
+                "enviro",
+                "dmap-graphql-api"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"<string>\",\n  \"variables\": {\n    \"key_0\": true,\n    \"key_1\": false,\n    \"key_2\": true\n  },\n  \"operationName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3a00c212-ca2b-439d-8d6c-c4280a99b65a",
+              "name": "GraphQL response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "enviro",
+                    "dmap-graphql-api"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"message\": \"Example response\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://data.epa.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "623419f3-bd11-430c-92f0-3c321b879106",
+    "name": "EPA Envirofacts Data Service API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Envirofacts Data Service API (DMAP-EF) is a programmatic interface for querying the EPA's\nEnvirofacts warehouse. It exposes data from multiple regulatory programs including\nRCRA (hazardous waste), GHG (greenhouse gases), TRI (toxic release inventory), SEMS (Superfund),\nNEI (National Emissions Inventory), SDWIS (drinking water) and more, plus UV index forecasts.\n\nThe service uses path-encoded queries instead of conventional query strings. The general pattern is:\n\n```\n/efservice/{table}/{column}{operator}{value}/{join}/{first}:{last}/{sort}/{format}\n```\n\nAll components except `{table}` are optional. Queries must complete within 15 minutes.\n\n\nContact Support:\n Name: Envirofacts Support",
+      "type": "text/plain"
+    }
+  }
+}

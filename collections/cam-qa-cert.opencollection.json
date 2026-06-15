@@ -1,0 +1,2544 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "QA Certification Management OpenAPI Specification",
+    "version": "v2.0.80 published: Thu Mar 26 2026"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Health",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "HealthController_check",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/health"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "QA Certification",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Exports Official QA Certification Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/export",
+            "params": [
+              {
+                "name": "facilityId",
+                "value": "0",
+                "type": "query",
+                "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting."
+              },
+              {
+                "name": "unitIds",
+                "value": "12345",
+                "type": "query",
+                "description": "Unique identifier for each unit at a facility."
+              },
+              {
+                "name": "stackPipeIds",
+                "value": "12345",
+                "type": "query",
+                "description": "This is the alphanumeric code assigned by a source to identify a multiple or common stack or pipe at which emissions are determined."
+              },
+              {
+                "name": "testSummaryIds",
+                "value": "12345",
+                "type": "query",
+                "description": "Unique identifier of a test summary record."
+              },
+              {
+                "name": "qaCertificationEventIds",
+                "value": "12345",
+                "type": "query",
+                "description": "Unique identifier of a QA certification event record."
+              },
+              {
+                "name": "testTypeCodes",
+                "value": "7DAY",
+                "type": "query",
+                "description": "Code used to identify test type or the type of test performed."
+              },
+              {
+                "name": "qaTestExtensionExemptionIds",
+                "value": "12345",
+                "type": "query",
+                "description": "Unique Id for variances from prescribed testing requirements or extensions to the normal QA testing schedule."
+              },
+              {
+                "name": "beginDate",
+                "value": "2024-01-15T12:00:00Z",
+                "type": "query",
+                "description": "Date in which information became effective or activity started."
+              },
+              {
+                "name": "endDate",
+                "value": "2024-01-15T12:00:00Z",
+                "type": "query",
+                "description": "End date for a given period of a unit's emissions."
+              },
+              {
+                "name": "reportedValuesOnly",
+                "value": "true",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Exports Official QA Certification Data"
+        },
+        {
+          "info": {
+            "name": "QACertificationController_getFilteredCerts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/cert-events",
+            "params": [
+              {
+                "name": "orisCodes",
+                "value": "0",
+                "type": "query",
+                "description": "Array of oris codes"
+              },
+              {
+                "name": "monPlanIds",
+                "value": "12345",
+                "type": "query",
+                "description": "Array of configurations"
+              },
+              {
+                "name": "quarters",
+                "value": "string",
+                "type": "query",
+                "description": "Array of quarter abbreviations"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "QACertificationController_getFilteredTestSums",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/test-summary",
+            "params": [
+              {
+                "name": "orisCodes",
+                "value": "0",
+                "type": "query",
+                "description": "Array of oris codes"
+              },
+              {
+                "name": "monPlanIds",
+                "value": "12345",
+                "type": "query",
+                "description": "Array of configurations"
+              },
+              {
+                "name": "quarters",
+                "value": "string",
+                "type": "query",
+                "description": "Array of quarter abbreviations"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "QACertificationController_getFilteredTee",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/test-extension-exemption",
+            "params": [
+              {
+                "name": "orisCodes",
+                "value": "0",
+                "type": "query",
+                "description": "Array of oris codes"
+              },
+              {
+                "name": "monPlanIds",
+                "value": "12345",
+                "type": "query",
+                "description": "Array of configurations"
+              },
+              {
+                "name": "quarters",
+                "value": "string",
+                "type": "query",
+                "description": "Array of quarter abbreviations"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Test Summary",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "TestSummaryController_getTestSummaries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testTypeCodes",
+                "value": "7DAY",
+                "type": "query",
+                "description": "Code used to identify test type or the type of test performed."
+              },
+              {
+                "name": "systemTypeCodes",
+                "value": "CO2",
+                "type": "query"
+              },
+              {
+                "name": "beginDate",
+                "value": "2024-01-15T12:00:00Z",
+                "type": "query",
+                "description": "Date in which information became effective or activity started."
+              },
+              {
+                "name": "endDate",
+                "value": "2024-01-15T12:00:00Z",
+                "type": "query",
+                "description": "End date for a given period of a unit's emissions."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "TestSummaryController_getTestSummary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:id",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Linearity Summary",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "LinearitySummaryController_getLinearitySummaries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/linearities",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "LinearitySummaryController_getLinearitySummary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/linearities/:id",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Linearity Injection",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "LinearityInjectionController_getInjections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/linearities/:linSumId/injections",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "linSumId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "LinearityInjectionController_getInjection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/linearities/:linSumId/injections/:id",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "linSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Protocol Gas",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ProtocolGasController_getProtocolGases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/protocol-gases",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "ProtocolGasController_getProtocolGas",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/protocol-gases/:id",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Rata",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "RataController_getRatas",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/rata",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "RataController_getRata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/rata/:id",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Test Qualification",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "TestQualificationController_getTestQualifications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/test-qualifications",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "TestQualificationController_getTestQualification",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/test-qualifications/:id",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Fuel Flow To Load Test",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "FuelFlowToLoadTestController_getFuelFlowToLoadTests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/fuel-flow-to-load-tests",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "FuelFlowToLoadTestController_getFuelFlowToLoadTest",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/fuel-flow-to-load-tests/:id",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Fuel Flow To Load Baseline",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "FuelFlowToLoadBaselineController_getFuelFlowToLoadBaselines",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/fuel-flow-to-load-baselines",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "FuelFlowToLoadBaselineController_getFuelFlowToLoadBaseline",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/fuel-flow-to-load-baselines/:id",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Fuel Flowmeter Accuracy",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "FuelFlowmeterAccuracyController_getFuelFlowmeterAccuracies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/fuel-flowmeter-accuracies",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "FuelFlowmeterAccuracyController_getFuelFlowmeterAccuracy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/fuel-flowmeter-accuracies/:id",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Flow To Load Check",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "FlowToLoadCheckController_getFlowToLoadChecks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/flow-to-load-checks",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "FlowToLoadCheckController_getFlowToLoadCheck",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/flow-to-load-checks/:id",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Flow To Load Reference",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "FlowToLoadReferenceController_getFlowToLoadReferences",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/flow-to-load-references",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "FlowToLoadReferenceController_getFlowToLoadReference",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/flow-to-load-references/:id",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Air Emission Testing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AirEmissionTestingController_getAirEmissionsTestings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/air-emission-testings",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "AirEmissionTestingController_getAirEmissionsTesting",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/air-emission-testings/:id",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Appendix E Correlation Test Summary",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AppendixETestSummaryController_getAppECorrelations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/appendix-e-correlation-test-summaries",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "AppendixETestSummaryController_getAppECorrelation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/appendix-e-correlation-test-summaries/:id",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Appendix E Correlation Test Run",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AppECorrelationTestRunController_getAppECorrelationTestRuns",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/appendix-e-correlation-test-summaries/:appECorrTestSumId/appendix-e-correlation-test-runs",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "appECorrTestSumId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "AppECorrelationTestRunController_getAppECorrelationTestRun",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/appendix-e-correlation-test-summaries/:appECorrTestSumId/appendix-e-correlation-test-runs/:id",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "appECorrTestSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Appendix E Heat Input From Oil",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AppEHeatInputFromOilController_getAppEHeatInputFromOilRecords",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/appendix-e-correlation-test-summaries/:appECorrTestSumId/appendix-e-correlation-test-runs/:appECorrTestRunId/appendix-e-heat-input-from-oils",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "appECorrTestSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "appECorrTestRunId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "AppEHeatInputFromOilController_getAppEHeatInputFromOilRecord",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/appendix-e-correlation-test-summaries/:appECorrTestSumId/appendix-e-correlation-test-runs/:appECorrTestRunId/appendix-e-heat-input-from-oils/:id",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "appECorrTestSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "appECorrTestRunId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Appendix E Heat Input From Gas",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AppEHeatInputFromGasController_getAppEHeatInputFromGases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/appendix-e-correlation-test-summaries/:appECorrTestSumId/appendix-e-correlation-test-runs/:appECorrTestRunId/appendix-e-heat-input-from-gases",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "appECorrTestSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "appECorrTestRunId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "AppEHeatInputFromGasController_getAppEHeatInputFromGas",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/appendix-e-correlation-test-summaries/:appECorrTestSumId/appendix-e-correlation-test-runs/:appECorrTestRunId/appendix-e-heat-input-from-gases/:id",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "appECorrTestSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "appECorrTestRunId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Calibration Injection",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "CalibrationInjectionController_getCalibrationInjections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/calibration-injections",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "CalibrationInjectionController_getCalibrationInjection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/calibration-injections/:id",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Online Offline Calibration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "OnlineOfflineCalibrationController_getOnlineOfflineCalibrations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/online-offline-calibration",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "OnlineOfflineCalibrationController_getOnlineOfflineCalibration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/online-offline-calibration/:id",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Cycle Time Summary",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "CycleTimeSummaryController_getCycleTimeSummaries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/cycle-time-summaries",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "CycleTimeSummaryController_getCycleTimeSummary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/cycle-time-summaries/:id",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Cycle Time Injection",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "CycleTimeInjectionController_getCycleTimeInjections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/cycle-time-summaries/:cycleTimeSumId/cycle-time-injections",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "cycleTimeSumId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "CycleTimeInjectionController_getCycleTimeInjection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/cycle-time-summaries/:cycleTimeSumId/cycle-time-injections/:id",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "cycleTimeSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Unit Default Test",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "UnitDefaultTestController_getUnitDefaultTests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/unit-default-tests",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "UnitDefaultTestController_getUnitDefaultTest",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/unit-default-tests/:id",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Unit Default Test Run",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "UnitDefaultTestRunController_getUnitDefaultTestRuns",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/unit-default-tests/:unitDefaultTestSumId/unit-default-test-runs",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "unitDefaultTestSumId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "UnitDefaultTestRunController_getUnitDefaultTestRun",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/unit-default-tests/:unitDefaultTestSumId/unit-default-test-runs/:id",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "unitDefaultTestSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Transmitter Transducer Accuracy",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "TransmitterTransducerAccuracyController_getTransmitterTransducerAccuracies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/transmitter-transducer-accuracy",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "TransmitterTransducerAccuracyController_getTransmitterTransducerAccuracy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/transmitter-transducer-accuracy/:id",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Hg Summary",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "HgSummaryController_getHgSummaries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/hg-summaries",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "HgSummaryController_getHgSummary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/hg-summaries/:id",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Hg Injection",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "HgInjectionController_getHgInjections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/hg-summaries/:hgTestSumId/hg-injections",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "hgTestSumId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "HgInjectionController_getHgInjection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/hg-summaries/:hgTestSumId/hg-injections/:id",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "hgTestSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Rata Summary",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "RataSummaryController_etRataSummaries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/rata/:rataId/rata-summaries",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "rataId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "RataSummaryController_getRataSummary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/rata/:rataId/rata-summaries/:id",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "rataId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Rata Run",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "RataRunController_getRataRuns",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/rata/:rataId/rata-summaries/:rataSumId/rata-runs",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "rataId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "rataSumId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "RataRunController_getRataRun",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/rata/:rataId/rata-summaries/:rataSumId/rata-runs/:id",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "rataId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "rataSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Flow Rata Run",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "FlowRataRunController_getFlowRataRuns",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/rata/:rataId/rata-summaries/:rataSumId/rata-runs/:rataRunId/flow-rata-runs",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "rataId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "rataSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "rataRunId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "FlowRataRunController_getFlowRataRun",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/rata/:rataId/rata-summaries/:rataSumId/rata-runs/:rataRunId/flow-rata-runs/:id",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "rataId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "rataSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "rataRunId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Rata Traverse",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "RataTraverseController_getRataTraverses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/rata/:rataId/rata-summaries/:rataSumId/rata-runs/:rataRunId/flow-rata-runs/:flowRataRunId/rata-traverses",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "rataId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "rataSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "rataRunId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "flowRataRunId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "RataTraverseController_getRataTraverse",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/rata/:rataId/rata-summaries/:rataSumId/rata-runs/:rataRunId/flow-rata-runs/:flowRataRunId/rata-traverses/:id",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "rataId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "rataSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "rataRunId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "flowRataRunId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "QA Certification Event",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "QaCertificationEventController_getQACertEvents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/qa-certification-events",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "QaCertificationEventController_getQACertEvent",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/qa-certification-events/:id",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Test Extension Exemption",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "TestExtensionExemptionsController_getTestExtensionExemptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-extension-exemptions",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "TestExtensionExemptionsController_getTestExtensionExemption",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/qa-certification-mgmt/locations/:locId/test-extension-exemptions/:id",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "12345",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

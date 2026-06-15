@@ -1,0 +1,2282 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Emissions Management OpenAPI Specification",
+    "version": "v2.0.167 published: Thu Mar 26 2026"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Health",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "HealthController_check",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/emissions-mgmt/health"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Emissions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Exports Emissions Data for the Specified Monitor Plan & Reporting Period",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/emissions-mgmt/emissions/export",
+            "params": [
+              {
+                "name": "monitorPlanId",
+                "value": "12345",
+                "type": "query"
+              },
+              {
+                "name": "year",
+                "value": "2024",
+                "type": "query"
+              },
+              {
+                "name": "quarter",
+                "value": "0",
+                "type": "query"
+              },
+              {
+                "name": "reportedValuesOnly",
+                "value": "true",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Exports Emissions Data for the Specified Monitor Plan & Reporting Period"
+        },
+        {
+          "info": {
+            "name": "EmissionsController_submissionProgress",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/emissions-mgmt/emissions/submission-progress",
+            "params": [
+              {
+                "name": "submissionPeriod",
+                "value": "2019-01-01",
+                "type": "query",
+                "description": "Date on which activity occurred."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "EmissionsController_getEmissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/emissions-mgmt/emissions",
+            "params": [
+              {
+                "name": "orisCodes",
+                "value": "0",
+                "type": "query",
+                "description": "Array of oris codes"
+              },
+              {
+                "name": "monPlanIds",
+                "value": "12345",
+                "type": "query",
+                "description": "Array of configurations"
+              },
+              {
+                "name": "quarters",
+                "value": "string",
+                "type": "query",
+                "description": "Array of quarter abbreviations"
+              },
+              {
+                "name": "mode",
+                "value": "report",
+                "type": "query",
+                "description": "Flag to indicate the mode of operation"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Emissions Views",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "EmissionsViewController_getAvailableViews",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/emissions-mgmt/emissions/views",
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "EmissionsViewController_getView",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/emissions-mgmt/emissions/views/:viewCode",
+            "params": [
+              {
+                "name": "viewCode",
+                "value": "string",
+                "type": "path"
+              },
+              {
+                "name": "monitorPlanId",
+                "value": "12345",
+                "type": "query"
+              },
+              {
+                "name": "unitIds",
+                "value": "12345",
+                "type": "query",
+                "description": "Unique identifier for each unit at a facility."
+              },
+              {
+                "name": "stackPipeIds",
+                "value": "12345",
+                "type": "query",
+                "description": "This is the alphanumeric code assigned by a source to identify a multiple or common stack or pipe at which emissions are determined."
+              },
+              {
+                "name": "reportingPeriod",
+                "value": "string",
+                "type": "query"
+              },
+              {
+                "name": "attachFile",
+                "value": "true",
+                "type": "query",
+                "description": "Attaches a file with data in the format specified by the Accept header"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Apportioned Emissions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ApportionedEmissionsController_getApplicableApportionedEmissionsAttributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/emissions-mgmt/emissions/apportioned/attributes/applicable",
+            "params": [
+              {
+                "name": "year",
+                "value": "2024",
+                "type": "query",
+                "description": "The calendar year during which activity occurred."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Apportioned Hourly Emissions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "HourlyApportionedEmissionsController_getEmissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/emissions-mgmt/emissions/apportioned/hourly",
+            "params": [
+              {
+                "name": "stateCode",
+                "value": "AL",
+                "type": "query",
+                "description": "Two letter abbreviation for the State."
+              },
+              {
+                "name": "facilityId",
+                "value": "0",
+                "type": "query",
+                "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting."
+              },
+              {
+                "name": "unitType",
+                "value": "Arch-fired boiler",
+                "type": "query",
+                "description": "Type of unit or boiler."
+              },
+              {
+                "name": "unitFuelType",
+                "value": "Coal",
+                "type": "query",
+                "description": "Primary or Secondary fuel types combusted by the unit."
+              },
+              {
+                "name": "controlTechnologies",
+                "value": "Additives to Enhance PAC and Existing Equipment Performance",
+                "type": "query",
+                "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions."
+              },
+              {
+                "name": "programCodeInfo",
+                "value": "ARP",
+                "type": "query",
+                "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions."
+              },
+              {
+                "name": "beginDate",
+                "value": "2024-01-15T12:00:00Z",
+                "type": "query",
+                "description": "Begin date for a given period of a unit's emissions."
+              },
+              {
+                "name": "endDate",
+                "value": "2024-01-15T12:00:00Z",
+                "type": "query",
+                "description": "End date for a given period of a unit's emissions."
+              },
+              {
+                "name": "operatingHoursOnly",
+                "value": "true",
+                "type": "query",
+                "description": "Indicator of whether or not a request should return only data for hours where a unit operated."
+              },
+              {
+                "name": "locationName",
+                "value": "EPA Facility",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "0",
+                "type": "query",
+                "description": "Page number of data being requested."
+              },
+              {
+                "name": "perPage",
+                "value": "0",
+                "type": "query",
+                "description": "Number of results per page."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "HourlyApportionedEmissionsController_getEmissionsFacilityAggregation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/emissions-mgmt/emissions/apportioned/hourly/by-facility",
+            "params": [
+              {
+                "name": "stateCode",
+                "value": "AL",
+                "type": "query",
+                "description": "Two letter abbreviation for the State."
+              },
+              {
+                "name": "facilityId",
+                "value": "0",
+                "type": "query",
+                "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting."
+              },
+              {
+                "name": "unitType",
+                "value": "Arch-fired boiler",
+                "type": "query",
+                "description": "Type of unit or boiler."
+              },
+              {
+                "name": "unitFuelType",
+                "value": "Coal",
+                "type": "query",
+                "description": "Primary or Secondary fuel types combusted by the unit."
+              },
+              {
+                "name": "controlTechnologies",
+                "value": "Additives to Enhance PAC and Existing Equipment Performance",
+                "type": "query",
+                "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions."
+              },
+              {
+                "name": "programCodeInfo",
+                "value": "ARP",
+                "type": "query",
+                "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions."
+              },
+              {
+                "name": "beginDate",
+                "value": "2024-01-15T12:00:00Z",
+                "type": "query",
+                "description": "Begin date for a given period of a unit's emissions."
+              },
+              {
+                "name": "endDate",
+                "value": "2024-01-15T12:00:00Z",
+                "type": "query",
+                "description": "End date for a given period of a unit's emissions."
+              },
+              {
+                "name": "operatingHoursOnly",
+                "value": "true",
+                "type": "query",
+                "description": "Indicator of whether or not a request should return only data for hours where a unit operated."
+              },
+              {
+                "name": "locationName",
+                "value": "EPA Facility",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "0",
+                "type": "query",
+                "description": "Page number of data being requested."
+              },
+              {
+                "name": "perPage",
+                "value": "0",
+                "type": "query",
+                "description": "Number of results per page."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "HourlyApportionedEmissionsController_getEmissionsStateAggregation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/emissions-mgmt/emissions/apportioned/hourly/by-state",
+            "params": [
+              {
+                "name": "stateCode",
+                "value": "AL",
+                "type": "query",
+                "description": "Two letter abbreviation for the State."
+              },
+              {
+                "name": "facilityId",
+                "value": "0",
+                "type": "query",
+                "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting."
+              },
+              {
+                "name": "unitType",
+                "value": "Arch-fired boiler",
+                "type": "query",
+                "description": "Type of unit or boiler."
+              },
+              {
+                "name": "unitFuelType",
+                "value": "Coal",
+                "type": "query",
+                "description": "Primary or Secondary fuel types combusted by the unit."
+              },
+              {
+                "name": "controlTechnologies",
+                "value": "Additives to Enhance PAC and Existing Equipment Performance",
+                "type": "query",
+                "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions."
+              },
+              {
+                "name": "programCodeInfo",
+                "value": "ARP",
+                "type": "query",
+                "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions."
+              },
+              {
+                "name": "beginDate",
+                "value": "2024-01-15T12:00:00Z",
+                "type": "query",
+                "description": "Begin date for a given period of a unit's emissions."
+              },
+              {
+                "name": "endDate",
+                "value": "2024-01-15T12:00:00Z",
+                "type": "query",
+                "description": "End date for a given period of a unit's emissions."
+              },
+              {
+                "name": "operatingHoursOnly",
+                "value": "true",
+                "type": "query",
+                "description": "Indicator of whether or not a request should return only data for hours where a unit operated."
+              },
+              {
+                "name": "locationName",
+                "value": "EPA Facility",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "0",
+                "type": "query",
+                "description": "Page number of data being requested."
+              },
+              {
+                "name": "perPage",
+                "value": "0",
+                "type": "query",
+                "description": "Number of results per page."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "HourlyApportionedEmissionsController_getEmissionsNationalAggregation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/emissions-mgmt/emissions/apportioned/hourly/nationally",
+            "params": [
+              {
+                "name": "stateCode",
+                "value": "AL",
+                "type": "query",
+                "description": "Two letter abbreviation for the State."
+              },
+              {
+                "name": "facilityId",
+                "value": "0",
+                "type": "query",
+                "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting."
+              },
+              {
+                "name": "unitType",
+                "value": "Arch-fired boiler",
+                "type": "query",
+                "description": "Type of unit or boiler."
+              },
+              {
+                "name": "unitFuelType",
+                "value": "Coal",
+                "type": "query",
+                "description": "Primary or Secondary fuel types combusted by the unit."
+              },
+              {
+                "name": "controlTechnologies",
+                "value": "Additives to Enhance PAC and Existing Equipment Performance",
+                "type": "query",
+                "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions."
+              },
+              {
+                "name": "programCodeInfo",
+                "value": "ARP",
+                "type": "query",
+                "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions."
+              },
+              {
+                "name": "beginDate",
+                "value": "2024-01-15T12:00:00Z",
+                "type": "query",
+                "description": "Begin date for a given period of a unit's emissions."
+              },
+              {
+                "name": "endDate",
+                "value": "2024-01-15T12:00:00Z",
+                "type": "query",
+                "description": "End date for a given period of a unit's emissions."
+              },
+              {
+                "name": "operatingHoursOnly",
+                "value": "true",
+                "type": "query",
+                "description": "Indicator of whether or not a request should return only data for hours where a unit operated."
+              },
+              {
+                "name": "locationName",
+                "value": "EPA Facility",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "0",
+                "type": "query",
+                "description": "Page number of data being requested."
+              },
+              {
+                "name": "perPage",
+                "value": "0",
+                "type": "query",
+                "description": "Number of results per page."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Apportioned Daily Emissions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "DailyApportionedEmissionsController_getEmissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/emissions-mgmt/emissions/apportioned/daily",
+            "params": [
+              {
+                "name": "stateCode",
+                "value": "AL",
+                "type": "query",
+                "description": "Two letter abbreviation for the State."
+              },
+              {
+                "name": "facilityId",
+                "value": "0",
+                "type": "query",
+                "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting."
+              },
+              {
+                "name": "unitType",
+                "value": "Arch-fired boiler",
+                "type": "query",
+                "description": "Type of unit or boiler."
+              },
+              {
+                "name": "unitFuelType",
+                "value": "Coal",
+                "type": "query",
+                "description": "Primary or Secondary fuel types combusted by the unit."
+              },
+              {
+                "name": "controlTechnologies",
+                "value": "Additives to Enhance PAC and Existing Equipment Performance",
+                "type": "query",
+                "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions."
+              },
+              {
+                "name": "programCodeInfo",
+                "value": "ARP",
+                "type": "query",
+                "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions."
+              },
+              {
+                "name": "beginDate",
+                "value": "2024-01-15T12:00:00Z",
+                "type": "query",
+                "description": "Begin date for a given period of a unit's emissions."
+              },
+              {
+                "name": "endDate",
+                "value": "2024-01-15T12:00:00Z",
+                "type": "query",
+                "description": "End date for a given period of a unit's emissions."
+              },
+              {
+                "name": "page",
+                "value": "0",
+                "type": "query",
+                "description": "Page number of data being requested."
+              },
+              {
+                "name": "perPage",
+                "value": "0",
+                "type": "query",
+                "description": "Number of results per page."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "DailyApportionedEmissionsController_getEmissionsFacilityAggregation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/emissions-mgmt/emissions/apportioned/daily/by-facility",
+            "params": [
+              {
+                "name": "stateCode",
+                "value": "AL",
+                "type": "query",
+                "description": "Two letter abbreviation for the State."
+              },
+              {
+                "name": "facilityId",
+                "value": "0",
+                "type": "query",
+                "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting."
+              },
+              {
+                "name": "unitType",
+                "value": "Arch-fired boiler",
+                "type": "query",
+                "description": "Type of unit or boiler."
+              },
+              {
+                "name": "unitFuelType",
+                "value": "Coal",
+                "type": "query",
+                "description": "Primary or Secondary fuel types combusted by the unit."
+              },
+              {
+                "name": "controlTechnologies",
+                "value": "Additives to Enhance PAC and Existing Equipment Performance",
+                "type": "query",
+                "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions."
+              },
+              {
+                "name": "programCodeInfo",
+                "value": "ARP",
+                "type": "query",
+                "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions."
+              },
+              {
+                "name": "beginDate",
+                "value": "2024-01-15T12:00:00Z",
+                "type": "query",
+                "description": "Begin date for a given period of a unit's emissions."
+              },
+              {
+                "name": "endDate",
+                "value": "2024-01-15T12:00:00Z",
+                "type": "query",
+                "description": "End date for a given period of a unit's emissions."
+              },
+              {
+                "name": "page",
+                "value": "0",
+                "type": "query",
+                "description": "Page number of data being requested."
+              },
+              {
+                "name": "perPage",
+                "value": "0",
+                "type": "query",
+                "description": "Number of results per page."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "DailyApportionedEmissionsController_getEmissionsStateAggregation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/emissions-mgmt/emissions/apportioned/daily/by-state",
+            "params": [
+              {
+                "name": "stateCode",
+                "value": "AL",
+                "type": "query",
+                "description": "Two letter abbreviation for the State."
+              },
+              {
+                "name": "facilityId",
+                "value": "0",
+                "type": "query",
+                "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting."
+              },
+              {
+                "name": "unitType",
+                "value": "Arch-fired boiler",
+                "type": "query",
+                "description": "Type of unit or boiler."
+              },
+              {
+                "name": "unitFuelType",
+                "value": "Coal",
+                "type": "query",
+                "description": "Primary or Secondary fuel types combusted by the unit."
+              },
+              {
+                "name": "controlTechnologies",
+                "value": "Additives to Enhance PAC and Existing Equipment Performance",
+                "type": "query",
+                "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions."
+              },
+              {
+                "name": "programCodeInfo",
+                "value": "ARP",
+                "type": "query",
+                "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions."
+              },
+              {
+                "name": "beginDate",
+                "value": "2024-01-15T12:00:00Z",
+                "type": "query",
+                "description": "Begin date for a given period of a unit's emissions."
+              },
+              {
+                "name": "endDate",
+                "value": "2024-01-15T12:00:00Z",
+                "type": "query",
+                "description": "End date for a given period of a unit's emissions."
+              },
+              {
+                "name": "page",
+                "value": "0",
+                "type": "query",
+                "description": "Page number of data being requested."
+              },
+              {
+                "name": "perPage",
+                "value": "0",
+                "type": "query",
+                "description": "Number of results per page."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "DailyApportionedEmissionsController_getEmissionsNationalAggregation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/emissions-mgmt/emissions/apportioned/daily/nationally",
+            "params": [
+              {
+                "name": "stateCode",
+                "value": "AL",
+                "type": "query",
+                "description": "Two letter abbreviation for the State."
+              },
+              {
+                "name": "facilityId",
+                "value": "0",
+                "type": "query",
+                "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting."
+              },
+              {
+                "name": "unitType",
+                "value": "Arch-fired boiler",
+                "type": "query",
+                "description": "Type of unit or boiler."
+              },
+              {
+                "name": "unitFuelType",
+                "value": "Coal",
+                "type": "query",
+                "description": "Primary or Secondary fuel types combusted by the unit."
+              },
+              {
+                "name": "controlTechnologies",
+                "value": "Additives to Enhance PAC and Existing Equipment Performance",
+                "type": "query",
+                "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions."
+              },
+              {
+                "name": "programCodeInfo",
+                "value": "ARP",
+                "type": "query",
+                "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions."
+              },
+              {
+                "name": "beginDate",
+                "value": "2024-01-15T12:00:00Z",
+                "type": "query",
+                "description": "Begin date for a given period of a unit's emissions."
+              },
+              {
+                "name": "endDate",
+                "value": "2024-01-15T12:00:00Z",
+                "type": "query",
+                "description": "End date for a given period of a unit's emissions."
+              },
+              {
+                "name": "page",
+                "value": "0",
+                "type": "query",
+                "description": "Page number of data being requested."
+              },
+              {
+                "name": "perPage",
+                "value": "0",
+                "type": "query",
+                "description": "Number of results per page."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Apportioned Monthly Emissions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "MonthlyApportionedEmissionsController_getEmissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/emissions-mgmt/emissions/apportioned/monthly",
+            "params": [
+              {
+                "name": "stateCode",
+                "value": "AL",
+                "type": "query",
+                "description": "Two letter abbreviation for the State."
+              },
+              {
+                "name": "facilityId",
+                "value": "0",
+                "type": "query",
+                "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting."
+              },
+              {
+                "name": "unitType",
+                "value": "Arch-fired boiler",
+                "type": "query",
+                "description": "Type of unit or boiler."
+              },
+              {
+                "name": "unitFuelType",
+                "value": "Coal",
+                "type": "query",
+                "description": "Primary or Secondary fuel types combusted by the unit."
+              },
+              {
+                "name": "controlTechnologies",
+                "value": "Additives to Enhance PAC and Existing Equipment Performance",
+                "type": "query",
+                "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions."
+              },
+              {
+                "name": "programCodeInfo",
+                "value": "ARP",
+                "type": "query",
+                "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions."
+              },
+              {
+                "name": "year",
+                "value": "2024",
+                "type": "query",
+                "description": "The calendar year during which activity occurred."
+              },
+              {
+                "name": "month",
+                "value": "0",
+                "type": "query",
+                "description": "Month on which activity occurred."
+              },
+              {
+                "name": "page",
+                "value": "0",
+                "type": "query",
+                "description": "Page number of data being requested."
+              },
+              {
+                "name": "perPage",
+                "value": "0",
+                "type": "query",
+                "description": "Number of results per page."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "MonthlyApportionedEmissionsController_getEmissionsFacilityAggregation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/emissions-mgmt/emissions/apportioned/monthly/by-facility",
+            "params": [
+              {
+                "name": "stateCode",
+                "value": "AL",
+                "type": "query",
+                "description": "Two letter abbreviation for the State."
+              },
+              {
+                "name": "facilityId",
+                "value": "0",
+                "type": "query",
+                "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting."
+              },
+              {
+                "name": "unitType",
+                "value": "Arch-fired boiler",
+                "type": "query",
+                "description": "Type of unit or boiler."
+              },
+              {
+                "name": "unitFuelType",
+                "value": "Coal",
+                "type": "query",
+                "description": "Primary or Secondary fuel types combusted by the unit."
+              },
+              {
+                "name": "controlTechnologies",
+                "value": "Additives to Enhance PAC and Existing Equipment Performance",
+                "type": "query",
+                "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions."
+              },
+              {
+                "name": "programCodeInfo",
+                "value": "ARP",
+                "type": "query",
+                "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions."
+              },
+              {
+                "name": "year",
+                "value": "2024",
+                "type": "query",
+                "description": "The calendar year during which activity occurred."
+              },
+              {
+                "name": "month",
+                "value": "0",
+                "type": "query",
+                "description": "Month on which activity occurred."
+              },
+              {
+                "name": "page",
+                "value": "0",
+                "type": "query",
+                "description": "Page number of data being requested."
+              },
+              {
+                "name": "perPage",
+                "value": "0",
+                "type": "query",
+                "description": "Number of results per page."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "MonthlyApportionedEmissionsController_getEmissionsStateAggregation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/emissions-mgmt/emissions/apportioned/monthly/by-state",
+            "params": [
+              {
+                "name": "stateCode",
+                "value": "AL",
+                "type": "query",
+                "description": "Two letter abbreviation for the State."
+              },
+              {
+                "name": "facilityId",
+                "value": "0",
+                "type": "query",
+                "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting."
+              },
+              {
+                "name": "unitType",
+                "value": "Arch-fired boiler",
+                "type": "query",
+                "description": "Type of unit or boiler."
+              },
+              {
+                "name": "unitFuelType",
+                "value": "Coal",
+                "type": "query",
+                "description": "Primary or Secondary fuel types combusted by the unit."
+              },
+              {
+                "name": "controlTechnologies",
+                "value": "Additives to Enhance PAC and Existing Equipment Performance",
+                "type": "query",
+                "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions."
+              },
+              {
+                "name": "programCodeInfo",
+                "value": "ARP",
+                "type": "query",
+                "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions."
+              },
+              {
+                "name": "year",
+                "value": "2024",
+                "type": "query",
+                "description": "The calendar year during which activity occurred."
+              },
+              {
+                "name": "month",
+                "value": "0",
+                "type": "query",
+                "description": "Month on which activity occurred."
+              },
+              {
+                "name": "page",
+                "value": "0",
+                "type": "query",
+                "description": "Page number of data being requested."
+              },
+              {
+                "name": "perPage",
+                "value": "0",
+                "type": "query",
+                "description": "Number of results per page."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "MonthlyApportionedEmissionsController_getEmissionsNationalAggregation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/emissions-mgmt/emissions/apportioned/monthly/nationally",
+            "params": [
+              {
+                "name": "stateCode",
+                "value": "AL",
+                "type": "query",
+                "description": "Two letter abbreviation for the State."
+              },
+              {
+                "name": "facilityId",
+                "value": "0",
+                "type": "query",
+                "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting."
+              },
+              {
+                "name": "unitType",
+                "value": "Arch-fired boiler",
+                "type": "query",
+                "description": "Type of unit or boiler."
+              },
+              {
+                "name": "unitFuelType",
+                "value": "Coal",
+                "type": "query",
+                "description": "Primary or Secondary fuel types combusted by the unit."
+              },
+              {
+                "name": "controlTechnologies",
+                "value": "Additives to Enhance PAC and Existing Equipment Performance",
+                "type": "query",
+                "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions."
+              },
+              {
+                "name": "programCodeInfo",
+                "value": "ARP",
+                "type": "query",
+                "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions."
+              },
+              {
+                "name": "year",
+                "value": "2024",
+                "type": "query",
+                "description": "The calendar year during which activity occurred."
+              },
+              {
+                "name": "month",
+                "value": "0",
+                "type": "query",
+                "description": "Month on which activity occurred."
+              },
+              {
+                "name": "page",
+                "value": "0",
+                "type": "query",
+                "description": "Page number of data being requested."
+              },
+              {
+                "name": "perPage",
+                "value": "0",
+                "type": "query",
+                "description": "Number of results per page."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Apportioned Quarterly Emissions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "QuarterlyApportionedEmissionsController_getEmissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/emissions-mgmt/emissions/apportioned/quarterly",
+            "params": [
+              {
+                "name": "stateCode",
+                "value": "AL",
+                "type": "query",
+                "description": "Two letter abbreviation for the State."
+              },
+              {
+                "name": "facilityId",
+                "value": "0",
+                "type": "query",
+                "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting."
+              },
+              {
+                "name": "unitType",
+                "value": "Arch-fired boiler",
+                "type": "query",
+                "description": "Type of unit or boiler."
+              },
+              {
+                "name": "unitFuelType",
+                "value": "Coal",
+                "type": "query",
+                "description": "Primary or Secondary fuel types combusted by the unit."
+              },
+              {
+                "name": "controlTechnologies",
+                "value": "Additives to Enhance PAC and Existing Equipment Performance",
+                "type": "query",
+                "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions."
+              },
+              {
+                "name": "programCodeInfo",
+                "value": "ARP",
+                "type": "query",
+                "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions."
+              },
+              {
+                "name": "year",
+                "value": "2024",
+                "type": "query",
+                "description": "The calendar year during which activity occurred."
+              },
+              {
+                "name": "quarter",
+                "value": "0",
+                "type": "query",
+                "description": "Calendar quarter in which activity occurred."
+              },
+              {
+                "name": "page",
+                "value": "0",
+                "type": "query",
+                "description": "Page number of data being requested."
+              },
+              {
+                "name": "perPage",
+                "value": "0",
+                "type": "query",
+                "description": "Number of results per page."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "QuarterlyApportionedEmissionsController_getEmissionsFacilityAggregation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/emissions-mgmt/emissions/apportioned/quarterly/by-facility",
+            "params": [
+              {
+                "name": "stateCode",
+                "value": "AL",
+                "type": "query",
+                "description": "Two letter abbreviation for the State."
+              },
+              {
+                "name": "facilityId",
+                "value": "0",
+                "type": "query",
+                "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting."
+              },
+              {
+                "name": "unitType",
+                "value": "Arch-fired boiler",
+                "type": "query",
+                "description": "Type of unit or boiler."
+              },
+              {
+                "name": "unitFuelType",
+                "value": "Coal",
+                "type": "query",
+                "description": "Primary or Secondary fuel types combusted by the unit."
+              },
+              {
+                "name": "controlTechnologies",
+                "value": "Additives to Enhance PAC and Existing Equipment Performance",
+                "type": "query",
+                "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions."
+              },
+              {
+                "name": "programCodeInfo",
+                "value": "ARP",
+                "type": "query",
+                "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions."
+              },
+              {
+                "name": "year",
+                "value": "2024",
+                "type": "query",
+                "description": "The calendar year during which activity occurred."
+              },
+              {
+                "name": "quarter",
+                "value": "0",
+                "type": "query",
+                "description": "Calendar quarter in which activity occurred."
+              },
+              {
+                "name": "page",
+                "value": "0",
+                "type": "query",
+                "description": "Page number of data being requested."
+              },
+              {
+                "name": "perPage",
+                "value": "0",
+                "type": "query",
+                "description": "Number of results per page."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "QuarterlyApportionedEmissionsController_getEmissionsStateAggregation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/emissions-mgmt/emissions/apportioned/quarterly/by-state",
+            "params": [
+              {
+                "name": "stateCode",
+                "value": "AL",
+                "type": "query",
+                "description": "Two letter abbreviation for the State."
+              },
+              {
+                "name": "facilityId",
+                "value": "0",
+                "type": "query",
+                "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting."
+              },
+              {
+                "name": "unitType",
+                "value": "Arch-fired boiler",
+                "type": "query",
+                "description": "Type of unit or boiler."
+              },
+              {
+                "name": "unitFuelType",
+                "value": "Coal",
+                "type": "query",
+                "description": "Primary or Secondary fuel types combusted by the unit."
+              },
+              {
+                "name": "controlTechnologies",
+                "value": "Additives to Enhance PAC and Existing Equipment Performance",
+                "type": "query",
+                "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions."
+              },
+              {
+                "name": "programCodeInfo",
+                "value": "ARP",
+                "type": "query",
+                "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions."
+              },
+              {
+                "name": "year",
+                "value": "2024",
+                "type": "query",
+                "description": "The calendar year during which activity occurred."
+              },
+              {
+                "name": "quarter",
+                "value": "0",
+                "type": "query",
+                "description": "Calendar quarter in which activity occurred."
+              },
+              {
+                "name": "page",
+                "value": "0",
+                "type": "query",
+                "description": "Page number of data being requested."
+              },
+              {
+                "name": "perPage",
+                "value": "0",
+                "type": "query",
+                "description": "Number of results per page."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "QuarterlyApportionedEmissionsController_getEmissionsNationalAggregation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/emissions-mgmt/emissions/apportioned/quarterly/nationally",
+            "params": [
+              {
+                "name": "stateCode",
+                "value": "AL",
+                "type": "query",
+                "description": "Two letter abbreviation for the State."
+              },
+              {
+                "name": "facilityId",
+                "value": "0",
+                "type": "query",
+                "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting."
+              },
+              {
+                "name": "unitType",
+                "value": "Arch-fired boiler",
+                "type": "query",
+                "description": "Type of unit or boiler."
+              },
+              {
+                "name": "unitFuelType",
+                "value": "Coal",
+                "type": "query",
+                "description": "Primary or Secondary fuel types combusted by the unit."
+              },
+              {
+                "name": "controlTechnologies",
+                "value": "Additives to Enhance PAC and Existing Equipment Performance",
+                "type": "query",
+                "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions."
+              },
+              {
+                "name": "programCodeInfo",
+                "value": "ARP",
+                "type": "query",
+                "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions."
+              },
+              {
+                "name": "year",
+                "value": "2024",
+                "type": "query",
+                "description": "The calendar year during which activity occurred."
+              },
+              {
+                "name": "quarter",
+                "value": "0",
+                "type": "query",
+                "description": "Calendar quarter in which activity occurred."
+              },
+              {
+                "name": "page",
+                "value": "0",
+                "type": "query",
+                "description": "Page number of data being requested."
+              },
+              {
+                "name": "perPage",
+                "value": "0",
+                "type": "query",
+                "description": "Number of results per page."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Apportioned Annual Emissions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AnnualApportionedEmissionsController_getEmissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/emissions-mgmt/emissions/apportioned/annual",
+            "params": [
+              {
+                "name": "stateCode",
+                "value": "AL",
+                "type": "query",
+                "description": "Two letter abbreviation for the State."
+              },
+              {
+                "name": "facilityId",
+                "value": "0",
+                "type": "query",
+                "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting."
+              },
+              {
+                "name": "unitType",
+                "value": "Arch-fired boiler",
+                "type": "query",
+                "description": "Type of unit or boiler."
+              },
+              {
+                "name": "unitFuelType",
+                "value": "Coal",
+                "type": "query",
+                "description": "Primary or Secondary fuel types combusted by the unit."
+              },
+              {
+                "name": "controlTechnologies",
+                "value": "Additives to Enhance PAC and Existing Equipment Performance",
+                "type": "query",
+                "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions."
+              },
+              {
+                "name": "programCodeInfo",
+                "value": "ARP",
+                "type": "query",
+                "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions."
+              },
+              {
+                "name": "year",
+                "value": "2024",
+                "type": "query",
+                "description": "The calendar year during which activity occurred."
+              },
+              {
+                "name": "page",
+                "value": "0",
+                "type": "query",
+                "description": "Page number of data being requested."
+              },
+              {
+                "name": "perPage",
+                "value": "0",
+                "type": "query",
+                "description": "Number of results per page."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "AnnualApportionedEmissionsController_getEmissionsFacilityAggregation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/emissions-mgmt/emissions/apportioned/annual/by-facility",
+            "params": [
+              {
+                "name": "stateCode",
+                "value": "AL",
+                "type": "query",
+                "description": "Two letter abbreviation for the State."
+              },
+              {
+                "name": "facilityId",
+                "value": "0",
+                "type": "query",
+                "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting."
+              },
+              {
+                "name": "unitType",
+                "value": "Arch-fired boiler",
+                "type": "query",
+                "description": "Type of unit or boiler."
+              },
+              {
+                "name": "unitFuelType",
+                "value": "Coal",
+                "type": "query",
+                "description": "Primary or Secondary fuel types combusted by the unit."
+              },
+              {
+                "name": "controlTechnologies",
+                "value": "Additives to Enhance PAC and Existing Equipment Performance",
+                "type": "query",
+                "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions."
+              },
+              {
+                "name": "programCodeInfo",
+                "value": "ARP",
+                "type": "query",
+                "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions."
+              },
+              {
+                "name": "year",
+                "value": "2024",
+                "type": "query",
+                "description": "The calendar year during which activity occurred."
+              },
+              {
+                "name": "page",
+                "value": "0",
+                "type": "query",
+                "description": "Page number of data being requested."
+              },
+              {
+                "name": "perPage",
+                "value": "0",
+                "type": "query",
+                "description": "Number of results per page."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "AnnualApportionedEmissionsController_getEmissionsStateAggregation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/emissions-mgmt/emissions/apportioned/annual/by-state",
+            "params": [
+              {
+                "name": "stateCode",
+                "value": "AL",
+                "type": "query",
+                "description": "Two letter abbreviation for the State."
+              },
+              {
+                "name": "facilityId",
+                "value": "0",
+                "type": "query",
+                "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting."
+              },
+              {
+                "name": "unitType",
+                "value": "Arch-fired boiler",
+                "type": "query",
+                "description": "Type of unit or boiler."
+              },
+              {
+                "name": "unitFuelType",
+                "value": "Coal",
+                "type": "query",
+                "description": "Primary or Secondary fuel types combusted by the unit."
+              },
+              {
+                "name": "controlTechnologies",
+                "value": "Additives to Enhance PAC and Existing Equipment Performance",
+                "type": "query",
+                "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions."
+              },
+              {
+                "name": "programCodeInfo",
+                "value": "ARP",
+                "type": "query",
+                "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions."
+              },
+              {
+                "name": "year",
+                "value": "2024",
+                "type": "query",
+                "description": "The calendar year during which activity occurred."
+              },
+              {
+                "name": "page",
+                "value": "0",
+                "type": "query",
+                "description": "Page number of data being requested."
+              },
+              {
+                "name": "perPage",
+                "value": "0",
+                "type": "query",
+                "description": "Number of results per page."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "AnnualApportionedEmissionsController_getEmissionsNationalAggregation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/emissions-mgmt/emissions/apportioned/annual/nationally",
+            "params": [
+              {
+                "name": "stateCode",
+                "value": "AL",
+                "type": "query",
+                "description": "Two letter abbreviation for the State."
+              },
+              {
+                "name": "facilityId",
+                "value": "0",
+                "type": "query",
+                "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting."
+              },
+              {
+                "name": "unitType",
+                "value": "Arch-fired boiler",
+                "type": "query",
+                "description": "Type of unit or boiler."
+              },
+              {
+                "name": "unitFuelType",
+                "value": "Coal",
+                "type": "query",
+                "description": "Primary or Secondary fuel types combusted by the unit."
+              },
+              {
+                "name": "controlTechnologies",
+                "value": "Additives to Enhance PAC and Existing Equipment Performance",
+                "type": "query",
+                "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions."
+              },
+              {
+                "name": "programCodeInfo",
+                "value": "ARP",
+                "type": "query",
+                "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions."
+              },
+              {
+                "name": "year",
+                "value": "2024",
+                "type": "query",
+                "description": "The calendar year during which activity occurred."
+              },
+              {
+                "name": "page",
+                "value": "0",
+                "type": "query",
+                "description": "Page number of data being requested."
+              },
+              {
+                "name": "perPage",
+                "value": "0",
+                "type": "query",
+                "description": "Number of results per page."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Apportioned Ozone Emissions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "OzoneApportionedEmissionsController_getEmissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/emissions-mgmt/emissions/apportioned/ozone",
+            "params": [
+              {
+                "name": "stateCode",
+                "value": "AL",
+                "type": "query",
+                "description": "Two letter abbreviation for the State."
+              },
+              {
+                "name": "facilityId",
+                "value": "0",
+                "type": "query",
+                "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting."
+              },
+              {
+                "name": "unitType",
+                "value": "Arch-fired boiler",
+                "type": "query",
+                "description": "Type of unit or boiler."
+              },
+              {
+                "name": "unitFuelType",
+                "value": "Coal",
+                "type": "query",
+                "description": "Primary or Secondary fuel types combusted by the unit."
+              },
+              {
+                "name": "controlTechnologies",
+                "value": "Additives to Enhance PAC and Existing Equipment Performance",
+                "type": "query",
+                "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions."
+              },
+              {
+                "name": "programCodeInfo",
+                "value": "ARP",
+                "type": "query",
+                "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions."
+              },
+              {
+                "name": "year",
+                "value": "2024",
+                "type": "query",
+                "description": "The calendar year during which activity occurred."
+              },
+              {
+                "name": "page",
+                "value": "0",
+                "type": "query",
+                "description": "Page number of data being requested."
+              },
+              {
+                "name": "perPage",
+                "value": "0",
+                "type": "query",
+                "description": "Number of results per page."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "OzoneApportionedEmissionsController_getEmissionsFacilityAggregation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/emissions-mgmt/emissions/apportioned/ozone/by-facility",
+            "params": [
+              {
+                "name": "stateCode",
+                "value": "AL",
+                "type": "query",
+                "description": "Two letter abbreviation for the State."
+              },
+              {
+                "name": "facilityId",
+                "value": "0",
+                "type": "query",
+                "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting."
+              },
+              {
+                "name": "unitType",
+                "value": "Arch-fired boiler",
+                "type": "query",
+                "description": "Type of unit or boiler."
+              },
+              {
+                "name": "unitFuelType",
+                "value": "Coal",
+                "type": "query",
+                "description": "Primary or Secondary fuel types combusted by the unit."
+              },
+              {
+                "name": "controlTechnologies",
+                "value": "Additives to Enhance PAC and Existing Equipment Performance",
+                "type": "query",
+                "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions."
+              },
+              {
+                "name": "programCodeInfo",
+                "value": "ARP",
+                "type": "query",
+                "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions."
+              },
+              {
+                "name": "year",
+                "value": "2024",
+                "type": "query",
+                "description": "The calendar year during which activity occurred."
+              },
+              {
+                "name": "page",
+                "value": "0",
+                "type": "query",
+                "description": "Page number of data being requested."
+              },
+              {
+                "name": "perPage",
+                "value": "0",
+                "type": "query",
+                "description": "Number of results per page."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "OzoneApportionedEmissionsController_getEmissionsStateAggregation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/emissions-mgmt/emissions/apportioned/ozone/by-state",
+            "params": [
+              {
+                "name": "stateCode",
+                "value": "AL",
+                "type": "query",
+                "description": "Two letter abbreviation for the State."
+              },
+              {
+                "name": "facilityId",
+                "value": "0",
+                "type": "query",
+                "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting."
+              },
+              {
+                "name": "unitType",
+                "value": "Arch-fired boiler",
+                "type": "query",
+                "description": "Type of unit or boiler."
+              },
+              {
+                "name": "unitFuelType",
+                "value": "Coal",
+                "type": "query",
+                "description": "Primary or Secondary fuel types combusted by the unit."
+              },
+              {
+                "name": "controlTechnologies",
+                "value": "Additives to Enhance PAC and Existing Equipment Performance",
+                "type": "query",
+                "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions."
+              },
+              {
+                "name": "programCodeInfo",
+                "value": "ARP",
+                "type": "query",
+                "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions."
+              },
+              {
+                "name": "year",
+                "value": "2024",
+                "type": "query",
+                "description": "The calendar year during which activity occurred."
+              },
+              {
+                "name": "page",
+                "value": "0",
+                "type": "query",
+                "description": "Page number of data being requested."
+              },
+              {
+                "name": "perPage",
+                "value": "0",
+                "type": "query",
+                "description": "Number of results per page."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "OzoneApportionedEmissionsController_getEmissionsNationalAggregation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/emissions-mgmt/emissions/apportioned/ozone/nationally",
+            "params": [
+              {
+                "name": "stateCode",
+                "value": "AL",
+                "type": "query",
+                "description": "Two letter abbreviation for the State."
+              },
+              {
+                "name": "facilityId",
+                "value": "0",
+                "type": "query",
+                "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting."
+              },
+              {
+                "name": "unitType",
+                "value": "Arch-fired boiler",
+                "type": "query",
+                "description": "Type of unit or boiler."
+              },
+              {
+                "name": "unitFuelType",
+                "value": "Coal",
+                "type": "query",
+                "description": "Primary or Secondary fuel types combusted by the unit."
+              },
+              {
+                "name": "controlTechnologies",
+                "value": "Additives to Enhance PAC and Existing Equipment Performance",
+                "type": "query",
+                "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions."
+              },
+              {
+                "name": "programCodeInfo",
+                "value": "ARP",
+                "type": "query",
+                "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions."
+              },
+              {
+                "name": "year",
+                "value": "2024",
+                "type": "query",
+                "description": "The calendar year during which activity occurred."
+              },
+              {
+                "name": "page",
+                "value": "0",
+                "type": "query",
+                "description": "Page number of data being requested."
+              },
+              {
+                "name": "perPage",
+                "value": "0",
+                "type": "query",
+                "description": "Number of results per page."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Apportioned MATS Emissions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "MatsApportionedEmissionsController_getApplicableEmissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/emissions-mgmt/emissions/apportioned/mats/attributes/applicable",
+            "params": [
+              {
+                "name": "year",
+                "value": "2024",
+                "type": "query",
+                "description": "The calendar year during which activity occurred."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Apportioned Hourly MATS Emissions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "HourlyMatsApportionedEmissionsController_getEmissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epa.gov/easey/emissions-mgmt/emissions/apportioned/mats/hourly",
+            "params": [
+              {
+                "name": "stateCode",
+                "value": "AL",
+                "type": "query",
+                "description": "Two letter abbreviation for the State."
+              },
+              {
+                "name": "facilityId",
+                "value": "0",
+                "type": "query",
+                "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting."
+              },
+              {
+                "name": "unitType",
+                "value": "Arch-fired boiler",
+                "type": "query",
+                "description": "Type of unit or boiler."
+              },
+              {
+                "name": "unitFuelType",
+                "value": "Coal",
+                "type": "query",
+                "description": "Primary or Secondary fuel types combusted by the unit."
+              },
+              {
+                "name": "controlTechnologies",
+                "value": "Additives to Enhance PAC and Existing Equipment Performance",
+                "type": "query",
+                "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions."
+              },
+              {
+                "name": "beginDate",
+                "value": "2024-01-15T12:00:00Z",
+                "type": "query",
+                "description": "Begin date for a given period of a unit's emissions."
+              },
+              {
+                "name": "endDate",
+                "value": "2024-01-15T12:00:00Z",
+                "type": "query",
+                "description": "End date for a given period of a unit's emissions."
+              },
+              {
+                "name": "operatingHoursOnly",
+                "value": "true",
+                "type": "query",
+                "description": "Indicator of whether or not a request should return only data for hours where a unit operated."
+              },
+              {
+                "name": "page",
+                "value": "0",
+                "type": "query",
+                "description": "Page number of data being requested."
+              },
+              {
+                "name": "perPage",
+                "value": "0",
+                "type": "query",
+                "description": "Number of results per page."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,252 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "EPA Envirofacts Data Service API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Data Service",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query Envirofacts Table",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.epa.gov/efservice/:table/:format",
+            "params": [
+              {
+                "name": "table",
+                "value": "",
+                "type": "path",
+                "description": "Envirofacts table in `program.table` format (e.g., `rcra.rcra_facility`, `tri.tri_facility`, `sems.envirofacts_site`)."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "path",
+                "description": "Output format (default JSON)."
+              }
+            ]
+          },
+          "docs": "Query any Envirofacts table. Append optional filter, join, range, and sort segments before the format."
+        },
+        {
+          "info": {
+            "name": "Query Envirofacts Table with Filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.epa.gov/efservice/:table/:filter/:format",
+            "params": [
+              {
+                "name": "table",
+                "value": "",
+                "type": "path",
+                "description": "Envirofacts table in `program.table` format (e.g., `rcra.rcra_facility`, `tri.tri_facility`, `sems.envirofacts_site`)."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "path",
+                "description": "Optional filter clause `{column}{operator}{value}`. Operators include equals, notEquals, lessThan, greaterThan, beginsWith, endsWith, contains, like, in."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "path",
+                "description": "Output format (default JSON)."
+              }
+            ]
+          },
+          "docs": "Query Envirofacts Table with Filter"
+        },
+        {
+          "info": {
+            "name": "Query Envirofacts Table with Filter and Pagination",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.epa.gov/efservice/:table/:filter/:range/:format",
+            "params": [
+              {
+                "name": "table",
+                "value": "",
+                "type": "path",
+                "description": "Envirofacts table in `program.table` format (e.g., `rcra.rcra_facility`, `tri.tri_facility`, `sems.envirofacts_site`)."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "path",
+                "description": "Optional filter clause `{column}{operator}{value}`. Operators include equals, notEquals, lessThan, greaterThan, beginsWith, endsWith, contains, like, in."
+              },
+              {
+                "name": "range",
+                "value": "",
+                "type": "path",
+                "description": "Optional pagination range `first:last` (e.g., `1:100`)."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "path",
+                "description": "Output format (default JSON)."
+              }
+            ]
+          },
+          "docs": "Query Envirofacts Table with Filter and Pagination"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "UV Index",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Hourly UV Forecast by ZIP",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.epa.gov/dmapservice/getEnvirofactsUVHOURLY/ZIP/:ZIP/:format",
+            "params": [
+              {
+                "name": "ZIP",
+                "value": "",
+                "type": "path",
+                "description": "5-digit ZIP code."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "path",
+                "description": "Output format (default JSON)."
+              }
+            ]
+          },
+          "docs": "Get Hourly UV Forecast by ZIP"
+        },
+        {
+          "info": {
+            "name": "Get Hourly UV Forecast by City and State",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.epa.gov/dmapservice/getEnvirofactsUVHOURLY/CITY/:CITY/STATE/:STATE/:format",
+            "params": [
+              {
+                "name": "CITY",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "STATE",
+                "value": "",
+                "type": "path",
+                "description": "2-letter state abbreviation."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "path",
+                "description": "Output format (default JSON)."
+              }
+            ]
+          },
+          "docs": "Get Hourly UV Forecast by City and State"
+        },
+        {
+          "info": {
+            "name": "Get Daily UV Forecast by ZIP",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.epa.gov/dmapservice/getEnvirofactsUVDAILY/ZIP/:ZIP/:format",
+            "params": [
+              {
+                "name": "ZIP",
+                "value": "",
+                "type": "path",
+                "description": "5-digit ZIP code."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "path",
+                "description": "Output format (default JSON)."
+              }
+            ]
+          },
+          "docs": "Get Daily UV Forecast by ZIP"
+        },
+        {
+          "info": {
+            "name": "Get Daily UV Forecast by City and State",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.epa.gov/dmapservice/getEnvirofactsUVDAILY/CITY/:CITY/STATE/:STATE/:format",
+            "params": [
+              {
+                "name": "CITY",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "STATE",
+                "value": "",
+                "type": "path",
+                "description": "2-letter state abbreviation."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "path",
+                "description": "Output format (default JSON)."
+              }
+            ]
+          },
+          "docs": "Get Daily UV Forecast by City and State"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "GraphQL",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Execute Envirofacts GraphQL Query",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://data.epa.gov/enviro/dmap-graphql-api",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Execute Envirofacts GraphQL Query"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

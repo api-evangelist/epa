@@ -1,0 +1,248 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "U.S. EPA Enforcement and Compliance History Online (ECHO) - Effluent Charting and Reporting",
+    "version": "2019.10.15"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Effluent Charts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Effluent Charts Download Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/eff_rest_services.download_effluent_chart",
+            "params": [
+              {
+                "name": "p_id",
+                "value": "",
+                "type": "query",
+                "description": "Identifier for the service."
+              },
+              {
+                "name": "outfall",
+                "value": "",
+                "type": "query",
+                "description": "Three-character code that identifies the point of discharge (e.g., pipe or outfall) for a facility. A single NPDES ID may have multiple points of discharge."
+              },
+              {
+                "name": "parameter_code",
+                "value": "",
+                "type": "query",
+                "description": "Five-digit numeric code identifying the parameter. See Parameter Lookup documentation for a complete list of codes."
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "The start date (mm/dd/yyyy) for the date range of interest. Must be used in conjunction with end_date. If start_date and end_date are not specified, the service will return the last three years of data."
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "The end date (mm/dd/yyyy) for the date range of interest. Must be used in conjunction with start_date. If start_date and end_date are not specified, the service will return the last three years of data."
+              }
+            ]
+          },
+          "docs": "Downloads tabular Discharge Monitoring Report (DMR) and compliance data for one NPDES permit as a CSV."
+        },
+        {
+          "info": {
+            "name": "Effluent Charts Download Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/eff_rest_services.download_effluent_chart"
+          },
+          "docs": "Downloads tabular Discharge Monitoring Report (DMR) and compliance data for one NPDES permit as a CSV."
+        },
+        {
+          "info": {
+            "name": "Detailed Effluent Chart Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/eff_rest_services.get_effluent_chart",
+            "params": [
+              {
+                "name": "p_id",
+                "value": "",
+                "type": "query",
+                "description": "Identifier for the service."
+              },
+              {
+                "name": "outfall",
+                "value": "",
+                "type": "query",
+                "description": "Three-character code that identifies the point of discharge (e.g., pipe or outfall) for a facility. A single NPDES ID may have multiple points of discharge."
+              },
+              {
+                "name": "parameter_code",
+                "value": "",
+                "type": "query",
+                "description": "Five-digit numeric code identifying the parameter. See Parameter Lookup documentation for a complete list of codes."
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "The start date (mm/dd/yyyy) for the date range of interest. Must be used in conjunction with end_date. If start_date and end_date are not specified, the service will return the last three years of data."
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "The end date (mm/dd/yyyy) for the date range of interest. Must be used in conjunction with start_date. If start_date and end_date are not specified, the service will return the last three years of data."
+              },
+              {
+                "name": "output",
+                "value": "",
+                "type": "query",
+                "description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response."
+              }
+            ]
+          },
+          "docs": "Discharge Monitoring Report (DMR) data supporting each effluent chart for one NPDES permit. Includes Discharge Monitoring Reports and NPDES Violations. \n\n"
+        },
+        {
+          "info": {
+            "name": "Detailed Effluent Chart Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/eff_rest_services.get_effluent_chart"
+          },
+          "docs": "Discharge Monitoring Report (DMR) data supporting each effluent chart for one NPDES permit. Includes Discharge Monitoring Reports and NPDES Violations. \n\n"
+        },
+        {
+          "info": {
+            "name": "Summary Effluent Chart Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/eff_rest_services.get_summary_chart",
+            "params": [
+              {
+                "name": "p_id",
+                "value": "",
+                "type": "query",
+                "description": "Identifier for the service."
+              },
+              {
+                "name": "output",
+                "value": "",
+                "type": "query",
+                "description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response."
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "The start date (mm/dd/yyyy) for the date range of interest. Must be used in conjunction with end_date. If start_date and end_date are not specified, the service will return the last three years of data."
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "The end date (mm/dd/yyyy) for the date range of interest. Must be used in conjunction with start_date. If start_date and end_date are not specified, the service will return the last three years of data."
+              }
+            ]
+          },
+          "docs": "Summary of compliance status each outfall and parameter for one NPDES permit. Provides the current compliance status and overall compliance status for the date range of interest. This service supports the Summary Matrix on the Effluent Charts."
+        },
+        {
+          "info": {
+            "name": "Summary Effluent Chart Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/eff_rest_services.get_summary_chart"
+          },
+          "docs": "Summary of compliance status each outfall and parameter for one NPDES permit. Provides the current compliance status and overall compliance status for the date range of interest. This service supports the Summary Matrix on the Effluent Charts."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Lookups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ECHO CWA Parameter Lookup Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/rest_lookups.cwa_parameters",
+            "params": [
+              {
+                "name": "output",
+                "value": "",
+                "type": "query",
+                "description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response."
+              },
+              {
+                "name": "search_term",
+                "value": "",
+                "type": "query",
+                "description": "Enter a partial or complete search phrase or word."
+              },
+              {
+                "name": "search_code",
+                "value": "",
+                "type": "query",
+                "description": "Enter a partial or complete code value."
+              }
+            ]
+          },
+          "docs": "Look up Clean Water Act parameter codes and descriptions in the Integrated Compliance Information System - National Pollutant Discharge Elimination System (ICIS-NPDES) by code or term."
+        },
+        {
+          "info": {
+            "name": "ECHO CWA Parameter Lookup Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/rest_lookups.cwa_parameters"
+          },
+          "docs": "Look up Clean Water Act parameter codes and descriptions in the Integrated Compliance Information System - National Pollutant Discharge Elimination System (ICIS-NPDES) by code or term."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

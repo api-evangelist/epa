@@ -1,0 +1,1301 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "U.S. EPA Enforcement and Compliance History Online (ECHO) - All Data",
+    "version": "2019.10.15"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Facility Info",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Combined ECHO Download Data Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/echo_rest_services.get_download",
+            "params": [
+              {
+                "name": "output",
+                "value": "string",
+                "type": "query",
+                "description": "Output Format Flag.  Enter one of the following keywords:\n- CSV = Facility results formatted as comma delimited file download (default).\n- GEOJSOND = Facility results formatted as GeoJSON feature collection download."
+              },
+              {
+                "name": "qid",
+                "value": "",
+                "type": "query",
+                "description": "Query ID Selector.  Enter the QueryID number from a previously run query."
+              },
+              {
+                "name": "qcolumns",
+                "value": "string",
+                "type": "query",
+                "description": "Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
+              },
+              {
+                "name": "p_pretty_print",
+                "value": "",
+                "type": "query",
+                "description": "Optional flag to request GeoJSON formatted results to be pretty printed.  Only provide a numeric value when the output needs to be human readable as pretty printing has a performance cost."
+              }
+            ]
+          },
+          "docs": "Based on the QID obtained from a get_facilities or get_facility_info query, return a comma separated value (CSV) file of the facilities found."
+        },
+        {
+          "info": {
+            "name": "Combined ECHO Download Data Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/echo_rest_services.get_download"
+          },
+          "docs": "Based on the QID obtained from a get_facilities or get_facility_info query, return a comma separated value (CSV) file of the facilities found."
+        },
+        {
+          "info": {
+            "name": "Combined ECHO Facility Search Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/echo_rest_services.get_facilities",
+            "params": [
+              {
+                "name": "output",
+                "value": "string",
+                "type": "query",
+                "description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+              },
+              {
+                "name": "p_fn",
+                "value": "",
+                "type": "query",
+                "description": "Facility Name Filter. Enter one or more case-insensitive facility names to filter results.  Provide multiple values as a comma-delimited list.  See p_fntype for additional modifiers."
+              },
+              {
+                "name": "p_sa",
+                "value": "",
+                "type": "query",
+                "description": "Facility street address. Enter a complete or partial street address."
+              },
+              {
+                "name": "p_sa1",
+                "value": "",
+                "type": "query",
+                "description": "Facility street address. Enter a complete or partial street address.   Note that p_sa1 is culmulative with p_sa."
+              },
+              {
+                "name": "p_ct",
+                "value": "",
+                "type": "query",
+                "description": "Facility City Filter. Enter a single case-insensitive city name to filter results."
+              },
+              {
+                "name": "p_co",
+                "value": "",
+                "type": "query",
+                "description": "Facility County Filter. Provide a single county name in combination with a state value provided via p_st."
+              },
+              {
+                "name": "p_fips",
+                "value": "",
+                "type": "query",
+                "description": "FIPS Code Filter.  Enter a single 5-character Federal Information Processing Standards (FIPS) state + county value to restrict results.  E.g. to limit results to Kenosha County, Wisconsin, use 55059."
+              },
+              {
+                "name": "p_st",
+                "value": "",
+                "type": "query",
+                "description": "Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list."
+              },
+              {
+                "name": "p_zip",
+                "value": "",
+                "type": "query",
+                "description": "5-Digit ZIP Code Filter. Provide one or more 5-digit postal zip codes to filter results.  May contain multiple comma-separated values."
+              },
+              {
+                "name": "p_frs",
+                "value": "",
+                "type": "query",
+                "description": "Facility Registry Service ID Filter. Enter a single 12-digit FRS identifier to filter results."
+              },
+              {
+                "name": "p_reg",
+                "value": "",
+                "type": "query",
+                "description": "EPA Region Filter. Provide a single value of 01 thru 10 to restrict results to a single EPA region."
+              },
+              {
+                "name": "p_sic",
+                "value": "",
+                "type": "query",
+                "description": "Standard Industrial Classification (SIC) Code Filter.  Enter a single 4-digit SIC Code to filter results.  If more complex filtering is required, use p_sic2 and p_sic4."
+              },
+              {
+                "name": "p_ncs",
+                "value": "",
+                "type": "query",
+                "description": "North American Industry Classification System Filter. Enter two to six digits to filter results to facilities having matching NAICS codes.  Digits less than six will match to all codes beginning with the provided values."
+              },
+              {
+                "name": "p_pen",
+                "value": "",
+                "type": "query",
+                "description": "Last Penality Date Qualifier Filter.  Enter one of the following:   \n- NEVER = No Penalties\n- ANY = Any Penalty\n- LEXX = Less than or equal to XX months.  Provide a number in place of XX, e.g. \"LE5\" for a facility with a penalty within previous 5 months.\n- GTXX = Greater than XX months.  Provide a number in place of XX, eg. GT12, for a facility with the last penalty greater than 12 months ago."
+              },
+              {
+                "name": "p_c1lat",
+                "value": "",
+                "type": "query",
+                "description": "In decimal degrees.  Latitude of 1st corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided."
+              },
+              {
+                "name": "p_c1lon",
+                "value": "",
+                "type": "query",
+                "description": "In decimal degrees.  Longitude of 1st corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided."
+              },
+              {
+                "name": "p_c2lat",
+                "value": "",
+                "type": "query",
+                "description": "In decimal degrees.  Latitude of 2nd corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided."
+              },
+              {
+                "name": "p_c2lon",
+                "value": "",
+                "type": "query",
+                "description": "In decimal degrees.  Longitude of 2nd corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided."
+              },
+              {
+                "name": "p_usmex",
+                "value": "",
+                "type": "query",
+                "description": "US-Mexico Border Flag.  Enter Y/N to restrict searches to facilities located within 100KM of the border."
+              },
+              {
+                "name": "p_sic2",
+                "value": "",
+                "type": "query",
+                "description": "Standard Industrial Classification (SIC) Code Filter Alternate 2. Enter a wild-card search against SIC codes.  A final wild-card is always present allowing \"22\" to match all SIC codes beginning with 22.  Use the \"%\" character within strings to match any SIC values with the pattern.  For example, \"2%21\" matches 2021, 2121, 2221, etc."
+              },
+              {
+                "name": "p_sic4",
+                "value": "",
+                "type": "query",
+                "description": "Standard Industrial Classification (SIC) Code Filter Alternate 3.  Enter the first 2, 3 or 4 SIC code digits to filter results to facilities having those code prefixes.  As this alternative does not utilize an index, p_sic2 will generally be quicker."
+              },
+              {
+                "name": "p_fa",
+                "value": "",
+                "type": "query",
+                "description": "Federal Agency. 1 character or 5-character values; may contain multiple comma-separated values. ALL will retrieve all facilities where the federal agency code is not null.  Use the Federal Agencies lookup service to obtain a list of values."
+              },
+              {
+                "name": "p_ff",
+                "value": "",
+                "type": "query",
+                "description": "Federal Facility Indicator Flag. Enter Y to restrict searches to federal facilities."
+              },
+              {
+                "name": "p_act",
+                "value": "",
+                "type": "query",
+                "description": "Active Permits/Facilities Flag.  Provide Y or N to filter results to facilities with active permits."
+              },
+              {
+                "name": "p_maj",
+                "value": "",
+                "type": "query",
+                "description": "Major Facility Flag.  Enter Y to restrict results to Major facilities only."
+              },
+              {
+                "name": "p_mact",
+                "value": "",
+                "type": "query",
+                "description": "CAA Maximum Achievable Control Technology (MACT) Subpart codes (alpha ID between 1 and 7 characters) applicable to the facility."
+              },
+              {
+                "name": "p_fea",
+                "value": "",
+                "type": "query",
+                "description": "Formal Enforcement Actions [within / not within] specified date range indicator. The date range is determined by parameters p_fead1 and p_fead2 or by parameter p_feay.\n- W = within date range\n- N = not within date range"
+              },
+              {
+                "name": "p_feay",
+                "value": "",
+                "type": "query",
+                "description": "Years (1 to 5) Range.  This value is used to create a date range for Formal Enforcement Actions (FEA). Used along with p_fea (which indicates whether to look within or outside of the date range) to find FEAs within (or not within) the number of years specified."
+              },
+              {
+                "name": "p_feaa",
+                "value": "",
+                "type": "query",
+                "description": "Agency associated with Formal Enforcement Actions:\n- E = EPA\n- S = State\n- A = All"
+              },
+              {
+                "name": "p_feac",
+                "value": "",
+                "type": "query",
+                "description": "Formal Enforcment Action Last Case Date Limiter Flag.  Enter a value of \"Y\" to additionally apply the p_feay year filter to the last formal enforcement action case date.  Use the p_fea parameter to control if the filter is within or outside the date span provided."
+              },
+              {
+                "name": "p_fea_5yr",
+                "value": "",
+                "type": "query",
+                "description": "A Y value identifies facilities that have had a formal enforcement action within the last 5 years."
+              },
+              {
+                "name": "p_iea",
+                "value": "",
+                "type": "query",
+                "description": "Informal Enforcement Actions [within / not within] specified date range.  The date range is determined by parameters p_iead1 and p_iead2 or by parameter p_ieay.\n- W = within date range\n- N = not within date range"
+              },
+              {
+                "name": "p_ieay",
+                "value": "",
+                "type": "query",
+                "description": "Years (1 to 5) Range.  This value is used to create a date range for Informal Enforcement Actions (IEA). Used along with p_iea (which indicates whether to look within or outside of the date range) to find IEAs within (or not within) the number of years specified."
+              },
+              {
+                "name": "p_ieaa",
+                "value": "",
+                "type": "query",
+                "description": "Agency associated with Informal Enforcement Actions. If left blank, both agencies are included.\n- E = EPA\n- S = State"
+              },
+              {
+                "name": "p_iea_5yr",
+                "value": "",
+                "type": "query",
+                "description": "A Y value identifies facilities that have had an informal enforcement action within the last 5 years."
+              },
+              {
+                "name": "p_cs",
+                "value": "",
+                "type": "query",
+                "description": "Facility Compliance Limiter.  Enter 2, 3 or 4 to limit facilities returned.\n- 2 = Facilities in noncompliance.\n- 3 = Facilities having one or more programs reporting significant noncompliance.\n- 4 = Facilities having more than one program reporting significant noncompliance."
+              },
+              {
+                "name": "p_qiv",
+                "value": "",
+                "type": "query",
+                "description": "Quarters in Noncompliance Limiter.  Enter a coded value to limit results to facilities with given quarter of noncompliance.\n- Z = Zero quarters in noncompliance.\n- GEXX = Replacing XX with a numeric value, that number of quarterd or more in noncompliance.\n- GTXX = Replacing XX with a numeric value, more than that number of quarters in noncompliance."
+              },
+              {
+                "name": "p_naa",
+                "value": "",
+                "type": "query",
+                "description": "Non-Attainment Area Flag.  Enter a Y or N to filter for or against facilities flagged as non-attainment areas."
+              },
+              {
+                "name": "p_impw",
+                "value": "",
+                "type": "query",
+                "description": "Discharging into Impaired Waters Flag. Enter Y to limit results to facilities with discharge to waterbodies listed as impaired in the ATTAINS database."
+              },
+              {
+                "name": "p_trep",
+                "value": "",
+                "type": "query",
+                "description": "Current Toxics Release Inventory (TRI) Reporter Limiter.  Enter one of the following codes to limit results.\n- CURR = Current TRI reporter.\n- NONCURR = Has reported to TRI in the past but not for the current reporting year."
+              },
+              {
+                "name": "p_ocr",
+                "value": "",
+                "type": "query",
+                "description": "Toxics Release Inventory Pounds of On-Site Chemical Releases Limiter.  Enter a keyword to filter results.\n- Z = Zero pounds of chemical releases.\n- GT0 = More than zero pounds of chemical releases.\n- GT1000 = More than one thousand pounds of chemical releases.\n- GT5000 = More than five thousand pounds of chemical releases.\n- GT10000 = More than ten thousand pounds of chemical releases.\n- GT20000 = More than twenty thousand pounds of chemical releases.\n- GT50000 = More than fifty thousand pounds of chemical releases."
+              },
+              {
+                "name": "p_oct",
+                "value": "",
+                "type": "query",
+                "description": "Toxic Release Inventory Pounds of Off-Site Chemical Releases Limiter.  Enter a keyword to filter results.\n- Z = Zero pounds of chemical releases.\n- GT0 = More than zero pounds of chemical releases.\n- GT1000 = More than one thousand pounds of chemical releases.\n- GT5000 = More than five thousand pounds of chemical releases.\n- GT10000 = More than ten thousand pounds of chemical releases.\n- GT20000 = More than twenty thousand pounds of chemical releases.\n- GT50000 = More than fifty thousand pounds of chemical releases."
+              },
+              {
+                "name": "p_pm",
+                "value": "",
+                "type": "query",
+                "description": "Percent Minority Population Limiter.  Enter a value to restrict results to facilities with a given percentage of minority population within 3-mile radius.\n- NONE = 0%\n- GT5 = greater than 5%\n- GT10 = greater than 10%\n- GT25 = greater than 25%\n- GT50 = greater than 50%\n- GT75 = greater than 75%"
+              },
+              {
+                "name": "p_pd",
+                "value": "",
+                "type": "query",
+                "description": "Population Density Limiter (per sq mile). Enter a value to limit results to facilities located in area of a given population density.\n- NONE = 0 population density per square mile\n- GT100 = More than 100 population density per square mile\n- GT500 = More than 500 population density per square mile\n- GT1000 = More than 1000 population density per square mile\n- GT5000 = More than 5000 population density per square mile\n- GT10000 = More than 10000 population density per square mile\n- GT20000 = More than 20000 population density per square mile"
+              },
+              {
+                "name": "p_ico",
+                "value": "",
+                "type": "query",
+                "description": "Indian Country Flag.  Enter a \"Y\" or \"N\" to restrict searches to facilities inside or outside Indian Country."
+              },
+              {
+                "name": "p_huc",
+                "value": "",
+                "type": "query",
+                "description": "2-, 4-, 6-, or 8-character watershed code. May contain multiple comma-separated values."
+              },
+              {
+                "name": "p_pid",
+                "value": "",
+                "type": "query",
+                "description": "Nine-digit permit IDs. May contain up to 2000 comma-separated values."
+              },
+              {
+                "name": "p_med",
+                "value": "",
+                "type": "query",
+                "description": "Filter Results by Media.- A = Air- C = CAMD (Clean Air Markets Division)- E = EIS (Emissions Inventory Systems)- G = GHG (Greenhouse Gases)- M = RMP (Risk Management Plan)- R = RCRA (Hazardous Waste)- S = SDWA (Public Drinking Water Systems)- T = TRI (Toxic Release Inventory)- TSCA = TSCA (Toxic Substances Control Act)- W = Water- ALL = Air and Water and RCRA"
+              },
+              {
+                "name": "p_istatute",
+                "value": "",
+                "type": "query",
+                "description": "For use in identifying Facilities that have an inspection performed under the entered Statute."
+              },
+              {
+                "name": "p_ysl",
+                "value": "",
+                "type": "query",
+                "description": "Last Facility Inspection [within / not within] Specified Date Range Indicator. The date range is determined by parameters p_idt1 and p_idt2 or by parameter p_ysly.\n- W = within date range\n- N = not within date range"
+              },
+              {
+                "name": "p_ysly",
+                "value": "",
+                "type": "query",
+                "description": "Number of years (1 to 5) since last facility inspection.  A value of 1 means that it has been inspected within the year."
+              },
+              {
+                "name": "p_ysla",
+                "value": "",
+                "type": "query",
+                "description": "Facility Last Inspection Code Filter.  If left blank, both agencies are included.  Enter a value to limit results:\n- E = EPA\n- S = State"
+              },
+              {
+                "name": "p_qs",
+                "value": "",
+                "type": "query",
+                "description": "Quick Search. Allows entry for city, state, and/or zip code."
+              },
+              {
+                "name": "p_sfs",
+                "value": "",
+                "type": "query",
+                "description": "Single Facility Search Filter.  Provide a facility name or program system identifier to limit results.  For the all data search, the FRS registry identifier is also searched."
+              },
+              {
+                "name": "p_tribeid",
+                "value": "",
+                "type": "query",
+                "description": "Numeric code for tribe (or list of tribes)."
+              },
+              {
+                "name": "p_tribename",
+                "value": "",
+                "type": "query",
+                "description": "Tribe Name Filter.  Enter a single tribe name to filter results."
+              },
+              {
+                "name": "p_tribedist",
+                "value": "",
+                "type": "query",
+                "description": "Proximity to tribal land limiter. Enter an amount of mile between 0 and 25 to filter results.  This parameter is only evaluated if p_tribeid is populated."
+              },
+              {
+                "name": "p_wbd",
+                "value": "",
+                "type": "query",
+                "description": "2-, 4-, 6-, 8-, 10-, or 12-character watershed (WBD from the USGS Watershed Boundary Dataset). May contain multiple comma-separated values.  Uses the FRS Best Pick Coordinate to obtain the WBD12 Huc value."
+              },
+              {
+                "name": "p_fntype",
+                "value": "",
+                "type": "query",
+                "description": "Controls type of text search performed on facility name with parameter p_fn.\n- EXACT = Find facilities having the exact provided name(s).\n- BEGINS = Find facilities with names starting with the provided term(s).\n- ALL = Find facilities using Oracle text search terms.\n- CONTAINS = "
+              },
+              {
+                "name": "p_icoo",
+                "value": "",
+                "type": "query",
+                "description": "Indian country search and/or flag.  Enter \"Y\" to set indian country search conditions to return any results found using p_ico, p_fac_ico or p_fac_icoo.  Otherwise only results matching all provided p_ico, p_fac_ico or p_fac_icoo conditions will be returned."
+              },
+              {
+                "name": "p_fac_icos",
+                "value": "",
+                "type": "query",
+                "description": "FRS tribal land spatial flag.  Enter \"Y\" or \"N\" to include or exclude facilities based on FRS tribal land spatial flag."
+              },
+              {
+                "name": "p_ejscreen",
+                "value": "",
+                "type": "query",
+                "description": "Enter \"Y\" to limit facilities to Census block groups where one of more Environmental Justice indexes above 80th percentile."
+              },
+              {
+                "name": "p_limit_addr",
+                "value": "",
+                "type": "query",
+                "description": "Limit Address Search Flag.  Enter Y to restrict facility searches to native data source only.  "
+              },
+              {
+                "name": "p_lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude location in decimal degrees."
+              },
+              {
+                "name": "p_long",
+                "value": "",
+                "type": "query",
+                "description": "Longitude location in decimal degrees."
+              },
+              {
+                "name": "p_radius",
+                "value": "",
+                "type": "query",
+                "description": "Spatial Search Radius.  Enter a radius up to 100 miles in which to spatially search for facilities."
+              },
+              {
+                "name": "p_ejscreen_over80cnt",
+                "value": "",
+                "type": "query",
+                "description": "The number of Environmenmt Justice Indicators above the 80th percentile.  Valid values are 1 through 11."
+              },
+              {
+                "name": "p_agoo",
+                "value": "",
+                "type": "query",
+                "description": "Indicates whether to AND or OR the Owner/Operator parameter (p_owop) and the federal agency code (p_fa) parameters."
+              },
+              {
+                "name": "p_neiu",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "queryset",
+                "value": "",
+                "type": "query",
+                "description": "Query Limiter.  Enter a value to limit the number of records returned for each query. Value cannot exceed 70,000."
+              },
+              {
+                "name": "responseset",
+                "value": "",
+                "type": "query",
+                "description": "Response Set Limiter. Enter a value to limit the number of records per page. Value cannot exceed 1,000."
+              },
+              {
+                "name": "tablelist",
+                "value": "",
+                "type": "query",
+                "description": "Table List Flag. Enter a Y to display the first page of facility results."
+              },
+              {
+                "name": "maplist",
+                "value": "",
+                "type": "query",
+                "description": "Map List Flag.  Provide a Y to return mappable coordinates representing the full geographic extent of the queryset (all facilities that met the selection criteria)."
+              },
+              {
+                "name": "summarylist",
+                "value": "",
+                "type": "query",
+                "description": "Summary List Flag.  Enter a Y to return a list of summary statistics based on the parameters submitted to the query service."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response."
+              },
+              {
+                "name": "qcolumns",
+                "value": "string",
+                "type": "query",
+                "description": "Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
+              }
+            ]
+          },
+          "docs": "Validates query search parameters and returns query identifier.  Use the responseset parameter to set the page size"
+        },
+        {
+          "info": {
+            "name": "Combined ECHO Facility Search Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/echo_rest_services.get_facilities"
+          },
+          "docs": "Validates query search parameters and returns query identifier.  Use the responseset parameter to set the page size"
+        },
+        {
+          "info": {
+            "name": "Combined ECHO Facility Enhanced Search Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/echo_rest_services.get_facility_info",
+            "params": [
+              {
+                "name": "output",
+                "value": "string",
+                "type": "query",
+                "description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language.\n- CSV = Facility results formatted as comma delimited file download.\n- GEOJSON = Facility results formatted as GeoJSON feature collection.\n- GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.\n- GEOJSOND = Facility results formatted as GeoJSON feature collection download."
+              },
+              {
+                "name": "p_fn",
+                "value": "",
+                "type": "query",
+                "description": "Facility Name Filter. Enter one or more case-insensitive facility names to filter results.  Provide multiple values as a comma-delimited list.  See p_fntype for additional modifiers."
+              },
+              {
+                "name": "p_sa",
+                "value": "",
+                "type": "query",
+                "description": "Facility street address. Enter a complete or partial street address."
+              },
+              {
+                "name": "p_sa1",
+                "value": "",
+                "type": "query",
+                "description": "Facility street address. Enter a complete or partial street address.   Note that p_sa1 is culmulative with p_sa."
+              },
+              {
+                "name": "p_ct",
+                "value": "",
+                "type": "query",
+                "description": "Facility City Filter. Enter a single case-insensitive city name to filter results."
+              },
+              {
+                "name": "p_co",
+                "value": "",
+                "type": "query",
+                "description": "Facility County Filter. Provide a single county name in combination with a state value provided via p_st."
+              },
+              {
+                "name": "p_fips",
+                "value": "",
+                "type": "query",
+                "description": "FIPS Code Filter.  Enter a single 5-character Federal Information Processing Standards (FIPS) state + county value to restrict results.  E.g. to limit results to Kenosha County, Wisconsin, use 55059."
+              },
+              {
+                "name": "p_st",
+                "value": "",
+                "type": "query",
+                "description": "Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list."
+              },
+              {
+                "name": "p_zip",
+                "value": "",
+                "type": "query",
+                "description": "5-Digit ZIP Code Filter. Provide one or more 5-digit postal zip codes to filter results.  May contain multiple comma-separated values."
+              },
+              {
+                "name": "p_frs",
+                "value": "",
+                "type": "query",
+                "description": "Facility Registry Service ID Filter. Enter a single 12-digit FRS identifier to filter results."
+              },
+              {
+                "name": "p_reg",
+                "value": "",
+                "type": "query",
+                "description": "EPA Region Filter. Provide a single value of 01 thru 10 to restrict results to a single EPA region."
+              },
+              {
+                "name": "p_sic",
+                "value": "",
+                "type": "query",
+                "description": "Standard Industrial Classification (SIC) Code Filter.  Enter a single 4-digit SIC Code to filter results.  If more complex filtering is required, use p_sic2 and p_sic4."
+              },
+              {
+                "name": "p_ncs",
+                "value": "",
+                "type": "query",
+                "description": "North American Industry Classification System Filter. Enter two to six digits to filter results to facilities having matching NAICS codes.  Digits less than six will match to all codes beginning with the provided values."
+              },
+              {
+                "name": "p_pen",
+                "value": "",
+                "type": "query",
+                "description": "Last Penality Date Qualifier Filter.  Enter one of the following:   \n- NEVER = No Penalties\n- ANY = Any Penalty\n- LEXX = Less than or equal to XX months.  Provide a number in place of XX, e.g. \"LE5\" for a facility with a penalty within previous 5 months.\n- GTXX = Greater than XX months.  Provide a number in place of XX, eg. GT12, for a facility with the last penalty greater than 12 months ago."
+              },
+              {
+                "name": "xmin",
+                "value": "",
+                "type": "query",
+                "description": "Minimum longitude value in decimal degrees."
+              },
+              {
+                "name": "ymin",
+                "value": "",
+                "type": "query",
+                "description": "Minimum latitude value in decimal degrees."
+              },
+              {
+                "name": "xmax",
+                "value": "",
+                "type": "query",
+                "description": "Maximum longitude value in decimal degrees."
+              },
+              {
+                "name": "ymax",
+                "value": "",
+                "type": "query",
+                "description": "Maximum latitude value in decimal degrees."
+              },
+              {
+                "name": "p_usmex",
+                "value": "",
+                "type": "query",
+                "description": "US-Mexico Border Flag.  Enter Y/N to restrict searches to facilities located within 100KM of the border."
+              },
+              {
+                "name": "p_sic2",
+                "value": "",
+                "type": "query",
+                "description": "Standard Industrial Classification (SIC) Code Filter Alternate 2. Enter a wild-card search against SIC codes.  A final wild-card is always present allowing \"22\" to match all SIC codes beginning with 22.  Use the \"%\" character within strings to match any SIC values with the pattern.  For example, \"2%21\" matches 2021, 2121, 2221, etc."
+              },
+              {
+                "name": "p_sic4",
+                "value": "",
+                "type": "query",
+                "description": "Standard Industrial Classification (SIC) Code Filter Alternate 3.  Enter the first 2, 3 or 4 SIC code digits to filter results to facilities having those code prefixes.  As this alternative does not utilize an index, p_sic2 will generally be quicker."
+              },
+              {
+                "name": "p_fa",
+                "value": "",
+                "type": "query",
+                "description": "Federal Agency. 1 character or 5-character values; may contain multiple comma-separated values. ALL will retrieve all facilities where the federal agency code is not null.  Use the Federal Agencies lookup service to obtain a list of values."
+              },
+              {
+                "name": "p_ff",
+                "value": "",
+                "type": "query",
+                "description": "Federal Facility Indicator Flag. Enter Y to restrict searches to federal facilities."
+              },
+              {
+                "name": "p_act",
+                "value": "",
+                "type": "query",
+                "description": "Active Permits/Facilities Flag.  Provide Y or N to filter results to facilities with active permits."
+              },
+              {
+                "name": "p_maj",
+                "value": "",
+                "type": "query",
+                "description": "Major Facility Flag.  Enter Y to restrict results to Major facilities only."
+              },
+              {
+                "name": "p_mact",
+                "value": "",
+                "type": "query",
+                "description": "CAA Maximum Achievable Control Technology (MACT) Subpart codes (alpha ID between 1 and 7 characters) applicable to the facility."
+              },
+              {
+                "name": "p_fea",
+                "value": "",
+                "type": "query",
+                "description": "Formal Enforcement Actions [within / not within] specified date range indicator. The date range is determined by parameters p_fead1 and p_fead2 or by parameter p_feay.\n- W = within date range\n- N = not within date range"
+              },
+              {
+                "name": "p_feay",
+                "value": "",
+                "type": "query",
+                "description": "Years (1 to 5) Range.  This value is used to create a date range for Formal Enforcement Actions (FEA). Used along with p_fea (which indicates whether to look within or outside of the date range) to find FEAs within (or not within) the number of years specified."
+              },
+              {
+                "name": "p_feaa",
+                "value": "",
+                "type": "query",
+                "description": "Agency associated with Formal Enforcement Actions:\n- E = EPA\n- S = State\n- A = All"
+              },
+              {
+                "name": "p_feac",
+                "value": "",
+                "type": "query",
+                "description": "Formal Enforcment Action Last Case Date Limiter Flag.  Enter a value of \"Y\" to additionally apply the p_feay year filter to the last formal enforcement action case date.  Use the p_fea parameter to control if the filter is within or outside the date span provided."
+              },
+              {
+                "name": "p_feac_5yr",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "p_iea",
+                "value": "",
+                "type": "query",
+                "description": "Informal Enforcement Actions [within / not within] specified date range.  The date range is determined by parameters p_iead1 and p_iead2 or by parameter p_ieay.\n- W = within date range\n- N = not within date range"
+              },
+              {
+                "name": "p_ieay",
+                "value": "",
+                "type": "query",
+                "description": "Years (1 to 5) Range.  This value is used to create a date range for Informal Enforcement Actions (IEA). Used along with p_iea (which indicates whether to look within or outside of the date range) to find IEAs within (or not within) the number of years specified."
+              },
+              {
+                "name": "p_ieaa",
+                "value": "",
+                "type": "query",
+                "description": "Agency associated with Informal Enforcement Actions. If left blank, both agencies are included.\n- E = EPA\n- S = State"
+              },
+              {
+                "name": "p_iea_5yr",
+                "value": "",
+                "type": "query",
+                "description": "A Y value identifies facilities that have had an informal enforcement action within the last 5 years."
+              },
+              {
+                "name": "p_cs",
+                "value": "",
+                "type": "query",
+                "description": "Facility Compliance Limiter.  Enter 2, 3 or 4 to limit facilities returned.\n- 2 = Facilities in noncompliance.\n- 3 = Facilities having one or more programs reporting significant noncompliance.\n- 4 = Facilities having more than one program reporting significant noncompliance."
+              },
+              {
+                "name": "p_qiv",
+                "value": "",
+                "type": "query",
+                "description": "Quarters in Noncompliance Limiter.  Enter a coded value to limit results to facilities with given quarter of noncompliance.\n- Z = Zero quarters in noncompliance.\n- GEXX = Replacing XX with a numeric value, that number of quarterd or more in noncompliance.\n- GTXX = Replacing XX with a numeric value, more than that number of quarters in noncompliance."
+              },
+              {
+                "name": "p_naa",
+                "value": "",
+                "type": "query",
+                "description": "Non-Attainment Area Flag.  Enter a Y or N to filter for or against facilities flagged as non-attainment areas."
+              },
+              {
+                "name": "p_impw",
+                "value": "",
+                "type": "query",
+                "description": "Discharging into Impaired Waters Flag. Enter Y to limit results to facilities with discharge to waterbodies listed as impaired in the ATTAINS database."
+              },
+              {
+                "name": "p_trep",
+                "value": "",
+                "type": "query",
+                "description": "Current Toxics Release Inventory (TRI) Reporter Limiter.  Enter one of the following codes to limit results.\n- CURR = Current TRI reporter.\n- NONCURR = Has reported to TRI in the past but not for the current reporting year."
+              },
+              {
+                "name": "p_ocr",
+                "value": "",
+                "type": "query",
+                "description": "Toxics Release Inventory Pounds of On-Site Chemical Releases Limiter.  Enter a keyword to filter results.\n- Z = Zero pounds of chemical releases.\n- GT0 = More than zero pounds of chemical releases.\n- GT1000 = More than one thousand pounds of chemical releases.\n- GT5000 = More than five thousand pounds of chemical releases.\n- GT10000 = More than ten thousand pounds of chemical releases.\n- GT20000 = More than twenty thousand pounds of chemical releases.\n- GT50000 = More than fifty thousand pounds of chemical releases."
+              },
+              {
+                "name": "p_oct",
+                "value": "",
+                "type": "query",
+                "description": "Toxic Release Inventory Pounds of Off-Site Chemical Releases Limiter.  Enter a keyword to filter results.\n- Z = Zero pounds of chemical releases.\n- GT0 = More than zero pounds of chemical releases.\n- GT1000 = More than one thousand pounds of chemical releases.\n- GT5000 = More than five thousand pounds of chemical releases.\n- GT10000 = More than ten thousand pounds of chemical releases.\n- GT20000 = More than twenty thousand pounds of chemical releases.\n- GT50000 = More than fifty thousand pounds of chemical releases."
+              },
+              {
+                "name": "p_pm",
+                "value": "",
+                "type": "query",
+                "description": "Percent Minority Population Limiter.  Enter a value to restrict results to facilities with a given percentage of minority population within 3-mile radius.\n- NONE = 0%\n- GT5 = greater than 5%\n- GT10 = greater than 10%\n- GT25 = greater than 25%\n- GT50 = greater than 50%\n- GT75 = greater than 75%"
+              },
+              {
+                "name": "p_pd",
+                "value": "",
+                "type": "query",
+                "description": "Population Density Limiter (per sq mile). Enter a value to limit results to facilities located in area of a given population density.\n- NONE = 0 population density per square mile\n- GT100 = More than 100 population density per square mile\n- GT500 = More than 500 population density per square mile\n- GT1000 = More than 1000 population density per square mile\n- GT5000 = More than 5000 population density per square mile\n- GT10000 = More than 10000 population density per square mile\n- GT20000 = More than 20000 population density per square mile"
+              },
+              {
+                "name": "p_ico",
+                "value": "",
+                "type": "query",
+                "description": "Indian Country Flag.  Enter a \"Y\" or \"N\" to restrict searches to facilities inside or outside Indian Country."
+              },
+              {
+                "name": "p_huc",
+                "value": "",
+                "type": "query",
+                "description": "2-, 4-, 6-, or 8-character watershed code. May contain multiple comma-separated values."
+              },
+              {
+                "name": "p_pid",
+                "value": "",
+                "type": "query",
+                "description": "Nine-digit permit IDs. May contain up to 2000 comma-separated values."
+              },
+              {
+                "name": "p_med",
+                "value": "",
+                "type": "query",
+                "description": "Filter Results by Media.- A = Air- C = CAMD (Clean Air Markets Division)- E = EIS (Emissions Inventory Systems)- G = GHG (Greenhouse Gases)- M = RMP (Risk Management Plan)- R = RCRA (Hazardous Waste)- S = SDWA (Public Drinking Water Systems)- T = TRI (Toxic Release Inventory)- TSCA = TSCA (Toxic Substances Control Act)- W = Water- ALL = Air and Water and RCRA"
+              },
+              {
+                "name": "p_istatute",
+                "value": "",
+                "type": "query",
+                "description": "For use in identifying Facilities that have an inspection performed under the entered Statute."
+              },
+              {
+                "name": "p_ysl",
+                "value": "",
+                "type": "query",
+                "description": "Last Facility Inspection [within / not within] Specified Date Range Indicator. The date range is determined by parameters p_idt1 and p_idt2 or by parameter p_ysly.\n- W = within date range\n- N = not within date range"
+              },
+              {
+                "name": "p_ysly",
+                "value": "",
+                "type": "query",
+                "description": "Number of years (1 to 5) since last facility inspection.  A value of 1 means that it has been inspected within the year."
+              },
+              {
+                "name": "p_ysla",
+                "value": "",
+                "type": "query",
+                "description": "Facility Last Inspection Code Filter.  If left blank, both agencies are included.  Enter a value to limit results:\n- E = EPA\n- S = State"
+              },
+              {
+                "name": "p_qs",
+                "value": "",
+                "type": "query",
+                "description": "Quick Search. Allows entry for city, state, and/or zip code."
+              },
+              {
+                "name": "p_sfs",
+                "value": "",
+                "type": "query",
+                "description": "Single Facility Search Filter.  Provide a facility name or program system identifier to limit results.  For the all data search, the FRS registry identifier is also searched."
+              },
+              {
+                "name": "p_tribeid",
+                "value": "",
+                "type": "query",
+                "description": "Numeric code for tribe (or list of tribes)."
+              },
+              {
+                "name": "p_tribename",
+                "value": "",
+                "type": "query",
+                "description": "Tribe Name Filter.  Enter a single tribe name to filter results."
+              },
+              {
+                "name": "p_tribedist",
+                "value": "",
+                "type": "query",
+                "description": "Proximity to tribal land limiter. Enter an amount of mile between 0 and 25 to filter results.  This parameter is only evaluated if p_tribeid is populated."
+              },
+              {
+                "name": "p_wbd",
+                "value": "",
+                "type": "query",
+                "description": "2-, 4-, 6-, 8-, 10-, or 12-character watershed (WBD from the USGS Watershed Boundary Dataset). May contain multiple comma-separated values.  Uses the FRS Best Pick Coordinate to obtain the WBD12 Huc value."
+              },
+              {
+                "name": "p_fntype",
+                "value": "",
+                "type": "query",
+                "description": "Controls type of text search performed on facility name with parameter p_fn.\n- EXACT = Find facilities having the exact provided name(s).\n- BEGINS = Find facilities with names starting with the provided term(s).\n- ALL = Find facilities using Oracle text search terms.\n- CONTAINS = "
+              },
+              {
+                "name": "p_icoo",
+                "value": "",
+                "type": "query",
+                "description": "Indian country search and/or flag.  Enter \"Y\" to set indian country search conditions to return any results found using p_ico, p_fac_ico or p_fac_icoo.  Otherwise only results matching all provided p_ico, p_fac_ico or p_fac_icoo conditions will be returned."
+              },
+              {
+                "name": "p_fac_icos",
+                "value": "",
+                "type": "query",
+                "description": "FRS tribal land spatial flag.  Enter \"Y\" or \"N\" to include or exclude facilities based on FRS tribal land spatial flag."
+              },
+              {
+                "name": "p_ejscreen",
+                "value": "",
+                "type": "query",
+                "description": "Enter \"Y\" to limit facilities to Census block groups where one of more Environmental Justice indexes above 80th percentile."
+              },
+              {
+                "name": "p_limit_addr",
+                "value": "",
+                "type": "query",
+                "description": "Limit Address Search Flag.  Enter Y to restrict facility searches to native data source only.  "
+              },
+              {
+                "name": "p_lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude location in decimal degrees."
+              },
+              {
+                "name": "p_long",
+                "value": "",
+                "type": "query",
+                "description": "Longitude location in decimal degrees."
+              },
+              {
+                "name": "p_radius",
+                "value": "",
+                "type": "query",
+                "description": "Spatial Search Radius.  Enter a radius up to 100 miles in which to spatially search for facilities."
+              },
+              {
+                "name": "p_ejscreen_over80cnt",
+                "value": "",
+                "type": "query",
+                "description": "The number of Environmenmt Justice Indicators above the 80th percentile.  Valid values are 1 through 11."
+              },
+              {
+                "name": "p_agoo",
+                "value": "",
+                "type": "query",
+                "description": "Indicates whether to AND or OR the Owner/Operator parameter (p_owop) and the federal agency code (p_fa) parameters."
+              },
+              {
+                "name": "p_neiu",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "responseset",
+                "value": "",
+                "type": "query",
+                "description": "Response Set Limiter. Enter a value to limit the number of records per page. Value cannot exceed 1,000."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response."
+              },
+              {
+                "name": "qcolumns",
+                "value": "string",
+                "type": "query",
+                "description": "Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
+              },
+              {
+                "name": "p_pretty_print",
+                "value": "",
+                "type": "query",
+                "description": "Optional flag to request GeoJSON formatted results to be pretty printed.  Only provide a numeric value when the output needs to be human readable as pretty printing has a performance cost."
+              }
+            ]
+          },
+          "docs": "Returns either an array of Facilities or an array of Clusters that meet the specified search criteria."
+        },
+        {
+          "info": {
+            "name": "Combined ECHO Facility Enhanced Search Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/echo_rest_services.get_facility_info"
+          },
+          "docs": "Returns either an array of Facilities or an array of Clusters that meet the specified search criteria."
+        },
+        {
+          "info": {
+            "name": "Combined ECHO GeoJSON Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/echo_rest_services.get_geojson",
+            "params": [
+              {
+                "name": "output",
+                "value": "string",
+                "type": "query",
+                "description": "Output Format Flag.  Enter one of the following keywords:\n- GEOJSON = Facility results formatted as GeoJSON feature collection (default).\n- GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.\n- GEOJSOND = Facility results formatted as GeoJSON feature collection download."
+              },
+              {
+                "name": "qid",
+                "value": "",
+                "type": "query",
+                "description": "Query ID Selector.  Enter the QueryID number from a previously run query."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response."
+              },
+              {
+                "name": "newsort",
+                "value": "",
+                "type": "query",
+                "description": "Output Sort Column.  Enter the number of the column on which the data will be sorted. If unpopulated results will sort on the first column."
+              },
+              {
+                "name": "descending",
+                "value": "",
+                "type": "query",
+                "description": "Output Sort Column Descending Flag.  Enter Y to column identified in the newsort parameter descending.  Enter N to use ascending sort order. Used only when newsort parameter is populated."
+              },
+              {
+                "name": "qcolumns",
+                "value": "string",
+                "type": "query",
+                "description": "Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
+              },
+              {
+                "name": "p_pretty_print",
+                "value": "",
+                "type": "query",
+                "description": "Optional flag to request GeoJSON formatted results to be pretty printed.  Only provide a numeric value when the output needs to be human readable as pretty printing has a performance cost."
+              }
+            ]
+          },
+          "docs": "Based on the QID obtained from a get_facilities or get_facility_info query, return GeoJSON of the facilities found."
+        },
+        {
+          "info": {
+            "name": "Combined ECHO GeoJSON Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/echo_rest_services.get_geojson"
+          },
+          "docs": "Based on the QID obtained from a get_facilities or get_facility_info query, return GeoJSON of the facilities found."
+        },
+        {
+          "info": {
+            "name": "Combined ECHO Info Clusters Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/echo_rest_services.get_info_clusters",
+            "params": [
+              {
+                "name": "output",
+                "value": "string",
+                "type": "query",
+                "description": "Output Format Flag.  Enter one of the following keywords:\n- CSV = Facility results formatted as comma delimited file download (default).\n- GEOJSOND = Facility results formatted as GeoJSON feature collection download."
+              },
+              {
+                "name": "p_qid",
+                "value": "",
+                "type": "query",
+                "description": "Query ID Selector.  Enter the QueryID number from a previously run query."
+              },
+              {
+                "name": "p_pretty_print",
+                "value": "",
+                "type": "query",
+                "description": "Optional flag to request GeoJSON formatted results to be pretty printed.  Only provide a numeric value when the output needs to be human readable as pretty printing has a performance cost."
+              }
+            ]
+          },
+          "docs": "Based on the QID obtained from a clustered get_facility_info query, download cluster facility information as either a CSV or GEOJSON file."
+        },
+        {
+          "info": {
+            "name": "Combined ECHO Info Clusters Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/echo_rest_services.get_info_clusters"
+          },
+          "docs": "Based on the QID obtained from a clustered get_facility_info query, download cluster facility information as either a CSV or GEOJSON file."
+        },
+        {
+          "info": {
+            "name": "Combined ECHO Map Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/echo_rest_services.get_map",
+            "params": [
+              {
+                "name": "output",
+                "value": "string",
+                "type": "query",
+                "description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+              },
+              {
+                "name": "qid",
+                "value": "",
+                "type": "query",
+                "description": "Query ID Selector.  Enter the QueryID number from a previously run query."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response."
+              },
+              {
+                "name": "tablelist",
+                "value": "",
+                "type": "query",
+                "description": "Table List Flag. Enter a Y to display the first page of facility results."
+              },
+              {
+                "name": "c1_lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude of 1st corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided."
+              },
+              {
+                "name": "c1_long",
+                "value": "",
+                "type": "query",
+                "description": "Longitude of 1st corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided."
+              },
+              {
+                "name": "c2_lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude of 2nd corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided."
+              },
+              {
+                "name": "c2_long",
+                "value": "",
+                "type": "query",
+                "description": "Longitude of 2nd corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided."
+              },
+              {
+                "name": "p_id",
+                "value": "",
+                "type": "query",
+                "description": "Identifier for the service."
+              }
+            ]
+          },
+          "docs": "The purpose of the GET_MAP service is to display facility coordinates and facility clusters related to a get_facilities facility query. Currently, the maximum number of coordinates returned is 500. GET_MAP performs automatic clustering at the state, county, and zip code levels to maximize the number of coordinates returned."
+        },
+        {
+          "info": {
+            "name": "Combined ECHO Map Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/echo_rest_services.get_map"
+          },
+          "docs": "The purpose of the GET_MAP service is to display facility coordinates and facility clusters related to a get_facilities facility query. Currently, the maximum number of coordinates returned is 500. GET_MAP performs automatic clustering at the state, county, and zip code levels to maximize the number of coordinates returned."
+        },
+        {
+          "info": {
+            "name": "Combined ECHO Paginated Results Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/echo_rest_services.get_qid",
+            "params": [
+              {
+                "name": "output",
+                "value": "string",
+                "type": "query",
+                "description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+              },
+              {
+                "name": "qid",
+                "value": "",
+                "type": "query",
+                "description": "Query ID Selector.  Enter the QueryID number from a previously run query."
+              },
+              {
+                "name": "pageno",
+                "value": "",
+                "type": "query",
+                "description": "Indicates the number of the page to display. It is used only when the results are paginated."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response."
+              },
+              {
+                "name": "newsort",
+                "value": "",
+                "type": "query",
+                "description": "Output Sort Column.  Enter the number of the column on which the data will be sorted. If unpopulated results will sort on the first column."
+              },
+              {
+                "name": "descending",
+                "value": "",
+                "type": "query",
+                "description": "Output Sort Column Descending Flag.  Enter Y to column identified in the newsort parameter descending.  Enter N to use ascending sort order. Used only when newsort parameter is populated."
+              },
+              {
+                "name": "qcolumns",
+                "value": "string",
+                "type": "query",
+                "description": "Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
+              }
+            ]
+          },
+          "docs": "GET_QID is passed with a query ID corresponding to a previously run get_facilities query. It then returns a Facility object containing all matching facilities. The main purpose of GET_QID is for large querysets that contain multiple pages (responsesets) of output. GET_QID allows for pagination and for the selection and sorting of columns. "
+        },
+        {
+          "info": {
+            "name": "Combined ECHO Paginated Results Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/echo_rest_services.get_qid"
+          },
+          "docs": "GET_QID is passed with a query ID corresponding to a previously run get_facilities query. It then returns a Facility object containing all matching facilities. The main purpose of GET_QID is for large querysets that contain multiple pages (responsesets) of output. GET_QID allows for pagination and for the selection and sorting of columns. "
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Metadata",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Combined ECHO Metadata Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/echo_rest_services.metadata",
+            "params": [
+              {
+                "name": "output",
+                "value": "string",
+                "type": "query",
+                "description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response."
+              }
+            ]
+          },
+          "docs": "Returns the JSON Object Name and ColumnId for usage with the qcolumns parameter for get_qid, get_facility_info and other service endpoints."
+        },
+        {
+          "info": {
+            "name": "Combined ECHO Metadata Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/echo_rest_services.metadata"
+          },
+          "docs": "Returns the JSON Object Name and ColumnId for usage with the qcolumns parameter for get_qid, get_facility_info and other service endpoints."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
