@@ -1,0 +1,62 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/aqs-openapi.yml, openapi/cam-account-openapi.json, openapi/cam-camd-services-openapi.json,
+  openapi/cam-emissions-openapi.json, openapi/cam-facilities-openapi.json, openapi/cam-master-data-openapi.json,
+  openapi/cam-monitor-plan-openapi.json, openapi/cam-qa-cert-openapi.json, openapi/cam-streaming-openapi.json,
+  openapi/elg-search-openapi.json, openapi/mywaterway-openapi.json
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+  - query
+schemes:
+- name: emailKey
+  type: apiKey
+  in: query
+  parameter: key
+  description: |-
+    AQS requires `email` and `key` query parameters on every request. Register at
+    `/signup?email=YOUR_EMAIL` to receive a key by email.
+  sources:
+  - openapi/aqs-openapi.yml
+- name: APIKey
+  type: apiKey
+  in: header
+  parameter: x-api-key
+  description: API Key required via "x-api-key" request header!
+  sources:
+  - openapi/cam-account-openapi.json
+  - openapi/cam-camd-services-openapi.json
+  - openapi/cam-emissions-openapi.json
+  - openapi/cam-facilities-openapi.json
+  - openapi/cam-master-data-openapi.json
+  - openapi/cam-monitor-plan-openapi.json
+  - openapi/cam-qa-cert-openapi.json
+  - openapi/cam-streaming-openapi.json
+- name: Token
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: Authorization "bearer" token required for data modification operations
+  sources:
+  - openapi/cam-camd-services-openapi.json
+  - openapi/cam-emissions-openapi.json
+  - openapi/cam-facilities-openapi.json
+  - openapi/cam-monitor-plan-openapi.json
+  - openapi/cam-qa-cert-openapi.json
+- name: ClientId
+  type: apiKey
+  in: header
+  parameter: x-client-id
+  description: ClientId required via "x-client-id" request header
+  sources:
+  - openapi/cam-camd-services-openapi.json
+  - openapi/cam-facilities-openapi.json
+- name: basicAuth
+  type: http
+  scheme: basic
+  sources:
+  - openapi/elg-search-openapi.json
+  - openapi/mywaterway-openapi.json
