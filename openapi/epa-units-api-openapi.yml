@@ -1,0 +1,157 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes Units API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Units
+paths:
+  /monitor-plan-mgmt/units/{id}:
+    get:
+      operationId: UnitController_getUnit
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: number
+        example: 0.0
+      responses:
+        '200':
+          description: Retrieves unit record for a specific unit ID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnitDTO'
+              examples:
+                UnitController_getUnit200Example:
+                  summary: Default UnitController_getUnit 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      tags:
+      - Units
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    UnitDTO:
+      type: object
+      properties:
+        nonLoadBasedIndicator:
+          type: number
+          description: Indicator that represents whether the unit is non-load based.
+          example: '1'
+        id:
+          type: number
+          description: Unique identifier for the unit.
+          example: '1001'
+        unitid:
+          type: string
+          description: ID of the unit.
+          example: UNIT_123
+        facilityId:
+          type: number
+          description: The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the "ORIS code", "ORISPL code", "Facility ID", or "Facility code", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with "88" assigned by the EPA's Clean Air Markets Division for electronic reporting.
+          example: 3
+        beginDate:
+          format: date-time
+          type: string
+          description: Date on which information became effective or activity started.
+          example: '2018-05-01'
+        endDate:
+          format: date-time
+          type: string
+          description: Last date in which information was effective.  This date will be null for active records.
+          example: null
+        sourceCategoryCd:
+          type: string
+          description: Category code for the source of the unit.
+          example: SRC123
+        commOpDate:
+          type: string
+          description: The date when the unit began commercial operation.
+          example: 01/01/2020
+        comrOpDate:
+          type: string
+          description: The date when the unit began compliance operation.
+          example: 01/01/2020
+        userId:
+          type: string
+          description: The ID of the user who created or updated the record.
+          example: jdoe
+        addDate:
+          type: string
+          description: The date when the unit record was added.
+          example: '2024-08-29'
+        updateDate:
+          type: string
+          description: The date when the unit record was last updated.
+          example: '2024-08-30'
+        opStatusCd:
+          type: string
+          description: The operational status code of the unit.
+          example: OP
+        statusBeginDate:
+          type: string
+          description: The date when the current operational status of the unit began.
+          example: 01/01/2020
+        unitTypeCd:
+          type: string
+          description: The type code of the unit.
+          example: UBT
+        auditUser:
+          type: string
+          description: The user ID of the person who performed the last audit on the unit record.
+          example: user@example.com
+        auditDate:
+          type: string
+          description: The date and time when the last audit was performed on the unit record.
+          example: '2023-01-01T00:00:00Z'
+        active:
+          type: boolean
+          description: Indicates whether the unit is currently active.
+          example: true
+      required:
+      - nonLoadBasedIndicator
+      - id
+      - unitid
+      - facilityId
+      - beginDate
+      - endDate
+      - userId
+      - addDate
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

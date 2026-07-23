@@ -1,0 +1,86 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes Login API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Login
+paths:
+  /login:
+    get:
+      summary: /login
+      responses:
+        '302':
+          description: Found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      tags:
+      - Login
+  /login/assert:
+    post:
+      summary: /login/assert
+      parameters: []
+      responses:
+        '302':
+          description: Found
+          content:
+            text/html:
+              schema:
+                type: string
+                example: <p>Found. Redirecting to <a href="http://localhost:3000/">http://localhost:3000/</a></p>
+              examples:
+                post_login_assert302Example:
+                  summary: Default post_login_assert 302 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      tags:
+      - Login
+  /login/fail:
+    get:
+      summary: /login/fail
+      parameters: []
+      responses:
+        '200':
+          description: OK
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      tags:
+      - Login
+components:
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

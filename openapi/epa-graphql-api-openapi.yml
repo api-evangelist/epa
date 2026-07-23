@@ -1,0 +1,95 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes GraphQL API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: GraphQL
+  description: GraphQL endpoint for complex queries beyond REST capabilities.
+paths:
+  /enviro/dmap-graphql-api:
+    post:
+      tags:
+      - GraphQL
+      summary: Execute Envirofacts GraphQL Query
+      operationId: envirofactsGraphQL
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - query
+              properties:
+                query:
+                  type: string
+                variables:
+                  type: object
+                  additionalProperties: true
+                operationName:
+                  type: string
+            examples:
+              envirofactsGraphQLRequestExample:
+                summary: Default envirofactsGraphQL request
+                x-microcks-default: true
+                value: {}
+      responses:
+        '200':
+          description: GraphQL response.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    additionalProperties: true
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+              examples:
+                envirofactsGraphQL200Example:
+                  summary: Default envirofactsGraphQL 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

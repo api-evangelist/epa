@@ -1,0 +1,172 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes Data Service API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Data Service
+  description: Generic Envirofacts REST data service supporting any program.table.
+paths:
+  /efservice/{table}/{format}:
+    get:
+      tags:
+      - Data Service
+      summary: Query Envirofacts Table
+      description: Query any Envirofacts table. Append optional filter, join, range, and sort segments before the format.
+      operationId: efserviceQueryTable
+      parameters:
+      - $ref: '#/components/parameters/Table'
+      - $ref: '#/components/parameters/Format'
+      responses:
+        '200':
+          description: Rows from the requested Envirofacts table.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Row'
+              examples:
+                efserviceQueryTable200Example:
+                  summary: Default efserviceQueryTable 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /efservice/{table}/{filter}/{format}:
+    get:
+      tags:
+      - Data Service
+      summary: Query Envirofacts Table with Filter
+      operationId: efserviceQueryTableFiltered
+      parameters:
+      - $ref: '#/components/parameters/Table'
+      - $ref: '#/components/parameters/Filter'
+      - $ref: '#/components/parameters/Format'
+      responses:
+        '200':
+          description: Filtered rows.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Row'
+              examples:
+                efserviceQueryTableFiltered200Example:
+                  summary: Default efserviceQueryTableFiltered 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /efservice/{table}/{filter}/{range}/{format}:
+    get:
+      tags:
+      - Data Service
+      summary: Query Envirofacts Table with Filter and Pagination
+      operationId: efserviceQueryTablePaginated
+      parameters:
+      - $ref: '#/components/parameters/Table'
+      - $ref: '#/components/parameters/Filter'
+      - $ref: '#/components/parameters/Range'
+      - $ref: '#/components/parameters/Format'
+      responses:
+        '200':
+          description: Paginated filtered rows.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Row'
+              examples:
+                efserviceQueryTablePaginated200Example:
+                  summary: Default efserviceQueryTablePaginated 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  parameters:
+    Format:
+      name: format
+      in: path
+      required: false
+      schema:
+        type: string
+        enum:
+        - JSON
+        - CSV
+        - EXCEL
+        - HTML
+        - JSONP
+        - PARQUET
+        - PDF
+        - XML
+      description: Output format (default JSON).
+    Table:
+      name: table
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Envirofacts table in `program.table` format (e.g., `rcra.rcra_facility`, `tri.tri_facility`, `sems.envirofacts_site`).
+    Range:
+      name: range
+      in: path
+      required: false
+      schema:
+        type: string
+        pattern: ^\d+:\d+$
+      description: Optional pagination range `first:last` (e.g., `1:100`).
+    Filter:
+      name: filter
+      in: path
+      required: false
+      schema:
+        type: string
+      description: Optional filter clause `{column}{operator}{value}`. Operators include equals, notEquals, lessThan, greaterThan, beginsWith, endsWith, contains, like, in.
+  schemas:
+    Row:
+      type: object
+      additionalProperties: true
+      description: A single Envirofacts row; columns depend on the queried table.
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

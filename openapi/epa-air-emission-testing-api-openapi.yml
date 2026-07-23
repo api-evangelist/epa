@@ -1,0 +1,195 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes Air Emission Testing API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Air Emission Testing
+paths:
+  /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/air-emission-testings:
+    get:
+      operationId: AirEmissionTestingController_getAirEmissionsTestings
+      parameters:
+      - name: locId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: testSumId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      responses:
+        '200':
+          description: Retrieves official Air Emission Testing records by Rata Summary Id
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/AirEmissionTestingDTO'
+              examples:
+                AirEmissionTestingController_getAirEmissionsTestings200Example:
+                  summary: Default AirEmissionTestingController_getAirEmissionsTestings 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      tags:
+      - Air Emission Testing
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/air-emission-testings/{id}:
+    get:
+      operationId: AirEmissionTestingController_getAirEmissionsTesting
+      parameters:
+      - name: locId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: testSumId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      responses:
+        '200':
+          description: Retrieves official Air Emission Testing record by its Id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AirEmissionTestingDTO'
+              examples:
+                AirEmissionTestingController_getAirEmissionsTesting200Example:
+                  summary: Default AirEmissionTestingController_getAirEmissionsTesting 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      tags:
+      - Air Emission Testing
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    AirEmissionTestingDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '12345'
+        testSumId:
+          type: string
+          example: '12345'
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+        qiLastName:
+          type: string
+          maxLength: 25
+          example: EPA Facility
+        qiFirstName:
+          type: string
+          maxLength: 25
+          example: EPA Facility
+        qiMiddleInitial:
+          type: string
+          maxLength: 1
+          example: '12345'
+        aetbName:
+          type: string
+          maxLength: 50
+          example: EPA Facility
+        aetbPhoneNumber:
+          type: string
+          maxLength: 18
+          example: string
+        aetbEmail:
+          type: string
+          maxLength: 70
+          format: email
+          example: analyst@example.com
+        examDate:
+          format: date-time
+          type: string
+          example: '2024-01-15T12:00:00Z'
+        providerName:
+          type: string
+          maxLength: 50
+          example: EPA Facility
+        providerEmail:
+          type: string
+          maxLength: 70
+          format: email
+          example: analyst@example.com
+      required:
+      - id
+      - testSumId
+      - userId
+      - addDate
+      - updateDate
+      - qiLastName
+      - qiFirstName
+      - aetbName
+      - aetbPhoneNumber
+      - aetbEmail
+      - examDate
+      - providerName
+      - providerEmail
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

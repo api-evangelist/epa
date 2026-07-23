@@ -1,0 +1,167 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes Fuel Flow To Load Test API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Fuel Flow To Load Test
+paths:
+  /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/fuel-flow-to-load-tests:
+    get:
+      operationId: FuelFlowToLoadTestController_getFuelFlowToLoadTests
+      parameters:
+      - name: locId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: testSumId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      responses:
+        '200':
+          description: Retrieves official Fuel Flow To Load Test records by Test Summary Id
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/FuelFlowToLoadTestDTO'
+              examples:
+                FuelFlowToLoadTestController_getFuelFlowToLoadTests200Example:
+                  summary: Default FuelFlowToLoadTestController_getFuelFlowToLoadTests 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      tags:
+      - Fuel Flow To Load Test
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/fuel-flow-to-load-tests/{id}:
+    get:
+      operationId: FuelFlowToLoadTestController_getFuelFlowToLoadTest
+      parameters:
+      - name: locId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: testSumId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      responses:
+        '200':
+          description: Retrieves official Fuel Flow To Load Test record by its Id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FuelFlowToLoadTestDTO'
+              examples:
+                FuelFlowToLoadTestController_getFuelFlowToLoadTest200Example:
+                  summary: Default FuelFlowToLoadTestController_getFuelFlowToLoadTest 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      tags:
+      - Fuel Flow To Load Test
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    FuelFlowToLoadTestDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '12345'
+        testSumId:
+          type: string
+          example: '12345'
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+        testBasisCode:
+          type: string
+          example: string
+        averageDifference:
+          type: number
+          example: 0.0
+        numberOfHoursUsed:
+          type: number
+          example: 0.0
+        numberOfHoursExcludedCofiring:
+          type: number
+          example: 0.0
+        numberOfHoursExcludedRamping:
+          type: number
+          example: 0.0
+        numberOfHoursExcludedLowRange:
+          type: number
+          example: 0.0
+      required:
+      - id
+      - testSumId
+      - userId
+      - addDate
+      - updateDate
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

@@ -1,0 +1,593 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes Utility Services API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Utility Services
+paths:
+  /rpc/randomcatchment:
+    post:
+      tags:
+      - Utility Services
+      summary: CIP-service Utility Random Catchment
+      description: CIP-service Utility Random Catchment Endpoint
+      operationId: randomcatchment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/randomcatchment_rb'
+            examples:
+              randomcatchmentRequestExample:
+                summary: Default randomcatchment request
+                x-microcks-default: true
+                value: {}
+      responses:
+        '200':
+          description: CIP-service Utility Random Catchment Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/randomcatchment_resp'
+              examples:
+                randomcatchment200Example:
+                  summary: Default randomcatchment 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /rpc/randomhuc12:
+    post:
+      tags:
+      - Utility Services
+      summary: CIP-service Utility Random HUC12
+      description: CIP-service Utility Random HUC12 Endpoint
+      operationId: randomhuc12
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/randomhuc12_rb'
+            examples:
+              randomhuc12RequestExample:
+                summary: Default randomhuc12 request
+                x-microcks-default: true
+                value: {}
+      responses:
+        '200':
+          description: CIP-service Utility Random HUC12 Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/randomhuc12_resp'
+              examples:
+                randomhuc12200Example:
+                  summary: Default randomhuc12 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /rpc/randomnav:
+    post:
+      tags:
+      - Utility Services
+      summary: CIP-service Utility Random Nav Location
+      description: CIP-service Utility Random Nav Location Endpoint
+      operationId: randomnav
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/randomnav_rb'
+            examples:
+              randomnavRequestExample:
+                summary: Default randomnav request
+                x-microcks-default: true
+                value: {}
+      responses:
+        '200':
+          description: CIP-service Utility Random Nav Location Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/randomnav_resp'
+              examples:
+                randomnav200Example:
+                  summary: Default randomnav 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /rpc/randompoint:
+    post:
+      tags:
+      - Utility Services
+      summary: CIP-service Utility Random Point
+      description: CIP-service Utility Random Point Endpoint
+      operationId: randompoint
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/randompoint_rb'
+            examples:
+              randompointRequestExample:
+                summary: Default randompoint request
+                x-microcks-default: true
+                value: {}
+      responses:
+        '200':
+          description: CIP-service Utility Random Point Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/randompoint_resp'
+              examples:
+                randompoint200Example:
+                  summary: Default randompoint 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /rpc/randomppnav:
+    post:
+      tags:
+      - Utility Services
+      summary: CIP-service Utility Random PP Nav Locations
+      description: CIP-service Utility Random PP Nav Locations Endpoint
+      operationId: randomppnav
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/randomppnav_rb'
+            examples:
+              randomppnavRequestExample:
+                summary: Default randomppnav request
+                x-microcks-default: true
+                value: {}
+      responses:
+        '200':
+          description: CIP-service Utility Random PP Nav Locations Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/randomppnav_resp'
+              examples:
+                randomppnav200Example:
+                  summary: Default randomppnav 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    globalid:
+      type: string
+      examples:
+      - '{E374E06D-3A16-662D-E053-42DE4386FFB0}'
+    randomppnav_resp:
+      type: object
+      properties:
+        navpoint1:
+          $ref: '#/components/schemas/geojson_feature'
+        navpoint2:
+          $ref: '#/components/schemas/geojson_feature'
+    measure:
+      type: number
+      minimum: 0
+      maximum: 100
+    randomnav_resp:
+      type: object
+      properties:
+        navpoint:
+          $ref: '#/components/schemas/geojson_feature'
+    delineated_area_properties:
+      type: object
+      properties:
+        areasqkm:
+          type: number
+          example: 0.0
+        hydroseq:
+          $ref: '#/components/schemas/hydroseq'
+        sourcefc:
+          description: identifier of the delineation area source.
+          type: string
+          example: string
+        nhdplusid:
+          $ref: '#/components/schemas/nhdplusid'
+    hydroseq:
+      description: NHDPlus int64 hydro sequence identifier.
+      type: integer
+      format: int64
+    randomhuc12_resp:
+      type: object
+      properties:
+        huc12:
+          $ref: '#/components/schemas/geojson_feature'
+    reachcode:
+      type: string
+      minLength: 14
+      maxLength: 14
+    randomhuc12_rb:
+      type: object
+      properties:
+        nhdplus_version:
+          default: nhdplus_h
+          $ref: '#/components/schemas/nhdplus_version'
+    geojson_feature:
+      type:
+      - object
+      - 'null'
+      title: GeoJSON Feature
+      required:
+      - type
+      - geometry
+      - properties
+      externalDocs:
+        url: https://tools.ietf.org/html/rfc7946#section-3.2
+      properties:
+        bbox:
+          $ref: '#/components/schemas/geojson_bbox'
+        geometry:
+          $ref: '#/components/schemas/geojson_geometry'
+        obj_type:
+          type: string
+          example: string
+        properties:
+          discriminator:
+            propertyName: obj_type
+            mapping:
+              event_feature_properties: '#/components/schemas/event_feature_properties'
+              indexed_catchment_properties: '#/components/schemas/indexed_catchment_properties'
+              indexed_flowline_properties: '#/components/schemas/indexed_flowline_properties'
+              navigated_flowline_properties: '#/components/schemas/navigated_flowline_properties'
+              delineated_area_properties: '#/components/schemas/delineated_area_properties'
+              end_point_properties: '#/components/schemas/end_point_properties'
+              indexing_line_properties: '#/components/schemas/indexing_line_properties'
+          oneOf:
+          - $ref: '#/components/schemas/event_feature_properties'
+          - $ref: '#/components/schemas/indexed_catchment_properties'
+          - $ref: '#/components/schemas/indexed_flowline_properties'
+          - $ref: '#/components/schemas/navigated_flowline_properties'
+          - $ref: '#/components/schemas/delineated_area_properties'
+          - $ref: '#/components/schemas/end_point_properties'
+          - $ref: '#/components/schemas/indexing_line_properties'
+          example: string
+        type:
+          type: string
+          enum:
+          - Feature
+          example: Feature
+    ordinate:
+      type: number
+      title: GeoJSON Ordinate
+      examples:
+      - -89.5327
+    geojson_bbox:
+      type: array
+      title: GeoJSON BBox
+      maxItems: 4
+      minItems: 4
+      items:
+        $ref: '#/components/schemas/ordinate'
+    navigated_flowline_properties:
+      type: object
+      properties:
+        nhdplusid:
+          $ref: '#/components/schemas/nhdplusid'
+        hydroseq:
+          $ref: '#/components/schemas/hydroseq'
+        fmeasure:
+          description: NHD flowline from measure.
+          $ref: '#/components/schemas/measure'
+        tmeasure:
+          description: NHD flowline to measure.
+          $ref: '#/components/schemas/measure'
+        levelpathi:
+          description: NHDPlus int64 level path identifier.
+          type: integer
+          format: int64
+          example: 0
+        terminalpa:
+          description: NHDPlus int64 terminal path identifier.
+          type: integer
+          format: int64
+          example: 0
+        uphydroseq:
+          description: NHDPlus int64 upstream flowline hydro sequence identifier.
+          type: integer
+          format: int64
+          example: 0
+        dnhydroseq:
+          description: NHDPlus int64 downstream flowline hydro sequence identifier.
+          type: integer
+          format: int64
+          example: 0
+        lengthkm:
+          description: length of the navigated flowline in kilometers.
+          type: number
+          example: 0.0
+        flowtimeday:
+          description: flow time in days of the navigated flowline.
+          type: number
+          example: 0.0
+        network_distancekm:
+          description: total length from start to the navigated flowline in kilometers.
+          type: number
+          example: 0.0
+        network_flowtimeday:
+          description: total flow time in days from start to the navigated flowline.
+          type: number
+          example: 0.0
+        permanent_identifier:
+          description: NHD permanent identifier of the navigated flowline.
+          type:
+          - string
+          - 'null'
+          example: '12345'
+        reachcode:
+          description: NHD reach code of the navigated flowline
+          $ref: '#/components/schemas/reachcode'
+        fcode:
+          description: NHD feature type code of the navigated flowline.
+          type: integer
+          format: int32
+          example: 0
+        gnis_id:
+          description: NHD GNIS identifier of the navigated flowline.
+          type: string
+          example: '12345'
+        gnis_name:
+          description: NHD GNIS name of the navigated flowline.
+          type: string
+          example: EPA Facility
+        wbarea_permanent_identifier:
+          description: NHD permanent identifier of the NHD waterbody feature associated with a flowline artificial path.
+          type: string
+          example: '12345'
+        navtermination_flag:
+          description: 'Integer code providing information about the navigated flowline within the context of the navigation. Valid codes are: 0. no termination 1. full termination 2. partial termination 3. coastal termination 4. headwater termination 5. network end termination (non-coastal)
+
+            '
+          type: integer
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          example: 0
+        nav_order:
+          description: rough ordering key placing flowlines in navigated order
+          type: integer
+          format: int32
+          example: 0
+    randomcatchment_rb:
+      type: object
+      properties:
+        nhdplus_version:
+          default: nhdplus_h
+          $ref: '#/components/schemas/nhdplus_version'
+    randompoint_rb:
+      type: object
+      properties:
+        nhdplus_version:
+          default: nhdplus_h
+          $ref: '#/components/schemas/nhdplus_version'
+    event_feature_properties:
+      type: object
+      properties:
+        globalid:
+          $ref: '#/components/schemas/globalid'
+        lengthkm:
+          type: number
+          example: 0.0
+        areasqkm:
+          type: number
+          example: 0.0
+        converted_to_ring:
+          type: boolean
+          example: true
+        indexing_method_used:
+          type: string
+          example: string
+        line_threshold_used:
+          type: number
+          example: 0.0
+        areacat_threshold_used:
+          type: number
+          example: 0.0
+        areaevt_threshold_used:
+          type: number
+          example: 0.0
+    indexing_line_properties:
+      type: object
+      properties:
+        nhdplus:
+          description: NHDPlus int64 flowline identifier.
+          type: integer
+          format: int64
+          example: 0
+    end_point_properties:
+      type: object
+      properties:
+        nhdplus:
+          description: NHDPlus int64 flowline identifier.
+          type: integer
+          format: int64
+          example: 0
+        reachcode:
+          $ref: '#/components/schemas/reachcode'
+        measure:
+          $ref: '#/components/schemas/measure'
+    randompoint_resp:
+      type: object
+      properties:
+        point:
+          $ref: '#/components/schemas/geojson_feature'
+    randomnav_rb:
+      type: object
+      properties:
+        nhdplus_version:
+          default: nhdplus_h
+          $ref: '#/components/schemas/nhdplus_version'
+    coordinates2:
+      type: array
+      title: GeoJSON Coordinates 2
+      items:
+        $ref: '#/components/schemas/coordinates1'
+    nhdplus_version:
+      description: NHDPlus version used in CIP indexing.
+      type: string
+      enum:
+      - nhdplus_m
+      - nhdplus_h
+      examples:
+      - nhdplus_h
+    randomppnav_rb:
+      type: object
+      properties:
+        nhdplus_version:
+          default: nhdplus_h
+          $ref: '#/components/schemas/nhdplus_version'
+    randomcatchment_resp:
+      type: object
+      properties:
+        catchment:
+          $ref: '#/components/schemas/geojson_feature'
+    indexed_catchment_properties:
+      type: object
+      properties:
+        nhdplusid:
+          $ref: '#/components/schemas/nhdplusid'
+        catchmentstatecode:
+          type: string
+          example: NC
+        xwalk_huc12:
+          type:
+          - string
+          - 'null'
+          minLength: 12
+          maxLength: 12
+          example: string
+        areasqkm:
+          type: number
+          example: 0.0
+    nhdplusid:
+      description: NHDPlus int64 nhdplus identifier.
+      type: integer
+      format: int64
+    geojson_geometry:
+      type:
+      - object
+      - 'null'
+      title: GeoJSON Geometry
+      externalDocs:
+        url: http://geojson.org/geojson-spec.html#geometry-objects
+      properties:
+        coordinates:
+          oneOf:
+          - $ref: '#/components/schemas/coordinates1'
+          - $ref: '#/components/schemas/coordinates2'
+          - $ref: '#/components/schemas/coordinates3'
+          - type: array
+            title: GeoJSON Coordinates 4
+            items:
+              $ref: '#/components/schemas/coordinates3'
+          example: string
+        type:
+          type: string
+          enum:
+          - Point
+          - LineString
+          - Polygon
+          - MultiPoint
+          - MultiLineString
+          - MultiPolygon
+          description: the geometry type
+          example: Point
+    coordinates1:
+      type: array
+      title: GeoJSON Coordinates 1
+      items:
+        $ref: '#/components/schemas/ordinate'
+    indexed_flowline_properties:
+      type: object
+      properties:
+        nhdplusid:
+          $ref: '#/components/schemas/nhdplusid'
+        gnis_id:
+          description: NHD GNIS identifier
+          type: string
+          example: '12345'
+        gnis_name:
+          description: NHD GNIS name
+          type: string
+          example: EPA Facility
+        reachcode:
+          $ref: '#/components/schemas/reachcode'
+        fmeasure:
+          description: NHD flowline from measure.
+          $ref: '#/components/schemas/measure'
+        tmeasure:
+          description: NHD flowline to measure.
+          $ref: '#/components/schemas/measure'
+    coordinates3:
+      type: array
+      title: GeoJSON Coordinates 3
+      items:
+        $ref: '#/components/schemas/coordinates2'
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

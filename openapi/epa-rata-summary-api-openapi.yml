@@ -1,0 +1,706 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes Rata Summary API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Rata Summary
+paths:
+  /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/rata/{rataId}/rata-summaries:
+    get:
+      operationId: RataSummaryController_etRataSummaries
+      parameters:
+      - name: locId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: testSumId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: rataId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      responses:
+        '200':
+          description: Retrieves official Rata Summary records.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/RataSummaryDTO'
+              examples:
+                RataSummaryController_etRataSummaries200Example:
+                  summary: Default RataSummaryController_etRataSummaries 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      tags:
+      - Rata Summary
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/rata/{rataId}/rata-summaries/{id}:
+    get:
+      operationId: RataSummaryController_getRataSummary
+      parameters:
+      - name: locId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: testSumId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: rataId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      responses:
+        '200':
+          description: Retrieves an official Rata Summary record.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RataSummaryRecordDTO'
+              examples:
+                RataSummaryController_getRataSummary200Example:
+                  summary: Default RataSummaryController_getRataSummary 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      tags:
+      - Rata Summary
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    RataRunDTO:
+      type: object
+      properties:
+        flowRataRunData:
+          type: array
+          items:
+            $ref: '#/components/schemas/FlowRataRunDTO'
+          example:
+          - string
+        id:
+          type: string
+          example: '12345'
+        rataSumId:
+          type: string
+          example: '12345'
+        calculatedRataReferenceValue:
+          type: number
+          example: 35.5
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+        runNumber:
+          type: number
+          example: 0.0
+        beginDate:
+          format: date-time
+          type: string
+          example: '2024-01-15T12:00:00Z'
+        beginHour:
+          type: number
+          example: 0.0
+        beginMinute:
+          type: number
+          example: 0.0
+        endDate:
+          format: date-time
+          type: string
+          example: '2024-01-15T12:00:00Z'
+        endHour:
+          type: number
+          example: 0.0
+        endMinute:
+          type: number
+          example: 0.0
+        cemValue:
+          type: number
+          example: 0.0
+        rataReferenceValue:
+          type: number
+          example: 0.0
+        grossUnitLoad:
+          type: number
+          example: 0.0
+        runStatusCode:
+          type: string
+          example: active
+      required:
+      - flowRataRunData
+      - id
+      - rataSumId
+      - calculatedRataReferenceValue
+      - userId
+      - addDate
+      - updateDate
+      - runNumber
+      - beginDate
+      - beginHour
+      - beginMinute
+      - endDate
+      - endHour
+      - endMinute
+      - runStatusCode
+    FlowRataRunDTO:
+      type: object
+      properties:
+        rataTraverseData:
+          type: array
+          items:
+            $ref: '#/components/schemas/RataTraverseDTO'
+          example:
+          - string
+        id:
+          type: string
+          example: '12345'
+        rataRunId:
+          type: string
+          example: '12345'
+        calculatedDryMolecularWeight:
+          type: number
+          example: 35.5
+        calculatedWetMolecularWeight:
+          type: number
+          example: 35.5
+        calculatedAverageVelocityWithoutWallEffects:
+          type: number
+          example: 35.5
+        calculatedAverageVelocityWithWallEffects:
+          type: number
+          example: 35.5
+        calculatedCalculatedWAF:
+          type: number
+          example: 35.5
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+        numberOfTraversePoints:
+          type: number
+          minimum: 12
+          maximum: 99
+          example: 0.0
+        barometricPressure:
+          type: number
+          example: 0.0
+        staticStackPressure:
+          type: number
+          example: 0.0
+        percentCO2:
+          type: number
+          example: 0.0
+        percentO2:
+          type: number
+          example: 0.0
+        percentMoisture:
+          type: number
+          example: 0.0
+        dryMolecularWeight:
+          type: number
+          example: 0.0
+        wetMolecularWeight:
+          type: number
+          example: 0.0
+        averageVelocityWithoutWallEffects:
+          type: number
+          maximum: 9999.99
+          example: 0.0
+        averageVelocityWithWallEffects:
+          type: number
+          example: 0.0
+        calculatedWAF:
+          type: number
+          example: 35.5
+        averageStackFlowRate:
+          type: number
+          maximum: 9999999999
+          example: 0.0
+      required:
+      - rataTraverseData
+      - id
+      - rataRunId
+      - calculatedDryMolecularWeight
+      - calculatedWetMolecularWeight
+      - calculatedAverageVelocityWithoutWallEffects
+      - calculatedAverageVelocityWithWallEffects
+      - calculatedCalculatedWAF
+      - userId
+      - addDate
+      - updateDate
+      - numberOfTraversePoints
+      - barometricPressure
+      - staticStackPressure
+      - percentCO2
+      - percentO2
+      - percentMoisture
+      - wetMolecularWeight
+      - averageVelocityWithoutWallEffects
+      - averageStackFlowRate
+    RataTraverseDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '12345'
+        flowRataRunId:
+          type: string
+          example: '12345'
+        calculatedCalculatedVelocity:
+          type: number
+          example: 35.5
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+        probeId:
+          type: string
+          maxLength: 11
+          example: '12345'
+        probeTypeCode:
+          type: string
+          example: string
+        pressureMeasureCode:
+          type: string
+          example: string
+        methodTraversePointId:
+          type: string
+          minLength: 1
+          maxLength: 3
+          example: '12345'
+        velocityCalibrationCoefficient:
+          type: number
+          example: 0.0
+        lastProbeDate:
+          format: date-time
+          type: string
+          example: '2024-01-15T12:00:00Z'
+        averageVelocityDifferencePressure:
+          type: number
+          example: 0.0
+        averageSquareVelocityDifferencePressure:
+          type: number
+          example: 0.0
+        tStackTemperature:
+          type: number
+          example: 0.0
+        pointUsedIndicator:
+          type: number
+          example: 0.0
+        numberWallEffectsPoints:
+          type: number
+          example: 0.0
+        yawAngle:
+          type: number
+          example: 0.0
+        pitchAngle:
+          type: number
+          example: 0.0
+        calculatedVelocity:
+          type: number
+          example: 35.5
+        replacementVelocity:
+          type: number
+          example: 0.0
+      required:
+      - id
+      - flowRataRunId
+      - calculatedCalculatedVelocity
+      - userId
+      - addDate
+      - updateDate
+      - probeId
+      - probeTypeCode
+      - pressureMeasureCode
+      - methodTraversePointId
+      - velocityCalibrationCoefficient
+      - lastProbeDate
+      - tStackTemperature
+    RataSummaryRecordDTO:
+      type: object
+      properties:
+        operatingLevelCode:
+          type: string
+          description: operatingLevelCode. ADD TO PROPERTY METADATA
+          example: string
+        averageGrossUnitLoad:
+          type: number
+          description: Average gross unit load (MWe or steam) or average velocity at operating level.
+          example: 71
+        referenceMethodCode:
+          type: string
+          description: referenceMethodCode. ADD TO PROPERTY METADATA
+          example: string
+        meanCEMValue:
+          type: number
+          description: meanCEMValue. ADD TO PROPERTY METADATA
+          example: 0.0
+        meanRATAReferenceValue:
+          type: number
+          minimum: 1
+          description: meanRATAReferenceValue. ADD TO PROPERTY METADATA
+          example: 0.0
+        meanDifference:
+          type: number
+          description: meanDifference. ADD TO PROPERTY METADATA
+          example: 0.0
+        standardDeviationDifference:
+          type: number
+          description: standardDeviationDifference. ADD TO PROPERTY METADATA
+          example: 0.0
+        confidenceCoefficient:
+          type: number
+          description: confidenceCoefficient. ADD TO PROPERTY METADATA
+          example: 0.0
+        tValue:
+          type: number
+          description: tValue. ADD TO PROPERTY METADATA
+          example: 0.0
+        apsIndicator:
+          type: number
+          description: Used to indicate if the alternative performance specification (APS) is used.
+          example: 0
+        apsCode:
+          type: string
+          description: Code used to identify the Alternate Performance Spec.
+          example: PS15
+        relativeAccuracy:
+          type: number
+          description: relativeAccuracy. ADD TO PROPERTY METADATA
+          example: 35.5
+        biasAdjustmentFactor:
+          type: number
+          description: biasAdjustmentFactor. ADD TO PROPERTY METADATA
+          example: 0.0
+        co2OrO2ReferenceMethodCode:
+          type: string
+          description: co2OrO2ReferenceMethodCode. ADD TO PROPERTY METADATA
+          example: string
+        stackDiameter:
+          type: number
+          description: stackDiameter. ADD TO PROPERTY METADATA
+          example: 0.0
+        stackArea:
+          type: number
+          description: stackArea. ADD TO PROPERTY METADATA
+          example: 0.0
+        numberOfTraversePoints:
+          type: number
+          description: numberOfTraversePoints. ADD TO PROPERTY METADATA
+          example: 0.0
+        calculatedWAF:
+          type: number
+          description: calculatedWAF. ADD TO PROPERTY METADATA
+          example: 35.5
+        defaultWAF:
+          type: number
+          description: defaultWAF. ADD TO PROPERTY METADATA
+          example: 0.0
+        id:
+          type: string
+          example: '12345'
+        rataId:
+          type: string
+          example: '12345'
+        calculatedAverageGrossUnitLoad:
+          type: number
+          example: 35.5
+        calculatedMeanCEMValue:
+          type: number
+          example: 35.5
+        calculatedMeanRATAReferenceValue:
+          type: number
+          example: 35.5
+        calculatedMeanDifference:
+          type: number
+          example: 35.5
+        calculatedStandardDeviationDifference:
+          type: number
+          example: 35.5
+        calculatedConfidenceCoefficient:
+          type: number
+          example: 35.5
+        calculatedTValue:
+          type: number
+          example: 35.5
+        calculatedApsIndicator:
+          type: number
+          example: 35.5
+        calculatedRelativeAccuracy:
+          type: number
+          example: 35.5
+        calculatedBiasAdjustmentFactor:
+          type: number
+          example: 35.5
+        calculatedStackArea:
+          type: number
+          example: 35.5
+        calculatedCalculatedWAF:
+          type: number
+          example: 35.5
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+      required:
+      - operatingLevelCode
+      - id
+      - rataId
+      - calculatedAverageGrossUnitLoad
+      - calculatedMeanCEMValue
+      - calculatedMeanRATAReferenceValue
+      - calculatedMeanDifference
+      - calculatedStandardDeviationDifference
+      - calculatedConfidenceCoefficient
+      - calculatedTValue
+      - calculatedApsIndicator
+      - calculatedRelativeAccuracy
+      - calculatedBiasAdjustmentFactor
+      - calculatedStackArea
+      - calculatedCalculatedWAF
+      - userId
+      - addDate
+      - updateDate
+    RataSummaryDTO:
+      type: object
+      properties:
+        operatingLevelCode:
+          type: string
+          description: operatingLevelCode. ADD TO PROPERTY METADATA
+          example: string
+        averageGrossUnitLoad:
+          type: number
+          description: Average gross unit load (MWe or steam) or average velocity at operating level.
+          example: 71
+        referenceMethodCode:
+          type: string
+          description: referenceMethodCode. ADD TO PROPERTY METADATA
+          example: string
+        meanCEMValue:
+          type: number
+          description: meanCEMValue. ADD TO PROPERTY METADATA
+          example: 0.0
+        meanRATAReferenceValue:
+          type: number
+          minimum: 1
+          description: meanRATAReferenceValue. ADD TO PROPERTY METADATA
+          example: 0.0
+        meanDifference:
+          type: number
+          description: meanDifference. ADD TO PROPERTY METADATA
+          example: 0.0
+        standardDeviationDifference:
+          type: number
+          description: standardDeviationDifference. ADD TO PROPERTY METADATA
+          example: 0.0
+        confidenceCoefficient:
+          type: number
+          description: confidenceCoefficient. ADD TO PROPERTY METADATA
+          example: 0.0
+        tValue:
+          type: number
+          description: tValue. ADD TO PROPERTY METADATA
+          example: 0.0
+        apsIndicator:
+          type: number
+          description: Used to indicate if the alternative performance specification (APS) is used.
+          example: 0
+        apsCode:
+          type: string
+          description: Code used to identify the Alternate Performance Spec.
+          example: PS15
+        relativeAccuracy:
+          type: number
+          description: relativeAccuracy. ADD TO PROPERTY METADATA
+          example: 35.5
+        biasAdjustmentFactor:
+          type: number
+          description: biasAdjustmentFactor. ADD TO PROPERTY METADATA
+          example: 0.0
+        co2OrO2ReferenceMethodCode:
+          type: string
+          description: co2OrO2ReferenceMethodCode. ADD TO PROPERTY METADATA
+          example: string
+        stackDiameter:
+          type: number
+          description: stackDiameter. ADD TO PROPERTY METADATA
+          example: 0.0
+        stackArea:
+          type: number
+          description: stackArea. ADD TO PROPERTY METADATA
+          example: 0.0
+        numberOfTraversePoints:
+          type: number
+          description: numberOfTraversePoints. ADD TO PROPERTY METADATA
+          example: 0.0
+        calculatedWAF:
+          type: number
+          description: calculatedWAF. ADD TO PROPERTY METADATA
+          example: 35.5
+        defaultWAF:
+          type: number
+          description: defaultWAF. ADD TO PROPERTY METADATA
+          example: 0.0
+        rataRunData:
+          type: array
+          items:
+            $ref: '#/components/schemas/RataRunDTO'
+          example:
+          - string
+        id:
+          type: string
+          example: '12345'
+        rataId:
+          type: string
+          example: '12345'
+        calculatedAverageGrossUnitLoad:
+          type: number
+          example: 35.5
+        calculatedMeanCEMValue:
+          type: number
+          example: 35.5
+        calculatedMeanRATAReferenceValue:
+          type: number
+          example: 35.5
+        calculatedMeanDifference:
+          type: number
+          example: 35.5
+        calculatedStandardDeviationDifference:
+          type: number
+          example: 35.5
+        calculatedConfidenceCoefficient:
+          type: number
+          example: 35.5
+        calculatedTValue:
+          type: number
+          example: 35.5
+        calculatedApsIndicator:
+          type: number
+          example: 35.5
+        calculatedRelativeAccuracy:
+          type: number
+          example: 35.5
+        calculatedBiasAdjustmentFactor:
+          type: number
+          example: 35.5
+        calculatedStackArea:
+          type: number
+          example: 35.5
+        calculatedCalculatedWAF:
+          type: number
+          example: 35.5
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+      required:
+      - operatingLevelCode
+      - rataRunData
+      - id
+      - rataId
+      - calculatedAverageGrossUnitLoad
+      - calculatedMeanCEMValue
+      - calculatedMeanRATAReferenceValue
+      - calculatedMeanDifference
+      - calculatedStandardDeviationDifference
+      - calculatedConfidenceCoefficient
+      - calculatedTValue
+      - calculatedApsIndicator
+      - calculatedRelativeAccuracy
+      - calculatedBiasAdjustmentFactor
+      - calculatedStackArea
+      - calculatedCalculatedWAF
+      - userId
+      - addDate
+      - updateDate
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

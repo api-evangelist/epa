@@ -1,0 +1,221 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes Components API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Components
+paths:
+  /monitor-plan-mgmt/locations/{locId}/components:
+    get:
+      operationId: ComponentController_getComponents
+      parameters:
+      - name: locId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      responses:
+        '200':
+          description: Retrieves official component records for a monitor location
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ComponentDTO'
+              examples:
+                ComponentController_getComponents200Example:
+                  summary: Default ComponentController_getComponents 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      tags:
+      - Components
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ComponentDTO:
+      type: object
+      properties:
+        componentId:
+          type: string
+          description: The three digit code assigned by the source to identify the component.
+          example: '027'
+        componentTypeCode:
+          type: string
+          description: Code used to identify the component type.
+          example: SO2
+        sampleAcquisitionMethodCode:
+          type: string
+          description: Code used to identify the sample acquisition method.
+          example: DOU
+        basisCode:
+          type: string
+          description: Code used to identify the moisture basis.
+          example: W
+        manufacturer:
+          type: string
+          maxLength: 25
+          description: Name of the manufacturer or developer of the component.
+          example: TECO
+        modelVersion:
+          type: string
+          maxLength: 15
+          description: The model of any hardware component or the version number of the software component.
+          example: 43I
+        serialNumber:
+          type: string
+          maxLength: 20
+          description: Serial number of the component.
+          example: '631819420'
+        hgConverterIndicator:
+          type: number
+          description: For an Hg component, indicates whether the analyzer has a converter.
+          example: '1'
+        id:
+          type: string
+          description: Unique identifier of a monitoring component record.
+          example: CAMD-646D15E327E1480D814D48286DA7F073
+        locationId:
+          type: string
+          description: Unique identifier of a monitoring location record.
+          example: '5770'
+        userId:
+          type: string
+          description: User account or source of data that added or updated record.
+          example: abcde
+        addDate:
+          type: string
+          description: Date and time in which record was added.
+          example: '2009-02-20'
+        updateDate:
+          type: string
+          description: Date and time in which record was last updated.
+          example: '2009-02-20'
+        analyzerRangeData:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnalyzerRangeDTO'
+          example:
+          - string
+      required:
+      - componentId
+      - componentTypeCode
+      - sampleAcquisitionMethodCode
+      - basisCode
+      - manufacturer
+      - modelVersion
+      - serialNumber
+      - hgConverterIndicator
+      - id
+      - locationId
+      - userId
+      - addDate
+      - updateDate
+      - analyzerRangeData
+    AnalyzerRangeDTO:
+      type: object
+      properties:
+        analyzerRangeCode:
+          type: string
+          description: Code used to identify the analyzer range.
+          example: A
+        dualRangeIndicator:
+          type: number
+          description: Used to indicate whether the component is a dual-range analyzer.
+          example: '1'
+        beginDate:
+          format: date-time
+          type: string
+          description: Date in which information became effective or activity started.
+          example: '2008-05-17'
+        beginHour:
+          type: number
+          description: Hour in which information became effective or activity started.
+          example: '14'
+        endDate:
+          format: date-time
+          type: string
+          description: Last date in which information was effective or date in which activity ended. This value will be null if active record.
+          example: null
+        endHour:
+          type: number
+          description: Last hour in which information was effective or hour in which activity ended. This value will be null if active record.
+          example: null
+        id:
+          type: string
+          description: Unique identifier of an analyzer range history record.
+          example: MRHODES16-10C1A63683D34BA7A0833475C802CF91
+        componentRecordId:
+          type: string
+          description: Unique identifier of a monitoring component record.
+          example: CAMD-646D15E327E1480D814D48286DA7F073
+        userId:
+          type: string
+          description: User account or source of data that added or updated record.
+          example: abcde
+        addDate:
+          type: string
+          description: Date and time in which record was added.
+          example: '2009-02-20'
+        updateDate:
+          type: string
+          description: Date and time in which record was last updated.
+          example: '2009-02-20'
+        active:
+          type: boolean
+          description: Flag for active monitor location record
+          example: true
+      required:
+      - analyzerRangeCode
+      - dualRangeIndicator
+      - beginDate
+      - beginHour
+      - endDate
+      - endHour
+      - id
+      - componentRecordId
+      - userId
+      - addDate
+      - updateDate
+      - active
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

@@ -1,0 +1,197 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes Spans API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Spans
+paths:
+  /monitor-plan-mgmt/locations/{locId}/spans:
+    get:
+      operationId: MonitorSpanController_getSpans
+      parameters:
+      - name: locId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      responses:
+        '200':
+          description: Retrieves official span records for a monitor location
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/MonitorSpanDTO'
+              examples:
+                MonitorSpanController_getSpans200Example:
+                  summary: Default MonitorSpanController_getSpans 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      tags:
+      - Spans
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    MonitorSpanDTO:
+      type: object
+      properties:
+        componentTypeCode:
+          type: string
+          description: Code used to indicate the component type.
+          example: SO2
+        spanScaleCode:
+          type: string
+          description: Code used to identify the span scale.
+          example: H
+        spanMethodCode:
+          type: string
+          description: Code used to identify the method used to calculate MPC/MEC/MPF.
+          example: HD
+        mecValue:
+          type: number
+          description: The Maximum Expected Concentration (MEC) value reported in the SO2 and NOx span records.
+          example: 156.9
+        mpcValue:
+          type: number
+          description: The Maximum Potential Concentration (MPC) value reported in the high scale record for NOx, SO2, or CO2.
+          example: 177.2
+        mpfValue:
+          type: number
+          description: For parameter FLOW, report the Maximum Potential Flow (MPF) value for the monitoring location in (scfh) on a wet basis.
+          example: 8563000
+        spanValue:
+          type: number
+          description: The Span Value determined according to the requirements of Part 75 or (if applicable) 40 CFR Part 63, Subpart UUUUU.
+          example: 200
+        fullScaleRange:
+          type: number
+          description: Full scale range in units of daily calibration for SO2, NOx, CO2, O2, HCl, and flow rate, must be greater than or equal to the span value.
+          example: 200
+        spanUnitsOfMeasureCode:
+          type: string
+          description: Code used to identify the calibration units of measure.
+          example: PPM
+        scaleTransitionPoint:
+          type: number
+          description: If a dual range analyzer is installed for NOx, SO2 or CO2 (see ANALYZER RANGE DATA), report the concentration value at which the DAHS switches from recording on the normal range to recording on the secondary range (usually low to high). Report this value in both the low and high scale records. Scale transition point is not reported for FLOW, HCl, and Hg span.
+          example: 200
+        defaultHighRange:
+          type: number
+          description: The default high range value must be 200 percent of the maximum potential concentration, only reported if the high scale record for the parameter.
+          example: null
+        flowSpanValue:
+          type: number
+          description: The product of the MPF and a factor no less than 1.00 and no greater than 1.25. Flow rate span value in scfh.
+          example: null
+        flowFullScaleRange:
+          type: number
+          description: The actual full-scale range value expressed in units of scfh for the parameter FLOW, must be greater than or equal to the flow rate span value
+          example: null
+        beginDate:
+          format: date-time
+          type: string
+          description: Date on which information became effective or activity started.
+          example: '2018-05-17'
+        beginHour:
+          type: number
+          description: Hour in which information became effective.
+          example: 14
+        endDate:
+          format: date-time
+          type: string
+          description: Last date in which information was effective.  This date will be null for active records.
+          example: null
+        endHour:
+          type: number
+          description: Last hour in which information was effective.  This value will be null for active records.
+          example: null
+        id:
+          type: string
+          description: Unique identifier of a monitoring span record.
+          example: MRHODES16-A5DBB8DF4F1D4D3A95AD2553008EB554
+        locationId:
+          type: string
+          description: Unique identifier of a monitoring location record.
+          example: '5770'
+        userid:
+          type: string
+          description: User account or source of data that added or updated record.
+          example: abcde
+        addDate:
+          type: string
+          description: Date and time in which record was added.
+          example: '2009-02-20'
+        updateDate:
+          type: string
+          description: Date and time in which record was last updated.
+          example: '2009-02-20'
+        active:
+          type: boolean
+          description: Flag for active monitor location record
+          example: true
+      required:
+      - componentTypeCode
+      - spanScaleCode
+      - spanMethodCode
+      - mecValue
+      - mpcValue
+      - mpfValue
+      - spanValue
+      - fullScaleRange
+      - spanUnitsOfMeasureCode
+      - scaleTransitionPoint
+      - defaultHighRange
+      - flowSpanValue
+      - flowFullScaleRange
+      - beginDate
+      - beginHour
+      - endDate
+      - endHour
+      - id
+      - locationId
+      - userid
+      - addDate
+      - updateDate
+      - active
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

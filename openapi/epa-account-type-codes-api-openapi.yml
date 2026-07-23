@@ -1,0 +1,121 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Account Type Codes
+paths:
+  /master-data-mgmt/account-type-codes:
+    get:
+      description: Returns a list of Account Type codes & descriptions.
+      operationId: AccountTypeController_getAccountTypeCodes
+      parameters:
+      - name: exclude
+        required: false
+        in: query
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - CASURR
+            - ENFSURR
+            - FACLTY
+            - GENERAL
+            - OVERDF
+            - RESERVE
+            - SERDRES
+            - SGENRES
+            - SHOLD
+            - SNSARES
+            - SOPTRES
+            - SOTHRES
+            - SPRMRES
+            - SRETIRE
+            - SURR
+            - UNIT
+            - VOLSURR
+        example:
+        - CASURR
+      responses:
+        '200':
+          description: Data retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/AccountTypeDTO'
+              examples:
+                AccountTypeController_getAccountTypeCodes200Example:
+                  summary: Default AccountTypeController_getAccountTypeCodes 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      summary: ''
+      tags:
+      - Account Type Codes
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    AccountTypeDTO:
+      type: object
+      properties:
+        accountTypeCode:
+          type: string
+          example: string
+        accountTypeDescription:
+          type: string
+          example: string
+        accountTypeGroupCode:
+          type: string
+          example: string
+        accountTypeGroupDescription:
+          type: string
+          example: string
+      required:
+      - accountTypeCode
+      - accountTypeDescription
+      - accountTypeGroupCode
+      - accountTypeGroupDescription
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

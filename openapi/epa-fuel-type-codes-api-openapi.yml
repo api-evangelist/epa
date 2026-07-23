@@ -1,0 +1,92 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes Fuel Type Codes API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Fuel Type Codes
+paths:
+  /master-data-mgmt/fuel-type-codes:
+    get:
+      description: Returns a list of Fuel Type codes & descriptions.
+      operationId: FuelTypeController_getFuelTypeCodes
+      parameters: []
+      responses:
+        '200':
+          description: Data retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/FuelTypeDTO'
+              examples:
+                FuelTypeController_getFuelTypeCodes200Example:
+                  summary: Default FuelTypeController_getFuelTypeCodes 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      summary: ''
+      tags:
+      - Fuel Type Codes
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    FuelTypeDTO:
+      type: object
+      properties:
+        fuelTypeCode:
+          type: string
+          example: string
+        fuelTypeDescription:
+          type: string
+          example: string
+        fuelGroupCode:
+          type: string
+          example: string
+        fuelGroupDescription:
+          type: string
+          example: string
+      required:
+      - fuelTypeCode
+      - fuelTypeDescription
+      - fuelGroupCode
+      - fuelGroupDescription
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

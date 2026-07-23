@@ -1,0 +1,850 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes CIP Indexing Services API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: CIP Indexing Services
+paths:
+  /rpc/cipsrv_index:
+    post:
+      tags:
+      - CIP Indexing Services
+      summary: CIP-service Indexing
+      description: CIP-service Indexing Endpoint
+      operationId: cipsrv_index
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/cipsrv_index_rb'
+            examples:
+              cipsrv_indexRequestExample:
+                summary: Default cipsrv_index request
+                x-microcks-default: true
+                value: {}
+      responses:
+        '200':
+          description: CIP-service Indexing Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/cipsrv_index_resp'
+              examples:
+                cipsrv_index200Example:
+                  summary: Default cipsrv_index 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /rpc/cipsrv_domains:
+    get:
+      tags:
+      - CIP Indexing Services
+      summary: CIP-service Domains
+      description: CIP-service Domains Endpoint
+      operationId: cipsrv_domains
+      responses:
+        '200':
+          description: states and tribes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/cipsrv_domains'
+              examples:
+                cipsrv_domains200Example:
+                  summary: Default cipsrv_domains 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /rpc/cipsrv_registry:
+    get:
+      tags:
+      - CIP Indexing Services
+      summary: CIP-service Registry Summary of Resources
+      description: CIP-service Registry showing components and relative vintage of datasets.
+      operationId: cipsrv_registry
+      responses:
+        '200':
+          description: summary of resources
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/cipsrv_registry'
+              examples:
+                cipsrv_registry200Example:
+                  summary: Default cipsrv_registry 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    wbd_version:
+      description: WBD version used for CIP-service indexing.
+      type: string
+      enum:
+      - NP21
+      - NPHR
+      - F3
+      examples:
+      - F3
+    globalid:
+      type: string
+      examples:
+      - '{E374E06D-3A16-662D-E053-42DE4386FFB0}'
+    measure:
+      type: number
+      minimum: 0
+      maximum: 100
+    cipsrv_index_rb:
+      type: object
+      properties:
+        points:
+          description: GeoJSON feature or feature collection of one or more points to index.
+          oneOf:
+          - $ref: '#/components/schemas/geojson_featurecollection'
+          - $ref: '#/components/schemas/geojson_feature'
+          - type: 'null'
+          example: string
+        lines:
+          description: GeoJSON feature or feature collection of one or more line strings to index.
+          oneOf:
+          - $ref: '#/components/schemas/geojson_featurecollection'
+          - $ref: '#/components/schemas/geojson_feature'
+          - type: 'null'
+          example: string
+        areas:
+          description: GeoJSON feature or feature collection of one or more polygons to index.
+          oneOf:
+          - $ref: '#/components/schemas/geojson_featurecollection'
+          - $ref: '#/components/schemas/geojson_feature'
+          - type: 'null'
+          example: string
+        geometry:
+          description: GeoJSON geometry, feature or feature collection of one or more geometries to index.
+          oneOf:
+          - $ref: '#/components/schemas/geojson_featurecollection'
+          - $ref: '#/components/schemas/geojson_feature'
+          - $ref: '#/components/schemas/geojson_geometry'
+          - type: 'null'
+          example: string
+        geometry_clip:
+          description: array of clip items to apply to the incoming features.
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          example: string
+        geometry_clip_stage:
+          description: flag to control whether to clip features before or after indexing.
+          type:
+          - string
+          - 'null'
+          enum:
+          - BEFORE
+          - AFTER
+          default: BEFORE
+          example: BEFORE
+        catchment_filter:
+          description: "Array of filter items to apply to indexing results.  Filter values may include:\n   * USPS codes for the 50 states plus DC, PR, VI, AS, GU and MP.\n   * Tribal keywords: ALLTRIBAL, PARTTRIBAL, NOTRIBAL or TRIBAL < X.\nFor the TRIBAL < X keyword X is a decimal percentage that tribal percentage of the catchment must meet to be included.\n"
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          example: string
+        nhdplus_version:
+          default: nhdplus_h
+          $ref: '#/components/schemas/nhdplus_version'
+        wbd_version:
+          default: NP21
+          $ref: '#/components/schemas/wbd_version'
+        default_point_indexing_method:
+          description: Point indexing method to use when point features are received without expressly defining a point indexing method.
+          type:
+          - string
+          - 'null'
+          enum:
+          - point_simple
+          default: point_simple
+          example: point_simple
+        default_line_indexing_method:
+          description: Line indexing method to use when line features are received without expressly defining a line indexing method.
+          type:
+          - string
+          - 'null'
+          enum:
+          - line_simple
+          - line_levelpath
+          default: line_simple
+          example: line_simple
+        default_line_threshold:
+          description: Linear threshold percentage (0 - 100) to use when linear features are received without expressly defining a linear threshold value.
+          type:
+          - number
+          - 'null'
+          minimum: 0
+          maximum: 100
+          example: string
+        default_ring_indexing_method:
+          description: Area indexing method to use when linear features that form a closed ring are received without expressly defining a ring indexing method.  To preclude ring processing, set this value to **treat_as_lines**.
+          type:
+          - string
+          - 'null'
+          enum:
+          - area_simple
+          - area_centroid
+          - area_artpath
+          - treat_as_lines
+          default: treat_as_lines
+          example: area_simple
+        default_ring_areacat_threshold:
+          description: Area catchment threshold percentage (0 - 100) to use when ring features are received without expressly defining a ring area catchment threshold value.
+          type:
+          - number
+          - 'null'
+          minimum: 0
+          maximum: 100
+          example: string
+        default_ring_areaevt_threshold:
+          description: Area event threshold percentage (0 - 100) to use when ring features are received without expressly defining a ring area event threshold value.
+          type:
+          - number
+          - 'null'
+          minimum: 0
+          maximum: 100
+          example: string
+        default_area_indexing_method:
+          description: Area indexing method to use when polygon features are received without expressly defining an area indexing method.
+          type:
+          - string
+          - 'null'
+          enum:
+          - area_simple
+          - area_centroid
+          - area_artpath
+          default: area_simple
+          example: area_simple
+        default_areacat_threshold:
+          description: Area catchment threshold percentage (0 - 100) to use when area features are received without expressly defining an area catchment threshold value.
+          type:
+          - number
+          - 'null'
+          minimum: 0
+          maximum: 100
+          example: string
+        default_areaevt_threshold:
+          description: Area event threshold percentage (0 - 100) to use when area features are received without expressly defining an area event threshold value.
+          type:
+          - number
+          - 'null'
+          minimum: 0
+          maximum: 100
+          example: string
+        known_region:
+          oneOf:
+          - $ref: '#/components/schemas/known_region'
+          - type: 'null'
+          example: string
+        return_indexing_summary:
+          description: Flag as to whether to return a detailed summary of the indexing actions.  Setting this false will slightly improve performance and throughput.
+          type:
+          - boolean
+          - 'null'
+          default: true
+          example: string
+        return_indexed_features:
+          description: 'Flag as to whether to return indexed features in the results payload. Indexing may clip features creating a smaller, different geometry that users may wish to inspect. Setting this false will improve performance when large features are clipped to detailed political borders.
+
+            '
+          type:
+          - boolean
+          - 'null'
+          default: true
+          example: string
+        return_indexed_collection:
+          description: 'Flag as to whether to return all indexed features as a single geometry collection. This functionality is meant for users who just wish all the features back in a simple format for easy display purposes.
+
+            '
+          type:
+          - boolean
+          - 'null'
+          default: false
+          example: string
+        return_catchment_geometry:
+          description: Flag as to whether to return the catchment geometry in the results payload.
+          type:
+          - boolean
+          - 'null'
+          default: true
+          example: string
+        return_flowlines:
+          description: Flag as to whether to return a feature collection of flowlines associated with indexed catchments.
+          type:
+          - boolean
+          - 'null'
+          default: true
+          example: string
+        return_huc12s:
+          description: Flag as to whether to return a feature collection of HUC12s associated with indexed catchments.
+          type:
+          - boolean
+          - 'null'
+          default: false
+          example: string
+        return_flowline_geometry:
+          description: Flag as to return the flowline geometry when flowlines are returned in the results payload.
+          type:
+          - boolean
+          - 'null'
+          default: true
+          example: string
+        return_huc12_geometry:
+          description: Flag as to return the HUC12 geometry when HUC12s are returned in the results payload.  Currently non-functional.
+          type:
+          - boolean
+          - 'null'
+          default: true
+          example: string
+        return_full_catchments:
+          description: Flag to allow indexing to return full catchments not split by state or national borders.
+          type:
+          - boolean
+          - 'null'
+          default: false
+          example: string
+        limit_to_us_catchments:
+          description: Flag to allow indexing to return catchments outside the borders of the United States.
+          type:
+          - boolean
+          - 'null'
+          default: true
+          example: string
+      required:
+      - nhdplus_version
+    delineated_area_properties:
+      type: object
+      properties:
+        areasqkm:
+          type: number
+          example: 0.0
+        hydroseq:
+          $ref: '#/components/schemas/hydroseq'
+        sourcefc:
+          description: identifier of the delineation area source.
+          type: string
+          example: string
+        nhdplusid:
+          $ref: '#/components/schemas/nhdplusid'
+    hydroseq:
+      description: NHDPlus int64 hydro sequence identifier.
+      type: integer
+      format: int64
+    cipsrv_domains_tribe:
+      type: object
+      properties:
+        aiannhns_stem:
+          type: string
+          example: string
+        aiannhns_namelsad:
+          type: string
+          example: EPA Facility
+        has_reservation_lands:
+          type: boolean
+          example: true
+        has_trust_lands:
+          type: boolean
+          example: true
+    reachcode:
+      type: string
+      minLength: 14
+      maxLength: 14
+    geojson_feature:
+      type:
+      - object
+      - 'null'
+      title: GeoJSON Feature
+      required:
+      - type
+      - geometry
+      - properties
+      externalDocs:
+        url: https://tools.ietf.org/html/rfc7946#section-3.2
+      properties:
+        bbox:
+          $ref: '#/components/schemas/geojson_bbox'
+        geometry:
+          $ref: '#/components/schemas/geojson_geometry'
+        obj_type:
+          type: string
+          example: string
+        properties:
+          discriminator:
+            propertyName: obj_type
+            mapping:
+              event_feature_properties: '#/components/schemas/event_feature_properties'
+              indexed_catchment_properties: '#/components/schemas/indexed_catchment_properties'
+              indexed_flowline_properties: '#/components/schemas/indexed_flowline_properties'
+              navigated_flowline_properties: '#/components/schemas/navigated_flowline_properties'
+              delineated_area_properties: '#/components/schemas/delineated_area_properties'
+              end_point_properties: '#/components/schemas/end_point_properties'
+              indexing_line_properties: '#/components/schemas/indexing_line_properties'
+          oneOf:
+          - $ref: '#/components/schemas/event_feature_properties'
+          - $ref: '#/components/schemas/indexed_catchment_properties'
+          - $ref: '#/components/schemas/indexed_flowline_properties'
+          - $ref: '#/components/schemas/navigated_flowline_properties'
+          - $ref: '#/components/schemas/delineated_area_properties'
+          - $ref: '#/components/schemas/end_point_properties'
+          - $ref: '#/components/schemas/indexing_line_properties'
+          example: string
+        type:
+          type: string
+          enum:
+          - Feature
+          example: Feature
+    cipsrv_domains_states:
+      type: array
+      items:
+        $ref: '#/components/schemas/cipsrv_domains_state'
+    cipsrv_index_resp:
+      type: object
+      properties:
+        indexed_points:
+          description: Feature collection of point event features processed through CIP indexing.
+          $ref: '#/components/schemas/geojson_featurecollection'
+        indexed_lines:
+          description: Feature collection of line event features processed through CIP indexing.
+          $ref: '#/components/schemas/geojson_featurecollection'
+        indexed_areas:
+          description: Feature collection of area event features processed through CIP indexing.
+          $ref: '#/components/schemas/geojson_featurecollection'
+        indexed_collection:
+          description: Geometry of all event features processed through CIP indexing.
+          $ref: '#/components/schemas/geojson_geometry'
+        indexing_summary:
+          $ref: '#/components/schemas/indexing_summary'
+        catchment_count:
+          type: integer
+          format: int32
+          example: 100
+        catchment_areasqkm:
+          type: number
+          example: 0.0
+        nhdplus_version:
+          $ref: '#/components/schemas/nhdplus_version'
+        catchments:
+          $ref: '#/components/schemas/geojson_featurecollection'
+        flowlines:
+          $ref: '#/components/schemas/geojson_featurecollection'
+        huc12s:
+          $ref: '#/components/schemas/geojson_featurecollection'
+        return_code:
+          $ref: '#/components/schemas/return_code'
+        status_message:
+          $ref: '#/components/schemas/status_message'
+    ordinate:
+      type: number
+      title: GeoJSON Ordinate
+      examples:
+      - -89.5327
+    geojson_bbox:
+      type: array
+      title: GeoJSON BBox
+      maxItems: 4
+      minItems: 4
+      items:
+        $ref: '#/components/schemas/ordinate'
+    cipsrv_registry:
+      type: object
+      properties:
+        components:
+          type: array
+          items:
+            $ref: '#/components/schemas/cipsrv_registry_components'
+          example:
+          - string
+        version:
+          type: string
+          example: string
+        installation_date:
+          type: string
+          format: date
+          example: '2024-01-15'
+        notes:
+          type: string
+          example: string
+    navigated_flowline_properties:
+      type: object
+      properties:
+        nhdplusid:
+          $ref: '#/components/schemas/nhdplusid'
+        hydroseq:
+          $ref: '#/components/schemas/hydroseq'
+        fmeasure:
+          description: NHD flowline from measure.
+          $ref: '#/components/schemas/measure'
+        tmeasure:
+          description: NHD flowline to measure.
+          $ref: '#/components/schemas/measure'
+        levelpathi:
+          description: NHDPlus int64 level path identifier.
+          type: integer
+          format: int64
+          example: 0
+        terminalpa:
+          description: NHDPlus int64 terminal path identifier.
+          type: integer
+          format: int64
+          example: 0
+        uphydroseq:
+          description: NHDPlus int64 upstream flowline hydro sequence identifier.
+          type: integer
+          format: int64
+          example: 0
+        dnhydroseq:
+          description: NHDPlus int64 downstream flowline hydro sequence identifier.
+          type: integer
+          format: int64
+          example: 0
+        lengthkm:
+          description: length of the navigated flowline in kilometers.
+          type: number
+          example: 0.0
+        flowtimeday:
+          description: flow time in days of the navigated flowline.
+          type: number
+          example: 0.0
+        network_distancekm:
+          description: total length from start to the navigated flowline in kilometers.
+          type: number
+          example: 0.0
+        network_flowtimeday:
+          description: total flow time in days from start to the navigated flowline.
+          type: number
+          example: 0.0
+        permanent_identifier:
+          description: NHD permanent identifier of the navigated flowline.
+          type:
+          - string
+          - 'null'
+          example: '12345'
+        reachcode:
+          description: NHD reach code of the navigated flowline
+          $ref: '#/components/schemas/reachcode'
+        fcode:
+          description: NHD feature type code of the navigated flowline.
+          type: integer
+          format: int32
+          example: 0
+        gnis_id:
+          description: NHD GNIS identifier of the navigated flowline.
+          type: string
+          example: '12345'
+        gnis_name:
+          description: NHD GNIS name of the navigated flowline.
+          type: string
+          example: EPA Facility
+        wbarea_permanent_identifier:
+          description: NHD permanent identifier of the NHD waterbody feature associated with a flowline artificial path.
+          type: string
+          example: '12345'
+        navtermination_flag:
+          description: 'Integer code providing information about the navigated flowline within the context of the navigation. Valid codes are: 0. no termination 1. full termination 2. partial termination 3. coastal termination 4. headwater termination 5. network end termination (non-coastal)
+
+            '
+          type: integer
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          example: 0
+        nav_order:
+          description: rough ordering key placing flowlines in navigated order
+          type: integer
+          format: int32
+          example: 0
+    event_feature_properties:
+      type: object
+      properties:
+        globalid:
+          $ref: '#/components/schemas/globalid'
+        lengthkm:
+          type: number
+          example: 0.0
+        areasqkm:
+          type: number
+          example: 0.0
+        converted_to_ring:
+          type: boolean
+          example: true
+        indexing_method_used:
+          type: string
+          example: string
+        line_threshold_used:
+          type: number
+          example: 0.0
+        areacat_threshold_used:
+          type: number
+          example: 0.0
+        areaevt_threshold_used:
+          type: number
+          example: 0.0
+    indexing_line_properties:
+      type: object
+      properties:
+        nhdplus:
+          description: NHDPlus int64 flowline identifier.
+          type: integer
+          format: int64
+          example: 0
+    known_region:
+      description: 'Provided value to use to determine the proper spatial reference system to use in geometric analysis. Providing an SRID value such as 5070 or a US state code such as MN will skip the sometimes expensive determination of the correct SRID for the feature. However, if the feature does not actually apply to the provide known_region hint, then indexing may fail or return incorrect results. If in doubt, leave this parameter blank.
+
+        '
+      type: string
+    end_point_properties:
+      type: object
+      properties:
+        nhdplus:
+          description: NHDPlus int64 flowline identifier.
+          type: integer
+          format: int64
+          example: 0
+        reachcode:
+          $ref: '#/components/schemas/reachcode'
+        measure:
+          $ref: '#/components/schemas/measure'
+    coordinates2:
+      type: array
+      title: GeoJSON Coordinates 2
+      items:
+        $ref: '#/components/schemas/coordinates1'
+    cipsrv_domains_state:
+      type: object
+      properties:
+        geoid:
+          type: string
+          example: '12345'
+        stusps:
+          type: string
+          example: string
+        name:
+          type: string
+          example: EPA Facility
+    nhdplus_version:
+      description: NHDPlus version used in CIP indexing.
+      type: string
+      enum:
+      - nhdplus_m
+      - nhdplus_h
+      examples:
+      - nhdplus_h
+    status_message:
+      description: Status message describing the results of processing.  Null indicates success.
+      type:
+      - string
+      - 'null'
+    indexed_catchment_properties:
+      type: object
+      properties:
+        nhdplusid:
+          $ref: '#/components/schemas/nhdplusid'
+        catchmentstatecode:
+          type: string
+          example: NC
+        xwalk_huc12:
+          type:
+          - string
+          - 'null'
+          minLength: 12
+          maxLength: 12
+          example: string
+        areasqkm:
+          type: number
+          example: 0.0
+    cipsrv_domains:
+      type: object
+      properties:
+        states:
+          $ref: '#/components/schemas/cipsrv_domains_states'
+        tribes:
+          $ref: '#/components/schemas/cipsrv_domains_tribes'
+    geojson_featurecollection:
+      type: object
+      title: GeoJSON Feature Collection
+      description: GeoJSon Feature collection
+      required:
+      - type
+      - features
+      externalDocs:
+        url: https://tools.ietf.org/html/rfc7946#section-3.3
+      properties:
+        type:
+          type: string
+          enum:
+          - FeatureCollection
+          example: FeatureCollection
+        features:
+          type: array
+          items:
+            $ref: '#/components/schemas/geojson_feature'
+          example:
+          - string
+    nhdplusid:
+      description: NHDPlus int64 nhdplus identifier.
+      type: integer
+      format: int64
+    return_code:
+      description: Status code for results.  Zero indicates success.
+      type: integer
+      format: int32
+      examples:
+      - 0
+    geojson_geometry:
+      type:
+      - object
+      - 'null'
+      title: GeoJSON Geometry
+      externalDocs:
+        url: http://geojson.org/geojson-spec.html#geometry-objects
+      properties:
+        coordinates:
+          oneOf:
+          - $ref: '#/components/schemas/coordinates1'
+          - $ref: '#/components/schemas/coordinates2'
+          - $ref: '#/components/schemas/coordinates3'
+          - type: array
+            title: GeoJSON Coordinates 4
+            items:
+              $ref: '#/components/schemas/coordinates3'
+          example: string
+        type:
+          type: string
+          enum:
+          - Point
+          - LineString
+          - Polygon
+          - MultiPoint
+          - MultiLineString
+          - MultiPolygon
+          description: the geometry type
+          example: Point
+    coordinates1:
+      type: array
+      title: GeoJSON Coordinates 1
+      items:
+        $ref: '#/components/schemas/ordinate'
+    indexed_flowline_properties:
+      type: object
+      properties:
+        nhdplusid:
+          $ref: '#/components/schemas/nhdplusid'
+        gnis_id:
+          description: NHD GNIS identifier
+          type: string
+          example: '12345'
+        gnis_name:
+          description: NHD GNIS name
+          type: string
+          example: EPA Facility
+        reachcode:
+          $ref: '#/components/schemas/reachcode'
+        fmeasure:
+          description: NHD flowline from measure.
+          $ref: '#/components/schemas/measure'
+        tmeasure:
+          description: NHD flowline to measure.
+          $ref: '#/components/schemas/measure'
+    indexing_summary:
+      description: short summary report of indexing results.
+      type: object
+      properties:
+        input_features:
+          type: object
+          properties:
+            point_count:
+              type: integer
+            line_count:
+              type: integer
+            area_count:
+              type: integer
+          example: {}
+    cipsrv_domains_tribes:
+      type: array
+      items:
+        $ref: '#/components/schemas/cipsrv_domains_tribe'
+    coordinates3:
+      type: array
+      title: GeoJSON Coordinates 3
+      items:
+        $ref: '#/components/schemas/coordinates2'
+    cipsrv_registry_components:
+      type: object
+      properties:
+        component:
+          type: string
+          example: string
+        component_type:
+          type: string
+          example: string
+        component_vintage:
+          type: string
+          example: string
+        installation_date:
+          type: string
+          format: date
+          example: '2024-01-15'
+        installer_username:
+          type: string
+          example: EPA Facility
+        notes:
+          type: string
+          example: string
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

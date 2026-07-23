@@ -1,0 +1,683 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes Emissions API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Emissions
+paths:
+  /emissions-mgmt/emissions/export:
+    get:
+      operationId: EmissionsController_export
+      parameters:
+      - name: monitorPlanId
+        required: true
+        in: query
+        schema:
+          type: string
+        example: '12345'
+      - name: year
+        required: true
+        in: query
+        schema:
+          type: number
+        example: 2024
+      - name: quarter
+        required: true
+        in: query
+        schema:
+          type: number
+        example: 0.0
+      - name: reportedValuesOnly
+        required: false
+        in: query
+        schema:
+          type: boolean
+        example: true
+      responses:
+        '200':
+          description: Successfull export of emissions data
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/EmissionsDTO'
+                - $ref: '#/components/schemas/EmissionsImportDTO'
+              examples:
+                fullExport:
+                  summary: Full Export
+                  description: Full export of all data including database primary keys, calculated values, & audit properties
+                  value: Reference EmissionsDTO schema for definition
+                reportedValuesExport:
+                  summary: Reported Values Export
+                  description: Export of reported values only matching import schema
+                  value: Reference EmissionsImportDTO schema for definition
+      security:
+      - APIKey: []
+      summary: Exports Emissions Data for the Specified Monitor Plan & Reporting Period
+      tags:
+      - Emissions
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /emissions-mgmt/emissions/submission-progress:
+    get:
+      operationId: EmissionsController_submissionProgress
+      parameters:
+      - name: submissionPeriod
+        required: true
+        in: query
+        description: Date on which activity occurred.
+        schema:
+          format: date
+          example: '2019-01-01'
+          type: string
+        example: '2019-01-01'
+      responses:
+        '200':
+          description: Retrieve submissions for current time period
+      security:
+      - APIKey: []
+      tags:
+      - Emissions
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /emissions-mgmt/emissions:
+    get:
+      operationId: EmissionsController_getEmissions
+      parameters:
+      - name: orisCodes
+        required: true
+        in: query
+        description: Array of oris codes
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: number
+        example:
+        - 0.0
+      - name: monPlanIds
+        required: false
+        in: query
+        description: Array of configurations
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+        example:
+        - '12345'
+      - name: quarters
+        required: true
+        in: query
+        description: Array of quarter abbreviations
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+        example:
+        - string
+      - name: mode
+        required: false
+        in: query
+        description: Flag to indicate the mode of operation
+        schema:
+          type: string
+          enum:
+          - report
+          - evaluate
+          - submit
+        example: report
+      responses:
+        '200':
+          description: Retrieves emissions review and submit records
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/EmissionsReviewDTO'
+              examples:
+                EmissionsController_getEmissions200Example:
+                  summary: Default EmissionsController_getEmissions 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      tags:
+      - Emissions
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /streaming-services/emissions/summary-values:
+    get:
+      operationId: SummaryValueController_summaryValueStream
+      parameters:
+      - name: orisCode
+        required: false
+        in: query
+        style: pipeDelimited
+        explode: false
+        schema:
+          minItems: 1
+          maxItems: 6
+          type: array
+          items:
+            type: number
+        example:
+        - 0.0
+      - name: beginYear
+        required: true
+        in: query
+        schema:
+          type: number
+        example: 2024
+      - name: beginQuarter
+        required: true
+        in: query
+        schema:
+          type: number
+        example: 0.0
+      - name: endYear
+        required: true
+        in: query
+        schema:
+          type: number
+        example: 2024
+      - name: endQuarter
+        required: true
+        in: query
+        schema:
+          type: number
+        example: 0.0
+      responses:
+        '200':
+          description: Exports summary values
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SummaryValueBaseDTO'
+              examples:
+                SummaryValueController_summaryValueStream200Example:
+                  summary: Default SummaryValueController_summaryValueStream 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      tags:
+      - Emissions
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /streaming-services/emissions/supplemental-operating:
+    get:
+      operationId: SupplementalOperatingController_supplementalOperatingStream
+      parameters:
+      - name: orisCode
+        required: false
+        in: query
+        style: pipeDelimited
+        explode: false
+        schema:
+          minItems: 1
+          maxItems: 6
+          type: array
+          items:
+            type: number
+        example:
+        - 0.0
+      - name: beginYear
+        required: true
+        in: query
+        schema:
+          type: number
+        example: 2024
+      - name: beginQuarter
+        required: true
+        in: query
+        schema:
+          type: number
+        example: 0.0
+      - name: endYear
+        required: true
+        in: query
+        schema:
+          type: number
+        example: 2024
+      - name: endQuarter
+        required: true
+        in: query
+        schema:
+          type: number
+        example: 0.0
+      responses:
+        '200':
+          description: Exports supplemental operating values
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupplementalOperatingDTO'
+              examples:
+                SupplementalOperatingController_supplementalOperatingStream200Example:
+                  summary: Default SupplementalOperatingController_supplementalOperatingStream 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      tags:
+      - Emissions
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /streaming-services/emissions/hourly/derived-values:
+    get:
+      operationId: DerivedHourlyController_derivedHourlyStream
+      parameters:
+      - name: orisCode
+        required: true
+        in: query
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: number
+        example:
+        - 0.0
+      - name: locationName
+        required: false
+        in: query
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+        example:
+        - EPA Facility
+      - name: beginDate
+        required: true
+        in: query
+        schema:
+          format: date-time
+          type: string
+        example: '2024-01-15T12:00:00Z'
+      - name: endDate
+        required: true
+        in: query
+        schema:
+          format: date-time
+          type: string
+        example: '2024-01-15T12:00:00Z'
+      responses:
+        '200':
+          description: Exports supplemental operating values
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DerivedHourlyValueBaseDTO'
+              examples:
+                DerivedHourlyController_derivedHourlyStream200Example:
+                  summary: Default DerivedHourlyController_derivedHourlyStream 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      tags:
+      - Emissions
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /streaming-services/emissions/hourly/operating:
+    get:
+      operationId: HourlyOperatingController_hourlyOperatingStream
+      parameters:
+      - name: orisCode
+        required: true
+        in: query
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: number
+        example:
+        - 0.0
+      - name: locationName
+        required: false
+        in: query
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+        example:
+        - EPA Facility
+      - name: beginDate
+        required: true
+        in: query
+        schema:
+          format: date-time
+          type: string
+        example: '2024-01-15T12:00:00Z'
+      - name: endDate
+        required: true
+        in: query
+        schema:
+          format: date-time
+          type: string
+        example: '2024-01-15T12:00:00Z'
+      responses:
+        '200':
+          description: Exports hourly operating values
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HourlyOperatingDTO'
+              examples:
+                HourlyOperatingController_hourlyOperatingStream200Example:
+                  summary: Default HourlyOperatingController_hourlyOperatingStream 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      tags:
+      - Emissions
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    EmissionsReviewDTO:
+      type: object
+      properties:
+        orisCode:
+          type: number
+          example: 0.0
+        facilityName:
+          type: string
+          example: EPA Facility
+        monPlanId:
+          type: string
+          example: '12345'
+        configuration:
+          type: string
+          example: string
+        evalStatusCode:
+          type: string
+          example: active
+        evalStatusCodeDescription:
+          type: string
+          example: active
+        severityCode:
+          type: string
+          example: string
+        severityDescription:
+          type: string
+          example: string
+        submissionAvailabilityCode:
+          type: string
+          example: string
+        submissionAvailabilityCodeDescription:
+          type: string
+          example: string
+        userid:
+          type: string
+          example: '12345'
+        updateDate:
+          type: string
+          example: string
+        windowStatus:
+          type: string
+          example: active
+        windowExpiredDate:
+          type: string
+          example: string
+        periodAbbreviation:
+          type: string
+          example: string
+      required:
+      - orisCode
+      - facilityName
+      - monPlanId
+      - configuration
+      - evalStatusCode
+      - evalStatusCodeDescription
+      - severityCode
+      - severityDescription
+      - submissionAvailabilityCode
+      - submissionAvailabilityCodeDescription
+      - userid
+      - updateDate
+      - windowStatus
+      - windowExpiredDate
+      - periodAbbreviation
+    HourlyOperatingDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '12345'
+        locationId:
+          type: string
+          example: '12345'
+        reportPeriodId:
+          type: number
+          example: 0.0
+        beginDate:
+          format: date-time
+          type: string
+          example: '2024-01-15T12:00:00Z'
+        beginHour:
+          type: number
+          example: 0.0
+        operatingTime:
+          type: number
+          example: 0.0
+        hourLoad:
+          type: number
+          example: 0.0
+        loadUnitsOfMeasureCode:
+          type: string
+          example: string
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          format: date-time
+          type: string
+          example: '2024-01-15T12:00:00Z'
+        updateDate:
+          format: date-time
+          type: string
+          example: '2024-01-15T12:00:00Z'
+      required:
+      - id
+      - locationId
+      - reportPeriodId
+      - beginDate
+      - beginHour
+      - operatingTime
+      - hourLoad
+      - loadUnitsOfMeasureCode
+      - userId
+      - addDate
+      - updateDate
+    SupplementalOperatingDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '12345'
+        locationId:
+          type: string
+          example: '12345'
+        reportPeriodId:
+          type: number
+          example: 0.0
+        operatingTypeCode:
+          type: string
+          example: string
+        fuelCode:
+          type: string
+          example: string
+        operatingValue:
+          type: number
+          example: 0.0
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+      required:
+      - id
+      - locationId
+      - reportPeriodId
+      - operatingTypeCode
+      - fuelCode
+      - operatingValue
+      - userId
+      - addDate
+      - updateDate
+    SummaryValueBaseDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '12345'
+        locationId:
+          type: string
+          example: '12345'
+        reportPeriodId:
+          type: number
+          example: 0.0
+        parameterCode:
+          type: string
+          example: string
+        quarterlyValue:
+          type: number
+          example: 0.0
+        yearTotal:
+          type: number
+          example: 2024
+        ozoneSeasonTotal:
+          type: number
+          example: 0.0
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+      required:
+      - id
+      - locationId
+      - reportPeriodId
+      - parameterCode
+      - quarterlyValue
+      - yearTotal
+      - ozoneSeasonTotal
+      - userId
+      - addDate
+      - updateDate
+    DerivedHourlyValueBaseDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '12345'
+        hourId:
+          type: string
+          example: '12345'
+        parameterCode:
+          type: string
+          example: string
+        adjustedHourlyValue:
+          type: string
+          example: https://example.com
+        modcCode:
+          type: string
+          example: string
+        locationId:
+          type: string
+          example: '12345'
+        reportPeriodId:
+          type: number
+          example: 0.0
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+      required:
+      - id
+      - hourId
+      - parameterCode
+      - adjustedHourlyValue
+      - modcCode
+      - locationId
+      - reportPeriodId
+      - userId
+      - addDate
+      - updateDate
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

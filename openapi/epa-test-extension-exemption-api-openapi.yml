@@ -1,0 +1,209 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes Test Extension Exemption API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Test Extension Exemption
+paths:
+  /qa-certification-mgmt/locations/{locId}/test-extension-exemptions:
+    get:
+      operationId: TestExtensionExemptionsController_getTestExtensionExemptions
+      parameters:
+      - name: locId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      responses:
+        '200':
+          description: Retrieves workspace Test Extension Exemption records per filter criteria
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/TestExtensionExemptionRecordDTO'
+              examples:
+                TestExtensionExemptionsController_getTestExtensionExemptions200Example:
+                  summary: Default TestExtensionExemptionsController_getTestExtensionExemptions 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      tags:
+      - Test Extension Exemption
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /qa-certification-mgmt/locations/{locId}/test-extension-exemptions/{id}:
+    get:
+      operationId: TestExtensionExemptionsController_getTestExtensionExemption
+      parameters:
+      - name: locId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      responses:
+        '200':
+          description: Retrieves workspace Test Extension Exemption record by its id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TestExtensionExemptionRecordDTO'
+              examples:
+                TestExtensionExemptionsController_getTestExtensionExemption200Example:
+                  summary: Default TestExtensionExemptionsController_getTestExtensionExemption 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      tags:
+      - Test Extension Exemption
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    TestExtensionExemptionRecordDTO:
+      type: object
+      properties:
+        stackPipeId:
+          type: string
+          description: Stack Pipe Identifier. ADD TO PROPERTY METADATA
+          example: '12345'
+        unitId:
+          type: string
+          description: Unique identifier for each unit at a facility.
+          example: '12345'
+        year:
+          type: number
+          description: The calendar year during which activity occurred.
+          example: 2024
+        quarter:
+          type: number
+          description: Calendar quarter in which activity occurred.
+          example: 0.0
+        monitoringSystemId:
+          type: string
+          description: Unique identifier of a monitoring system record.
+          example: '12345'
+        componentId:
+          type: string
+          description: The three digit code assigned by the source to identify the component.
+          example: '12345'
+        spanScaleCode:
+          type: string
+          description: Code used to identify the span scale.
+          example: string
+        id:
+          type: string
+          example: '12345'
+        locationId:
+          type: string
+          example: '12345'
+        reportPeriodId:
+          type: number
+          example: 0.0
+        checkSessionId:
+          type: string
+          example: '12345'
+        submissionId:
+          type: string
+          example: '12345'
+        submissionAvailabilityCode:
+          type: string
+          example: string
+        pendingStatusCode:
+          type: string
+          example: active
+        evalStatusCode:
+          type: string
+          example: active
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+        isSubmitted:
+          type: boolean
+          example: true
+        isSavedNotSubmitted:
+          type: boolean
+          example: true
+        hoursUsed:
+          type: number
+          example: 0.0
+        fuelCode:
+          type: string
+          example: string
+        extensionOrExemptionCode:
+          type: string
+          example: string
+      required:
+      - stackPipeId
+      - unitId
+      - year
+      - quarter
+      - id
+      - locationId
+      - reportPeriodId
+      - checkSessionId
+      - submissionId
+      - submissionAvailabilityCode
+      - pendingStatusCode
+      - evalStatusCode
+      - userId
+      - addDate
+      - updateDate
+      - extensionOrExemptionCode
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

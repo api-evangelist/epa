@@ -1,0 +1,362 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes Quarterly Data API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Quarterly Data
+  description: Quarterly aggregated values.
+paths:
+  /quarterlyData/bySite:
+    get:
+      tags:
+      - Quarterly Data
+      summary: Get Quarterly Data by Site
+      operationId: quarterlyDataBySite
+      parameters:
+      - $ref: '#/components/parameters/Email'
+      - $ref: '#/components/parameters/Key'
+      - $ref: '#/components/parameters/Param'
+      - $ref: '#/components/parameters/Bdate'
+      - $ref: '#/components/parameters/Edate'
+      - $ref: '#/components/parameters/State'
+      - $ref: '#/components/parameters/County'
+      - $ref: '#/components/parameters/Site'
+      - $ref: '#/components/parameters/Cbdate'
+      - $ref: '#/components/parameters/Cedate'
+      responses:
+        '200':
+          description: Quarterly values
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+              examples:
+                quarterlyDataBySite200Example:
+                  summary: Default quarterlyDataBySite 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /quarterlyData/byCounty:
+    get:
+      tags:
+      - Quarterly Data
+      summary: Get Quarterly Data by County
+      operationId: quarterlyDataByCounty
+      parameters:
+      - $ref: '#/components/parameters/Email'
+      - $ref: '#/components/parameters/Key'
+      - $ref: '#/components/parameters/Param'
+      - $ref: '#/components/parameters/Bdate'
+      - $ref: '#/components/parameters/Edate'
+      - $ref: '#/components/parameters/State'
+      - $ref: '#/components/parameters/County'
+      - $ref: '#/components/parameters/Cbdate'
+      - $ref: '#/components/parameters/Cedate'
+      responses:
+        '200':
+          description: Quarterly values
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+              examples:
+                quarterlyDataByCounty200Example:
+                  summary: Default quarterlyDataByCounty 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /quarterlyData/byState:
+    get:
+      tags:
+      - Quarterly Data
+      summary: Get Quarterly Data by State
+      operationId: quarterlyDataByState
+      parameters:
+      - $ref: '#/components/parameters/Email'
+      - $ref: '#/components/parameters/Key'
+      - $ref: '#/components/parameters/Param'
+      - $ref: '#/components/parameters/Bdate'
+      - $ref: '#/components/parameters/Edate'
+      - $ref: '#/components/parameters/State'
+      - $ref: '#/components/parameters/Cbdate'
+      - $ref: '#/components/parameters/Cedate'
+      responses:
+        '200':
+          description: Quarterly values
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+              examples:
+                quarterlyDataByState200Example:
+                  summary: Default quarterlyDataByState 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /quarterlyData/byBox:
+    get:
+      tags:
+      - Quarterly Data
+      summary: Get Quarterly Data by Bounding Box
+      operationId: quarterlyDataByBox
+      parameters:
+      - $ref: '#/components/parameters/Email'
+      - $ref: '#/components/parameters/Key'
+      - $ref: '#/components/parameters/Param'
+      - $ref: '#/components/parameters/Bdate'
+      - $ref: '#/components/parameters/Edate'
+      - $ref: '#/components/parameters/MinLat'
+      - $ref: '#/components/parameters/MaxLat'
+      - $ref: '#/components/parameters/MinLon'
+      - $ref: '#/components/parameters/MaxLon'
+      - $ref: '#/components/parameters/Cbdate'
+      - $ref: '#/components/parameters/Cedate'
+      responses:
+        '200':
+          description: Quarterly values
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+              examples:
+                quarterlyDataByBox200Example:
+                  summary: Default quarterlyDataByBox 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /quarterlyData/byCBSA:
+    get:
+      tags:
+      - Quarterly Data
+      summary: Get Quarterly Data by CBSA
+      operationId: quarterlyDataByCBSA
+      parameters:
+      - $ref: '#/components/parameters/Email'
+      - $ref: '#/components/parameters/Key'
+      - $ref: '#/components/parameters/Param'
+      - $ref: '#/components/parameters/Bdate'
+      - $ref: '#/components/parameters/Edate'
+      - $ref: '#/components/parameters/Cbsa'
+      - $ref: '#/components/parameters/Cbdate'
+      - $ref: '#/components/parameters/Cedate'
+      responses:
+        '200':
+          description: Quarterly values
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+              examples:
+                quarterlyDataByCBSA200Example:
+                  summary: Default quarterlyDataByCBSA 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  parameters:
+    State:
+      name: state
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{2}$
+      description: 2-digit state FIPS code.
+    MinLat:
+      name: minlat
+      in: query
+      required: true
+      schema:
+        type: number
+        format: float
+      description: Minimum latitude of bounding box.
+    MaxLon:
+      name: maxlon
+      in: query
+      required: true
+      schema:
+        type: number
+        format: float
+    Bdate:
+      name: bdate
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{8}$
+      description: Begin date (YYYYMMDD).
+    Cbdate:
+      name: cbdate
+      in: query
+      required: false
+      schema:
+        type: string
+        pattern: ^\d{8}$
+      description: Optional change begin date (returns records updated since cbdate).
+    County:
+      name: county
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{3}$
+      description: 3-digit county code.
+    MaxLat:
+      name: maxlat
+      in: query
+      required: true
+      schema:
+        type: number
+        format: float
+    MinLon:
+      name: minlon
+      in: query
+      required: true
+      schema:
+        type: number
+        format: float
+    Email:
+      name: email
+      in: query
+      required: true
+      schema:
+        type: string
+        format: email
+      description: Registered email address.
+    Key:
+      name: key
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Account-specific access key.
+    Param:
+      name: param
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
+    Site:
+      name: site
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{4}$
+      description: 4-digit site code.
+    Cedate:
+      name: cedate
+      in: query
+      required: false
+      schema:
+        type: string
+        pattern: ^\d{8}$
+      description: Optional change end date.
+    Cbsa:
+      name: cbsa
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{5}$
+      description: 5-digit Core Based Statistical Area code.
+    Edate:
+      name: edate
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{8}$
+      description: End date (YYYYMMDD). Must be in the same year as bdate for most services.
+  schemas:
+    Header:
+      type: object
+      properties:
+        status:
+          type: string
+          example: active
+        request_time:
+          type: string
+          example: string
+        url:
+          type: string
+          example: https://example.com
+        rows:
+          type: integer
+          example: 100
+        error:
+          type: array
+          items:
+            type: string
+          example:
+          - string
+    Envelope:
+      type: object
+      required:
+      - Header
+      - Data
+      properties:
+        Header:
+          type: array
+          items:
+            $ref: '#/components/schemas/Header'
+          example:
+          - string
+        Data:
+          type: array
+          items:
+            type: object
+          example:
+          - {}
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

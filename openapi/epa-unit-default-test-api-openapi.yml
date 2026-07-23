@@ -1,0 +1,172 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes Unit Default Test API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Unit Default Test
+paths:
+  /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/unit-default-tests:
+    get:
+      operationId: UnitDefaultTestController_getUnitDefaultTests
+      parameters:
+      - name: locId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: testSumId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      responses:
+        '200':
+          description: Retrieves official Unit Default Test records by Test Summary Id
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/UnitDefaultTestRecordDTO'
+              examples:
+                UnitDefaultTestController_getUnitDefaultTests200Example:
+                  summary: Default UnitDefaultTestController_getUnitDefaultTests 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      tags:
+      - Unit Default Test
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/unit-default-tests/{id}:
+    get:
+      operationId: UnitDefaultTestController_getUnitDefaultTest
+      parameters:
+      - name: locId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: testSumId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      responses:
+        '200':
+          description: Retrieves official Unit Default Test record by its Id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnitDefaultTestRecordDTO'
+              examples:
+                UnitDefaultTestController_getUnitDefaultTest200Example:
+                  summary: Default UnitDefaultTestController_getUnitDefaultTest 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      tags:
+      - Unit Default Test
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    UnitDefaultTestRecordDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '12345'
+        testSumId:
+          type: string
+          example: '12345'
+        calculatedNoxDefaultRate:
+          type: number
+          example: 35.5
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+        fuelCode:
+          type: string
+          example: string
+        noxDefaultRate:
+          type: number
+          example: 0.0
+        operatingConditionCode:
+          type: string
+          example: string
+        groupId:
+          type: string
+          maxLength: 10
+          example: '12345'
+        numberOfUnitsInGroup:
+          type: number
+          example: 0.0
+        numberOfTestsForGroup:
+          type: number
+          example: 0.0
+      required:
+      - id
+      - testSumId
+      - calculatedNoxDefaultRate
+      - userId
+      - addDate
+      - updateDate
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

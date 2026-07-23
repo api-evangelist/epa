@@ -1,0 +1,74 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes Glossary API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Glossary
+paths:
+  /api/glossary:
+    get:
+      summary: Glossary
+      description: Placeholder
+      tags:
+      - Glossary
+      responses:
+        '200':
+          description: Placeholder
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/glossary.list'
+              examples:
+                get_api_glossary200Example:
+                  summary: Default get_api_glossary 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    glossary.list:
+      type: object
+      description: Placeholder
+      properties:
+        Dummy:
+          type: string
+          title: Dummy
+          example: Dummy
+          description: Dummy
+      required:
+      - Dummy
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

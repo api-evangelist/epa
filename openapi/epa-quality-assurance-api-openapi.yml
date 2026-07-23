@@ -1,0 +1,532 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes Quality Assurance API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Quality Assurance
+  description: QA performance evaluations, blanks, audits, collocated assessments.
+paths:
+  /qaAnnualPerformanceEvaluations/bySite:
+    get:
+      tags:
+      - Quality Assurance
+      summary: QA Annual Performance Evaluations by Site
+      operationId: qaAnnualBySite
+      parameters:
+      - $ref: '#/components/parameters/Email'
+      - $ref: '#/components/parameters/Key'
+      - $ref: '#/components/parameters/Param'
+      - $ref: '#/components/parameters/Bdate'
+      - $ref: '#/components/parameters/Edate'
+      - $ref: '#/components/parameters/State'
+      - $ref: '#/components/parameters/County'
+      - $ref: '#/components/parameters/Site'
+      responses:
+        '200':
+          description: QA evaluations
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+              examples:
+                qaAnnualBySite200Example:
+                  summary: Default qaAnnualBySite 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /qaAnnualPerformanceEvaluations/byCounty:
+    get:
+      tags:
+      - Quality Assurance
+      summary: QA Annual Performance Evaluations by County
+      operationId: qaAnnualByCounty
+      parameters:
+      - $ref: '#/components/parameters/Email'
+      - $ref: '#/components/parameters/Key'
+      - $ref: '#/components/parameters/Param'
+      - $ref: '#/components/parameters/Bdate'
+      - $ref: '#/components/parameters/Edate'
+      - $ref: '#/components/parameters/State'
+      - $ref: '#/components/parameters/County'
+      responses:
+        '200':
+          description: QA evaluations
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+              examples:
+                qaAnnualByCounty200Example:
+                  summary: Default qaAnnualByCounty 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /qaAnnualPerformanceEvaluations/byState:
+    get:
+      tags:
+      - Quality Assurance
+      summary: QA Annual Performance Evaluations by State
+      operationId: qaAnnualByState
+      parameters:
+      - $ref: '#/components/parameters/Email'
+      - $ref: '#/components/parameters/Key'
+      - $ref: '#/components/parameters/Param'
+      - $ref: '#/components/parameters/Bdate'
+      - $ref: '#/components/parameters/Edate'
+      - $ref: '#/components/parameters/State'
+      responses:
+        '200':
+          description: QA evaluations
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+              examples:
+                qaAnnualByState200Example:
+                  summary: Default qaAnnualByState 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /qaAnnualPerformanceEvaluations/byPQAO:
+    get:
+      tags:
+      - Quality Assurance
+      summary: QA Annual Performance Evaluations by PQAO
+      operationId: qaAnnualByPQAO
+      parameters:
+      - $ref: '#/components/parameters/Email'
+      - $ref: '#/components/parameters/Key'
+      - $ref: '#/components/parameters/Param'
+      - $ref: '#/components/parameters/Bdate'
+      - $ref: '#/components/parameters/Edate'
+      - $ref: '#/components/parameters/Pqao'
+      responses:
+        '200':
+          description: QA evaluations
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+              examples:
+                qaAnnualByPQAO200Example:
+                  summary: Default qaAnnualByPQAO 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /qaAnnualPerformanceEvaluations/byMA:
+    get:
+      tags:
+      - Quality Assurance
+      summary: QA Annual Performance Evaluations by Monitoring Agency
+      operationId: qaAnnualByMA
+      parameters:
+      - $ref: '#/components/parameters/Email'
+      - $ref: '#/components/parameters/Key'
+      - $ref: '#/components/parameters/Param'
+      - $ref: '#/components/parameters/Bdate'
+      - $ref: '#/components/parameters/Edate'
+      - $ref: '#/components/parameters/Ma'
+      responses:
+        '200':
+          description: QA evaluations
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+              examples:
+                qaAnnualByMA200Example:
+                  summary: Default qaAnnualByMA 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /qaBlanks/bySite:
+    get:
+      tags:
+      - Quality Assurance
+      summary: QA Blanks by Site
+      operationId: qaBlanksBySite
+      parameters:
+      - $ref: '#/components/parameters/Email'
+      - $ref: '#/components/parameters/Key'
+      - $ref: '#/components/parameters/Param'
+      - $ref: '#/components/parameters/Bdate'
+      - $ref: '#/components/parameters/Edate'
+      - $ref: '#/components/parameters/State'
+      - $ref: '#/components/parameters/County'
+      - $ref: '#/components/parameters/Site'
+      responses:
+        '200':
+          description: QA blanks
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+              examples:
+                qaBlanksBySite200Example:
+                  summary: Default qaBlanksBySite 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /qaBlanks/byState:
+    get:
+      tags:
+      - Quality Assurance
+      summary: QA Blanks by State
+      operationId: qaBlanksByState
+      parameters:
+      - $ref: '#/components/parameters/Email'
+      - $ref: '#/components/parameters/Key'
+      - $ref: '#/components/parameters/Param'
+      - $ref: '#/components/parameters/Bdate'
+      - $ref: '#/components/parameters/Edate'
+      - $ref: '#/components/parameters/State'
+      responses:
+        '200':
+          description: QA blanks
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+              examples:
+                qaBlanksByState200Example:
+                  summary: Default qaBlanksByState 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /qaCollocatedAssessments/bySite:
+    get:
+      tags:
+      - Quality Assurance
+      summary: QA Collocated Assessments by Site
+      operationId: qaCollocatedBySite
+      parameters:
+      - $ref: '#/components/parameters/Email'
+      - $ref: '#/components/parameters/Key'
+      - $ref: '#/components/parameters/Param'
+      - $ref: '#/components/parameters/Bdate'
+      - $ref: '#/components/parameters/Edate'
+      - $ref: '#/components/parameters/State'
+      - $ref: '#/components/parameters/County'
+      - $ref: '#/components/parameters/Site'
+      responses:
+        '200':
+          description: QA collocated assessments
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+              examples:
+                qaCollocatedBySite200Example:
+                  summary: Default qaCollocatedBySite 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /qaFlowRateVerifications/bySite:
+    get:
+      tags:
+      - Quality Assurance
+      summary: QA Flow Rate Verifications by Site
+      operationId: qaFlowRateVerifBySite
+      parameters:
+      - $ref: '#/components/parameters/Email'
+      - $ref: '#/components/parameters/Key'
+      - $ref: '#/components/parameters/Param'
+      - $ref: '#/components/parameters/Bdate'
+      - $ref: '#/components/parameters/Edate'
+      - $ref: '#/components/parameters/State'
+      - $ref: '#/components/parameters/County'
+      - $ref: '#/components/parameters/Site'
+      responses:
+        '200':
+          description: QA flow rate verifications
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+              examples:
+                qaFlowRateVerifBySite200Example:
+                  summary: Default qaFlowRateVerifBySite 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /qaFlowRateAudits/bySite:
+    get:
+      tags:
+      - Quality Assurance
+      summary: QA Flow Rate Audits by Site
+      operationId: qaFlowRateAuditsBySite
+      parameters:
+      - $ref: '#/components/parameters/Email'
+      - $ref: '#/components/parameters/Key'
+      - $ref: '#/components/parameters/Param'
+      - $ref: '#/components/parameters/Bdate'
+      - $ref: '#/components/parameters/Edate'
+      - $ref: '#/components/parameters/State'
+      - $ref: '#/components/parameters/County'
+      - $ref: '#/components/parameters/Site'
+      responses:
+        '200':
+          description: QA flow rate audits
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+              examples:
+                qaFlowRateAuditsBySite200Example:
+                  summary: Default qaFlowRateAuditsBySite 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /qaOnePointQcRawData/bySite:
+    get:
+      tags:
+      - Quality Assurance
+      summary: QA One Point QC Raw Data by Site
+      operationId: qaOnePointBySite
+      parameters:
+      - $ref: '#/components/parameters/Email'
+      - $ref: '#/components/parameters/Key'
+      - $ref: '#/components/parameters/Param'
+      - $ref: '#/components/parameters/Bdate'
+      - $ref: '#/components/parameters/Edate'
+      - $ref: '#/components/parameters/State'
+      - $ref: '#/components/parameters/County'
+      - $ref: '#/components/parameters/Site'
+      responses:
+        '200':
+          description: QA one-point QC raw data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+              examples:
+                qaOnePointBySite200Example:
+                  summary: Default qaOnePointBySite 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /qaPepAudits/bySite:
+    get:
+      tags:
+      - Quality Assurance
+      summary: QA PEP Audits by Site
+      operationId: qaPepBySite
+      parameters:
+      - $ref: '#/components/parameters/Email'
+      - $ref: '#/components/parameters/Key'
+      - $ref: '#/components/parameters/Param'
+      - $ref: '#/components/parameters/Bdate'
+      - $ref: '#/components/parameters/Edate'
+      - $ref: '#/components/parameters/State'
+      - $ref: '#/components/parameters/County'
+      - $ref: '#/components/parameters/Site'
+      responses:
+        '200':
+          description: QA PEP audits
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+              examples:
+                qaPepBySite200Example:
+                  summary: Default qaPepBySite 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  parameters:
+    State:
+      name: state
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{2}$
+      description: 2-digit state FIPS code.
+    Bdate:
+      name: bdate
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{8}$
+      description: Begin date (YYYYMMDD).
+    County:
+      name: county
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{3}$
+      description: 3-digit county code.
+    Pqao:
+      name: pqao
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Primary Quality Assurance Organization code.
+    Ma:
+      name: ma
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Monitoring Agency code.
+    Email:
+      name: email
+      in: query
+      required: true
+      schema:
+        type: string
+        format: email
+      description: Registered email address.
+    Key:
+      name: key
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Account-specific access key.
+    Param:
+      name: param
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
+    Site:
+      name: site
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{4}$
+      description: 4-digit site code.
+    Edate:
+      name: edate
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{8}$
+      description: End date (YYYYMMDD). Must be in the same year as bdate for most services.
+  schemas:
+    Header:
+      type: object
+      properties:
+        status:
+          type: string
+          example: active
+        request_time:
+          type: string
+          example: string
+        url:
+          type: string
+          example: https://example.com
+        rows:
+          type: integer
+          example: 100
+        error:
+          type: array
+          items:
+            type: string
+          example:
+          - string
+    Envelope:
+      type: object
+      required:
+      - Header
+      - Data
+      properties:
+        Header:
+          type: array
+          items:
+            $ref: '#/components/schemas/Header'
+          example:
+          - string
+        Data:
+          type: array
+          items:
+            type: object
+          example:
+          - {}
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

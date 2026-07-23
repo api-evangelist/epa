@@ -1,0 +1,231 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes Hg Summary API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Hg Summary
+paths:
+  /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/hg-summaries:
+    get:
+      operationId: HgSummaryController_getHgSummaries
+      parameters:
+      - name: locId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: testSumId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      responses:
+        '200':
+          description: Retrieves workspace Hg Summary records by Test Summary Id
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/HgSummaryDTO'
+              examples:
+                HgSummaryController_getHgSummaries200Example:
+                  summary: Default HgSummaryController_getHgSummaries 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      tags:
+      - Hg Summary
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/hg-summaries/{id}:
+    get:
+      operationId: HgSummaryController_getHgSummary
+      parameters:
+      - name: locId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: testSumId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      responses:
+        '200':
+          description: Retrieves workspace Hg Summary record by its Id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HgSummaryDTO'
+              examples:
+                HgSummaryController_getHgSummary200Example:
+                  summary: Default HgSummaryController_getHgSummary 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      tags:
+      - Hg Summary
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    HgInjectionDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '12345'
+        hgTestSumId:
+          type: string
+          example: '12345'
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+        injectionDate:
+          format: date-time
+          type: string
+          example: '2024-01-15T12:00:00Z'
+        injectionHour:
+          type: number
+          example: 0.0
+        injectionMinute:
+          type: number
+          example: 0.0
+        measuredValue:
+          type: number
+          example: 0.0
+        referenceValue:
+          type: number
+          example: 0.0
+      required:
+      - id
+      - hgTestSumId
+      - userId
+      - addDate
+      - updateDate
+      - injectionDate
+      - injectionHour
+      - injectionMinute
+    HgSummaryDTO:
+      type: object
+      properties:
+        hgInjectionData:
+          type: array
+          items:
+            $ref: '#/components/schemas/HgInjectionDTO'
+          example:
+          - string
+        id:
+          type: string
+          example: '12345'
+        testSumId:
+          type: string
+          example: '12345'
+        calculatedMeanMeasuredValue:
+          type: number
+          example: 35.5
+        calculatedMeanReferenceValue:
+          type: number
+          example: 35.5
+        calculatedPercentError:
+          type: number
+          example: 35.5
+        calculatedAPSIndicator:
+          type: number
+          example: 35.5
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+        gasLevelCode:
+          type: string
+          example: string
+        meanMeasuredValue:
+          type: number
+          example: 0.0
+        meanReferenceValue:
+          type: number
+          example: 0.0
+        percentError:
+          type: number
+          example: 0.0
+        apsIndicator:
+          type: number
+          example: 0.0
+      required:
+      - hgInjectionData
+      - id
+      - testSumId
+      - calculatedMeanMeasuredValue
+      - calculatedMeanReferenceValue
+      - calculatedPercentError
+      - calculatedAPSIndicator
+      - userId
+      - addDate
+      - updateDate
+      - gasLevelCode
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

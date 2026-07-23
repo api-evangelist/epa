@@ -1,0 +1,329 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes Lists API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Lists
+  description: Reference lookups (states, counties, sites, CBSAs, parameter classes, agencies).
+paths:
+  /list/states:
+    get:
+      tags:
+      - Lists
+      summary: List States
+      operationId: listStates
+      parameters:
+      - $ref: '#/components/parameters/Email'
+      - $ref: '#/components/parameters/Key'
+      responses:
+        '200':
+          description: State FIPS codes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+              examples:
+                listStates200Example:
+                  summary: Default listStates 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /list/countiesByState:
+    get:
+      tags:
+      - Lists
+      summary: List Counties by State
+      operationId: listCountiesByState
+      parameters:
+      - $ref: '#/components/parameters/Email'
+      - $ref: '#/components/parameters/Key'
+      - $ref: '#/components/parameters/State'
+      responses:
+        '200':
+          description: Counties in state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+              examples:
+                listCountiesByState200Example:
+                  summary: Default listCountiesByState 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /list/sitesByCounty:
+    get:
+      tags:
+      - Lists
+      summary: List Sites by County
+      operationId: listSitesByCounty
+      parameters:
+      - $ref: '#/components/parameters/Email'
+      - $ref: '#/components/parameters/Key'
+      - $ref: '#/components/parameters/State'
+      - $ref: '#/components/parameters/County'
+      responses:
+        '200':
+          description: Sites in county
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+              examples:
+                listSitesByCounty200Example:
+                  summary: Default listSitesByCounty 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /list/cbsas:
+    get:
+      tags:
+      - Lists
+      summary: List Core Based Statistical Areas
+      operationId: listCbsas
+      parameters:
+      - $ref: '#/components/parameters/Email'
+      - $ref: '#/components/parameters/Key'
+      responses:
+        '200':
+          description: CBSA codes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+              examples:
+                listCbsas200Example:
+                  summary: Default listCbsas 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /list/classes:
+    get:
+      tags:
+      - Lists
+      summary: List Parameter Classes
+      operationId: listClasses
+      parameters:
+      - $ref: '#/components/parameters/Email'
+      - $ref: '#/components/parameters/Key'
+      responses:
+        '200':
+          description: Parameter class groupings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+              examples:
+                listClasses200Example:
+                  summary: Default listClasses 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /list/parametersByClass:
+    get:
+      tags:
+      - Lists
+      summary: List Parameters by Class
+      operationId: listParametersByClass
+      parameters:
+      - $ref: '#/components/parameters/Email'
+      - $ref: '#/components/parameters/Key'
+      - name: pc
+        in: query
+        required: true
+        schema:
+          type: string
+        example: '88101'
+      responses:
+        '200':
+          description: Parameter codes in class
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+              examples:
+                listParametersByClass200Example:
+                  summary: Default listParametersByClass 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /list/pqaos:
+    get:
+      tags:
+      - Lists
+      summary: List Primary Quality Assurance Organizations
+      operationId: listPqaos
+      parameters:
+      - $ref: '#/components/parameters/Email'
+      - $ref: '#/components/parameters/Key'
+      responses:
+        '200':
+          description: PQAOs
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+              examples:
+                listPqaos200Example:
+                  summary: Default listPqaos 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /list/mas:
+    get:
+      tags:
+      - Lists
+      summary: List Monitoring Agencies
+      operationId: listMas
+      parameters:
+      - $ref: '#/components/parameters/Email'
+      - $ref: '#/components/parameters/Key'
+      responses:
+        '200':
+          description: Monitoring agencies
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+              examples:
+                listMas200Example:
+                  summary: Default listMas 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  parameters:
+    State:
+      name: state
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{2}$
+      description: 2-digit state FIPS code.
+    County:
+      name: county
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{3}$
+      description: 3-digit county code.
+    Email:
+      name: email
+      in: query
+      required: true
+      schema:
+        type: string
+        format: email
+      description: Registered email address.
+    Key:
+      name: key
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Account-specific access key.
+  schemas:
+    Header:
+      type: object
+      properties:
+        status:
+          type: string
+          example: active
+        request_time:
+          type: string
+          example: string
+        url:
+          type: string
+          example: https://example.com
+        rows:
+          type: integer
+          example: 100
+        error:
+          type: array
+          items:
+            type: string
+          example:
+          - string
+    Envelope:
+      type: object
+      required:
+      - Header
+      - Data
+      properties:
+        Header:
+          type: array
+          items:
+            $ref: '#/components/schemas/Header'
+          example:
+          - string
+        Data:
+          type: array
+          items:
+            type: object
+          example:
+          - {}
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

@@ -1,0 +1,215 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes Calibration Injection API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Calibration Injection
+paths:
+  /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/calibration-injections:
+    get:
+      operationId: CalibrationInjectionController_getCalibrationInjections
+      parameters:
+      - name: locId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: testSumId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      responses:
+        '200':
+          description: Retrieves workspace Calibration Injection records by Test Summary Id
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CalibrationInjectionDTO'
+              examples:
+                CalibrationInjectionController_getCalibrationInjections200Example:
+                  summary: Default CalibrationInjectionController_getCalibrationInjections 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      tags:
+      - Calibration Injection
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/calibration-injections/{id}:
+    get:
+      operationId: CalibrationInjectionController_getCalibrationInjection
+      parameters:
+      - name: locId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: testSumId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      responses:
+        '200':
+          description: Retrieves workspace Calibration Injection record by its Id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalibrationInjectionDTO'
+              examples:
+                CalibrationInjectionController_getCalibrationInjection200Example:
+                  summary: Default CalibrationInjectionController_getCalibrationInjection 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      tags:
+      - Calibration Injection
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    CalibrationInjectionDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '12345'
+        testSumId:
+          type: string
+          example: '12345'
+        calculatedZeroCalibrationError:
+          type: number
+          example: 35.5
+        calculatedZeroAPSIndicator:
+          type: number
+          example: 35.5
+        calculatedUpscaleCalibrationError:
+          type: number
+          example: 35.5
+        calculatedUpscaleAPSIndicator:
+          type: number
+          example: 35.5
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+        onlineOfflineIndicator:
+          type: number
+          example: 0.0
+        upscaleGasLevelCode:
+          type: string
+          example: string
+        zeroInjectionDate:
+          format: date-time
+          type: string
+          example: '2024-01-15T12:00:00Z'
+        zeroInjectionHour:
+          type: number
+          example: 0.0
+        zeroInjectionMinute:
+          type: number
+          example: 0.0
+        upscaleInjectionDate:
+          format: date-time
+          type: string
+          example: '2024-01-15T12:00:00Z'
+        upscaleInjectionHour:
+          type: number
+          example: 0.0
+        upscaleInjectionMinute:
+          type: number
+          example: 0.0
+        zeroMeasuredValue:
+          type: number
+          example: 0.0
+        upscaleMeasuredValue:
+          type: number
+          example: 0.0
+        zeroAPSIndicator:
+          type: number
+          example: 0.0
+        upscaleAPSIndicator:
+          type: number
+          example: 0.0
+        zeroCalibrationError:
+          type: number
+          example: 0.0
+        upscaleCalibrationError:
+          type: number
+          example: 0.0
+        zeroReferenceValue:
+          type: number
+          example: 0.0
+        upscaleReferenceValue:
+          type: number
+          example: 0.0
+      required:
+      - id
+      - testSumId
+      - calculatedZeroCalibrationError
+      - calculatedZeroAPSIndicator
+      - calculatedUpscaleCalibrationError
+      - calculatedUpscaleAPSIndicator
+      - userId
+      - addDate
+      - updateDate
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

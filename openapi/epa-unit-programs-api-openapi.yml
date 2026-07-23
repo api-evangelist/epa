@@ -1,0 +1,149 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes Unit Programs API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Unit Programs
+paths:
+  /monitor-plan-mgmt/units/{unitId}/unit-programs:
+    get:
+      operationId: UnitProgramController_getUnitProgramsByUnitRecordId
+      parameters:
+      - name: unitId
+        required: true
+        in: path
+        schema:
+          type: number
+        example: 0.0
+      responses:
+        '200':
+          description: Retrieves unit control records from a specific unit ID
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/UnitProgramDTO'
+              examples:
+                UnitProgramController_getUnitProgramsByUnitRecordId200Example:
+                  summary: Default UnitProgramController_getUnitProgramsByUnitRecordId 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      tags:
+      - Unit Programs
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    UnitProgramDTO:
+      type: object
+      properties:
+        programId:
+          type: number
+          description: The identifier for the program associated with the unit.
+          example: 67890
+        programCode:
+          type: string
+          description: The code representing the specific program.
+          example: ARP
+        classCode:
+          type: string
+          description: The code representing the class associated with the program.
+          example: A
+        unitMonitorCertBeginDate:
+          format: date-time
+          type: string
+          description: The date when unit monitoring certification began for the program.
+          example: '2024-01-01'
+        unitMonitorCertDeadline:
+          format: date-time
+          type: string
+          description: The deadline date for completing unit monitoring certification.
+          example: '2024-12-31'
+        emissionsRecordingBeginDate:
+          format: date-time
+          type: string
+          description: The date when emissions recording began under the program.
+          example: '2024-01-01'
+        endDate:
+          format: date-time
+          type: string
+          description: The end date for the program's association with the unit.
+          example: '2025-12-31'
+        id:
+          type: string
+          description: The unique identifier for the unit program record.
+          example: '1234567890'
+        unitId:
+          type: number
+          description: The identifier for the unit associated with the program.
+          example: 12345
+        userId:
+          type: string
+          description: The identifier for the user who last modified the record.
+          example: jdoe
+        addDate:
+          type: string
+          description: The timestamp when the unit program record was created.
+          example: '2024-08-01T00:00:00.000Z'
+        updateDate:
+          type: string
+          description: The timestamp when the unit program record was last updated.
+          example: '2024-08-15T00:00:00.000Z'
+        active:
+          type: boolean
+          description: Indicates whether the unit program is currently active.
+          example: true
+      required:
+      - programId
+      - programCode
+      - classCode
+      - unitMonitorCertBeginDate
+      - unitMonitorCertDeadline
+      - emissionsRecordingBeginDate
+      - endDate
+      - id
+      - unitId
+      - userId
+      - addDate
+      - updateDate
+      - active
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

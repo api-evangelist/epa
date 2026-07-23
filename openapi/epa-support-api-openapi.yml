@@ -1,0 +1,138 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes Support API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Support
+paths:
+  /camd-services/support/email/emailRecipientList:
+    post:
+      description: Retrieves a list of email recipients based on email type and plant IDs.
+      operationId: MailController_getEmailRecipientList
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailRecipientListRequestDto'
+            examples:
+              MailController_getEmailRecipientListRequestExample:
+                summary: Default MailController_getEmailRecipientList request
+                x-microcks-default: true
+                value: {}
+      responses:
+        '200':
+          description: Email recipient list retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailRecipientListResponseDto'
+              examples:
+                MailController_getEmailRecipientList200Example:
+                  summary: Default MailController_getEmailRecipientList 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailRecipientListResponseDto'
+              examples:
+                MailController_getEmailRecipientList201Example:
+                  summary: Default MailController_getEmailRecipientList 201 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+        '500':
+          description: ''
+      security:
+      - ClientToken: []
+      - ClientId: []
+      - APIKey: []
+      summary: ''
+      tags:
+      - Support
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    EmailRecipientListResponseDto:
+      type: object
+      properties:
+        recipients:
+          description: List of email recipients
+          items:
+            type: array
+            items:
+              type: a
+          type: array
+          example:
+          - - string
+        hasError:
+          type: boolean
+          description: Indicates if an error occurred
+          example: false
+        errorMessage:
+          type: string
+          description: Error message if an error occurred
+          example: ''
+      required:
+      - recipients
+      - hasError
+      - errorMessage
+    EmailRecipientListRequestDto:
+      type: object
+      properties:
+        emailType:
+          type: string
+          description: The type of email
+          example: SUBMISSIONREMINDER
+        plantIdList:
+          description: List of plant IDs
+          example:
+          - 1
+          - 3
+          - 5
+          type: array
+          items:
+            type: number
+      required:
+      - emailType
+      - plantIdList
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

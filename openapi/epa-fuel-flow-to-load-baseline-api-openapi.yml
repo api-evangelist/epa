@@ -1,0 +1,187 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes Fuel Flow To Load Baseline API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Fuel Flow To Load Baseline
+paths:
+  /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/fuel-flow-to-load-baselines:
+    get:
+      operationId: FuelFlowToLoadBaselineController_getFuelFlowToLoadBaselines
+      parameters:
+      - name: locId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: testSumId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      responses:
+        '200':
+          description: Retrieves official Fuel Flow To Load Baseline records by Test Summary Id
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/FuelFlowToLoadBaselineDTO'
+              examples:
+                FuelFlowToLoadBaselineController_getFuelFlowToLoadBaselines200Example:
+                  summary: Default FuelFlowToLoadBaselineController_getFuelFlowToLoadBaselines 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      tags:
+      - Fuel Flow To Load Baseline
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/fuel-flow-to-load-baselines/{id}:
+    get:
+      operationId: FuelFlowToLoadBaselineController_getFuelFlowToLoadBaseline
+      parameters:
+      - name: locId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: testSumId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      responses:
+        '200':
+          description: Retrieves official Fuel Flow To Load Baseline record by its Id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FuelFlowToLoadBaselineDTO'
+              examples:
+                FuelFlowToLoadBaselineController_getFuelFlowToLoadBaseline200Example:
+                  summary: Default FuelFlowToLoadBaselineController_getFuelFlowToLoadBaseline 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      tags:
+      - Fuel Flow To Load Baseline
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    FuelFlowToLoadBaselineDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '12345'
+        testSumId:
+          type: string
+          example: '12345'
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+        accuracyTestNumber:
+          type: string
+          maxLength: 18
+          example: string
+        peiTestNumber:
+          type: string
+          maxLength: 18
+          example: string
+        averageFuelFlowRate:
+          type: number
+          example: 0.0
+        averageLoad:
+          type: number
+          example: 0.0
+        baselineFuelFlowToLoadRatio:
+          type: number
+          example: 0.0
+        fuelFlowToLoadUnitsOfMeasureCode:
+          type: string
+          example: string
+        averageHourlyHeatInputRate:
+          type: number
+          example: 0.0
+        baselineGHR:
+          type: number
+          example: 0.0
+        ghrUnitsOfMeasureCode:
+          type: string
+          example: string
+        numberOfHoursExcludedCofiring:
+          type: number
+          example: 0.0
+        numberOfHoursExcludedRamping:
+          type: number
+          example: 0.0
+        numberOfHoursExcludedLowRange:
+          type: number
+          example: 0.0
+      required:
+      - id
+      - testSumId
+      - userId
+      - addDate
+      - updateDate
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

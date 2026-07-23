@@ -1,0 +1,110 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes Bap API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Bap
+paths:
+  /api/bap/sam:
+    get:
+      summary: Get User's SAM.gov Data from the BAP.
+      parameters: []
+      responses:
+        '200':
+          description: A boolean indicating whether any SAM.gov results were returned (to support helpdesk users without SAM.gov entities), along with an array of SAM.gov entities.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: boolean
+                    example: true
+                  entities:
+                    type: array
+                    items:
+                      type: object
+              examples:
+                get_api_bap_sam200Example:
+                  summary: Default get_api_bap_sam 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      tags:
+      - Bap
+  /api/bap/submissions:
+    get:
+      summary: Get User's Form Submissions Statuses from the BAP.
+      parameters: []
+      responses:
+        '200':
+          description: An array of form submission statuses, and other relevant fields.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+              examples:
+                get_api_bap_submissions200Example:
+                  summary: Default get_api_bap_submissions 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      tags:
+      - Bap
+components:
+  responses:
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: Unauthorized
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

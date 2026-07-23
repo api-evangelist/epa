@@ -1,0 +1,601 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes Metadata API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Metadata
+paths:
+  /metadata:
+    get:
+      summary: /metadata
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: string
+              examples:
+                get_metadata200Example:
+                  summary: Default get_metadata 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      tags:
+      - Metadata
+  /air_rest_services.metadata:
+    get:
+      description: Returns the JSON Object Name and ColumnId for usage with the qcolumns parameter for get_qid, get_facility_info and other service endpoints.
+      parameters:
+      - description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+        enum:
+        - JSONP
+        - JSON
+        - XML
+        in: query
+        name: output
+        required: false
+        type: string
+        example: string
+      - $ref: '#/parameters/q.callback'
+      responses:
+        '200':
+          description: Results are an array of columns/objects.
+          schema:
+            description: Root Object
+            properties:
+              Results:
+                $ref: '#/definitions/meta1'
+            required:
+            - Results
+            type: object
+            xml:
+              name: Root
+      summary: Clean Air Act Metadata Service
+      tags:
+      - Metadata
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      description: Returns the JSON Object Name and ColumnId for usage with the qcolumns parameter for get_qid, get_facility_info and other service endpoints.
+      parameters:
+      - description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+        enum:
+        - JSONP
+        - JSON
+        - XML
+        in: formData
+        name: output
+        required: false
+        type: string
+        example: string
+      - $ref: '#/parameters/f.callback'
+      responses:
+        '200':
+          description: Results are an array of columns/objects.
+          schema:
+            description: Root Object
+            properties:
+              Results:
+                $ref: '#/definitions/meta1'
+            required:
+            - Results
+            type: object
+            xml:
+              name: Root
+      summary: Clean Air Act Metadata Service
+      tags:
+      - Metadata
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /echo_rest_services.metadata:
+    get:
+      description: Returns the JSON Object Name and ColumnId for usage with the qcolumns parameter for get_qid, get_facility_info and other service endpoints.
+      parameters:
+      - description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+        enum:
+        - JSONP
+        - JSON
+        - XML
+        in: query
+        name: output
+        required: false
+        type: string
+        example: string
+      - $ref: '#/parameters/q.callback'
+      responses:
+        '200':
+          description: Results are an array of columns/objects.
+          schema:
+            description: Root Object
+            properties:
+              Results:
+                $ref: '#/definitions/meta1'
+            required:
+            - Results
+            type: object
+            xml:
+              name: Root
+      summary: Combined ECHO Metadata Service
+      tags:
+      - Metadata
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      description: Returns the JSON Object Name and ColumnId for usage with the qcolumns parameter for get_qid, get_facility_info and other service endpoints.
+      parameters:
+      - description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+        enum:
+        - JSONP
+        - JSON
+        - XML
+        in: formData
+        name: output
+        required: false
+        type: string
+        example: string
+      - $ref: '#/parameters/f.callback'
+      responses:
+        '200':
+          description: Results are an array of columns/objects.
+          schema:
+            description: Root Object
+            properties:
+              Results:
+                $ref: '#/definitions/meta1'
+            required:
+            - Results
+            type: object
+            xml:
+              name: Root
+      summary: Combined ECHO Metadata Service
+      tags:
+      - Metadata
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /case_rest_services.metadata:
+    get:
+      description: Returns the JSON Object Name and ColumnId for usage with the qcolumns parameter for get_cases endpoint.
+      parameters:
+      - description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+        enum:
+        - JSONP
+        - JSON
+        - XML
+        in: query
+        name: output
+        required: false
+        type: string
+        example: string
+      - $ref: '#/parameters/q.callback'
+      responses:
+        '200':
+          description: Results are an array of columns/objects.
+          schema:
+            description: Root Object
+            properties:
+              Results:
+                $ref: '#/definitions/met1'
+            required:
+            - Results
+            type: object
+            xml:
+              name: Root
+      summary: Enforcement Case Metadata Service
+      tags:
+      - Metadata
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      description: Returns the JSON Object Name and ColumnId for usage with the qcolumns parameter for get_cases endpoint.
+      parameters:
+      - description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+        enum:
+        - JSONP
+        - JSON
+        - XML
+        in: formData
+        name: output
+        required: false
+        type: string
+        example: string
+      - $ref: '#/parameters/f.callback'
+      responses:
+        '200':
+          description: Results are an array of columns/objects.
+          schema:
+            description: Root Object
+            properties:
+              Results:
+                $ref: '#/definitions/met1'
+            required:
+            - Results
+            type: object
+            xml:
+              name: Root
+      summary: Enforcement Case Metadata Service
+      tags:
+      - Metadata
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /cwa_rest_services.metadata:
+    get:
+      description: Returns the JSON Object Name and ColumnId for usage with the qcolumns parameter for get_qid, get_facility_info and other service endpoints.
+      parameters:
+      - description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+        enum:
+        - JSONP
+        - JSON
+        - XML
+        in: query
+        name: output
+        required: false
+        type: string
+        example: string
+      - $ref: '#/parameters/q.callback'
+      responses:
+        '200':
+          description: Results are an array of columns/objects.
+          schema:
+            description: Root Object
+            properties:
+              Results:
+                $ref: '#/definitions/meta1'
+            required:
+            - Results
+            type: object
+            xml:
+              name: Root
+      summary: Clean Water Act (CWA) Metadata Service
+      tags:
+      - Metadata
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      description: Returns the JSON Object Name and ColumnId for usage with the qcolumns parameter for get_qid, get_facility_info and other service endpoints.
+      parameters:
+      - description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+        enum:
+        - JSONP
+        - JSON
+        - XML
+        in: formData
+        name: output
+        required: false
+        type: string
+        example: string
+      - $ref: '#/parameters/f.callback'
+      responses:
+        '200':
+          description: Results are an array of columns/objects.
+          schema:
+            description: Root Object
+            properties:
+              Results:
+                $ref: '#/definitions/meta1'
+            required:
+            - Results
+            type: object
+            xml:
+              name: Root
+      summary: Clean Water Act (CWA) Metadata Service
+      tags:
+      - Metadata
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /rcra_rest_services.metadata:
+    get:
+      description: Returns the JSON Object Name and ColumnId for usage with the qcolumns parameter for get_qid, get_facility_info and other service endpoints.
+      parameters:
+      - description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+        enum:
+        - JSONP
+        - JSON
+        - XML
+        in: query
+        name: output
+        required: false
+        type: string
+        example: string
+      - $ref: '#/parameters/q.callback'
+      responses:
+        '200':
+          description: Results are an array of columns/objects.
+          schema:
+            description: Root Object
+            properties:
+              Results:
+                $ref: '#/definitions/meta1'
+            required:
+            - Results
+            type: object
+            xml:
+              name: Root
+      summary: Resource Conservation and Recovery Act (RCRA) Metadata Service
+      tags:
+      - Metadata
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      description: Returns the JSON Object Name and ColumnId for usage with the qcolumns parameter for get_qid, get_facility_info and other service endpoints.
+      parameters:
+      - description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+        enum:
+        - JSONP
+        - JSON
+        - XML
+        in: formData
+        name: output
+        required: false
+        type: string
+        example: string
+      - $ref: '#/parameters/f.callback'
+      responses:
+        '200':
+          description: Results are an array of columns/objects.
+          schema:
+            description: Root Object
+            properties:
+              Results:
+                $ref: '#/definitions/meta1'
+            required:
+            - Results
+            type: object
+            xml:
+              name: Root
+      summary: Resource Conservation and Recovery Act (RCRA) Metadata Service
+      tags:
+      - Metadata
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /sdw_rest_services.metadata:
+    get:
+      description: Returns the JSON Object Name and ColumnId for usage with the qcolumns parameter for get_systems endpoint.
+      parameters:
+      - description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+        enum:
+        - JSONP
+        - JSON
+        - XML
+        in: query
+        name: output
+        required: false
+        type: string
+        example: string
+      - $ref: '#/parameters/q.callback'
+      responses:
+        '200':
+          description: Results are an array of columns/objects.
+          schema:
+            description: Root Object
+            properties:
+              Results:
+                $ref: '#/definitions/meta1'
+            required:
+            - Results
+            type: object
+            xml:
+              name: Root
+      summary: Safe Drinking Water Act (SDWA) Metadata Service
+      tags:
+      - Metadata
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      description: Returns the JSON Object Name and ColumnId for usage with the qcolumns parameter for get_systems endpoint.
+      parameters:
+      - description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+        enum:
+        - JSONP
+        - JSON
+        - XML
+        in: formData
+        name: output
+        required: false
+        type: string
+        example: string
+      - $ref: '#/parameters/f.callback'
+      responses:
+        '200':
+          description: Results are an array of columns/objects.
+          schema:
+            description: Root Object
+            properties:
+              Results:
+                $ref: '#/definitions/meta1'
+            required:
+            - Results
+            type: object
+            xml:
+              name: Root
+      summary: Safe Drinking Water Act (SDWA) Metadata Service
+      tags:
+      - Metadata
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '
+definitions:
+  meta1:
+    description: Results Object
+    properties:
+      Message:
+        description: Field to record messages (typically performance-related) about packet processing
+        example: Success
+        title: Message
+        type: string
+      ResultColumns:
+        items:
+          $ref: '#/definitions/meta3'
+        title: Result Columns
+        type: array
+        xml:
+          name: ResultColumns
+          wrapped: true
+        example:
+        - string
+    required:
+    - Message
+    type: object
+  meta3:
+    description: Results Column Object
+    properties:
+      ColumnID:
+        title: Column ID
+        type: string
+        example: '12345'
+      ColumnName:
+        title: Column Name
+        type: string
+        example: EPA Facility
+      DataLength:
+        description: Data length for EPA program database column.
+        example: '10'
+        title: Data Length
+        type: string
+      DataType:
+        description: Data type for EPA program database column.
+        example: NUMBER
+        title: Data Type
+        type: string
+      Description:
+        title: Column Description
+        type: string
+        example: string
+      ObjectName:
+        description: The JSON name used for the database column.
+        example: CaseName
+        title: Object Name
+        type: string
+    required:
+    - ColumnName
+    - DataType
+    - DataLength
+    - ColumnID
+    - ObjectName
+    - Description
+    type: object
+    xml:
+      name: ResultColumn
+  met2:
+    description: Results Column Object
+    properties:
+      ColumnID:
+        title: Column ID
+        type: string
+        example: '12345'
+      ColumnName:
+        title: Column Name
+        type: string
+        example: EPA Facility
+      DataLength:
+        description: Data length for EPA program database column.
+        example: '10'
+        title: Data Length
+        type: string
+      DataType:
+        description: Data type for EPA program database column.
+        example: NUMBER
+        title: Data Type
+        type: string
+      Description:
+        description: A description of the category of Supplemental Environment Project (SEP) for a settlement.
+        title: Description
+        type: string
+        example: string
+      ObjectName:
+        description: The JSON name used for the database column.
+        example: CaseName
+        title: Object Name
+        type: string
+    required:
+    - ColumnName
+    - DataType
+    - DataLength
+    - ColumnID
+    - ObjectName
+    - Description
+    type: object
+    xml:
+      name: ResultColumn
+  met1:
+    description: Results Object
+    properties:
+      Message:
+        description: Field to record messages (typically performance-related) about packet processing
+        example: Success
+        title: Message
+        type: string
+      ResultColumns:
+        items:
+          $ref: '#/definitions/met2'
+        title: Result Columns
+        type: array
+        xml:
+          name: ResultColumns
+          wrapped: true
+        example:
+        - string
+    required:
+    - Message
+    type: object
+parameters:
+  q.callback:
+    description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
+    in: query
+    name: callback
+    required: false
+    type: string
+  f.callback:
+    description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
+    in: formData
+    name: callback
+    required: false
+    type: string

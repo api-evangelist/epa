@@ -1,0 +1,371 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes Pollutants API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Pollutants
+paths:
+  /api/pollutants:
+    get:
+      summary: Pollutants
+      description: Placeholder
+      tags:
+      - Pollutants
+      responses:
+        '200':
+          description: Placeholder
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pollutant.list'
+              examples:
+                get_api_pollutants200Example:
+                  summary: Default get_api_pollutants 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/pollutantCategories:
+    get:
+      summary: Pollutant Categories
+      description: Placeholder
+      tags:
+      - Pollutants
+      responses:
+        '200':
+          description: Placeholder
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pollutant.listCategories'
+              examples:
+                get_api_pollutantCategories200Example:
+                  summary: Default get_api_pollutantCategories 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/pollutant:
+    get:
+      summary: Pollutant
+      description: Placeholder
+      parameters:
+      - name: id
+        in: query
+        description: Placeholder.
+        required: true
+        schema:
+          type: string
+          enum:
+          - BOD5
+          - TSS
+          - pH
+          - Pentachlorophenol
+          - Trichlorophenol
+          - Oil & Grease
+          - TCDD
+          - TCDF
+          - Chloroform (Trichloromethane)
+          - Trichlorosyringol
+        example: BOD5
+      - $ref: '#/components/parameters/download'
+      tags:
+      - Pollutants
+      responses:
+        '200':
+          description: Placeholder
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pollutant.read'
+              examples:
+                get_api_pollutant200Example:
+                  summary: Default get_api_pollutant 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/pollutantCategory:
+    get:
+      summary: Pollutant Category
+      description: Placeholder
+      parameters:
+      - name: id
+        in: query
+        description: Placeholder.
+        required: true
+        schema:
+          type: integer
+        example: 0
+      - $ref: '#/components/parameters/download'
+      tags:
+      - Pollutants
+      responses:
+        '200':
+          description: Placeholder
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pollutant.readCategory'
+              examples:
+                get_api_pollutantCategory200Example:
+                  summary: Default get_api_pollutantCategory 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/pollutantLimitations:
+    get:
+      summary: Pollutant Limitations
+      description: Placeholder
+      parameters:
+      - $ref: '#/components/parameters/pollutantId'
+      - $ref: '#/components/parameters/pointSourceCategoryCode'
+      - $ref: '#/components/parameters/download'
+      tags:
+      - Pollutants
+      responses:
+        '200':
+          description: Placeholder
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pollutant.limitations'
+              examples:
+                get_api_pollutantLimitations200Example:
+                  summary: Default get_api_pollutantLimitations 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/limitation:
+    get:
+      summary: Limitation
+      description: Placeholder
+      parameters:
+      - name: id
+        in: query
+        description: Placeholder.
+        required: true
+        schema:
+          type: integer
+        example: 0
+      - $ref: '#/components/parameters/download'
+      tags:
+      - Pollutants
+      responses:
+        '200':
+          description: Placeholder
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/limitation.read'
+              examples:
+                get_api_limitation200Example:
+                  summary: Default get_api_limitation 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    limitation.read:
+      type: object
+      description: Placeholder
+      properties:
+        Dummy:
+          type: string
+          title: Dummy
+          example: Dummy
+          description: Dummy
+      required:
+      - Dummy
+    pollutant.read:
+      type: object
+      description: Placeholder
+      properties:
+        Dummy:
+          type: string
+          title: Dummy
+          example: Dummy
+          description: Dummy
+      required:
+      - Dummy
+    pollutant.readCategory:
+      type: object
+      description: Placeholder
+      properties:
+        Dummy:
+          type: string
+          title: Dummy
+          example: Dummy
+          description: Dummy
+      required:
+      - Dummy
+    pollutant.list:
+      type: object
+      description: Placeholder
+      properties:
+        Dummy:
+          type: string
+          title: Dummy
+          example: Dummy
+          description: Dummy
+      required:
+      - Dummy
+    pollutant.limitations:
+      type: object
+      description: Placeholder
+      properties:
+        Dummy:
+          type: string
+          title: Dummy
+          example: Dummy
+          description: Dummy
+      required:
+      - Dummy
+    pollutant.listCategories:
+      type: object
+      description: Placeholder
+      properties:
+        Dummy:
+          type: string
+          title: Dummy
+          example: Dummy
+          description: Dummy
+      required:
+      - Dummy
+  parameters:
+    download:
+      name: download
+      in: query
+      description: Placeholder.
+      required: false
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    pointSourceCategoryCode:
+      name: pointSourceCategoryCode
+      in: query
+      description: Placeholder.
+      required: false
+      schema:
+        type: integer
+        enum:
+        - 405
+        - 406
+        - 407
+        - 408
+        - 409
+        - 410
+        - 411
+        - 412
+        - 413
+        - 414
+        - 415
+        - 417
+        - 418
+        - 419
+        - 420
+        - 421
+        - 422
+        - 423
+        - 424
+        - 425
+        - 426
+        - 427
+        - 428
+        - 429
+        - 430
+        - 432
+        - 433
+        - 434
+        - 435
+        - 436
+        - 437
+        - 438
+        - 439
+        - 440
+        - 441
+        - 442
+        - 443
+        - 444
+        - 445
+        - 446
+        - 447
+        - 449
+        - 450
+        - 451
+        - 454
+        - 455
+        - 457
+        - 458
+        - 459
+        - 460
+        - 461
+        - 463
+        - 464
+        - 465
+        - 466
+        - 467
+        - 468
+        - 469
+        - 471
+    pollutantId:
+      name: pollutantId
+      in: query
+      description: Placeholder.
+      required: false
+      schema:
+        type: integer
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

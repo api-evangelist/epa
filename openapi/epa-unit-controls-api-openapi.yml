@@ -1,0 +1,147 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes Unit Controls API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Unit Controls
+paths:
+  /monitor-plan-mgmt/units/{unitId}/unit-controls:
+    get:
+      operationId: UnitControlController_getUnitControls
+      parameters:
+      - name: unitId
+        required: true
+        in: path
+        schema:
+          type: number
+        example: 0.0
+      responses:
+        '200':
+          description: Retrieves workspace unit control records from a specific unit ID
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/UnitControlDTO'
+              examples:
+                UnitControlController_getUnitControls200Example:
+                  summary: Default UnitControlController_getUnitControls 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      tags:
+      - Unit Controls
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    UnitControlDTO:
+      type: object
+      properties:
+        controlCode:
+          type: string
+          description: Codes used to identify the type of control equipment.
+          example: SNCR
+        originalCode:
+          type: string
+          description: Code used to identify that the control equipment was installed and operational as part of the original unit design.
+          example: '0'
+        installDate:
+          format: date-time
+          type: string
+          description: Approximate date the original control equipment was or will be installed.
+          example: '2005-01-01'
+        optimizationDate:
+          format: date-time
+          type: string
+          description: The approximate date on which optimization of control equipment was completed and the equipment made fully operational if the control equipment was not part of the original installation.
+          example: '2006-06-01'
+        seasonalControlsIndicator:
+          type: string
+          description: Code used to identify if the NOx control equipment was used during the ozone season.
+          example: '0'
+        retireDate:
+          format: date-time
+          type: string
+          description: Date control equipment was retired. This value will be null for active records.
+          example: null
+        id:
+          type: string
+          description: Unique identifier of a unit control record.
+          example: '618'
+        unitId:
+          type: number
+          description: Unique identifier of a unit record.
+          example: '734'
+        userId:
+          type: string
+          description: User account or source of data that added or updated record.
+          example: abcde
+        addDate:
+          type: string
+          description: Date and time in which record was added.
+          example: '2009-02-20'
+        updateDate:
+          type: string
+          description: Date and time in which record was last updated.
+          example: '2009-02-20'
+        active:
+          type: boolean
+          description: Flag for active monitor location record
+          example: true
+        parameterCode:
+          type: string
+          example: string
+      required:
+      - controlCode
+      - originalCode
+      - installDate
+      - optimizationDate
+      - seasonalControlsIndicator
+      - retireDate
+      - id
+      - unitId
+      - userId
+      - addDate
+      - updateDate
+      - active
+      - parameterCode
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

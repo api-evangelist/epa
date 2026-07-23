@@ -1,0 +1,338 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes Point Source Categories API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Point Source Categories
+paths:
+  /api/pointSourceCategories:
+    get:
+      summary: Point Source Categories
+      description: Placeholder
+      tags:
+      - Point Source Categories
+      responses:
+        '200':
+          description: Placeholder
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pointSourceCategory.list'
+              examples:
+                get_api_pointSourceCategories200Example:
+                  summary: Default get_api_pointSourceCategories 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/pointSourceCategory/{id}:
+    get:
+      summary: Point Source Category ID
+      description: Placeholder
+      parameters:
+      - name: id
+        in: path
+        description: Placeholder.
+        required: true
+        schema:
+          type: integer
+        example: 0
+      tags:
+      - Point Source Categories
+      responses:
+        '200':
+          description: Placeholder
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pointSourceCategory.read'
+              examples:
+                get_api_pointSourceCategory_{id}200Example:
+                  summary: Default get_api_pointSourceCategory_{id} 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/pointSourceCategoryCfr/{id}:
+    get:
+      summary: Point Source Category CFR ID
+      description: Placeholder
+      parameters:
+      - name: id
+        in: path
+        description: Placeholder.
+        required: true
+        schema:
+          type: integer
+        example: 0
+      tags:
+      - Point Source Categories
+      responses:
+        '200':
+          description: Placeholder.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pointSourceCategory.cfr'
+              examples:
+                get_api_pointSourceCategoryCfr_{id}200Example:
+                  summary: Default get_api_pointSourceCategoryCfr_{id} 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/pointSourceCategoryDefinitions/{id}:
+    get:
+      summary: Point Source Category Definitions ID
+      description: Placeholder
+      parameters:
+      - name: id
+        in: path
+        description: Placeholder.
+        required: true
+        schema:
+          type: integer
+        example: 0
+      tags:
+      - Point Source Categories
+      responses:
+        '200':
+          description: Placeholder.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pointSourceCategory.definitions'
+              examples:
+                get_api_pointSourceCategoryDefinitions_{id}200Example:
+                  summary: Default get_api_pointSourceCategoryDefinitions_{id} 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/pointSourceCategoryCitationHistory/{id}:
+    get:
+      summary: Point Source Category Citation History ID
+      description: Placeholder
+      parameters:
+      - name: id
+        in: path
+        description: Placeholder.
+        required: true
+        schema:
+          type: integer
+        example: 0
+      tags:
+      - Point Source Categories
+      responses:
+        '200':
+          description: Placeholder.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pointSourceCategory.citationHistory'
+              examples:
+                get_api_pointSourceCategoryCitationHistory_{id}200Example:
+                  summary: Default get_api_pointSourceCategoryCitationHistory_{id} 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/pointSourceSubcategory/{id}:
+    get:
+      summary: Point Source Category Subcategory ID
+      description: Placeholder
+      parameters:
+      - name: id
+        in: path
+        description: Placeholder.
+        required: true
+        schema:
+          type: integer
+        example: 0
+      tags:
+      - Point Source Categories
+      responses:
+        '200':
+          description: Placeholder.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pointSourceSubcategory.read'
+              examples:
+                get_api_pointSourceSubcategory_{id}200Example:
+                  summary: Default get_api_pointSourceSubcategory_{id} 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/wastestreamProcessLimitations:
+    get:
+      summary: Point Source Category Wastestream Process Limitations
+      description: Placeholder
+      parameters:
+      - name: id
+        in: query
+        description: Placeholder.
+        required: true
+        schema:
+          type: integer
+        example: 0
+      - $ref: '#/components/parameters/download'
+      tags:
+      - Point Source Categories
+      responses:
+        '200':
+          description: Placeholder.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/wastestreamProcess.limitations'
+              examples:
+                get_api_wastestreamProcessLimitations200Example:
+                  summary: Default get_api_wastestreamProcessLimitations 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    pointSourceSubcategory.read:
+      type: object
+      description: Placeholder
+      properties:
+        Dummy:
+          type: string
+          title: Dummy
+          example: Dummy
+          description: Dummy
+      required:
+      - Dummy
+    pointSourceCategory.cfr:
+      type: object
+      description: Placeholder
+      properties:
+        Dummy:
+          type: string
+          title: Dummy
+          example: Dummy
+          description: Dummy
+      required:
+      - Dummy
+    pointSourceCategory.citationHistory:
+      type: object
+      description: Placeholder
+      properties:
+        Dummy:
+          type: string
+          title: Dummy
+          example: Dummy
+          description: Dummy
+      required:
+      - Dummy
+    pointSourceCategory.list:
+      type: object
+      description: Placeholder
+      properties:
+        Dummy:
+          type: string
+          title: Dummy
+          example: Dummy
+          description: Dummy
+      required:
+      - Dummy
+    pointSourceCategory.definitions:
+      type: object
+      description: Placeholder
+      properties:
+        Dummy:
+          type: string
+          title: Dummy
+          example: Dummy
+          description: Dummy
+      required:
+      - Dummy
+    pointSourceCategory.read:
+      type: object
+      description: Placeholder
+      properties:
+        Dummy:
+          type: string
+          title: Dummy
+          example: Dummy
+          description: Dummy
+      required:
+      - Dummy
+    wastestreamProcess.limitations:
+      type: object
+      description: Placeholder
+      properties:
+        Dummy:
+          type: string
+          title: Dummy
+          example: Dummy
+          description: Dummy
+      required:
+      - Dummy
+  parameters:
+    download:
+      name: download
+      in: query
+      description: Placeholder.
+      required: false
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

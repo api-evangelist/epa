@@ -1,0 +1,157 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes Unit Fuels API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Unit Fuels
+paths:
+  /monitor-plan-mgmt/units/{unitId}/unit-fuels:
+    get:
+      operationId: UnitFuelController_getUnitFuels
+      parameters:
+      - name: unitId
+        required: true
+        in: path
+        schema:
+          type: number
+        example: 0.0
+      responses:
+        '200':
+          description: Retrieves official unit fuel records from a specific unit ID
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/UnitFuelDTO'
+              examples:
+                UnitFuelController_getUnitFuels200Example:
+                  summary: Default UnitFuelController_getUnitFuels 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      tags:
+      - Unit Fuels
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    UnitFuelDTO:
+      type: object
+      properties:
+        fuelCode:
+          type: string
+          description: The type of fuel which a UNIT is capable or will be capable of combusting.
+          example: C
+        indicatorCode:
+          type: string
+          description: Code that indicates fuel or control type.
+          example: P
+        ozoneSeasonIndicator:
+          type: number
+          description: Indicator that FUEL is used during ozone season.
+          example: '0'
+        demGCV:
+          type: string
+          description: Demonstration method to qualify for monthly GCV fuel sampling.
+          example: GGC
+        demSO2:
+          type: string
+          description: Demonstration method to qualify for daily fuel sampling for percent sulfur.
+          example: SGC
+        beginDate:
+          format: date-time
+          type: string
+          description: Date on which a relationship or an activity began.
+          example: '1995-01-01'
+        endDate:
+          format: date-time
+          type: string
+          description: Date on which a relationship or an activity ended.
+          example: '2015-03-30'
+        id:
+          type: string
+          description: Identity key for UNIT_FUEL table.
+          example: EXPCH0876-C97319A3E96540BF92077C58DB9E2A17
+        unitId:
+          type: number
+          description: Identity key for UNIT table.
+          example: '91233'
+        actualOrProjectCode:
+          type: string
+          description: Indicator of whether the begin date for the fuel type is an actual date or a projected date.
+          example: ''
+        sulfurContent:
+          type: number
+          description: The percent sulfur content of the fuel, by weight.
+          example: ''
+        userId:
+          type: string
+          description: The user name of the person or process that created the record if the Update Date is empty.  Otherwise this is the user name of the person or process that made the last update.
+          example: abcde
+        addDate:
+          type: string
+          description: Date the record was created.
+          example: '2009-02-20'
+        updateDate:
+          type: string
+          description: Date of the last record update.
+          example: '2015-04-16'
+        active:
+          type: boolean
+          description: Flag for active monitor location record
+          example: true
+      required:
+      - fuelCode
+      - indicatorCode
+      - ozoneSeasonIndicator
+      - demGCV
+      - demSO2
+      - beginDate
+      - endDate
+      - id
+      - unitId
+      - actualOrProjectCode
+      - sulfurContent
+      - userId
+      - addDate
+      - updateDate
+      - active
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

@@ -1,0 +1,3008 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes Apportioned Hourly Emissions API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Apportioned Hourly Emissions
+paths:
+  /emissions-mgmt/emissions/apportioned/hourly:
+    get:
+      operationId: HourlyApportionedEmissionsController_getEmissions
+      parameters:
+      - name: stateCode
+        required: false
+        in: query
+        description: Two letter abbreviation for the State.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - AL
+            - AK
+            - AS
+            - AZ
+            - AR
+            - CA
+            - CO
+            - CT
+            - DE
+            - DC
+            - FM
+            - FL
+            - GA
+            - GU
+            - HI
+            - ID
+            - IL
+            - IN
+            - IA
+            - KS
+            - KY
+            - LA
+            - ME
+            - MH
+            - MD
+            - MA
+            - MI
+            - MN
+            - MS
+            - MO
+            - MT
+            - NE
+            - NV
+            - NH
+            - NJ
+            - NM
+            - NY
+            - NC
+            - ND
+            - MP
+            - OH
+            - OK
+            - OR
+            - PW
+            - PA
+            - PR
+            - RI
+            - SC
+            - SD
+            - TN
+            - TX
+            - UT
+            - VT
+            - VI
+            - VA
+            - WA
+            - WV
+            - WI
+            - WY
+        example:
+        - AL
+      - name: facilityId
+        required: false
+        in: query
+        description: The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the "ORIS code", "ORISPL code", "Facility ID", or "Facility code", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with "88" assigned by the EPA's Clean Air Markets Division for electronic reporting.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: number
+        example:
+        - 0.0
+      - name: unitType
+        required: false
+        in: query
+        description: Type of unit or boiler.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - Arch-fired boiler
+            - Bubbling fluidized bed boiler
+            - Cyclone boiler
+            - Cell burner boiler
+            - Combined cycle
+            - Circulating fluidized bed boiler
+            - Combustion turbine
+            - Dry bottom wall-fired boiler
+            - Dry bottom turbo-fired boiler
+            - Dry bottom vertically-fired boiler
+            - Internal combustion engine
+            - Integrated gasification combined cycle
+            - Cement Kiln
+            - Other boiler
+            - Other turbine
+            - Pressurized fluidized bed boiler
+            - Process Heater
+            - Stoker
+            - Tangentially-fired
+            - Wet bottom wall-fired boiler
+            - Wet bottom turbo-fired boiler
+            - Wet bottom vertically-fired boiler
+        example:
+        - Arch-fired boiler
+      - name: unitFuelType
+        required: false
+        in: query
+        description: Primary or Secondary fuel types combusted by the unit.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - Coal
+            - Coal Refuse
+            - Diesel Oil
+            - Liquified Petroleum Gas
+            - Natural Gas
+            - Other Gas
+            - Other Oil
+            - Other Solid Fuel
+            - Petroleum Coke
+            - Pipeline Natural Gas
+            - Process Gas
+            - Process Sludge
+            - Refuse
+            - Residual Oil
+            - Tire Derived Fuel
+            - Waste Liquid
+            - Wood
+        example:
+        - Coal
+      - name: controlTechnologies
+        required: false
+        in: query
+        description: Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - Additives to Enhance PAC and Existing Equipment Performance
+            - Ammonia Injection
+            - Baghouse
+            - Catalyst (gold, palladium, or other) used to oxidize mercury
+            - Combustion Modification/Fuel Reburning
+            - Cyclone
+            - Dry Lime FGD
+            - Dry Low NOx Burners
+            - Dry Sorbent Injection
+            - Dual Alkali
+            - Electrostatic Precipitator
+            - Fluidized Bed Limestone Injection
+            - Halogenated PAC Sorbent Injection
+            - Hybrid ESP
+            - Low NOx Burner Technology (Dry Bottom only)
+            - Low NOx Burner Technology w/ Closed-coupled OFA
+            - Low NOx Burner Technology w/ Closed-coupled/Separated OFA
+            - Low NOx Burner Technology w/ Overfire Air
+            - Low NOx Burner Technology w/ Separated OFA
+            - Low NOx Cell Burner
+            - Magnesium Oxide
+            - Other
+            - Other (Non PAC) Sorbent Injection
+            - Overfire Air
+            - Regenerative Activated Coke Technology
+            - Selective Catalytic Reduction
+            - Selective Non-catalytic Reduction
+            - Sodium Based
+            - Steam Injection
+            - Untreated PAC Sorbent Injection
+            - Water Injection
+            - Wet ESP
+            - Wet Lime FGD
+            - Wet Limestone
+            - Wet Scrubber
+        example:
+        - Additives to Enhance PAC and Existing Equipment Performance
+      - name: programCodeInfo
+        required: false
+        in: query
+        description: Statutory or regulatory based options for tracking and reducing air pollution emissions.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - ARP
+            - CAIRNOX
+            - CAIROS
+            - CAIRSO2
+            - CSNOX
+            - CSNOXOS
+            - CSOSG1
+            - CSOSG2
+            - CSOSG2E
+            - CSOSG3
+            - CSSO2G1
+            - CSSO2G2
+            - NBP
+            - NHNOX
+            - NSPS4T
+            - OTC
+            - RGGI
+            - SIPNOX
+            - TXSO2
+        example:
+        - ARP
+      - name: beginDate
+        required: true
+        in: query
+        description: Begin date for a given period of a unit's emissions.
+        schema:
+          format: date-time
+          type: string
+        example: '2024-01-15T12:00:00Z'
+      - name: endDate
+        required: true
+        in: query
+        description: End date for a given period of a unit's emissions.
+        schema:
+          format: date-time
+          type: string
+        example: '2024-01-15T12:00:00Z'
+      - name: operatingHoursOnly
+        required: false
+        in: query
+        description: Indicator of whether or not a request should return only data for hours where a unit operated.
+        schema:
+          type: boolean
+        example: true
+      - name: locationName
+        required: false
+        in: query
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+        example:
+        - EPA Facility
+      - name: page
+        required: true
+        in: query
+        description: Page number of data being requested.
+        schema:
+          type: number
+        example: 0.0
+      - name: perPage
+        required: true
+        in: query
+        description: Number of results per page.
+        schema:
+          type: number
+        example: 0.0
+      responses:
+        '200':
+          description: Retrieves Hourly Apportioned Emissions per filter criteria
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/HourUnitDataView'
+              examples:
+                HourlyApportionedEmissionsController_getEmissions200Example:
+                  summary: Default HourlyApportionedEmissionsController_getEmissions 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+            text/csv:
+              schema:
+                type: string
+                example: State,Facility Name,Facility ID,Unit ID,unit_id,Associated Stacks,Date,Hour,Operating Time,Gross Load (MW),Steam Load (1000 lb/hr),SO2 Mass (lbs),SO2 Mass Measure Indicator,SO2 Rate (lbs/mmBtu),SO2 Rate Measure Indicator,CO2 Mass (short tons),CO2 Mass Measure Indicator,CO2 Rate (short tons/mmBtu),CO2 Rate Measure Indicator,NOx Mass (lbs),NOx Mass Measure Indicator,NOx Rate (lbs/mmBtu),NOx Rate Measure Indicator,Heat Input (mmBtu),Heat Input Measure Indicator,Primary Fuel Type,Secondary Fuel Type,Unit Type,SO2 Controls,NOx Controls,PM Controls,Hg Controls,Program Code
+              examples:
+                HourlyApportionedEmissionsController_getEmissions200Example:
+                  summary: Default HourlyApportionedEmissionsController_getEmissions 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+        '400':
+          description: Invalid Request
+        '404':
+          description: Resource Not Found
+      security:
+      - APIKey: []
+      tags:
+      - Apportioned Hourly Emissions
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /emissions-mgmt/emissions/apportioned/hourly/by-facility:
+    get:
+      operationId: HourlyApportionedEmissionsController_getEmissionsFacilityAggregation
+      parameters:
+      - name: stateCode
+        required: false
+        in: query
+        description: Two letter abbreviation for the State.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - AL
+            - AK
+            - AS
+            - AZ
+            - AR
+            - CA
+            - CO
+            - CT
+            - DE
+            - DC
+            - FM
+            - FL
+            - GA
+            - GU
+            - HI
+            - ID
+            - IL
+            - IN
+            - IA
+            - KS
+            - KY
+            - LA
+            - ME
+            - MH
+            - MD
+            - MA
+            - MI
+            - MN
+            - MS
+            - MO
+            - MT
+            - NE
+            - NV
+            - NH
+            - NJ
+            - NM
+            - NY
+            - NC
+            - ND
+            - MP
+            - OH
+            - OK
+            - OR
+            - PW
+            - PA
+            - PR
+            - RI
+            - SC
+            - SD
+            - TN
+            - TX
+            - UT
+            - VT
+            - VI
+            - VA
+            - WA
+            - WV
+            - WI
+            - WY
+        example:
+        - AL
+      - name: facilityId
+        required: false
+        in: query
+        description: The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the "ORIS code", "ORISPL code", "Facility ID", or "Facility code", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with "88" assigned by the EPA's Clean Air Markets Division for electronic reporting.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: number
+        example:
+        - 0.0
+      - name: unitType
+        required: false
+        in: query
+        description: Type of unit or boiler.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - Arch-fired boiler
+            - Bubbling fluidized bed boiler
+            - Cyclone boiler
+            - Cell burner boiler
+            - Combined cycle
+            - Circulating fluidized bed boiler
+            - Combustion turbine
+            - Dry bottom wall-fired boiler
+            - Dry bottom turbo-fired boiler
+            - Dry bottom vertically-fired boiler
+            - Internal combustion engine
+            - Integrated gasification combined cycle
+            - Cement Kiln
+            - Other boiler
+            - Other turbine
+            - Pressurized fluidized bed boiler
+            - Process Heater
+            - Stoker
+            - Tangentially-fired
+            - Wet bottom wall-fired boiler
+            - Wet bottom turbo-fired boiler
+            - Wet bottom vertically-fired boiler
+        example:
+        - Arch-fired boiler
+      - name: unitFuelType
+        required: false
+        in: query
+        description: Primary or Secondary fuel types combusted by the unit.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - Coal
+            - Coal Refuse
+            - Diesel Oil
+            - Liquified Petroleum Gas
+            - Natural Gas
+            - Other Gas
+            - Other Oil
+            - Other Solid Fuel
+            - Petroleum Coke
+            - Pipeline Natural Gas
+            - Process Gas
+            - Process Sludge
+            - Refuse
+            - Residual Oil
+            - Tire Derived Fuel
+            - Waste Liquid
+            - Wood
+        example:
+        - Coal
+      - name: controlTechnologies
+        required: false
+        in: query
+        description: Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - Additives to Enhance PAC and Existing Equipment Performance
+            - Ammonia Injection
+            - Baghouse
+            - Catalyst (gold, palladium, or other) used to oxidize mercury
+            - Combustion Modification/Fuel Reburning
+            - Cyclone
+            - Dry Lime FGD
+            - Dry Low NOx Burners
+            - Dry Sorbent Injection
+            - Dual Alkali
+            - Electrostatic Precipitator
+            - Fluidized Bed Limestone Injection
+            - Halogenated PAC Sorbent Injection
+            - Hybrid ESP
+            - Low NOx Burner Technology (Dry Bottom only)
+            - Low NOx Burner Technology w/ Closed-coupled OFA
+            - Low NOx Burner Technology w/ Closed-coupled/Separated OFA
+            - Low NOx Burner Technology w/ Overfire Air
+            - Low NOx Burner Technology w/ Separated OFA
+            - Low NOx Cell Burner
+            - Magnesium Oxide
+            - Other
+            - Other (Non PAC) Sorbent Injection
+            - Overfire Air
+            - Regenerative Activated Coke Technology
+            - Selective Catalytic Reduction
+            - Selective Non-catalytic Reduction
+            - Sodium Based
+            - Steam Injection
+            - Untreated PAC Sorbent Injection
+            - Water Injection
+            - Wet ESP
+            - Wet Lime FGD
+            - Wet Limestone
+            - Wet Scrubber
+        example:
+        - Additives to Enhance PAC and Existing Equipment Performance
+      - name: programCodeInfo
+        required: false
+        in: query
+        description: Statutory or regulatory based options for tracking and reducing air pollution emissions.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - ARP
+            - CAIRNOX
+            - CAIROS
+            - CAIRSO2
+            - CSNOX
+            - CSNOXOS
+            - CSOSG1
+            - CSOSG2
+            - CSOSG2E
+            - CSOSG3
+            - CSSO2G1
+            - CSSO2G2
+            - NBP
+            - NHNOX
+            - NSPS4T
+            - OTC
+            - RGGI
+            - SIPNOX
+            - TXSO2
+        example:
+        - ARP
+      - name: beginDate
+        required: true
+        in: query
+        description: Begin date for a given period of a unit's emissions.
+        schema:
+          format: date-time
+          type: string
+        example: '2024-01-15T12:00:00Z'
+      - name: endDate
+        required: true
+        in: query
+        description: End date for a given period of a unit's emissions.
+        schema:
+          format: date-time
+          type: string
+        example: '2024-01-15T12:00:00Z'
+      - name: operatingHoursOnly
+        required: false
+        in: query
+        description: Indicator of whether or not a request should return only data for hours where a unit operated.
+        schema:
+          type: boolean
+        example: true
+      - name: locationName
+        required: false
+        in: query
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+        example:
+        - EPA Facility
+      - name: page
+        required: true
+        in: query
+        description: Page number of data being requested.
+        schema:
+          type: number
+        example: 0.0
+      - name: perPage
+        required: true
+        in: query
+        description: Number of results per page.
+        schema:
+          type: number
+        example: 0.0
+      responses:
+        '200':
+          description: Retrieves Hourly Apportioned Emissions Facility Aggregation data per filter criteria
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/HourlyApportionedEmissionsFacilityAggregationDTO'
+              examples:
+                HourlyApportionedEmissionsController_getEmissionsFacilityAggregation200Example:
+                  summary: Default HourlyApportionedEmissionsController_getEmissionsFacilityAggregation 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+            text/csv:
+              schema:
+                type: string
+                example: State,Facility Name,Facility ID,Date,Hour,Gross Load (MW),Steam Load (1000 lb/hr),SO2 Mass (lbs),CO2 Mass (short tons),NOx Mass (lbs),Heat Input (mmBtu)
+              examples:
+                HourlyApportionedEmissionsController_getEmissionsFacilityAggregation200Example:
+                  summary: Default HourlyApportionedEmissionsController_getEmissionsFacilityAggregation 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+        '400':
+          description: Invalid Request
+        '404':
+          description: Resource Not Found
+      security:
+      - APIKey: []
+      tags:
+      - Apportioned Hourly Emissions
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /emissions-mgmt/emissions/apportioned/hourly/by-state:
+    get:
+      operationId: HourlyApportionedEmissionsController_getEmissionsStateAggregation
+      parameters:
+      - name: stateCode
+        required: false
+        in: query
+        description: Two letter abbreviation for the State.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - AL
+            - AK
+            - AS
+            - AZ
+            - AR
+            - CA
+            - CO
+            - CT
+            - DE
+            - DC
+            - FM
+            - FL
+            - GA
+            - GU
+            - HI
+            - ID
+            - IL
+            - IN
+            - IA
+            - KS
+            - KY
+            - LA
+            - ME
+            - MH
+            - MD
+            - MA
+            - MI
+            - MN
+            - MS
+            - MO
+            - MT
+            - NE
+            - NV
+            - NH
+            - NJ
+            - NM
+            - NY
+            - NC
+            - ND
+            - MP
+            - OH
+            - OK
+            - OR
+            - PW
+            - PA
+            - PR
+            - RI
+            - SC
+            - SD
+            - TN
+            - TX
+            - UT
+            - VT
+            - VI
+            - VA
+            - WA
+            - WV
+            - WI
+            - WY
+        example:
+        - AL
+      - name: facilityId
+        required: false
+        in: query
+        description: The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the "ORIS code", "ORISPL code", "Facility ID", or "Facility code", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with "88" assigned by the EPA's Clean Air Markets Division for electronic reporting.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: number
+        example:
+        - 0.0
+      - name: unitType
+        required: false
+        in: query
+        description: Type of unit or boiler.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - Arch-fired boiler
+            - Bubbling fluidized bed boiler
+            - Cyclone boiler
+            - Cell burner boiler
+            - Combined cycle
+            - Circulating fluidized bed boiler
+            - Combustion turbine
+            - Dry bottom wall-fired boiler
+            - Dry bottom turbo-fired boiler
+            - Dry bottom vertically-fired boiler
+            - Internal combustion engine
+            - Integrated gasification combined cycle
+            - Cement Kiln
+            - Other boiler
+            - Other turbine
+            - Pressurized fluidized bed boiler
+            - Process Heater
+            - Stoker
+            - Tangentially-fired
+            - Wet bottom wall-fired boiler
+            - Wet bottom turbo-fired boiler
+            - Wet bottom vertically-fired boiler
+        example:
+        - Arch-fired boiler
+      - name: unitFuelType
+        required: false
+        in: query
+        description: Primary or Secondary fuel types combusted by the unit.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - Coal
+            - Coal Refuse
+            - Diesel Oil
+            - Liquified Petroleum Gas
+            - Natural Gas
+            - Other Gas
+            - Other Oil
+            - Other Solid Fuel
+            - Petroleum Coke
+            - Pipeline Natural Gas
+            - Process Gas
+            - Process Sludge
+            - Refuse
+            - Residual Oil
+            - Tire Derived Fuel
+            - Waste Liquid
+            - Wood
+        example:
+        - Coal
+      - name: controlTechnologies
+        required: false
+        in: query
+        description: Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - Additives to Enhance PAC and Existing Equipment Performance
+            - Ammonia Injection
+            - Baghouse
+            - Catalyst (gold, palladium, or other) used to oxidize mercury
+            - Combustion Modification/Fuel Reburning
+            - Cyclone
+            - Dry Lime FGD
+            - Dry Low NOx Burners
+            - Dry Sorbent Injection
+            - Dual Alkali
+            - Electrostatic Precipitator
+            - Fluidized Bed Limestone Injection
+            - Halogenated PAC Sorbent Injection
+            - Hybrid ESP
+            - Low NOx Burner Technology (Dry Bottom only)
+            - Low NOx Burner Technology w/ Closed-coupled OFA
+            - Low NOx Burner Technology w/ Closed-coupled/Separated OFA
+            - Low NOx Burner Technology w/ Overfire Air
+            - Low NOx Burner Technology w/ Separated OFA
+            - Low NOx Cell Burner
+            - Magnesium Oxide
+            - Other
+            - Other (Non PAC) Sorbent Injection
+            - Overfire Air
+            - Regenerative Activated Coke Technology
+            - Selective Catalytic Reduction
+            - Selective Non-catalytic Reduction
+            - Sodium Based
+            - Steam Injection
+            - Untreated PAC Sorbent Injection
+            - Water Injection
+            - Wet ESP
+            - Wet Lime FGD
+            - Wet Limestone
+            - Wet Scrubber
+        example:
+        - Additives to Enhance PAC and Existing Equipment Performance
+      - name: programCodeInfo
+        required: false
+        in: query
+        description: Statutory or regulatory based options for tracking and reducing air pollution emissions.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - ARP
+            - CAIRNOX
+            - CAIROS
+            - CAIRSO2
+            - CSNOX
+            - CSNOXOS
+            - CSOSG1
+            - CSOSG2
+            - CSOSG2E
+            - CSOSG3
+            - CSSO2G1
+            - CSSO2G2
+            - NBP
+            - NHNOX
+            - NSPS4T
+            - OTC
+            - RGGI
+            - SIPNOX
+            - TXSO2
+        example:
+        - ARP
+      - name: beginDate
+        required: true
+        in: query
+        description: Begin date for a given period of a unit's emissions.
+        schema:
+          format: date-time
+          type: string
+        example: '2024-01-15T12:00:00Z'
+      - name: endDate
+        required: true
+        in: query
+        description: End date for a given period of a unit's emissions.
+        schema:
+          format: date-time
+          type: string
+        example: '2024-01-15T12:00:00Z'
+      - name: operatingHoursOnly
+        required: false
+        in: query
+        description: Indicator of whether or not a request should return only data for hours where a unit operated.
+        schema:
+          type: boolean
+        example: true
+      - name: locationName
+        required: false
+        in: query
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+        example:
+        - EPA Facility
+      - name: page
+        required: true
+        in: query
+        description: Page number of data being requested.
+        schema:
+          type: number
+        example: 0.0
+      - name: perPage
+        required: true
+        in: query
+        description: Number of results per page.
+        schema:
+          type: number
+        example: 0.0
+      responses:
+        '200':
+          description: Retrieves Hourly Apportioned Emissions data per filter criteria aggregated by state
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/HourlyApportionedEmissionsStateAggregationDTO'
+              examples:
+                HourlyApportionedEmissionsController_getEmissionsStateAggregation200Example:
+                  summary: Default HourlyApportionedEmissionsController_getEmissionsStateAggregation 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+            text/csv:
+              schema:
+                type: string
+                example: State,Date,Hour,Gross Load (MW),Steam Load (1000 lb/hr),SO2 Mass (lbs),CO2 Mass (short tons),NOx Mass (lbs),Heat Input (mmBtu)
+              examples:
+                HourlyApportionedEmissionsController_getEmissionsStateAggregation200Example:
+                  summary: Default HourlyApportionedEmissionsController_getEmissionsStateAggregation 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+        '400':
+          description: Invalid Request
+        '404':
+          description: Resource Not Found
+      security:
+      - APIKey: []
+      tags:
+      - Apportioned Hourly Emissions
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /emissions-mgmt/emissions/apportioned/hourly/nationally:
+    get:
+      operationId: HourlyApportionedEmissionsController_getEmissionsNationalAggregation
+      parameters:
+      - name: stateCode
+        required: false
+        in: query
+        description: Two letter abbreviation for the State.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - AL
+            - AK
+            - AS
+            - AZ
+            - AR
+            - CA
+            - CO
+            - CT
+            - DE
+            - DC
+            - FM
+            - FL
+            - GA
+            - GU
+            - HI
+            - ID
+            - IL
+            - IN
+            - IA
+            - KS
+            - KY
+            - LA
+            - ME
+            - MH
+            - MD
+            - MA
+            - MI
+            - MN
+            - MS
+            - MO
+            - MT
+            - NE
+            - NV
+            - NH
+            - NJ
+            - NM
+            - NY
+            - NC
+            - ND
+            - MP
+            - OH
+            - OK
+            - OR
+            - PW
+            - PA
+            - PR
+            - RI
+            - SC
+            - SD
+            - TN
+            - TX
+            - UT
+            - VT
+            - VI
+            - VA
+            - WA
+            - WV
+            - WI
+            - WY
+        example:
+        - AL
+      - name: facilityId
+        required: false
+        in: query
+        description: The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the "ORIS code", "ORISPL code", "Facility ID", or "Facility code", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with "88" assigned by the EPA's Clean Air Markets Division for electronic reporting.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: number
+        example:
+        - 0.0
+      - name: unitType
+        required: false
+        in: query
+        description: Type of unit or boiler.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - Arch-fired boiler
+            - Bubbling fluidized bed boiler
+            - Cyclone boiler
+            - Cell burner boiler
+            - Combined cycle
+            - Circulating fluidized bed boiler
+            - Combustion turbine
+            - Dry bottom wall-fired boiler
+            - Dry bottom turbo-fired boiler
+            - Dry bottom vertically-fired boiler
+            - Internal combustion engine
+            - Integrated gasification combined cycle
+            - Cement Kiln
+            - Other boiler
+            - Other turbine
+            - Pressurized fluidized bed boiler
+            - Process Heater
+            - Stoker
+            - Tangentially-fired
+            - Wet bottom wall-fired boiler
+            - Wet bottom turbo-fired boiler
+            - Wet bottom vertically-fired boiler
+        example:
+        - Arch-fired boiler
+      - name: unitFuelType
+        required: false
+        in: query
+        description: Primary or Secondary fuel types combusted by the unit.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - Coal
+            - Coal Refuse
+            - Diesel Oil
+            - Liquified Petroleum Gas
+            - Natural Gas
+            - Other Gas
+            - Other Oil
+            - Other Solid Fuel
+            - Petroleum Coke
+            - Pipeline Natural Gas
+            - Process Gas
+            - Process Sludge
+            - Refuse
+            - Residual Oil
+            - Tire Derived Fuel
+            - Waste Liquid
+            - Wood
+        example:
+        - Coal
+      - name: controlTechnologies
+        required: false
+        in: query
+        description: Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - Additives to Enhance PAC and Existing Equipment Performance
+            - Ammonia Injection
+            - Baghouse
+            - Catalyst (gold, palladium, or other) used to oxidize mercury
+            - Combustion Modification/Fuel Reburning
+            - Cyclone
+            - Dry Lime FGD
+            - Dry Low NOx Burners
+            - Dry Sorbent Injection
+            - Dual Alkali
+            - Electrostatic Precipitator
+            - Fluidized Bed Limestone Injection
+            - Halogenated PAC Sorbent Injection
+            - Hybrid ESP
+            - Low NOx Burner Technology (Dry Bottom only)
+            - Low NOx Burner Technology w/ Closed-coupled OFA
+            - Low NOx Burner Technology w/ Closed-coupled/Separated OFA
+            - Low NOx Burner Technology w/ Overfire Air
+            - Low NOx Burner Technology w/ Separated OFA
+            - Low NOx Cell Burner
+            - Magnesium Oxide
+            - Other
+            - Other (Non PAC) Sorbent Injection
+            - Overfire Air
+            - Regenerative Activated Coke Technology
+            - Selective Catalytic Reduction
+            - Selective Non-catalytic Reduction
+            - Sodium Based
+            - Steam Injection
+            - Untreated PAC Sorbent Injection
+            - Water Injection
+            - Wet ESP
+            - Wet Lime FGD
+            - Wet Limestone
+            - Wet Scrubber
+        example:
+        - Additives to Enhance PAC and Existing Equipment Performance
+      - name: programCodeInfo
+        required: false
+        in: query
+        description: Statutory or regulatory based options for tracking and reducing air pollution emissions.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - ARP
+            - CAIRNOX
+            - CAIROS
+            - CAIRSO2
+            - CSNOX
+            - CSNOXOS
+            - CSOSG1
+            - CSOSG2
+            - CSOSG2E
+            - CSOSG3
+            - CSSO2G1
+            - CSSO2G2
+            - NBP
+            - NHNOX
+            - NSPS4T
+            - OTC
+            - RGGI
+            - SIPNOX
+            - TXSO2
+        example:
+        - ARP
+      - name: beginDate
+        required: true
+        in: query
+        description: Begin date for a given period of a unit's emissions.
+        schema:
+          format: date-time
+          type: string
+        example: '2024-01-15T12:00:00Z'
+      - name: endDate
+        required: true
+        in: query
+        description: End date for a given period of a unit's emissions.
+        schema:
+          format: date-time
+          type: string
+        example: '2024-01-15T12:00:00Z'
+      - name: operatingHoursOnly
+        required: false
+        in: query
+        description: Indicator of whether or not a request should return only data for hours where a unit operated.
+        schema:
+          type: boolean
+        example: true
+      - name: locationName
+        required: false
+        in: query
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+        example:
+        - EPA Facility
+      - name: page
+        required: true
+        in: query
+        description: Page number of data being requested.
+        schema:
+          type: number
+        example: 0.0
+      - name: perPage
+        required: true
+        in: query
+        description: Number of results per page.
+        schema:
+          type: number
+        example: 0.0
+      responses:
+        '200':
+          description: Retrieves Hourly Apportioned Emissions data per filter criteria aggregated nationally
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/HourlyApportionedEmissionsNationalAggregationDTO'
+              examples:
+                HourlyApportionedEmissionsController_getEmissionsNationalAggregation200Example:
+                  summary: Default HourlyApportionedEmissionsController_getEmissionsNationalAggregation 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+            text/csv:
+              schema:
+                type: string
+                example: Date,Hour,Gross Load (MW),Steam Load (1000 lb/hr),SO2 Mass (lbs),CO2 Mass (short tons),NOx Mass (lbs),Heat Input (mmBtu)
+              examples:
+                HourlyApportionedEmissionsController_getEmissionsNationalAggregation200Example:
+                  summary: Default HourlyApportionedEmissionsController_getEmissionsNationalAggregation 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+        '400':
+          description: Invalid Request
+        '404':
+          description: Resource Not Found
+      security:
+      - APIKey: []
+      tags:
+      - Apportioned Hourly Emissions
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /streaming-services/emissions/apportioned/hourly:
+    get:
+      operationId: HourlyApportionedEmissionsController_streamEmissions
+      parameters:
+      - name: stateCode
+        required: false
+        in: query
+        description: Two letter abbreviation for the State.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - AL
+            - AK
+            - AS
+            - AZ
+            - AR
+            - CA
+            - CO
+            - CT
+            - DE
+            - DC
+            - FM
+            - FL
+            - GA
+            - GU
+            - HI
+            - ID
+            - IL
+            - IN
+            - IA
+            - KS
+            - KY
+            - LA
+            - ME
+            - MH
+            - MD
+            - MA
+            - MI
+            - MN
+            - MS
+            - MO
+            - MT
+            - NE
+            - NV
+            - NH
+            - NJ
+            - NM
+            - NY
+            - NC
+            - ND
+            - MP
+            - OH
+            - OK
+            - OR
+            - PW
+            - PA
+            - PR
+            - RI
+            - SC
+            - SD
+            - TN
+            - TX
+            - UT
+            - VT
+            - VI
+            - VA
+            - WA
+            - WV
+            - WI
+            - WY
+        example:
+        - AL
+      - name: facilityId
+        required: false
+        in: query
+        description: The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the "ORIS code", "ORISPL code", "Facility ID", or "Facility code", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with "88" assigned by the EPA's Clean Air Markets Division for electronic reporting.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: number
+        example:
+        - 0.0
+      - name: unitType
+        required: false
+        in: query
+        description: Type of unit or boiler.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - Arch-fired boiler
+            - Bubbling fluidized bed boiler
+            - Cyclone boiler
+            - Cell burner boiler
+            - Combined cycle
+            - Circulating fluidized bed boiler
+            - Combustion turbine
+            - Dry bottom wall-fired boiler
+            - Dry bottom turbo-fired boiler
+            - Dry bottom vertically-fired boiler
+            - Internal combustion engine
+            - Integrated gasification combined cycle
+            - Cement Kiln
+            - Other boiler
+            - Other turbine
+            - Pressurized fluidized bed boiler
+            - Process Heater
+            - Stoker
+            - Tangentially-fired
+            - Wet bottom wall-fired boiler
+            - Wet bottom turbo-fired boiler
+            - Wet bottom vertically-fired boiler
+        example:
+        - Arch-fired boiler
+      - name: unitFuelType
+        required: false
+        in: query
+        description: Primary or Secondary fuel types combusted by the unit.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - Coal
+            - Coal Refuse
+            - Diesel Oil
+            - Liquified Petroleum Gas
+            - Natural Gas
+            - Other Gas
+            - Other Oil
+            - Other Solid Fuel
+            - Petroleum Coke
+            - Pipeline Natural Gas
+            - Process Gas
+            - Process Sludge
+            - Refuse
+            - Residual Oil
+            - Tire Derived Fuel
+            - Waste Liquid
+            - Wood
+        example:
+        - Coal
+      - name: controlTechnologies
+        required: false
+        in: query
+        description: Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - Additives to Enhance PAC and Existing Equipment Performance
+            - Ammonia Injection
+            - Baghouse
+            - Catalyst (gold, palladium, or other) used to oxidize mercury
+            - Combustion Modification/Fuel Reburning
+            - Cyclone
+            - Dry Lime FGD
+            - Dry Low NOx Burners
+            - Dry Sorbent Injection
+            - Dual Alkali
+            - Electrostatic Precipitator
+            - Fluidized Bed Limestone Injection
+            - Halogenated PAC Sorbent Injection
+            - Hybrid ESP
+            - Low NOx Burner Technology (Dry Bottom only)
+            - Low NOx Burner Technology w/ Closed-coupled OFA
+            - Low NOx Burner Technology w/ Closed-coupled/Separated OFA
+            - Low NOx Burner Technology w/ Overfire Air
+            - Low NOx Burner Technology w/ Separated OFA
+            - Low NOx Cell Burner
+            - Magnesium Oxide
+            - Other
+            - Other (Non PAC) Sorbent Injection
+            - Overfire Air
+            - Regenerative Activated Coke Technology
+            - Selective Catalytic Reduction
+            - Selective Non-catalytic Reduction
+            - Sodium Based
+            - Steam Injection
+            - Untreated PAC Sorbent Injection
+            - Water Injection
+            - Wet ESP
+            - Wet Lime FGD
+            - Wet Limestone
+            - Wet Scrubber
+        example:
+        - Additives to Enhance PAC and Existing Equipment Performance
+      - name: programCodeInfo
+        required: false
+        in: query
+        description: Statutory or regulatory based options for tracking and reducing air pollution emissions.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - ARP
+            - CAIRNOX
+            - CAIROS
+            - CAIRSO2
+            - CSNOX
+            - CSNOXOS
+            - CSOSG1
+            - CSOSG2
+            - CSOSG2E
+            - CSOSG3
+            - CSSO2G1
+            - CSSO2G2
+            - NBP
+            - NHNOX
+            - NSPS4T
+            - OTC
+            - RGGI
+            - SIPNOX
+            - TXSO2
+        example:
+        - ARP
+      - name: beginDate
+        required: true
+        in: query
+        description: Begin date for a given period of a unit's emissions.
+        schema:
+          format: date-time
+          type: string
+        example: '2024-01-15T12:00:00Z'
+      - name: endDate
+        required: true
+        in: query
+        description: End date for a given period of a unit's emissions.
+        schema:
+          format: date-time
+          type: string
+        example: '2024-01-15T12:00:00Z'
+      - name: operatingHoursOnly
+        required: false
+        in: query
+        description: Indicator of whether or not a request should return only data for hours where a unit operated.
+        schema:
+          type: boolean
+        example: true
+      - name: locationName
+        required: false
+        in: query
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+        example:
+        - EPA Facility
+      - name: exclude
+        required: false
+        in: query
+        description: Selected items will be excluded from the response
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - co2MassMeasureFlg
+            - co2Rate
+            - co2RateMeasureFlg
+            - grossLoad
+            - hgControlInfo
+            - noxControlInfo
+            - noxMassMeasureFlg
+            - noxRateMeasureFlg
+            - heatInputMeasureFlg
+            - opTime
+            - pmControlInfo
+            - primaryFuelInfo
+            - secondaryFuelInfo
+            - so2ControlInfo
+            - so2MassMeasureFlg
+            - so2Rate
+            - so2RateMeasureFlg
+            - steamLoad
+            - unitType
+            - unit_id
+        example:
+        - co2MassMeasureFlg
+      responses:
+        '200':
+          description: Streams Hourly Apportioned Emissions per filter criteria
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HourlyApportionedEmissionsDTO'
+              examples:
+                HourlyApportionedEmissionsController_streamEmissions200Example:
+                  summary: Default HourlyApportionedEmissionsController_streamEmissions 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+            text/csv:
+              schema:
+                type: string
+                example: State,Facility Name,Facility ID,Unit ID,unit_id,Associated Stacks,Date,Hour,Operating Time,Gross Load (MW),Steam Load (1000 lb/hr),SO2 Mass (lbs),SO2 Mass Measure Indicator,SO2 Rate (lbs/mmBtu),SO2 Rate Measure Indicator,CO2 Mass (short tons),CO2 Mass Measure Indicator,CO2 Rate (short tons/mmBtu),CO2 Rate Measure Indicator,NOx Mass (lbs),NOx Mass Measure Indicator,NOx Rate (lbs/mmBtu),NOx Rate Measure Indicator,Heat Input (mmBtu),Heat Input Measure Indicator,Primary Fuel Type,Secondary Fuel Type,Unit Type,SO2 Controls,NOx Controls,PM Controls,Hg Controls,Program Code
+              examples:
+                HourlyApportionedEmissionsController_streamEmissions200Example:
+                  summary: Default HourlyApportionedEmissionsController_streamEmissions 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+        '400':
+          description: Invalid Request
+        '404':
+          description: Resource Not Found
+      security:
+      - APIKey: []
+      tags:
+      - Apportioned Hourly Emissions
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /streaming-services/emissions/apportioned/hourly/by-facility:
+    get:
+      operationId: HourlyApportionedEmissionsController_streamEmissionsFacilityAggregation
+      parameters:
+      - name: stateCode
+        required: false
+        in: query
+        description: Two letter abbreviation for the State.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - AL
+            - AK
+            - AS
+            - AZ
+            - AR
+            - CA
+            - CO
+            - CT
+            - DE
+            - DC
+            - FM
+            - FL
+            - GA
+            - GU
+            - HI
+            - ID
+            - IL
+            - IN
+            - IA
+            - KS
+            - KY
+            - LA
+            - ME
+            - MH
+            - MD
+            - MA
+            - MI
+            - MN
+            - MS
+            - MO
+            - MT
+            - NE
+            - NV
+            - NH
+            - NJ
+            - NM
+            - NY
+            - NC
+            - ND
+            - MP
+            - OH
+            - OK
+            - OR
+            - PW
+            - PA
+            - PR
+            - RI
+            - SC
+            - SD
+            - TN
+            - TX
+            - UT
+            - VT
+            - VI
+            - VA
+            - WA
+            - WV
+            - WI
+            - WY
+        example:
+        - AL
+      - name: facilityId
+        required: false
+        in: query
+        description: The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the "ORIS code", "ORISPL code", "Facility ID", or "Facility code", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with "88" assigned by the EPA's Clean Air Markets Division for electronic reporting.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: number
+        example:
+        - 0.0
+      - name: unitType
+        required: false
+        in: query
+        description: Type of unit or boiler.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - Arch-fired boiler
+            - Bubbling fluidized bed boiler
+            - Cyclone boiler
+            - Cell burner boiler
+            - Combined cycle
+            - Circulating fluidized bed boiler
+            - Combustion turbine
+            - Dry bottom wall-fired boiler
+            - Dry bottom turbo-fired boiler
+            - Dry bottom vertically-fired boiler
+            - Internal combustion engine
+            - Integrated gasification combined cycle
+            - Cement Kiln
+            - Other boiler
+            - Other turbine
+            - Pressurized fluidized bed boiler
+            - Process Heater
+            - Stoker
+            - Tangentially-fired
+            - Wet bottom wall-fired boiler
+            - Wet bottom turbo-fired boiler
+            - Wet bottom vertically-fired boiler
+        example:
+        - Arch-fired boiler
+      - name: unitFuelType
+        required: false
+        in: query
+        description: Primary or Secondary fuel types combusted by the unit.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - Coal
+            - Coal Refuse
+            - Diesel Oil
+            - Liquified Petroleum Gas
+            - Natural Gas
+            - Other Gas
+            - Other Oil
+            - Other Solid Fuel
+            - Petroleum Coke
+            - Pipeline Natural Gas
+            - Process Gas
+            - Process Sludge
+            - Refuse
+            - Residual Oil
+            - Tire Derived Fuel
+            - Waste Liquid
+            - Wood
+        example:
+        - Coal
+      - name: controlTechnologies
+        required: false
+        in: query
+        description: Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - Additives to Enhance PAC and Existing Equipment Performance
+            - Ammonia Injection
+            - Baghouse
+            - Catalyst (gold, palladium, or other) used to oxidize mercury
+            - Combustion Modification/Fuel Reburning
+            - Cyclone
+            - Dry Lime FGD
+            - Dry Low NOx Burners
+            - Dry Sorbent Injection
+            - Dual Alkali
+            - Electrostatic Precipitator
+            - Fluidized Bed Limestone Injection
+            - Halogenated PAC Sorbent Injection
+            - Hybrid ESP
+            - Low NOx Burner Technology (Dry Bottom only)
+            - Low NOx Burner Technology w/ Closed-coupled OFA
+            - Low NOx Burner Technology w/ Closed-coupled/Separated OFA
+            - Low NOx Burner Technology w/ Overfire Air
+            - Low NOx Burner Technology w/ Separated OFA
+            - Low NOx Cell Burner
+            - Magnesium Oxide
+            - Other
+            - Other (Non PAC) Sorbent Injection
+            - Overfire Air
+            - Regenerative Activated Coke Technology
+            - Selective Catalytic Reduction
+            - Selective Non-catalytic Reduction
+            - Sodium Based
+            - Steam Injection
+            - Untreated PAC Sorbent Injection
+            - Water Injection
+            - Wet ESP
+            - Wet Lime FGD
+            - Wet Limestone
+            - Wet Scrubber
+        example:
+        - Additives to Enhance PAC and Existing Equipment Performance
+      - name: programCodeInfo
+        required: false
+        in: query
+        description: Statutory or regulatory based options for tracking and reducing air pollution emissions.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - ARP
+            - CAIRNOX
+            - CAIROS
+            - CAIRSO2
+            - CSNOX
+            - CSNOXOS
+            - CSOSG1
+            - CSOSG2
+            - CSOSG2E
+            - CSOSG3
+            - CSSO2G1
+            - CSSO2G2
+            - NBP
+            - NHNOX
+            - NSPS4T
+            - OTC
+            - RGGI
+            - SIPNOX
+            - TXSO2
+        example:
+        - ARP
+      - name: beginDate
+        required: true
+        in: query
+        description: Begin date for a given period of a unit's emissions.
+        schema:
+          format: date-time
+          type: string
+        example: '2024-01-15T12:00:00Z'
+      - name: endDate
+        required: true
+        in: query
+        description: End date for a given period of a unit's emissions.
+        schema:
+          format: date-time
+          type: string
+        example: '2024-01-15T12:00:00Z'
+      - name: operatingHoursOnly
+        required: false
+        in: query
+        description: Indicator of whether or not a request should return only data for hours where a unit operated.
+        schema:
+          type: boolean
+        example: true
+      - name: locationName
+        required: false
+        in: query
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+        example:
+        - EPA Facility
+      responses:
+        '200':
+          description: Streams Hourly Apportioned Emissions data per filter criteria aggregated by facility
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HourlyApportionedEmissionsFacilityAggregationDTO'
+              examples:
+                HourlyApportionedEmissionsController_streamEmissionsFacilityAggregation200Example:
+                  summary: Default HourlyApportionedEmissionsController_streamEmissionsFacilityAggregation 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+            text/csv:
+              schema:
+                type: string
+                example: State,Facility Name,Facility ID,Date,Hour,Gross Load (MW),Steam Load (1000 lb/hr),SO2 Mass (lbs),CO2 Mass (short tons),NOx Mass (lbs),Heat Input (mmBtu)
+              examples:
+                HourlyApportionedEmissionsController_streamEmissionsFacilityAggregation200Example:
+                  summary: Default HourlyApportionedEmissionsController_streamEmissionsFacilityAggregation 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+        '400':
+          description: Invalid Request
+        '404':
+          description: Resource Not Found
+      security:
+      - APIKey: []
+      tags:
+      - Apportioned Hourly Emissions
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /streaming-services/emissions/apportioned/hourly/by-state:
+    get:
+      operationId: HourlyApportionedEmissionsController_streamEmissionsStateAggregation
+      parameters:
+      - name: stateCode
+        required: false
+        in: query
+        description: Two letter abbreviation for the State.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - AL
+            - AK
+            - AS
+            - AZ
+            - AR
+            - CA
+            - CO
+            - CT
+            - DE
+            - DC
+            - FM
+            - FL
+            - GA
+            - GU
+            - HI
+            - ID
+            - IL
+            - IN
+            - IA
+            - KS
+            - KY
+            - LA
+            - ME
+            - MH
+            - MD
+            - MA
+            - MI
+            - MN
+            - MS
+            - MO
+            - MT
+            - NE
+            - NV
+            - NH
+            - NJ
+            - NM
+            - NY
+            - NC
+            - ND
+            - MP
+            - OH
+            - OK
+            - OR
+            - PW
+            - PA
+            - PR
+            - RI
+            - SC
+            - SD
+            - TN
+            - TX
+            - UT
+            - VT
+            - VI
+            - VA
+            - WA
+            - WV
+            - WI
+            - WY
+        example:
+        - AL
+      - name: facilityId
+        required: false
+        in: query
+        description: The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the "ORIS code", "ORISPL code", "Facility ID", or "Facility code", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with "88" assigned by the EPA's Clean Air Markets Division for electronic reporting.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: number
+        example:
+        - 0.0
+      - name: unitType
+        required: false
+        in: query
+        description: Type of unit or boiler.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - Arch-fired boiler
+            - Bubbling fluidized bed boiler
+            - Cyclone boiler
+            - Cell burner boiler
+            - Combined cycle
+            - Circulating fluidized bed boiler
+            - Combustion turbine
+            - Dry bottom wall-fired boiler
+            - Dry bottom turbo-fired boiler
+            - Dry bottom vertically-fired boiler
+            - Internal combustion engine
+            - Integrated gasification combined cycle
+            - Cement Kiln
+            - Other boiler
+            - Other turbine
+            - Pressurized fluidized bed boiler
+            - Process Heater
+            - Stoker
+            - Tangentially-fired
+            - Wet bottom wall-fired boiler
+            - Wet bottom turbo-fired boiler
+            - Wet bottom vertically-fired boiler
+        example:
+        - Arch-fired boiler
+      - name: unitFuelType
+        required: false
+        in: query
+        description: Primary or Secondary fuel types combusted by the unit.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - Coal
+            - Coal Refuse
+            - Diesel Oil
+            - Liquified Petroleum Gas
+            - Natural Gas
+            - Other Gas
+            - Other Oil
+            - Other Solid Fuel
+            - Petroleum Coke
+            - Pipeline Natural Gas
+            - Process Gas
+            - Process Sludge
+            - Refuse
+            - Residual Oil
+            - Tire Derived Fuel
+            - Waste Liquid
+            - Wood
+        example:
+        - Coal
+      - name: controlTechnologies
+        required: false
+        in: query
+        description: Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - Additives to Enhance PAC and Existing Equipment Performance
+            - Ammonia Injection
+            - Baghouse
+            - Catalyst (gold, palladium, or other) used to oxidize mercury
+            - Combustion Modification/Fuel Reburning
+            - Cyclone
+            - Dry Lime FGD
+            - Dry Low NOx Burners
+            - Dry Sorbent Injection
+            - Dual Alkali
+            - Electrostatic Precipitator
+            - Fluidized Bed Limestone Injection
+            - Halogenated PAC Sorbent Injection
+            - Hybrid ESP
+            - Low NOx Burner Technology (Dry Bottom only)
+            - Low NOx Burner Technology w/ Closed-coupled OFA
+            - Low NOx Burner Technology w/ Closed-coupled/Separated OFA
+            - Low NOx Burner Technology w/ Overfire Air
+            - Low NOx Burner Technology w/ Separated OFA
+            - Low NOx Cell Burner
+            - Magnesium Oxide
+            - Other
+            - Other (Non PAC) Sorbent Injection
+            - Overfire Air
+            - Regenerative Activated Coke Technology
+            - Selective Catalytic Reduction
+            - Selective Non-catalytic Reduction
+            - Sodium Based
+            - Steam Injection
+            - Untreated PAC Sorbent Injection
+            - Water Injection
+            - Wet ESP
+            - Wet Lime FGD
+            - Wet Limestone
+            - Wet Scrubber
+        example:
+        - Additives to Enhance PAC and Existing Equipment Performance
+      - name: programCodeInfo
+        required: false
+        in: query
+        description: Statutory or regulatory based options for tracking and reducing air pollution emissions.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - ARP
+            - CAIRNOX
+            - CAIROS
+            - CAIRSO2
+            - CSNOX
+            - CSNOXOS
+            - CSOSG1
+            - CSOSG2
+            - CSOSG2E
+            - CSOSG3
+            - CSSO2G1
+            - CSSO2G2
+            - NBP
+            - NHNOX
+            - NSPS4T
+            - OTC
+            - RGGI
+            - SIPNOX
+            - TXSO2
+        example:
+        - ARP
+      - name: beginDate
+        required: true
+        in: query
+        description: Begin date for a given period of a unit's emissions.
+        schema:
+          format: date-time
+          type: string
+        example: '2024-01-15T12:00:00Z'
+      - name: endDate
+        required: true
+        in: query
+        description: End date for a given period of a unit's emissions.
+        schema:
+          format: date-time
+          type: string
+        example: '2024-01-15T12:00:00Z'
+      - name: operatingHoursOnly
+        required: false
+        in: query
+        description: Indicator of whether or not a request should return only data for hours where a unit operated.
+        schema:
+          type: boolean
+        example: true
+      - name: locationName
+        required: false
+        in: query
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+        example:
+        - EPA Facility
+      responses:
+        '200':
+          description: Streams Hourly Apportioned Emissions data per filter criteria aggregated by state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HourlyApportionedEmissionsStateAggregationDTO'
+              examples:
+                HourlyApportionedEmissionsController_streamEmissionsStateAggregation200Example:
+                  summary: Default HourlyApportionedEmissionsController_streamEmissionsStateAggregation 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+            text/csv:
+              schema:
+                type: string
+                example: State,Date,Hour,Gross Load (MW),Steam Load (1000 lb/hr),SO2 Mass (lbs),CO2 Mass (short tons),NOx Mass (lbs),Heat Input (mmBtu)
+              examples:
+                HourlyApportionedEmissionsController_streamEmissionsStateAggregation200Example:
+                  summary: Default HourlyApportionedEmissionsController_streamEmissionsStateAggregation 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+        '400':
+          description: Invalid Request
+        '404':
+          description: Resource Not Found
+      security:
+      - APIKey: []
+      tags:
+      - Apportioned Hourly Emissions
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /streaming-services/emissions/apportioned/hourly/nationally:
+    get:
+      operationId: HourlyApportionedEmissionsController_streamEmissionsNationalAggregation
+      parameters:
+      - name: stateCode
+        required: false
+        in: query
+        description: Two letter abbreviation for the State.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - AL
+            - AK
+            - AS
+            - AZ
+            - AR
+            - CA
+            - CO
+            - CT
+            - DE
+            - DC
+            - FM
+            - FL
+            - GA
+            - GU
+            - HI
+            - ID
+            - IL
+            - IN
+            - IA
+            - KS
+            - KY
+            - LA
+            - ME
+            - MH
+            - MD
+            - MA
+            - MI
+            - MN
+            - MS
+            - MO
+            - MT
+            - NE
+            - NV
+            - NH
+            - NJ
+            - NM
+            - NY
+            - NC
+            - ND
+            - MP
+            - OH
+            - OK
+            - OR
+            - PW
+            - PA
+            - PR
+            - RI
+            - SC
+            - SD
+            - TN
+            - TX
+            - UT
+            - VT
+            - VI
+            - VA
+            - WA
+            - WV
+            - WI
+            - WY
+        example:
+        - AL
+      - name: facilityId
+        required: false
+        in: query
+        description: The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the "ORIS code", "ORISPL code", "Facility ID", or "Facility code", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with "88" assigned by the EPA's Clean Air Markets Division for electronic reporting.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: number
+        example:
+        - 0.0
+      - name: unitType
+        required: false
+        in: query
+        description: Type of unit or boiler.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - Arch-fired boiler
+            - Bubbling fluidized bed boiler
+            - Cyclone boiler
+            - Cell burner boiler
+            - Combined cycle
+            - Circulating fluidized bed boiler
+            - Combustion turbine
+            - Dry bottom wall-fired boiler
+            - Dry bottom turbo-fired boiler
+            - Dry bottom vertically-fired boiler
+            - Internal combustion engine
+            - Integrated gasification combined cycle
+            - Cement Kiln
+            - Other boiler
+            - Other turbine
+            - Pressurized fluidized bed boiler
+            - Process Heater
+            - Stoker
+            - Tangentially-fired
+            - Wet bottom wall-fired boiler
+            - Wet bottom turbo-fired boiler
+            - Wet bottom vertically-fired boiler
+        example:
+        - Arch-fired boiler
+      - name: unitFuelType
+        required: false
+        in: query
+        description: Primary or Secondary fuel types combusted by the unit.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - Coal
+            - Coal Refuse
+            - Diesel Oil
+            - Liquified Petroleum Gas
+            - Natural Gas
+            - Other Gas
+            - Other Oil
+            - Other Solid Fuel
+            - Petroleum Coke
+            - Pipeline Natural Gas
+            - Process Gas
+            - Process Sludge
+            - Refuse
+            - Residual Oil
+            - Tire Derived Fuel
+            - Waste Liquid
+            - Wood
+        example:
+        - Coal
+      - name: controlTechnologies
+        required: false
+        in: query
+        description: Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - Additives to Enhance PAC and Existing Equipment Performance
+            - Ammonia Injection
+            - Baghouse
+            - Catalyst (gold, palladium, or other) used to oxidize mercury
+            - Combustion Modification/Fuel Reburning
+            - Cyclone
+            - Dry Lime FGD
+            - Dry Low NOx Burners
+            - Dry Sorbent Injection
+            - Dual Alkali
+            - Electrostatic Precipitator
+            - Fluidized Bed Limestone Injection
+            - Halogenated PAC Sorbent Injection
+            - Hybrid ESP
+            - Low NOx Burner Technology (Dry Bottom only)
+            - Low NOx Burner Technology w/ Closed-coupled OFA
+            - Low NOx Burner Technology w/ Closed-coupled/Separated OFA
+            - Low NOx Burner Technology w/ Overfire Air
+            - Low NOx Burner Technology w/ Separated OFA
+            - Low NOx Cell Burner
+            - Magnesium Oxide
+            - Other
+            - Other (Non PAC) Sorbent Injection
+            - Overfire Air
+            - Regenerative Activated Coke Technology
+            - Selective Catalytic Reduction
+            - Selective Non-catalytic Reduction
+            - Sodium Based
+            - Steam Injection
+            - Untreated PAC Sorbent Injection
+            - Water Injection
+            - Wet ESP
+            - Wet Lime FGD
+            - Wet Limestone
+            - Wet Scrubber
+        example:
+        - Additives to Enhance PAC and Existing Equipment Performance
+      - name: programCodeInfo
+        required: false
+        in: query
+        description: Statutory or regulatory based options for tracking and reducing air pollution emissions.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - ARP
+            - CAIRNOX
+            - CAIROS
+            - CAIRSO2
+            - CSNOX
+            - CSNOXOS
+            - CSOSG1
+            - CSOSG2
+            - CSOSG2E
+            - CSOSG3
+            - CSSO2G1
+            - CSSO2G2
+            - NBP
+            - NHNOX
+            - NSPS4T
+            - OTC
+            - RGGI
+            - SIPNOX
+            - TXSO2
+        example:
+        - ARP
+      - name: beginDate
+        required: true
+        in: query
+        description: Begin date for a given period of a unit's emissions.
+        schema:
+          format: date-time
+          type: string
+        example: '2024-01-15T12:00:00Z'
+      - name: endDate
+        required: true
+        in: query
+        description: End date for a given period of a unit's emissions.
+        schema:
+          format: date-time
+          type: string
+        example: '2024-01-15T12:00:00Z'
+      - name: operatingHoursOnly
+        required: false
+        in: query
+        description: Indicator of whether or not a request should return only data for hours where a unit operated.
+        schema:
+          type: boolean
+        example: true
+      - name: locationName
+        required: false
+        in: query
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+        example:
+        - EPA Facility
+      responses:
+        '200':
+          description: Streams Hourly Apportioned Emissions data per filter criteria aggregated nationally
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HourlyApportionedEmissionsNationalAggregationDTO'
+              examples:
+                HourlyApportionedEmissionsController_streamEmissionsNationalAggregation200Example:
+                  summary: Default HourlyApportionedEmissionsController_streamEmissionsNationalAggregation 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+            text/csv:
+              schema:
+                type: string
+                example: Date,Hour,Gross Load (MW),Steam Load (1000 lb/hr),SO2 Mass (lbs),CO2 Mass (short tons),NOx Mass (lbs),Heat Input (mmBtu)
+              examples:
+                HourlyApportionedEmissionsController_streamEmissionsNationalAggregation200Example:
+                  summary: Default HourlyApportionedEmissionsController_streamEmissionsNationalAggregation 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+        '400':
+          description: Invalid Request
+        '404':
+          description: Resource Not Found
+      security:
+      - APIKey: []
+      tags:
+      - Apportioned Hourly Emissions
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    HourlyApportionedEmissionsFacilityAggregationDTO:
+      type: object
+      properties:
+        grossLoad:
+          type: number
+          description: Electrical generation in MW produced by combusting a given heat input of fuel.
+          example: 146
+        steamLoad:
+          type: number
+          description: Rate of steam pressure generated by a unit or source produced by combusting a given heat input of fuel. (1000 lb/hr)
+          example: 387
+        so2Mass:
+          type: number
+          description: SO2 Mass Emissions (lbs)
+          example: 15.7
+        co2Mass:
+          type: number
+          description: CO2 mass emissions (short tons)
+          example: 150.8
+        noxMass:
+          type: number
+          description: NOx mass emissions (lbs)
+          example: 552.8
+        heatInput:
+          type: number
+          description: Quantity of heat in mmBtu calculated by multiplying the quantity of fuel by the fuels heat content.
+          example: 1470.2
+        date:
+          type: string
+          description: Date on which activity occurred.
+          example: '2019-01-01'
+        hour:
+          type: number
+          description: Hour in which activity occurred, recorded using local, standard time.
+          example: 23
+        stateCode:
+          type: string
+          description: Two letter abbreviation for the State.
+          example: AK
+        facilityName:
+          type: string
+          description: The name given by the owners and operators to a facility
+          example: Barry
+        facilityId:
+          type: number
+          description: The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the "ORIS code", "ORISPL code", "Facility ID", or "Facility code", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with "88" assigned by the EPA's Clean Air Markets Division for electronic reporting.
+          example: 3
+      required:
+      - date
+      - hour
+      - stateCode
+      - facilityName
+    HourlyApportionedEmissionsDTO:
+      type: object
+      properties:
+        stateCode:
+          type: string
+          description: Two letter abbreviation for the State.
+          example: AK
+        facilityName:
+          type: string
+          description: The name given by the owners and operators to a facility
+          example: Barry
+        facilityId:
+          type: number
+          description: The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the "ORIS code", "ORISPL code", "Facility ID", or "Facility code", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with "88" assigned by the EPA's Clean Air Markets Division for electronic reporting.
+          example: 3
+        unitId:
+          type: string
+          description: Unique identifier for each unit at a facility.
+          example: 5
+        unit_id:
+          type: number
+          description: Database id for each unit at a facility.
+          example: 5
+        unitType:
+          type: string
+          description: Type of unit or boiler.
+          example: Tangentially-fired
+        associatedStacks:
+          type: string
+          description: Stacks associated with the unit.
+          example: CS001
+        primaryFuelInfo:
+          type: string
+          description: The primary type of fuel combusted by the unit.
+          example: Coal
+        secondaryFuelInfo:
+          type: string
+          description: The secondary type of fuel(s) combusted by the unit.
+          example: Diesel Oil
+        so2ControlInfo:
+          type: string
+          description: Method or equipment used by the combustion unit to minimize SO2 emissions.
+          example: Wet Limestone
+        pmControlInfo:
+          type: string
+          description: Method or equipment used by the combustion unit to minimize PM emissions.
+          example: Electrostatic Precipitator
+        noxControlInfo:
+          type: string
+          description: Method or equipment used by the combustion unit to minimize NOx emissions.
+          example: Selective Catalytic Reduction, Low NOx Burner Technology w/ Separated OFA
+        hgControlInfo:
+          type: string
+          description: Method or equipment used by the combustion unit to minimize Hg emissions.
+          example: Catalyst (gold, palladium, or other) used to oxidize mercury
+        programCodeInfo:
+          type: string
+          description: Statutory or regulatory based options for tracking and reducing air pollution emissions.
+          example: ARP,CSNOX,CSSO2G2,MATS
+        grossLoad:
+          type: number
+          description: Electrical generation in MW produced by combusting a given heat input of fuel.
+          example: 900773
+        steamLoad:
+          type: number
+          description: Rate of steam pressure generated by a unit or source produced by combusting a given heat input of fuel. (1000 lb/hr)
+          example: 153647
+        so2Mass:
+          type: number
+          description: SO2 Mass Emissions (short tons)
+          example: 91.2
+        so2Rate:
+          type: number
+          description: Average SO2 hourly emissions rate (lbs/mmBtu)
+          example: 0.011
+        noxMass:
+          type: number
+          description: NOx mass emissions (short tons)
+          example: 367.9
+        noxRate:
+          type: number
+          description: The average rate of NOx emissions (lbs/mmBtu)
+          example: 0.376
+        co2Mass:
+          type: number
+          description: CO2 mass emissions (short tons)
+          example: 150.8
+        co2Rate:
+          type: number
+          description: Average CO2 hourly emissions rate (short tons/mmBtu)
+          example: 0.103
+        heatInput:
+          type: number
+          description: Quantity of heat in mmBtu calculated by multiplying the quantity of fuel by the fuels heat content.
+          example: 1470.2
+        heatInputMeasureFlg:
+          type: string
+          description: Describes how the Heat Input values were determined.
+          example: string
+        so2MassMeasureFlg:
+          type: string
+          description: Describes how the SO2 Mass values were determined.
+          example: Substitute
+        so2RateMeasureFlg:
+          type: string
+          description: Describes how the SO2 Rate values were determined.
+          example: Calculated
+        noxMassMeasureFlg:
+          type: string
+          description: Describes how the NOx Mass values were determined.
+          example: Measured and Substitute
+        noxRateMeasureFlg:
+          type: string
+          description: Describes how the NOx Rate values were determined.
+          example: Measured and Substitute
+        co2MassMeasureFlg:
+          type: string
+          description: Describes how the CO2 Mass values were determined.
+          example: Measured
+        co2RateMeasureFlg:
+          type: string
+          description: Describes how the CO2 Rate values were determined.
+          example: Calculated
+        date:
+          type: string
+          description: Date on which activity occurred.
+          example: '2019-01-01'
+        hour:
+          type: number
+          description: Hour in which activity occurred, recorded using local, standard time.
+          example: 23
+        opTime:
+          type: number
+          description: Any part of an hour in which a unit combusts any fuel.
+          example: 0.95
+        year:
+          type: number
+          example: 2024
+      required:
+      - stateCode
+      - facilityName
+      - unitId
+      - unit_id
+      - unitType
+      - associatedStacks
+      - primaryFuelInfo
+      - secondaryFuelInfo
+      - so2ControlInfo
+      - pmControlInfo
+      - noxControlInfo
+      - hgControlInfo
+      - programCodeInfo
+      - so2MassMeasureFlg
+      - so2RateMeasureFlg
+      - noxMassMeasureFlg
+      - noxRateMeasureFlg
+      - co2MassMeasureFlg
+      - co2RateMeasureFlg
+      - date
+      - hour
+      - year
+    HourlyApportionedEmissionsNationalAggregationDTO:
+      type: object
+      properties:
+        grossLoad:
+          type: number
+          description: Electrical generation in MW produced by combusting a given heat input of fuel.
+          example: 146
+        steamLoad:
+          type: number
+          description: Rate of steam pressure generated by a unit or source produced by combusting a given heat input of fuel. (1000 lb/hr)
+          example: 387
+        so2Mass:
+          type: number
+          description: SO2 Mass Emissions (lbs)
+          example: 15.7
+        co2Mass:
+          type: number
+          description: CO2 mass emissions (short tons)
+          example: 150.8
+        noxMass:
+          type: number
+          description: NOx mass emissions (lbs)
+          example: 552.8
+        heatInput:
+          type: number
+          description: Quantity of heat in mmBtu calculated by multiplying the quantity of fuel by the fuels heat content.
+          example: 1470.2
+        date:
+          type: string
+          description: Date on which activity occurred.
+          example: '2019-01-01'
+        hour:
+          type: number
+          description: Hour in which activity occurred, recorded using local, standard time.
+          example: 23
+      required:
+      - date
+      - hour
+    HourlyApportionedEmissionsStateAggregationDTO:
+      type: object
+      properties:
+        grossLoad:
+          type: number
+          description: Electrical generation in MW produced by combusting a given heat input of fuel.
+          example: 146
+        steamLoad:
+          type: number
+          description: Rate of steam pressure generated by a unit or source produced by combusting a given heat input of fuel. (1000 lb/hr)
+          example: 387
+        so2Mass:
+          type: number
+          description: SO2 Mass Emissions (lbs)
+          example: 15.7
+        co2Mass:
+          type: number
+          description: CO2 mass emissions (short tons)
+          example: 150.8
+        noxMass:
+          type: number
+          description: NOx mass emissions (lbs)
+          example: 552.8
+        heatInput:
+          type: number
+          description: Quantity of heat in mmBtu calculated by multiplying the quantity of fuel by the fuels heat content.
+          example: 1470.2
+        date:
+          type: string
+          description: Date on which activity occurred.
+          example: '2019-01-01'
+        hour:
+          type: number
+          description: Hour in which activity occurred, recorded using local, standard time.
+          example: 23
+        stateCode:
+          type: string
+          description: Two letter abbreviation for the State.
+          example: AK
+      required:
+      - date
+      - hour
+      - stateCode
+    HourUnitDataView:
+      type: object
+      properties:
+        stateCode:
+          type: string
+          example: NC
+        facilityName:
+          type: string
+          example: EPA Facility
+        facilityId:
+          type: number
+          example: 0.0
+        unit_id:
+          type: string
+          example: '12345'
+        unitId:
+          type: string
+          example: '12345'
+        associatedStacks:
+          type: string
+          example: string
+        year:
+          type: number
+          example: 2024
+        date:
+          format: date-time
+          type: string
+          example: '2024-01-15T12:00:00Z'
+        hour:
+          type: number
+          example: 0.0
+        opTime:
+          type: number
+          example: 0.0
+        grossLoad:
+          type: number
+          example: 0.0
+        steamLoad:
+          type: number
+          example: 0.0
+        so2Mass:
+          type: number
+          example: 0.0
+        so2MassMeasureFlg:
+          type: string
+          example: string
+        so2Rate:
+          type: number
+          example: 0.0
+        so2RateMeasureFlg:
+          type: string
+          example: string
+        co2Mass:
+          type: number
+          example: 0.0
+        co2MassMeasureFlg:
+          type: string
+          example: string
+        co2Rate:
+          type: number
+          example: 0.0
+        co2RateMeasureFlg:
+          type: string
+          example: string
+        noxMass:
+          type: number
+          example: 0.0
+        noxMassMeasureFlg:
+          type: string
+          example: string
+        noxRate:
+          type: number
+          example: 0.0
+        noxRateMeasureFlg:
+          type: string
+          example: string
+        heatInput:
+          type: number
+          example: 0.0
+        heatInputMeasureFlg:
+          type: string
+          example: string
+        primaryFuelInfo:
+          type: string
+          example: string
+        secondaryFuelInfo:
+          type: string
+          example: string
+        unitType:
+          type: string
+          example: string
+        so2ControlInfo:
+          type: string
+          example: string
+        noxControlInfo:
+          type: string
+          example: string
+        pmControlInfo:
+          type: string
+          example: string
+        hgControlInfo:
+          type: string
+          example: string
+        programCodeInfo:
+          type: string
+          example: string
+      required:
+      - stateCode
+      - facilityName
+      - facilityId
+      - unit_id
+      - unitId
+      - associatedStacks
+      - year
+      - date
+      - hour
+      - opTime
+      - grossLoad
+      - steamLoad
+      - so2Mass
+      - so2MassMeasureFlg
+      - so2Rate
+      - so2RateMeasureFlg
+      - co2Mass
+      - co2MassMeasureFlg
+      - co2Rate
+      - co2RateMeasureFlg
+      - noxMass
+      - noxMassMeasureFlg
+      - noxRate
+      - noxRateMeasureFlg
+      - heatInput
+      - heatInputMeasureFlg
+      - primaryFuelInfo
+      - secondaryFuelInfo
+      - unitType
+      - so2ControlInfo
+      - noxControlInfo
+      - pmControlInfo
+      - hgControlInfo
+      - programCodeInfo
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

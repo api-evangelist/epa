@@ -1,0 +1,180 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes Hg Injection API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Hg Injection
+paths:
+  /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/hg-summaries/{hgTestSumId}/hg-injections:
+    get:
+      operationId: HgInjectionController_getHgInjections
+      parameters:
+      - name: locId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: testSumId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: hgTestSumId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      responses:
+        '200':
+          description: Retrieves Hg Injection records by Test Summary Id
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/HgInjectionRecordDTO'
+              examples:
+                HgInjectionController_getHgInjections200Example:
+                  summary: Default HgInjectionController_getHgInjections 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      tags:
+      - Hg Injection
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/hg-summaries/{hgTestSumId}/hg-injections/{id}:
+    get:
+      operationId: HgInjectionController_getHgInjection
+      parameters:
+      - name: locId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: testSumId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: hgTestSumId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      responses:
+        '200':
+          description: Retrieves Injection Hg Injection record by its Id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HgInjectionRecordDTO'
+              examples:
+                HgInjectionController_getHgInjection200Example:
+                  summary: Default HgInjectionController_getHgInjection 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      tags:
+      - Hg Injection
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    HgInjectionRecordDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '12345'
+        hgTestSumId:
+          type: string
+          example: '12345'
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+        injectionDate:
+          format: date-time
+          type: string
+          example: '2024-01-15T12:00:00Z'
+        injectionHour:
+          type: number
+          example: 0.0
+        injectionMinute:
+          type: number
+          example: 0.0
+        measuredValue:
+          type: number
+          example: 0.0
+        referenceValue:
+          type: number
+          example: 0.0
+      required:
+      - id
+      - hgTestSumId
+      - userId
+      - addDate
+      - updateDate
+      - injectionDate
+      - injectionHour
+      - injectionMinute
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

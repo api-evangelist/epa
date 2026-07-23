@@ -1,0 +1,108 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes Relationships API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Relationships
+paths:
+  /master-data-mgmt/relationships/list:
+    get:
+      description: Returns a list of Master Data relationships available.
+      operationId: RelationshipsController_listRelationships
+      parameters: []
+      responses:
+        '200':
+          description: Data retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CodeTableDto'
+              examples:
+                RelationshipsController_listRelationships200Example:
+                  summary: Default RelationshipsController_listRelationships 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      summary: ''
+      tags:
+      - Relationships
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /master-data-mgmt/relationships/{code}:
+    get:
+      description: Returns a list of Master Data relationships for the dataset provided.
+      operationId: RelationshipsController_getRelationships
+      parameters:
+      - name: code
+        required: true
+        in: path
+        schema:
+          type: string
+        example: string
+      responses:
+        '200':
+          description: Data retrieved successfully
+      security:
+      - APIKey: []
+      summary: ''
+      tags:
+      - Relationships
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    CodeTableDto:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Code
+          example: string
+        name:
+          type: string
+          description: Display Name
+          example: EPA Facility
+      required:
+      - code
+      - name
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

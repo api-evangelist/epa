@@ -1,0 +1,184 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes Linearity Injection API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Linearity Injection
+paths:
+  /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/linearities/{linSumId}/injections:
+    get:
+      operationId: LinearityInjectionController_getInjections
+      parameters:
+      - name: locId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: testSumId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: linSumId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      responses:
+        '200':
+          description: Retrieves official Linearity Injection records by Linearity Summary Id
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/LinearityInjectionRecordDTO'
+              examples:
+                LinearityInjectionController_getInjections200Example:
+                  summary: Default LinearityInjectionController_getInjections 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      tags:
+      - Linearity Injection
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/linearities/{linSumId}/injections/{id}:
+    get:
+      operationId: LinearityInjectionController_getInjection
+      parameters:
+      - name: locId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: testSumId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: linSumId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      responses:
+        '200':
+          description: Retrieves official Linearity Injection record by its Id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LinearityInjectionRecordDTO'
+              examples:
+                LinearityInjectionController_getInjection200Example:
+                  summary: Default LinearityInjectionController_getInjection 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      tags:
+      - Linearity Injection
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    LinearityInjectionRecordDTO:
+      type: object
+      properties:
+        injectionDate:
+          format: date-time
+          type: string
+          description: injectionDate. ADD TO PROPERTY METADATA
+          example: '2024-01-15T12:00:00Z'
+        injectionHour:
+          type: number
+          description: injectionHour. ADD TO PROPERTY METADATA
+          example: 0.0
+        injectionMinute:
+          type: number
+          description: injectionMinute. ADD TO PROPERTY METADATA
+          example: 0.0
+        measuredValue:
+          type: number
+          description: measuredValue. ADD TO PROPERTY METADATA
+          example: 0.0
+        referenceValue:
+          type: number
+          description: referenceValue. ADD TO PROPERTY METADATA
+          example: 0.0
+        id:
+          type: string
+          example: '12345'
+        linSumId:
+          type: string
+          example: '12345'
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+      required:
+      - injectionDate
+      - injectionMinute
+      - id
+      - linSumId
+      - userId
+      - addDate
+      - updateDate
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

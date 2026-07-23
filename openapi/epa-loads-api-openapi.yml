@@ -1,0 +1,173 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes Loads API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Loads
+paths:
+  /monitor-plan-mgmt/locations/{locId}/loads:
+    get:
+      operationId: MonitorLoadController_getLoads
+      parameters:
+      - name: locId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      responses:
+        '200':
+          description: Retrieves official load records for a monitor location
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/MonitorLoadDTO'
+              examples:
+                MonitorLoadController_getLoads200Example:
+                  summary: Default MonitorLoadController_getLoads 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      tags:
+      - Loads
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    MonitorLoadDTO:
+      type: object
+      properties:
+        maximumLoadValue:
+          type: number
+          description: Maximum hourly gross load associated with the unit, stack, or pipe at full capacity.
+          example: 353
+        maximumLoadUnitsOfMeasureCode:
+          type: string
+          description: Code used to identify the units of measure for maximum load value
+          example: MW
+        lowerOperationBoundary:
+          type: number
+          description: Lower boundary of range of operation.
+          example: 145
+        upperOperationBoundary:
+          type: number
+          description: Upper boundary of range of operation.
+          example: 301
+        normalLevelCode:
+          type: string
+          description: Code used to identify the normal load or operating level.
+          example: L
+        secondLevelCode:
+          type: string
+          description: Code used to identify the second most frequently used load or operating level.
+          example: M
+        secondNormalIndicator:
+          type: number
+          description: Used to indicate the reporting of an additional normal load or a second operating level.
+          example: '1'
+        loadAnalysisDate:
+          format: date-time
+          type: string
+          description: The date in which load analysis was performed.  This date only applies to CEM and Appendix D locations.
+          example: '2018-09-31'
+        beginDate:
+          format: date-time
+          type: string
+          description: Date on which information became effective or activity started.
+          example: '2018-09-31'
+        beginHour:
+          type: number
+          description: Hour in which information became effective.
+          example: 23
+        endDate:
+          format: date-time
+          type: string
+          description: Last date in which information was effective.  This date will be null for active records.
+          example: null
+        endHour:
+          type: number
+          description: Last hour in which information was effective.  This value will be null for active records.
+          example: null
+        id:
+          type: string
+          description: Unique identifier of a monitoring load record.
+          example: MRHODES16-A1EAFB506CA8442D843275B667DD3C53
+        locationId:
+          type: string
+          description: Unique identifier of a monitoring location record.
+          example: '5770'
+        userId:
+          type: string
+          description: User account or source of data that added or updated record.
+          example: abcde
+        addDate:
+          type: string
+          description: Date and time in which record was added.
+          example: '2018-10-12'
+        updateDate:
+          type: string
+          description: Date and time in which record was last updated.
+          example: '2018-10-12'
+        active:
+          type: boolean
+          description: Flag for active monitor location record
+          example: true
+      required:
+      - maximumLoadValue
+      - maximumLoadUnitsOfMeasureCode
+      - lowerOperationBoundary
+      - upperOperationBoundary
+      - normalLevelCode
+      - secondLevelCode
+      - secondNormalIndicator
+      - loadAnalysisDate
+      - beginDate
+      - beginHour
+      - endDate
+      - endHour
+      - id
+      - locationId
+      - userId
+      - addDate
+      - updateDate
+      - active
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

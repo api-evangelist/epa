@@ -1,0 +1,411 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes Rata Run API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Rata Run
+paths:
+  /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/rata/{rataId}/rata-summaries/{rataSumId}/rata-runs:
+    get:
+      operationId: RataRunController_getRataRuns
+      parameters:
+      - name: locId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: testSumId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: rataId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: rataSumId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      responses:
+        '200':
+          description: Retrieves official Rata Run records by Rata Summary Id
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/RataRunDTO'
+              examples:
+                RataRunController_getRataRuns200Example:
+                  summary: Default RataRunController_getRataRuns 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      tags:
+      - Rata Run
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/rata/{rataId}/rata-summaries/{rataSumId}/rata-runs/{id}:
+    get:
+      operationId: RataRunController_getRataRun
+      parameters:
+      - name: locId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: testSumId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: rataId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: rataSumId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      responses:
+        '200':
+          description: Retrieves official Rata Run record by its Id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RataRunDTO'
+              examples:
+                RataRunController_getRataRun200Example:
+                  summary: Default RataRunController_getRataRun 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      tags:
+      - Rata Run
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    RataTraverseDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '12345'
+        flowRataRunId:
+          type: string
+          example: '12345'
+        calculatedCalculatedVelocity:
+          type: number
+          example: 35.5
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+        probeId:
+          type: string
+          maxLength: 11
+          example: '12345'
+        probeTypeCode:
+          type: string
+          example: string
+        pressureMeasureCode:
+          type: string
+          example: string
+        methodTraversePointId:
+          type: string
+          minLength: 1
+          maxLength: 3
+          example: '12345'
+        velocityCalibrationCoefficient:
+          type: number
+          example: 0.0
+        lastProbeDate:
+          format: date-time
+          type: string
+          example: '2024-01-15T12:00:00Z'
+        averageVelocityDifferencePressure:
+          type: number
+          example: 0.0
+        averageSquareVelocityDifferencePressure:
+          type: number
+          example: 0.0
+        tStackTemperature:
+          type: number
+          example: 0.0
+        pointUsedIndicator:
+          type: number
+          example: 0.0
+        numberWallEffectsPoints:
+          type: number
+          example: 0.0
+        yawAngle:
+          type: number
+          example: 0.0
+        pitchAngle:
+          type: number
+          example: 0.0
+        calculatedVelocity:
+          type: number
+          example: 35.5
+        replacementVelocity:
+          type: number
+          example: 0.0
+      required:
+      - id
+      - flowRataRunId
+      - calculatedCalculatedVelocity
+      - userId
+      - addDate
+      - updateDate
+      - probeId
+      - probeTypeCode
+      - pressureMeasureCode
+      - methodTraversePointId
+      - velocityCalibrationCoefficient
+      - lastProbeDate
+      - tStackTemperature
+    RataRunDTO:
+      type: object
+      properties:
+        flowRataRunData:
+          type: array
+          items:
+            $ref: '#/components/schemas/FlowRataRunDTO'
+          example:
+          - string
+        id:
+          type: string
+          example: '12345'
+        rataSumId:
+          type: string
+          example: '12345'
+        calculatedRataReferenceValue:
+          type: number
+          example: 35.5
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+        runNumber:
+          type: number
+          example: 0.0
+        beginDate:
+          format: date-time
+          type: string
+          example: '2024-01-15T12:00:00Z'
+        beginHour:
+          type: number
+          example: 0.0
+        beginMinute:
+          type: number
+          example: 0.0
+        endDate:
+          format: date-time
+          type: string
+          example: '2024-01-15T12:00:00Z'
+        endHour:
+          type: number
+          example: 0.0
+        endMinute:
+          type: number
+          example: 0.0
+        cemValue:
+          type: number
+          example: 0.0
+        rataReferenceValue:
+          type: number
+          example: 0.0
+        grossUnitLoad:
+          type: number
+          example: 0.0
+        runStatusCode:
+          type: string
+          example: active
+      required:
+      - flowRataRunData
+      - id
+      - rataSumId
+      - calculatedRataReferenceValue
+      - userId
+      - addDate
+      - updateDate
+      - runNumber
+      - beginDate
+      - beginHour
+      - beginMinute
+      - endDate
+      - endHour
+      - endMinute
+      - runStatusCode
+    FlowRataRunDTO:
+      type: object
+      properties:
+        rataTraverseData:
+          type: array
+          items:
+            $ref: '#/components/schemas/RataTraverseDTO'
+          example:
+          - string
+        id:
+          type: string
+          example: '12345'
+        rataRunId:
+          type: string
+          example: '12345'
+        calculatedDryMolecularWeight:
+          type: number
+          example: 35.5
+        calculatedWetMolecularWeight:
+          type: number
+          example: 35.5
+        calculatedAverageVelocityWithoutWallEffects:
+          type: number
+          example: 35.5
+        calculatedAverageVelocityWithWallEffects:
+          type: number
+          example: 35.5
+        calculatedCalculatedWAF:
+          type: number
+          example: 35.5
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+        numberOfTraversePoints:
+          type: number
+          minimum: 12
+          maximum: 99
+          example: 0.0
+        barometricPressure:
+          type: number
+          example: 0.0
+        staticStackPressure:
+          type: number
+          example: 0.0
+        percentCO2:
+          type: number
+          example: 0.0
+        percentO2:
+          type: number
+          example: 0.0
+        percentMoisture:
+          type: number
+          example: 0.0
+        dryMolecularWeight:
+          type: number
+          example: 0.0
+        wetMolecularWeight:
+          type: number
+          example: 0.0
+        averageVelocityWithoutWallEffects:
+          type: number
+          maximum: 9999.99
+          example: 0.0
+        averageVelocityWithWallEffects:
+          type: number
+          example: 0.0
+        calculatedWAF:
+          type: number
+          example: 35.5
+        averageStackFlowRate:
+          type: number
+          maximum: 9999999999
+          example: 0.0
+      required:
+      - rataTraverseData
+      - id
+      - rataRunId
+      - calculatedDryMolecularWeight
+      - calculatedWetMolecularWeight
+      - calculatedAverageVelocityWithoutWallEffects
+      - calculatedAverageVelocityWithWallEffects
+      - calculatedCalculatedWAF
+      - userId
+      - addDate
+      - updateDate
+      - numberOfTraversePoints
+      - barometricPressure
+      - staticStackPressure
+      - percentCO2
+      - percentO2
+      - percentMoisture
+      - wetMolecularWeight
+      - averageVelocityWithoutWallEffects
+      - averageStackFlowRate
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

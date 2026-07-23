@@ -1,0 +1,354 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes Test Summary API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Test Summary
+paths:
+  /qa-certification-mgmt/locations/{locId}/test-summary:
+    get:
+      operationId: TestSummaryController_getTestSummaries
+      parameters:
+      - name: locId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: testTypeCodes
+        required: false
+        in: query
+        description: Code used to identify test type or the type of test performed.
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - 7DAY
+            - AF2LCHK
+            - APPE
+            - BCAL
+            - CYCLE
+            - DAHS
+            - DAYCAL
+            - DGFMCAL
+            - F2LCHK
+            - F2LREF
+            - FF2LBAS
+            - FF2LTST
+            - FFACC
+            - FFACCTT
+            - HGLINE
+            - HGSI1
+            - HGSI3
+            - INTCHK
+            - LEAK
+            - LINE
+            - MFMCAL
+            - ONOFF
+            - OTHER
+            - PEI
+            - PEMSACC
+            - PEMSCAL
+            - QGA
+            - RATA
+            - TSCAL
+            - UNITDEF
+        example:
+        - 7DAY
+      - name: systemTypeCodes
+        required: false
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - CO2
+            - FLOW
+            - GAS
+            - H2O
+            - H2OM
+            - H2OT
+            - HCL
+            - HF
+            - HG
+            - LTGS
+            - LTOL
+            - NOX
+            - NOXC
+            - NOXE
+            - NOXP
+            - O2
+            - OILM
+            - OILV
+            - OP
+            - PM
+            - SO2
+            - ST
+        example:
+        - CO2
+      - name: beginDate
+        required: false
+        in: query
+        description: Date in which information became effective or activity started.
+        schema:
+          format: date-time
+          type: string
+        example: '2024-01-15T12:00:00Z'
+      - name: endDate
+        required: false
+        in: query
+        description: End date for a given period of a unit's emissions.
+        schema:
+          format: date-time
+          type: string
+        example: '2024-01-15T12:00:00Z'
+      responses:
+        '200':
+          description: Retrieves official Test Summary records per filter criteria
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/TestSummaryRecordDTO'
+              examples:
+                TestSummaryController_getTestSummaries200Example:
+                  summary: Default TestSummaryController_getTestSummaries 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      tags:
+      - Test Summary
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /qa-certification-mgmt/locations/{locId}/test-summary/{id}:
+    get:
+      operationId: TestSummaryController_getTestSummary
+      parameters:
+      - name: locId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      responses:
+        '200':
+          description: Retrieves official Test Summary record by its id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TestSummaryRecordDTO'
+              examples:
+                TestSummaryController_getTestSummary200Example:
+                  summary: Default TestSummaryController_getTestSummary 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      tags:
+      - Test Summary
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    TestSummaryRecordDTO:
+      type: object
+      properties:
+        stackPipeId:
+          type: string
+          description: Stack Pipe Identifier. ADD TO PROPERTY METADATA
+          example: '12345'
+        unitId:
+          type: string
+          description: Unique identifier for each unit at a facility.
+          example: '12345'
+        testTypeCode:
+          type: string
+          description: Test Type Code. ADD TO PROPERTY METADATA
+          example: string
+        monitoringSystemId:
+          type: string
+          description: Unique identifier of a monitoring system record.
+          example: '12345'
+        componentId:
+          type: string
+          description: The three digit code assigned by the source to identify the component.
+          example: '12345'
+        spanScaleCode:
+          type: string
+          description: Code used to identify the span scale.
+          example: string
+        testNumber:
+          type: string
+          maxLength: 18
+          description: Test Number. ADD TO PROPERTY METADATA
+          example: string
+        testReasonCode:
+          type: string
+          description: Test Reason Code. ADD TO PROPERTY METADATA
+          example: string
+        testDescription:
+          type: string
+          maxLength: 100
+          description: Test Description. ADD TO PROPERTY METADATA
+          example: string
+        testResultCode:
+          type: string
+          description: Test Result Code. ADD TO PROPERTY METADATA
+          example: string
+        beginDate:
+          format: date-time
+          type: string
+          description: Date in which information became effective or activity started.
+          example: '2020-07-25'
+        beginHour:
+          type: number
+          description: Begin Hour. ADD TO PROPERTY METADATA
+          example: 0.0
+        beginMinute:
+          type: number
+          description: Begin Minute. ADD TO PROPERTY METADATA
+          example: 0.0
+        endDate:
+          format: date-time
+          type: string
+          description: End date for a given period of a unit's emissions.
+          example: '2024-01-15T12:00:00Z'
+        endHour:
+          type: number
+          description: End Hour. ADD TO PROPERTY METADATA
+          example: 0.0
+        endMinute:
+          type: number
+          description: End Minute. ADD TO PROPERTY METADATA
+          example: 0.0
+        gracePeriodIndicator:
+          type: number
+          description: Grace Period Indicator. ADD TO PROPERTY METADATA
+          example: 0.0
+        year:
+          type: number
+          description: The calendar year during which activity occurred.
+          example: 2024
+        quarter:
+          type: number
+          description: Calendar quarter in which activity occurred.
+          example: 0.0
+        testComment:
+          type: string
+          maxLength: 1000
+          description: Test Comment. ADD TO PROPERTY METADATA
+          example: string
+        injectionProtocolCode:
+          type: string
+          description: Injection Protocol Code. ADD TO PROPERTY METADATA
+          example: string
+        id:
+          type: string
+          example: '12345'
+        locationId:
+          type: string
+          example: '12345'
+        calculatedGracePeriodIndicator:
+          type: number
+          example: 35.5
+        calculatedTestResultCode:
+          type: string
+          example: string
+        reportPeriodId:
+          type: number
+          example: 0.0
+        calculatedSpanValue:
+          type: number
+          example: 35.5
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+        evalStatusCode:
+          type: string
+          example: active
+        evalStatusCodeDescription:
+          type: string
+          example: active
+        submissionAvailabilityCode:
+          type: string
+          example: string
+        submissionAvailabilityCodeDescription:
+          type: string
+          example: string
+      required:
+      - stackPipeId
+      - unitId
+      - testTypeCode
+      - componentId
+      - testNumber
+      - id
+      - locationId
+      - calculatedGracePeriodIndicator
+      - calculatedTestResultCode
+      - reportPeriodId
+      - calculatedSpanValue
+      - userId
+      - addDate
+      - updateDate
+      - evalStatusCode
+      - evalStatusCodeDescription
+      - submissionAvailabilityCode
+      - submissionAvailabilityCodeDescription
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

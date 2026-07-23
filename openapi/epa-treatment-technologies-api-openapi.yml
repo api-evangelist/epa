@@ -1,0 +1,608 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes Treatment Technologies API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Treatment Technologies
+paths:
+  /api/treatmentTechnologies:
+    get:
+      summary: Treatment Technologies
+      description: Placeholder
+      tags:
+      - Treatment Technologies
+      responses:
+        '200':
+          description: Placeholder
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/treatmentTechnology.list'
+              examples:
+                get_api_treatmentTechnologies200Example:
+                  summary: Default get_api_treatmentTechnologies 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/treatmentTechnologyCategories:
+    get:
+      summary: Treatment Technology Categories
+      description: Placeholder
+      tags:
+      - Treatment Technologies
+      responses:
+        '200':
+          description: Placeholder
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/treatmentTechnology.listCategories'
+              examples:
+                get_api_treatmentTechnologyCategories200Example:
+                  summary: Default get_api_treatmentTechnologyCategories 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/treatmentTechnology/{id}:
+    get:
+      summary: Treatment Technology
+      description: Placeholder
+      parameters:
+      - name: id
+        in: path
+        description: Placeholder.
+        required: true
+        schema:
+          type: string
+          enum:
+          - AAFF
+          - ABSM
+          - AC
+          - ADSM
+          - AFF
+          - AIR
+          - AKH
+          - ANSG
+          - AOP
+          - ASG
+          - AST
+          - BIO
+          - BMP
+          - CD
+          - CLAR
+          - CND
+          - CO
+          - COAGFL
+          - CS
+          - ChemPre
+          - DAF
+          - DCL
+          - DENIT
+          - DGF
+          - DRY
+          - DST
+          - DWI
+          - EC
+          - EMUL
+          - EQ
+          - EVAP
+          - FI
+          - FILT
+          - GAC
+          - GravS
+          - HAUL
+          - ION
+          - LE
+          - LRTR
+          - MF
+          - MPT
+          - NANO
+          - NIT
+          - OST
+          - OTHER
+          - OW
+          - OWS
+          - PestActIng
+          - REDX
+          - REUSE
+          - RO
+          - SI
+          - ST
+          - THERMAL
+          - UF
+          - ZLD
+        example: AAFF
+      tags:
+      - Treatment Technologies
+      responses:
+        '200':
+          description: Placeholder
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/treatmentTechnology.read'
+              examples:
+                get_api_treatmentTechnology_{id}200Example:
+                  summary: Default get_api_treatmentTechnology_{id} 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/treatmentTechnologyCategory/{id}:
+    get:
+      summary: Treatment Technology Category
+      description: Placeholder
+      parameters:
+      - name: id
+        in: path
+        description: Placeholder.
+        required: true
+        schema:
+          type: string
+          enum:
+          - Physical, Not Elsewhere Classified
+          - Other
+          - Chemical
+          - Biological
+          - Thermal
+          - Filtration
+          - Sorption
+          - Membrane
+        example: Physical, Not Elsewhere Classified
+      tags:
+      - Treatment Technologies
+      responses:
+        '200':
+          description: Placeholder
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/treatmentTechnology.readCategory'
+              examples:
+                get_api_treatmentTechnologyCategory_{id}200Example:
+                  summary: Default get_api_treatmentTechnologyCategory_{id} 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/treatmentTechnologyLimitations:
+    get:
+      summary: Treatment Technology Limitations
+      description: Placeholder
+      parameters:
+      - name: id
+        in: query
+        description: Placeholder.
+        required: true
+        schema:
+          type: string
+          enum:
+          - AAFF
+          - ABSM
+          - AC
+          - ADSM
+          - AFF
+          - AIR
+          - AKH
+          - ANSG
+          - AOP
+          - ASG
+          - AST
+          - BIO
+          - BMP
+          - CD
+          - CLAR
+          - CND
+          - CO
+          - COAGFL
+          - CS
+          - ChemPre
+          - DAF
+          - DCL
+          - DENIT
+          - DGF
+          - DRY
+          - DST
+          - DWI
+          - EC
+          - EMUL
+          - EQ
+          - EVAP
+          - FI
+          - FILT
+          - GAC
+          - GravS
+          - HAUL
+          - ION
+          - LE
+          - LRTR
+          - MF
+          - MPT
+          - NANO
+          - NIT
+          - OST
+          - OTHER
+          - OW
+          - OWS
+          - PestActIng
+          - REDX
+          - REUSE
+          - RO
+          - SI
+          - ST
+          - THERMAL
+          - UF
+          - ZLD
+        example: AAFF
+      - $ref: '#/components/parameters/treatmentId'
+      - $ref: '#/components/parameters/pointSourceCategoryCode'
+      - name: pollutantId
+        in: query
+        description: Placeholder.
+        required: false
+        schema:
+          type: string
+          enum:
+          - BOD5
+          - TSS
+          - pH
+          - Pentachlorophenol
+          - Trichlorophenol
+          - Oil & Grease
+          - TCDD
+          - TCDF
+          - Chloroform (Trichloromethane)
+          - Trichlorosyringol
+        example: BOD5
+      - $ref: '#/components/parameters/download'
+      - $ref: '#/components/parameters/sortCol'
+      - $ref: '#/components/parameters/sortDir'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      tags:
+      - Treatment Technologies
+      responses:
+        '200':
+          description: Placeholder
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/treatmentTechnology.limitations'
+              examples:
+                get_api_treatmentTechnologyLimitations200Example:
+                  summary: Default get_api_treatmentTechnologyLimitations 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/treatmentTechnologyCategoryLimitations:
+    get:
+      summary: Treatment Technology Category Limitations
+      description: Placeholder
+      parameters:
+      - name: id
+        in: query
+        description: Placeholder.
+        required: true
+        schema:
+          type: string
+          enum:
+          - Physical, Not Elsewhere Classified
+          - Other
+          - Chemical
+          - Biological
+          - Thermal
+          - Filtration
+          - Sorption
+          - Membrane
+        example: Physical, Not Elsewhere Classified
+      - $ref: '#/components/parameters/treatmentId'
+      - $ref: '#/components/parameters/pointSourceCategoryCode'
+      - name: pollutantId
+        in: query
+        description: Placeholder.
+        required: false
+        schema:
+          type: string
+          enum:
+          - BOD5
+          - TSS
+          - pH
+          - Pentachlorophenol
+          - Trichlorophenol
+          - Oil & Grease
+          - TCDD
+          - TCDF
+          - Chloroform (Trichloromethane)
+          - Trichlorosyringol
+        example: BOD5
+      - $ref: '#/components/parameters/download'
+      - $ref: '#/components/parameters/sortCol'
+      - $ref: '#/components/parameters/sortDir'
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      tags:
+      - Treatment Technologies
+      responses:
+        '200':
+          description: Placeholder
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/treatmentTechnology.categoryLimitations'
+              examples:
+                get_api_treatmentTechnologyCategoryLimitations200Example:
+                  summary: Default get_api_treatmentTechnologyCategoryLimitations 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    treatmentTechnology.list:
+      type: object
+      description: Placeholder
+      properties:
+        Dummy:
+          type: string
+          title: Dummy
+          example: Dummy
+          description: Dummy
+      required:
+      - Dummy
+    treatmentTechnology.categoryLimitations:
+      type: object
+      description: Placeholder
+      properties:
+        Dummy:
+          type: string
+          title: Dummy
+          example: Dummy
+          description: Dummy
+      required:
+      - Dummy
+    treatmentTechnology.limitations:
+      type: object
+      description: Placeholder
+      properties:
+        Dummy:
+          type: string
+          title: Dummy
+          example: Dummy
+          description: Dummy
+      required:
+      - Dummy
+    treatmentTechnology.read:
+      type: object
+      description: Placeholder
+      properties:
+        Dummy:
+          type: string
+          title: Dummy
+          example: Dummy
+          description: Dummy
+      required:
+      - Dummy
+    treatmentTechnology.readCategory:
+      type: object
+      description: Placeholder
+      properties:
+        Dummy:
+          type: string
+          title: Dummy
+          example: Dummy
+          description: Dummy
+      required:
+      - Dummy
+    treatmentTechnology.listCategories:
+      type: object
+      description: Placeholder
+      properties:
+        Dummy:
+          type: string
+          title: Dummy
+          example: Dummy
+          description: Dummy
+      required:
+      - Dummy
+  parameters:
+    sortCol:
+      name: sortCol
+      in: query
+      description: Placeholder.
+      required: false
+      schema:
+        type: string
+        enum:
+        - limitationId
+        - controlTechnologyCode
+        - controlTechnologyCfrSection
+        - comboSubcategory
+        - wastestreamProcessId
+        - wastestreamProcessTitle
+        - wastestreamProcessSecondary
+        - wastestreamProcessCfrSection
+        - cfrSectionAnchor
+        - wastestreamProcessDescription
+        - wastestreamProcessLimitCalculationDescription
+        - wastestreamProcessTypoFlagLimitCalculationDescription
+        - pollutantDescription
+        - dischargeFrequency
+        - limitationValue
+        - typoFlagLimitationValue
+        - minimumValue
+        - maximumValue
+        - zeroDischarge
+        - limitationDurationDescription
+        - limitationDurationBaseType
+        - limitationDurationTypeDisplay
+        - limitationUnitCode
+        - limitationUnitDescription
+        - limitationUnitBasis
+        - alternateLimitFlag
+        - alternateLimitDescription
+        - limitRequirementDescription
+        - limitationLimitCalculationDescription
+        - limitationPollutantNotes
+        - longTermAverageCount
+        - pointSourceCategoryCode
+        - pointSourceCategoryName
+    download:
+      name: download
+      in: query
+      description: Placeholder.
+      required: false
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    pointSourceCategoryCode:
+      name: pointSourceCategoryCode
+      in: query
+      description: Placeholder.
+      required: false
+      schema:
+        type: integer
+        enum:
+        - 405
+        - 406
+        - 407
+        - 408
+        - 409
+        - 410
+        - 411
+        - 412
+        - 413
+        - 414
+        - 415
+        - 417
+        - 418
+        - 419
+        - 420
+        - 421
+        - 422
+        - 423
+        - 424
+        - 425
+        - 426
+        - 427
+        - 428
+        - 429
+        - 430
+        - 432
+        - 433
+        - 434
+        - 435
+        - 436
+        - 437
+        - 438
+        - 439
+        - 440
+        - 441
+        - 442
+        - 443
+        - 444
+        - 445
+        - 446
+        - 447
+        - 449
+        - 450
+        - 451
+        - 454
+        - 455
+        - 457
+        - 458
+        - 459
+        - 460
+        - 461
+        - 463
+        - 464
+        - 465
+        - 466
+        - 467
+        - 468
+        - 469
+        - 471
+    limit:
+      name: limit
+      in: query
+      description: Placeholder.
+      required: false
+      schema:
+        type: integer
+    sortDir:
+      name: sortDir
+      in: query
+      description: Placeholder.
+      required: false
+      schema:
+        type: string
+        enum:
+        - asc
+        - desc
+    offset:
+      name: offset
+      in: query
+      description: Placeholder.
+      required: false
+      schema:
+        type: integer
+    treatmentId:
+      name: treatmentId
+      in: query
+      description: Placeholder.
+      required: false
+      schema:
+        type: integer
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

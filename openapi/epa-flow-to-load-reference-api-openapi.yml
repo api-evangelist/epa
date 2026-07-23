@@ -1,0 +1,191 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes Flow To Load Reference API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Flow To Load Reference
+paths:
+  /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/flow-to-load-references:
+    get:
+      operationId: FlowToLoadReferenceController_getFlowToLoadReferences
+      parameters:
+      - name: locId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: testSumId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      responses:
+        '200':
+          description: Retrieves Flow To Load Reference records by Test Summary Id
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/FlowToLoadReferenceRecordDTO'
+              examples:
+                FlowToLoadReferenceController_getFlowToLoadReferences200Example:
+                  summary: Default FlowToLoadReferenceController_getFlowToLoadReferences 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      tags:
+      - Flow To Load Reference
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/flow-to-load-references/{id}:
+    get:
+      operationId: FlowToLoadReferenceController_getFlowToLoadReference
+      parameters:
+      - name: locId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: testSumId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      responses:
+        '200':
+          description: Retrieves a Flow To Load Reference record by its Id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FlowToLoadReferenceRecordDTO'
+              examples:
+                FlowToLoadReferenceController_getFlowToLoadReference200Example:
+                  summary: Default FlowToLoadReferenceController_getFlowToLoadReference 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      tags:
+      - Flow To Load Reference
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    FlowToLoadReferenceRecordDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '12345'
+        testSumId:
+          type: string
+          example: '12345'
+        calculatedAverageGrossUnitLoad:
+          type: number
+          example: 35.5
+        calculatedAverageReferenceMethodFlow:
+          type: number
+          example: 35.5
+        calculatedReferenceFlowToLoadRatio:
+          type: number
+          example: 35.5
+        calculatedReferenceGrossHeatRate:
+          type: number
+          example: 35.5
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+        rataTestNumber:
+          type: string
+          maxLength: 18
+          example: string
+        operatingLevelCode:
+          type: string
+          example: string
+        averageGrossUnitLoad:
+          type: number
+          example: 0.0
+        averageReferenceMethodFlow:
+          type: number
+          example: 0.0
+        referenceFlowLoadRatio:
+          type: number
+          example: 0.0
+        averageHourlyHeatInputRate:
+          type: number
+          example: 0.0
+        referenceGrossHeatRate:
+          type: number
+          example: 0.0
+        calculatedSeparateReferenceIndicator:
+          type: number
+          example: 35.5
+      required:
+      - id
+      - testSumId
+      - calculatedAverageGrossUnitLoad
+      - calculatedAverageReferenceMethodFlow
+      - calculatedReferenceFlowToLoadRatio
+      - calculatedReferenceGrossHeatRate
+      - userId
+      - addDate
+      - updateDate
+      - operatingLevelCode
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

@@ -1,0 +1,206 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes Meta Data API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Meta Data
+  description: API availability, change history, field definitions, known issues.
+paths:
+  /metaData/isAvailable:
+    get:
+      tags:
+      - Meta Data
+      summary: Check API Availability
+      operationId: metaDataIsAvailable
+      parameters:
+      - $ref: '#/components/parameters/Email'
+      - $ref: '#/components/parameters/Key'
+      responses:
+        '200':
+          description: API status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+              examples:
+                metaDataIsAvailable200Example:
+                  summary: Default metaDataIsAvailable 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /metaData/revisionHistory:
+    get:
+      tags:
+      - Meta Data
+      summary: Get Revision History
+      operationId: metaDataRevisionHistory
+      parameters:
+      - $ref: '#/components/parameters/Email'
+      - $ref: '#/components/parameters/Key'
+      responses:
+        '200':
+          description: API change log
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+              examples:
+                metaDataRevisionHistory200Example:
+                  summary: Default metaDataRevisionHistory 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /metaData/fieldsByService:
+    get:
+      tags:
+      - Meta Data
+      summary: List Fields by Service
+      operationId: metaDataFieldsByService
+      parameters:
+      - $ref: '#/components/parameters/Email'
+      - $ref: '#/components/parameters/Key'
+      - name: service
+        in: query
+        required: true
+        schema:
+          type: string
+        example: string
+      responses:
+        '200':
+          description: Field definitions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+              examples:
+                metaDataFieldsByService200Example:
+                  summary: Default metaDataFieldsByService 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /metaData/issues:
+    get:
+      tags:
+      - Meta Data
+      summary: List Known Issues
+      operationId: metaDataIssues
+      parameters:
+      - $ref: '#/components/parameters/Email'
+      - $ref: '#/components/parameters/Key'
+      responses:
+        '200':
+          description: Known issues
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+              examples:
+                metaDataIssues200Example:
+                  summary: Default metaDataIssues 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  parameters:
+    Email:
+      name: email
+      in: query
+      required: true
+      schema:
+        type: string
+        format: email
+      description: Registered email address.
+    Key:
+      name: key
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Account-specific access key.
+  schemas:
+    Envelope:
+      type: object
+      required:
+      - Header
+      - Data
+      properties:
+        Header:
+          type: array
+          items:
+            $ref: '#/components/schemas/Header'
+          example:
+          - string
+        Data:
+          type: array
+          items:
+            type: object
+          example:
+          - {}
+    Header:
+      type: object
+      properties:
+        status:
+          type: string
+          example: active
+        request_time:
+          type: string
+          example: string
+        url:
+          type: string
+          example: https://example.com
+        rows:
+          type: integer
+          example: 100
+        error:
+          type: array
+          items:
+            type: string
+          example:
+          - string
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

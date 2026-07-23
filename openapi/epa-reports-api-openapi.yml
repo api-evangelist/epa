@@ -1,0 +1,225 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes Reports API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Reports
+paths:
+  /camd-services/reports/list:
+    get:
+      description: Retrieves list of official reports available.
+      operationId: ReportController_getAvailableReports
+      parameters: []
+      responses:
+        '200':
+          description: Data retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportDTO'
+              examples:
+                ReportController_getAvailableReports200Example:
+                  summary: Default ReportController_getAvailableReports 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      summary: ''
+      tags:
+      - Reports
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /camd-services/reports:
+    get:
+      description: Retrieves official data for various reports based on criteria.
+      operationId: ReportController_getReport
+      parameters:
+      - name: reportCode
+        required: true
+        in: query
+        schema:
+          type: string
+        example: string
+      - name: facilityId
+        required: true
+        in: query
+        schema:
+          type: number
+        example: 0.0
+      - name: monitorPlanId
+        required: false
+        in: query
+        schema:
+          type: string
+        example: '12345'
+      - name: testId
+        required: false
+        in: query
+        style: pipeDelimited
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+        example:
+        - '12345'
+      - name: qceId
+        required: false
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+        example:
+        - '12345'
+      - name: teeId
+        required: false
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+        example:
+        - '12345'
+      - name: year
+        required: false
+        in: query
+        schema:
+          type: number
+        example: 2024
+      - name: quarter
+        required: false
+        in: query
+        schema:
+          type: number
+        example: 0.0
+      - name: locationId
+        required: false
+        in: query
+        schema:
+          type: string
+        example: '12345'
+      - name: reportingPeriodIds
+        required: false
+        in: query
+        schema:
+          type: string
+        example: '12345'
+      responses:
+        '200':
+          description: Data retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportDTO'
+              examples:
+                ReportController_getReport200Example:
+                  summary: Default ReportController_getReport 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      summary: ''
+      tags:
+      - Reports
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ReportColumnDTO:
+      type: object
+      properties:
+        code:
+          type: string
+          example: string
+        values:
+          type: array
+          items:
+            type: object
+          example:
+          - {}
+      required:
+      - code
+      - values
+    ReportDetailDTO:
+      type: object
+      properties:
+        displayName:
+          type: string
+          example: EPA Facility
+        templateCode:
+          type: string
+          example: string
+        templateType:
+          type: string
+          example: string
+        results:
+          type: array
+          items:
+            type: object
+          example:
+          - {}
+      required:
+      - displayName
+      - templateCode
+      - templateType
+      - results
+    ReportDTO:
+      type: object
+      properties:
+        displayName:
+          type: string
+          example: EPA Facility
+        columns:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReportColumnDTO'
+          example:
+          - string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReportDetailDTO'
+          example:
+          - string
+      required:
+      - displayName
+      - columns
+      - details
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

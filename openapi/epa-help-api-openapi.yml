@@ -1,0 +1,319 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes Help API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Help
+paths:
+  /api/help/formio/s3/{rebateYear}/{formType}/storage/s3:
+    get:
+      summary: Download Formio File Attachment from S3 for a Submission.
+      parameters:
+      - $ref: '#/components/parameters/rebateYear'
+      - $ref: '#/components/parameters/formType'
+      - $ref: '#/components/parameters/bucket'
+      - $ref: '#/components/parameters/key'
+      responses:
+        '200':
+          description: OK
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      tags:
+      - Help
+  /api/help/formio/submission/{rebateYear}/{formType}/{id}:
+    get:
+      summary: Get an Existing Form's Submission Data from Formio.
+      parameters:
+      - $ref: '#/components/parameters/rebateYear'
+      - $ref: '#/components/parameters/formType'
+      - in: path
+        name: id
+        description: The CSB Rebate ID or Formio MongoDB ObjectId.
+        required: true
+        example: '000000'
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rebateId:
+                    type: string
+                    nullable: true
+                    example: '000000'
+                  schema:
+                    type: object
+                    nullable: true
+                  formio:
+                    type: object
+                    nullable: true
+                  bap:
+                    type: object
+                    nullable: true
+                    properties:
+                      modified:
+                        type: string
+                        example: '2024-01-01T12:00:00.000Z'
+                      comboKey:
+                        type: string
+                        example: '0000000000000000'
+                      mongoId:
+                        type: string
+                        example: '000000000000000000000000'
+                      rebateId:
+                        type: string
+                        example: '000000'
+                      reviewItemId:
+                        type: string
+                        example: 000000A01
+                      status:
+                        type: string
+                        example: Accepted
+                      reimbursementNeeded:
+                        type: boolean
+                        example: false
+              examples:
+                get_api_help_formio_submission_{rebateYear}_{formType}_{id}200Example:
+                  summary: Default get_api_help_formio_submission_{rebateYear}_{formType}_{id} 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      tags:
+      - Help
+    post:
+      summary: Post an Update to an Existing Form Submission to Formio (change Submission to 'draft').
+      parameters:
+      - $ref: '#/components/parameters/rebateYear'
+      - $ref: '#/components/parameters/formType'
+      - in: path
+        name: id
+        description: The CSB Rebate ID or Formio MongoDB ObjectId.
+        required: true
+        example: '000000000000000000000000'
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+            example: {}
+      responses:
+        '200':
+          description: The updated form submission.
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                post_api_help_formio_submission_{rebateYear}_{formType}_{id}200Example:
+                  summary: Default post_api_help_formio_submission_{rebateYear}_{formType}_{id} 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      tags:
+      - Help
+  /api/help/formio/actions/{formId}/{mongoId}:
+    get:
+      summary: Get All Actions Associated with a Form's Submission from Formio.
+      parameters:
+      - $ref: '#/components/parameters/formId'
+      - $ref: '#/components/parameters/mongoId'
+      responses:
+        '200':
+          description: An array of actions associated with the form's submission.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+              examples:
+                get_api_help_formio_actions_{formId}_{mongoId}200Example:
+                  summary: Default get_api_help_formio_actions_{formId}_{mongoId} 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      tags:
+      - Help
+  /api/help/formio/pdf/{formId}/{mongoId}:
+    get:
+      summary: Get a PDF of an Existing Form's Submission from Formio.
+      parameters:
+      - $ref: '#/components/parameters/formId'
+      - $ref: '#/components/parameters/mongoId'
+      responses:
+        '200':
+          description: A PDF of the form's submission.
+          content:
+            '*/*':
+              schema:
+                type: string
+                format: byte
+              examples:
+                get_api_help_formio_pdf_{formId}_{mongoId}200Example:
+                  summary: Default get_api_help_formio_pdf_{formId}_{mongoId} 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      tags:
+      - Help
+  /api/help:
+    get:
+      summary: Help
+      description: Placeholder
+      tags:
+      - Help
+      responses:
+        '200':
+          description: Placeholder
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/glossary.help'
+              examples:
+                get_api_help200Example:
+                  summary: Default get_api_help 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  responses:
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: Unauthorized
+  parameters:
+    key:
+      in: query
+      name: key
+      description: The S3 object key for the file.
+      required: true
+      example: placeholder-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.png
+      schema:
+        type: string
+    rebateYear:
+      in: path
+      name: rebateYear
+      description: The Clean School Bus Rebate year (2022, 2023, 2024).
+      required: true
+      example: '2022'
+      schema:
+        type: string
+    formType:
+      in: path
+      name: formType
+      description: The Formio form type (frf, prf, crf).
+      required: true
+      example: frf
+      schema:
+        type: string
+    formId:
+      in: path
+      name: formId
+      description: The Formio form's MongoDB ObjectId.
+      required: true
+      example: '000000000000000000000000'
+      schema:
+        type: string
+    bucket:
+      in: query
+      name: bucket
+      description: The S3 bucket name where the file is stored.
+      required: true
+      example: cleanschoolbus
+      schema:
+        type: string
+    mongoId:
+      in: path
+      name: mongoId
+      description: The Formio submission's MongoDB ObjectId.
+      required: true
+      example: '000000000000000000000000'
+      schema:
+        type: string
+  schemas:
+    glossary.help:
+      type: object
+      description: Placeholder
+      properties:
+        Dummy:
+          type: string
+          title: Dummy
+          example: Dummy
+          description: Dummy
+      required:
+      - Dummy
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

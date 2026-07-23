@@ -1,0 +1,313 @@
+openapi: 3.0.3
+info:
+  title: EPA Air Quality System (AQS) Account Type Codes Systems API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
+
+    '
+  version: '1.0'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
+tags:
+- name: Systems
+paths:
+  /monitor-plan-mgmt/locations/{locId}/systems:
+    get:
+      operationId: MonitorSystemController_getSystems
+      parameters:
+      - name: locId
+        required: true
+        in: path
+        schema:
+          type: string
+        example: '12345'
+      responses:
+        '200':
+          description: Retrieves official system records for a monitor location
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/MonitorSystemDTO'
+              examples:
+                MonitorSystemController_getSystems200Example:
+                  summary: Default MonitorSystemController_getSystems 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      security:
+      - APIKey: []
+      tags:
+      - Systems
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    SystemFuelFlowDTO:
+      type: object
+      properties:
+        maximumFuelFlowRate:
+          type: number
+          description: Maximum fuel flow rate.
+          example: 30667
+        systemFuelFlowUOMCode:
+          type: string
+          description: Code used to identify the fuel flow units of measure.
+          example: HSCF
+        maximumFuelFlowRateSourceCode:
+          type: string
+          description: Code used to identify the source of maximum fuel flow.
+          example: URV
+        beginDate:
+          format: date-time
+          type: string
+          description: Date on which information became effective or activity started.
+          example: '2010-08-01'
+        beginHour:
+          type: number
+          description: Hour in which information became effective.
+          example: 12
+        endDate:
+          format: date-time
+          type: string
+          description: Last date in which information was effective.  This date will be null for active records.
+          example: null
+        endHour:
+          type: number
+          description: Last hour in which information was effective or hour in which activity ended. This value will be null for active records.
+          example: null
+        id:
+          type: string
+          description: Unique identifier of a system fuel flow record.
+          example: WS150071-0C5A8F50F7F24DB8B73E65C18C2063E3
+        monitoringSystemRecordId:
+          type: string
+          description: Unique identifier of a monitoring system record.
+          example: WS150071-1BCDEDC4D2944376ACA55FCABE9D60A1
+        fuelCode:
+          type: string
+          description: The type of fuel measured by the system.
+          example: PNG
+        systemTypeCode:
+          type: string
+          description: Code used to identify the type (parameter) of the system.
+          example: GAS
+        userId:
+          type: string
+          description: User account or source of data that added or updated record.
+          example: abcde
+        addDate:
+          type: string
+          description: Date and time in which record was added.
+          example: '2009-02-20'
+        updateDate:
+          type: string
+          description: Date and time in which record was last updated.
+          example: '2010-09-01'
+        active:
+          type: boolean
+          description: Flag for active monitor location record
+          example: true
+      required:
+      - maximumFuelFlowRate
+      - systemFuelFlowUOMCode
+      - maximumFuelFlowRateSourceCode
+      - beginDate
+      - beginHour
+      - endDate
+      - endHour
+      - id
+      - monitoringSystemRecordId
+      - fuelCode
+      - systemTypeCode
+      - userId
+      - addDate
+      - updateDate
+      - active
+    MonitorSystemDTO:
+      type: object
+      properties:
+        monitoringSystemId:
+          type: string
+          description: The three digit code used by the source to identify the monitoring system.
+          example: C42
+        systemTypeCode:
+          type: string
+          description: Code used to identify the type (parameter) of the system.
+          example: FLOW
+        systemDesignationCode:
+          type: string
+          description: Code used to indicate designation of monitoring system as primary, backup etc.
+          example: P
+        fuelCode:
+          type: string
+          description: Code used to identify the type of fuel.
+          example: NFS
+        beginDate:
+          format: date-time
+          type: string
+          description: Date on which information became effective or activity started.
+          example: '2007-11-28'
+        endDate:
+          format: date-time
+          type: string
+          description: Last date in which information was effective.  This date will be null for active records.
+          example: null
+        beginHour:
+          type: number
+          description: Hour in which information became effective or activity started.
+          example: 17
+        endHour:
+          type: number
+          description: Last hour in which information was effective.  This value will be null for active records.
+          example: null
+        id:
+          type: string
+          description: Unique identifier of a monitoring system record.
+          example: CAMD-4B0DC37051224A7AA9D8CA1E5BE6B4D4
+        locationId:
+          type: string
+          description: Unique identifier of a monitoring location record.
+          example: '5770'
+        userId:
+          type: string
+          description: User account or source of data that added or updated record.
+          example: abcde
+        addDate:
+          type: string
+          description: Date and time in which record was added.
+          example: '2009-02-20'
+        updateDate:
+          type: string
+          description: Date and time in which record was last updated.
+          example: '2009-02-20'
+        active:
+          type: boolean
+          description: Flag for active monitor location record
+          example: true
+        monitoringSystemComponentData:
+          type: array
+          items:
+            $ref: '#/components/schemas/SystemComponentDTO'
+          example:
+          - string
+        monitoringSystemFuelFlowData:
+          type: array
+          items:
+            $ref: '#/components/schemas/SystemFuelFlowDTO'
+          example:
+          - string
+      required:
+      - monitoringSystemId
+      - systemTypeCode
+      - systemDesignationCode
+      - fuelCode
+      - beginDate
+      - endDate
+      - beginHour
+      - endHour
+      - id
+      - locationId
+      - userId
+      - addDate
+      - updateDate
+      - active
+      - monitoringSystemComponentData
+      - monitoringSystemFuelFlowData
+    SystemComponentDTO:
+      type: object
+      properties:
+        componentId:
+          type: string
+          description: The three digit code assigned by the source to identify the component.
+          example: '044'
+        beginDate:
+          format: date-time
+          type: string
+          description: Date on which information became effective or activity started.
+          example: '2008-12-31'
+        beginHour:
+          type: number
+          description: Hour in which information became effective.
+          example: 23
+        endDate:
+          format: date-time
+          type: string
+          description: Last date in which information was effective.  This date will be null for active records.
+          example: null
+        endHour:
+          type: number
+          description: Last hour in which information was effective.  This value will be null for active records.
+          example: null
+        id:
+          type: string
+          description: Unique identifier of a Monitoring System Component record.
+          example: MELISSARHO-3F31E53DE9B14764936BFB0AC7225847
+        locationId:
+          type: string
+          description: Unique identifier of a monitoring location record.
+          example: '5770'
+        monitoringSystemRecordId:
+          type: string
+          description: Unique identifier of a monitoring system record.
+          example: CAMD-4B0DC37051224A7AA9D8CA1E5BE6B4D4
+        userId:
+          type: string
+          description: User account or source of data that added or updated record.
+          example: abcde
+        addDate:
+          type: string
+          description: Date and time in which record was added.
+          example: '2009-02-20'
+        updateDate:
+          type: string
+          description: Date and time in which record was last updated.
+          example: '2009-02-20'
+        active:
+          type: boolean
+          description: Flag for active monitor location record
+          example: true
+      required:
+      - componentId
+      - beginDate
+      - beginHour
+      - endDate
+      - endHour
+      - id
+      - locationId
+      - monitoringSystemRecordId
+      - userId
+      - addDate
+      - updateDate
+      - active
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '
