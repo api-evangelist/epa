@@ -1,0 +1,830 @@
+{
+  "info": {
+    "_postman_id": "443c754c-b119-4528-b9a5-2850f2287893",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Apportioned Hourly MATS Emissions API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:57:04.000Z",
+    "updatedAt": "2026-07-28T10:57:04.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-443c754c-b119-4528-b9a5-2850f2287893"
+  },
+  "item": [
+    {
+      "name": "emissions-mgmt",
+      "item": [
+        {
+          "name": "emissions",
+          "item": [
+            {
+              "name": "apportioned",
+              "item": [
+                {
+                  "name": "mats",
+                  "item": [
+                    {
+                      "name": "hourly",
+                      "item": [
+                        {
+                          "name": "Hourly Mats Apportioned Emissions Controller get Emissions",
+                          "id": "ae1d47d2-dcdf-41a6-a96f-272174bf5aa2",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/mats/hourly?stateCode=ND|ID&facilityId=<number>|<number>&unitType=Pressurized fluidized bed boiler|Wet bottom wall-fired boiler&unitFuelType=Coal|Process Sludge&controlTechnologies=Wet ESP|Water Injection&beginDate=<dateTime>&endDate=<dateTime>&operatingHoursOnly=<boolean>&page=<number>&perPage=<number>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "emissions-mgmt",
+                                "emissions",
+                                "apportioned",
+                                "mats",
+                                "hourly"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "ND|ID"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Pressurized fluidized bed boiler|Wet bottom wall-fired boiler"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Coal|Process Sludge"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Wet ESP|Water Injection"
+                                },
+                                {
+                                  "description": "(Required) Begin date for a given period of a unit's emissions.",
+                                  "key": "beginDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "(Required) End date for a given period of a unit's emissions.",
+                                  "key": "endDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "Indicator of whether or not a request should return only data for hours where a unit operated.",
+                                  "key": "operatingHoursOnly",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "(Required) Page number of data being requested.",
+                                  "key": "page",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "(Required) Number of results per page.",
+                                  "key": "perPage",
+                                  "value": "<number>"
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "78ec3d02-6145-4dd8-8e47-b62850731ebc",
+                              "name": "Retrieves Hourly MATS Apportioned Emissions per filter criteria",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/mats/hourly?stateCode=ND|ID&facilityId=<number>|<number>&unitType=Pressurized fluidized bed boiler|Wet bottom wall-fired boiler&unitFuelType=Coal|Process Sludge&controlTechnologies=Wet ESP|Water Injection&beginDate=<dateTime>&endDate=<dateTime>&operatingHoursOnly=<boolean>&page=<number>&perPage=<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "mats",
+                                    "hourly"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "ND|ID"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Pressurized fluidized bed boiler|Wet bottom wall-fired boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Coal|Process Sludge"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Wet ESP|Water Injection"
+                                    },
+                                    {
+                                      "description": "(Required) Begin date for a given period of a unit's emissions.",
+                                      "key": "beginDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "(Required) End date for a given period of a unit's emissions.",
+                                      "key": "endDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "Indicator of whether or not a request should return only data for hours where a unit operated.",
+                                      "key": "operatingHoursOnly",
+                                      "value": "<boolean>"
+                                    },
+                                    {
+                                      "description": "(Required) Page number of data being requested.",
+                                      "key": "page",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Number of results per page.",
+                                      "key": "perPage",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"items\": [\n    {\n      \"stateCode\": \"<string>\",\n      \"facilityName\": \"<string>\",\n      \"unitId\": \"<string>\",\n      \"unitType\": \"<string>\",\n      \"associatedStacks\": \"<string>\",\n      \"primaryFuelInfo\": \"<string>\",\n      \"secondaryFuelInfo\": \"<string>\",\n      \"so2ControlInfo\": \"<string>\",\n      \"pmControlInfo\": \"<string>\",\n      \"noxControlInfo\": \"<string>\",\n      \"hgControlInfo\": \"<string>\",\n      \"date\": \"<string>\",\n      \"hgMassMeasureFlg\": \"<string>\",\n      \"hclMassMeasureFlg\": \"<string>\",\n      \"hfMassMeasureFlg\": \"<string>\",\n      \"facilityId\": \"<number>\",\n      \"hour\": \"<number>\",\n      \"opTime\": \"<number>\",\n      \"matsGrossLoad\": \"<number>\",\n      \"matsHeatInput\": \"<number>\",\n      \"hgOutputRate\": \"<number>\",\n      \"hgInputRate\": \"<number>\",\n      \"hgMass\": \"<number>\",\n      \"hclOutputRate\": \"<number>\",\n      \"hclInputRate\": \"<number>\",\n      \"hclMass\": \"<number>\",\n      \"hfOutputRate\": \"<number>\",\n      \"hfInputRate\": \"<number>\",\n      \"hfMass\": \"<number>\",\n      \"steamLoad\": \"<number>\"\n    },\n    {\n      \"stateCode\": \"<string>\",\n      \"facilityName\": \"<string>\",\n      \"unitId\": \"<string>\",\n      \"unitType\": \"<string>\",\n      \"associatedStacks\": \"<string>\",\n      \"primaryFuelInfo\": \"<string>\",\n      \"secondaryFuelInfo\": \"<string>\",\n      \"so2ControlInfo\": \"<string>\",\n      \"pmControlInfo\": \"<string>\",\n      \"noxControlInfo\": \"<string>\",\n      \"hgControlInfo\": \"<string>\",\n      \"date\": \"<string>\",\n      \"hgMassMeasureFlg\": \"<string>\",\n      \"hclMassMeasureFlg\": \"<string>\",\n      \"hfMassMeasureFlg\": \"<string>\",\n      \"facilityId\": \"<number>\",\n      \"hour\": \"<number>\",\n      \"opTime\": \"<number>\",\n      \"matsGrossLoad\": \"<number>\",\n      \"matsHeatInput\": \"<number>\",\n      \"hgOutputRate\": \"<number>\",\n      \"hgInputRate\": \"<number>\",\n      \"hgMass\": \"<number>\",\n      \"hclOutputRate\": \"<number>\",\n      \"hclInputRate\": \"<number>\",\n      \"hclMass\": \"<number>\",\n      \"hfOutputRate\": \"<number>\",\n      \"hfInputRate\": \"<number>\",\n      \"hfMass\": \"<number>\",\n      \"steamLoad\": \"<number>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T10:57:04.000Z",
+                              "updatedAt": "2026-07-28T10:57:04.000Z",
+                              "uid": "35240-78ec3d02-6145-4dd8-8e47-b62850731ebc"
+                            },
+                            {
+                              "id": "e8a80eee-0316-48e6-9d3f-d95d86bb202c",
+                              "name": "Invalid Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/mats/hourly?stateCode=ND|ID&facilityId=<number>|<number>&unitType=Pressurized fluidized bed boiler|Wet bottom wall-fired boiler&unitFuelType=Coal|Process Sludge&controlTechnologies=Wet ESP|Water Injection&beginDate=<dateTime>&endDate=<dateTime>&operatingHoursOnly=<boolean>&page=<number>&perPage=<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "mats",
+                                    "hourly"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "ND|ID"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Pressurized fluidized bed boiler|Wet bottom wall-fired boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Coal|Process Sludge"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Wet ESP|Water Injection"
+                                    },
+                                    {
+                                      "description": "(Required) Begin date for a given period of a unit's emissions.",
+                                      "key": "beginDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "(Required) End date for a given period of a unit's emissions.",
+                                      "key": "endDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "Indicator of whether or not a request should return only data for hours where a unit operated.",
+                                      "key": "operatingHoursOnly",
+                                      "value": "<boolean>"
+                                    },
+                                    {
+                                      "description": "(Required) Page number of data being requested.",
+                                      "key": "page",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Number of results per page.",
+                                      "key": "perPage",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:04.000Z",
+                              "updatedAt": "2026-07-28T10:57:04.000Z",
+                              "uid": "35240-e8a80eee-0316-48e6-9d3f-d95d86bb202c"
+                            },
+                            {
+                              "id": "9ae89c75-65de-4212-941c-847350a09d37",
+                              "name": "Resource Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/mats/hourly?stateCode=ND|ID&facilityId=<number>|<number>&unitType=Pressurized fluidized bed boiler|Wet bottom wall-fired boiler&unitFuelType=Coal|Process Sludge&controlTechnologies=Wet ESP|Water Injection&beginDate=<dateTime>&endDate=<dateTime>&operatingHoursOnly=<boolean>&page=<number>&perPage=<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "mats",
+                                    "hourly"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "ND|ID"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Pressurized fluidized bed boiler|Wet bottom wall-fired boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Coal|Process Sludge"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Wet ESP|Water Injection"
+                                    },
+                                    {
+                                      "description": "(Required) Begin date for a given period of a unit's emissions.",
+                                      "key": "beginDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "(Required) End date for a given period of a unit's emissions.",
+                                      "key": "endDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "Indicator of whether or not a request should return only data for hours where a unit operated.",
+                                      "key": "operatingHoursOnly",
+                                      "value": "<boolean>"
+                                    },
+                                    {
+                                      "description": "(Required) Page number of data being requested.",
+                                      "key": "page",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Number of results per page.",
+                                      "key": "perPage",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:04.000Z",
+                              "updatedAt": "2026-07-28T10:57:04.000Z",
+                              "uid": "35240-9ae89c75-65de-4212-941c-847350a09d37"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T10:57:04.000Z",
+                          "updatedAt": "2026-07-28T10:57:04.000Z",
+                          "uid": "35240-ae1d47d2-dcdf-41a6-a96f-272174bf5aa2"
+                        }
+                      ],
+                      "id": "de6ecbf0-7938-4399-9e2f-b107d4aec64d",
+                      "createdAt": "2026-07-28T10:57:04.000Z",
+                      "updatedAt": "2026-07-28T10:57:04.000Z",
+                      "uid": "35240-de6ecbf0-7938-4399-9e2f-b107d4aec64d"
+                    }
+                  ],
+                  "id": "fb2514d2-efb5-46d4-ab92-a9c990be3e67",
+                  "createdAt": "2026-07-28T10:57:04.000Z",
+                  "updatedAt": "2026-07-28T10:57:04.000Z",
+                  "uid": "35240-fb2514d2-efb5-46d4-ab92-a9c990be3e67"
+                }
+              ],
+              "id": "a15e5f5f-14b8-4c40-82d8-437084b18862",
+              "createdAt": "2026-07-28T10:57:04.000Z",
+              "updatedAt": "2026-07-28T10:57:04.000Z",
+              "uid": "35240-a15e5f5f-14b8-4c40-82d8-437084b18862"
+            }
+          ],
+          "id": "5a2be568-64be-48de-867e-547a90a5512c",
+          "createdAt": "2026-07-28T10:57:04.000Z",
+          "updatedAt": "2026-07-28T10:57:04.000Z",
+          "uid": "35240-5a2be568-64be-48de-867e-547a90a5512c"
+        }
+      ],
+      "id": "4094295d-8fc3-4f3d-9270-beefc374d24a",
+      "createdAt": "2026-07-28T10:57:04.000Z",
+      "updatedAt": "2026-07-28T10:57:04.000Z",
+      "uid": "35240-4094295d-8fc3-4f3d-9270-beefc374d24a"
+    },
+    {
+      "name": "streaming-services",
+      "item": [
+        {
+          "name": "emissions",
+          "item": [
+            {
+              "name": "apportioned",
+              "item": [
+                {
+                  "name": "mats",
+                  "item": [
+                    {
+                      "name": "hourly",
+                      "item": [
+                        {
+                          "name": "Hourly Mats Apportioned Emissions Controller stream Emissions",
+                          "id": "f00fe6a5-433b-4cef-a2b8-a99ae7dc9a88",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/mats/hourly?stateCode=ND|ID&facilityId=<number>|<number>&unitType=Pressurized fluidized bed boiler|Wet bottom wall-fired boiler&unitFuelType=Coal|Process Sludge&controlTechnologies=Wet ESP|Water Injection&beginDate=<dateTime>&endDate=<dateTime>&operatingHoursOnly=<boolean>&exclude=hgControlInfo|pmControlInfo",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "streaming-services",
+                                "emissions",
+                                "apportioned",
+                                "mats",
+                                "hourly"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "ND|ID"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Pressurized fluidized bed boiler|Wet bottom wall-fired boiler"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Coal|Process Sludge"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Wet ESP|Water Injection"
+                                },
+                                {
+                                  "description": "(Required) Begin date for a given period of a unit's emissions.",
+                                  "key": "beginDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "(Required) End date for a given period of a unit's emissions.",
+                                  "key": "endDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "Indicator of whether or not a request should return only data for hours where a unit operated.",
+                                  "key": "operatingHoursOnly",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Selected items will be excluded from the response",
+                                  "key": "exclude",
+                                  "value": "hgControlInfo|pmControlInfo"
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "5832aba7-300f-4eae-976e-96ef6339230e",
+                              "name": "Streams Hourly MATS Apportioned Emissions per filter criteria",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/mats/hourly?stateCode=ND|ID&facilityId=<number>|<number>&unitType=Pressurized fluidized bed boiler|Wet bottom wall-fired boiler&unitFuelType=Coal|Process Sludge&controlTechnologies=Wet ESP|Water Injection&beginDate=<dateTime>&endDate=<dateTime>&operatingHoursOnly=<boolean>&exclude=hgControlInfo|pmControlInfo&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "streaming-services",
+                                    "emissions",
+                                    "apportioned",
+                                    "mats",
+                                    "hourly"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "ND|ID"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Pressurized fluidized bed boiler|Wet bottom wall-fired boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Coal|Process Sludge"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Wet ESP|Water Injection"
+                                    },
+                                    {
+                                      "description": "(Required) Begin date for a given period of a unit's emissions.",
+                                      "key": "beginDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "(Required) End date for a given period of a unit's emissions.",
+                                      "key": "endDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "Indicator of whether or not a request should return only data for hours where a unit operated.",
+                                      "key": "operatingHoursOnly",
+                                      "value": "<boolean>"
+                                    },
+                                    {
+                                      "description": "Selected items will be excluded from the response",
+                                      "key": "exclude",
+                                      "value": "hgControlInfo|pmControlInfo"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"stateCode\": \"<string>\",\n  \"facilityName\": \"<string>\",\n  \"unitId\": \"<string>\",\n  \"unit_id\": \"<number>\",\n  \"unitType\": \"<string>\",\n  \"associatedStacks\": \"<string>\",\n  \"primaryFuelInfo\": \"<string>\",\n  \"secondaryFuelInfo\": \"<string>\",\n  \"so2ControlInfo\": \"<string>\",\n  \"pmControlInfo\": \"<string>\",\n  \"noxControlInfo\": \"<string>\",\n  \"hgControlInfo\": \"<string>\",\n  \"date\": \"<string>\",\n  \"hgMassMeasureFlg\": \"<string>\",\n  \"hclMassMeasureFlg\": \"<string>\",\n  \"hfMassMeasureFlg\": \"<string>\",\n  \"facilityId\": \"<number>\",\n  \"hour\": \"<number>\",\n  \"opTime\": \"<number>\",\n  \"matsGrossLoad\": \"<number>\",\n  \"matsHeatInput\": \"<number>\",\n  \"hgOutputRate\": \"<number>\",\n  \"hgInputRate\": \"<number>\",\n  \"hgMass\": \"<number>\",\n  \"hclOutputRate\": \"<number>\",\n  \"hclInputRate\": \"<number>\",\n  \"hclMass\": \"<number>\",\n  \"hfOutputRate\": \"<number>\",\n  \"hfInputRate\": \"<number>\",\n  \"hfMass\": \"<number>\",\n  \"steamLoad\": \"<number>\"\n}",
+                              "createdAt": "2026-07-28T10:57:04.000Z",
+                              "updatedAt": "2026-07-28T10:57:04.000Z",
+                              "uid": "35240-5832aba7-300f-4eae-976e-96ef6339230e"
+                            },
+                            {
+                              "id": "57c2226a-b736-4ebe-92af-59dfe0279a9b",
+                              "name": "Invalid Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/mats/hourly?stateCode=ND|ID&facilityId=<number>|<number>&unitType=Pressurized fluidized bed boiler|Wet bottom wall-fired boiler&unitFuelType=Coal|Process Sludge&controlTechnologies=Wet ESP|Water Injection&beginDate=<dateTime>&endDate=<dateTime>&operatingHoursOnly=<boolean>&exclude=hgControlInfo|pmControlInfo&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "streaming-services",
+                                    "emissions",
+                                    "apportioned",
+                                    "mats",
+                                    "hourly"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "ND|ID"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Pressurized fluidized bed boiler|Wet bottom wall-fired boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Coal|Process Sludge"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Wet ESP|Water Injection"
+                                    },
+                                    {
+                                      "description": "(Required) Begin date for a given period of a unit's emissions.",
+                                      "key": "beginDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "(Required) End date for a given period of a unit's emissions.",
+                                      "key": "endDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "Indicator of whether or not a request should return only data for hours where a unit operated.",
+                                      "key": "operatingHoursOnly",
+                                      "value": "<boolean>"
+                                    },
+                                    {
+                                      "description": "Selected items will be excluded from the response",
+                                      "key": "exclude",
+                                      "value": "hgControlInfo|pmControlInfo"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:04.000Z",
+                              "updatedAt": "2026-07-28T10:57:04.000Z",
+                              "uid": "35240-57c2226a-b736-4ebe-92af-59dfe0279a9b"
+                            },
+                            {
+                              "id": "79710af4-9700-4d83-a2e9-e50ed7e1a9c1",
+                              "name": "Resource Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/mats/hourly?stateCode=ND|ID&facilityId=<number>|<number>&unitType=Pressurized fluidized bed boiler|Wet bottom wall-fired boiler&unitFuelType=Coal|Process Sludge&controlTechnologies=Wet ESP|Water Injection&beginDate=<dateTime>&endDate=<dateTime>&operatingHoursOnly=<boolean>&exclude=hgControlInfo|pmControlInfo&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "streaming-services",
+                                    "emissions",
+                                    "apportioned",
+                                    "mats",
+                                    "hourly"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "ND|ID"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Pressurized fluidized bed boiler|Wet bottom wall-fired boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Coal|Process Sludge"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Wet ESP|Water Injection"
+                                    },
+                                    {
+                                      "description": "(Required) Begin date for a given period of a unit's emissions.",
+                                      "key": "beginDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "(Required) End date for a given period of a unit's emissions.",
+                                      "key": "endDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "Indicator of whether or not a request should return only data for hours where a unit operated.",
+                                      "key": "operatingHoursOnly",
+                                      "value": "<boolean>"
+                                    },
+                                    {
+                                      "description": "Selected items will be excluded from the response",
+                                      "key": "exclude",
+                                      "value": "hgControlInfo|pmControlInfo"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:04.000Z",
+                              "updatedAt": "2026-07-28T10:57:04.000Z",
+                              "uid": "35240-79710af4-9700-4d83-a2e9-e50ed7e1a9c1"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T10:57:04.000Z",
+                          "updatedAt": "2026-07-28T10:57:04.000Z",
+                          "uid": "35240-f00fe6a5-433b-4cef-a2b8-a99ae7dc9a88"
+                        }
+                      ],
+                      "id": "fb94723f-9f93-4f24-bb95-e9db3ac06ac3",
+                      "createdAt": "2026-07-28T10:57:04.000Z",
+                      "updatedAt": "2026-07-28T10:57:04.000Z",
+                      "uid": "35240-fb94723f-9f93-4f24-bb95-e9db3ac06ac3"
+                    }
+                  ],
+                  "id": "10d5dace-eabe-4689-8f46-6564f5c16c39",
+                  "createdAt": "2026-07-28T10:57:04.000Z",
+                  "updatedAt": "2026-07-28T10:57:04.000Z",
+                  "uid": "35240-10d5dace-eabe-4689-8f46-6564f5c16c39"
+                }
+              ],
+              "id": "e31a4ec2-7761-4f1d-8bed-278763fae0c1",
+              "createdAt": "2026-07-28T10:57:04.000Z",
+              "updatedAt": "2026-07-28T10:57:04.000Z",
+              "uid": "35240-e31a4ec2-7761-4f1d-8bed-278763fae0c1"
+            }
+          ],
+          "id": "46d8a1c6-1217-49e2-b00b-1d1027d55e58",
+          "createdAt": "2026-07-28T10:57:04.000Z",
+          "updatedAt": "2026-07-28T10:57:04.000Z",
+          "uid": "35240-46d8a1c6-1217-49e2-b00b-1d1027d55e58"
+        }
+      ],
+      "id": "dffdafee-a50b-41a2-bd20-cbd3fcb27924",
+      "createdAt": "2026-07-28T10:57:04.000Z",
+      "updatedAt": "2026-07-28T10:57:04.000Z",
+      "uid": "35240-dffdafee-a50b-41a2-bd20-cbd3fcb27924"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

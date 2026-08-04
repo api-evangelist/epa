@@ -1,0 +1,1205 @@
+{
+  "info": {
+    "_postman_id": "4f252ccb-7419-4ba5-8512-ccbc9857b008",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Allowance Transactions API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:56:41.000Z",
+    "updatedAt": "2026-07-28T10:56:41.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4f252ccb-7419-4ba5-8512-ccbc9857b008"
+  },
+  "item": [
+    {
+      "name": "account-mgmt",
+      "item": [
+        {
+          "name": "allowance-transactions",
+          "item": [
+            {
+              "name": "attributes",
+              "item": [
+                {
+                  "name": "applicable",
+                  "item": [
+                    {
+                      "name": "Allowance Transactions Controller get All Applicable Allowance Transactions Attributes",
+                      "id": "f5868bb8-57e9-4906-8551-dd84a544b05f",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/account-mgmt/allowance-transactions/attributes/applicable?transactionBeginDate=<dateTime>&transactionEndDate=<dateTime>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "account-mgmt",
+                            "allowance-transactions",
+                            "attributes",
+                            "applicable"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Begin date for a given period of an account's allowance transaction history.",
+                              "key": "transactionBeginDate",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "(Required) End date for a given period of an account's allowance transaction history.",
+                              "key": "transactionEndDate",
+                              "value": "<dateTime>"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "34ec7a36-f6eb-4baf-b14b-f6c9dddf29f3",
+                          "name": "Retrieved All Applicable Allowance Transactions Attributes",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/account-mgmt/allowance-transactions/attributes/applicable?transactionBeginDate=<dateTime>&transactionEndDate=<dateTime>&key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "account-mgmt",
+                                "allowance-transactions",
+                                "attributes",
+                                "applicable"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) Begin date for a given period of an account's allowance transaction history.",
+                                  "key": "transactionBeginDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "(Required) End date for a given period of an account's allowance transaction history.",
+                                  "key": "transactionEndDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"items\": [\n    {\n      \"transactionDate\": \"<string>\",\n      \"vintageYear\": \"<number>\",\n      \"programCode\": \"<string>\",\n      \"buyAccountNumber\": \"<string>\",\n      \"sellAccountNumber\": \"<string>\",\n      \"buyAccountTypeCode\": \"<string>\",\n      \"sellAccountTypeCode\": \"<string>\",\n      \"buyState\": \"<string>\",\n      \"sellState\": \"<string>\",\n      \"transactionTypeCode\": \"<string>\",\n      \"ownerOperator\": \"<string>\",\n      \"buyFacilityId\": \"<number>\",\n      \"sellFacilityId\": \"<number>\"\n    },\n    {\n      \"transactionDate\": \"<string>\",\n      \"vintageYear\": \"<number>\",\n      \"programCode\": \"<string>\",\n      \"buyAccountNumber\": \"<string>\",\n      \"sellAccountNumber\": \"<string>\",\n      \"buyAccountTypeCode\": \"<string>\",\n      \"sellAccountTypeCode\": \"<string>\",\n      \"buyState\": \"<string>\",\n      \"sellState\": \"<string>\",\n      \"transactionTypeCode\": \"<string>\",\n      \"ownerOperator\": \"<string>\",\n      \"buyFacilityId\": \"<number>\",\n      \"sellFacilityId\": \"<number>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T10:56:41.000Z",
+                          "updatedAt": "2026-07-28T10:56:41.000Z",
+                          "uid": "35240-34ec7a36-f6eb-4baf-b14b-f6c9dddf29f3"
+                        },
+                        {
+                          "id": "120f00c9-f1a2-4ce3-81e5-d809f50fe80d",
+                          "name": "Invalid Request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/account-mgmt/allowance-transactions/attributes/applicable?transactionBeginDate=<dateTime>&transactionEndDate=<dateTime>&key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "account-mgmt",
+                                "allowance-transactions",
+                                "attributes",
+                                "applicable"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) Begin date for a given period of an account's allowance transaction history.",
+                                  "key": "transactionBeginDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "(Required) End date for a given period of an account's allowance transaction history.",
+                                  "key": "transactionEndDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T10:56:41.000Z",
+                          "updatedAt": "2026-07-28T10:56:41.000Z",
+                          "uid": "35240-120f00c9-f1a2-4ce3-81e5-d809f50fe80d"
+                        },
+                        {
+                          "id": "56b92315-a2ba-4d3c-a7ab-51b1ef3447e7",
+                          "name": "Resource Not Found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/account-mgmt/allowance-transactions/attributes/applicable?transactionBeginDate=<dateTime>&transactionEndDate=<dateTime>&key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "account-mgmt",
+                                "allowance-transactions",
+                                "attributes",
+                                "applicable"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) Begin date for a given period of an account's allowance transaction history.",
+                                  "key": "transactionBeginDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "(Required) End date for a given period of an account's allowance transaction history.",
+                                  "key": "transactionEndDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T10:56:41.000Z",
+                          "updatedAt": "2026-07-28T10:56:41.000Z",
+                          "uid": "35240-56b92315-a2ba-4d3c-a7ab-51b1ef3447e7"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T10:56:41.000Z",
+                      "updatedAt": "2026-07-28T10:56:41.000Z",
+                      "uid": "35240-f5868bb8-57e9-4906-8551-dd84a544b05f"
+                    }
+                  ],
+                  "id": "aca89f17-80a2-4d1c-9e9d-d01b2296a003",
+                  "createdAt": "2026-07-28T10:56:41.000Z",
+                  "updatedAt": "2026-07-28T10:56:41.000Z",
+                  "uid": "35240-aca89f17-80a2-4d1c-9e9d-d01b2296a003"
+                }
+              ],
+              "id": "55df8392-bfdc-46ee-b460-4b780cf3b212",
+              "createdAt": "2026-07-28T10:56:41.000Z",
+              "updatedAt": "2026-07-28T10:56:41.000Z",
+              "uid": "35240-55df8392-bfdc-46ee-b460-4b780cf3b212"
+            },
+            {
+              "name": "owner-operators",
+              "item": [
+                {
+                  "name": "Allowance Transactions Controller get All Owner Operators",
+                  "id": "e6a507e1-49e5-4775-a578-220595513ead",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/account-mgmt/allowance-transactions/owner-operators",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "account-mgmt",
+                        "allowance-transactions",
+                        "owner-operators"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "7ea1e7a3-0841-4aae-ba61-9de664d513d7",
+                      "name": "Retrieved All Valid Owner Operators",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/account-mgmt/allowance-transactions/owner-operators?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "account-mgmt",
+                            "allowance-transactions",
+                            "owner-operators"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"items\": [\n    {\n      \"ownerOperator\": \"<string>\",\n      \"ownType\": \"<string>\"\n    },\n    {\n      \"ownerOperator\": \"<string>\",\n      \"ownType\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T10:56:41.000Z",
+                      "updatedAt": "2026-07-28T10:56:41.000Z",
+                      "uid": "35240-7ea1e7a3-0841-4aae-ba61-9de664d513d7"
+                    },
+                    {
+                      "id": "cb50b034-b372-4b5c-bfc9-f2273168e63f",
+                      "name": "Invalid Request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/account-mgmt/allowance-transactions/owner-operators?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "account-mgmt",
+                            "allowance-transactions",
+                            "owner-operators"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T10:56:41.000Z",
+                      "updatedAt": "2026-07-28T10:56:41.000Z",
+                      "uid": "35240-cb50b034-b372-4b5c-bfc9-f2273168e63f"
+                    },
+                    {
+                      "id": "f174bb2e-4d8d-4e63-9add-60b1dc5c1db3",
+                      "name": "Resource Not Found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/account-mgmt/allowance-transactions/owner-operators?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "account-mgmt",
+                            "allowance-transactions",
+                            "owner-operators"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T10:56:41.000Z",
+                      "updatedAt": "2026-07-28T10:56:41.000Z",
+                      "uid": "35240-f174bb2e-4d8d-4e63-9add-60b1dc5c1db3"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T10:56:41.000Z",
+                  "updatedAt": "2026-07-28T10:56:41.000Z",
+                  "uid": "35240-e6a507e1-49e5-4775-a578-220595513ead"
+                }
+              ],
+              "id": "cfb46936-a64a-4d93-a471-4603250c100e",
+              "createdAt": "2026-07-28T10:56:41.000Z",
+              "updatedAt": "2026-07-28T10:56:41.000Z",
+              "uid": "35240-cfb46936-a64a-4d93-a471-4603250c100e"
+            },
+            {
+              "name": "Allowance Transactions Controller get Allowance Transactions",
+              "id": "5a4a181a-c863-4ae0-ad04-1dc70f4df234",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/account-mgmt/allowance-transactions?accountType=State Early Reduction Reserve Account|Unit Account&accountNumber=<string>|<string>&facilityId=<number>|<number>&stateCode=OK|VA&programCodeInfo=CSSO2G1|CSOSG1&ownerOperator=<string>|<string>&transactionBeginDate=<dateTime>&transactionEndDate=<dateTime>&transactionType=Substitution Payback|Conversion of NBP allowances into CAIROS&vintageYear=<number>|<number>&page=<number>&perPage=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "account-mgmt",
+                    "allowance-transactions"
+                  ],
+                  "query": [
+                    {
+                      "description": "Type of allowance account (Facility, General, etc.).",
+                      "key": "accountType",
+                      "value": "State Early Reduction Reserve Account|Unit Account"
+                    },
+                    {
+                      "description": "The unique identification number of an account.",
+                      "key": "accountNumber",
+                      "value": "<string>|<string>"
+                    },
+                    {
+                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                      "key": "facilityId",
+                      "value": "<number>|<number>"
+                    },
+                    {
+                      "description": "Two letter abbreviation for the State.",
+                      "key": "stateCode",
+                      "value": "OK|VA"
+                    },
+                    {
+                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                      "key": "programCodeInfo",
+                      "value": "CSSO2G1|CSOSG1"
+                    },
+                    {
+                      "description": "The name of any company that owns an allowance account or an affected unit.The name of any company that operates an affected unit.",
+                      "key": "ownerOperator",
+                      "value": "<string>|<string>"
+                    },
+                    {
+                      "description": "(Required) Begin date for a given period of an account's allowance transaction history.",
+                      "key": "transactionBeginDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "(Required) End date for a given period of an account's allowance transaction history.",
+                      "key": "transactionEndDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "The type of allowance transaction (e.g. initial allocation, private transaction, etc.).",
+                      "key": "transactionType",
+                      "value": "Substitution Payback|Conversion of NBP allowances into CAIROS"
+                    },
+                    {
+                      "description": "Year allowance becomes eligible for use in compliance.",
+                      "key": "vintageYear",
+                      "value": "<number>|<number>"
+                    },
+                    {
+                      "description": "(Required) Page number of data being requested.",
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "(Required) Number of results per page.",
+                      "key": "perPage",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "ec63dc5e-264e-41cb-a647-311d61f637f7",
+                  "name": "Retrieves Allowance Transactions per filter criteria",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/account-mgmt/allowance-transactions?accountType=State Early Reduction Reserve Account|Unit Account&accountNumber=<string>|<string>&facilityId=<number>|<number>&stateCode=OK|VA&programCodeInfo=CSSO2G1|CSOSG1&ownerOperator=<string>|<string>&transactionBeginDate=<dateTime>&transactionEndDate=<dateTime>&transactionType=Substitution Payback|Conversion of NBP allowances into CAIROS&vintageYear=<number>|<number>&page=<number>&perPage=<number>&key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "account-mgmt",
+                        "allowance-transactions"
+                      ],
+                      "query": [
+                        {
+                          "description": "Type of allowance account (Facility, General, etc.).",
+                          "key": "accountType",
+                          "value": "State Early Reduction Reserve Account|Unit Account"
+                        },
+                        {
+                          "description": "The unique identification number of an account.",
+                          "key": "accountNumber",
+                          "value": "<string>|<string>"
+                        },
+                        {
+                          "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                          "key": "facilityId",
+                          "value": "<number>|<number>"
+                        },
+                        {
+                          "description": "Two letter abbreviation for the State.",
+                          "key": "stateCode",
+                          "value": "OK|VA"
+                        },
+                        {
+                          "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                          "key": "programCodeInfo",
+                          "value": "CSSO2G1|CSOSG1"
+                        },
+                        {
+                          "description": "The name of any company that owns an allowance account or an affected unit.The name of any company that operates an affected unit.",
+                          "key": "ownerOperator",
+                          "value": "<string>|<string>"
+                        },
+                        {
+                          "description": "(Required) Begin date for a given period of an account's allowance transaction history.",
+                          "key": "transactionBeginDate",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "(Required) End date for a given period of an account's allowance transaction history.",
+                          "key": "transactionEndDate",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "The type of allowance transaction (e.g. initial allocation, private transaction, etc.).",
+                          "key": "transactionType",
+                          "value": "Substitution Payback|Conversion of NBP allowances into CAIROS"
+                        },
+                        {
+                          "description": "Year allowance becomes eligible for use in compliance.",
+                          "key": "vintageYear",
+                          "value": "<number>|<number>"
+                        },
+                        {
+                          "description": "(Required) Page number of data being requested.",
+                          "key": "page",
+                          "value": "<number>"
+                        },
+                        {
+                          "description": "(Required) Number of results per page.",
+                          "key": "perPage",
+                          "value": "<number>"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"items\": [\n    {\n      \"programCodeInfo\": \"<string>\",\n      \"transactionType\": \"<string>\",\n      \"sellAccountNumber\": \"<string>\",\n      \"sellAccountName\": \"<string>\",\n      \"sellAccountType\": \"<string>\",\n      \"sellFacilityName\": \"<string>\",\n      \"sellState\": \"<string>\",\n      \"sellSourceCategory\": \"<string>\",\n      \"sellOwner\": \"<string>\",\n      \"buyAccountNumber\": \"<string>\",\n      \"buyAccountName\": \"<string>\",\n      \"buyAccountType\": \"<string>\",\n      \"buyFacilityName\": \"<string>\",\n      \"buyState\": \"<string>\",\n      \"buySourceCategory\": \"<string>\",\n      \"buyOwner\": \"<string>\",\n      \"transactionDate\": \"<string>\",\n      \"transactionId\": \"<number>\",\n      \"transactionTotal\": \"<number>\",\n      \"sellFacilityId\": \"<number>\",\n      \"sellEpaRegion\": \"<number>\",\n      \"buyFacilityId\": \"<number>\",\n      \"buyEpaRegion\": \"<number>\",\n      \"vintageYear\": \"<number>\",\n      \"startBlock\": \"<number>\",\n      \"endBlock\": \"<number>\",\n      \"totalBlock\": \"<number>\"\n    },\n    {\n      \"programCodeInfo\": \"<string>\",\n      \"transactionType\": \"<string>\",\n      \"sellAccountNumber\": \"<string>\",\n      \"sellAccountName\": \"<string>\",\n      \"sellAccountType\": \"<string>\",\n      \"sellFacilityName\": \"<string>\",\n      \"sellState\": \"<string>\",\n      \"sellSourceCategory\": \"<string>\",\n      \"sellOwner\": \"<string>\",\n      \"buyAccountNumber\": \"<string>\",\n      \"buyAccountName\": \"<string>\",\n      \"buyAccountType\": \"<string>\",\n      \"buyFacilityName\": \"<string>\",\n      \"buyState\": \"<string>\",\n      \"buySourceCategory\": \"<string>\",\n      \"buyOwner\": \"<string>\",\n      \"transactionDate\": \"<string>\",\n      \"transactionId\": \"<number>\",\n      \"transactionTotal\": \"<number>\",\n      \"sellFacilityId\": \"<number>\",\n      \"sellEpaRegion\": \"<number>\",\n      \"buyFacilityId\": \"<number>\",\n      \"buyEpaRegion\": \"<number>\",\n      \"vintageYear\": \"<number>\",\n      \"startBlock\": \"<number>\",\n      \"endBlock\": \"<number>\",\n      \"totalBlock\": \"<number>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T10:56:41.000Z",
+                  "updatedAt": "2026-07-28T10:56:41.000Z",
+                  "uid": "35240-ec63dc5e-264e-41cb-a647-311d61f637f7"
+                },
+                {
+                  "id": "9b409c0a-5357-488c-a14e-cd594645a9f4",
+                  "name": "Invalid Request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/account-mgmt/allowance-transactions?accountType=State Early Reduction Reserve Account|Unit Account&accountNumber=<string>|<string>&facilityId=<number>|<number>&stateCode=OK|VA&programCodeInfo=CSSO2G1|CSOSG1&ownerOperator=<string>|<string>&transactionBeginDate=<dateTime>&transactionEndDate=<dateTime>&transactionType=Substitution Payback|Conversion of NBP allowances into CAIROS&vintageYear=<number>|<number>&page=<number>&perPage=<number>&key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "account-mgmt",
+                        "allowance-transactions"
+                      ],
+                      "query": [
+                        {
+                          "description": "Type of allowance account (Facility, General, etc.).",
+                          "key": "accountType",
+                          "value": "State Early Reduction Reserve Account|Unit Account"
+                        },
+                        {
+                          "description": "The unique identification number of an account.",
+                          "key": "accountNumber",
+                          "value": "<string>|<string>"
+                        },
+                        {
+                          "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                          "key": "facilityId",
+                          "value": "<number>|<number>"
+                        },
+                        {
+                          "description": "Two letter abbreviation for the State.",
+                          "key": "stateCode",
+                          "value": "OK|VA"
+                        },
+                        {
+                          "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                          "key": "programCodeInfo",
+                          "value": "CSSO2G1|CSOSG1"
+                        },
+                        {
+                          "description": "The name of any company that owns an allowance account or an affected unit.The name of any company that operates an affected unit.",
+                          "key": "ownerOperator",
+                          "value": "<string>|<string>"
+                        },
+                        {
+                          "description": "(Required) Begin date for a given period of an account's allowance transaction history.",
+                          "key": "transactionBeginDate",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "(Required) End date for a given period of an account's allowance transaction history.",
+                          "key": "transactionEndDate",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "The type of allowance transaction (e.g. initial allocation, private transaction, etc.).",
+                          "key": "transactionType",
+                          "value": "Substitution Payback|Conversion of NBP allowances into CAIROS"
+                        },
+                        {
+                          "description": "Year allowance becomes eligible for use in compliance.",
+                          "key": "vintageYear",
+                          "value": "<number>|<number>"
+                        },
+                        {
+                          "description": "(Required) Page number of data being requested.",
+                          "key": "page",
+                          "value": "<number>"
+                        },
+                        {
+                          "description": "(Required) Number of results per page.",
+                          "key": "perPage",
+                          "value": "<number>"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T10:56:41.000Z",
+                  "updatedAt": "2026-07-28T10:56:41.000Z",
+                  "uid": "35240-9b409c0a-5357-488c-a14e-cd594645a9f4"
+                },
+                {
+                  "id": "93f0f573-fb98-4843-b1ce-d2570b1e3528",
+                  "name": "Resource Not Found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/account-mgmt/allowance-transactions?accountType=State Early Reduction Reserve Account|Unit Account&accountNumber=<string>|<string>&facilityId=<number>|<number>&stateCode=OK|VA&programCodeInfo=CSSO2G1|CSOSG1&ownerOperator=<string>|<string>&transactionBeginDate=<dateTime>&transactionEndDate=<dateTime>&transactionType=Substitution Payback|Conversion of NBP allowances into CAIROS&vintageYear=<number>|<number>&page=<number>&perPage=<number>&key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "account-mgmt",
+                        "allowance-transactions"
+                      ],
+                      "query": [
+                        {
+                          "description": "Type of allowance account (Facility, General, etc.).",
+                          "key": "accountType",
+                          "value": "State Early Reduction Reserve Account|Unit Account"
+                        },
+                        {
+                          "description": "The unique identification number of an account.",
+                          "key": "accountNumber",
+                          "value": "<string>|<string>"
+                        },
+                        {
+                          "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                          "key": "facilityId",
+                          "value": "<number>|<number>"
+                        },
+                        {
+                          "description": "Two letter abbreviation for the State.",
+                          "key": "stateCode",
+                          "value": "OK|VA"
+                        },
+                        {
+                          "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                          "key": "programCodeInfo",
+                          "value": "CSSO2G1|CSOSG1"
+                        },
+                        {
+                          "description": "The name of any company that owns an allowance account or an affected unit.The name of any company that operates an affected unit.",
+                          "key": "ownerOperator",
+                          "value": "<string>|<string>"
+                        },
+                        {
+                          "description": "(Required) Begin date for a given period of an account's allowance transaction history.",
+                          "key": "transactionBeginDate",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "(Required) End date for a given period of an account's allowance transaction history.",
+                          "key": "transactionEndDate",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "The type of allowance transaction (e.g. initial allocation, private transaction, etc.).",
+                          "key": "transactionType",
+                          "value": "Substitution Payback|Conversion of NBP allowances into CAIROS"
+                        },
+                        {
+                          "description": "Year allowance becomes eligible for use in compliance.",
+                          "key": "vintageYear",
+                          "value": "<number>|<number>"
+                        },
+                        {
+                          "description": "(Required) Page number of data being requested.",
+                          "key": "page",
+                          "value": "<number>"
+                        },
+                        {
+                          "description": "(Required) Number of results per page.",
+                          "key": "perPage",
+                          "value": "<number>"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T10:56:41.000Z",
+                  "updatedAt": "2026-07-28T10:56:41.000Z",
+                  "uid": "35240-93f0f573-fb98-4843-b1ce-d2570b1e3528"
+                }
+              ],
+              "createdAt": "2026-07-28T10:56:41.000Z",
+              "updatedAt": "2026-07-28T10:56:41.000Z",
+              "uid": "35240-5a4a181a-c863-4ae0-ad04-1dc70f4df234"
+            }
+          ],
+          "id": "9c942518-754d-4db0-ae49-0a6a2a05b488",
+          "createdAt": "2026-07-28T10:56:41.000Z",
+          "updatedAt": "2026-07-28T10:56:41.000Z",
+          "uid": "35240-9c942518-754d-4db0-ae49-0a6a2a05b488"
+        }
+      ],
+      "id": "0f996771-0e9e-40af-8503-2865be1c8157",
+      "createdAt": "2026-07-28T10:56:41.000Z",
+      "updatedAt": "2026-07-28T10:56:41.000Z",
+      "uid": "35240-0f996771-0e9e-40af-8503-2865be1c8157"
+    },
+    {
+      "name": "streaming-services",
+      "item": [
+        {
+          "name": "allowance-transactions",
+          "item": [
+            {
+              "name": "Allowance Transactions Controller stream Allowance Transactions",
+              "id": "d84c030a-64ab-4e88-9035-b94ee64d90fe",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/streaming-services/allowance-transactions?accountType=State Early Reduction Reserve Account|Unit Account&accountNumber=<string>|<string>&facilityId=<number>|<number>&stateCode=OK|VA&programCodeInfo=CSSO2G1|CSOSG1&ownerOperator=<string>|<string>&transactionBeginDate=<dateTime>&transactionEndDate=<dateTime>&transactionType=Substitution Payback|Conversion of NBP allowances into CAIROS&vintageYear=<number>|<number>&exclude=sellSourceCategory|sellSourceCategory",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "streaming-services",
+                    "allowance-transactions"
+                  ],
+                  "query": [
+                    {
+                      "description": "Type of allowance account (Facility, General, etc.).",
+                      "key": "accountType",
+                      "value": "State Early Reduction Reserve Account|Unit Account"
+                    },
+                    {
+                      "description": "The unique identification number of an account.",
+                      "key": "accountNumber",
+                      "value": "<string>|<string>"
+                    },
+                    {
+                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                      "key": "facilityId",
+                      "value": "<number>|<number>"
+                    },
+                    {
+                      "description": "Two letter abbreviation for the State.",
+                      "key": "stateCode",
+                      "value": "OK|VA"
+                    },
+                    {
+                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                      "key": "programCodeInfo",
+                      "value": "CSSO2G1|CSOSG1"
+                    },
+                    {
+                      "description": "The name of any company that owns an allowance account or an affected unit.The name of any company that operates an affected unit.",
+                      "key": "ownerOperator",
+                      "value": "<string>|<string>"
+                    },
+                    {
+                      "description": "(Required) Begin date for a given period of an account's allowance transaction history.",
+                      "key": "transactionBeginDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "(Required) End date for a given period of an account's allowance transaction history.",
+                      "key": "transactionEndDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "The type of allowance transaction (e.g. initial allocation, private transaction, etc.).",
+                      "key": "transactionType",
+                      "value": "Substitution Payback|Conversion of NBP allowances into CAIROS"
+                    },
+                    {
+                      "description": "Year allowance becomes eligible for use in compliance.",
+                      "key": "vintageYear",
+                      "value": "<number>|<number>"
+                    },
+                    {
+                      "description": "Selected items will be excluded from the response",
+                      "key": "exclude",
+                      "value": "sellSourceCategory|sellSourceCategory"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "9592b3e6-c07d-4e7c-89e0-8d77021cfaeb",
+                  "name": "Streams Allowance Transactions per filter criteria",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/streaming-services/allowance-transactions?accountType=State Early Reduction Reserve Account|Unit Account&accountNumber=<string>|<string>&facilityId=<number>|<number>&stateCode=OK|VA&programCodeInfo=CSSO2G1|CSOSG1&ownerOperator=<string>|<string>&transactionBeginDate=<dateTime>&transactionEndDate=<dateTime>&transactionType=Substitution Payback|Conversion of NBP allowances into CAIROS&vintageYear=<number>|<number>&exclude=sellSourceCategory|sellSourceCategory&key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "streaming-services",
+                        "allowance-transactions"
+                      ],
+                      "query": [
+                        {
+                          "description": "Type of allowance account (Facility, General, etc.).",
+                          "key": "accountType",
+                          "value": "State Early Reduction Reserve Account|Unit Account"
+                        },
+                        {
+                          "description": "The unique identification number of an account.",
+                          "key": "accountNumber",
+                          "value": "<string>|<string>"
+                        },
+                        {
+                          "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                          "key": "facilityId",
+                          "value": "<number>|<number>"
+                        },
+                        {
+                          "description": "Two letter abbreviation for the State.",
+                          "key": "stateCode",
+                          "value": "OK|VA"
+                        },
+                        {
+                          "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                          "key": "programCodeInfo",
+                          "value": "CSSO2G1|CSOSG1"
+                        },
+                        {
+                          "description": "The name of any company that owns an allowance account or an affected unit.The name of any company that operates an affected unit.",
+                          "key": "ownerOperator",
+                          "value": "<string>|<string>"
+                        },
+                        {
+                          "description": "(Required) Begin date for a given period of an account's allowance transaction history.",
+                          "key": "transactionBeginDate",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "(Required) End date for a given period of an account's allowance transaction history.",
+                          "key": "transactionEndDate",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "The type of allowance transaction (e.g. initial allocation, private transaction, etc.).",
+                          "key": "transactionType",
+                          "value": "Substitution Payback|Conversion of NBP allowances into CAIROS"
+                        },
+                        {
+                          "description": "Year allowance becomes eligible for use in compliance.",
+                          "key": "vintageYear",
+                          "value": "<number>|<number>"
+                        },
+                        {
+                          "description": "Selected items will be excluded from the response",
+                          "key": "exclude",
+                          "value": "sellSourceCategory|sellSourceCategory"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"programCodeInfo\": \"<string>\",\n  \"transactionType\": \"<string>\",\n  \"sellAccountNumber\": \"<string>\",\n  \"sellAccountName\": \"<string>\",\n  \"sellAccountType\": \"<string>\",\n  \"sellFacilityName\": \"<string>\",\n  \"sellState\": \"<string>\",\n  \"sellSourceCategory\": \"<string>\",\n  \"sellOwner\": \"<string>\",\n  \"buyAccountNumber\": \"<string>\",\n  \"buyAccountName\": \"<string>\",\n  \"buyAccountType\": \"<string>\",\n  \"buyFacilityName\": \"<string>\",\n  \"buyState\": \"<string>\",\n  \"buySourceCategory\": \"<string>\",\n  \"buyOwner\": \"<string>\",\n  \"transactionDate\": \"<string>\",\n  \"transactionId\": \"<number>\",\n  \"transactionTotal\": \"<number>\",\n  \"sellFacilityId\": \"<number>\",\n  \"sellEpaRegion\": \"<number>\",\n  \"buyFacilityId\": \"<number>\",\n  \"buyEpaRegion\": \"<number>\",\n  \"vintageYear\": \"<number>\",\n  \"startBlock\": \"<number>\",\n  \"endBlock\": \"<number>\",\n  \"totalBlock\": \"<number>\"\n}",
+                  "createdAt": "2026-07-28T10:56:41.000Z",
+                  "updatedAt": "2026-07-28T10:56:41.000Z",
+                  "uid": "35240-9592b3e6-c07d-4e7c-89e0-8d77021cfaeb"
+                },
+                {
+                  "id": "7c321ff2-34c5-45a5-bffb-b3fc129fadf2",
+                  "name": "Invalid Request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/streaming-services/allowance-transactions?accountType=State Early Reduction Reserve Account|Unit Account&accountNumber=<string>|<string>&facilityId=<number>|<number>&stateCode=OK|VA&programCodeInfo=CSSO2G1|CSOSG1&ownerOperator=<string>|<string>&transactionBeginDate=<dateTime>&transactionEndDate=<dateTime>&transactionType=Substitution Payback|Conversion of NBP allowances into CAIROS&vintageYear=<number>|<number>&exclude=sellSourceCategory|sellSourceCategory&key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "streaming-services",
+                        "allowance-transactions"
+                      ],
+                      "query": [
+                        {
+                          "description": "Type of allowance account (Facility, General, etc.).",
+                          "key": "accountType",
+                          "value": "State Early Reduction Reserve Account|Unit Account"
+                        },
+                        {
+                          "description": "The unique identification number of an account.",
+                          "key": "accountNumber",
+                          "value": "<string>|<string>"
+                        },
+                        {
+                          "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                          "key": "facilityId",
+                          "value": "<number>|<number>"
+                        },
+                        {
+                          "description": "Two letter abbreviation for the State.",
+                          "key": "stateCode",
+                          "value": "OK|VA"
+                        },
+                        {
+                          "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                          "key": "programCodeInfo",
+                          "value": "CSSO2G1|CSOSG1"
+                        },
+                        {
+                          "description": "The name of any company that owns an allowance account or an affected unit.The name of any company that operates an affected unit.",
+                          "key": "ownerOperator",
+                          "value": "<string>|<string>"
+                        },
+                        {
+                          "description": "(Required) Begin date for a given period of an account's allowance transaction history.",
+                          "key": "transactionBeginDate",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "(Required) End date for a given period of an account's allowance transaction history.",
+                          "key": "transactionEndDate",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "The type of allowance transaction (e.g. initial allocation, private transaction, etc.).",
+                          "key": "transactionType",
+                          "value": "Substitution Payback|Conversion of NBP allowances into CAIROS"
+                        },
+                        {
+                          "description": "Year allowance becomes eligible for use in compliance.",
+                          "key": "vintageYear",
+                          "value": "<number>|<number>"
+                        },
+                        {
+                          "description": "Selected items will be excluded from the response",
+                          "key": "exclude",
+                          "value": "sellSourceCategory|sellSourceCategory"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T10:56:41.000Z",
+                  "updatedAt": "2026-07-28T10:56:41.000Z",
+                  "uid": "35240-7c321ff2-34c5-45a5-bffb-b3fc129fadf2"
+                },
+                {
+                  "id": "212c3f57-4591-4a0e-9129-210f410147ac",
+                  "name": "Resource Not Found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/streaming-services/allowance-transactions?accountType=State Early Reduction Reserve Account|Unit Account&accountNumber=<string>|<string>&facilityId=<number>|<number>&stateCode=OK|VA&programCodeInfo=CSSO2G1|CSOSG1&ownerOperator=<string>|<string>&transactionBeginDate=<dateTime>&transactionEndDate=<dateTime>&transactionType=Substitution Payback|Conversion of NBP allowances into CAIROS&vintageYear=<number>|<number>&exclude=sellSourceCategory|sellSourceCategory&key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "streaming-services",
+                        "allowance-transactions"
+                      ],
+                      "query": [
+                        {
+                          "description": "Type of allowance account (Facility, General, etc.).",
+                          "key": "accountType",
+                          "value": "State Early Reduction Reserve Account|Unit Account"
+                        },
+                        {
+                          "description": "The unique identification number of an account.",
+                          "key": "accountNumber",
+                          "value": "<string>|<string>"
+                        },
+                        {
+                          "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                          "key": "facilityId",
+                          "value": "<number>|<number>"
+                        },
+                        {
+                          "description": "Two letter abbreviation for the State.",
+                          "key": "stateCode",
+                          "value": "OK|VA"
+                        },
+                        {
+                          "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                          "key": "programCodeInfo",
+                          "value": "CSSO2G1|CSOSG1"
+                        },
+                        {
+                          "description": "The name of any company that owns an allowance account or an affected unit.The name of any company that operates an affected unit.",
+                          "key": "ownerOperator",
+                          "value": "<string>|<string>"
+                        },
+                        {
+                          "description": "(Required) Begin date for a given period of an account's allowance transaction history.",
+                          "key": "transactionBeginDate",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "(Required) End date for a given period of an account's allowance transaction history.",
+                          "key": "transactionEndDate",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "The type of allowance transaction (e.g. initial allocation, private transaction, etc.).",
+                          "key": "transactionType",
+                          "value": "Substitution Payback|Conversion of NBP allowances into CAIROS"
+                        },
+                        {
+                          "description": "Year allowance becomes eligible for use in compliance.",
+                          "key": "vintageYear",
+                          "value": "<number>|<number>"
+                        },
+                        {
+                          "description": "Selected items will be excluded from the response",
+                          "key": "exclude",
+                          "value": "sellSourceCategory|sellSourceCategory"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T10:56:41.000Z",
+                  "updatedAt": "2026-07-28T10:56:41.000Z",
+                  "uid": "35240-212c3f57-4591-4a0e-9129-210f410147ac"
+                }
+              ],
+              "createdAt": "2026-07-28T10:56:41.000Z",
+              "updatedAt": "2026-07-28T10:56:41.000Z",
+              "uid": "35240-d84c030a-64ab-4e88-9035-b94ee64d90fe"
+            }
+          ],
+          "id": "e3c5456a-2792-4340-b6ee-7456cab0187f",
+          "createdAt": "2026-07-28T10:56:41.000Z",
+          "updatedAt": "2026-07-28T10:56:41.000Z",
+          "uid": "35240-e3c5456a-2792-4340-b6ee-7456cab0187f"
+        }
+      ],
+      "id": "46f30266-83f9-4ead-a0e1-776c0ed68cba",
+      "createdAt": "2026-07-28T10:56:41.000Z",
+      "updatedAt": "2026-07-28T10:56:41.000Z",
+      "uid": "35240-46f30266-83f9-4ead-a0e1-776c0ed68cba"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

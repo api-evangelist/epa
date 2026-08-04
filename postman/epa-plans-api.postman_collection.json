@@ -1,0 +1,265 @@
+{
+  "info": {
+    "_postman_id": "0a0f9cb3-630b-4a21-b78e-2bf27a3af317",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Plans API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:59:42.000Z",
+    "updatedAt": "2026-07-28T10:59:43.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0a0f9cb3-630b-4a21-b78e-2bf27a3af317"
+  },
+  "item": [
+    {
+      "name": "monitor-plan-mgmt",
+      "item": [
+        {
+          "name": "plans",
+          "item": [
+            {
+              "name": "export",
+              "item": [
+                {
+                  "name": "Monitor Plan Controller export Monitor Plan",
+                  "id": "ec85b1f0-7928-41c0-b6fe-6e28885abcde",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/monitor-plan-mgmt/plans/export?planId=<string>&reportedValuesOnly=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "monitor-plan-mgmt",
+                        "plans",
+                        "export"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The Monintor Plan Summary ID is a unique identifier for a monitor plan record",
+                          "key": "planId",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "reportedValuesOnly",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "d7459f3d-1233-44e0-9e9b-bfd135e0a365",
+                      "name": "Retrieves official Monitor Plan record",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/monitor-plan-mgmt/plans/export?planId=<string>&reportedValuesOnly=<boolean>&key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "monitor-plan-mgmt",
+                            "plans",
+                            "export"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The Monintor Plan Summary ID is a unique identifier for a monitor plan record",
+                              "key": "planId",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "reportedValuesOnly",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"orisCode\": \"<number>\",\n  \"facilityId\": \"<number>\",\n  \"name\": \"<string>\",\n  \"endReportPeriodId\": \"<number>\",\n  \"beginReportPeriodId\": \"<number>\",\n  \"facilityName\": \"<string>\",\n  \"facilityRegistrySystemId\": \"<string>\",\n  \"configTypeCode\": \"<string>\",\n  \"lastUpdated\": \"<dateTime>\",\n  \"updatedStatusFlag\": \"<string>\",\n  \"needsEvalFlag\": \"<string>\",\n  \"checkSessionId\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"monitoringPlanCommentData\": [\n    {\n      \"monitoringPlanComment\": \"<string>\",\n      \"beginDate\": \"<dateTime>\",\n      \"endDate\": \"<dateTime>\",\n      \"id\": \"<string>\",\n      \"planId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"active\": \"<boolean>\"\n    }\n  ],\n  \"unitStackConfigurationData\": [\n    {\n      \"beginDate\": \"<dateTime>\",\n      \"endDate\": \"<dateTime>\",\n      \"id\": \"<string>\",\n      \"unitRecordId\": \"<number>\",\n      \"stackPipeRecordId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"unitId\": \"<string>\",\n      \"stackPipeId\": \"<string>\"\n    }\n  ],\n  \"reportingFrequencies\": [\n    {\n      \"reportFrequencyCode\": \"<string>\",\n      \"id\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"endReportPeriodId\": \"<number>\",\n      \"beginReportPeriodId\": \"<number>\",\n      \"updateDate\": \"<string>\",\n      \"endReportPeriodDescription\": \"<string>\",\n      \"beginReportPeriodDescription\": \"<string>\"\n    }\n  ],\n  \"monitoringLocationData\": [\n    {\n      \"unitId\": \"<string>\",\n      \"stackPipeId\": \"<string>\",\n      \"nonLoadBasedIndicator\": \"<number>\",\n      \"id\": \"<string>\",\n      \"unitRecordId\": \"<number>\",\n      \"stackPipeRecordId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"monitoringLocationAttribData\": [\n        {\n          \"ductIndicator\": \"<number>\",\n          \"bypassIndicator\": \"<number>\",\n          \"groundElevation\": \"<number>\",\n          \"stackHeight\": \"<number>\",\n          \"materialCode\": \"<string>\",\n          \"shapeCode\": \"<string>\",\n          \"crossAreaFlow\": \"<number>\",\n          \"crossAreaStackExit\": \"<number>\",\n          \"beginDate\": \"<dateTime>\",\n          \"endDate\": \"<dateTime>\",\n          \"id\": \"<string>\",\n          \"locationId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"active\": \"<boolean>\"\n        }\n      ],\n      \"unitCapacityData\": [\n        {\n          \"maximumHourlyHeatInputCapacity\": \"<number>\",\n          \"beginDate\": \"<dateTime>\",\n          \"endDate\": \"<dateTime>\",\n          \"id\": \"<string>\",\n          \"unitId\": \"<number>\",\n          \"commercialOperationDate\": \"<dateTime>\",\n          \"date\": \"<dateTime>\",\n          \"boilerTurbineBeginDate\": \"<dateTime>\",\n          \"boilerTurbineEndDate\": \"<dateTime>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"active\": \"<boolean>\",\n          \"boilerTurbineType\": \"<string>\"\n        }\n      ],\n      \"unitControlData\": [\n        {\n          \"controlCode\": \"<string>\",\n          \"originalCode\": \"<string>\",\n          \"installDate\": \"<dateTime>\",\n          \"optimizationDate\": \"<dateTime>\",\n          \"seasonalControlsIndicator\": \"<string>\",\n          \"retireDate\": \"<dateTime>\",\n          \"id\": \"<string>\",\n          \"unitId\": \"<number>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"active\": \"<boolean>\",\n          \"parameterCode\": \"<string>\"\n        }\n      ],\n      \"unitFuelData\": [\n        {\n          \"fuelCode\": \"<string>\",\n          \"indicatorCode\": \"<string>\",\n          \"ozoneSeasonIndicator\": \"<number>\",\n          \"demGCV\": \"<string>\",\n          \"demSO2\": \"<string>\",\n          \"beginDate\": \"<dateTime>\",\n          \"endDate\": \"<dateTime>\",\n          \"id\": \"<string>\",\n          \"unitId\": \"<number>\",\n          \"actualOrProjectCode\": \"<string>\",\n          \"sulfurContent\": \"<number>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"active\": \"<boolean>\"\n        }\n      ],\n      \"monitoringMethodData\": [\n        {\n          \"parameterCode\": \"<string>\",\n          \"monitoringMethodCode\": \"<string>\",\n          \"substituteDataCode\": \"<string>\",\n          \"bypassApproachCode\": \"<string>\",\n          \"beginDate\": \"<dateTime>\",\n          \"beginHour\": \"<number>\",\n          \"endDate\": \"<dateTime>\",\n          \"endHour\": \"<number>\",\n          \"id\": \"<string>\",\n          \"locationId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"active\": \"<boolean>\"\n        }\n      ],\n      \"supplementalMATSMonitoringMethodData\": [\n        {\n          \"supplementalMATSParameterCode\": \"<string>\",\n          \"supplementalMATSMonitoringMethodCode\": \"<string>\",\n          \"beginDate\": \"<dateTime>\",\n          \"beginHour\": \"<number>\",\n          \"endDate\": \"<dateTime>\",\n          \"endHour\": \"<number>\",\n          \"id\": \"<string>\",\n          \"locationId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"active\": \"<boolean>\"\n        }\n      ],\n      \"monitoringFormulaData\": [\n        {\n          \"formulaId\": \"<string>\",\n          \"parameterCode\": \"<string>\",\n          \"formulaCode\": \"<string>\",\n          \"formulaText\": \"<string>\",\n          \"beginDate\": \"<dateTime>\",\n          \"beginHour\": \"<number>\",\n          \"endDate\": \"<dateTime>\",\n          \"endHour\": \"<number>\",\n          \"id\": \"<string>\",\n          \"locationId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"active\": \"<boolean>\"\n        }\n      ],\n      \"monitoringDefaultData\": [\n        {\n          \"parameterCode\": \"<string>\",\n          \"defaultValue\": \"<number>\",\n          \"defaultUnitsOfMeasureCode\": \"<string>\",\n          \"defaultPurposeCode\": \"<string>\",\n          \"fuelCode\": \"<string>\",\n          \"operatingConditionCode\": \"<string>\",\n          \"defaultSourceCode\": \"<string>\",\n          \"groupId\": \"<string>\",\n          \"beginDate\": \"<dateTime>\",\n          \"beginHour\": \"<number>\",\n          \"endDate\": \"<dateTime>\",\n          \"endHour\": \"<number>\",\n          \"id\": \"<string>\",\n          \"locationId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"active\": \"<boolean>\"\n        }\n      ],\n      \"monitoringSpanData\": [\n        {\n          \"componentTypeCode\": \"<string>\",\n          \"spanScaleCode\": \"<string>\",\n          \"spanMethodCode\": \"<string>\",\n          \"mecValue\": \"<number>\",\n          \"mpcValue\": \"<number>\",\n          \"mpfValue\": \"<number>\",\n          \"spanValue\": \"<number>\",\n          \"fullScaleRange\": \"<number>\",\n          \"spanUnitsOfMeasureCode\": \"<string>\",\n          \"scaleTransitionPoint\": \"<number>\",\n          \"defaultHighRange\": \"<number>\",\n          \"flowSpanValue\": \"<number>\",\n          \"flowFullScaleRange\": \"<number>\",\n          \"beginDate\": \"<dateTime>\",\n          \"beginHour\": \"<number>\",\n          \"endDate\": \"<dateTime>\",\n          \"endHour\": \"<number>\",\n          \"id\": \"<string>\",\n          \"locationId\": \"<string>\",\n          \"userid\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"active\": \"<boolean>\"\n        }\n      ],\n      \"rectangularDuctWAFData\": [\n        {\n          \"wafDeterminationDate\": \"<dateTime>\",\n          \"wafBeginDate\": \"<dateTime>\",\n          \"wafBeginHour\": \"<number>\",\n          \"wafMethodCode\": \"<string>\",\n          \"wafValue\": \"<number>\",\n          \"numberOfTestRuns\": \"<number>\",\n          \"numberOfTraversePointsWAF\": \"<number>\",\n          \"numberOfTestPorts\": \"<number>\",\n          \"numberOfTraversePointsRef\": \"<number>\",\n          \"ductWidth\": \"<number>\",\n          \"ductDepth\": \"<number>\",\n          \"wafEndDate\": \"<dateTime>\",\n          \"wafEndHour\": \"<number>\",\n          \"id\": \"<string>\",\n          \"locationId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"active\": \"<boolean>\"\n        }\n      ],\n      \"monitoringLoadData\": [\n        {\n          \"maximumLoadValue\": \"<number>\",\n          \"maximumLoadUnitsOfMeasureCode\": \"<string>\",\n          \"lowerOperationBoundary\": \"<number>\",\n          \"upperOperationBoundary\": \"<number>\",\n          \"normalLevelCode\": \"<string>\",\n          \"secondLevelCode\": \"<string>\",\n          \"secondNormalIndicator\": \"<number>\",\n          \"loadAnalysisDate\": \"<dateTime>\",\n          \"beginDate\": \"<dateTime>\",\n          \"beginHour\": \"<number>\",\n          \"endDate\": \"<dateTime>\",\n          \"endHour\": \"<number>\",\n          \"id\": \"<string>\",\n          \"locationId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"active\": \"<boolean>\"\n        }\n      ],\n      \"componentData\": [\n        {\n          \"componentId\": \"<string>\",\n          \"componentTypeCode\": \"<string>\",\n          \"sampleAcquisitionMethodCode\": \"<string>\",\n          \"basisCode\": \"<string>\",\n          \"manufacturer\": \"<string>\",\n          \"modelVersion\": \"<string>\",\n          \"serialNumber\": \"<string>\",\n          \"hgConverterIndicator\": \"<number>\",\n          \"id\": \"<string>\",\n          \"locationId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"analyzerRangeData\": [\n            {\n              \"analyzerRangeCode\": \"<string>\",\n              \"dualRangeIndicator\": \"<number>\",\n              \"beginDate\": \"<dateTime>\",\n              \"beginHour\": \"<number>\",\n              \"endDate\": \"<dateTime>\",\n              \"endHour\": \"<number>\",\n              \"id\": \"<string>\",\n              \"componentRecordId\": \"<string>\",\n              \"userId\": \"<string>\",\n              \"addDate\": \"<string>\",\n              \"updateDate\": \"<string>\",\n              \"active\": \"<boolean>\"\n            }\n          ]\n        }\n      ],\n      \"monitoringSystemData\": [\n        {\n          \"monitoringSystemId\": \"<string>\",\n          \"systemTypeCode\": \"<string>\",\n          \"systemDesignationCode\": \"<string>\",\n          \"fuelCode\": \"<string>\",\n          \"beginDate\": \"<dateTime>\",\n          \"endDate\": \"<dateTime>\",\n          \"beginHour\": \"<number>\",\n          \"endHour\": \"<number>\",\n          \"id\": \"<string>\",\n          \"locationId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"active\": \"<boolean>\",\n          \"monitoringSystemComponentData\": [\n            {\n              \"componentId\": \"<string>\",\n              \"beginDate\": \"<dateTime>\",\n              \"beginHour\": \"<number>\",\n              \"endDate\": \"<dateTime>\",\n              \"endHour\": \"<number>\",\n              \"id\": \"<string>\",\n              \"locationId\": \"<string>\",\n              \"monitoringSystemRecordId\": \"<string>\",\n              \"userId\": \"<string>\",\n              \"addDate\": \"<string>\",\n              \"updateDate\": \"<string>\",\n              \"active\": \"<boolean>\"\n            }\n          ],\n          \"monitoringSystemFuelFlowData\": [\n            {\n              \"maximumFuelFlowRate\": \"<number>\",\n              \"systemFuelFlowUOMCode\": \"<string>\",\n              \"maximumFuelFlowRateSourceCode\": \"<string>\",\n              \"beginDate\": \"<dateTime>\",\n              \"beginHour\": \"<number>\",\n              \"endDate\": \"<dateTime>\",\n              \"endHour\": \"<number>\",\n              \"id\": \"<string>\",\n              \"monitoringSystemRecordId\": \"<string>\",\n              \"fuelCode\": \"<string>\",\n              \"systemTypeCode\": \"<string>\",\n              \"userId\": \"<string>\",\n              \"addDate\": \"<string>\",\n              \"updateDate\": \"<string>\",\n              \"active\": \"<boolean>\"\n            }\n          ]\n        }\n      ],\n      \"monitoringQualificationData\": [\n        {\n          \"qualificationTypeCode\": \"<string>\",\n          \"beginDate\": \"<dateTime>\",\n          \"endDate\": \"<dateTime>\",\n          \"id\": \"<string>\",\n          \"locationId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"active\": \"<boolean>\",\n          \"monitoringQualificationLEEData\": [\n            {\n              \"qualificationTestDate\": \"<dateTime>\",\n              \"parameterCode\": \"<string>\",\n              \"qualificationTestType\": \"<string>\",\n              \"potentialAnnualHgMassEmissions\": \"<number>\",\n              \"applicableEmissionStandard\": \"<number>\",\n              \"unitsOfStandard\": \"<string>\",\n              \"percentageOfEmissionStandard\": \"<number>\",\n              \"id\": \"<string>\",\n              \"qualificationId\": \"<string>\",\n              \"userId\": \"<string>\",\n              \"addDate\": \"<string>\",\n              \"updateDate\": \"<string>\"\n            }\n          ],\n          \"monitoringQualificationLMEData\": [\n            {\n              \"qualificationDataYear\": \"<number>\",\n              \"operatingHours\": \"<number>\",\n              \"so2Tons\": \"<number>\",\n              \"noxTons\": \"<number>\",\n              \"id\": \"<string>\",\n              \"qualificationId\": \"<string>\",\n              \"userId\": \"<string>\",\n              \"addDate\": \"<string>\",\n              \"updateDate\": \"<string>\"\n            }\n          ],\n          \"monitoringQualificationPercentData\": [\n            {\n              \"qualificationYear\": \"<number>\",\n              \"averagePercentValue\": \"<number>\",\n              \"yr1QualificationDataYear\": \"<number>\",\n              \"yr1QualificationDataTypeCode\": \"<string>\",\n              \"yr1PercentageValue\": \"<number>\",\n              \"yr2QualificationDataYear\": \"<number>\",\n              \"yr2QualificationDataTypeCode\": \"<string>\",\n              \"yr2PercentageValue\": \"<number>\",\n              \"yr3QualificationDataYear\": \"<number>\",\n              \"yr3QualificationDataTypeCode\": \"<string>\",\n              \"yr3PercentageValue\": \"<number>\",\n              \"id\": \"<string>\",\n              \"qualificationId\": \"<string>\",\n              \"userId\": \"<string>\",\n              \"addDate\": \"<string>\",\n              \"updateDate\": \"<string>\"\n            }\n          ]\n        }\n      ],\n      \"activeDate\": \"<dateTime>\",\n      \"retireDate\": \"<dateTime>\"\n    }\n  ],\n  \"pendingStatusCode\": \"<string>\",\n  \"evalStatusCode\": \"<string>\",\n  \"evalStatusCodeDescription\": \"<string>\",\n  \"severityCode\": \"<string>\",\n  \"severityDescription\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"addDate\": \"<string>\",\n  \"updateDate\": \"<string>\",\n  \"submissionId\": \"<number>\",\n  \"submissionAvailabilityCode\": \"<string>\",\n  \"submissionAvailabilityCodeDescription\": \"<string>\",\n  \"lastEvaluatedDate\": \"<dateTime>\",\n  \"endReportPeriodDescription\": \"<string>\",\n  \"beginReportPeriodDescription\": \"<string>\",\n  \"version\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T10:59:43.000Z",
+                      "updatedAt": "2026-07-28T10:59:43.000Z",
+                      "uid": "35240-d7459f3d-1233-44e0-9e9b-bfd135e0a365"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T10:59:43.000Z",
+                  "updatedAt": "2026-07-28T10:59:43.000Z",
+                  "uid": "35240-ec85b1f0-7928-41c0-b6fe-6e28885abcde"
+                }
+              ],
+              "id": "343cc88e-53d7-41a6-a173-fe823cd2d12c",
+              "createdAt": "2026-07-28T10:59:43.000Z",
+              "updatedAt": "2026-07-28T10:59:43.000Z",
+              "uid": "35240-343cc88e-53d7-41a6-a173-fe823cd2d12c"
+            },
+            {
+              "name": "{planId}",
+              "item": [
+                {
+                  "name": "Monitor Plan Controller get Monitor Plan",
+                  "id": "1e9ea0ed-9ce6-44bd-85a8-1d9724ca647f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/monitor-plan-mgmt/plans/:planId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "monitor-plan-mgmt",
+                        "plans",
+                        ":planId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "03541161-b3a5-4677-8df9-3ed118d051fa",
+                          "key": "planId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "795e9e5b-86f0-4748-8a4b-a3f535be292e",
+                      "name": "Retrieves information needed to refresh a monitor plan",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/monitor-plan-mgmt/plans/:planId?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "monitor-plan-mgmt",
+                            "plans",
+                            ":planId"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "planId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"orisCode\": \"<number>\",\n  \"facilityId\": \"<number>\",\n  \"name\": \"<string>\",\n  \"endReportPeriodId\": \"<number>\",\n  \"beginReportPeriodId\": \"<number>\",\n  \"facilityName\": \"<string>\",\n  \"facilityRegistrySystemId\": \"<string>\",\n  \"configTypeCode\": \"<string>\",\n  \"lastUpdated\": \"<dateTime>\",\n  \"updatedStatusFlag\": \"<string>\",\n  \"needsEvalFlag\": \"<string>\",\n  \"checkSessionId\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"monitoringPlanCommentData\": [\n    {\n      \"monitoringPlanComment\": \"<string>\",\n      \"beginDate\": \"<dateTime>\",\n      \"endDate\": \"<dateTime>\",\n      \"id\": \"<string>\",\n      \"planId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"active\": \"<boolean>\"\n    }\n  ],\n  \"unitStackConfigurationData\": [\n    {\n      \"beginDate\": \"<dateTime>\",\n      \"endDate\": \"<dateTime>\",\n      \"id\": \"<string>\",\n      \"unitRecordId\": \"<number>\",\n      \"stackPipeRecordId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"unitId\": \"<string>\",\n      \"stackPipeId\": \"<string>\"\n    }\n  ],\n  \"reportingFrequencies\": [\n    {\n      \"reportFrequencyCode\": \"<string>\",\n      \"id\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"endReportPeriodId\": \"<number>\",\n      \"beginReportPeriodId\": \"<number>\",\n      \"updateDate\": \"<string>\",\n      \"endReportPeriodDescription\": \"<string>\",\n      \"beginReportPeriodDescription\": \"<string>\"\n    }\n  ],\n  \"monitoringLocationData\": [\n    {\n      \"unitId\": \"<string>\",\n      \"stackPipeId\": \"<string>\",\n      \"nonLoadBasedIndicator\": \"<number>\",\n      \"id\": \"<string>\",\n      \"unitRecordId\": \"<number>\",\n      \"stackPipeRecordId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"monitoringLocationAttribData\": [\n        {\n          \"ductIndicator\": \"<number>\",\n          \"bypassIndicator\": \"<number>\",\n          \"groundElevation\": \"<number>\",\n          \"stackHeight\": \"<number>\",\n          \"materialCode\": \"<string>\",\n          \"shapeCode\": \"<string>\",\n          \"crossAreaFlow\": \"<number>\",\n          \"crossAreaStackExit\": \"<number>\",\n          \"beginDate\": \"<dateTime>\",\n          \"endDate\": \"<dateTime>\",\n          \"id\": \"<string>\",\n          \"locationId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"active\": \"<boolean>\"\n        }\n      ],\n      \"unitCapacityData\": [\n        {\n          \"maximumHourlyHeatInputCapacity\": \"<number>\",\n          \"beginDate\": \"<dateTime>\",\n          \"endDate\": \"<dateTime>\",\n          \"id\": \"<string>\",\n          \"unitId\": \"<number>\",\n          \"commercialOperationDate\": \"<dateTime>\",\n          \"date\": \"<dateTime>\",\n          \"boilerTurbineBeginDate\": \"<dateTime>\",\n          \"boilerTurbineEndDate\": \"<dateTime>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"active\": \"<boolean>\",\n          \"boilerTurbineType\": \"<string>\"\n        }\n      ],\n      \"unitControlData\": [\n        {\n          \"controlCode\": \"<string>\",\n          \"originalCode\": \"<string>\",\n          \"installDate\": \"<dateTime>\",\n          \"optimizationDate\": \"<dateTime>\",\n          \"seasonalControlsIndicator\": \"<string>\",\n          \"retireDate\": \"<dateTime>\",\n          \"id\": \"<string>\",\n          \"unitId\": \"<number>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"active\": \"<boolean>\",\n          \"parameterCode\": \"<string>\"\n        }\n      ],\n      \"unitFuelData\": [\n        {\n          \"fuelCode\": \"<string>\",\n          \"indicatorCode\": \"<string>\",\n          \"ozoneSeasonIndicator\": \"<number>\",\n          \"demGCV\": \"<string>\",\n          \"demSO2\": \"<string>\",\n          \"beginDate\": \"<dateTime>\",\n          \"endDate\": \"<dateTime>\",\n          \"id\": \"<string>\",\n          \"unitId\": \"<number>\",\n          \"actualOrProjectCode\": \"<string>\",\n          \"sulfurContent\": \"<number>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"active\": \"<boolean>\"\n        }\n      ],\n      \"monitoringMethodData\": [\n        {\n          \"parameterCode\": \"<string>\",\n          \"monitoringMethodCode\": \"<string>\",\n          \"substituteDataCode\": \"<string>\",\n          \"bypassApproachCode\": \"<string>\",\n          \"beginDate\": \"<dateTime>\",\n          \"beginHour\": \"<number>\",\n          \"endDate\": \"<dateTime>\",\n          \"endHour\": \"<number>\",\n          \"id\": \"<string>\",\n          \"locationId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"active\": \"<boolean>\"\n        }\n      ],\n      \"supplementalMATSMonitoringMethodData\": [\n        {\n          \"supplementalMATSParameterCode\": \"<string>\",\n          \"supplementalMATSMonitoringMethodCode\": \"<string>\",\n          \"beginDate\": \"<dateTime>\",\n          \"beginHour\": \"<number>\",\n          \"endDate\": \"<dateTime>\",\n          \"endHour\": \"<number>\",\n          \"id\": \"<string>\",\n          \"locationId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"active\": \"<boolean>\"\n        }\n      ],\n      \"monitoringFormulaData\": [\n        {\n          \"formulaId\": \"<string>\",\n          \"parameterCode\": \"<string>\",\n          \"formulaCode\": \"<string>\",\n          \"formulaText\": \"<string>\",\n          \"beginDate\": \"<dateTime>\",\n          \"beginHour\": \"<number>\",\n          \"endDate\": \"<dateTime>\",\n          \"endHour\": \"<number>\",\n          \"id\": \"<string>\",\n          \"locationId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"active\": \"<boolean>\"\n        }\n      ],\n      \"monitoringDefaultData\": [\n        {\n          \"parameterCode\": \"<string>\",\n          \"defaultValue\": \"<number>\",\n          \"defaultUnitsOfMeasureCode\": \"<string>\",\n          \"defaultPurposeCode\": \"<string>\",\n          \"fuelCode\": \"<string>\",\n          \"operatingConditionCode\": \"<string>\",\n          \"defaultSourceCode\": \"<string>\",\n          \"groupId\": \"<string>\",\n          \"beginDate\": \"<dateTime>\",\n          \"beginHour\": \"<number>\",\n          \"endDate\": \"<dateTime>\",\n          \"endHour\": \"<number>\",\n          \"id\": \"<string>\",\n          \"locationId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"active\": \"<boolean>\"\n        }\n      ],\n      \"monitoringSpanData\": [\n        {\n          \"componentTypeCode\": \"<string>\",\n          \"spanScaleCode\": \"<string>\",\n          \"spanMethodCode\": \"<string>\",\n          \"mecValue\": \"<number>\",\n          \"mpcValue\": \"<number>\",\n          \"mpfValue\": \"<number>\",\n          \"spanValue\": \"<number>\",\n          \"fullScaleRange\": \"<number>\",\n          \"spanUnitsOfMeasureCode\": \"<string>\",\n          \"scaleTransitionPoint\": \"<number>\",\n          \"defaultHighRange\": \"<number>\",\n          \"flowSpanValue\": \"<number>\",\n          \"flowFullScaleRange\": \"<number>\",\n          \"beginDate\": \"<dateTime>\",\n          \"beginHour\": \"<number>\",\n          \"endDate\": \"<dateTime>\",\n          \"endHour\": \"<number>\",\n          \"id\": \"<string>\",\n          \"locationId\": \"<string>\",\n          \"userid\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"active\": \"<boolean>\"\n        }\n      ],\n      \"rectangularDuctWAFData\": [\n        {\n          \"wafDeterminationDate\": \"<dateTime>\",\n          \"wafBeginDate\": \"<dateTime>\",\n          \"wafBeginHour\": \"<number>\",\n          \"wafMethodCode\": \"<string>\",\n          \"wafValue\": \"<number>\",\n          \"numberOfTestRuns\": \"<number>\",\n          \"numberOfTraversePointsWAF\": \"<number>\",\n          \"numberOfTestPorts\": \"<number>\",\n          \"numberOfTraversePointsRef\": \"<number>\",\n          \"ductWidth\": \"<number>\",\n          \"ductDepth\": \"<number>\",\n          \"wafEndDate\": \"<dateTime>\",\n          \"wafEndHour\": \"<number>\",\n          \"id\": \"<string>\",\n          \"locationId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"active\": \"<boolean>\"\n        }\n      ],\n      \"monitoringLoadData\": [\n        {\n          \"maximumLoadValue\": \"<number>\",\n          \"maximumLoadUnitsOfMeasureCode\": \"<string>\",\n          \"lowerOperationBoundary\": \"<number>\",\n          \"upperOperationBoundary\": \"<number>\",\n          \"normalLevelCode\": \"<string>\",\n          \"secondLevelCode\": \"<string>\",\n          \"secondNormalIndicator\": \"<number>\",\n          \"loadAnalysisDate\": \"<dateTime>\",\n          \"beginDate\": \"<dateTime>\",\n          \"beginHour\": \"<number>\",\n          \"endDate\": \"<dateTime>\",\n          \"endHour\": \"<number>\",\n          \"id\": \"<string>\",\n          \"locationId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"active\": \"<boolean>\"\n        }\n      ],\n      \"componentData\": [\n        {\n          \"componentId\": \"<string>\",\n          \"componentTypeCode\": \"<string>\",\n          \"sampleAcquisitionMethodCode\": \"<string>\",\n          \"basisCode\": \"<string>\",\n          \"manufacturer\": \"<string>\",\n          \"modelVersion\": \"<string>\",\n          \"serialNumber\": \"<string>\",\n          \"hgConverterIndicator\": \"<number>\",\n          \"id\": \"<string>\",\n          \"locationId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"analyzerRangeData\": [\n            {\n              \"analyzerRangeCode\": \"<string>\",\n              \"dualRangeIndicator\": \"<number>\",\n              \"beginDate\": \"<dateTime>\",\n              \"beginHour\": \"<number>\",\n              \"endDate\": \"<dateTime>\",\n              \"endHour\": \"<number>\",\n              \"id\": \"<string>\",\n              \"componentRecordId\": \"<string>\",\n              \"userId\": \"<string>\",\n              \"addDate\": \"<string>\",\n              \"updateDate\": \"<string>\",\n              \"active\": \"<boolean>\"\n            }\n          ]\n        }\n      ],\n      \"monitoringSystemData\": [\n        {\n          \"monitoringSystemId\": \"<string>\",\n          \"systemTypeCode\": \"<string>\",\n          \"systemDesignationCode\": \"<string>\",\n          \"fuelCode\": \"<string>\",\n          \"beginDate\": \"<dateTime>\",\n          \"endDate\": \"<dateTime>\",\n          \"beginHour\": \"<number>\",\n          \"endHour\": \"<number>\",\n          \"id\": \"<string>\",\n          \"locationId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"active\": \"<boolean>\",\n          \"monitoringSystemComponentData\": [\n            {\n              \"componentId\": \"<string>\",\n              \"beginDate\": \"<dateTime>\",\n              \"beginHour\": \"<number>\",\n              \"endDate\": \"<dateTime>\",\n              \"endHour\": \"<number>\",\n              \"id\": \"<string>\",\n              \"locationId\": \"<string>\",\n              \"monitoringSystemRecordId\": \"<string>\",\n              \"userId\": \"<string>\",\n              \"addDate\": \"<string>\",\n              \"updateDate\": \"<string>\",\n              \"active\": \"<boolean>\"\n            }\n          ],\n          \"monitoringSystemFuelFlowData\": [\n            {\n              \"maximumFuelFlowRate\": \"<number>\",\n              \"systemFuelFlowUOMCode\": \"<string>\",\n              \"maximumFuelFlowRateSourceCode\": \"<string>\",\n              \"beginDate\": \"<dateTime>\",\n              \"beginHour\": \"<number>\",\n              \"endDate\": \"<dateTime>\",\n              \"endHour\": \"<number>\",\n              \"id\": \"<string>\",\n              \"monitoringSystemRecordId\": \"<string>\",\n              \"fuelCode\": \"<string>\",\n              \"systemTypeCode\": \"<string>\",\n              \"userId\": \"<string>\",\n              \"addDate\": \"<string>\",\n              \"updateDate\": \"<string>\",\n              \"active\": \"<boolean>\"\n            }\n          ]\n        }\n      ],\n      \"monitoringQualificationData\": [\n        {\n          \"qualificationTypeCode\": \"<string>\",\n          \"beginDate\": \"<dateTime>\",\n          \"endDate\": \"<dateTime>\",\n          \"id\": \"<string>\",\n          \"locationId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"active\": \"<boolean>\",\n          \"monitoringQualificationLEEData\": [\n            {\n              \"qualificationTestDate\": \"<dateTime>\",\n              \"parameterCode\": \"<string>\",\n              \"qualificationTestType\": \"<string>\",\n              \"potentialAnnualHgMassEmissions\": \"<number>\",\n              \"applicableEmissionStandard\": \"<number>\",\n              \"unitsOfStandard\": \"<string>\",\n              \"percentageOfEmissionStandard\": \"<number>\",\n              \"id\": \"<string>\",\n              \"qualificationId\": \"<string>\",\n              \"userId\": \"<string>\",\n              \"addDate\": \"<string>\",\n              \"updateDate\": \"<string>\"\n            }\n          ],\n          \"monitoringQualificationLMEData\": [\n            {\n              \"qualificationDataYear\": \"<number>\",\n              \"operatingHours\": \"<number>\",\n              \"so2Tons\": \"<number>\",\n              \"noxTons\": \"<number>\",\n              \"id\": \"<string>\",\n              \"qualificationId\": \"<string>\",\n              \"userId\": \"<string>\",\n              \"addDate\": \"<string>\",\n              \"updateDate\": \"<string>\"\n            }\n          ],\n          \"monitoringQualificationPercentData\": [\n            {\n              \"qualificationYear\": \"<number>\",\n              \"averagePercentValue\": \"<number>\",\n              \"yr1QualificationDataYear\": \"<number>\",\n              \"yr1QualificationDataTypeCode\": \"<string>\",\n              \"yr1PercentageValue\": \"<number>\",\n              \"yr2QualificationDataYear\": \"<number>\",\n              \"yr2QualificationDataTypeCode\": \"<string>\",\n              \"yr2PercentageValue\": \"<number>\",\n              \"yr3QualificationDataYear\": \"<number>\",\n              \"yr3QualificationDataTypeCode\": \"<string>\",\n              \"yr3PercentageValue\": \"<number>\",\n              \"id\": \"<string>\",\n              \"qualificationId\": \"<string>\",\n              \"userId\": \"<string>\",\n              \"addDate\": \"<string>\",\n              \"updateDate\": \"<string>\"\n            }\n          ]\n        }\n      ],\n      \"activeDate\": \"<dateTime>\",\n      \"retireDate\": \"<dateTime>\"\n    }\n  ],\n  \"pendingStatusCode\": \"<string>\",\n  \"evalStatusCode\": \"<string>\",\n  \"evalStatusCodeDescription\": \"<string>\",\n  \"severityCode\": \"<string>\",\n  \"severityDescription\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"addDate\": \"<string>\",\n  \"updateDate\": \"<string>\",\n  \"submissionId\": \"<number>\",\n  \"submissionAvailabilityCode\": \"<string>\",\n  \"submissionAvailabilityCodeDescription\": \"<string>\",\n  \"lastEvaluatedDate\": \"<dateTime>\",\n  \"endReportPeriodDescription\": \"<string>\",\n  \"beginReportPeriodDescription\": \"<string>\",\n  \"version\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T10:59:43.000Z",
+                      "updatedAt": "2026-07-28T10:59:43.000Z",
+                      "uid": "35240-795e9e5b-86f0-4748-8a4b-a3f535be292e"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T10:59:43.000Z",
+                  "updatedAt": "2026-07-28T10:59:43.000Z",
+                  "uid": "35240-1e9ea0ed-9ce6-44bd-85a8-1d9724ca647f"
+                }
+              ],
+              "id": "699542f1-67d0-4e4a-899a-3e2185a9184f",
+              "createdAt": "2026-07-28T10:59:43.000Z",
+              "updatedAt": "2026-07-28T10:59:43.000Z",
+              "uid": "35240-699542f1-67d0-4e4a-899a-3e2185a9184f"
+            }
+          ],
+          "id": "77289522-938d-4384-9bee-43e45e927382",
+          "createdAt": "2026-07-28T10:59:43.000Z",
+          "updatedAt": "2026-07-28T10:59:43.000Z",
+          "uid": "35240-77289522-938d-4384-9bee-43e45e927382"
+        }
+      ],
+      "id": "56e641fc-df42-42a1-958b-2e5873a5012c",
+      "createdAt": "2026-07-28T10:59:43.000Z",
+      "updatedAt": "2026-07-28T10:59:43.000Z",
+      "uid": "35240-56e641fc-df42-42a1-958b-2e5873a5012c"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

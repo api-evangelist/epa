@@ -1,0 +1,905 @@
+{
+  "info": {
+    "_postman_id": "6c14f415-a6d5-4c21-914f-37381f67b2e8",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Lists API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:59:24.000Z",
+    "updatedAt": "2026-07-28T10:59:24.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6c14f415-a6d5-4c21-914f-37381f67b2e8"
+  },
+  "item": [
+    {
+      "name": "list",
+      "item": [
+        {
+          "name": "states",
+          "item": [
+            {
+              "name": "List States",
+              "id": "57b887c3-4dc7-447f-a829-e41e59a01beb",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/list/states?email=<email>&key=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "list",
+                    "states"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Registered email address.",
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "description": "(Required) Account-specific access key.",
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "8f5e99af-ae6f-4916-b1f0-9fbffda8e08c",
+                  "name": "State FIPS codes",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/list/states?email=<email>&key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "list",
+                        "states"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Registered email address.",
+                          "key": "email",
+                          "value": "<email>"
+                        },
+                        {
+                          "description": "(Required) Account-specific access key.",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Header\": [\n    {\n      \"status\": \"<string>\",\n      \"request_time\": \"<string>\",\n      \"url\": \"<string>\",\n      \"rows\": \"<integer>\",\n      \"error\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"status\": \"<string>\",\n      \"request_time\": \"<string>\",\n      \"url\": \"<string>\",\n      \"rows\": \"<integer>\",\n      \"error\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"Data\": []\n}",
+                  "createdAt": "2026-07-28T10:59:25.000Z",
+                  "updatedAt": "2026-07-28T10:59:25.000Z",
+                  "uid": "35240-8f5e99af-ae6f-4916-b1f0-9fbffda8e08c"
+                }
+              ],
+              "createdAt": "2026-07-28T10:59:25.000Z",
+              "updatedAt": "2026-07-28T10:59:25.000Z",
+              "uid": "35240-57b887c3-4dc7-447f-a829-e41e59a01beb"
+            }
+          ],
+          "id": "0b5b0bcd-b6c1-428c-b8d6-b0d3d721aa81",
+          "createdAt": "2026-07-28T10:59:25.000Z",
+          "updatedAt": "2026-07-28T10:59:25.000Z",
+          "uid": "35240-0b5b0bcd-b6c1-428c-b8d6-b0d3d721aa81"
+        },
+        {
+          "name": "countiesByState",
+          "item": [
+            {
+              "name": "List Counties by State",
+              "id": "9d0e7552-d3fd-4c5d-b506-2abdbb510759",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/list/countiesByState?email=<email>&key=<string>&state=68",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "list",
+                    "countiesByState"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Registered email address.",
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "description": "(Required) Account-specific access key.",
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) 2-digit state FIPS code.",
+                      "key": "state",
+                      "value": "68"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "5a8edd3b-f29e-4dd5-8281-0b45ef2c11fb",
+                  "name": "Counties in state",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/list/countiesByState?email=<email>&key=<API Key>&state=68",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "list",
+                        "countiesByState"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Registered email address.",
+                          "key": "email",
+                          "value": "<email>"
+                        },
+                        {
+                          "description": "(Required) Account-specific access key.",
+                          "key": "key",
+                          "value": "<API Key>"
+                        },
+                        {
+                          "description": "(Required) 2-digit state FIPS code.",
+                          "key": "state",
+                          "value": "68"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Header\": [\n    {\n      \"status\": \"<string>\",\n      \"request_time\": \"<string>\",\n      \"url\": \"<string>\",\n      \"rows\": \"<integer>\",\n      \"error\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"status\": \"<string>\",\n      \"request_time\": \"<string>\",\n      \"url\": \"<string>\",\n      \"rows\": \"<integer>\",\n      \"error\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"Data\": []\n}",
+                  "createdAt": "2026-07-28T10:59:25.000Z",
+                  "updatedAt": "2026-07-28T10:59:25.000Z",
+                  "uid": "35240-5a8edd3b-f29e-4dd5-8281-0b45ef2c11fb"
+                }
+              ],
+              "createdAt": "2026-07-28T10:59:25.000Z",
+              "updatedAt": "2026-07-28T10:59:25.000Z",
+              "uid": "35240-9d0e7552-d3fd-4c5d-b506-2abdbb510759"
+            }
+          ],
+          "id": "b4821f18-b2bb-4503-9cf1-3a6387cd08be",
+          "createdAt": "2026-07-28T10:59:25.000Z",
+          "updatedAt": "2026-07-28T10:59:25.000Z",
+          "uid": "35240-b4821f18-b2bb-4503-9cf1-3a6387cd08be"
+        },
+        {
+          "name": "sitesByCounty",
+          "item": [
+            {
+              "name": "List Sites by County",
+              "id": "28d29569-f26b-4620-be01-b007d4f59c7f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/list/sitesByCounty?email=<email>&key=<string>&state=68&county=095",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "list",
+                    "sitesByCounty"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Registered email address.",
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "description": "(Required) Account-specific access key.",
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) 2-digit state FIPS code.",
+                      "key": "state",
+                      "value": "68"
+                    },
+                    {
+                      "description": "(Required) 3-digit county code.",
+                      "key": "county",
+                      "value": "095"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "caf4a1f1-74ac-4ef5-b7fd-91d8cb261d15",
+                  "name": "Sites in county",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/list/sitesByCounty?email=<email>&key=<API Key>&state=68&county=095",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "list",
+                        "sitesByCounty"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Registered email address.",
+                          "key": "email",
+                          "value": "<email>"
+                        },
+                        {
+                          "description": "(Required) Account-specific access key.",
+                          "key": "key",
+                          "value": "<API Key>"
+                        },
+                        {
+                          "description": "(Required) 2-digit state FIPS code.",
+                          "key": "state",
+                          "value": "68"
+                        },
+                        {
+                          "description": "(Required) 3-digit county code.",
+                          "key": "county",
+                          "value": "095"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Header\": [\n    {\n      \"status\": \"<string>\",\n      \"request_time\": \"<string>\",\n      \"url\": \"<string>\",\n      \"rows\": \"<integer>\",\n      \"error\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"status\": \"<string>\",\n      \"request_time\": \"<string>\",\n      \"url\": \"<string>\",\n      \"rows\": \"<integer>\",\n      \"error\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"Data\": []\n}",
+                  "createdAt": "2026-07-28T10:59:25.000Z",
+                  "updatedAt": "2026-07-28T10:59:25.000Z",
+                  "uid": "35240-caf4a1f1-74ac-4ef5-b7fd-91d8cb261d15"
+                }
+              ],
+              "createdAt": "2026-07-28T10:59:25.000Z",
+              "updatedAt": "2026-07-28T10:59:25.000Z",
+              "uid": "35240-28d29569-f26b-4620-be01-b007d4f59c7f"
+            }
+          ],
+          "id": "8d476b8c-9a33-49e3-8c0e-2ec916ebf627",
+          "createdAt": "2026-07-28T10:59:25.000Z",
+          "updatedAt": "2026-07-28T10:59:25.000Z",
+          "uid": "35240-8d476b8c-9a33-49e3-8c0e-2ec916ebf627"
+        },
+        {
+          "name": "cbsas",
+          "item": [
+            {
+              "name": "List Core Based Statistical Areas",
+              "id": "1804bac8-cc51-41ac-a3ca-a2cab5f48f2b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/list/cbsas?email=<email>&key=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "list",
+                    "cbsas"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Registered email address.",
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "description": "(Required) Account-specific access key.",
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "18b5d82c-8a98-4f5f-930e-923faed356d2",
+                  "name": "CBSA codes",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/list/cbsas?email=<email>&key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "list",
+                        "cbsas"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Registered email address.",
+                          "key": "email",
+                          "value": "<email>"
+                        },
+                        {
+                          "description": "(Required) Account-specific access key.",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Header\": [\n    {\n      \"status\": \"<string>\",\n      \"request_time\": \"<string>\",\n      \"url\": \"<string>\",\n      \"rows\": \"<integer>\",\n      \"error\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"status\": \"<string>\",\n      \"request_time\": \"<string>\",\n      \"url\": \"<string>\",\n      \"rows\": \"<integer>\",\n      \"error\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"Data\": []\n}",
+                  "createdAt": "2026-07-28T10:59:25.000Z",
+                  "updatedAt": "2026-07-28T10:59:25.000Z",
+                  "uid": "35240-18b5d82c-8a98-4f5f-930e-923faed356d2"
+                }
+              ],
+              "createdAt": "2026-07-28T10:59:25.000Z",
+              "updatedAt": "2026-07-28T10:59:25.000Z",
+              "uid": "35240-1804bac8-cc51-41ac-a3ca-a2cab5f48f2b"
+            }
+          ],
+          "id": "6d1ed876-6913-449b-a1c6-59e7567ce0d3",
+          "createdAt": "2026-07-28T10:59:25.000Z",
+          "updatedAt": "2026-07-28T10:59:25.000Z",
+          "uid": "35240-6d1ed876-6913-449b-a1c6-59e7567ce0d3"
+        },
+        {
+          "name": "classes",
+          "item": [
+            {
+              "name": "List Parameter Classes",
+              "id": "afb78a26-f702-455f-bab7-db83321f8a04",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/list/classes?email=<email>&key=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "list",
+                    "classes"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Registered email address.",
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "description": "(Required) Account-specific access key.",
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "6a1f95e7-3951-47d6-8697-ddc5d799bb3a",
+                  "name": "Parameter class groupings",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/list/classes?email=<email>&key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "list",
+                        "classes"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Registered email address.",
+                          "key": "email",
+                          "value": "<email>"
+                        },
+                        {
+                          "description": "(Required) Account-specific access key.",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Header\": [\n    {\n      \"status\": \"<string>\",\n      \"request_time\": \"<string>\",\n      \"url\": \"<string>\",\n      \"rows\": \"<integer>\",\n      \"error\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"status\": \"<string>\",\n      \"request_time\": \"<string>\",\n      \"url\": \"<string>\",\n      \"rows\": \"<integer>\",\n      \"error\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"Data\": []\n}",
+                  "createdAt": "2026-07-28T10:59:25.000Z",
+                  "updatedAt": "2026-07-28T10:59:25.000Z",
+                  "uid": "35240-6a1f95e7-3951-47d6-8697-ddc5d799bb3a"
+                }
+              ],
+              "createdAt": "2026-07-28T10:59:25.000Z",
+              "updatedAt": "2026-07-28T10:59:25.000Z",
+              "uid": "35240-afb78a26-f702-455f-bab7-db83321f8a04"
+            }
+          ],
+          "id": "c9bd67d9-dcf3-4ea0-bdfb-ed8bf542ff00",
+          "createdAt": "2026-07-28T10:59:25.000Z",
+          "updatedAt": "2026-07-28T10:59:25.000Z",
+          "uid": "35240-c9bd67d9-dcf3-4ea0-bdfb-ed8bf542ff00"
+        },
+        {
+          "name": "parametersByClass",
+          "item": [
+            {
+              "name": "List Parameters by Class",
+              "id": "b292abb8-4637-4b81-8e47-7263c233fd23",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/list/parametersByClass?email=<email>&key=<string>&pc=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "list",
+                    "parametersByClass"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Registered email address.",
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "description": "(Required) Account-specific access key.",
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "pc",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "0f0e0394-1a25-40a2-9c72-480359d32f73",
+                  "name": "Parameter codes in class",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/list/parametersByClass?email=<email>&key=<API Key>&pc=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "list",
+                        "parametersByClass"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Registered email address.",
+                          "key": "email",
+                          "value": "<email>"
+                        },
+                        {
+                          "description": "(Required) Account-specific access key.",
+                          "key": "key",
+                          "value": "<API Key>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "pc",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Header\": [\n    {\n      \"status\": \"<string>\",\n      \"request_time\": \"<string>\",\n      \"url\": \"<string>\",\n      \"rows\": \"<integer>\",\n      \"error\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"status\": \"<string>\",\n      \"request_time\": \"<string>\",\n      \"url\": \"<string>\",\n      \"rows\": \"<integer>\",\n      \"error\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"Data\": []\n}",
+                  "createdAt": "2026-07-28T10:59:25.000Z",
+                  "updatedAt": "2026-07-28T10:59:25.000Z",
+                  "uid": "35240-0f0e0394-1a25-40a2-9c72-480359d32f73"
+                }
+              ],
+              "createdAt": "2026-07-28T10:59:25.000Z",
+              "updatedAt": "2026-07-28T10:59:25.000Z",
+              "uid": "35240-b292abb8-4637-4b81-8e47-7263c233fd23"
+            }
+          ],
+          "id": "ee82dc1f-509e-4d95-b699-ae420c0e00cb",
+          "createdAt": "2026-07-28T10:59:25.000Z",
+          "updatedAt": "2026-07-28T10:59:25.000Z",
+          "uid": "35240-ee82dc1f-509e-4d95-b699-ae420c0e00cb"
+        },
+        {
+          "name": "pqaos",
+          "item": [
+            {
+              "name": "List Primary Quality Assurance Organizations",
+              "id": "7895b3e3-c2c8-450a-b2fc-b562419c9bbd",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/list/pqaos?email=<email>&key=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "list",
+                    "pqaos"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Registered email address.",
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "description": "(Required) Account-specific access key.",
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "9618b094-cdf9-4844-ab67-bbfafe8f7305",
+                  "name": "PQAOs",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/list/pqaos?email=<email>&key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "list",
+                        "pqaos"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Registered email address.",
+                          "key": "email",
+                          "value": "<email>"
+                        },
+                        {
+                          "description": "(Required) Account-specific access key.",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Header\": [\n    {\n      \"status\": \"<string>\",\n      \"request_time\": \"<string>\",\n      \"url\": \"<string>\",\n      \"rows\": \"<integer>\",\n      \"error\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"status\": \"<string>\",\n      \"request_time\": \"<string>\",\n      \"url\": \"<string>\",\n      \"rows\": \"<integer>\",\n      \"error\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"Data\": []\n}",
+                  "createdAt": "2026-07-28T10:59:25.000Z",
+                  "updatedAt": "2026-07-28T10:59:25.000Z",
+                  "uid": "35240-9618b094-cdf9-4844-ab67-bbfafe8f7305"
+                }
+              ],
+              "createdAt": "2026-07-28T10:59:25.000Z",
+              "updatedAt": "2026-07-28T10:59:25.000Z",
+              "uid": "35240-7895b3e3-c2c8-450a-b2fc-b562419c9bbd"
+            }
+          ],
+          "id": "890f5fb5-dacf-4a61-a72a-ed16d55813d1",
+          "createdAt": "2026-07-28T10:59:25.000Z",
+          "updatedAt": "2026-07-28T10:59:25.000Z",
+          "uid": "35240-890f5fb5-dacf-4a61-a72a-ed16d55813d1"
+        },
+        {
+          "name": "mas",
+          "item": [
+            {
+              "name": "List Monitoring Agencies",
+              "id": "f7431a21-8ace-462c-9b4c-10aa6e3a3c22",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/list/mas?email=<email>&key=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "list",
+                    "mas"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Registered email address.",
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "description": "(Required) Account-specific access key.",
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "a6dcf491-01dd-4edd-a9f7-6349fc985dbe",
+                  "name": "Monitoring agencies",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/list/mas?email=<email>&key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "list",
+                        "mas"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Registered email address.",
+                          "key": "email",
+                          "value": "<email>"
+                        },
+                        {
+                          "description": "(Required) Account-specific access key.",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Header\": [\n    {\n      \"status\": \"<string>\",\n      \"request_time\": \"<string>\",\n      \"url\": \"<string>\",\n      \"rows\": \"<integer>\",\n      \"error\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"status\": \"<string>\",\n      \"request_time\": \"<string>\",\n      \"url\": \"<string>\",\n      \"rows\": \"<integer>\",\n      \"error\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"Data\": []\n}",
+                  "createdAt": "2026-07-28T10:59:25.000Z",
+                  "updatedAt": "2026-07-28T10:59:25.000Z",
+                  "uid": "35240-a6dcf491-01dd-4edd-a9f7-6349fc985dbe"
+                }
+              ],
+              "createdAt": "2026-07-28T10:59:25.000Z",
+              "updatedAt": "2026-07-28T10:59:25.000Z",
+              "uid": "35240-f7431a21-8ace-462c-9b4c-10aa6e3a3c22"
+            }
+          ],
+          "id": "5c22a495-00a1-4ebe-8b6c-ca57c7db666a",
+          "createdAt": "2026-07-28T10:59:25.000Z",
+          "updatedAt": "2026-07-28T10:59:25.000Z",
+          "uid": "35240-5c22a495-00a1-4ebe-8b6c-ca57c7db666a"
+        }
+      ],
+      "id": "a2700a8c-9952-4e30-aabe-0e14518cf088",
+      "createdAt": "2026-07-28T10:59:25.000Z",
+      "updatedAt": "2026-07-28T10:59:25.000Z",
+      "uid": "35240-a2700a8c-9952-4e30-aabe-0e14518cf088"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

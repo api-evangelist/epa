@@ -1,0 +1,370 @@
+{
+  "info": {
+    "_postman_id": "98a6568e-23d7-4da0-8d6f-b5abc898e1b2",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Linearity Injection API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:59:05.000Z",
+    "updatedAt": "2026-07-28T10:59:05.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-98a6568e-23d7-4da0-8d6f-b5abc898e1b2"
+  },
+  "item": [
+    {
+      "name": "qa-certification-mgmt",
+      "item": [
+        {
+          "name": "locations",
+          "item": [
+            {
+              "name": "{locId}",
+              "item": [
+                {
+                  "name": "test-summary",
+                  "item": [
+                    {
+                      "name": "{testSumId}",
+                      "item": [
+                        {
+                          "name": "linearities",
+                          "item": [
+                            {
+                              "name": "{linSumId}",
+                              "item": [
+                                {
+                                  "name": "injections",
+                                  "item": [
+                                    {
+                                      "name": "{id}",
+                                      "item": [
+                                        {
+                                          "name": "Linearity Injection Controller get Injection",
+                                          "id": "888d907e-4a3f-44d5-8db3-3bc7811a00c6",
+                                          "protocolProfileBehavior": {
+                                            "disableBodyPruning": true
+                                          },
+                                          "request": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/linearities/:linSumId/injections/:id",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "qa-certification-mgmt",
+                                                "locations",
+                                                ":locId",
+                                                "test-summary",
+                                                ":testSumId",
+                                                "linearities",
+                                                ":linSumId",
+                                                "injections",
+                                                ":id"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "id": "d6ffa3c4-2922-4216-b5b8-a23f84090107",
+                                                  "key": "locId",
+                                                  "value": "<string>",
+                                                  "description": "(Required) "
+                                                },
+                                                {
+                                                  "id": "cf018357-ab95-4e8e-95e0-c6c782671629",
+                                                  "key": "testSumId",
+                                                  "value": "<string>",
+                                                  "description": "(Required) "
+                                                },
+                                                {
+                                                  "id": "2b915a2d-489c-42bc-9435-e0523a8a1162",
+                                                  "key": "linSumId",
+                                                  "value": "<string>",
+                                                  "description": "(Required) "
+                                                },
+                                                {
+                                                  "id": "7b355a66-63eb-40ee-bf05-eacb2e72c7ae",
+                                                  "key": "id",
+                                                  "value": "<string>",
+                                                  "description": "(Required) "
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "response": [
+                                            {
+                                              "id": "d956183e-f59f-4423-ab39-8526020bb7a1",
+                                              "name": "Retrieves official Linearity Injection record by its Id",
+                                              "originalRequest": {
+                                                "method": "GET",
+                                                "header": [
+                                                  {
+                                                    "key": "Accept",
+                                                    "value": "application/json"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/linearities/:linSumId/injections/:id?key=<API Key>",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "qa-certification-mgmt",
+                                                    "locations",
+                                                    ":locId",
+                                                    "test-summary",
+                                                    ":testSumId",
+                                                    "linearities",
+                                                    ":linSumId",
+                                                    "injections",
+                                                    ":id"
+                                                  ],
+                                                  "query": [
+                                                    {
+                                                      "description": "Added as a part of security scheme: apikey",
+                                                      "key": "key",
+                                                      "value": "<API Key>"
+                                                    }
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "locId"
+                                                    },
+                                                    {
+                                                      "key": "testSumId"
+                                                    },
+                                                    {
+                                                      "key": "linSumId"
+                                                    },
+                                                    {
+                                                      "key": "id"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "OK",
+                                              "code": 200,
+                                              "_postman_previewlanguage": "json",
+                                              "header": [
+                                                {
+                                                  "key": "Content-Type",
+                                                  "value": "application/json"
+                                                }
+                                              ],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": "{\n  \"injectionDate\": \"<dateTime>\",\n  \"injectionMinute\": \"<number>\",\n  \"id\": \"<string>\",\n  \"linSumId\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"addDate\": \"<string>\",\n  \"updateDate\": \"<string>\",\n  \"injectionHour\": \"<number>\",\n  \"measuredValue\": \"<number>\",\n  \"referenceValue\": \"<number>\"\n}",
+                                              "createdAt": "2026-07-28T10:59:06.000Z",
+                                              "updatedAt": "2026-07-28T10:59:06.000Z",
+                                              "uid": "35240-d956183e-f59f-4423-ab39-8526020bb7a1"
+                                            }
+                                          ],
+                                          "createdAt": "2026-07-28T10:59:05.000Z",
+                                          "updatedAt": "2026-07-28T10:59:05.000Z",
+                                          "uid": "35240-888d907e-4a3f-44d5-8db3-3bc7811a00c6"
+                                        }
+                                      ],
+                                      "id": "9b153292-a55b-4cc9-ae78-9f298b7dda0f",
+                                      "createdAt": "2026-07-28T10:59:05.000Z",
+                                      "updatedAt": "2026-07-28T10:59:05.000Z",
+                                      "uid": "35240-9b153292-a55b-4cc9-ae78-9f298b7dda0f"
+                                    },
+                                    {
+                                      "name": "Linearity Injection Controller get Injections",
+                                      "id": "0f335a2b-c412-455e-82a0-0e5c72a155fa",
+                                      "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                      },
+                                      "request": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/linearities/:linSumId/injections",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "qa-certification-mgmt",
+                                            "locations",
+                                            ":locId",
+                                            "test-summary",
+                                            ":testSumId",
+                                            "linearities",
+                                            ":linSumId",
+                                            "injections"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "id": "3754b578-ff18-42bc-98f4-c0e4d5ec89e2",
+                                              "key": "locId",
+                                              "value": "<string>",
+                                              "description": "(Required) "
+                                            },
+                                            {
+                                              "id": "d2237e59-326a-418b-85df-cfeb2c60c355",
+                                              "key": "testSumId",
+                                              "value": "<string>",
+                                              "description": "(Required) "
+                                            },
+                                            {
+                                              "id": "209bffc3-b039-4567-9660-53a468ddf07a",
+                                              "key": "linSumId",
+                                              "value": "<string>",
+                                              "description": "(Required) "
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "response": [
+                                        {
+                                          "id": "9ac2aeac-4922-4772-b133-45b43c29c28e",
+                                          "name": "Retrieves official Linearity Injection records by Linearity Summary Id",
+                                          "originalRequest": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/linearities/:linSumId/injections?key=<API Key>",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "qa-certification-mgmt",
+                                                "locations",
+                                                ":locId",
+                                                "test-summary",
+                                                ":testSumId",
+                                                "linearities",
+                                                ":linSumId",
+                                                "injections"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "Added as a part of security scheme: apikey",
+                                                  "key": "key",
+                                                  "value": "<API Key>"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "locId"
+                                                },
+                                                {
+                                                  "key": "testSumId"
+                                                },
+                                                {
+                                                  "key": "linSumId"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "OK",
+                                          "code": 200,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"items\": [\n    {\n      \"injectionDate\": \"<dateTime>\",\n      \"injectionMinute\": \"<number>\",\n      \"id\": \"<string>\",\n      \"linSumId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"injectionHour\": \"<number>\",\n      \"measuredValue\": \"<number>\",\n      \"referenceValue\": \"<number>\"\n    },\n    {\n      \"injectionDate\": \"<dateTime>\",\n      \"injectionMinute\": \"<number>\",\n      \"id\": \"<string>\",\n      \"linSumId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"injectionHour\": \"<number>\",\n      \"measuredValue\": \"<number>\",\n      \"referenceValue\": \"<number>\"\n    }\n  ]\n}",
+                                          "createdAt": "2026-07-28T10:59:06.000Z",
+                                          "updatedAt": "2026-07-28T10:59:06.000Z",
+                                          "uid": "35240-9ac2aeac-4922-4772-b133-45b43c29c28e"
+                                        }
+                                      ],
+                                      "createdAt": "2026-07-28T10:59:05.000Z",
+                                      "updatedAt": "2026-07-28T10:59:05.000Z",
+                                      "uid": "35240-0f335a2b-c412-455e-82a0-0e5c72a155fa"
+                                    }
+                                  ],
+                                  "id": "88b497d7-e15b-4218-a303-a0469c680561",
+                                  "createdAt": "2026-07-28T10:59:05.000Z",
+                                  "updatedAt": "2026-07-28T10:59:05.000Z",
+                                  "uid": "35240-88b497d7-e15b-4218-a303-a0469c680561"
+                                }
+                              ],
+                              "id": "eaa946a4-2855-4b4c-934b-64aecc3066cb",
+                              "createdAt": "2026-07-28T10:59:05.000Z",
+                              "updatedAt": "2026-07-28T10:59:05.000Z",
+                              "uid": "35240-eaa946a4-2855-4b4c-934b-64aecc3066cb"
+                            }
+                          ],
+                          "id": "80c5deda-328f-4a4b-80fe-64774457cdee",
+                          "createdAt": "2026-07-28T10:59:05.000Z",
+                          "updatedAt": "2026-07-28T10:59:05.000Z",
+                          "uid": "35240-80c5deda-328f-4a4b-80fe-64774457cdee"
+                        }
+                      ],
+                      "id": "a5b92e5f-63ff-45fe-ae6a-30352cc9d3c4",
+                      "createdAt": "2026-07-28T10:59:05.000Z",
+                      "updatedAt": "2026-07-28T10:59:05.000Z",
+                      "uid": "35240-a5b92e5f-63ff-45fe-ae6a-30352cc9d3c4"
+                    }
+                  ],
+                  "id": "b8b41dc7-791b-4e2d-97b7-419637346475",
+                  "createdAt": "2026-07-28T10:59:05.000Z",
+                  "updatedAt": "2026-07-28T10:59:05.000Z",
+                  "uid": "35240-b8b41dc7-791b-4e2d-97b7-419637346475"
+                }
+              ],
+              "id": "904a32f1-59ed-4ba8-8f14-9170591c767f",
+              "createdAt": "2026-07-28T10:59:05.000Z",
+              "updatedAt": "2026-07-28T10:59:05.000Z",
+              "uid": "35240-904a32f1-59ed-4ba8-8f14-9170591c767f"
+            }
+          ],
+          "id": "d2eb1c69-a82a-43e3-ace3-513eb0182d43",
+          "createdAt": "2026-07-28T10:59:05.000Z",
+          "updatedAt": "2026-07-28T10:59:05.000Z",
+          "uid": "35240-d2eb1c69-a82a-43e3-ace3-513eb0182d43"
+        }
+      ],
+      "id": "371db7c2-5fe1-4a21-b339-b4bda4b43e54",
+      "createdAt": "2026-07-28T10:59:05.000Z",
+      "updatedAt": "2026-07-28T10:59:05.000Z",
+      "uid": "35240-371db7c2-5fe1-4a21-b339-b4bda4b43e54"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

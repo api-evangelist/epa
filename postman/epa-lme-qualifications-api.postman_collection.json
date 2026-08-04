@@ -1,0 +1,200 @@
+{
+  "info": {
+    "_postman_id": "bc59e2f0-bdcf-43c1-882b-c28c0db07925",
+    "name": "EPA Air Quality System (AQS) Account Type Codes LME Qualifications API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:59:27.000Z",
+    "updatedAt": "2026-07-28T10:59:27.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-bc59e2f0-bdcf-43c1-882b-c28c0db07925"
+  },
+  "item": [
+    {
+      "name": "monitor-plan-mgmt",
+      "item": [
+        {
+          "name": "locations",
+          "item": [
+            {
+              "name": "{locId}",
+              "item": [
+                {
+                  "name": "qualifications",
+                  "item": [
+                    {
+                      "name": "{qualId}",
+                      "item": [
+                        {
+                          "name": "lme-qualifications",
+                          "item": [
+                            {
+                              "name": "LME Qualification Controller get LME Qualifications",
+                              "id": "014dd6df-1ba9-4f35-8802-b629c37d67e2",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/monitor-plan-mgmt/locations/:locId/qualifications/:qualId/lme-qualifications",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "monitor-plan-mgmt",
+                                    "locations",
+                                    ":locId",
+                                    "qualifications",
+                                    ":qualId",
+                                    "lme-qualifications"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "4fa97331-0f55-40c5-bc0e-4241d150d2b8",
+                                      "key": "locId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "e1a3bd1b-676a-4204-b369-96c43f9563c8",
+                                      "key": "qualId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                }
+                              },
+                              "response": [
+                                {
+                                  "id": "351b1338-b7d0-4101-aad8-f1b54425cb81",
+                                  "name": "Retrieves official lme qualification records for a monitor location",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/monitor-plan-mgmt/locations/:locId/qualifications/:qualId/lme-qualifications?key=<API Key>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "monitor-plan-mgmt",
+                                        "locations",
+                                        ":locId",
+                                        "qualifications",
+                                        ":qualId",
+                                        "lme-qualifications"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Added as a part of security scheme: apikey",
+                                          "key": "key",
+                                          "value": "<API Key>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "locId"
+                                        },
+                                        {
+                                          "key": "qualId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"items\": [\n    {\n      \"qualificationDataYear\": \"<number>\",\n      \"operatingHours\": \"<number>\",\n      \"so2Tons\": \"<number>\",\n      \"noxTons\": \"<number>\",\n      \"id\": \"<string>\",\n      \"qualificationId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\"\n    },\n    {\n      \"qualificationDataYear\": \"<number>\",\n      \"operatingHours\": \"<number>\",\n      \"so2Tons\": \"<number>\",\n      \"noxTons\": \"<number>\",\n      \"id\": \"<string>\",\n      \"qualificationId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T10:59:27.000Z",
+                                  "updatedAt": "2026-07-28T10:59:27.000Z",
+                                  "uid": "35240-351b1338-b7d0-4101-aad8-f1b54425cb81"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T10:59:27.000Z",
+                              "updatedAt": "2026-07-28T10:59:27.000Z",
+                              "uid": "35240-014dd6df-1ba9-4f35-8802-b629c37d67e2"
+                            }
+                          ],
+                          "id": "d4008cc3-2e19-4e54-805a-4c04b3ac9a05",
+                          "createdAt": "2026-07-28T10:59:27.000Z",
+                          "updatedAt": "2026-07-28T10:59:27.000Z",
+                          "uid": "35240-d4008cc3-2e19-4e54-805a-4c04b3ac9a05"
+                        }
+                      ],
+                      "id": "74b214fe-f09c-4db8-81cb-ba223c01eb8f",
+                      "createdAt": "2026-07-28T10:59:27.000Z",
+                      "updatedAt": "2026-07-28T10:59:27.000Z",
+                      "uid": "35240-74b214fe-f09c-4db8-81cb-ba223c01eb8f"
+                    }
+                  ],
+                  "id": "f63cfa4b-11b9-4ae0-be66-d0a20d5641d0",
+                  "createdAt": "2026-07-28T10:59:27.000Z",
+                  "updatedAt": "2026-07-28T10:59:27.000Z",
+                  "uid": "35240-f63cfa4b-11b9-4ae0-be66-d0a20d5641d0"
+                }
+              ],
+              "id": "11900c9b-c503-4c05-bd3f-da64d0c15ed3",
+              "createdAt": "2026-07-28T10:59:27.000Z",
+              "updatedAt": "2026-07-28T10:59:27.000Z",
+              "uid": "35240-11900c9b-c503-4c05-bd3f-da64d0c15ed3"
+            }
+          ],
+          "id": "4aea6214-f85b-48eb-afeb-7273d8391502",
+          "createdAt": "2026-07-28T10:59:27.000Z",
+          "updatedAt": "2026-07-28T10:59:27.000Z",
+          "uid": "35240-4aea6214-f85b-48eb-afeb-7273d8391502"
+        }
+      ],
+      "id": "dc74c9cf-601b-445a-8737-6947c7c38771",
+      "createdAt": "2026-07-28T10:59:27.000Z",
+      "updatedAt": "2026-07-28T10:59:27.000Z",
+      "uid": "35240-dc74c9cf-601b-445a-8737-6947c7c38771"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

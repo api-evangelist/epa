@@ -1,0 +1,326 @@
+{
+  "info": {
+    "_postman_id": "aad8b871-9f9a-41a4-a817-68481c029b64",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Air Emission Testing API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:56:36.000Z",
+    "updatedAt": "2026-07-28T10:56:37.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-aad8b871-9f9a-41a4-a817-68481c029b64"
+  },
+  "item": [
+    {
+      "name": "qa-certification-mgmt",
+      "item": [
+        {
+          "name": "locations",
+          "item": [
+            {
+              "name": "{locId}",
+              "item": [
+                {
+                  "name": "test-summary",
+                  "item": [
+                    {
+                      "name": "{testSumId}",
+                      "item": [
+                        {
+                          "name": "air-emission-testings",
+                          "item": [
+                            {
+                              "name": "{id}",
+                              "item": [
+                                {
+                                  "name": "Air Emission Testing Controller get Air Emissions Testing",
+                                  "id": "7f57d8d7-9883-4f91-8929-72df342519c2",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/air-emission-testings/:id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "qa-certification-mgmt",
+                                        "locations",
+                                        ":locId",
+                                        "test-summary",
+                                        ":testSumId",
+                                        "air-emission-testings",
+                                        ":id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "7520cfd1-e853-48b0-a605-2dd537558803",
+                                          "key": "locId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "299c6aa4-5fca-40f1-b072-21a8e81652ae",
+                                          "key": "testSumId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "58298877-9613-4b9d-9c66-668981e328fa",
+                                          "key": "id",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "cdab90fe-c60c-4eac-a199-1f5c197a5546",
+                                      "name": "Retrieves official Air Emission Testing record by its Id",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/air-emission-testings/:id?key=<API Key>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "qa-certification-mgmt",
+                                            "locations",
+                                            ":locId",
+                                            "test-summary",
+                                            ":testSumId",
+                                            "air-emission-testings",
+                                            ":id"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Added as a part of security scheme: apikey",
+                                              "key": "key",
+                                              "value": "<API Key>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "locId"
+                                            },
+                                            {
+                                              "key": "testSumId"
+                                            },
+                                            {
+                                              "key": "id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"id\": \"<string>\",\n  \"testSumId\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"addDate\": \"<string>\",\n  \"updateDate\": \"<string>\",\n  \"qiLastName\": \"<string>\",\n  \"qiFirstName\": \"<string>\",\n  \"aetbName\": \"<string>\",\n  \"aetbPhoneNumber\": \"<string>\",\n  \"aetbEmail\": \"<email>\",\n  \"examDate\": \"<dateTime>\",\n  \"providerName\": \"<string>\",\n  \"providerEmail\": \"<email>\",\n  \"qiMiddleInitial\": \"<string>\"\n}",
+                                      "createdAt": "2026-07-28T10:56:37.000Z",
+                                      "updatedAt": "2026-07-28T10:56:37.000Z",
+                                      "uid": "35240-cdab90fe-c60c-4eac-a199-1f5c197a5546"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T10:56:37.000Z",
+                                  "updatedAt": "2026-07-28T10:56:37.000Z",
+                                  "uid": "35240-7f57d8d7-9883-4f91-8929-72df342519c2"
+                                }
+                              ],
+                              "id": "b44aef01-3dc4-402e-a471-577ff23ff921",
+                              "createdAt": "2026-07-28T10:56:37.000Z",
+                              "updatedAt": "2026-07-28T10:56:37.000Z",
+                              "uid": "35240-b44aef01-3dc4-402e-a471-577ff23ff921"
+                            },
+                            {
+                              "name": "Air Emission Testing Controller get Air Emissions Testings",
+                              "id": "fc3a8f30-6405-434d-956c-29fb03c84f7e",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/air-emission-testings",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "qa-certification-mgmt",
+                                    "locations",
+                                    ":locId",
+                                    "test-summary",
+                                    ":testSumId",
+                                    "air-emission-testings"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "4c8b6441-955e-4eef-a676-228ed48f46f6",
+                                      "key": "locId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "b7b154f5-b19e-4ffd-8e37-bb5255c51c15",
+                                      "key": "testSumId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                }
+                              },
+                              "response": [
+                                {
+                                  "id": "0ab8139c-2fdc-455f-b408-557ee818be93",
+                                  "name": "Retrieves official Air Emission Testing records by Rata Summary Id",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/air-emission-testings?key=<API Key>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "qa-certification-mgmt",
+                                        "locations",
+                                        ":locId",
+                                        "test-summary",
+                                        ":testSumId",
+                                        "air-emission-testings"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Added as a part of security scheme: apikey",
+                                          "key": "key",
+                                          "value": "<API Key>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "locId"
+                                        },
+                                        {
+                                          "key": "testSumId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"testSumId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"qiLastName\": \"<string>\",\n      \"qiFirstName\": \"<string>\",\n      \"aetbName\": \"<string>\",\n      \"aetbPhoneNumber\": \"<string>\",\n      \"aetbEmail\": \"<email>\",\n      \"examDate\": \"<dateTime>\",\n      \"providerName\": \"<string>\",\n      \"providerEmail\": \"<email>\",\n      \"qiMiddleInitial\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"testSumId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"qiLastName\": \"<string>\",\n      \"qiFirstName\": \"<string>\",\n      \"aetbName\": \"<string>\",\n      \"aetbPhoneNumber\": \"<string>\",\n      \"aetbEmail\": \"<email>\",\n      \"examDate\": \"<dateTime>\",\n      \"providerName\": \"<string>\",\n      \"providerEmail\": \"<email>\",\n      \"qiMiddleInitial\": \"<string>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T10:56:37.000Z",
+                                  "updatedAt": "2026-07-28T10:56:37.000Z",
+                                  "uid": "35240-0ab8139c-2fdc-455f-b408-557ee818be93"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T10:56:37.000Z",
+                              "updatedAt": "2026-07-28T10:56:37.000Z",
+                              "uid": "35240-fc3a8f30-6405-434d-956c-29fb03c84f7e"
+                            }
+                          ],
+                          "id": "3948087c-1cc2-4782-9720-4614a854d6c0",
+                          "createdAt": "2026-07-28T10:56:37.000Z",
+                          "updatedAt": "2026-07-28T10:56:37.000Z",
+                          "uid": "35240-3948087c-1cc2-4782-9720-4614a854d6c0"
+                        }
+                      ],
+                      "id": "af42071f-1cb0-4445-bae9-4793adec8bbf",
+                      "createdAt": "2026-07-28T10:56:37.000Z",
+                      "updatedAt": "2026-07-28T10:56:37.000Z",
+                      "uid": "35240-af42071f-1cb0-4445-bae9-4793adec8bbf"
+                    }
+                  ],
+                  "id": "0c8dd3e9-a777-4500-bbd1-b595cc1eaa98",
+                  "createdAt": "2026-07-28T10:56:37.000Z",
+                  "updatedAt": "2026-07-28T10:56:37.000Z",
+                  "uid": "35240-0c8dd3e9-a777-4500-bbd1-b595cc1eaa98"
+                }
+              ],
+              "id": "9491a613-2f52-4639-927a-3a5036d9713b",
+              "createdAt": "2026-07-28T10:56:37.000Z",
+              "updatedAt": "2026-07-28T10:56:37.000Z",
+              "uid": "35240-9491a613-2f52-4639-927a-3a5036d9713b"
+            }
+          ],
+          "id": "fef8b9ca-5dfd-4dc9-929f-bc347e99c9c9",
+          "createdAt": "2026-07-28T10:56:37.000Z",
+          "updatedAt": "2026-07-28T10:56:37.000Z",
+          "uid": "35240-fef8b9ca-5dfd-4dc9-929f-bc347e99c9c9"
+        }
+      ],
+      "id": "87976206-dcda-4665-a528-72e4e649a8ba",
+      "createdAt": "2026-07-28T10:56:37.000Z",
+      "updatedAt": "2026-07-28T10:56:37.000Z",
+      "uid": "35240-87976206-dcda-4665-a528-72e4e649a8ba"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "info": {
+    "_postman_id": "52b50066-df28-4961-bd45-da9872adaf3a",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Loads API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:59:28.000Z",
+    "updatedAt": "2026-07-28T10:59:29.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-52b50066-df28-4961-bd45-da9872adaf3a"
+  },
+  "item": [
+    {
+      "name": "monitor-plan-mgmt",
+      "item": [
+        {
+          "name": "locations",
+          "item": [
+            {
+              "name": "{locId}",
+              "item": [
+                {
+                  "name": "loads",
+                  "item": [
+                    {
+                      "name": "Monitor Load Controller get Loads",
+                      "id": "94ecdcd7-f9d7-43eb-adc7-78a4e06797c5",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/monitor-plan-mgmt/locations/:locId/loads",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "monitor-plan-mgmt",
+                            "locations",
+                            ":locId",
+                            "loads"
+                          ],
+                          "variable": [
+                            {
+                              "id": "3468fdf6-f229-4ed4-a241-b62155ab70a8",
+                              "key": "locId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "342540bc-9e08-4de6-9c8b-25a0b3846e57",
+                          "name": "Retrieves official load records for a monitor location",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/monitor-plan-mgmt/locations/:locId/loads?key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "monitor-plan-mgmt",
+                                "locations",
+                                ":locId",
+                                "loads"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "locId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"items\": [\n    {\n      \"maximumLoadValue\": \"<number>\",\n      \"maximumLoadUnitsOfMeasureCode\": \"<string>\",\n      \"lowerOperationBoundary\": \"<number>\",\n      \"upperOperationBoundary\": \"<number>\",\n      \"normalLevelCode\": \"<string>\",\n      \"secondLevelCode\": \"<string>\",\n      \"secondNormalIndicator\": \"<number>\",\n      \"loadAnalysisDate\": \"<dateTime>\",\n      \"beginDate\": \"<dateTime>\",\n      \"beginHour\": \"<number>\",\n      \"endDate\": \"<dateTime>\",\n      \"endHour\": \"<number>\",\n      \"id\": \"<string>\",\n      \"locationId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"active\": \"<boolean>\"\n    },\n    {\n      \"maximumLoadValue\": \"<number>\",\n      \"maximumLoadUnitsOfMeasureCode\": \"<string>\",\n      \"lowerOperationBoundary\": \"<number>\",\n      \"upperOperationBoundary\": \"<number>\",\n      \"normalLevelCode\": \"<string>\",\n      \"secondLevelCode\": \"<string>\",\n      \"secondNormalIndicator\": \"<number>\",\n      \"loadAnalysisDate\": \"<dateTime>\",\n      \"beginDate\": \"<dateTime>\",\n      \"beginHour\": \"<number>\",\n      \"endDate\": \"<dateTime>\",\n      \"endHour\": \"<number>\",\n      \"id\": \"<string>\",\n      \"locationId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"active\": \"<boolean>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T10:59:29.000Z",
+                          "updatedAt": "2026-07-28T10:59:29.000Z",
+                          "uid": "35240-342540bc-9e08-4de6-9c8b-25a0b3846e57"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T10:59:29.000Z",
+                      "updatedAt": "2026-07-28T10:59:29.000Z",
+                      "uid": "35240-94ecdcd7-f9d7-43eb-adc7-78a4e06797c5"
+                    }
+                  ],
+                  "id": "12ca629d-0727-49a5-be2b-2be3a0bf94ff",
+                  "createdAt": "2026-07-28T10:59:29.000Z",
+                  "updatedAt": "2026-07-28T10:59:29.000Z",
+                  "uid": "35240-12ca629d-0727-49a5-be2b-2be3a0bf94ff"
+                }
+              ],
+              "id": "a8e18087-d20e-4bf2-b296-189b48e85824",
+              "createdAt": "2026-07-28T10:59:29.000Z",
+              "updatedAt": "2026-07-28T10:59:29.000Z",
+              "uid": "35240-a8e18087-d20e-4bf2-b296-189b48e85824"
+            }
+          ],
+          "id": "1ecde55a-e8b7-4068-9f9f-a28c2e439702",
+          "createdAt": "2026-07-28T10:59:29.000Z",
+          "updatedAt": "2026-07-28T10:59:29.000Z",
+          "uid": "35240-1ecde55a-e8b7-4068-9f9f-a28c2e439702"
+        }
+      ],
+      "id": "f392ba6d-32fc-426e-bdd9-9b373c999ad9",
+      "createdAt": "2026-07-28T10:59:29.000Z",
+      "updatedAt": "2026-07-28T10:59:29.000Z",
+      "uid": "35240-f392ba6d-32fc-426e-bdd9-9b373c999ad9"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

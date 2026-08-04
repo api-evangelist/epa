@@ -1,0 +1,326 @@
+{
+  "info": {
+    "_postman_id": "1e99e12d-0541-4257-a48f-fbe8167fc19e",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Fuel Flow To Load Baseline API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:58:44.000Z",
+    "updatedAt": "2026-07-28T10:58:44.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1e99e12d-0541-4257-a48f-fbe8167fc19e"
+  },
+  "item": [
+    {
+      "name": "qa-certification-mgmt",
+      "item": [
+        {
+          "name": "locations",
+          "item": [
+            {
+              "name": "{locId}",
+              "item": [
+                {
+                  "name": "test-summary",
+                  "item": [
+                    {
+                      "name": "{testSumId}",
+                      "item": [
+                        {
+                          "name": "fuel-flow-to-load-baselines",
+                          "item": [
+                            {
+                              "name": "{id}",
+                              "item": [
+                                {
+                                  "name": "Fuel Flow To Load Baseline Controller get Fuel Flow To Load Baseline",
+                                  "id": "edf7762b-c9a5-4411-b3bb-8052f2821700",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/fuel-flow-to-load-baselines/:id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "qa-certification-mgmt",
+                                        "locations",
+                                        ":locId",
+                                        "test-summary",
+                                        ":testSumId",
+                                        "fuel-flow-to-load-baselines",
+                                        ":id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "79e937cf-8abc-4f85-ad5d-0108c76b6b88",
+                                          "key": "locId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "d8449531-bcda-4e66-8b86-f0c2954426ef",
+                                          "key": "testSumId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "8b5f76c2-0525-46c8-90e2-1a12bd887bef",
+                                          "key": "id",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "e6854ee1-d3db-436f-b827-f48bb0d6c44f",
+                                      "name": "Retrieves official Fuel Flow To Load Baseline record by its Id",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/fuel-flow-to-load-baselines/:id?key=<API Key>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "qa-certification-mgmt",
+                                            "locations",
+                                            ":locId",
+                                            "test-summary",
+                                            ":testSumId",
+                                            "fuel-flow-to-load-baselines",
+                                            ":id"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Added as a part of security scheme: apikey",
+                                              "key": "key",
+                                              "value": "<API Key>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "locId"
+                                            },
+                                            {
+                                              "key": "testSumId"
+                                            },
+                                            {
+                                              "key": "id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"id\": \"<string>\",\n  \"testSumId\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"addDate\": \"<string>\",\n  \"updateDate\": \"<string>\",\n  \"accuracyTestNumber\": \"<string>\",\n  \"peiTestNumber\": \"<string>\",\n  \"averageFuelFlowRate\": \"<number>\",\n  \"averageLoad\": \"<number>\",\n  \"baselineFuelFlowToLoadRatio\": \"<number>\",\n  \"fuelFlowToLoadUnitsOfMeasureCode\": \"<string>\",\n  \"averageHourlyHeatInputRate\": \"<number>\",\n  \"baselineGHR\": \"<number>\",\n  \"ghrUnitsOfMeasureCode\": \"<string>\",\n  \"numberOfHoursExcludedCofiring\": \"<number>\",\n  \"numberOfHoursExcludedRamping\": \"<number>\",\n  \"numberOfHoursExcludedLowRange\": \"<number>\"\n}",
+                                      "createdAt": "2026-07-28T10:58:45.000Z",
+                                      "updatedAt": "2026-07-28T10:58:45.000Z",
+                                      "uid": "35240-e6854ee1-d3db-436f-b827-f48bb0d6c44f"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T10:58:45.000Z",
+                                  "updatedAt": "2026-07-28T10:58:45.000Z",
+                                  "uid": "35240-edf7762b-c9a5-4411-b3bb-8052f2821700"
+                                }
+                              ],
+                              "id": "dc704fc0-1fad-4be1-baed-73815bf85855",
+                              "createdAt": "2026-07-28T10:58:45.000Z",
+                              "updatedAt": "2026-07-28T10:58:45.000Z",
+                              "uid": "35240-dc704fc0-1fad-4be1-baed-73815bf85855"
+                            },
+                            {
+                              "name": "Fuel Flow To Load Baseline Controller get Fuel Flow To Load Baselines",
+                              "id": "16629603-c90b-4eb2-91da-9c0b721a3ebe",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/fuel-flow-to-load-baselines",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "qa-certification-mgmt",
+                                    "locations",
+                                    ":locId",
+                                    "test-summary",
+                                    ":testSumId",
+                                    "fuel-flow-to-load-baselines"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "c591440d-ee6a-4372-8691-dc0578988619",
+                                      "key": "locId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "08c10cee-41c4-4aee-aa11-f57d306a9346",
+                                      "key": "testSumId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                }
+                              },
+                              "response": [
+                                {
+                                  "id": "d138d5b6-5f01-4fa6-b3d5-ff6511e1c88a",
+                                  "name": "Retrieves official Fuel Flow To Load Baseline records by Test Summary Id",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/fuel-flow-to-load-baselines?key=<API Key>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "qa-certification-mgmt",
+                                        "locations",
+                                        ":locId",
+                                        "test-summary",
+                                        ":testSumId",
+                                        "fuel-flow-to-load-baselines"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Added as a part of security scheme: apikey",
+                                          "key": "key",
+                                          "value": "<API Key>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "locId"
+                                        },
+                                        {
+                                          "key": "testSumId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"testSumId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"accuracyTestNumber\": \"<string>\",\n      \"peiTestNumber\": \"<string>\",\n      \"averageFuelFlowRate\": \"<number>\",\n      \"averageLoad\": \"<number>\",\n      \"baselineFuelFlowToLoadRatio\": \"<number>\",\n      \"fuelFlowToLoadUnitsOfMeasureCode\": \"<string>\",\n      \"averageHourlyHeatInputRate\": \"<number>\",\n      \"baselineGHR\": \"<number>\",\n      \"ghrUnitsOfMeasureCode\": \"<string>\",\n      \"numberOfHoursExcludedCofiring\": \"<number>\",\n      \"numberOfHoursExcludedRamping\": \"<number>\",\n      \"numberOfHoursExcludedLowRange\": \"<number>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"testSumId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"accuracyTestNumber\": \"<string>\",\n      \"peiTestNumber\": \"<string>\",\n      \"averageFuelFlowRate\": \"<number>\",\n      \"averageLoad\": \"<number>\",\n      \"baselineFuelFlowToLoadRatio\": \"<number>\",\n      \"fuelFlowToLoadUnitsOfMeasureCode\": \"<string>\",\n      \"averageHourlyHeatInputRate\": \"<number>\",\n      \"baselineGHR\": \"<number>\",\n      \"ghrUnitsOfMeasureCode\": \"<string>\",\n      \"numberOfHoursExcludedCofiring\": \"<number>\",\n      \"numberOfHoursExcludedRamping\": \"<number>\",\n      \"numberOfHoursExcludedLowRange\": \"<number>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T10:58:45.000Z",
+                                  "updatedAt": "2026-07-28T10:58:45.000Z",
+                                  "uid": "35240-d138d5b6-5f01-4fa6-b3d5-ff6511e1c88a"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T10:58:45.000Z",
+                              "updatedAt": "2026-07-28T10:58:45.000Z",
+                              "uid": "35240-16629603-c90b-4eb2-91da-9c0b721a3ebe"
+                            }
+                          ],
+                          "id": "05a56c4d-e222-47dc-a5ce-4b6cd247a317",
+                          "createdAt": "2026-07-28T10:58:45.000Z",
+                          "updatedAt": "2026-07-28T10:58:45.000Z",
+                          "uid": "35240-05a56c4d-e222-47dc-a5ce-4b6cd247a317"
+                        }
+                      ],
+                      "id": "dff95668-3987-4f8e-b53e-4862eead057b",
+                      "createdAt": "2026-07-28T10:58:45.000Z",
+                      "updatedAt": "2026-07-28T10:58:45.000Z",
+                      "uid": "35240-dff95668-3987-4f8e-b53e-4862eead057b"
+                    }
+                  ],
+                  "id": "d66627a7-5b61-4088-9e54-e74a9f3548cf",
+                  "createdAt": "2026-07-28T10:58:45.000Z",
+                  "updatedAt": "2026-07-28T10:58:45.000Z",
+                  "uid": "35240-d66627a7-5b61-4088-9e54-e74a9f3548cf"
+                }
+              ],
+              "id": "f1f81234-be87-416e-b2a4-d84e49a20ed0",
+              "createdAt": "2026-07-28T10:58:45.000Z",
+              "updatedAt": "2026-07-28T10:58:45.000Z",
+              "uid": "35240-f1f81234-be87-416e-b2a4-d84e49a20ed0"
+            }
+          ],
+          "id": "48522294-c4bf-4555-aadb-f58399183427",
+          "createdAt": "2026-07-28T10:58:45.000Z",
+          "updatedAt": "2026-07-28T10:58:45.000Z",
+          "uid": "35240-48522294-c4bf-4555-aadb-f58399183427"
+        }
+      ],
+      "id": "45bb96ab-ccb0-43a8-b247-1889f0df3a71",
+      "createdAt": "2026-07-28T10:58:45.000Z",
+      "updatedAt": "2026-07-28T10:58:45.000Z",
+      "uid": "35240-45bb96ab-ccb0-43a8-b247-1889f0df3a71"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

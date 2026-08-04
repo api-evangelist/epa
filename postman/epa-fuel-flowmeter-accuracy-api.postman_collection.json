@@ -1,0 +1,326 @@
+{
+  "info": {
+    "_postman_id": "0d1a3aae-259d-471b-9913-a656ee7aa485",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Fuel Flowmeter Accuracy API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:58:46.000Z",
+    "updatedAt": "2026-07-28T10:58:46.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0d1a3aae-259d-471b-9913-a656ee7aa485"
+  },
+  "item": [
+    {
+      "name": "qa-certification-mgmt",
+      "item": [
+        {
+          "name": "locations",
+          "item": [
+            {
+              "name": "{locId}",
+              "item": [
+                {
+                  "name": "test-summary",
+                  "item": [
+                    {
+                      "name": "{testSumId}",
+                      "item": [
+                        {
+                          "name": "fuel-flowmeter-accuracies",
+                          "item": [
+                            {
+                              "name": "{id}",
+                              "item": [
+                                {
+                                  "name": "Fuel Flowmeter Accuracy Controller get Fuel Flowmeter Accuracy",
+                                  "id": "abdd82e0-98f3-418c-8ab2-0b29eeca3d4b",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/fuel-flowmeter-accuracies/:id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "qa-certification-mgmt",
+                                        "locations",
+                                        ":locId",
+                                        "test-summary",
+                                        ":testSumId",
+                                        "fuel-flowmeter-accuracies",
+                                        ":id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "0226c981-d8d9-4851-a001-0936fecf60b7",
+                                          "key": "locId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "248cc2c5-600d-4d71-add6-77af46ece680",
+                                          "key": "testSumId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "0231ef44-5eae-468a-bc35-4311f7372bac",
+                                          "key": "id",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "7fcd41df-4421-47a0-a60c-e30a2d5906e0",
+                                      "name": "Retrieves a Fuel Flowmeter Accuracy record by its Id",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/fuel-flowmeter-accuracies/:id?key=<API Key>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "qa-certification-mgmt",
+                                            "locations",
+                                            ":locId",
+                                            "test-summary",
+                                            ":testSumId",
+                                            "fuel-flowmeter-accuracies",
+                                            ":id"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Added as a part of security scheme: apikey",
+                                              "key": "key",
+                                              "value": "<API Key>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "locId"
+                                            },
+                                            {
+                                              "key": "testSumId"
+                                            },
+                                            {
+                                              "key": "id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"id\": \"<string>\",\n  \"testSumId\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"addDate\": \"<string>\",\n  \"updateDate\": \"<string>\",\n  \"accuracyTestMethodCode\": \"<string>\",\n  \"lowFuelAccuracy\": \"<number>\",\n  \"midFuelAccuracy\": \"<number>\",\n  \"highFuelAccuracy\": \"<number>\",\n  \"reinstallationDate\": \"<dateTime>\",\n  \"reinstallationHour\": \"<number>\"\n}",
+                                      "createdAt": "2026-07-28T10:58:47.000Z",
+                                      "updatedAt": "2026-07-28T10:58:47.000Z",
+                                      "uid": "35240-7fcd41df-4421-47a0-a60c-e30a2d5906e0"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T10:58:47.000Z",
+                                  "updatedAt": "2026-07-28T10:58:47.000Z",
+                                  "uid": "35240-abdd82e0-98f3-418c-8ab2-0b29eeca3d4b"
+                                }
+                              ],
+                              "id": "e69771cb-55b8-4610-90a0-2b8dc168c777",
+                              "createdAt": "2026-07-28T10:58:47.000Z",
+                              "updatedAt": "2026-07-28T10:58:47.000Z",
+                              "uid": "35240-e69771cb-55b8-4610-90a0-2b8dc168c777"
+                            },
+                            {
+                              "name": "Fuel Flowmeter Accuracy Controller get Fuel Flowmeter Accuracies",
+                              "id": "090b888d-48d7-49d4-8f63-0eb6728fd853",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/fuel-flowmeter-accuracies",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "qa-certification-mgmt",
+                                    "locations",
+                                    ":locId",
+                                    "test-summary",
+                                    ":testSumId",
+                                    "fuel-flowmeter-accuracies"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "af37b402-36a8-4b65-83a2-637d9ca2d574",
+                                      "key": "locId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "6523dfa6-559c-4204-a841-fe5105ea23be",
+                                      "key": "testSumId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                }
+                              },
+                              "response": [
+                                {
+                                  "id": "1346bf1f-e81c-4d20-b434-b6d722294fca",
+                                  "name": "Retrieves Fuel Flowmeter Accuracy records by Test Summary Id",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/fuel-flowmeter-accuracies?key=<API Key>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "qa-certification-mgmt",
+                                        "locations",
+                                        ":locId",
+                                        "test-summary",
+                                        ":testSumId",
+                                        "fuel-flowmeter-accuracies"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Added as a part of security scheme: apikey",
+                                          "key": "key",
+                                          "value": "<API Key>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "locId"
+                                        },
+                                        {
+                                          "key": "testSumId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"testSumId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"accuracyTestMethodCode\": \"<string>\",\n      \"lowFuelAccuracy\": \"<number>\",\n      \"midFuelAccuracy\": \"<number>\",\n      \"highFuelAccuracy\": \"<number>\",\n      \"reinstallationDate\": \"<dateTime>\",\n      \"reinstallationHour\": \"<number>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"testSumId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"accuracyTestMethodCode\": \"<string>\",\n      \"lowFuelAccuracy\": \"<number>\",\n      \"midFuelAccuracy\": \"<number>\",\n      \"highFuelAccuracy\": \"<number>\",\n      \"reinstallationDate\": \"<dateTime>\",\n      \"reinstallationHour\": \"<number>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T10:58:47.000Z",
+                                  "updatedAt": "2026-07-28T10:58:47.000Z",
+                                  "uid": "35240-1346bf1f-e81c-4d20-b434-b6d722294fca"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T10:58:47.000Z",
+                              "updatedAt": "2026-07-28T10:58:47.000Z",
+                              "uid": "35240-090b888d-48d7-49d4-8f63-0eb6728fd853"
+                            }
+                          ],
+                          "id": "1dbbe03c-4fb0-4102-9841-0176b3e962f9",
+                          "createdAt": "2026-07-28T10:58:47.000Z",
+                          "updatedAt": "2026-07-28T10:58:47.000Z",
+                          "uid": "35240-1dbbe03c-4fb0-4102-9841-0176b3e962f9"
+                        }
+                      ],
+                      "id": "7cbdbad2-1ffa-4895-a42b-47c64c688b11",
+                      "createdAt": "2026-07-28T10:58:47.000Z",
+                      "updatedAt": "2026-07-28T10:58:47.000Z",
+                      "uid": "35240-7cbdbad2-1ffa-4895-a42b-47c64c688b11"
+                    }
+                  ],
+                  "id": "4fd25cd9-44ed-4245-84f5-bf105272368c",
+                  "createdAt": "2026-07-28T10:58:47.000Z",
+                  "updatedAt": "2026-07-28T10:58:47.000Z",
+                  "uid": "35240-4fd25cd9-44ed-4245-84f5-bf105272368c"
+                }
+              ],
+              "id": "eeb889d3-e4a5-4322-bab6-38a8c4c53bc2",
+              "createdAt": "2026-07-28T10:58:47.000Z",
+              "updatedAt": "2026-07-28T10:58:47.000Z",
+              "uid": "35240-eeb889d3-e4a5-4322-bab6-38a8c4c53bc2"
+            }
+          ],
+          "id": "18d676a0-a1dc-4799-8b6f-64c513ddb85c",
+          "createdAt": "2026-07-28T10:58:47.000Z",
+          "updatedAt": "2026-07-28T10:58:47.000Z",
+          "uid": "35240-18d676a0-a1dc-4799-8b6f-64c513ddb85c"
+        }
+      ],
+      "id": "ae82fd4a-d40c-4112-a72b-0832dd619677",
+      "createdAt": "2026-07-28T10:58:47.000Z",
+      "updatedAt": "2026-07-28T10:58:47.000Z",
+      "uid": "35240-ae82fd4a-d40c-4112-a72b-0832dd619677"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

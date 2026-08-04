@@ -1,0 +1,1184 @@
+{
+  "info": {
+    "_postman_id": "04f0498a-52c3-492e-91ed-c86e0679a8c4",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Help API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:58:57.000Z",
+    "updatedAt": "2026-07-28T10:58:57.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-04f0498a-52c3-492e-91ed-c86e0679a8c4"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "help",
+          "item": [
+            {
+              "name": "formio",
+              "item": [
+                {
+                  "name": "s3",
+                  "item": [
+                    {
+                      "name": "{rebateYear}",
+                      "item": [
+                        {
+                          "name": "{formType}",
+                          "item": [
+                            {
+                              "name": "storage",
+                              "item": [
+                                {
+                                  "name": "s3",
+                                  "item": [
+                                    {
+                                      "name": "Download Formio File Attachment from S3 for a Submission.",
+                                      "id": "23929014-edec-4f4e-8201-96b931aaef0d",
+                                      "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                      },
+                                      "request": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/api/help/formio/s3/:rebateYear/:formType/storage/s3?bucket=<string>&key=<string>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "api",
+                                            "help",
+                                            "formio",
+                                            "s3",
+                                            ":rebateYear",
+                                            ":formType",
+                                            "storage",
+                                            "s3"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "(Required) The S3 bucket name where the file is stored.",
+                                              "key": "bucket",
+                                              "value": "<string>"
+                                            },
+                                            {
+                                              "description": "(Required) The S3 object key for the file.",
+                                              "key": "key",
+                                              "value": "<string>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "id": "b3e3a69f-3669-410c-b0d4-a19ccf5c4c8b",
+                                              "key": "rebateYear",
+                                              "value": "<string>",
+                                              "description": "(Required) The Clean School Bus Rebate year (2022, 2023, 2024)."
+                                            },
+                                            {
+                                              "id": "ba5405a6-2a7b-490e-9114-5ac0663eb1a6",
+                                              "key": "formType",
+                                              "value": "<string>",
+                                              "description": "(Required) The Formio form type (frf, prf, crf)."
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "response": [
+                                        {
+                                          "id": "bb4e9e41-ba39-486e-83e2-cd7ad789d1ee",
+                                          "name": "OK",
+                                          "originalRequest": {
+                                            "method": "GET",
+                                            "header": [],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/api/help/formio/s3/:rebateYear/:formType/storage/s3?bucket=<string>&key=<API Key>",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "api",
+                                                "help",
+                                                "formio",
+                                                "s3",
+                                                ":rebateYear",
+                                                ":formType",
+                                                "storage",
+                                                "s3"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "(Required) The S3 bucket name where the file is stored.",
+                                                  "key": "bucket",
+                                                  "value": "<string>"
+                                                },
+                                                {
+                                                  "description": "(Required) The S3 object key for the file.",
+                                                  "key": "key",
+                                                  "value": "<API Key>"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "rebateYear"
+                                                },
+                                                {
+                                                  "key": "formType"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "OK",
+                                          "code": 200,
+                                          "_postman_previewlanguage": "text",
+                                          "header": [],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": null,
+                                          "createdAt": "2026-07-28T10:58:58.000Z",
+                                          "updatedAt": "2026-07-28T10:58:58.000Z",
+                                          "uid": "35240-bb4e9e41-ba39-486e-83e2-cd7ad789d1ee"
+                                        },
+                                        {
+                                          "id": "21f2f405-593b-43b9-9f7e-ec3d9b8238f4",
+                                          "name": "Unauthorized",
+                                          "originalRequest": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/api/help/formio/s3/:rebateYear/:formType/storage/s3?bucket=<string>&key=<API Key>",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "api",
+                                                "help",
+                                                "formio",
+                                                "s3",
+                                                ":rebateYear",
+                                                ":formType",
+                                                "storage",
+                                                "s3"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "(Required) The S3 bucket name where the file is stored.",
+                                                  "key": "bucket",
+                                                  "value": "<string>"
+                                                },
+                                                {
+                                                  "description": "(Required) The S3 object key for the file.",
+                                                  "key": "key",
+                                                  "value": "<API Key>"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "rebateYear"
+                                                },
+                                                {
+                                                  "key": "formType"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Unauthorized",
+                                          "code": 401,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"message\": \"<string>\"\n}",
+                                          "createdAt": "2026-07-28T10:58:58.000Z",
+                                          "updatedAt": "2026-07-28T10:58:58.000Z",
+                                          "uid": "35240-21f2f405-593b-43b9-9f7e-ec3d9b8238f4"
+                                        }
+                                      ],
+                                      "createdAt": "2026-07-28T10:58:58.000Z",
+                                      "updatedAt": "2026-07-28T10:58:58.000Z",
+                                      "uid": "35240-23929014-edec-4f4e-8201-96b931aaef0d"
+                                    }
+                                  ],
+                                  "id": "f915e1a3-b980-4509-8330-66a14f06230a",
+                                  "createdAt": "2026-07-28T10:58:58.000Z",
+                                  "updatedAt": "2026-07-28T10:58:58.000Z",
+                                  "uid": "35240-f915e1a3-b980-4509-8330-66a14f06230a"
+                                }
+                              ],
+                              "id": "b838468f-fe0c-495f-8850-07008b5e5714",
+                              "createdAt": "2026-07-28T10:58:58.000Z",
+                              "updatedAt": "2026-07-28T10:58:58.000Z",
+                              "uid": "35240-b838468f-fe0c-495f-8850-07008b5e5714"
+                            }
+                          ],
+                          "id": "32f20848-47a4-40d2-8494-97990431e67e",
+                          "createdAt": "2026-07-28T10:58:58.000Z",
+                          "updatedAt": "2026-07-28T10:58:58.000Z",
+                          "uid": "35240-32f20848-47a4-40d2-8494-97990431e67e"
+                        }
+                      ],
+                      "id": "8885ec8f-74c9-4411-9255-cde5aa9498f8",
+                      "createdAt": "2026-07-28T10:58:58.000Z",
+                      "updatedAt": "2026-07-28T10:58:58.000Z",
+                      "uid": "35240-8885ec8f-74c9-4411-9255-cde5aa9498f8"
+                    }
+                  ],
+                  "id": "f8aef186-2e48-4f67-95eb-d840f3d91406",
+                  "createdAt": "2026-07-28T10:58:58.000Z",
+                  "updatedAt": "2026-07-28T10:58:58.000Z",
+                  "uid": "35240-f8aef186-2e48-4f67-95eb-d840f3d91406"
+                },
+                {
+                  "name": "submission",
+                  "item": [
+                    {
+                      "name": "{rebateYear}",
+                      "item": [
+                        {
+                          "name": "{formType}",
+                          "item": [
+                            {
+                              "name": "{id}",
+                              "item": [
+                                {
+                                  "name": "Get an Existing Form's Submission Data from Formio.",
+                                  "id": "0e0d7413-8b4e-4115-ad13-0a6e205b3da9",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/help/formio/submission/:rebateYear/:formType/:id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "help",
+                                        "formio",
+                                        "submission",
+                                        ":rebateYear",
+                                        ":formType",
+                                        ":id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "cf9df230-a44d-4d24-8976-0fc74f0971e0",
+                                          "key": "rebateYear",
+                                          "value": "<string>",
+                                          "description": "(Required) The Clean School Bus Rebate year (2022, 2023, 2024)."
+                                        },
+                                        {
+                                          "id": "ff82caaa-a8c9-443d-ac78-c1f9bc83c0db",
+                                          "key": "formType",
+                                          "value": "<string>",
+                                          "description": "(Required) The Formio form type (frf, prf, crf)."
+                                        },
+                                        {
+                                          "id": "420e33a5-2a9f-4ad6-b0ed-0353599fa5e0",
+                                          "key": "id",
+                                          "value": "<string>",
+                                          "description": "(Required) The CSB Rebate ID or Formio MongoDB ObjectId."
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "bd1843e7-73b2-43e9-98cd-ceea8000b2ff",
+                                      "name": "OK",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/api/help/formio/submission/:rebateYear/:formType/:id?key=<API Key>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "api",
+                                            "help",
+                                            "formio",
+                                            "submission",
+                                            ":rebateYear",
+                                            ":formType",
+                                            ":id"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Added as a part of security scheme: apikey",
+                                              "key": "key",
+                                              "value": "<API Key>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "rebateYear"
+                                            },
+                                            {
+                                              "key": "formType"
+                                            },
+                                            {
+                                              "key": "id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"rebateId\": \"<string>\",\n  \"schema\": {},\n  \"formio\": {},\n  \"bap\": {\n    \"modified\": \"<string>\",\n    \"comboKey\": \"<string>\",\n    \"mongoId\": \"<string>\",\n    \"rebateId\": \"<string>\",\n    \"reviewItemId\": \"<string>\",\n    \"status\": \"<string>\",\n    \"reimbursementNeeded\": \"<boolean>\"\n  }\n}",
+                                      "createdAt": "2026-07-28T10:58:58.000Z",
+                                      "updatedAt": "2026-07-28T10:58:58.000Z",
+                                      "uid": "35240-bd1843e7-73b2-43e9-98cd-ceea8000b2ff"
+                                    },
+                                    {
+                                      "id": "fa27cf9e-b402-4564-988e-98c3920141af",
+                                      "name": "Unauthorized",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/api/help/formio/submission/:rebateYear/:formType/:id?key=<API Key>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "api",
+                                            "help",
+                                            "formio",
+                                            "submission",
+                                            ":rebateYear",
+                                            ":formType",
+                                            ":id"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Added as a part of security scheme: apikey",
+                                              "key": "key",
+                                              "value": "<API Key>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "rebateYear"
+                                            },
+                                            {
+                                              "key": "formType"
+                                            },
+                                            {
+                                              "key": "id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Unauthorized",
+                                      "code": 401,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"message\": \"<string>\"\n}",
+                                      "createdAt": "2026-07-28T10:58:58.000Z",
+                                      "updatedAt": "2026-07-28T10:58:58.000Z",
+                                      "uid": "35240-fa27cf9e-b402-4564-988e-98c3920141af"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T10:58:58.000Z",
+                                  "updatedAt": "2026-07-28T10:58:58.000Z",
+                                  "uid": "35240-0e0d7413-8b4e-4115-ad13-0a6e205b3da9"
+                                },
+                                {
+                                  "name": "Post an Update to an Existing Form Submission to Formio (change Submission to 'draft').",
+                                  "id": "27be5f5e-d45f-4e24-ad76-afd8395974b3",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/help/formio/submission/:rebateYear/:formType/:id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "help",
+                                        "formio",
+                                        "submission",
+                                        ":rebateYear",
+                                        ":formType",
+                                        ":id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "2693035f-a90f-4769-b623-5eb637ff5534",
+                                          "key": "rebateYear",
+                                          "value": "<string>",
+                                          "description": "(Required) The Clean School Bus Rebate year (2022, 2023, 2024)."
+                                        },
+                                        {
+                                          "id": "07a3aedf-ac8d-42d5-bd24-e07067c2b3d2",
+                                          "key": "formType",
+                                          "value": "<string>",
+                                          "description": "(Required) The Formio form type (frf, prf, crf)."
+                                        },
+                                        {
+                                          "id": "3fcd1416-72b4-41ea-b93d-caea4ee854ad",
+                                          "key": "id",
+                                          "value": "<string>",
+                                          "description": "(Required) The CSB Rebate ID or Formio MongoDB ObjectId."
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "49e305f4-8f3c-414c-9266-25b6add3fa36",
+                                      "name": "The updated form submission.",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/api/help/formio/submission/:rebateYear/:formType/:id?key=<API Key>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "api",
+                                            "help",
+                                            "formio",
+                                            "submission",
+                                            ":rebateYear",
+                                            ":formType",
+                                            ":id"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Added as a part of security scheme: apikey",
+                                              "key": "key",
+                                              "value": "<API Key>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "rebateYear"
+                                            },
+                                            {
+                                              "key": "formType"
+                                            },
+                                            {
+                                              "key": "id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{}",
+                                      "createdAt": "2026-07-28T10:58:58.000Z",
+                                      "updatedAt": "2026-07-28T10:58:58.000Z",
+                                      "uid": "35240-49e305f4-8f3c-414c-9266-25b6add3fa36"
+                                    },
+                                    {
+                                      "id": "07ac68c6-6051-4cee-bb8c-daacae67090e",
+                                      "name": "Unauthorized",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/api/help/formio/submission/:rebateYear/:formType/:id?key=<API Key>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "api",
+                                            "help",
+                                            "formio",
+                                            "submission",
+                                            ":rebateYear",
+                                            ":formType",
+                                            ":id"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Added as a part of security scheme: apikey",
+                                              "key": "key",
+                                              "value": "<API Key>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "rebateYear"
+                                            },
+                                            {
+                                              "key": "formType"
+                                            },
+                                            {
+                                              "key": "id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Unauthorized",
+                                      "code": 401,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"message\": \"<string>\"\n}",
+                                      "createdAt": "2026-07-28T10:58:58.000Z",
+                                      "updatedAt": "2026-07-28T10:58:58.000Z",
+                                      "uid": "35240-07ac68c6-6051-4cee-bb8c-daacae67090e"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T10:58:58.000Z",
+                                  "updatedAt": "2026-07-28T10:58:58.000Z",
+                                  "uid": "35240-27be5f5e-d45f-4e24-ad76-afd8395974b3"
+                                }
+                              ],
+                              "id": "cff7089d-0793-4767-a242-9dac4e73a053",
+                              "createdAt": "2026-07-28T10:58:58.000Z",
+                              "updatedAt": "2026-07-28T10:58:58.000Z",
+                              "uid": "35240-cff7089d-0793-4767-a242-9dac4e73a053"
+                            }
+                          ],
+                          "id": "d622ae5f-1fd5-4d6f-aeed-22345e8a9c67",
+                          "createdAt": "2026-07-28T10:58:58.000Z",
+                          "updatedAt": "2026-07-28T10:58:58.000Z",
+                          "uid": "35240-d622ae5f-1fd5-4d6f-aeed-22345e8a9c67"
+                        }
+                      ],
+                      "id": "6e6fb092-f18b-4319-ac35-58dacd2c2900",
+                      "createdAt": "2026-07-28T10:58:58.000Z",
+                      "updatedAt": "2026-07-28T10:58:58.000Z",
+                      "uid": "35240-6e6fb092-f18b-4319-ac35-58dacd2c2900"
+                    }
+                  ],
+                  "id": "163b48c2-79e1-4a25-9fb8-f005270540ed",
+                  "createdAt": "2026-07-28T10:58:58.000Z",
+                  "updatedAt": "2026-07-28T10:58:58.000Z",
+                  "uid": "35240-163b48c2-79e1-4a25-9fb8-f005270540ed"
+                },
+                {
+                  "name": "actions",
+                  "item": [
+                    {
+                      "name": "{formId}",
+                      "item": [
+                        {
+                          "name": "{mongoId}",
+                          "item": [
+                            {
+                              "name": "Get All Actions Associated with a Form's Submission from Formio.",
+                              "id": "172ade7c-f602-40dd-9dcd-231517c41c99",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/help/formio/actions/:formId/:mongoId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "help",
+                                    "formio",
+                                    "actions",
+                                    ":formId",
+                                    ":mongoId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "8d999dae-2be6-4f3e-aa16-501ed279659c",
+                                      "key": "formId",
+                                      "value": "<string>",
+                                      "description": "(Required) The Formio form's MongoDB ObjectId."
+                                    },
+                                    {
+                                      "id": "8576359b-260b-443b-a673-df68b6913a4e",
+                                      "key": "mongoId",
+                                      "value": "<string>",
+                                      "description": "(Required) The Formio submission's MongoDB ObjectId."
+                                    }
+                                  ]
+                                }
+                              },
+                              "response": [
+                                {
+                                  "id": "1b7a3416-d464-4d34-b730-0fd6c774b0b9",
+                                  "name": "An array of actions associated with the form's submission.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/help/formio/actions/:formId/:mongoId?key=<API Key>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "help",
+                                        "formio",
+                                        "actions",
+                                        ":formId",
+                                        ":mongoId"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Added as a part of security scheme: apikey",
+                                          "key": "key",
+                                          "value": "<API Key>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "formId"
+                                        },
+                                        {
+                                          "key": "mongoId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "[]",
+                                  "createdAt": "2026-07-28T10:58:58.000Z",
+                                  "updatedAt": "2026-07-28T10:58:58.000Z",
+                                  "uid": "35240-1b7a3416-d464-4d34-b730-0fd6c774b0b9"
+                                },
+                                {
+                                  "id": "8d75295e-f022-4210-9eab-eeef2539f833",
+                                  "name": "Unauthorized",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/help/formio/actions/:formId/:mongoId?key=<API Key>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "help",
+                                        "formio",
+                                        "actions",
+                                        ":formId",
+                                        ":mongoId"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Added as a part of security scheme: apikey",
+                                          "key": "key",
+                                          "value": "<API Key>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "formId"
+                                        },
+                                        {
+                                          "key": "mongoId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"message\": \"<string>\"\n}",
+                                  "createdAt": "2026-07-28T10:58:58.000Z",
+                                  "updatedAt": "2026-07-28T10:58:58.000Z",
+                                  "uid": "35240-8d75295e-f022-4210-9eab-eeef2539f833"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T10:58:58.000Z",
+                              "updatedAt": "2026-07-28T10:58:58.000Z",
+                              "uid": "35240-172ade7c-f602-40dd-9dcd-231517c41c99"
+                            }
+                          ],
+                          "id": "b24814dc-ac66-4bfa-8c3e-76f9e3f4c421",
+                          "createdAt": "2026-07-28T10:58:58.000Z",
+                          "updatedAt": "2026-07-28T10:58:58.000Z",
+                          "uid": "35240-b24814dc-ac66-4bfa-8c3e-76f9e3f4c421"
+                        }
+                      ],
+                      "id": "1faddbf3-0447-43a6-a779-38b19d33d57b",
+                      "createdAt": "2026-07-28T10:58:58.000Z",
+                      "updatedAt": "2026-07-28T10:58:58.000Z",
+                      "uid": "35240-1faddbf3-0447-43a6-a779-38b19d33d57b"
+                    }
+                  ],
+                  "id": "aece42c5-50f0-4496-858f-e567217322a1",
+                  "createdAt": "2026-07-28T10:58:58.000Z",
+                  "updatedAt": "2026-07-28T10:58:58.000Z",
+                  "uid": "35240-aece42c5-50f0-4496-858f-e567217322a1"
+                },
+                {
+                  "name": "pdf",
+                  "item": [
+                    {
+                      "name": "{formId}",
+                      "item": [
+                        {
+                          "name": "{mongoId}",
+                          "item": [
+                            {
+                              "name": "Get a PDF of an Existing Form's Submission from Formio.",
+                              "id": "1fb4aecb-4d22-4ec3-8a4b-aa8c1900c705",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "*/*"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/help/formio/pdf/:formId/:mongoId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "help",
+                                    "formio",
+                                    "pdf",
+                                    ":formId",
+                                    ":mongoId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "58a701f4-0561-447f-88f3-483196f09036",
+                                      "key": "formId",
+                                      "value": "<string>",
+                                      "description": "(Required) The Formio form's MongoDB ObjectId."
+                                    },
+                                    {
+                                      "id": "c35699ca-58b2-4934-a0d2-407165244cae",
+                                      "key": "mongoId",
+                                      "value": "<string>",
+                                      "description": "(Required) The Formio submission's MongoDB ObjectId."
+                                    }
+                                  ]
+                                }
+                              },
+                              "response": [
+                                {
+                                  "id": "593c7199-ca17-4dfb-9317-4606d167dd1c",
+                                  "name": "A PDF of the form's submission.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "*/*"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/help/formio/pdf/:formId/:mongoId?key=<API Key>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "help",
+                                        "formio",
+                                        "pdf",
+                                        ":formId",
+                                        ":mongoId"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Added as a part of security scheme: apikey",
+                                          "key": "key",
+                                          "value": "<API Key>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "formId"
+                                        },
+                                        {
+                                          "key": "mongoId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "*/*"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "<string>",
+                                  "createdAt": "2026-07-28T10:58:58.000Z",
+                                  "updatedAt": "2026-07-28T10:58:58.000Z",
+                                  "uid": "35240-593c7199-ca17-4dfb-9317-4606d167dd1c"
+                                },
+                                {
+                                  "id": "c9787234-c1b1-49ea-9265-c92af5848011",
+                                  "name": "Unauthorized",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/help/formio/pdf/:formId/:mongoId?key=<API Key>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "help",
+                                        "formio",
+                                        "pdf",
+                                        ":formId",
+                                        ":mongoId"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Added as a part of security scheme: apikey",
+                                          "key": "key",
+                                          "value": "<API Key>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "formId"
+                                        },
+                                        {
+                                          "key": "mongoId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"message\": \"<string>\"\n}",
+                                  "createdAt": "2026-07-28T10:58:58.000Z",
+                                  "updatedAt": "2026-07-28T10:58:58.000Z",
+                                  "uid": "35240-c9787234-c1b1-49ea-9265-c92af5848011"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T10:58:58.000Z",
+                              "updatedAt": "2026-07-28T10:58:58.000Z",
+                              "uid": "35240-1fb4aecb-4d22-4ec3-8a4b-aa8c1900c705"
+                            }
+                          ],
+                          "id": "45cda13c-a781-4b9a-8ccd-c287b134f6c4",
+                          "createdAt": "2026-07-28T10:58:58.000Z",
+                          "updatedAt": "2026-07-28T10:58:58.000Z",
+                          "uid": "35240-45cda13c-a781-4b9a-8ccd-c287b134f6c4"
+                        }
+                      ],
+                      "id": "ca7d8f91-cfa6-494e-9f16-adce7a6d5053",
+                      "createdAt": "2026-07-28T10:58:58.000Z",
+                      "updatedAt": "2026-07-28T10:58:58.000Z",
+                      "uid": "35240-ca7d8f91-cfa6-494e-9f16-adce7a6d5053"
+                    }
+                  ],
+                  "id": "61f19494-c344-45f5-8bda-94925c8ca160",
+                  "createdAt": "2026-07-28T10:58:58.000Z",
+                  "updatedAt": "2026-07-28T10:58:58.000Z",
+                  "uid": "35240-61f19494-c344-45f5-8bda-94925c8ca160"
+                }
+              ],
+              "id": "b3161813-5830-41ac-be25-ec3bc75d83b6",
+              "createdAt": "2026-07-28T10:58:58.000Z",
+              "updatedAt": "2026-07-28T10:58:58.000Z",
+              "uid": "35240-b3161813-5830-41ac-be25-ec3bc75d83b6"
+            },
+            {
+              "name": "Help",
+              "id": "13ee57d4-3ac5-4e25-a6dc-96ff69e3bdb9",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/help",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "help"
+                  ]
+                },
+                "description": "Placeholder"
+              },
+              "response": [
+                {
+                  "id": "4149cd9f-4292-4545-a3b2-7be51282eaa9",
+                  "name": "Placeholder",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/help?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "help"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Dummy\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T10:58:58.000Z",
+                  "updatedAt": "2026-07-28T10:58:58.000Z",
+                  "uid": "35240-4149cd9f-4292-4545-a3b2-7be51282eaa9"
+                }
+              ],
+              "createdAt": "2026-07-28T10:58:58.000Z",
+              "updatedAt": "2026-07-28T10:58:58.000Z",
+              "uid": "35240-13ee57d4-3ac5-4e25-a6dc-96ff69e3bdb9"
+            }
+          ],
+          "id": "d38cc78a-5a02-43df-9362-c6a3f2938ae9",
+          "createdAt": "2026-07-28T10:58:58.000Z",
+          "updatedAt": "2026-07-28T10:58:58.000Z",
+          "uid": "35240-d38cc78a-5a02-43df-9362-c6a3f2938ae9"
+        }
+      ],
+      "id": "ea014300-5388-4d88-a1dc-447deee38014",
+      "createdAt": "2026-07-28T10:58:58.000Z",
+      "updatedAt": "2026-07-28T10:58:58.000Z",
+      "uid": "35240-ea014300-5388-4d88-a1dc-447deee38014"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

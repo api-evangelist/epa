@@ -1,0 +1,370 @@
+{
+  "info": {
+    "_postman_id": "2ea54332-fac0-41ad-a74b-23451d6efc2c",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Hg Injection API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:58:59.000Z",
+    "updatedAt": "2026-07-28T10:58:59.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2ea54332-fac0-41ad-a74b-23451d6efc2c"
+  },
+  "item": [
+    {
+      "name": "qa-certification-mgmt",
+      "item": [
+        {
+          "name": "locations",
+          "item": [
+            {
+              "name": "{locId}",
+              "item": [
+                {
+                  "name": "test-summary",
+                  "item": [
+                    {
+                      "name": "{testSumId}",
+                      "item": [
+                        {
+                          "name": "hg-summaries",
+                          "item": [
+                            {
+                              "name": "{hgTestSumId}",
+                              "item": [
+                                {
+                                  "name": "hg-injections",
+                                  "item": [
+                                    {
+                                      "name": "{id}",
+                                      "item": [
+                                        {
+                                          "name": "Hg Injection Controller get Hg Injection",
+                                          "id": "1b3b7b3c-1c2e-457a-a5d4-fd22dca82150",
+                                          "protocolProfileBehavior": {
+                                            "disableBodyPruning": true
+                                          },
+                                          "request": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/hg-summaries/:hgTestSumId/hg-injections/:id",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "qa-certification-mgmt",
+                                                "locations",
+                                                ":locId",
+                                                "test-summary",
+                                                ":testSumId",
+                                                "hg-summaries",
+                                                ":hgTestSumId",
+                                                "hg-injections",
+                                                ":id"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "id": "65c851f4-921e-4480-8cd9-7ccef8dc4279",
+                                                  "key": "locId",
+                                                  "value": "<string>",
+                                                  "description": "(Required) "
+                                                },
+                                                {
+                                                  "id": "260550d5-ab46-49f5-afe4-04eabf66b566",
+                                                  "key": "testSumId",
+                                                  "value": "<string>",
+                                                  "description": "(Required) "
+                                                },
+                                                {
+                                                  "id": "711fb7d0-2f7a-45cf-a618-123782e7d283",
+                                                  "key": "hgTestSumId",
+                                                  "value": "<string>",
+                                                  "description": "(Required) "
+                                                },
+                                                {
+                                                  "id": "47a936f7-f5b2-44aa-aba0-a2026b067d56",
+                                                  "key": "id",
+                                                  "value": "<string>",
+                                                  "description": "(Required) "
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "response": [
+                                            {
+                                              "id": "e19c660d-ce2c-467e-945c-f77968ece4d6",
+                                              "name": "Retrieves Injection Hg Injection record by its Id",
+                                              "originalRequest": {
+                                                "method": "GET",
+                                                "header": [
+                                                  {
+                                                    "key": "Accept",
+                                                    "value": "application/json"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/hg-summaries/:hgTestSumId/hg-injections/:id?key=<API Key>",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "qa-certification-mgmt",
+                                                    "locations",
+                                                    ":locId",
+                                                    "test-summary",
+                                                    ":testSumId",
+                                                    "hg-summaries",
+                                                    ":hgTestSumId",
+                                                    "hg-injections",
+                                                    ":id"
+                                                  ],
+                                                  "query": [
+                                                    {
+                                                      "description": "Added as a part of security scheme: apikey",
+                                                      "key": "key",
+                                                      "value": "<API Key>"
+                                                    }
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "locId"
+                                                    },
+                                                    {
+                                                      "key": "testSumId"
+                                                    },
+                                                    {
+                                                      "key": "hgTestSumId"
+                                                    },
+                                                    {
+                                                      "key": "id"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "OK",
+                                              "code": 200,
+                                              "_postman_previewlanguage": "json",
+                                              "header": [
+                                                {
+                                                  "key": "Content-Type",
+                                                  "value": "application/json"
+                                                }
+                                              ],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": "{\n  \"id\": \"<string>\",\n  \"hgTestSumId\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"addDate\": \"<string>\",\n  \"updateDate\": \"<string>\",\n  \"injectionDate\": \"<dateTime>\",\n  \"injectionHour\": \"<number>\",\n  \"injectionMinute\": \"<number>\",\n  \"measuredValue\": \"<number>\",\n  \"referenceValue\": \"<number>\"\n}",
+                                              "createdAt": "2026-07-28T10:58:59.000Z",
+                                              "updatedAt": "2026-07-28T10:58:59.000Z",
+                                              "uid": "35240-e19c660d-ce2c-467e-945c-f77968ece4d6"
+                                            }
+                                          ],
+                                          "createdAt": "2026-07-28T10:58:59.000Z",
+                                          "updatedAt": "2026-07-28T10:58:59.000Z",
+                                          "uid": "35240-1b3b7b3c-1c2e-457a-a5d4-fd22dca82150"
+                                        }
+                                      ],
+                                      "id": "aa52bdbf-745a-4f3e-9658-0bfa37391215",
+                                      "createdAt": "2026-07-28T10:58:59.000Z",
+                                      "updatedAt": "2026-07-28T10:58:59.000Z",
+                                      "uid": "35240-aa52bdbf-745a-4f3e-9658-0bfa37391215"
+                                    },
+                                    {
+                                      "name": "Hg Injection Controller get Hg Injections",
+                                      "id": "8af2ad94-4776-427a-8b3b-68c32df0bc9e",
+                                      "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                      },
+                                      "request": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/hg-summaries/:hgTestSumId/hg-injections",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "qa-certification-mgmt",
+                                            "locations",
+                                            ":locId",
+                                            "test-summary",
+                                            ":testSumId",
+                                            "hg-summaries",
+                                            ":hgTestSumId",
+                                            "hg-injections"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "id": "edb8f3c2-540b-4079-b8e9-e8967be44246",
+                                              "key": "locId",
+                                              "value": "<string>",
+                                              "description": "(Required) "
+                                            },
+                                            {
+                                              "id": "0ff4f88f-6b9a-482a-ac1b-a1d160f89fa2",
+                                              "key": "testSumId",
+                                              "value": "<string>",
+                                              "description": "(Required) "
+                                            },
+                                            {
+                                              "id": "bc42e227-91c7-46fd-8c6d-cc85778d50ac",
+                                              "key": "hgTestSumId",
+                                              "value": "<string>",
+                                              "description": "(Required) "
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "response": [
+                                        {
+                                          "id": "30c2fec9-f0d2-4126-b4c2-2161274de46b",
+                                          "name": "Retrieves Hg Injection records by Test Summary Id",
+                                          "originalRequest": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/hg-summaries/:hgTestSumId/hg-injections?key=<API Key>",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "qa-certification-mgmt",
+                                                "locations",
+                                                ":locId",
+                                                "test-summary",
+                                                ":testSumId",
+                                                "hg-summaries",
+                                                ":hgTestSumId",
+                                                "hg-injections"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "Added as a part of security scheme: apikey",
+                                                  "key": "key",
+                                                  "value": "<API Key>"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "locId"
+                                                },
+                                                {
+                                                  "key": "testSumId"
+                                                },
+                                                {
+                                                  "key": "hgTestSumId"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "OK",
+                                          "code": 200,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"hgTestSumId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"injectionDate\": \"<dateTime>\",\n      \"injectionHour\": \"<number>\",\n      \"injectionMinute\": \"<number>\",\n      \"measuredValue\": \"<number>\",\n      \"referenceValue\": \"<number>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"hgTestSumId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"injectionDate\": \"<dateTime>\",\n      \"injectionHour\": \"<number>\",\n      \"injectionMinute\": \"<number>\",\n      \"measuredValue\": \"<number>\",\n      \"referenceValue\": \"<number>\"\n    }\n  ]\n}",
+                                          "createdAt": "2026-07-28T10:58:59.000Z",
+                                          "updatedAt": "2026-07-28T10:58:59.000Z",
+                                          "uid": "35240-30c2fec9-f0d2-4126-b4c2-2161274de46b"
+                                        }
+                                      ],
+                                      "createdAt": "2026-07-28T10:58:59.000Z",
+                                      "updatedAt": "2026-07-28T10:58:59.000Z",
+                                      "uid": "35240-8af2ad94-4776-427a-8b3b-68c32df0bc9e"
+                                    }
+                                  ],
+                                  "id": "8a55602a-ece8-4977-aa78-d3abd5919364",
+                                  "createdAt": "2026-07-28T10:58:59.000Z",
+                                  "updatedAt": "2026-07-28T10:58:59.000Z",
+                                  "uid": "35240-8a55602a-ece8-4977-aa78-d3abd5919364"
+                                }
+                              ],
+                              "id": "0dfa1ae6-06e5-4599-a637-f5e705c493c5",
+                              "createdAt": "2026-07-28T10:58:59.000Z",
+                              "updatedAt": "2026-07-28T10:58:59.000Z",
+                              "uid": "35240-0dfa1ae6-06e5-4599-a637-f5e705c493c5"
+                            }
+                          ],
+                          "id": "34b970e5-3783-4abd-b503-88fe843e845d",
+                          "createdAt": "2026-07-28T10:58:59.000Z",
+                          "updatedAt": "2026-07-28T10:58:59.000Z",
+                          "uid": "35240-34b970e5-3783-4abd-b503-88fe843e845d"
+                        }
+                      ],
+                      "id": "3e4faae4-9ab3-4048-a769-3fdccd349af4",
+                      "createdAt": "2026-07-28T10:58:59.000Z",
+                      "updatedAt": "2026-07-28T10:58:59.000Z",
+                      "uid": "35240-3e4faae4-9ab3-4048-a769-3fdccd349af4"
+                    }
+                  ],
+                  "id": "1be38a1e-071c-4c66-beae-897101421961",
+                  "createdAt": "2026-07-28T10:58:59.000Z",
+                  "updatedAt": "2026-07-28T10:58:59.000Z",
+                  "uid": "35240-1be38a1e-071c-4c66-beae-897101421961"
+                }
+              ],
+              "id": "170c03cd-61e2-4d8e-af85-53f19de9b190",
+              "createdAt": "2026-07-28T10:58:59.000Z",
+              "updatedAt": "2026-07-28T10:58:59.000Z",
+              "uid": "35240-170c03cd-61e2-4d8e-af85-53f19de9b190"
+            }
+          ],
+          "id": "b70c88e4-22ad-4a2a-a53b-d010870e99da",
+          "createdAt": "2026-07-28T10:58:59.000Z",
+          "updatedAt": "2026-07-28T10:58:59.000Z",
+          "uid": "35240-b70c88e4-22ad-4a2a-a53b-d010870e99da"
+        }
+      ],
+      "id": "c95743c9-18c0-4346-b8e4-101bd045b6af",
+      "createdAt": "2026-07-28T10:58:59.000Z",
+      "updatedAt": "2026-07-28T10:58:59.000Z",
+      "uid": "35240-c95743c9-18c0-4346-b8e4-101bd045b6af"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

@@ -1,0 +1,2898 @@
+{
+  "info": {
+    "_postman_id": "00c733d9-61d6-422f-92f1-8326121af4c1",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Apportioned Monthly Emissions API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:57:06.000Z",
+    "updatedAt": "2026-07-28T10:57:06.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-00c733d9-61d6-422f-92f1-8326121af4c1"
+  },
+  "item": [
+    {
+      "name": "emissions-mgmt",
+      "item": [
+        {
+          "name": "emissions",
+          "item": [
+            {
+              "name": "apportioned",
+              "item": [
+                {
+                  "name": "monthly",
+                  "item": [
+                    {
+                      "name": "by-facility",
+                      "item": [
+                        {
+                          "name": "Monthly Apportioned Emissions Controller get Emissions Facility Aggregation",
+                          "id": "48198a16-f0de-434d-b4d4-1258fa403e14",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/monthly/by-facility?stateCode=IN|PR&facilityId=<number>|<number>&unitType=Combined cycle|Other boiler&unitFuelType=Residual Oil|Process Gas&controlTechnologies=Selective Non-catalytic Reduction|Overfire Air&programCodeInfo=CAIROS|CSOSG2E&year=<number>|<number>&month=<number>|<number>&page=<number>&perPage=<number>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "emissions-mgmt",
+                                "emissions",
+                                "apportioned",
+                                "monthly",
+                                "by-facility"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "IN|PR"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Combined cycle|Other boiler"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Residual Oil|Process Gas"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Selective Non-catalytic Reduction|Overfire Air"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "CAIROS|CSOSG2E"
+                                },
+                                {
+                                  "description": "(Required) The calendar year during which activity occurred.",
+                                  "key": "year",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "(Required) Month on which activity occurred.",
+                                  "key": "month",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "(Required) Page number of data being requested.",
+                                  "key": "page",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "(Required) Number of results per page.",
+                                  "key": "perPage",
+                                  "value": "<number>"
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "c702349f-b13c-4c01-8aac-3096f057ddbb",
+                              "name": "Retrieves Monthly Apportioned Emissions data per filter criteria aggregated by facility",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/monthly/by-facility?stateCode=IN|PR&facilityId=<number>|<number>&unitType=Combined cycle|Other boiler&unitFuelType=Residual Oil|Process Gas&controlTechnologies=Selective Non-catalytic Reduction|Overfire Air&programCodeInfo=CAIROS|CSOSG2E&year=<number>|<number>&month=<number>|<number>&page=<number>&perPage=<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "monthly",
+                                    "by-facility"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "IN|PR"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Combined cycle|Other boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Residual Oil|Process Gas"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Selective Non-catalytic Reduction|Overfire Air"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CAIROS|CSOSG2E"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Month on which activity occurred.",
+                                      "key": "month",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Page number of data being requested.",
+                                      "key": "page",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Number of results per page.",
+                                      "key": "perPage",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"items\": [\n    {\n      \"year\": \"<number>\",\n      \"month\": \"<number>\",\n      \"stateCode\": \"<string>\",\n      \"facilityName\": \"<string>\",\n      \"grossLoad\": \"<number>\",\n      \"steamLoad\": \"<number>\",\n      \"so2Mass\": \"<number>\",\n      \"co2Mass\": \"<number>\",\n      \"noxMass\": \"<number>\",\n      \"heatInput\": \"<number>\",\n      \"facilityId\": \"<number>\"\n    },\n    {\n      \"year\": \"<number>\",\n      \"month\": \"<number>\",\n      \"stateCode\": \"<string>\",\n      \"facilityName\": \"<string>\",\n      \"grossLoad\": \"<number>\",\n      \"steamLoad\": \"<number>\",\n      \"so2Mass\": \"<number>\",\n      \"co2Mass\": \"<number>\",\n      \"noxMass\": \"<number>\",\n      \"heatInput\": \"<number>\",\n      \"facilityId\": \"<number>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T10:57:07.000Z",
+                              "updatedAt": "2026-07-28T10:57:07.000Z",
+                              "uid": "35240-c702349f-b13c-4c01-8aac-3096f057ddbb"
+                            },
+                            {
+                              "id": "11ae3cb5-2ca7-4a40-8295-7d3fe5d53960",
+                              "name": "Invalid Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/monthly/by-facility?stateCode=IN|PR&facilityId=<number>|<number>&unitType=Combined cycle|Other boiler&unitFuelType=Residual Oil|Process Gas&controlTechnologies=Selective Non-catalytic Reduction|Overfire Air&programCodeInfo=CAIROS|CSOSG2E&year=<number>|<number>&month=<number>|<number>&page=<number>&perPage=<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "monthly",
+                                    "by-facility"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "IN|PR"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Combined cycle|Other boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Residual Oil|Process Gas"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Selective Non-catalytic Reduction|Overfire Air"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CAIROS|CSOSG2E"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Month on which activity occurred.",
+                                      "key": "month",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Page number of data being requested.",
+                                      "key": "page",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Number of results per page.",
+                                      "key": "perPage",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:07.000Z",
+                              "updatedAt": "2026-07-28T10:57:07.000Z",
+                              "uid": "35240-11ae3cb5-2ca7-4a40-8295-7d3fe5d53960"
+                            },
+                            {
+                              "id": "130cdf07-5331-411f-9424-321e7f7783b8",
+                              "name": "Resource Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/monthly/by-facility?stateCode=IN|PR&facilityId=<number>|<number>&unitType=Combined cycle|Other boiler&unitFuelType=Residual Oil|Process Gas&controlTechnologies=Selective Non-catalytic Reduction|Overfire Air&programCodeInfo=CAIROS|CSOSG2E&year=<number>|<number>&month=<number>|<number>&page=<number>&perPage=<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "monthly",
+                                    "by-facility"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "IN|PR"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Combined cycle|Other boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Residual Oil|Process Gas"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Selective Non-catalytic Reduction|Overfire Air"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CAIROS|CSOSG2E"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Month on which activity occurred.",
+                                      "key": "month",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Page number of data being requested.",
+                                      "key": "page",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Number of results per page.",
+                                      "key": "perPage",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:07.000Z",
+                              "updatedAt": "2026-07-28T10:57:07.000Z",
+                              "uid": "35240-130cdf07-5331-411f-9424-321e7f7783b8"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T10:57:07.000Z",
+                          "updatedAt": "2026-07-28T10:57:07.000Z",
+                          "uid": "35240-48198a16-f0de-434d-b4d4-1258fa403e14"
+                        }
+                      ],
+                      "id": "54eb5844-457f-469c-99a5-f9a2d5bc2bf7",
+                      "createdAt": "2026-07-28T10:57:07.000Z",
+                      "updatedAt": "2026-07-28T10:57:07.000Z",
+                      "uid": "35240-54eb5844-457f-469c-99a5-f9a2d5bc2bf7"
+                    },
+                    {
+                      "name": "by-state",
+                      "item": [
+                        {
+                          "name": "Monthly Apportioned Emissions Controller get Emissions State Aggregation",
+                          "id": "223cec46-7d22-48e7-bf28-5e3171e933af",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/monthly/by-state?stateCode=IN|PR&facilityId=<number>|<number>&unitType=Combined cycle|Other boiler&unitFuelType=Residual Oil|Process Gas&controlTechnologies=Selective Non-catalytic Reduction|Overfire Air&programCodeInfo=CAIROS|CSOSG2E&year=<number>|<number>&month=<number>|<number>&page=<number>&perPage=<number>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "emissions-mgmt",
+                                "emissions",
+                                "apportioned",
+                                "monthly",
+                                "by-state"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "IN|PR"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Combined cycle|Other boiler"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Residual Oil|Process Gas"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Selective Non-catalytic Reduction|Overfire Air"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "CAIROS|CSOSG2E"
+                                },
+                                {
+                                  "description": "(Required) The calendar year during which activity occurred.",
+                                  "key": "year",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "(Required) Month on which activity occurred.",
+                                  "key": "month",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "(Required) Page number of data being requested.",
+                                  "key": "page",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "(Required) Number of results per page.",
+                                  "key": "perPage",
+                                  "value": "<number>"
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "234915d1-a03a-4f3b-9c61-b235bc05e389",
+                              "name": "Retrieves Monthly Apportioned Emissions data per filter criteria aggregated by state",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/monthly/by-state?stateCode=IN|PR&facilityId=<number>|<number>&unitType=Combined cycle|Other boiler&unitFuelType=Residual Oil|Process Gas&controlTechnologies=Selective Non-catalytic Reduction|Overfire Air&programCodeInfo=CAIROS|CSOSG2E&year=<number>|<number>&month=<number>|<number>&page=<number>&perPage=<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "monthly",
+                                    "by-state"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "IN|PR"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Combined cycle|Other boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Residual Oil|Process Gas"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Selective Non-catalytic Reduction|Overfire Air"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CAIROS|CSOSG2E"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Month on which activity occurred.",
+                                      "key": "month",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Page number of data being requested.",
+                                      "key": "page",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Number of results per page.",
+                                      "key": "perPage",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"items\": [\n    {\n      \"year\": \"<number>\",\n      \"month\": \"<number>\",\n      \"stateCode\": \"<string>\",\n      \"grossLoad\": \"<number>\",\n      \"steamLoad\": \"<number>\",\n      \"so2Mass\": \"<number>\",\n      \"co2Mass\": \"<number>\",\n      \"noxMass\": \"<number>\",\n      \"heatInput\": \"<number>\"\n    },\n    {\n      \"year\": \"<number>\",\n      \"month\": \"<number>\",\n      \"stateCode\": \"<string>\",\n      \"grossLoad\": \"<number>\",\n      \"steamLoad\": \"<number>\",\n      \"so2Mass\": \"<number>\",\n      \"co2Mass\": \"<number>\",\n      \"noxMass\": \"<number>\",\n      \"heatInput\": \"<number>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T10:57:07.000Z",
+                              "updatedAt": "2026-07-28T10:57:07.000Z",
+                              "uid": "35240-234915d1-a03a-4f3b-9c61-b235bc05e389"
+                            },
+                            {
+                              "id": "9bcb22aa-8bc8-4583-ae5b-007a4a19f1f6",
+                              "name": "Invalid Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/monthly/by-state?stateCode=IN|PR&facilityId=<number>|<number>&unitType=Combined cycle|Other boiler&unitFuelType=Residual Oil|Process Gas&controlTechnologies=Selective Non-catalytic Reduction|Overfire Air&programCodeInfo=CAIROS|CSOSG2E&year=<number>|<number>&month=<number>|<number>&page=<number>&perPage=<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "monthly",
+                                    "by-state"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "IN|PR"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Combined cycle|Other boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Residual Oil|Process Gas"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Selective Non-catalytic Reduction|Overfire Air"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CAIROS|CSOSG2E"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Month on which activity occurred.",
+                                      "key": "month",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Page number of data being requested.",
+                                      "key": "page",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Number of results per page.",
+                                      "key": "perPage",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:07.000Z",
+                              "updatedAt": "2026-07-28T10:57:07.000Z",
+                              "uid": "35240-9bcb22aa-8bc8-4583-ae5b-007a4a19f1f6"
+                            },
+                            {
+                              "id": "f7207928-15f9-4213-bb75-da53efa842a7",
+                              "name": "Resource Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/monthly/by-state?stateCode=IN|PR&facilityId=<number>|<number>&unitType=Combined cycle|Other boiler&unitFuelType=Residual Oil|Process Gas&controlTechnologies=Selective Non-catalytic Reduction|Overfire Air&programCodeInfo=CAIROS|CSOSG2E&year=<number>|<number>&month=<number>|<number>&page=<number>&perPage=<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "monthly",
+                                    "by-state"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "IN|PR"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Combined cycle|Other boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Residual Oil|Process Gas"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Selective Non-catalytic Reduction|Overfire Air"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CAIROS|CSOSG2E"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Month on which activity occurred.",
+                                      "key": "month",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Page number of data being requested.",
+                                      "key": "page",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Number of results per page.",
+                                      "key": "perPage",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:07.000Z",
+                              "updatedAt": "2026-07-28T10:57:07.000Z",
+                              "uid": "35240-f7207928-15f9-4213-bb75-da53efa842a7"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T10:57:07.000Z",
+                          "updatedAt": "2026-07-28T10:57:07.000Z",
+                          "uid": "35240-223cec46-7d22-48e7-bf28-5e3171e933af"
+                        }
+                      ],
+                      "id": "d57c8b95-6306-42d5-913c-fdf8d6af76f6",
+                      "createdAt": "2026-07-28T10:57:07.000Z",
+                      "updatedAt": "2026-07-28T10:57:07.000Z",
+                      "uid": "35240-d57c8b95-6306-42d5-913c-fdf8d6af76f6"
+                    },
+                    {
+                      "name": "nationally",
+                      "item": [
+                        {
+                          "name": "Monthly Apportioned Emissions Controller get Emissions National Aggregation",
+                          "id": "573d3a7e-641e-4008-bb1c-e05c9f0c31bc",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/monthly/nationally?stateCode=IN|PR&facilityId=<number>|<number>&unitType=Combined cycle|Other boiler&unitFuelType=Residual Oil|Process Gas&controlTechnologies=Selective Non-catalytic Reduction|Overfire Air&programCodeInfo=CAIROS|CSOSG2E&year=<number>|<number>&month=<number>|<number>&page=<number>&perPage=<number>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "emissions-mgmt",
+                                "emissions",
+                                "apportioned",
+                                "monthly",
+                                "nationally"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "IN|PR"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Combined cycle|Other boiler"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Residual Oil|Process Gas"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Selective Non-catalytic Reduction|Overfire Air"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "CAIROS|CSOSG2E"
+                                },
+                                {
+                                  "description": "(Required) The calendar year during which activity occurred.",
+                                  "key": "year",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "(Required) Month on which activity occurred.",
+                                  "key": "month",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "(Required) Page number of data being requested.",
+                                  "key": "page",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "(Required) Number of results per page.",
+                                  "key": "perPage",
+                                  "value": "<number>"
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "f82dba6a-aba3-44d1-be09-13638e560b80",
+                              "name": "Retrieves Monthly Apportioned Emissions data per filter criteria aggregated nationally",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/monthly/nationally?stateCode=IN|PR&facilityId=<number>|<number>&unitType=Combined cycle|Other boiler&unitFuelType=Residual Oil|Process Gas&controlTechnologies=Selective Non-catalytic Reduction|Overfire Air&programCodeInfo=CAIROS|CSOSG2E&year=<number>|<number>&month=<number>|<number>&page=<number>&perPage=<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "monthly",
+                                    "nationally"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "IN|PR"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Combined cycle|Other boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Residual Oil|Process Gas"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Selective Non-catalytic Reduction|Overfire Air"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CAIROS|CSOSG2E"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Month on which activity occurred.",
+                                      "key": "month",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Page number of data being requested.",
+                                      "key": "page",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Number of results per page.",
+                                      "key": "perPage",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"items\": [\n    {\n      \"year\": \"<number>\",\n      \"month\": \"<number>\",\n      \"grossLoad\": \"<number>\",\n      \"steamLoad\": \"<number>\",\n      \"so2Mass\": \"<number>\",\n      \"co2Mass\": \"<number>\",\n      \"noxMass\": \"<number>\",\n      \"heatInput\": \"<number>\"\n    },\n    {\n      \"year\": \"<number>\",\n      \"month\": \"<number>\",\n      \"grossLoad\": \"<number>\",\n      \"steamLoad\": \"<number>\",\n      \"so2Mass\": \"<number>\",\n      \"co2Mass\": \"<number>\",\n      \"noxMass\": \"<number>\",\n      \"heatInput\": \"<number>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T10:57:07.000Z",
+                              "updatedAt": "2026-07-28T10:57:07.000Z",
+                              "uid": "35240-f82dba6a-aba3-44d1-be09-13638e560b80"
+                            },
+                            {
+                              "id": "4958493e-0f8e-4e3b-b404-bd6d8d72d8d2",
+                              "name": "Invalid Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/monthly/nationally?stateCode=IN|PR&facilityId=<number>|<number>&unitType=Combined cycle|Other boiler&unitFuelType=Residual Oil|Process Gas&controlTechnologies=Selective Non-catalytic Reduction|Overfire Air&programCodeInfo=CAIROS|CSOSG2E&year=<number>|<number>&month=<number>|<number>&page=<number>&perPage=<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "monthly",
+                                    "nationally"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "IN|PR"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Combined cycle|Other boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Residual Oil|Process Gas"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Selective Non-catalytic Reduction|Overfire Air"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CAIROS|CSOSG2E"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Month on which activity occurred.",
+                                      "key": "month",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Page number of data being requested.",
+                                      "key": "page",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Number of results per page.",
+                                      "key": "perPage",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:07.000Z",
+                              "updatedAt": "2026-07-28T10:57:07.000Z",
+                              "uid": "35240-4958493e-0f8e-4e3b-b404-bd6d8d72d8d2"
+                            },
+                            {
+                              "id": "1806748d-375e-4e61-86cd-baf572e2c0fc",
+                              "name": "Resource Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/monthly/nationally?stateCode=IN|PR&facilityId=<number>|<number>&unitType=Combined cycle|Other boiler&unitFuelType=Residual Oil|Process Gas&controlTechnologies=Selective Non-catalytic Reduction|Overfire Air&programCodeInfo=CAIROS|CSOSG2E&year=<number>|<number>&month=<number>|<number>&page=<number>&perPage=<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "monthly",
+                                    "nationally"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "IN|PR"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Combined cycle|Other boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Residual Oil|Process Gas"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Selective Non-catalytic Reduction|Overfire Air"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CAIROS|CSOSG2E"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Month on which activity occurred.",
+                                      "key": "month",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Page number of data being requested.",
+                                      "key": "page",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Number of results per page.",
+                                      "key": "perPage",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:07.000Z",
+                              "updatedAt": "2026-07-28T10:57:07.000Z",
+                              "uid": "35240-1806748d-375e-4e61-86cd-baf572e2c0fc"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T10:57:07.000Z",
+                          "updatedAt": "2026-07-28T10:57:07.000Z",
+                          "uid": "35240-573d3a7e-641e-4008-bb1c-e05c9f0c31bc"
+                        }
+                      ],
+                      "id": "adb8b0bb-88f3-4789-972f-0ff518ebebc3",
+                      "createdAt": "2026-07-28T10:57:07.000Z",
+                      "updatedAt": "2026-07-28T10:57:07.000Z",
+                      "uid": "35240-adb8b0bb-88f3-4789-972f-0ff518ebebc3"
+                    },
+                    {
+                      "name": "Monthly Apportioned Emissions Controller get Emissions",
+                      "id": "699b7d2c-c097-4680-a624-fd0389b1b946",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/monthly?stateCode=IN|PR&facilityId=<number>|<number>&unitType=Combined cycle|Other boiler&unitFuelType=Residual Oil|Process Gas&controlTechnologies=Selective Non-catalytic Reduction|Overfire Air&programCodeInfo=CAIROS|CSOSG2E&year=<number>|<number>&month=<number>|<number>&page=<number>&perPage=<number>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "emissions-mgmt",
+                            "emissions",
+                            "apportioned",
+                            "monthly"
+                          ],
+                          "query": [
+                            {
+                              "description": "Two letter abbreviation for the State.",
+                              "key": "stateCode",
+                              "value": "IN|PR"
+                            },
+                            {
+                              "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                              "key": "facilityId",
+                              "value": "<number>|<number>"
+                            },
+                            {
+                              "description": "Type of unit or boiler.",
+                              "key": "unitType",
+                              "value": "Combined cycle|Other boiler"
+                            },
+                            {
+                              "description": "Primary or Secondary fuel types combusted by the unit.",
+                              "key": "unitFuelType",
+                              "value": "Residual Oil|Process Gas"
+                            },
+                            {
+                              "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                              "key": "controlTechnologies",
+                              "value": "Selective Non-catalytic Reduction|Overfire Air"
+                            },
+                            {
+                              "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                              "key": "programCodeInfo",
+                              "value": "CAIROS|CSOSG2E"
+                            },
+                            {
+                              "description": "(Required) The calendar year during which activity occurred.",
+                              "key": "year",
+                              "value": "<number>|<number>"
+                            },
+                            {
+                              "description": "(Required) Month on which activity occurred.",
+                              "key": "month",
+                              "value": "<number>|<number>"
+                            },
+                            {
+                              "description": "(Required) Page number of data being requested.",
+                              "key": "page",
+                              "value": "<number>"
+                            },
+                            {
+                              "description": "(Required) Number of results per page.",
+                              "key": "perPage",
+                              "value": "<number>"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "2a48dba6-bd85-42aa-9da2-55ba540a273a",
+                          "name": "Retrieves Monthly Apportioned Emissions per filter criteria",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/monthly?stateCode=IN|PR&facilityId=<number>|<number>&unitType=Combined cycle|Other boiler&unitFuelType=Residual Oil|Process Gas&controlTechnologies=Selective Non-catalytic Reduction|Overfire Air&programCodeInfo=CAIROS|CSOSG2E&year=<number>|<number>&month=<number>|<number>&page=<number>&perPage=<number>&key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "emissions-mgmt",
+                                "emissions",
+                                "apportioned",
+                                "monthly"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "IN|PR"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Combined cycle|Other boiler"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Residual Oil|Process Gas"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Selective Non-catalytic Reduction|Overfire Air"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "CAIROS|CSOSG2E"
+                                },
+                                {
+                                  "description": "(Required) The calendar year during which activity occurred.",
+                                  "key": "year",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "(Required) Month on which activity occurred.",
+                                  "key": "month",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "(Required) Page number of data being requested.",
+                                  "key": "page",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "(Required) Number of results per page.",
+                                  "key": "perPage",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"items\": [\n    {\n      \"stateCode\": \"<string>\",\n      \"facilityName\": \"<string>\",\n      \"facilityId\": \"<number>\",\n      \"unitId\": \"<string>\",\n      \"associatedStacks\": \"<string>\",\n      \"year\": \"<number>\",\n      \"month\": \"<number>\",\n      \"countOpTime\": \"<number>\",\n      \"sumOpTime\": \"<number>\",\n      \"grossLoad\": \"<number>\",\n      \"steamLoad\": \"<number>\",\n      \"so2Mass\": \"<number>\",\n      \"so2Rate\": \"<number>\",\n      \"co2Mass\": \"<number>\",\n      \"co2Rate\": \"<number>\",\n      \"noxMass\": \"<number>\",\n      \"noxRate\": \"<number>\",\n      \"heatInput\": \"<number>\",\n      \"primaryFuelInfo\": \"<string>\",\n      \"secondaryFuelInfo\": \"<string>\",\n      \"unitType\": \"<string>\",\n      \"so2ControlInfo\": \"<string>\",\n      \"noxControlInfo\": \"<string>\",\n      \"pmControlInfo\": \"<string>\",\n      \"hgControlInfo\": \"<string>\",\n      \"programCodeInfo\": \"<string>\"\n    },\n    {\n      \"stateCode\": \"<string>\",\n      \"facilityName\": \"<string>\",\n      \"facilityId\": \"<number>\",\n      \"unitId\": \"<string>\",\n      \"associatedStacks\": \"<string>\",\n      \"year\": \"<number>\",\n      \"month\": \"<number>\",\n      \"countOpTime\": \"<number>\",\n      \"sumOpTime\": \"<number>\",\n      \"grossLoad\": \"<number>\",\n      \"steamLoad\": \"<number>\",\n      \"so2Mass\": \"<number>\",\n      \"so2Rate\": \"<number>\",\n      \"co2Mass\": \"<number>\",\n      \"co2Rate\": \"<number>\",\n      \"noxMass\": \"<number>\",\n      \"noxRate\": \"<number>\",\n      \"heatInput\": \"<number>\",\n      \"primaryFuelInfo\": \"<string>\",\n      \"secondaryFuelInfo\": \"<string>\",\n      \"unitType\": \"<string>\",\n      \"so2ControlInfo\": \"<string>\",\n      \"noxControlInfo\": \"<string>\",\n      \"pmControlInfo\": \"<string>\",\n      \"hgControlInfo\": \"<string>\",\n      \"programCodeInfo\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T10:57:07.000Z",
+                          "updatedAt": "2026-07-28T10:57:07.000Z",
+                          "uid": "35240-2a48dba6-bd85-42aa-9da2-55ba540a273a"
+                        },
+                        {
+                          "id": "0bb6c487-cc4f-48a6-98d1-3c45b1ef89a7",
+                          "name": "Invalid Request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/monthly?stateCode=IN|PR&facilityId=<number>|<number>&unitType=Combined cycle|Other boiler&unitFuelType=Residual Oil|Process Gas&controlTechnologies=Selective Non-catalytic Reduction|Overfire Air&programCodeInfo=CAIROS|CSOSG2E&year=<number>|<number>&month=<number>|<number>&page=<number>&perPage=<number>&key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "emissions-mgmt",
+                                "emissions",
+                                "apportioned",
+                                "monthly"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "IN|PR"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Combined cycle|Other boiler"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Residual Oil|Process Gas"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Selective Non-catalytic Reduction|Overfire Air"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "CAIROS|CSOSG2E"
+                                },
+                                {
+                                  "description": "(Required) The calendar year during which activity occurred.",
+                                  "key": "year",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "(Required) Month on which activity occurred.",
+                                  "key": "month",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "(Required) Page number of data being requested.",
+                                  "key": "page",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "(Required) Number of results per page.",
+                                  "key": "perPage",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T10:57:07.000Z",
+                          "updatedAt": "2026-07-28T10:57:07.000Z",
+                          "uid": "35240-0bb6c487-cc4f-48a6-98d1-3c45b1ef89a7"
+                        },
+                        {
+                          "id": "c977ad1f-b377-4d84-98c7-b8222bddba7c",
+                          "name": "Resource Not Found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/monthly?stateCode=IN|PR&facilityId=<number>|<number>&unitType=Combined cycle|Other boiler&unitFuelType=Residual Oil|Process Gas&controlTechnologies=Selective Non-catalytic Reduction|Overfire Air&programCodeInfo=CAIROS|CSOSG2E&year=<number>|<number>&month=<number>|<number>&page=<number>&perPage=<number>&key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "emissions-mgmt",
+                                "emissions",
+                                "apportioned",
+                                "monthly"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "IN|PR"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Combined cycle|Other boiler"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Residual Oil|Process Gas"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Selective Non-catalytic Reduction|Overfire Air"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "CAIROS|CSOSG2E"
+                                },
+                                {
+                                  "description": "(Required) The calendar year during which activity occurred.",
+                                  "key": "year",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "(Required) Month on which activity occurred.",
+                                  "key": "month",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "(Required) Page number of data being requested.",
+                                  "key": "page",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "(Required) Number of results per page.",
+                                  "key": "perPage",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T10:57:07.000Z",
+                          "updatedAt": "2026-07-28T10:57:07.000Z",
+                          "uid": "35240-c977ad1f-b377-4d84-98c7-b8222bddba7c"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T10:57:07.000Z",
+                      "updatedAt": "2026-07-28T10:57:07.000Z",
+                      "uid": "35240-699b7d2c-c097-4680-a624-fd0389b1b946"
+                    }
+                  ],
+                  "id": "ed4b412f-2dea-4633-99d8-ea6880b743af",
+                  "createdAt": "2026-07-28T10:57:07.000Z",
+                  "updatedAt": "2026-07-28T10:57:07.000Z",
+                  "uid": "35240-ed4b412f-2dea-4633-99d8-ea6880b743af"
+                }
+              ],
+              "id": "d5ef206f-baf9-4145-829f-2565a2356e59",
+              "createdAt": "2026-07-28T10:57:07.000Z",
+              "updatedAt": "2026-07-28T10:57:07.000Z",
+              "uid": "35240-d5ef206f-baf9-4145-829f-2565a2356e59"
+            }
+          ],
+          "id": "83e679f5-99fe-4c55-bdca-fbcf3f61d752",
+          "createdAt": "2026-07-28T10:57:07.000Z",
+          "updatedAt": "2026-07-28T10:57:07.000Z",
+          "uid": "35240-83e679f5-99fe-4c55-bdca-fbcf3f61d752"
+        }
+      ],
+      "id": "30a23aac-547e-4b17-86b2-574653723d34",
+      "createdAt": "2026-07-28T10:57:07.000Z",
+      "updatedAt": "2026-07-28T10:57:07.000Z",
+      "uid": "35240-30a23aac-547e-4b17-86b2-574653723d34"
+    },
+    {
+      "name": "streaming-services",
+      "item": [
+        {
+          "name": "emissions",
+          "item": [
+            {
+              "name": "apportioned",
+              "item": [
+                {
+                  "name": "monthly",
+                  "item": [
+                    {
+                      "name": "by-facility",
+                      "item": [
+                        {
+                          "name": "Monthly Apportioned Emissions Controller stream Emissions Facility Aggregation",
+                          "id": "4fd301e3-2542-4c5d-85cc-2fcf14b85062",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/monthly/by-facility?stateCode=IN|PR&facilityId=<number>|<number>&unitType=Combined cycle|Other boiler&unitFuelType=Residual Oil|Process Gas&controlTechnologies=Selective Non-catalytic Reduction|Overfire Air&programCodeInfo=CAIROS|CSOSG2E&year=<number>|<number>&month=<number>|<number>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "streaming-services",
+                                "emissions",
+                                "apportioned",
+                                "monthly",
+                                "by-facility"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "IN|PR"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Combined cycle|Other boiler"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Residual Oil|Process Gas"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Selective Non-catalytic Reduction|Overfire Air"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "CAIROS|CSOSG2E"
+                                },
+                                {
+                                  "description": "(Required) The calendar year during which activity occurred.",
+                                  "key": "year",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "(Required) Month on which activity occurred.",
+                                  "key": "month",
+                                  "value": "<number>|<number>"
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "dd9d4023-db26-4735-9282-4c3b2499fb13",
+                              "name": "Streams Monthly Apportioned Emissions data per filter criteria aggregated by facility",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/monthly/by-facility?stateCode=IN|PR&facilityId=<number>|<number>&unitType=Combined cycle|Other boiler&unitFuelType=Residual Oil|Process Gas&controlTechnologies=Selective Non-catalytic Reduction|Overfire Air&programCodeInfo=CAIROS|CSOSG2E&year=<number>|<number>&month=<number>|<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "streaming-services",
+                                    "emissions",
+                                    "apportioned",
+                                    "monthly",
+                                    "by-facility"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "IN|PR"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Combined cycle|Other boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Residual Oil|Process Gas"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Selective Non-catalytic Reduction|Overfire Air"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CAIROS|CSOSG2E"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Month on which activity occurred.",
+                                      "key": "month",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"year\": \"<number>\",\n  \"month\": \"<number>\",\n  \"stateCode\": \"<string>\",\n  \"facilityName\": \"<string>\",\n  \"grossLoad\": \"<number>\",\n  \"steamLoad\": \"<number>\",\n  \"so2Mass\": \"<number>\",\n  \"co2Mass\": \"<number>\",\n  \"noxMass\": \"<number>\",\n  \"heatInput\": \"<number>\",\n  \"facilityId\": \"<number>\"\n}",
+                              "createdAt": "2026-07-28T10:57:07.000Z",
+                              "updatedAt": "2026-07-28T10:57:07.000Z",
+                              "uid": "35240-dd9d4023-db26-4735-9282-4c3b2499fb13"
+                            },
+                            {
+                              "id": "5b243fd6-531c-4a67-bac2-19b023baadd4",
+                              "name": "Invalid Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/monthly/by-facility?stateCode=IN|PR&facilityId=<number>|<number>&unitType=Combined cycle|Other boiler&unitFuelType=Residual Oil|Process Gas&controlTechnologies=Selective Non-catalytic Reduction|Overfire Air&programCodeInfo=CAIROS|CSOSG2E&year=<number>|<number>&month=<number>|<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "streaming-services",
+                                    "emissions",
+                                    "apportioned",
+                                    "monthly",
+                                    "by-facility"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "IN|PR"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Combined cycle|Other boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Residual Oil|Process Gas"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Selective Non-catalytic Reduction|Overfire Air"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CAIROS|CSOSG2E"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Month on which activity occurred.",
+                                      "key": "month",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:07.000Z",
+                              "updatedAt": "2026-07-28T10:57:07.000Z",
+                              "uid": "35240-5b243fd6-531c-4a67-bac2-19b023baadd4"
+                            },
+                            {
+                              "id": "3252809e-5e78-4ffe-be4c-980dd64522e1",
+                              "name": "Resource Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/monthly/by-facility?stateCode=IN|PR&facilityId=<number>|<number>&unitType=Combined cycle|Other boiler&unitFuelType=Residual Oil|Process Gas&controlTechnologies=Selective Non-catalytic Reduction|Overfire Air&programCodeInfo=CAIROS|CSOSG2E&year=<number>|<number>&month=<number>|<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "streaming-services",
+                                    "emissions",
+                                    "apportioned",
+                                    "monthly",
+                                    "by-facility"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "IN|PR"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Combined cycle|Other boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Residual Oil|Process Gas"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Selective Non-catalytic Reduction|Overfire Air"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CAIROS|CSOSG2E"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Month on which activity occurred.",
+                                      "key": "month",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:07.000Z",
+                              "updatedAt": "2026-07-28T10:57:07.000Z",
+                              "uid": "35240-3252809e-5e78-4ffe-be4c-980dd64522e1"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T10:57:07.000Z",
+                          "updatedAt": "2026-07-28T10:57:07.000Z",
+                          "uid": "35240-4fd301e3-2542-4c5d-85cc-2fcf14b85062"
+                        }
+                      ],
+                      "id": "1b884490-1654-4bfa-ac81-b32f83a7649d",
+                      "createdAt": "2026-07-28T10:57:07.000Z",
+                      "updatedAt": "2026-07-28T10:57:07.000Z",
+                      "uid": "35240-1b884490-1654-4bfa-ac81-b32f83a7649d"
+                    },
+                    {
+                      "name": "by-state",
+                      "item": [
+                        {
+                          "name": "Monthly Apportioned Emissions Controller stream Emissions State Aggregation",
+                          "id": "4c16a6b5-560d-4c4a-aa5c-851ce79c51a8",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/monthly/by-state?stateCode=IN|PR&facilityId=<number>|<number>&unitType=Combined cycle|Other boiler&unitFuelType=Residual Oil|Process Gas&controlTechnologies=Selective Non-catalytic Reduction|Overfire Air&programCodeInfo=CAIROS|CSOSG2E&year=<number>|<number>&month=<number>|<number>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "streaming-services",
+                                "emissions",
+                                "apportioned",
+                                "monthly",
+                                "by-state"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "IN|PR"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Combined cycle|Other boiler"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Residual Oil|Process Gas"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Selective Non-catalytic Reduction|Overfire Air"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "CAIROS|CSOSG2E"
+                                },
+                                {
+                                  "description": "(Required) The calendar year during which activity occurred.",
+                                  "key": "year",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "(Required) Month on which activity occurred.",
+                                  "key": "month",
+                                  "value": "<number>|<number>"
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "3d36cecf-12bb-40dc-be2b-4d0091553db6",
+                              "name": "Streams Monthly Apportioned Emissions data per filter criteria aggregated by state",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/monthly/by-state?stateCode=IN|PR&facilityId=<number>|<number>&unitType=Combined cycle|Other boiler&unitFuelType=Residual Oil|Process Gas&controlTechnologies=Selective Non-catalytic Reduction|Overfire Air&programCodeInfo=CAIROS|CSOSG2E&year=<number>|<number>&month=<number>|<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "streaming-services",
+                                    "emissions",
+                                    "apportioned",
+                                    "monthly",
+                                    "by-state"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "IN|PR"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Combined cycle|Other boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Residual Oil|Process Gas"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Selective Non-catalytic Reduction|Overfire Air"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CAIROS|CSOSG2E"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Month on which activity occurred.",
+                                      "key": "month",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"year\": \"<number>\",\n  \"month\": \"<number>\",\n  \"stateCode\": \"<string>\",\n  \"grossLoad\": \"<number>\",\n  \"steamLoad\": \"<number>\",\n  \"so2Mass\": \"<number>\",\n  \"co2Mass\": \"<number>\",\n  \"noxMass\": \"<number>\",\n  \"heatInput\": \"<number>\"\n}",
+                              "createdAt": "2026-07-28T10:57:07.000Z",
+                              "updatedAt": "2026-07-28T10:57:07.000Z",
+                              "uid": "35240-3d36cecf-12bb-40dc-be2b-4d0091553db6"
+                            },
+                            {
+                              "id": "b3ed43be-c973-4da0-af59-447157e14d36",
+                              "name": "Invalid Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/monthly/by-state?stateCode=IN|PR&facilityId=<number>|<number>&unitType=Combined cycle|Other boiler&unitFuelType=Residual Oil|Process Gas&controlTechnologies=Selective Non-catalytic Reduction|Overfire Air&programCodeInfo=CAIROS|CSOSG2E&year=<number>|<number>&month=<number>|<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "streaming-services",
+                                    "emissions",
+                                    "apportioned",
+                                    "monthly",
+                                    "by-state"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "IN|PR"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Combined cycle|Other boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Residual Oil|Process Gas"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Selective Non-catalytic Reduction|Overfire Air"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CAIROS|CSOSG2E"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Month on which activity occurred.",
+                                      "key": "month",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:07.000Z",
+                              "updatedAt": "2026-07-28T10:57:07.000Z",
+                              "uid": "35240-b3ed43be-c973-4da0-af59-447157e14d36"
+                            },
+                            {
+                              "id": "94a20829-5de3-4b35-b4df-0ea09eae3820",
+                              "name": "Resource Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/monthly/by-state?stateCode=IN|PR&facilityId=<number>|<number>&unitType=Combined cycle|Other boiler&unitFuelType=Residual Oil|Process Gas&controlTechnologies=Selective Non-catalytic Reduction|Overfire Air&programCodeInfo=CAIROS|CSOSG2E&year=<number>|<number>&month=<number>|<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "streaming-services",
+                                    "emissions",
+                                    "apportioned",
+                                    "monthly",
+                                    "by-state"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "IN|PR"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Combined cycle|Other boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Residual Oil|Process Gas"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Selective Non-catalytic Reduction|Overfire Air"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CAIROS|CSOSG2E"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Month on which activity occurred.",
+                                      "key": "month",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:07.000Z",
+                              "updatedAt": "2026-07-28T10:57:07.000Z",
+                              "uid": "35240-94a20829-5de3-4b35-b4df-0ea09eae3820"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T10:57:07.000Z",
+                          "updatedAt": "2026-07-28T10:57:07.000Z",
+                          "uid": "35240-4c16a6b5-560d-4c4a-aa5c-851ce79c51a8"
+                        }
+                      ],
+                      "id": "9cb33bb9-62af-4b9d-b23e-12ab8ce2fa37",
+                      "createdAt": "2026-07-28T10:57:07.000Z",
+                      "updatedAt": "2026-07-28T10:57:07.000Z",
+                      "uid": "35240-9cb33bb9-62af-4b9d-b23e-12ab8ce2fa37"
+                    },
+                    {
+                      "name": "nationally",
+                      "item": [
+                        {
+                          "name": "Monthly Apportioned Emissions Controller stream Emissions National Aggregation",
+                          "id": "c81f6f53-b75c-4147-8ae6-24a3dc4b0027",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/monthly/nationally?stateCode=IN|PR&facilityId=<number>|<number>&unitType=Combined cycle|Other boiler&unitFuelType=Residual Oil|Process Gas&controlTechnologies=Selective Non-catalytic Reduction|Overfire Air&programCodeInfo=CAIROS|CSOSG2E&year=<number>|<number>&month=<number>|<number>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "streaming-services",
+                                "emissions",
+                                "apportioned",
+                                "monthly",
+                                "nationally"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "IN|PR"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Combined cycle|Other boiler"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Residual Oil|Process Gas"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Selective Non-catalytic Reduction|Overfire Air"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "CAIROS|CSOSG2E"
+                                },
+                                {
+                                  "description": "(Required) The calendar year during which activity occurred.",
+                                  "key": "year",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "(Required) Month on which activity occurred.",
+                                  "key": "month",
+                                  "value": "<number>|<number>"
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "abbc3768-7600-4677-8daa-90e0b859c870",
+                              "name": "Streams Monthly Apportioned Emissions data per filter criteria aggregated nationally",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/monthly/nationally?stateCode=IN|PR&facilityId=<number>|<number>&unitType=Combined cycle|Other boiler&unitFuelType=Residual Oil|Process Gas&controlTechnologies=Selective Non-catalytic Reduction|Overfire Air&programCodeInfo=CAIROS|CSOSG2E&year=<number>|<number>&month=<number>|<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "streaming-services",
+                                    "emissions",
+                                    "apportioned",
+                                    "monthly",
+                                    "nationally"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "IN|PR"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Combined cycle|Other boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Residual Oil|Process Gas"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Selective Non-catalytic Reduction|Overfire Air"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CAIROS|CSOSG2E"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Month on which activity occurred.",
+                                      "key": "month",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"year\": \"<number>\",\n  \"month\": \"<number>\",\n  \"grossLoad\": \"<number>\",\n  \"steamLoad\": \"<number>\",\n  \"so2Mass\": \"<number>\",\n  \"co2Mass\": \"<number>\",\n  \"noxMass\": \"<number>\",\n  \"heatInput\": \"<number>\"\n}",
+                              "createdAt": "2026-07-28T10:57:07.000Z",
+                              "updatedAt": "2026-07-28T10:57:07.000Z",
+                              "uid": "35240-abbc3768-7600-4677-8daa-90e0b859c870"
+                            },
+                            {
+                              "id": "ebe977f1-802a-4672-8169-2d236d7e7325",
+                              "name": "Invalid Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/monthly/nationally?stateCode=IN|PR&facilityId=<number>|<number>&unitType=Combined cycle|Other boiler&unitFuelType=Residual Oil|Process Gas&controlTechnologies=Selective Non-catalytic Reduction|Overfire Air&programCodeInfo=CAIROS|CSOSG2E&year=<number>|<number>&month=<number>|<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "streaming-services",
+                                    "emissions",
+                                    "apportioned",
+                                    "monthly",
+                                    "nationally"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "IN|PR"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Combined cycle|Other boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Residual Oil|Process Gas"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Selective Non-catalytic Reduction|Overfire Air"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CAIROS|CSOSG2E"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Month on which activity occurred.",
+                                      "key": "month",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:07.000Z",
+                              "updatedAt": "2026-07-28T10:57:07.000Z",
+                              "uid": "35240-ebe977f1-802a-4672-8169-2d236d7e7325"
+                            },
+                            {
+                              "id": "578d2357-f537-4e7d-87c8-01b54b42ba25",
+                              "name": "Resource Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/monthly/nationally?stateCode=IN|PR&facilityId=<number>|<number>&unitType=Combined cycle|Other boiler&unitFuelType=Residual Oil|Process Gas&controlTechnologies=Selective Non-catalytic Reduction|Overfire Air&programCodeInfo=CAIROS|CSOSG2E&year=<number>|<number>&month=<number>|<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "streaming-services",
+                                    "emissions",
+                                    "apportioned",
+                                    "monthly",
+                                    "nationally"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "IN|PR"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Combined cycle|Other boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Residual Oil|Process Gas"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Selective Non-catalytic Reduction|Overfire Air"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CAIROS|CSOSG2E"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Month on which activity occurred.",
+                                      "key": "month",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:07.000Z",
+                              "updatedAt": "2026-07-28T10:57:07.000Z",
+                              "uid": "35240-578d2357-f537-4e7d-87c8-01b54b42ba25"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T10:57:07.000Z",
+                          "updatedAt": "2026-07-28T10:57:07.000Z",
+                          "uid": "35240-c81f6f53-b75c-4147-8ae6-24a3dc4b0027"
+                        }
+                      ],
+                      "id": "3b23f2ca-08ac-4596-9683-3370d5af3e57",
+                      "createdAt": "2026-07-28T10:57:07.000Z",
+                      "updatedAt": "2026-07-28T10:57:07.000Z",
+                      "uid": "35240-3b23f2ca-08ac-4596-9683-3370d5af3e57"
+                    },
+                    {
+                      "name": "Monthly Apportioned Emissions Controller stream Emissions",
+                      "id": "3b404684-67de-439e-8c56-3c5531270a7b",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/monthly?stateCode=IN|PR&facilityId=<number>|<number>&unitType=Combined cycle|Other boiler&unitFuelType=Residual Oil|Process Gas&controlTechnologies=Selective Non-catalytic Reduction|Overfire Air&programCodeInfo=CAIROS|CSOSG2E&year=<number>|<number>&month=<number>|<number>&exclude=countOpTime|so2Rate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "streaming-services",
+                            "emissions",
+                            "apportioned",
+                            "monthly"
+                          ],
+                          "query": [
+                            {
+                              "description": "Two letter abbreviation for the State.",
+                              "key": "stateCode",
+                              "value": "IN|PR"
+                            },
+                            {
+                              "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                              "key": "facilityId",
+                              "value": "<number>|<number>"
+                            },
+                            {
+                              "description": "Type of unit or boiler.",
+                              "key": "unitType",
+                              "value": "Combined cycle|Other boiler"
+                            },
+                            {
+                              "description": "Primary or Secondary fuel types combusted by the unit.",
+                              "key": "unitFuelType",
+                              "value": "Residual Oil|Process Gas"
+                            },
+                            {
+                              "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                              "key": "controlTechnologies",
+                              "value": "Selective Non-catalytic Reduction|Overfire Air"
+                            },
+                            {
+                              "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                              "key": "programCodeInfo",
+                              "value": "CAIROS|CSOSG2E"
+                            },
+                            {
+                              "description": "(Required) The calendar year during which activity occurred.",
+                              "key": "year",
+                              "value": "<number>|<number>"
+                            },
+                            {
+                              "description": "(Required) Month on which activity occurred.",
+                              "key": "month",
+                              "value": "<number>|<number>"
+                            },
+                            {
+                              "description": "Selected items will be excluded from the response",
+                              "key": "exclude",
+                              "value": "countOpTime|so2Rate"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "0d215a5d-2dac-4725-8983-a1b12661b7b0",
+                          "name": "Streams Monthly Apportioned Emissions per filter criteria",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/monthly?stateCode=IN|PR&facilityId=<number>|<number>&unitType=Combined cycle|Other boiler&unitFuelType=Residual Oil|Process Gas&controlTechnologies=Selective Non-catalytic Reduction|Overfire Air&programCodeInfo=CAIROS|CSOSG2E&year=<number>|<number>&month=<number>|<number>&exclude=countOpTime|so2Rate&key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "streaming-services",
+                                "emissions",
+                                "apportioned",
+                                "monthly"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "IN|PR"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Combined cycle|Other boiler"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Residual Oil|Process Gas"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Selective Non-catalytic Reduction|Overfire Air"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "CAIROS|CSOSG2E"
+                                },
+                                {
+                                  "description": "(Required) The calendar year during which activity occurred.",
+                                  "key": "year",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "(Required) Month on which activity occurred.",
+                                  "key": "month",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Selected items will be excluded from the response",
+                                  "key": "exclude",
+                                  "value": "countOpTime|so2Rate"
+                                },
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"stateCode\": \"<string>\",\n  \"facilityName\": \"<string>\",\n  \"unitId\": \"<string>\",\n  \"unit_id\": \"<number>\",\n  \"unitType\": \"<string>\",\n  \"associatedStacks\": \"<string>\",\n  \"primaryFuelInfo\": \"<string>\",\n  \"secondaryFuelInfo\": \"<string>\",\n  \"so2ControlInfo\": \"<string>\",\n  \"pmControlInfo\": \"<string>\",\n  \"noxControlInfo\": \"<string>\",\n  \"hgControlInfo\": \"<string>\",\n  \"programCodeInfo\": \"<string>\",\n  \"year\": \"<number>\",\n  \"month\": \"<number>\",\n  \"facilityId\": \"<number>\",\n  \"grossLoad\": \"<number>\",\n  \"steamLoad\": \"<number>\",\n  \"so2Mass\": \"<number>\",\n  \"so2Rate\": \"<number>\",\n  \"noxMass\": \"<number>\",\n  \"noxRate\": \"<number>\",\n  \"co2Mass\": \"<number>\",\n  \"co2Rate\": \"<number>\",\n  \"heatInput\": \"<number>\",\n  \"heatInputMeasureFlg\": \"<string>\",\n  \"sumOpTime\": \"<number>\",\n  \"countOpTime\": \"<number>\"\n}",
+                          "createdAt": "2026-07-28T10:57:07.000Z",
+                          "updatedAt": "2026-07-28T10:57:07.000Z",
+                          "uid": "35240-0d215a5d-2dac-4725-8983-a1b12661b7b0"
+                        },
+                        {
+                          "id": "b6793599-82bb-4b5d-ac1d-42e3285773fd",
+                          "name": "Invalid Request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/monthly?stateCode=IN|PR&facilityId=<number>|<number>&unitType=Combined cycle|Other boiler&unitFuelType=Residual Oil|Process Gas&controlTechnologies=Selective Non-catalytic Reduction|Overfire Air&programCodeInfo=CAIROS|CSOSG2E&year=<number>|<number>&month=<number>|<number>&exclude=countOpTime|so2Rate&key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "streaming-services",
+                                "emissions",
+                                "apportioned",
+                                "monthly"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "IN|PR"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Combined cycle|Other boiler"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Residual Oil|Process Gas"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Selective Non-catalytic Reduction|Overfire Air"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "CAIROS|CSOSG2E"
+                                },
+                                {
+                                  "description": "(Required) The calendar year during which activity occurred.",
+                                  "key": "year",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "(Required) Month on which activity occurred.",
+                                  "key": "month",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Selected items will be excluded from the response",
+                                  "key": "exclude",
+                                  "value": "countOpTime|so2Rate"
+                                },
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T10:57:07.000Z",
+                          "updatedAt": "2026-07-28T10:57:07.000Z",
+                          "uid": "35240-b6793599-82bb-4b5d-ac1d-42e3285773fd"
+                        },
+                        {
+                          "id": "9e48685e-af35-4a28-9641-2d80cff9db0c",
+                          "name": "Resource Not Found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/monthly?stateCode=IN|PR&facilityId=<number>|<number>&unitType=Combined cycle|Other boiler&unitFuelType=Residual Oil|Process Gas&controlTechnologies=Selective Non-catalytic Reduction|Overfire Air&programCodeInfo=CAIROS|CSOSG2E&year=<number>|<number>&month=<number>|<number>&exclude=countOpTime|so2Rate&key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "streaming-services",
+                                "emissions",
+                                "apportioned",
+                                "monthly"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "IN|PR"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Combined cycle|Other boiler"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Residual Oil|Process Gas"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Selective Non-catalytic Reduction|Overfire Air"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "CAIROS|CSOSG2E"
+                                },
+                                {
+                                  "description": "(Required) The calendar year during which activity occurred.",
+                                  "key": "year",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "(Required) Month on which activity occurred.",
+                                  "key": "month",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Selected items will be excluded from the response",
+                                  "key": "exclude",
+                                  "value": "countOpTime|so2Rate"
+                                },
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T10:57:07.000Z",
+                          "updatedAt": "2026-07-28T10:57:07.000Z",
+                          "uid": "35240-9e48685e-af35-4a28-9641-2d80cff9db0c"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T10:57:07.000Z",
+                      "updatedAt": "2026-07-28T10:57:07.000Z",
+                      "uid": "35240-3b404684-67de-439e-8c56-3c5531270a7b"
+                    }
+                  ],
+                  "id": "69a77481-665f-4fca-b865-669413baaf6c",
+                  "createdAt": "2026-07-28T10:57:07.000Z",
+                  "updatedAt": "2026-07-28T10:57:07.000Z",
+                  "uid": "35240-69a77481-665f-4fca-b865-669413baaf6c"
+                }
+              ],
+              "id": "df4103e2-ccc4-402c-a76e-6025716cc94c",
+              "createdAt": "2026-07-28T10:57:07.000Z",
+              "updatedAt": "2026-07-28T10:57:07.000Z",
+              "uid": "35240-df4103e2-ccc4-402c-a76e-6025716cc94c"
+            }
+          ],
+          "id": "12195906-36fc-491c-8616-1330f40ae75d",
+          "createdAt": "2026-07-28T10:57:07.000Z",
+          "updatedAt": "2026-07-28T10:57:07.000Z",
+          "uid": "35240-12195906-36fc-491c-8616-1330f40ae75d"
+        }
+      ],
+      "id": "f82ead82-8585-49f2-8ed4-5c3caedb7618",
+      "createdAt": "2026-07-28T10:57:07.000Z",
+      "updatedAt": "2026-07-28T10:57:07.000Z",
+      "uid": "35240-f82ead82-8585-49f2-8ed4-5c3caedb7618"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

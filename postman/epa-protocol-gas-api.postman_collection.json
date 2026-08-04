@@ -1,0 +1,326 @@
+{
+  "info": {
+    "_postman_id": "7b22285b-372b-46b5-ab0c-9d3d93dd8f7f",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Protocol Gas API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:59:48.000Z",
+    "updatedAt": "2026-07-28T10:59:48.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7b22285b-372b-46b5-ab0c-9d3d93dd8f7f"
+  },
+  "item": [
+    {
+      "name": "qa-certification-mgmt",
+      "item": [
+        {
+          "name": "locations",
+          "item": [
+            {
+              "name": "{locId}",
+              "item": [
+                {
+                  "name": "test-summary",
+                  "item": [
+                    {
+                      "name": "{testSumId}",
+                      "item": [
+                        {
+                          "name": "protocol-gases",
+                          "item": [
+                            {
+                              "name": "{id}",
+                              "item": [
+                                {
+                                  "name": "Protocol Gas Controller get Protocol Gas",
+                                  "id": "9c68376f-20bc-490a-94ce-cbbf8c7867c0",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/protocol-gases/:id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "qa-certification-mgmt",
+                                        "locations",
+                                        ":locId",
+                                        "test-summary",
+                                        ":testSumId",
+                                        "protocol-gases",
+                                        ":id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "ad7eb8c5-2953-41bb-87a0-8e9daa1e4bd1",
+                                          "key": "locId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "481252cb-1fc5-46ae-b30a-6ad31db792ee",
+                                          "key": "testSumId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "a1aaa620-4332-4e4a-9e59-73b7cbd6bbf4",
+                                          "key": "id",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "cf9a56a3-8d23-4109-ac8e-b5427d63ca31",
+                                      "name": "Retrieves official Protocol Gas record by its Id",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/protocol-gases/:id?key=<API Key>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "qa-certification-mgmt",
+                                            "locations",
+                                            ":locId",
+                                            "test-summary",
+                                            ":testSumId",
+                                            "protocol-gases",
+                                            ":id"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Added as a part of security scheme: apikey",
+                                              "key": "key",
+                                              "value": "<API Key>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "locId"
+                                            },
+                                            {
+                                              "key": "testSumId"
+                                            },
+                                            {
+                                              "key": "id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"gasTypeCode\": \"<string>\",\n  \"id\": \"<string>\",\n  \"testSumId\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"addDate\": \"<string>\",\n  \"updateDate\": \"<string>\",\n  \"gasLevelCode\": \"<string>\",\n  \"cylinderIdentifier\": \"<string>\",\n  \"vendorIdentifier\": \"<string>\",\n  \"expirationDate\": \"<dateTime>\"\n}",
+                                      "createdAt": "2026-07-28T10:59:48.000Z",
+                                      "updatedAt": "2026-07-28T10:59:48.000Z",
+                                      "uid": "35240-cf9a56a3-8d23-4109-ac8e-b5427d63ca31"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T10:59:48.000Z",
+                                  "updatedAt": "2026-07-28T10:59:48.000Z",
+                                  "uid": "35240-9c68376f-20bc-490a-94ce-cbbf8c7867c0"
+                                }
+                              ],
+                              "id": "94b035bf-3292-4d6f-938c-8510573e8165",
+                              "createdAt": "2026-07-28T10:59:48.000Z",
+                              "updatedAt": "2026-07-28T10:59:48.000Z",
+                              "uid": "35240-94b035bf-3292-4d6f-938c-8510573e8165"
+                            },
+                            {
+                              "name": "Protocol Gas Controller get Protocol Gases",
+                              "id": "77972c44-b45a-4854-b6c8-d20a72d5a492",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/protocol-gases",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "qa-certification-mgmt",
+                                    "locations",
+                                    ":locId",
+                                    "test-summary",
+                                    ":testSumId",
+                                    "protocol-gases"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "47f7520c-9252-4f4d-91f6-d38a94e9b484",
+                                      "key": "locId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "fc6d517b-31aa-4d2e-b107-d3132d3c9510",
+                                      "key": "testSumId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                }
+                              },
+                              "response": [
+                                {
+                                  "id": "d6eb366c-0ca6-44cd-bd3e-b800be5a7c6d",
+                                  "name": "Retrieves official Protocol Gas records by Test Summary Id",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/protocol-gases?key=<API Key>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "qa-certification-mgmt",
+                                        "locations",
+                                        ":locId",
+                                        "test-summary",
+                                        ":testSumId",
+                                        "protocol-gases"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Added as a part of security scheme: apikey",
+                                          "key": "key",
+                                          "value": "<API Key>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "locId"
+                                        },
+                                        {
+                                          "key": "testSumId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"items\": [\n    {\n      \"gasTypeCode\": \"<string>\",\n      \"id\": \"<string>\",\n      \"testSumId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"gasLevelCode\": \"<string>\",\n      \"cylinderIdentifier\": \"<string>\",\n      \"vendorIdentifier\": \"<string>\",\n      \"expirationDate\": \"<dateTime>\"\n    },\n    {\n      \"gasTypeCode\": \"<string>\",\n      \"id\": \"<string>\",\n      \"testSumId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"gasLevelCode\": \"<string>\",\n      \"cylinderIdentifier\": \"<string>\",\n      \"vendorIdentifier\": \"<string>\",\n      \"expirationDate\": \"<dateTime>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T10:59:48.000Z",
+                                  "updatedAt": "2026-07-28T10:59:48.000Z",
+                                  "uid": "35240-d6eb366c-0ca6-44cd-bd3e-b800be5a7c6d"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T10:59:48.000Z",
+                              "updatedAt": "2026-07-28T10:59:48.000Z",
+                              "uid": "35240-77972c44-b45a-4854-b6c8-d20a72d5a492"
+                            }
+                          ],
+                          "id": "cce0acc6-7e7f-4ea8-a168-ece61f398411",
+                          "createdAt": "2026-07-28T10:59:48.000Z",
+                          "updatedAt": "2026-07-28T10:59:48.000Z",
+                          "uid": "35240-cce0acc6-7e7f-4ea8-a168-ece61f398411"
+                        }
+                      ],
+                      "id": "2cdc0a29-7b0d-415d-a4b1-54dffdf38a40",
+                      "createdAt": "2026-07-28T10:59:48.000Z",
+                      "updatedAt": "2026-07-28T10:59:48.000Z",
+                      "uid": "35240-2cdc0a29-7b0d-415d-a4b1-54dffdf38a40"
+                    }
+                  ],
+                  "id": "39b0deed-aa7c-48bf-9185-7f5847a8886f",
+                  "createdAt": "2026-07-28T10:59:48.000Z",
+                  "updatedAt": "2026-07-28T10:59:48.000Z",
+                  "uid": "35240-39b0deed-aa7c-48bf-9185-7f5847a8886f"
+                }
+              ],
+              "id": "4485e0d1-a63e-478e-86a6-00b0e7c26c1b",
+              "createdAt": "2026-07-28T10:59:48.000Z",
+              "updatedAt": "2026-07-28T10:59:48.000Z",
+              "uid": "35240-4485e0d1-a63e-478e-86a6-00b0e7c26c1b"
+            }
+          ],
+          "id": "68397989-ca10-493c-beb1-0735c5b692e8",
+          "createdAt": "2026-07-28T10:59:48.000Z",
+          "updatedAt": "2026-07-28T10:59:48.000Z",
+          "uid": "35240-68397989-ca10-493c-beb1-0735c5b692e8"
+        }
+      ],
+      "id": "478dc5c7-deda-4a6b-a65c-8b72b406ae85",
+      "createdAt": "2026-07-28T10:59:48.000Z",
+      "updatedAt": "2026-07-28T10:59:48.000Z",
+      "uid": "35240-478dc5c7-deda-4a6b-a65c-8b72b406ae85"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

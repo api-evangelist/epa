@@ -1,0 +1,200 @@
+{
+  "info": {
+    "_postman_id": "9d54819d-cfbe-494d-ad15-ab1187535a98",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Analyzer Ranges API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:56:43.000Z",
+    "updatedAt": "2026-07-28T10:56:45.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9d54819d-cfbe-494d-ad15-ab1187535a98"
+  },
+  "item": [
+    {
+      "name": "monitor-plan-mgmt",
+      "item": [
+        {
+          "name": "locations",
+          "item": [
+            {
+              "name": "{locId}",
+              "item": [
+                {
+                  "name": "components",
+                  "item": [
+                    {
+                      "name": "{compId}",
+                      "item": [
+                        {
+                          "name": "analyzer-ranges",
+                          "item": [
+                            {
+                              "name": "Analyzer Range Controller get Analyzer Ranges",
+                              "id": "9285ce6d-e318-40e7-836c-abff1e004062",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/monitor-plan-mgmt/locations/:locId/components/:compId/analyzer-ranges",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "monitor-plan-mgmt",
+                                    "locations",
+                                    ":locId",
+                                    "components",
+                                    ":compId",
+                                    "analyzer-ranges"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "ef408b76-e813-43df-ab90-38224320abc8",
+                                      "key": "locId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "60b7b006-717d-4023-bcbc-1b890c43dc82",
+                                      "key": "compId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                }
+                              },
+                              "response": [
+                                {
+                                  "id": "2ca45832-143e-4cd0-852c-eb5098e37283",
+                                  "name": "Retrieves official analyzer range records for a component",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/monitor-plan-mgmt/locations/:locId/components/:compId/analyzer-ranges?key=<API Key>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "monitor-plan-mgmt",
+                                        "locations",
+                                        ":locId",
+                                        "components",
+                                        ":compId",
+                                        "analyzer-ranges"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Added as a part of security scheme: apikey",
+                                          "key": "key",
+                                          "value": "<API Key>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "locId"
+                                        },
+                                        {
+                                          "key": "compId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"items\": [\n    {\n      \"analyzerRangeCode\": \"<string>\",\n      \"dualRangeIndicator\": \"<number>\",\n      \"beginDate\": \"<dateTime>\",\n      \"beginHour\": \"<number>\",\n      \"endDate\": \"<dateTime>\",\n      \"endHour\": \"<number>\",\n      \"id\": \"<string>\",\n      \"componentRecordId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"active\": \"<boolean>\"\n    },\n    {\n      \"analyzerRangeCode\": \"<string>\",\n      \"dualRangeIndicator\": \"<number>\",\n      \"beginDate\": \"<dateTime>\",\n      \"beginHour\": \"<number>\",\n      \"endDate\": \"<dateTime>\",\n      \"endHour\": \"<number>\",\n      \"id\": \"<string>\",\n      \"componentRecordId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"active\": \"<boolean>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T10:56:44.000Z",
+                                  "updatedAt": "2026-07-28T10:56:44.000Z",
+                                  "uid": "35240-2ca45832-143e-4cd0-852c-eb5098e37283"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T10:56:44.000Z",
+                              "updatedAt": "2026-07-28T10:56:44.000Z",
+                              "uid": "35240-9285ce6d-e318-40e7-836c-abff1e004062"
+                            }
+                          ],
+                          "id": "decfed6d-e8f2-496e-b493-5bbb86a075a7",
+                          "createdAt": "2026-07-28T10:56:44.000Z",
+                          "updatedAt": "2026-07-28T10:56:44.000Z",
+                          "uid": "35240-decfed6d-e8f2-496e-b493-5bbb86a075a7"
+                        }
+                      ],
+                      "id": "631d08d1-a214-4df2-a8cf-c4a9322d2275",
+                      "createdAt": "2026-07-28T10:56:44.000Z",
+                      "updatedAt": "2026-07-28T10:56:44.000Z",
+                      "uid": "35240-631d08d1-a214-4df2-a8cf-c4a9322d2275"
+                    }
+                  ],
+                  "id": "e4573a5d-28f2-4574-91d9-20d839c93fcb",
+                  "createdAt": "2026-07-28T10:56:44.000Z",
+                  "updatedAt": "2026-07-28T10:56:44.000Z",
+                  "uid": "35240-e4573a5d-28f2-4574-91d9-20d839c93fcb"
+                }
+              ],
+              "id": "dc9d3531-bd68-403e-97f5-424bc5231208",
+              "createdAt": "2026-07-28T10:56:44.000Z",
+              "updatedAt": "2026-07-28T10:56:44.000Z",
+              "uid": "35240-dc9d3531-bd68-403e-97f5-424bc5231208"
+            }
+          ],
+          "id": "60aca940-be87-41a4-82d6-fa838ea5d4c6",
+          "createdAt": "2026-07-28T10:56:44.000Z",
+          "updatedAt": "2026-07-28T10:56:44.000Z",
+          "uid": "35240-60aca940-be87-41a4-82d6-fa838ea5d4c6"
+        }
+      ],
+      "id": "dc1e8da7-215f-4e21-977c-19f2c064a9ae",
+      "createdAt": "2026-07-28T10:56:44.000Z",
+      "updatedAt": "2026-07-28T10:56:44.000Z",
+      "uid": "35240-dc1e8da7-215f-4e21-977c-19f2c064a9ae"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

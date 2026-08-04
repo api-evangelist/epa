@@ -1,0 +1,326 @@
+{
+  "info": {
+    "_postman_id": "8dfd8db1-c864-4a7b-b42b-4c34b1f69ec8",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Calibration Injection API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:57:14.000Z",
+    "updatedAt": "2026-07-28T10:57:14.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8dfd8db1-c864-4a7b-b42b-4c34b1f69ec8"
+  },
+  "item": [
+    {
+      "name": "qa-certification-mgmt",
+      "item": [
+        {
+          "name": "locations",
+          "item": [
+            {
+              "name": "{locId}",
+              "item": [
+                {
+                  "name": "test-summary",
+                  "item": [
+                    {
+                      "name": "{testSumId}",
+                      "item": [
+                        {
+                          "name": "calibration-injections",
+                          "item": [
+                            {
+                              "name": "{id}",
+                              "item": [
+                                {
+                                  "name": "Calibration Injection Controller get Calibration Injection",
+                                  "id": "65adc9ff-8b53-48d3-ad06-89a647acae44",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/calibration-injections/:id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "qa-certification-mgmt",
+                                        "locations",
+                                        ":locId",
+                                        "test-summary",
+                                        ":testSumId",
+                                        "calibration-injections",
+                                        ":id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "c85379da-80c8-40ee-8f99-f850601b39e0",
+                                          "key": "locId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "6dc2b0fa-f1ca-40a3-9e18-3bc548375416",
+                                          "key": "testSumId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "ed9eeeb2-5ca4-419a-8514-11a45c58db52",
+                                          "key": "id",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "d4cc099f-dd60-487d-b7dc-2138253f3fa7",
+                                      "name": "Retrieves workspace Calibration Injection record by its Id",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/calibration-injections/:id?key=<API Key>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "qa-certification-mgmt",
+                                            "locations",
+                                            ":locId",
+                                            "test-summary",
+                                            ":testSumId",
+                                            "calibration-injections",
+                                            ":id"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Added as a part of security scheme: apikey",
+                                              "key": "key",
+                                              "value": "<API Key>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "locId"
+                                            },
+                                            {
+                                              "key": "testSumId"
+                                            },
+                                            {
+                                              "key": "id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"id\": \"<string>\",\n  \"testSumId\": \"<string>\",\n  \"calculatedZeroCalibrationError\": \"<number>\",\n  \"calculatedZeroAPSIndicator\": \"<number>\",\n  \"calculatedUpscaleCalibrationError\": \"<number>\",\n  \"calculatedUpscaleAPSIndicator\": \"<number>\",\n  \"userId\": \"<string>\",\n  \"addDate\": \"<string>\",\n  \"updateDate\": \"<string>\",\n  \"onlineOfflineIndicator\": \"<number>\",\n  \"upscaleGasLevelCode\": \"<string>\",\n  \"zeroInjectionDate\": \"<dateTime>\",\n  \"zeroInjectionHour\": \"<number>\",\n  \"zeroInjectionMinute\": \"<number>\",\n  \"upscaleInjectionDate\": \"<dateTime>\",\n  \"upscaleInjectionHour\": \"<number>\",\n  \"upscaleInjectionMinute\": \"<number>\",\n  \"zeroMeasuredValue\": \"<number>\",\n  \"upscaleMeasuredValue\": \"<number>\",\n  \"zeroAPSIndicator\": \"<number>\",\n  \"upscaleAPSIndicator\": \"<number>\",\n  \"zeroCalibrationError\": \"<number>\",\n  \"upscaleCalibrationError\": \"<number>\",\n  \"zeroReferenceValue\": \"<number>\",\n  \"upscaleReferenceValue\": \"<number>\"\n}",
+                                      "createdAt": "2026-07-28T10:57:15.000Z",
+                                      "updatedAt": "2026-07-28T10:57:15.000Z",
+                                      "uid": "35240-d4cc099f-dd60-487d-b7dc-2138253f3fa7"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T10:57:15.000Z",
+                                  "updatedAt": "2026-07-28T10:57:15.000Z",
+                                  "uid": "35240-65adc9ff-8b53-48d3-ad06-89a647acae44"
+                                }
+                              ],
+                              "id": "c3fb1f51-a4dc-4bd8-9094-b2f450b902e6",
+                              "createdAt": "2026-07-28T10:57:15.000Z",
+                              "updatedAt": "2026-07-28T10:57:15.000Z",
+                              "uid": "35240-c3fb1f51-a4dc-4bd8-9094-b2f450b902e6"
+                            },
+                            {
+                              "name": "Calibration Injection Controller get Calibration Injections",
+                              "id": "86e3544a-e24f-488c-8483-e7eaf1d04e14",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/calibration-injections",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "qa-certification-mgmt",
+                                    "locations",
+                                    ":locId",
+                                    "test-summary",
+                                    ":testSumId",
+                                    "calibration-injections"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "468f6f7f-8004-4bc3-ba4e-7d6ab3113dd2",
+                                      "key": "locId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "16f5e632-cf4d-421f-b183-82416caa5219",
+                                      "key": "testSumId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                }
+                              },
+                              "response": [
+                                {
+                                  "id": "e8a5599c-ce1a-45bb-99b4-09e36fe7afcc",
+                                  "name": "Retrieves workspace Calibration Injection records by Test Summary Id",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/calibration-injections?key=<API Key>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "qa-certification-mgmt",
+                                        "locations",
+                                        ":locId",
+                                        "test-summary",
+                                        ":testSumId",
+                                        "calibration-injections"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Added as a part of security scheme: apikey",
+                                          "key": "key",
+                                          "value": "<API Key>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "locId"
+                                        },
+                                        {
+                                          "key": "testSumId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"testSumId\": \"<string>\",\n      \"calculatedZeroCalibrationError\": \"<number>\",\n      \"calculatedZeroAPSIndicator\": \"<number>\",\n      \"calculatedUpscaleCalibrationError\": \"<number>\",\n      \"calculatedUpscaleAPSIndicator\": \"<number>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"onlineOfflineIndicator\": \"<number>\",\n      \"upscaleGasLevelCode\": \"<string>\",\n      \"zeroInjectionDate\": \"<dateTime>\",\n      \"zeroInjectionHour\": \"<number>\",\n      \"zeroInjectionMinute\": \"<number>\",\n      \"upscaleInjectionDate\": \"<dateTime>\",\n      \"upscaleInjectionHour\": \"<number>\",\n      \"upscaleInjectionMinute\": \"<number>\",\n      \"zeroMeasuredValue\": \"<number>\",\n      \"upscaleMeasuredValue\": \"<number>\",\n      \"zeroAPSIndicator\": \"<number>\",\n      \"upscaleAPSIndicator\": \"<number>\",\n      \"zeroCalibrationError\": \"<number>\",\n      \"upscaleCalibrationError\": \"<number>\",\n      \"zeroReferenceValue\": \"<number>\",\n      \"upscaleReferenceValue\": \"<number>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"testSumId\": \"<string>\",\n      \"calculatedZeroCalibrationError\": \"<number>\",\n      \"calculatedZeroAPSIndicator\": \"<number>\",\n      \"calculatedUpscaleCalibrationError\": \"<number>\",\n      \"calculatedUpscaleAPSIndicator\": \"<number>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"onlineOfflineIndicator\": \"<number>\",\n      \"upscaleGasLevelCode\": \"<string>\",\n      \"zeroInjectionDate\": \"<dateTime>\",\n      \"zeroInjectionHour\": \"<number>\",\n      \"zeroInjectionMinute\": \"<number>\",\n      \"upscaleInjectionDate\": \"<dateTime>\",\n      \"upscaleInjectionHour\": \"<number>\",\n      \"upscaleInjectionMinute\": \"<number>\",\n      \"zeroMeasuredValue\": \"<number>\",\n      \"upscaleMeasuredValue\": \"<number>\",\n      \"zeroAPSIndicator\": \"<number>\",\n      \"upscaleAPSIndicator\": \"<number>\",\n      \"zeroCalibrationError\": \"<number>\",\n      \"upscaleCalibrationError\": \"<number>\",\n      \"zeroReferenceValue\": \"<number>\",\n      \"upscaleReferenceValue\": \"<number>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T10:57:15.000Z",
+                                  "updatedAt": "2026-07-28T10:57:15.000Z",
+                                  "uid": "35240-e8a5599c-ce1a-45bb-99b4-09e36fe7afcc"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T10:57:15.000Z",
+                              "updatedAt": "2026-07-28T10:57:15.000Z",
+                              "uid": "35240-86e3544a-e24f-488c-8483-e7eaf1d04e14"
+                            }
+                          ],
+                          "id": "3d3bf897-8e05-472f-97d9-04fbc85cede8",
+                          "createdAt": "2026-07-28T10:57:15.000Z",
+                          "updatedAt": "2026-07-28T10:57:15.000Z",
+                          "uid": "35240-3d3bf897-8e05-472f-97d9-04fbc85cede8"
+                        }
+                      ],
+                      "id": "a2749b5c-0dbc-4527-b267-0262cfa33f8d",
+                      "createdAt": "2026-07-28T10:57:15.000Z",
+                      "updatedAt": "2026-07-28T10:57:15.000Z",
+                      "uid": "35240-a2749b5c-0dbc-4527-b267-0262cfa33f8d"
+                    }
+                  ],
+                  "id": "03f9f431-4d9e-42d6-b618-627c4a7887a4",
+                  "createdAt": "2026-07-28T10:57:15.000Z",
+                  "updatedAt": "2026-07-28T10:57:15.000Z",
+                  "uid": "35240-03f9f431-4d9e-42d6-b618-627c4a7887a4"
+                }
+              ],
+              "id": "f5817e0a-35ad-4d91-891e-a5737cc633eb",
+              "createdAt": "2026-07-28T10:57:15.000Z",
+              "updatedAt": "2026-07-28T10:57:15.000Z",
+              "uid": "35240-f5817e0a-35ad-4d91-891e-a5737cc633eb"
+            }
+          ],
+          "id": "f87c6e2a-c073-4102-92fb-930b0ac8d299",
+          "createdAt": "2026-07-28T10:57:15.000Z",
+          "updatedAt": "2026-07-28T10:57:15.000Z",
+          "uid": "35240-f87c6e2a-c073-4102-92fb-930b0ac8d299"
+        }
+      ],
+      "id": "5004e5a1-8928-48a3-8833-3c3f6ce1947f",
+      "createdAt": "2026-07-28T10:57:15.000Z",
+      "updatedAt": "2026-07-28T10:57:15.000Z",
+      "uid": "35240-5004e5a1-8928-48a3-8833-3c3f6ce1947f"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

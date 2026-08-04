@@ -1,0 +1,2738 @@
+{
+  "info": {
+    "_postman_id": "26a8912e-8312-4772-bbbe-4daf1da15318",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Apportioned Ozone Emissions API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:57:08.000Z",
+    "updatedAt": "2026-07-28T10:57:08.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-26a8912e-8312-4772-bbbe-4daf1da15318"
+  },
+  "item": [
+    {
+      "name": "emissions-mgmt",
+      "item": [
+        {
+          "name": "emissions",
+          "item": [
+            {
+              "name": "apportioned",
+              "item": [
+                {
+                  "name": "ozone",
+                  "item": [
+                    {
+                      "name": "by-facility",
+                      "item": [
+                        {
+                          "name": "Ozone Apportioned Emissions Controller get Emissions Facility Aggregation",
+                          "id": "8e9b8925-3b77-44b6-9ed3-2fbf4b56e690",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/ozone/by-facility?stateCode=CO|GA&facilityId=<number>|<number>&unitType=Other turbine|Dry bottom vertically-fired boiler&unitFuelType=Diesel Oil|Process Sludge&controlTechnologies=Ammonia Injection|Selective Catalytic Reduction&programCodeInfo=OTC|NBP&year=<number>|<number>&page=<number>&perPage=<number>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "emissions-mgmt",
+                                "emissions",
+                                "apportioned",
+                                "ozone",
+                                "by-facility"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "CO|GA"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Other turbine|Dry bottom vertically-fired boiler"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Diesel Oil|Process Sludge"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Ammonia Injection|Selective Catalytic Reduction"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "OTC|NBP"
+                                },
+                                {
+                                  "description": "(Required) The calendar year during which activity occurred.",
+                                  "key": "year",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "(Required) Page number of data being requested.",
+                                  "key": "page",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "(Required) Number of results per page.",
+                                  "key": "perPage",
+                                  "value": "<number>"
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "2c1d7b3e-9777-480e-9e37-10e80498c3d1",
+                              "name": "Retrieves Ozone Apportioned Emissions per filter criteria aggregated by facility",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/ozone/by-facility?stateCode=CO|GA&facilityId=<number>|<number>&unitType=Other turbine|Dry bottom vertically-fired boiler&unitFuelType=Diesel Oil|Process Sludge&controlTechnologies=Ammonia Injection|Selective Catalytic Reduction&programCodeInfo=OTC|NBP&year=<number>|<number>&page=<number>&perPage=<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "ozone",
+                                    "by-facility"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "CO|GA"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Other turbine|Dry bottom vertically-fired boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Diesel Oil|Process Sludge"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Ammonia Injection|Selective Catalytic Reduction"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "OTC|NBP"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Page number of data being requested.",
+                                      "key": "page",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Number of results per page.",
+                                      "key": "perPage",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"items\": [\n    {\n      \"year\": \"<number>\",\n      \"facilityName\": \"<string>\",\n      \"stateCode\": \"<string>\",\n      \"grossLoad\": \"<number>\",\n      \"steamLoad\": \"<number>\",\n      \"so2Mass\": \"<number>\",\n      \"co2Mass\": \"<number>\",\n      \"noxMass\": \"<number>\",\n      \"heatInput\": \"<number>\",\n      \"facilityId\": \"<number>\"\n    },\n    {\n      \"year\": \"<number>\",\n      \"facilityName\": \"<string>\",\n      \"stateCode\": \"<string>\",\n      \"grossLoad\": \"<number>\",\n      \"steamLoad\": \"<number>\",\n      \"so2Mass\": \"<number>\",\n      \"co2Mass\": \"<number>\",\n      \"noxMass\": \"<number>\",\n      \"heatInput\": \"<number>\",\n      \"facilityId\": \"<number>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T10:57:08.000Z",
+                              "updatedAt": "2026-07-28T10:57:08.000Z",
+                              "uid": "35240-2c1d7b3e-9777-480e-9e37-10e80498c3d1"
+                            },
+                            {
+                              "id": "e4db33e7-e1d5-4115-96de-e464e6cdbea3",
+                              "name": "Invalid Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/ozone/by-facility?stateCode=CO|GA&facilityId=<number>|<number>&unitType=Other turbine|Dry bottom vertically-fired boiler&unitFuelType=Diesel Oil|Process Sludge&controlTechnologies=Ammonia Injection|Selective Catalytic Reduction&programCodeInfo=OTC|NBP&year=<number>|<number>&page=<number>&perPage=<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "ozone",
+                                    "by-facility"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "CO|GA"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Other turbine|Dry bottom vertically-fired boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Diesel Oil|Process Sludge"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Ammonia Injection|Selective Catalytic Reduction"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "OTC|NBP"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Page number of data being requested.",
+                                      "key": "page",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Number of results per page.",
+                                      "key": "perPage",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:08.000Z",
+                              "updatedAt": "2026-07-28T10:57:08.000Z",
+                              "uid": "35240-e4db33e7-e1d5-4115-96de-e464e6cdbea3"
+                            },
+                            {
+                              "id": "fa6dcab1-6cf1-478f-ace6-3fbd43e7eef1",
+                              "name": "Resource Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/ozone/by-facility?stateCode=CO|GA&facilityId=<number>|<number>&unitType=Other turbine|Dry bottom vertically-fired boiler&unitFuelType=Diesel Oil|Process Sludge&controlTechnologies=Ammonia Injection|Selective Catalytic Reduction&programCodeInfo=OTC|NBP&year=<number>|<number>&page=<number>&perPage=<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "ozone",
+                                    "by-facility"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "CO|GA"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Other turbine|Dry bottom vertically-fired boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Diesel Oil|Process Sludge"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Ammonia Injection|Selective Catalytic Reduction"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "OTC|NBP"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Page number of data being requested.",
+                                      "key": "page",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Number of results per page.",
+                                      "key": "perPage",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:08.000Z",
+                              "updatedAt": "2026-07-28T10:57:08.000Z",
+                              "uid": "35240-fa6dcab1-6cf1-478f-ace6-3fbd43e7eef1"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T10:57:08.000Z",
+                          "updatedAt": "2026-07-28T10:57:08.000Z",
+                          "uid": "35240-8e9b8925-3b77-44b6-9ed3-2fbf4b56e690"
+                        }
+                      ],
+                      "id": "9bd97e92-2cc3-4bb3-81e1-1bfb4d7ce7db",
+                      "createdAt": "2026-07-28T10:57:08.000Z",
+                      "updatedAt": "2026-07-28T10:57:08.000Z",
+                      "uid": "35240-9bd97e92-2cc3-4bb3-81e1-1bfb4d7ce7db"
+                    },
+                    {
+                      "name": "by-state",
+                      "item": [
+                        {
+                          "name": "Ozone Apportioned Emissions Controller get Emissions State Aggregation",
+                          "id": "9c6342aa-0a3d-4f22-a85c-3a832e3b7348",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/ozone/by-state?stateCode=CO|GA&facilityId=<number>|<number>&unitType=Other turbine|Dry bottom vertically-fired boiler&unitFuelType=Diesel Oil|Process Sludge&controlTechnologies=Ammonia Injection|Selective Catalytic Reduction&programCodeInfo=OTC|NBP&year=<number>|<number>&page=<number>&perPage=<number>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "emissions-mgmt",
+                                "emissions",
+                                "apportioned",
+                                "ozone",
+                                "by-state"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "CO|GA"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Other turbine|Dry bottom vertically-fired boiler"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Diesel Oil|Process Sludge"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Ammonia Injection|Selective Catalytic Reduction"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "OTC|NBP"
+                                },
+                                {
+                                  "description": "(Required) The calendar year during which activity occurred.",
+                                  "key": "year",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "(Required) Page number of data being requested.",
+                                  "key": "page",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "(Required) Number of results per page.",
+                                  "key": "perPage",
+                                  "value": "<number>"
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "d7d010ab-8027-4154-97a3-196e51913ce4",
+                              "name": "Retrieves Ozone Apportioned Emissions per filter criteria aggregated by state",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/ozone/by-state?stateCode=CO|GA&facilityId=<number>|<number>&unitType=Other turbine|Dry bottom vertically-fired boiler&unitFuelType=Diesel Oil|Process Sludge&controlTechnologies=Ammonia Injection|Selective Catalytic Reduction&programCodeInfo=OTC|NBP&year=<number>|<number>&page=<number>&perPage=<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "ozone",
+                                    "by-state"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "CO|GA"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Other turbine|Dry bottom vertically-fired boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Diesel Oil|Process Sludge"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Ammonia Injection|Selective Catalytic Reduction"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "OTC|NBP"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Page number of data being requested.",
+                                      "key": "page",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Number of results per page.",
+                                      "key": "perPage",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"items\": [\n    {\n      \"year\": \"<number>\",\n      \"stateCode\": \"<string>\",\n      \"grossLoad\": \"<number>\",\n      \"steamLoad\": \"<number>\",\n      \"so2Mass\": \"<number>\",\n      \"co2Mass\": \"<number>\",\n      \"noxMass\": \"<number>\",\n      \"heatInput\": \"<number>\"\n    },\n    {\n      \"year\": \"<number>\",\n      \"stateCode\": \"<string>\",\n      \"grossLoad\": \"<number>\",\n      \"steamLoad\": \"<number>\",\n      \"so2Mass\": \"<number>\",\n      \"co2Mass\": \"<number>\",\n      \"noxMass\": \"<number>\",\n      \"heatInput\": \"<number>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T10:57:08.000Z",
+                              "updatedAt": "2026-07-28T10:57:08.000Z",
+                              "uid": "35240-d7d010ab-8027-4154-97a3-196e51913ce4"
+                            },
+                            {
+                              "id": "90f08909-7abb-4eb8-a622-d102bfb5a3d1",
+                              "name": "Invalid Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/ozone/by-state?stateCode=CO|GA&facilityId=<number>|<number>&unitType=Other turbine|Dry bottom vertically-fired boiler&unitFuelType=Diesel Oil|Process Sludge&controlTechnologies=Ammonia Injection|Selective Catalytic Reduction&programCodeInfo=OTC|NBP&year=<number>|<number>&page=<number>&perPage=<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "ozone",
+                                    "by-state"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "CO|GA"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Other turbine|Dry bottom vertically-fired boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Diesel Oil|Process Sludge"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Ammonia Injection|Selective Catalytic Reduction"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "OTC|NBP"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Page number of data being requested.",
+                                      "key": "page",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Number of results per page.",
+                                      "key": "perPage",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:08.000Z",
+                              "updatedAt": "2026-07-28T10:57:08.000Z",
+                              "uid": "35240-90f08909-7abb-4eb8-a622-d102bfb5a3d1"
+                            },
+                            {
+                              "id": "9d81179b-29fd-4437-9446-8ad2cc7b5b86",
+                              "name": "Resource Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/ozone/by-state?stateCode=CO|GA&facilityId=<number>|<number>&unitType=Other turbine|Dry bottom vertically-fired boiler&unitFuelType=Diesel Oil|Process Sludge&controlTechnologies=Ammonia Injection|Selective Catalytic Reduction&programCodeInfo=OTC|NBP&year=<number>|<number>&page=<number>&perPage=<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "ozone",
+                                    "by-state"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "CO|GA"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Other turbine|Dry bottom vertically-fired boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Diesel Oil|Process Sludge"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Ammonia Injection|Selective Catalytic Reduction"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "OTC|NBP"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Page number of data being requested.",
+                                      "key": "page",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Number of results per page.",
+                                      "key": "perPage",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:08.000Z",
+                              "updatedAt": "2026-07-28T10:57:08.000Z",
+                              "uid": "35240-9d81179b-29fd-4437-9446-8ad2cc7b5b86"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T10:57:08.000Z",
+                          "updatedAt": "2026-07-28T10:57:08.000Z",
+                          "uid": "35240-9c6342aa-0a3d-4f22-a85c-3a832e3b7348"
+                        }
+                      ],
+                      "id": "83e93e05-94d0-41ee-bdd1-f8ae48ef6183",
+                      "createdAt": "2026-07-28T10:57:08.000Z",
+                      "updatedAt": "2026-07-28T10:57:08.000Z",
+                      "uid": "35240-83e93e05-94d0-41ee-bdd1-f8ae48ef6183"
+                    },
+                    {
+                      "name": "nationally",
+                      "item": [
+                        {
+                          "name": "Ozone Apportioned Emissions Controller get Emissions National Aggregation",
+                          "id": "7ae407c2-f51e-40e7-b810-a468d9285d47",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/ozone/nationally?stateCode=CO|GA&facilityId=<number>|<number>&unitType=Other turbine|Dry bottom vertically-fired boiler&unitFuelType=Diesel Oil|Process Sludge&controlTechnologies=Ammonia Injection|Selective Catalytic Reduction&programCodeInfo=OTC|NBP&year=<number>|<number>&page=<number>&perPage=<number>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "emissions-mgmt",
+                                "emissions",
+                                "apportioned",
+                                "ozone",
+                                "nationally"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "CO|GA"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Other turbine|Dry bottom vertically-fired boiler"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Diesel Oil|Process Sludge"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Ammonia Injection|Selective Catalytic Reduction"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "OTC|NBP"
+                                },
+                                {
+                                  "description": "(Required) The calendar year during which activity occurred.",
+                                  "key": "year",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "(Required) Page number of data being requested.",
+                                  "key": "page",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "(Required) Number of results per page.",
+                                  "key": "perPage",
+                                  "value": "<number>"
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "3eb5e03b-f6ed-4ff6-a644-8de7ca694ee9",
+                              "name": "Retrieves Ozone Apportioned Emissions per filter criteria aggregated nationally",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/ozone/nationally?stateCode=CO|GA&facilityId=<number>|<number>&unitType=Other turbine|Dry bottom vertically-fired boiler&unitFuelType=Diesel Oil|Process Sludge&controlTechnologies=Ammonia Injection|Selective Catalytic Reduction&programCodeInfo=OTC|NBP&year=<number>|<number>&page=<number>&perPage=<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "ozone",
+                                    "nationally"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "CO|GA"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Other turbine|Dry bottom vertically-fired boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Diesel Oil|Process Sludge"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Ammonia Injection|Selective Catalytic Reduction"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "OTC|NBP"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Page number of data being requested.",
+                                      "key": "page",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Number of results per page.",
+                                      "key": "perPage",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"items\": [\n    {\n      \"year\": \"<number>\",\n      \"grossLoad\": \"<number>\",\n      \"steamLoad\": \"<number>\",\n      \"so2Mass\": \"<number>\",\n      \"co2Mass\": \"<number>\",\n      \"noxMass\": \"<number>\",\n      \"heatInput\": \"<number>\"\n    },\n    {\n      \"year\": \"<number>\",\n      \"grossLoad\": \"<number>\",\n      \"steamLoad\": \"<number>\",\n      \"so2Mass\": \"<number>\",\n      \"co2Mass\": \"<number>\",\n      \"noxMass\": \"<number>\",\n      \"heatInput\": \"<number>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T10:57:08.000Z",
+                              "updatedAt": "2026-07-28T10:57:08.000Z",
+                              "uid": "35240-3eb5e03b-f6ed-4ff6-a644-8de7ca694ee9"
+                            },
+                            {
+                              "id": "14809501-848d-41d6-85ea-c608dbdabb01",
+                              "name": "Invalid Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/ozone/nationally?stateCode=CO|GA&facilityId=<number>|<number>&unitType=Other turbine|Dry bottom vertically-fired boiler&unitFuelType=Diesel Oil|Process Sludge&controlTechnologies=Ammonia Injection|Selective Catalytic Reduction&programCodeInfo=OTC|NBP&year=<number>|<number>&page=<number>&perPage=<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "ozone",
+                                    "nationally"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "CO|GA"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Other turbine|Dry bottom vertically-fired boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Diesel Oil|Process Sludge"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Ammonia Injection|Selective Catalytic Reduction"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "OTC|NBP"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Page number of data being requested.",
+                                      "key": "page",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Number of results per page.",
+                                      "key": "perPage",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:08.000Z",
+                              "updatedAt": "2026-07-28T10:57:08.000Z",
+                              "uid": "35240-14809501-848d-41d6-85ea-c608dbdabb01"
+                            },
+                            {
+                              "id": "703e62ba-c73d-40c8-a117-1231570547d1",
+                              "name": "Resource Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/ozone/nationally?stateCode=CO|GA&facilityId=<number>|<number>&unitType=Other turbine|Dry bottom vertically-fired boiler&unitFuelType=Diesel Oil|Process Sludge&controlTechnologies=Ammonia Injection|Selective Catalytic Reduction&programCodeInfo=OTC|NBP&year=<number>|<number>&page=<number>&perPage=<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "ozone",
+                                    "nationally"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "CO|GA"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Other turbine|Dry bottom vertically-fired boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Diesel Oil|Process Sludge"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Ammonia Injection|Selective Catalytic Reduction"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "OTC|NBP"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Page number of data being requested.",
+                                      "key": "page",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Number of results per page.",
+                                      "key": "perPage",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:08.000Z",
+                              "updatedAt": "2026-07-28T10:57:08.000Z",
+                              "uid": "35240-703e62ba-c73d-40c8-a117-1231570547d1"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T10:57:08.000Z",
+                          "updatedAt": "2026-07-28T10:57:08.000Z",
+                          "uid": "35240-7ae407c2-f51e-40e7-b810-a468d9285d47"
+                        }
+                      ],
+                      "id": "16d4d299-1557-4691-937e-01506de408a4",
+                      "createdAt": "2026-07-28T10:57:08.000Z",
+                      "updatedAt": "2026-07-28T10:57:08.000Z",
+                      "uid": "35240-16d4d299-1557-4691-937e-01506de408a4"
+                    },
+                    {
+                      "name": "Ozone Apportioned Emissions Controller get Emissions",
+                      "id": "77f101c0-7296-4863-a10f-e6d8a724c9a1",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/ozone?stateCode=CO|GA&facilityId=<number>|<number>&unitType=Other turbine|Dry bottom vertically-fired boiler&unitFuelType=Diesel Oil|Process Sludge&controlTechnologies=Ammonia Injection|Selective Catalytic Reduction&programCodeInfo=OTC|NBP&year=<number>|<number>&page=<number>&perPage=<number>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "emissions-mgmt",
+                            "emissions",
+                            "apportioned",
+                            "ozone"
+                          ],
+                          "query": [
+                            {
+                              "description": "Two letter abbreviation for the State.",
+                              "key": "stateCode",
+                              "value": "CO|GA"
+                            },
+                            {
+                              "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                              "key": "facilityId",
+                              "value": "<number>|<number>"
+                            },
+                            {
+                              "description": "Type of unit or boiler.",
+                              "key": "unitType",
+                              "value": "Other turbine|Dry bottom vertically-fired boiler"
+                            },
+                            {
+                              "description": "Primary or Secondary fuel types combusted by the unit.",
+                              "key": "unitFuelType",
+                              "value": "Diesel Oil|Process Sludge"
+                            },
+                            {
+                              "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                              "key": "controlTechnologies",
+                              "value": "Ammonia Injection|Selective Catalytic Reduction"
+                            },
+                            {
+                              "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                              "key": "programCodeInfo",
+                              "value": "OTC|NBP"
+                            },
+                            {
+                              "description": "(Required) The calendar year during which activity occurred.",
+                              "key": "year",
+                              "value": "<number>|<number>"
+                            },
+                            {
+                              "description": "(Required) Page number of data being requested.",
+                              "key": "page",
+                              "value": "<number>"
+                            },
+                            {
+                              "description": "(Required) Number of results per page.",
+                              "key": "perPage",
+                              "value": "<number>"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "3ace3f48-9ccd-42c5-9632-bd72e6960923",
+                          "name": "Retrieves Ozone Apportioned Emissions per filter criteria",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/ozone?stateCode=CO|GA&facilityId=<number>|<number>&unitType=Other turbine|Dry bottom vertically-fired boiler&unitFuelType=Diesel Oil|Process Sludge&controlTechnologies=Ammonia Injection|Selective Catalytic Reduction&programCodeInfo=OTC|NBP&year=<number>|<number>&page=<number>&perPage=<number>&key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "emissions-mgmt",
+                                "emissions",
+                                "apportioned",
+                                "ozone"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "CO|GA"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Other turbine|Dry bottom vertically-fired boiler"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Diesel Oil|Process Sludge"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Ammonia Injection|Selective Catalytic Reduction"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "OTC|NBP"
+                                },
+                                {
+                                  "description": "(Required) The calendar year during which activity occurred.",
+                                  "key": "year",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "(Required) Page number of data being requested.",
+                                  "key": "page",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "(Required) Number of results per page.",
+                                  "key": "perPage",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"items\": [\n    {\n      \"stateCode\": \"<string>\",\n      \"facilityName\": \"<string>\",\n      \"facilityId\": \"<number>\",\n      \"unit_id\": \"<string>\",\n      \"unitId\": \"<string>\",\n      \"associatedStacks\": \"<string>\",\n      \"year\": \"<number>\",\n      \"countOpTime\": \"<number>\",\n      \"sumOpTime\": \"<number>\",\n      \"grossLoad\": \"<number>\",\n      \"steamLoad\": \"<number>\",\n      \"so2Mass\": \"<number>\",\n      \"so2Rate\": \"<number>\",\n      \"co2Mass\": \"<number>\",\n      \"co2Rate\": \"<number>\",\n      \"noxMass\": \"<number>\",\n      \"noxRate\": \"<number>\",\n      \"heatInput\": \"<number>\",\n      \"primaryFuelInfo\": \"<string>\",\n      \"secondaryFuelInfo\": \"<string>\",\n      \"unitType\": \"<string>\",\n      \"so2ControlInfo\": \"<string>\",\n      \"noxControlInfo\": \"<string>\",\n      \"pmControlInfo\": \"<string>\",\n      \"hgControlInfo\": \"<string>\",\n      \"programCodeInfo\": \"<string>\"\n    },\n    {\n      \"stateCode\": \"<string>\",\n      \"facilityName\": \"<string>\",\n      \"facilityId\": \"<number>\",\n      \"unit_id\": \"<string>\",\n      \"unitId\": \"<string>\",\n      \"associatedStacks\": \"<string>\",\n      \"year\": \"<number>\",\n      \"countOpTime\": \"<number>\",\n      \"sumOpTime\": \"<number>\",\n      \"grossLoad\": \"<number>\",\n      \"steamLoad\": \"<number>\",\n      \"so2Mass\": \"<number>\",\n      \"so2Rate\": \"<number>\",\n      \"co2Mass\": \"<number>\",\n      \"co2Rate\": \"<number>\",\n      \"noxMass\": \"<number>\",\n      \"noxRate\": \"<number>\",\n      \"heatInput\": \"<number>\",\n      \"primaryFuelInfo\": \"<string>\",\n      \"secondaryFuelInfo\": \"<string>\",\n      \"unitType\": \"<string>\",\n      \"so2ControlInfo\": \"<string>\",\n      \"noxControlInfo\": \"<string>\",\n      \"pmControlInfo\": \"<string>\",\n      \"hgControlInfo\": \"<string>\",\n      \"programCodeInfo\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T10:57:08.000Z",
+                          "updatedAt": "2026-07-28T10:57:08.000Z",
+                          "uid": "35240-3ace3f48-9ccd-42c5-9632-bd72e6960923"
+                        },
+                        {
+                          "id": "98929d62-d199-4aed-be85-0d37817694e7",
+                          "name": "Invalid Request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/ozone?stateCode=CO|GA&facilityId=<number>|<number>&unitType=Other turbine|Dry bottom vertically-fired boiler&unitFuelType=Diesel Oil|Process Sludge&controlTechnologies=Ammonia Injection|Selective Catalytic Reduction&programCodeInfo=OTC|NBP&year=<number>|<number>&page=<number>&perPage=<number>&key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "emissions-mgmt",
+                                "emissions",
+                                "apportioned",
+                                "ozone"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "CO|GA"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Other turbine|Dry bottom vertically-fired boiler"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Diesel Oil|Process Sludge"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Ammonia Injection|Selective Catalytic Reduction"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "OTC|NBP"
+                                },
+                                {
+                                  "description": "(Required) The calendar year during which activity occurred.",
+                                  "key": "year",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "(Required) Page number of data being requested.",
+                                  "key": "page",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "(Required) Number of results per page.",
+                                  "key": "perPage",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T10:57:08.000Z",
+                          "updatedAt": "2026-07-28T10:57:08.000Z",
+                          "uid": "35240-98929d62-d199-4aed-be85-0d37817694e7"
+                        },
+                        {
+                          "id": "404fb747-e3bf-4fb1-9abc-5dd68b02aa41",
+                          "name": "Resource Not Found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/ozone?stateCode=CO|GA&facilityId=<number>|<number>&unitType=Other turbine|Dry bottom vertically-fired boiler&unitFuelType=Diesel Oil|Process Sludge&controlTechnologies=Ammonia Injection|Selective Catalytic Reduction&programCodeInfo=OTC|NBP&year=<number>|<number>&page=<number>&perPage=<number>&key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "emissions-mgmt",
+                                "emissions",
+                                "apportioned",
+                                "ozone"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "CO|GA"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Other turbine|Dry bottom vertically-fired boiler"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Diesel Oil|Process Sludge"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Ammonia Injection|Selective Catalytic Reduction"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "OTC|NBP"
+                                },
+                                {
+                                  "description": "(Required) The calendar year during which activity occurred.",
+                                  "key": "year",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "(Required) Page number of data being requested.",
+                                  "key": "page",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "(Required) Number of results per page.",
+                                  "key": "perPage",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T10:57:08.000Z",
+                          "updatedAt": "2026-07-28T10:57:08.000Z",
+                          "uid": "35240-404fb747-e3bf-4fb1-9abc-5dd68b02aa41"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T10:57:08.000Z",
+                      "updatedAt": "2026-07-28T10:57:08.000Z",
+                      "uid": "35240-77f101c0-7296-4863-a10f-e6d8a724c9a1"
+                    }
+                  ],
+                  "id": "c9ff706f-8d37-4d0f-910f-c2dccba76a99",
+                  "createdAt": "2026-07-28T10:57:08.000Z",
+                  "updatedAt": "2026-07-28T10:57:08.000Z",
+                  "uid": "35240-c9ff706f-8d37-4d0f-910f-c2dccba76a99"
+                }
+              ],
+              "id": "8b76cd5d-3b05-4f69-92c8-42bf3fab2b40",
+              "createdAt": "2026-07-28T10:57:08.000Z",
+              "updatedAt": "2026-07-28T10:57:08.000Z",
+              "uid": "35240-8b76cd5d-3b05-4f69-92c8-42bf3fab2b40"
+            }
+          ],
+          "id": "e05c0d58-433e-4685-a3a1-44e4699e3ce7",
+          "createdAt": "2026-07-28T10:57:08.000Z",
+          "updatedAt": "2026-07-28T10:57:08.000Z",
+          "uid": "35240-e05c0d58-433e-4685-a3a1-44e4699e3ce7"
+        }
+      ],
+      "id": "6ca35b5d-6f33-43a9-8c3a-d7c05c27719f",
+      "createdAt": "2026-07-28T10:57:08.000Z",
+      "updatedAt": "2026-07-28T10:57:08.000Z",
+      "uid": "35240-6ca35b5d-6f33-43a9-8c3a-d7c05c27719f"
+    },
+    {
+      "name": "streaming-services",
+      "item": [
+        {
+          "name": "emissions",
+          "item": [
+            {
+              "name": "apportioned",
+              "item": [
+                {
+                  "name": "ozone",
+                  "item": [
+                    {
+                      "name": "by-facility",
+                      "item": [
+                        {
+                          "name": "Ozone Apportioned Emissions Controller stream Emissions Facility Aggregation",
+                          "id": "48c68cfe-3e6c-4d2d-be1c-78748d6d03ec",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/ozone/by-facility?stateCode=CO|GA&facilityId=<number>|<number>&unitType=Other turbine|Dry bottom vertically-fired boiler&unitFuelType=Diesel Oil|Process Sludge&controlTechnologies=Ammonia Injection|Selective Catalytic Reduction&programCodeInfo=OTC|NBP&year=<number>|<number>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "streaming-services",
+                                "emissions",
+                                "apportioned",
+                                "ozone",
+                                "by-facility"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "CO|GA"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Other turbine|Dry bottom vertically-fired boiler"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Diesel Oil|Process Sludge"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Ammonia Injection|Selective Catalytic Reduction"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "OTC|NBP"
+                                },
+                                {
+                                  "description": "(Required) The calendar year during which activity occurred.",
+                                  "key": "year",
+                                  "value": "<number>|<number>"
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "7fa39772-be31-44db-9bbd-6da7e964ef34",
+                              "name": "Streams Ozone Apportioned Emissions data per filter criteria aggregated by facility",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/ozone/by-facility?stateCode=CO|GA&facilityId=<number>|<number>&unitType=Other turbine|Dry bottom vertically-fired boiler&unitFuelType=Diesel Oil|Process Sludge&controlTechnologies=Ammonia Injection|Selective Catalytic Reduction&programCodeInfo=OTC|NBP&year=<number>|<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "streaming-services",
+                                    "emissions",
+                                    "apportioned",
+                                    "ozone",
+                                    "by-facility"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "CO|GA"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Other turbine|Dry bottom vertically-fired boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Diesel Oil|Process Sludge"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Ammonia Injection|Selective Catalytic Reduction"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "OTC|NBP"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"year\": \"<number>\",\n  \"facilityName\": \"<string>\",\n  \"stateCode\": \"<string>\",\n  \"grossLoad\": \"<number>\",\n  \"steamLoad\": \"<number>\",\n  \"so2Mass\": \"<number>\",\n  \"co2Mass\": \"<number>\",\n  \"noxMass\": \"<number>\",\n  \"heatInput\": \"<number>\",\n  \"facilityId\": \"<number>\"\n}",
+                              "createdAt": "2026-07-28T10:57:08.000Z",
+                              "updatedAt": "2026-07-28T10:57:08.000Z",
+                              "uid": "35240-7fa39772-be31-44db-9bbd-6da7e964ef34"
+                            },
+                            {
+                              "id": "774b7f40-daf1-4371-8bf0-b22c8a17a14a",
+                              "name": "Invalid Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/ozone/by-facility?stateCode=CO|GA&facilityId=<number>|<number>&unitType=Other turbine|Dry bottom vertically-fired boiler&unitFuelType=Diesel Oil|Process Sludge&controlTechnologies=Ammonia Injection|Selective Catalytic Reduction&programCodeInfo=OTC|NBP&year=<number>|<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "streaming-services",
+                                    "emissions",
+                                    "apportioned",
+                                    "ozone",
+                                    "by-facility"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "CO|GA"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Other turbine|Dry bottom vertically-fired boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Diesel Oil|Process Sludge"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Ammonia Injection|Selective Catalytic Reduction"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "OTC|NBP"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:08.000Z",
+                              "updatedAt": "2026-07-28T10:57:08.000Z",
+                              "uid": "35240-774b7f40-daf1-4371-8bf0-b22c8a17a14a"
+                            },
+                            {
+                              "id": "9c638453-92a1-4903-94db-877616b303f7",
+                              "name": "Resource Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/ozone/by-facility?stateCode=CO|GA&facilityId=<number>|<number>&unitType=Other turbine|Dry bottom vertically-fired boiler&unitFuelType=Diesel Oil|Process Sludge&controlTechnologies=Ammonia Injection|Selective Catalytic Reduction&programCodeInfo=OTC|NBP&year=<number>|<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "streaming-services",
+                                    "emissions",
+                                    "apportioned",
+                                    "ozone",
+                                    "by-facility"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "CO|GA"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Other turbine|Dry bottom vertically-fired boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Diesel Oil|Process Sludge"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Ammonia Injection|Selective Catalytic Reduction"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "OTC|NBP"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:08.000Z",
+                              "updatedAt": "2026-07-28T10:57:08.000Z",
+                              "uid": "35240-9c638453-92a1-4903-94db-877616b303f7"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T10:57:08.000Z",
+                          "updatedAt": "2026-07-28T10:57:08.000Z",
+                          "uid": "35240-48c68cfe-3e6c-4d2d-be1c-78748d6d03ec"
+                        }
+                      ],
+                      "id": "f497d5fb-3035-4826-bcc3-e6dbe9eb8ae7",
+                      "createdAt": "2026-07-28T10:57:08.000Z",
+                      "updatedAt": "2026-07-28T10:57:08.000Z",
+                      "uid": "35240-f497d5fb-3035-4826-bcc3-e6dbe9eb8ae7"
+                    },
+                    {
+                      "name": "by-state",
+                      "item": [
+                        {
+                          "name": "Ozone Apportioned Emissions Controller stream Emissions State Aggregation",
+                          "id": "af3e44e5-6c11-4c5b-b1a0-e58276c244c5",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/ozone/by-state?stateCode=CO|GA&facilityId=<number>|<number>&unitType=Other turbine|Dry bottom vertically-fired boiler&unitFuelType=Diesel Oil|Process Sludge&controlTechnologies=Ammonia Injection|Selective Catalytic Reduction&programCodeInfo=OTC|NBP&year=<number>|<number>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "streaming-services",
+                                "emissions",
+                                "apportioned",
+                                "ozone",
+                                "by-state"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "CO|GA"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Other turbine|Dry bottom vertically-fired boiler"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Diesel Oil|Process Sludge"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Ammonia Injection|Selective Catalytic Reduction"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "OTC|NBP"
+                                },
+                                {
+                                  "description": "(Required) The calendar year during which activity occurred.",
+                                  "key": "year",
+                                  "value": "<number>|<number>"
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "db19ccb1-27da-43d9-ae5d-920f8fe146a8",
+                              "name": "Retrieves Ozone Apportioned Emissions data per filter criteria aggregated by state",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/ozone/by-state?stateCode=CO|GA&facilityId=<number>|<number>&unitType=Other turbine|Dry bottom vertically-fired boiler&unitFuelType=Diesel Oil|Process Sludge&controlTechnologies=Ammonia Injection|Selective Catalytic Reduction&programCodeInfo=OTC|NBP&year=<number>|<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "streaming-services",
+                                    "emissions",
+                                    "apportioned",
+                                    "ozone",
+                                    "by-state"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "CO|GA"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Other turbine|Dry bottom vertically-fired boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Diesel Oil|Process Sludge"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Ammonia Injection|Selective Catalytic Reduction"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "OTC|NBP"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"year\": \"<number>\",\n  \"stateCode\": \"<string>\",\n  \"grossLoad\": \"<number>\",\n  \"steamLoad\": \"<number>\",\n  \"so2Mass\": \"<number>\",\n  \"co2Mass\": \"<number>\",\n  \"noxMass\": \"<number>\",\n  \"heatInput\": \"<number>\"\n}",
+                              "createdAt": "2026-07-28T10:57:08.000Z",
+                              "updatedAt": "2026-07-28T10:57:08.000Z",
+                              "uid": "35240-db19ccb1-27da-43d9-ae5d-920f8fe146a8"
+                            },
+                            {
+                              "id": "1da23c38-f937-45ba-8d73-c04a26aa4d34",
+                              "name": "Invalid Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/ozone/by-state?stateCode=CO|GA&facilityId=<number>|<number>&unitType=Other turbine|Dry bottom vertically-fired boiler&unitFuelType=Diesel Oil|Process Sludge&controlTechnologies=Ammonia Injection|Selective Catalytic Reduction&programCodeInfo=OTC|NBP&year=<number>|<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "streaming-services",
+                                    "emissions",
+                                    "apportioned",
+                                    "ozone",
+                                    "by-state"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "CO|GA"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Other turbine|Dry bottom vertically-fired boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Diesel Oil|Process Sludge"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Ammonia Injection|Selective Catalytic Reduction"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "OTC|NBP"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:08.000Z",
+                              "updatedAt": "2026-07-28T10:57:08.000Z",
+                              "uid": "35240-1da23c38-f937-45ba-8d73-c04a26aa4d34"
+                            },
+                            {
+                              "id": "6a8176af-955b-4134-9e66-51b8291aee19",
+                              "name": "Resource Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/ozone/by-state?stateCode=CO|GA&facilityId=<number>|<number>&unitType=Other turbine|Dry bottom vertically-fired boiler&unitFuelType=Diesel Oil|Process Sludge&controlTechnologies=Ammonia Injection|Selective Catalytic Reduction&programCodeInfo=OTC|NBP&year=<number>|<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "streaming-services",
+                                    "emissions",
+                                    "apportioned",
+                                    "ozone",
+                                    "by-state"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "CO|GA"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Other turbine|Dry bottom vertically-fired boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Diesel Oil|Process Sludge"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Ammonia Injection|Selective Catalytic Reduction"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "OTC|NBP"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:08.000Z",
+                              "updatedAt": "2026-07-28T10:57:08.000Z",
+                              "uid": "35240-6a8176af-955b-4134-9e66-51b8291aee19"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T10:57:08.000Z",
+                          "updatedAt": "2026-07-28T10:57:08.000Z",
+                          "uid": "35240-af3e44e5-6c11-4c5b-b1a0-e58276c244c5"
+                        }
+                      ],
+                      "id": "370fa9c5-f116-495d-ba5e-63b2fc36cb9f",
+                      "createdAt": "2026-07-28T10:57:08.000Z",
+                      "updatedAt": "2026-07-28T10:57:08.000Z",
+                      "uid": "35240-370fa9c5-f116-495d-ba5e-63b2fc36cb9f"
+                    },
+                    {
+                      "name": "nationally",
+                      "item": [
+                        {
+                          "name": "Ozone Apportioned Emissions Controller stream Emissions National Aggregation",
+                          "id": "8269a86a-5b40-4839-bfa8-4925b130e768",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/ozone/nationally?stateCode=CO|GA&facilityId=<number>|<number>&unitType=Other turbine|Dry bottom vertically-fired boiler&unitFuelType=Diesel Oil|Process Sludge&controlTechnologies=Ammonia Injection|Selective Catalytic Reduction&programCodeInfo=OTC|NBP&year=<number>|<number>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "streaming-services",
+                                "emissions",
+                                "apportioned",
+                                "ozone",
+                                "nationally"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "CO|GA"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Other turbine|Dry bottom vertically-fired boiler"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Diesel Oil|Process Sludge"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Ammonia Injection|Selective Catalytic Reduction"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "OTC|NBP"
+                                },
+                                {
+                                  "description": "(Required) The calendar year during which activity occurred.",
+                                  "key": "year",
+                                  "value": "<number>|<number>"
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "561221d4-97d7-455f-8259-a50f5cdc6a59",
+                              "name": "Retrieves Ozone Apportioned Emissions data per filter criteria aggregated by nationally",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/ozone/nationally?stateCode=CO|GA&facilityId=<number>|<number>&unitType=Other turbine|Dry bottom vertically-fired boiler&unitFuelType=Diesel Oil|Process Sludge&controlTechnologies=Ammonia Injection|Selective Catalytic Reduction&programCodeInfo=OTC|NBP&year=<number>|<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "streaming-services",
+                                    "emissions",
+                                    "apportioned",
+                                    "ozone",
+                                    "nationally"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "CO|GA"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Other turbine|Dry bottom vertically-fired boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Diesel Oil|Process Sludge"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Ammonia Injection|Selective Catalytic Reduction"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "OTC|NBP"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"year\": \"<number>\",\n  \"grossLoad\": \"<number>\",\n  \"steamLoad\": \"<number>\",\n  \"so2Mass\": \"<number>\",\n  \"co2Mass\": \"<number>\",\n  \"noxMass\": \"<number>\",\n  \"heatInput\": \"<number>\"\n}",
+                              "createdAt": "2026-07-28T10:57:08.000Z",
+                              "updatedAt": "2026-07-28T10:57:08.000Z",
+                              "uid": "35240-561221d4-97d7-455f-8259-a50f5cdc6a59"
+                            },
+                            {
+                              "id": "95bdd271-d21c-4b4e-9ebe-858e335c1d5f",
+                              "name": "Invalid Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/ozone/nationally?stateCode=CO|GA&facilityId=<number>|<number>&unitType=Other turbine|Dry bottom vertically-fired boiler&unitFuelType=Diesel Oil|Process Sludge&controlTechnologies=Ammonia Injection|Selective Catalytic Reduction&programCodeInfo=OTC|NBP&year=<number>|<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "streaming-services",
+                                    "emissions",
+                                    "apportioned",
+                                    "ozone",
+                                    "nationally"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "CO|GA"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Other turbine|Dry bottom vertically-fired boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Diesel Oil|Process Sludge"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Ammonia Injection|Selective Catalytic Reduction"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "OTC|NBP"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:08.000Z",
+                              "updatedAt": "2026-07-28T10:57:08.000Z",
+                              "uid": "35240-95bdd271-d21c-4b4e-9ebe-858e335c1d5f"
+                            },
+                            {
+                              "id": "ce39a23e-6ab7-4667-9bf0-c0513390c682",
+                              "name": "Resource Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/ozone/nationally?stateCode=CO|GA&facilityId=<number>|<number>&unitType=Other turbine|Dry bottom vertically-fired boiler&unitFuelType=Diesel Oil|Process Sludge&controlTechnologies=Ammonia Injection|Selective Catalytic Reduction&programCodeInfo=OTC|NBP&year=<number>|<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "streaming-services",
+                                    "emissions",
+                                    "apportioned",
+                                    "ozone",
+                                    "nationally"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "CO|GA"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Other turbine|Dry bottom vertically-fired boiler"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Diesel Oil|Process Sludge"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Ammonia Injection|Selective Catalytic Reduction"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "OTC|NBP"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:08.000Z",
+                              "updatedAt": "2026-07-28T10:57:08.000Z",
+                              "uid": "35240-ce39a23e-6ab7-4667-9bf0-c0513390c682"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T10:57:08.000Z",
+                          "updatedAt": "2026-07-28T10:57:08.000Z",
+                          "uid": "35240-8269a86a-5b40-4839-bfa8-4925b130e768"
+                        }
+                      ],
+                      "id": "33dca4da-4fe0-4206-bc33-cd6600d0ba81",
+                      "createdAt": "2026-07-28T10:57:08.000Z",
+                      "updatedAt": "2026-07-28T10:57:08.000Z",
+                      "uid": "35240-33dca4da-4fe0-4206-bc33-cd6600d0ba81"
+                    },
+                    {
+                      "name": "Ozone Apportioned Emissions Controller stream Emissions",
+                      "id": "6e4eff72-4419-4271-a3ec-fd0108b2c16e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/ozone?stateCode=CO|GA&facilityId=<number>|<number>&unitType=Other turbine|Dry bottom vertically-fired boiler&unitFuelType=Diesel Oil|Process Sludge&controlTechnologies=Ammonia Injection|Selective Catalytic Reduction&programCodeInfo=OTC|NBP&year=<number>|<number>&exclude=steamLoad|so2Rate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "streaming-services",
+                            "emissions",
+                            "apportioned",
+                            "ozone"
+                          ],
+                          "query": [
+                            {
+                              "description": "Two letter abbreviation for the State.",
+                              "key": "stateCode",
+                              "value": "CO|GA"
+                            },
+                            {
+                              "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                              "key": "facilityId",
+                              "value": "<number>|<number>"
+                            },
+                            {
+                              "description": "Type of unit or boiler.",
+                              "key": "unitType",
+                              "value": "Other turbine|Dry bottom vertically-fired boiler"
+                            },
+                            {
+                              "description": "Primary or Secondary fuel types combusted by the unit.",
+                              "key": "unitFuelType",
+                              "value": "Diesel Oil|Process Sludge"
+                            },
+                            {
+                              "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                              "key": "controlTechnologies",
+                              "value": "Ammonia Injection|Selective Catalytic Reduction"
+                            },
+                            {
+                              "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                              "key": "programCodeInfo",
+                              "value": "OTC|NBP"
+                            },
+                            {
+                              "description": "(Required) The calendar year during which activity occurred.",
+                              "key": "year",
+                              "value": "<number>|<number>"
+                            },
+                            {
+                              "description": "Selected items will be excluded from the response",
+                              "key": "exclude",
+                              "value": "steamLoad|so2Rate"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "a263eef0-6aab-4845-8515-2d746c21563c",
+                          "name": "Streams Ozone Apportioned Emissions per filter criteria",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/ozone?stateCode=CO|GA&facilityId=<number>|<number>&unitType=Other turbine|Dry bottom vertically-fired boiler&unitFuelType=Diesel Oil|Process Sludge&controlTechnologies=Ammonia Injection|Selective Catalytic Reduction&programCodeInfo=OTC|NBP&year=<number>|<number>&exclude=steamLoad|so2Rate&key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "streaming-services",
+                                "emissions",
+                                "apportioned",
+                                "ozone"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "CO|GA"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Other turbine|Dry bottom vertically-fired boiler"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Diesel Oil|Process Sludge"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Ammonia Injection|Selective Catalytic Reduction"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "OTC|NBP"
+                                },
+                                {
+                                  "description": "(Required) The calendar year during which activity occurred.",
+                                  "key": "year",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Selected items will be excluded from the response",
+                                  "key": "exclude",
+                                  "value": "steamLoad|so2Rate"
+                                },
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"stateCode\": \"<string>\",\n  \"facilityName\": \"<string>\",\n  \"unitId\": \"<string>\",\n  \"unit_id\": \"<number>\",\n  \"unitType\": \"<string>\",\n  \"associatedStacks\": \"<string>\",\n  \"primaryFuelInfo\": \"<string>\",\n  \"secondaryFuelInfo\": \"<string>\",\n  \"so2ControlInfo\": \"<string>\",\n  \"pmControlInfo\": \"<string>\",\n  \"noxControlInfo\": \"<string>\",\n  \"hgControlInfo\": \"<string>\",\n  \"programCodeInfo\": \"<string>\",\n  \"year\": \"<number>\",\n  \"facilityId\": \"<number>\",\n  \"grossLoad\": \"<number>\",\n  \"steamLoad\": \"<number>\",\n  \"so2Mass\": \"<number>\",\n  \"so2Rate\": \"<number>\",\n  \"noxMass\": \"<number>\",\n  \"noxRate\": \"<number>\",\n  \"co2Mass\": \"<number>\",\n  \"co2Rate\": \"<number>\",\n  \"heatInput\": \"<number>\",\n  \"heatInputMeasureFlg\": \"<string>\",\n  \"sumOpTime\": \"<number>\",\n  \"countOpTime\": \"<number>\",\n  \"addDate\": \"<dateTime>\",\n  \"userId\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T10:57:08.000Z",
+                          "updatedAt": "2026-07-28T10:57:08.000Z",
+                          "uid": "35240-a263eef0-6aab-4845-8515-2d746c21563c"
+                        },
+                        {
+                          "id": "6367bff7-0aa6-416f-8cab-f642057c68b5",
+                          "name": "Invalid Request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/ozone?stateCode=CO|GA&facilityId=<number>|<number>&unitType=Other turbine|Dry bottom vertically-fired boiler&unitFuelType=Diesel Oil|Process Sludge&controlTechnologies=Ammonia Injection|Selective Catalytic Reduction&programCodeInfo=OTC|NBP&year=<number>|<number>&exclude=steamLoad|so2Rate&key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "streaming-services",
+                                "emissions",
+                                "apportioned",
+                                "ozone"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "CO|GA"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Other turbine|Dry bottom vertically-fired boiler"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Diesel Oil|Process Sludge"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Ammonia Injection|Selective Catalytic Reduction"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "OTC|NBP"
+                                },
+                                {
+                                  "description": "(Required) The calendar year during which activity occurred.",
+                                  "key": "year",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Selected items will be excluded from the response",
+                                  "key": "exclude",
+                                  "value": "steamLoad|so2Rate"
+                                },
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T10:57:08.000Z",
+                          "updatedAt": "2026-07-28T10:57:08.000Z",
+                          "uid": "35240-6367bff7-0aa6-416f-8cab-f642057c68b5"
+                        },
+                        {
+                          "id": "10f22c0f-d8c4-472c-8a6b-00ae96e2dba9",
+                          "name": "Resource Not Found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/ozone?stateCode=CO|GA&facilityId=<number>|<number>&unitType=Other turbine|Dry bottom vertically-fired boiler&unitFuelType=Diesel Oil|Process Sludge&controlTechnologies=Ammonia Injection|Selective Catalytic Reduction&programCodeInfo=OTC|NBP&year=<number>|<number>&exclude=steamLoad|so2Rate&key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "streaming-services",
+                                "emissions",
+                                "apportioned",
+                                "ozone"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "CO|GA"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Other turbine|Dry bottom vertically-fired boiler"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Diesel Oil|Process Sludge"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Ammonia Injection|Selective Catalytic Reduction"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "OTC|NBP"
+                                },
+                                {
+                                  "description": "(Required) The calendar year during which activity occurred.",
+                                  "key": "year",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Selected items will be excluded from the response",
+                                  "key": "exclude",
+                                  "value": "steamLoad|so2Rate"
+                                },
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T10:57:08.000Z",
+                          "updatedAt": "2026-07-28T10:57:08.000Z",
+                          "uid": "35240-10f22c0f-d8c4-472c-8a6b-00ae96e2dba9"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T10:57:08.000Z",
+                      "updatedAt": "2026-07-28T10:57:08.000Z",
+                      "uid": "35240-6e4eff72-4419-4271-a3ec-fd0108b2c16e"
+                    }
+                  ],
+                  "id": "b8824c42-a6bc-44cf-bb58-27adeefc53e8",
+                  "createdAt": "2026-07-28T10:57:08.000Z",
+                  "updatedAt": "2026-07-28T10:57:08.000Z",
+                  "uid": "35240-b8824c42-a6bc-44cf-bb58-27adeefc53e8"
+                }
+              ],
+              "id": "6762a8f2-46cb-4a1a-99fc-8eac2999c4cf",
+              "createdAt": "2026-07-28T10:57:08.000Z",
+              "updatedAt": "2026-07-28T10:57:08.000Z",
+              "uid": "35240-6762a8f2-46cb-4a1a-99fc-8eac2999c4cf"
+            }
+          ],
+          "id": "ecb154f1-67ee-4c57-aad2-4836a1a1c255",
+          "createdAt": "2026-07-28T10:57:08.000Z",
+          "updatedAt": "2026-07-28T10:57:08.000Z",
+          "uid": "35240-ecb154f1-67ee-4c57-aad2-4836a1a1c255"
+        }
+      ],
+      "id": "eb4983b3-1690-4fa8-b987-b480c3c3b0c5",
+      "createdAt": "2026-07-28T10:57:08.000Z",
+      "updatedAt": "2026-07-28T10:57:08.000Z",
+      "uid": "35240-eb4983b3-1690-4fa8-b987-b480c3c3b0c5"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

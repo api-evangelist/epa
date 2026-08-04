@@ -1,0 +1,2770 @@
+{
+  "info": {
+    "_postman_id": "4b8d1ffc-e98c-4e51-9d00-df985c8fab24",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Apportioned Annual Emissions API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:56:58.000Z",
+    "updatedAt": "2026-07-28T10:56:58.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4b8d1ffc-e98c-4e51-9d00-df985c8fab24"
+  },
+  "item": [
+    {
+      "name": "emissions-mgmt",
+      "item": [
+        {
+          "name": "emissions",
+          "item": [
+            {
+              "name": "apportioned",
+              "item": [
+                {
+                  "name": "annual",
+                  "item": [
+                    {
+                      "name": "by-facility",
+                      "item": [
+                        {
+                          "name": "Annual Apportioned Emissions Controller get Emissions Facility Aggregation",
+                          "id": "a9cfbeb0-7030-44d8-9793-505a06422379",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/annual/by-facility?stateCode=GU|MP&facilityId=<number>|<number>&unitType=Other boiler|Cement Kiln&unitFuelType=Residual Oil|Wood&controlTechnologies=Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection&programCodeInfo=CSSO2G1|NBP&year=<number>|<number>&page=<number>&perPage=<number>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "emissions-mgmt",
+                                "emissions",
+                                "apportioned",
+                                "annual",
+                                "by-facility"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "GU|MP"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Other boiler|Cement Kiln"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Residual Oil|Wood"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "CSSO2G1|NBP"
+                                },
+                                {
+                                  "description": "(Required) The calendar year during which activity occurred.",
+                                  "key": "year",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "(Required) Page number of data being requested.",
+                                  "key": "page",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "(Required) Number of results per page.",
+                                  "key": "perPage",
+                                  "value": "<number>"
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "c4f36bf0-e3ce-476b-9741-9a228660504a",
+                              "name": "Retrieves Annual Apportioned Emissions data per filter criteria aggregated by facility",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/annual/by-facility?stateCode=GU|MP&facilityId=<number>|<number>&unitType=Other boiler|Cement Kiln&unitFuelType=Residual Oil|Wood&controlTechnologies=Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection&programCodeInfo=CSSO2G1|NBP&year=<number>|<number>&page=<number>&perPage=<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "annual",
+                                    "by-facility"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "GU|MP"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Other boiler|Cement Kiln"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Residual Oil|Wood"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CSSO2G1|NBP"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Page number of data being requested.",
+                                      "key": "page",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Number of results per page.",
+                                      "key": "perPage",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"items\": [\n    {\n      \"year\": \"<number>\",\n      \"facilityName\": \"<string>\",\n      \"stateCode\": \"<string>\",\n      \"grossLoad\": \"<number>\",\n      \"steamLoad\": \"<number>\",\n      \"so2Mass\": \"<number>\",\n      \"co2Mass\": \"<number>\",\n      \"noxMass\": \"<number>\",\n      \"heatInput\": \"<number>\",\n      \"facilityId\": \"<number>\"\n    },\n    {\n      \"year\": \"<number>\",\n      \"facilityName\": \"<string>\",\n      \"stateCode\": \"<string>\",\n      \"grossLoad\": \"<number>\",\n      \"steamLoad\": \"<number>\",\n      \"so2Mass\": \"<number>\",\n      \"co2Mass\": \"<number>\",\n      \"noxMass\": \"<number>\",\n      \"heatInput\": \"<number>\",\n      \"facilityId\": \"<number>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T10:56:59.000Z",
+                              "updatedAt": "2026-07-28T10:56:59.000Z",
+                              "uid": "35240-c4f36bf0-e3ce-476b-9741-9a228660504a"
+                            },
+                            {
+                              "id": "aec43558-cde8-45ee-8f95-936b42b3db16",
+                              "name": "Invalid Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/annual/by-facility?stateCode=GU|MP&facilityId=<number>|<number>&unitType=Other boiler|Cement Kiln&unitFuelType=Residual Oil|Wood&controlTechnologies=Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection&programCodeInfo=CSSO2G1|NBP&year=<number>|<number>&page=<number>&perPage=<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "annual",
+                                    "by-facility"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "GU|MP"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Other boiler|Cement Kiln"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Residual Oil|Wood"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CSSO2G1|NBP"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Page number of data being requested.",
+                                      "key": "page",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Number of results per page.",
+                                      "key": "perPage",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:56:59.000Z",
+                              "updatedAt": "2026-07-28T10:56:59.000Z",
+                              "uid": "35240-aec43558-cde8-45ee-8f95-936b42b3db16"
+                            },
+                            {
+                              "id": "e115ecbf-33a6-40e2-b051-dc89123f31e9",
+                              "name": "Resource Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/annual/by-facility?stateCode=GU|MP&facilityId=<number>|<number>&unitType=Other boiler|Cement Kiln&unitFuelType=Residual Oil|Wood&controlTechnologies=Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection&programCodeInfo=CSSO2G1|NBP&year=<number>|<number>&page=<number>&perPage=<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "annual",
+                                    "by-facility"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "GU|MP"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Other boiler|Cement Kiln"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Residual Oil|Wood"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CSSO2G1|NBP"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Page number of data being requested.",
+                                      "key": "page",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Number of results per page.",
+                                      "key": "perPage",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:56:59.000Z",
+                              "updatedAt": "2026-07-28T10:56:59.000Z",
+                              "uid": "35240-e115ecbf-33a6-40e2-b051-dc89123f31e9"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T10:56:59.000Z",
+                          "updatedAt": "2026-07-28T10:56:59.000Z",
+                          "uid": "35240-a9cfbeb0-7030-44d8-9793-505a06422379"
+                        }
+                      ],
+                      "id": "34e25e9a-1933-447d-a58f-1121220f4cdd",
+                      "createdAt": "2026-07-28T10:56:59.000Z",
+                      "updatedAt": "2026-07-28T10:56:59.000Z",
+                      "uid": "35240-34e25e9a-1933-447d-a58f-1121220f4cdd"
+                    },
+                    {
+                      "name": "by-state",
+                      "item": [
+                        {
+                          "name": "Annual Apportioned Emissions Controller get Emissions State Aggregation",
+                          "id": "2f34cae5-5dfe-4796-b50b-04b7bef9a378",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/annual/by-state?stateCode=GU|MP&facilityId=<number>|<number>&unitType=Other boiler|Cement Kiln&unitFuelType=Residual Oil|Wood&controlTechnologies=Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection&programCodeInfo=CSSO2G1|NBP&year=<number>|<number>&page=<number>&perPage=<number>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "emissions-mgmt",
+                                "emissions",
+                                "apportioned",
+                                "annual",
+                                "by-state"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "GU|MP"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Other boiler|Cement Kiln"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Residual Oil|Wood"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "CSSO2G1|NBP"
+                                },
+                                {
+                                  "description": "(Required) The calendar year during which activity occurred.",
+                                  "key": "year",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "(Required) Page number of data being requested.",
+                                  "key": "page",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "(Required) Number of results per page.",
+                                  "key": "perPage",
+                                  "value": "<number>"
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "46b8dc5f-62a7-4e5d-a7f1-b1fe2335614b",
+                              "name": "Retrieves Annual Apportioned Emissions data per filter criteria aggregated by state",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/annual/by-state?stateCode=GU|MP&facilityId=<number>|<number>&unitType=Other boiler|Cement Kiln&unitFuelType=Residual Oil|Wood&controlTechnologies=Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection&programCodeInfo=CSSO2G1|NBP&year=<number>|<number>&page=<number>&perPage=<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "annual",
+                                    "by-state"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "GU|MP"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Other boiler|Cement Kiln"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Residual Oil|Wood"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CSSO2G1|NBP"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Page number of data being requested.",
+                                      "key": "page",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Number of results per page.",
+                                      "key": "perPage",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"items\": [\n    {\n      \"year\": \"<number>\",\n      \"stateCode\": \"<string>\",\n      \"grossLoad\": \"<number>\",\n      \"steamLoad\": \"<number>\",\n      \"so2Mass\": \"<number>\",\n      \"co2Mass\": \"<number>\",\n      \"noxMass\": \"<number>\",\n      \"heatInput\": \"<number>\"\n    },\n    {\n      \"year\": \"<number>\",\n      \"stateCode\": \"<string>\",\n      \"grossLoad\": \"<number>\",\n      \"steamLoad\": \"<number>\",\n      \"so2Mass\": \"<number>\",\n      \"co2Mass\": \"<number>\",\n      \"noxMass\": \"<number>\",\n      \"heatInput\": \"<number>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T10:56:59.000Z",
+                              "updatedAt": "2026-07-28T10:56:59.000Z",
+                              "uid": "35240-46b8dc5f-62a7-4e5d-a7f1-b1fe2335614b"
+                            },
+                            {
+                              "id": "807a0b09-0387-4ac9-be2c-9713f073ae86",
+                              "name": "Invalid Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/annual/by-state?stateCode=GU|MP&facilityId=<number>|<number>&unitType=Other boiler|Cement Kiln&unitFuelType=Residual Oil|Wood&controlTechnologies=Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection&programCodeInfo=CSSO2G1|NBP&year=<number>|<number>&page=<number>&perPage=<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "annual",
+                                    "by-state"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "GU|MP"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Other boiler|Cement Kiln"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Residual Oil|Wood"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CSSO2G1|NBP"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Page number of data being requested.",
+                                      "key": "page",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Number of results per page.",
+                                      "key": "perPage",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:56:59.000Z",
+                              "updatedAt": "2026-07-28T10:56:59.000Z",
+                              "uid": "35240-807a0b09-0387-4ac9-be2c-9713f073ae86"
+                            },
+                            {
+                              "id": "c43435bf-061f-418a-90a3-942eb06fcc0d",
+                              "name": "Resource Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/annual/by-state?stateCode=GU|MP&facilityId=<number>|<number>&unitType=Other boiler|Cement Kiln&unitFuelType=Residual Oil|Wood&controlTechnologies=Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection&programCodeInfo=CSSO2G1|NBP&year=<number>|<number>&page=<number>&perPage=<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "annual",
+                                    "by-state"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "GU|MP"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Other boiler|Cement Kiln"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Residual Oil|Wood"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CSSO2G1|NBP"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Page number of data being requested.",
+                                      "key": "page",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Number of results per page.",
+                                      "key": "perPage",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:56:59.000Z",
+                              "updatedAt": "2026-07-28T10:56:59.000Z",
+                              "uid": "35240-c43435bf-061f-418a-90a3-942eb06fcc0d"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T10:56:59.000Z",
+                          "updatedAt": "2026-07-28T10:56:59.000Z",
+                          "uid": "35240-2f34cae5-5dfe-4796-b50b-04b7bef9a378"
+                        }
+                      ],
+                      "id": "9b59bb06-8313-40fe-8791-c891faab5fa7",
+                      "createdAt": "2026-07-28T10:56:59.000Z",
+                      "updatedAt": "2026-07-28T10:56:59.000Z",
+                      "uid": "35240-9b59bb06-8313-40fe-8791-c891faab5fa7"
+                    },
+                    {
+                      "name": "nationally",
+                      "item": [
+                        {
+                          "name": "Annual Apportioned Emissions Controller get Emissions National Aggregation",
+                          "id": "9d40383d-509e-4539-958d-7edafe013fb9",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/annual/nationally?stateCode=GU|MP&facilityId=<number>|<number>&unitType=Other boiler|Cement Kiln&unitFuelType=Residual Oil|Wood&controlTechnologies=Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection&programCodeInfo=CSSO2G1|NBP&year=<number>|<number>&page=<number>&perPage=<number>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "emissions-mgmt",
+                                "emissions",
+                                "apportioned",
+                                "annual",
+                                "nationally"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "GU|MP"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Other boiler|Cement Kiln"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Residual Oil|Wood"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "CSSO2G1|NBP"
+                                },
+                                {
+                                  "description": "(Required) The calendar year during which activity occurred.",
+                                  "key": "year",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "(Required) Page number of data being requested.",
+                                  "key": "page",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "(Required) Number of results per page.",
+                                  "key": "perPage",
+                                  "value": "<number>"
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "82daec00-f9d1-4a70-8bfe-7b2cffad04c6",
+                              "name": "Retrieves Annual Apportioned Emissions data per filter criteria aggregated nationally",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/annual/nationally?stateCode=GU|MP&facilityId=<number>|<number>&unitType=Other boiler|Cement Kiln&unitFuelType=Residual Oil|Wood&controlTechnologies=Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection&programCodeInfo=CSSO2G1|NBP&year=<number>|<number>&page=<number>&perPage=<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "annual",
+                                    "nationally"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "GU|MP"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Other boiler|Cement Kiln"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Residual Oil|Wood"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CSSO2G1|NBP"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Page number of data being requested.",
+                                      "key": "page",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Number of results per page.",
+                                      "key": "perPage",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"items\": [\n    {\n      \"year\": \"<number>\",\n      \"grossLoad\": \"<number>\",\n      \"steamLoad\": \"<number>\",\n      \"so2Mass\": \"<number>\",\n      \"co2Mass\": \"<number>\",\n      \"noxMass\": \"<number>\",\n      \"heatInput\": \"<number>\"\n    },\n    {\n      \"year\": \"<number>\",\n      \"grossLoad\": \"<number>\",\n      \"steamLoad\": \"<number>\",\n      \"so2Mass\": \"<number>\",\n      \"co2Mass\": \"<number>\",\n      \"noxMass\": \"<number>\",\n      \"heatInput\": \"<number>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T10:56:59.000Z",
+                              "updatedAt": "2026-07-28T10:56:59.000Z",
+                              "uid": "35240-82daec00-f9d1-4a70-8bfe-7b2cffad04c6"
+                            },
+                            {
+                              "id": "5b7dfd41-bcac-4b59-a2ca-0ac5ad5eec11",
+                              "name": "Invalid Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/annual/nationally?stateCode=GU|MP&facilityId=<number>|<number>&unitType=Other boiler|Cement Kiln&unitFuelType=Residual Oil|Wood&controlTechnologies=Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection&programCodeInfo=CSSO2G1|NBP&year=<number>|<number>&page=<number>&perPage=<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "annual",
+                                    "nationally"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "GU|MP"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Other boiler|Cement Kiln"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Residual Oil|Wood"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CSSO2G1|NBP"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Page number of data being requested.",
+                                      "key": "page",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Number of results per page.",
+                                      "key": "perPage",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:56:59.000Z",
+                              "updatedAt": "2026-07-28T10:56:59.000Z",
+                              "uid": "35240-5b7dfd41-bcac-4b59-a2ca-0ac5ad5eec11"
+                            },
+                            {
+                              "id": "9f4e9c43-e0ff-4d9d-a484-878edc490118",
+                              "name": "Resource Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/annual/nationally?stateCode=GU|MP&facilityId=<number>|<number>&unitType=Other boiler|Cement Kiln&unitFuelType=Residual Oil|Wood&controlTechnologies=Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection&programCodeInfo=CSSO2G1|NBP&year=<number>|<number>&page=<number>&perPage=<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "annual",
+                                    "nationally"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "GU|MP"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Other boiler|Cement Kiln"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Residual Oil|Wood"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CSSO2G1|NBP"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Page number of data being requested.",
+                                      "key": "page",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Number of results per page.",
+                                      "key": "perPage",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:56:59.000Z",
+                              "updatedAt": "2026-07-28T10:56:59.000Z",
+                              "uid": "35240-9f4e9c43-e0ff-4d9d-a484-878edc490118"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T10:56:59.000Z",
+                          "updatedAt": "2026-07-28T10:56:59.000Z",
+                          "uid": "35240-9d40383d-509e-4539-958d-7edafe013fb9"
+                        }
+                      ],
+                      "id": "dd6927ca-84ac-438a-a714-5186105e85dd",
+                      "createdAt": "2026-07-28T10:56:59.000Z",
+                      "updatedAt": "2026-07-28T10:56:59.000Z",
+                      "uid": "35240-dd6927ca-84ac-438a-a714-5186105e85dd"
+                    },
+                    {
+                      "name": "Annual Apportioned Emissions Controller get Emissions",
+                      "id": "86bba013-b076-4f05-94f2-1e9053ab56cb",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/annual?stateCode=GU|MP&facilityId=<number>|<number>&unitType=Other boiler|Cement Kiln&unitFuelType=Residual Oil|Wood&controlTechnologies=Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection&programCodeInfo=CSSO2G1|NBP&year=<number>|<number>&page=<number>&perPage=<number>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "emissions-mgmt",
+                            "emissions",
+                            "apportioned",
+                            "annual"
+                          ],
+                          "query": [
+                            {
+                              "description": "Two letter abbreviation for the State.",
+                              "key": "stateCode",
+                              "value": "GU|MP"
+                            },
+                            {
+                              "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                              "key": "facilityId",
+                              "value": "<number>|<number>"
+                            },
+                            {
+                              "description": "Type of unit or boiler.",
+                              "key": "unitType",
+                              "value": "Other boiler|Cement Kiln"
+                            },
+                            {
+                              "description": "Primary or Secondary fuel types combusted by the unit.",
+                              "key": "unitFuelType",
+                              "value": "Residual Oil|Wood"
+                            },
+                            {
+                              "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                              "key": "controlTechnologies",
+                              "value": "Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection"
+                            },
+                            {
+                              "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                              "key": "programCodeInfo",
+                              "value": "CSSO2G1|NBP"
+                            },
+                            {
+                              "description": "(Required) The calendar year during which activity occurred.",
+                              "key": "year",
+                              "value": "<number>|<number>"
+                            },
+                            {
+                              "description": "(Required) Page number of data being requested.",
+                              "key": "page",
+                              "value": "<number>"
+                            },
+                            {
+                              "description": "(Required) Number of results per page.",
+                              "key": "perPage",
+                              "value": "<number>"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "498976b4-ff08-45ef-bc5d-64b89a7c9c5e",
+                          "name": "Retrieves Annual Apportioned Emissions per filter criteria",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/annual?stateCode=GU|MP&facilityId=<number>|<number>&unitType=Other boiler|Cement Kiln&unitFuelType=Residual Oil|Wood&controlTechnologies=Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection&programCodeInfo=CSSO2G1|NBP&year=<number>|<number>&page=<number>&perPage=<number>&key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "emissions-mgmt",
+                                "emissions",
+                                "apportioned",
+                                "annual"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "GU|MP"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Other boiler|Cement Kiln"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Residual Oil|Wood"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "CSSO2G1|NBP"
+                                },
+                                {
+                                  "description": "(Required) The calendar year during which activity occurred.",
+                                  "key": "year",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "(Required) Page number of data being requested.",
+                                  "key": "page",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "(Required) Number of results per page.",
+                                  "key": "perPage",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"items\": [\n    {\n      \"stateCode\": \"<string>\",\n      \"facilityName\": \"<string>\",\n      \"facilityId\": \"<number>\",\n      \"unit_id\": \"<string>\",\n      \"unitId\": \"<string>\",\n      \"associatedStacks\": \"<string>\",\n      \"year\": \"<number>\",\n      \"countOpTime\": \"<number>\",\n      \"sumOpTime\": \"<number>\",\n      \"grossLoad\": \"<number>\",\n      \"steamLoad\": \"<number>\",\n      \"so2Mass\": \"<number>\",\n      \"so2Rate\": \"<number>\",\n      \"co2Mass\": \"<number>\",\n      \"co2Rate\": \"<number>\",\n      \"noxMass\": \"<number>\",\n      \"noxRate\": \"<number>\",\n      \"heatInput\": \"<number>\",\n      \"primaryFuelInfo\": \"<string>\",\n      \"secondaryFuelInfo\": \"<string>\",\n      \"unitType\": \"<string>\",\n      \"so2ControlInfo\": \"<string>\",\n      \"noxControlInfo\": \"<string>\",\n      \"pmControlInfo\": \"<string>\",\n      \"hgControlInfo\": \"<string>\",\n      \"programCodeInfo\": \"<string>\"\n    },\n    {\n      \"stateCode\": \"<string>\",\n      \"facilityName\": \"<string>\",\n      \"facilityId\": \"<number>\",\n      \"unit_id\": \"<string>\",\n      \"unitId\": \"<string>\",\n      \"associatedStacks\": \"<string>\",\n      \"year\": \"<number>\",\n      \"countOpTime\": \"<number>\",\n      \"sumOpTime\": \"<number>\",\n      \"grossLoad\": \"<number>\",\n      \"steamLoad\": \"<number>\",\n      \"so2Mass\": \"<number>\",\n      \"so2Rate\": \"<number>\",\n      \"co2Mass\": \"<number>\",\n      \"co2Rate\": \"<number>\",\n      \"noxMass\": \"<number>\",\n      \"noxRate\": \"<number>\",\n      \"heatInput\": \"<number>\",\n      \"primaryFuelInfo\": \"<string>\",\n      \"secondaryFuelInfo\": \"<string>\",\n      \"unitType\": \"<string>\",\n      \"so2ControlInfo\": \"<string>\",\n      \"noxControlInfo\": \"<string>\",\n      \"pmControlInfo\": \"<string>\",\n      \"hgControlInfo\": \"<string>\",\n      \"programCodeInfo\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T10:56:59.000Z",
+                          "updatedAt": "2026-07-28T10:56:59.000Z",
+                          "uid": "35240-498976b4-ff08-45ef-bc5d-64b89a7c9c5e"
+                        },
+                        {
+                          "id": "d47aac1f-6c04-49c6-b7c9-1620b2635fcb",
+                          "name": "Invalid Request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/annual?stateCode=GU|MP&facilityId=<number>|<number>&unitType=Other boiler|Cement Kiln&unitFuelType=Residual Oil|Wood&controlTechnologies=Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection&programCodeInfo=CSSO2G1|NBP&year=<number>|<number>&page=<number>&perPage=<number>&key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "emissions-mgmt",
+                                "emissions",
+                                "apportioned",
+                                "annual"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "GU|MP"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Other boiler|Cement Kiln"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Residual Oil|Wood"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "CSSO2G1|NBP"
+                                },
+                                {
+                                  "description": "(Required) The calendar year during which activity occurred.",
+                                  "key": "year",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "(Required) Page number of data being requested.",
+                                  "key": "page",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "(Required) Number of results per page.",
+                                  "key": "perPage",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T10:56:59.000Z",
+                          "updatedAt": "2026-07-28T10:56:59.000Z",
+                          "uid": "35240-d47aac1f-6c04-49c6-b7c9-1620b2635fcb"
+                        },
+                        {
+                          "id": "153f963b-b875-41c3-bf86-58c419e26130",
+                          "name": "Resource Not Found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/annual?stateCode=GU|MP&facilityId=<number>|<number>&unitType=Other boiler|Cement Kiln&unitFuelType=Residual Oil|Wood&controlTechnologies=Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection&programCodeInfo=CSSO2G1|NBP&year=<number>|<number>&page=<number>&perPage=<number>&key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "emissions-mgmt",
+                                "emissions",
+                                "apportioned",
+                                "annual"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "GU|MP"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Other boiler|Cement Kiln"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Residual Oil|Wood"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "CSSO2G1|NBP"
+                                },
+                                {
+                                  "description": "(Required) The calendar year during which activity occurred.",
+                                  "key": "year",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "(Required) Page number of data being requested.",
+                                  "key": "page",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "(Required) Number of results per page.",
+                                  "key": "perPage",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T10:56:59.000Z",
+                          "updatedAt": "2026-07-28T10:56:59.000Z",
+                          "uid": "35240-153f963b-b875-41c3-bf86-58c419e26130"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T10:56:59.000Z",
+                      "updatedAt": "2026-07-28T10:56:59.000Z",
+                      "uid": "35240-86bba013-b076-4f05-94f2-1e9053ab56cb"
+                    }
+                  ],
+                  "id": "972a9abd-06a8-478b-b0d3-9d475ad4eee8",
+                  "createdAt": "2026-07-28T10:56:59.000Z",
+                  "updatedAt": "2026-07-28T10:56:59.000Z",
+                  "uid": "35240-972a9abd-06a8-478b-b0d3-9d475ad4eee8"
+                }
+              ],
+              "id": "220bdfe8-7b88-4ab6-8fb2-4c31a0edf00b",
+              "createdAt": "2026-07-28T10:56:59.000Z",
+              "updatedAt": "2026-07-28T10:56:59.000Z",
+              "uid": "35240-220bdfe8-7b88-4ab6-8fb2-4c31a0edf00b"
+            }
+          ],
+          "id": "9bb49207-a359-49ff-a86c-83d18c7412e0",
+          "createdAt": "2026-07-28T10:56:59.000Z",
+          "updatedAt": "2026-07-28T10:56:59.000Z",
+          "uid": "35240-9bb49207-a359-49ff-a86c-83d18c7412e0"
+        }
+      ],
+      "id": "921738e8-d421-4034-a6e2-65aa1d4d7e21",
+      "createdAt": "2026-07-28T10:56:59.000Z",
+      "updatedAt": "2026-07-28T10:56:59.000Z",
+      "uid": "35240-921738e8-d421-4034-a6e2-65aa1d4d7e21"
+    },
+    {
+      "name": "streaming-services",
+      "item": [
+        {
+          "name": "emissions",
+          "item": [
+            {
+              "name": "apportioned",
+              "item": [
+                {
+                  "name": "annual",
+                  "item": [
+                    {
+                      "name": "by-facility",
+                      "item": [
+                        {
+                          "name": "Annual Apportioned Emissions Controller stream Emissions Facility Aggregation",
+                          "id": "7575e9c1-3a4f-43b1-81b7-a5fd4c296453",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/annual/by-facility?stateCode=GU|MP&facilityId=<number>|<number>&unitType=Other boiler|Cement Kiln&unitFuelType=Residual Oil|Wood&controlTechnologies=Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection&programCodeInfo=CSSO2G1|NBP&year=<number>|<number>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "streaming-services",
+                                "emissions",
+                                "apportioned",
+                                "annual",
+                                "by-facility"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "GU|MP"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Other boiler|Cement Kiln"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Residual Oil|Wood"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "CSSO2G1|NBP"
+                                },
+                                {
+                                  "description": "(Required) The calendar year during which activity occurred.",
+                                  "key": "year",
+                                  "value": "<number>|<number>"
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "731c8251-7cba-4593-b042-16fed0ab5eb1",
+                              "name": "Streams Annual Apportioned Emissions data per filter criteria aggregated by facility",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/annual/by-facility?stateCode=GU|MP&facilityId=<number>|<number>&unitType=Other boiler|Cement Kiln&unitFuelType=Residual Oil|Wood&controlTechnologies=Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection&programCodeInfo=CSSO2G1|NBP&year=<number>|<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "streaming-services",
+                                    "emissions",
+                                    "apportioned",
+                                    "annual",
+                                    "by-facility"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "GU|MP"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Other boiler|Cement Kiln"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Residual Oil|Wood"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CSSO2G1|NBP"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"year\": \"<number>\",\n  \"facilityName\": \"<string>\",\n  \"stateCode\": \"<string>\",\n  \"grossLoad\": \"<number>\",\n  \"steamLoad\": \"<number>\",\n  \"so2Mass\": \"<number>\",\n  \"co2Mass\": \"<number>\",\n  \"noxMass\": \"<number>\",\n  \"heatInput\": \"<number>\",\n  \"facilityId\": \"<number>\"\n}",
+                              "createdAt": "2026-07-28T10:56:59.000Z",
+                              "updatedAt": "2026-07-28T10:56:59.000Z",
+                              "uid": "35240-731c8251-7cba-4593-b042-16fed0ab5eb1"
+                            },
+                            {
+                              "id": "c755fd77-588b-437c-8fec-b148b22199ab",
+                              "name": "Invalid Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/annual/by-facility?stateCode=GU|MP&facilityId=<number>|<number>&unitType=Other boiler|Cement Kiln&unitFuelType=Residual Oil|Wood&controlTechnologies=Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection&programCodeInfo=CSSO2G1|NBP&year=<number>|<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "streaming-services",
+                                    "emissions",
+                                    "apportioned",
+                                    "annual",
+                                    "by-facility"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "GU|MP"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Other boiler|Cement Kiln"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Residual Oil|Wood"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CSSO2G1|NBP"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:56:59.000Z",
+                              "updatedAt": "2026-07-28T10:56:59.000Z",
+                              "uid": "35240-c755fd77-588b-437c-8fec-b148b22199ab"
+                            },
+                            {
+                              "id": "4da731f1-d83a-42e2-8c90-ff99155f3b59",
+                              "name": "Resource Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/annual/by-facility?stateCode=GU|MP&facilityId=<number>|<number>&unitType=Other boiler|Cement Kiln&unitFuelType=Residual Oil|Wood&controlTechnologies=Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection&programCodeInfo=CSSO2G1|NBP&year=<number>|<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "streaming-services",
+                                    "emissions",
+                                    "apportioned",
+                                    "annual",
+                                    "by-facility"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "GU|MP"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Other boiler|Cement Kiln"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Residual Oil|Wood"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CSSO2G1|NBP"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:56:59.000Z",
+                              "updatedAt": "2026-07-28T10:56:59.000Z",
+                              "uid": "35240-4da731f1-d83a-42e2-8c90-ff99155f3b59"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T10:56:59.000Z",
+                          "updatedAt": "2026-07-28T10:56:59.000Z",
+                          "uid": "35240-7575e9c1-3a4f-43b1-81b7-a5fd4c296453"
+                        }
+                      ],
+                      "id": "f3c2b593-10b8-4244-a17a-de614853a36d",
+                      "createdAt": "2026-07-28T10:56:59.000Z",
+                      "updatedAt": "2026-07-28T10:56:59.000Z",
+                      "uid": "35240-f3c2b593-10b8-4244-a17a-de614853a36d"
+                    },
+                    {
+                      "name": "by-state",
+                      "item": [
+                        {
+                          "name": "Annual Apportioned Emissions Controller stream Emissions State Aggregation",
+                          "id": "00efa074-4127-4e2f-884b-33292d96b6be",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/annual/by-state?stateCode=GU|MP&facilityId=<number>|<number>&unitType=Other boiler|Cement Kiln&unitFuelType=Residual Oil|Wood&controlTechnologies=Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection&programCodeInfo=CSSO2G1|NBP&year=<number>|<number>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "streaming-services",
+                                "emissions",
+                                "apportioned",
+                                "annual",
+                                "by-state"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "GU|MP"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Other boiler|Cement Kiln"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Residual Oil|Wood"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "CSSO2G1|NBP"
+                                },
+                                {
+                                  "description": "(Required) The calendar year during which activity occurred.",
+                                  "key": "year",
+                                  "value": "<number>|<number>"
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "a1c5b1cd-509c-4827-9cca-71108f9d6774",
+                              "name": "Retrieves Annual Apportioned Emissions data per filter criteria aggregated by state",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/annual/by-state?stateCode=GU|MP&facilityId=<number>|<number>&unitType=Other boiler|Cement Kiln&unitFuelType=Residual Oil|Wood&controlTechnologies=Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection&programCodeInfo=CSSO2G1|NBP&year=<number>|<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "streaming-services",
+                                    "emissions",
+                                    "apportioned",
+                                    "annual",
+                                    "by-state"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "GU|MP"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Other boiler|Cement Kiln"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Residual Oil|Wood"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CSSO2G1|NBP"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"year\": \"<number>\",\n  \"stateCode\": \"<string>\",\n  \"grossLoad\": \"<number>\",\n  \"steamLoad\": \"<number>\",\n  \"so2Mass\": \"<number>\",\n  \"co2Mass\": \"<number>\",\n  \"noxMass\": \"<number>\",\n  \"heatInput\": \"<number>\"\n}",
+                              "createdAt": "2026-07-28T10:56:59.000Z",
+                              "updatedAt": "2026-07-28T10:56:59.000Z",
+                              "uid": "35240-a1c5b1cd-509c-4827-9cca-71108f9d6774"
+                            },
+                            {
+                              "id": "1a52c7b3-45f9-4efa-ac3b-f21231cae6bb",
+                              "name": "Invalid Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/annual/by-state?stateCode=GU|MP&facilityId=<number>|<number>&unitType=Other boiler|Cement Kiln&unitFuelType=Residual Oil|Wood&controlTechnologies=Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection&programCodeInfo=CSSO2G1|NBP&year=<number>|<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "streaming-services",
+                                    "emissions",
+                                    "apportioned",
+                                    "annual",
+                                    "by-state"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "GU|MP"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Other boiler|Cement Kiln"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Residual Oil|Wood"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CSSO2G1|NBP"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:56:59.000Z",
+                              "updatedAt": "2026-07-28T10:56:59.000Z",
+                              "uid": "35240-1a52c7b3-45f9-4efa-ac3b-f21231cae6bb"
+                            },
+                            {
+                              "id": "deb6c1e0-1ed1-4b1b-a80a-b9eef9f29d6e",
+                              "name": "Resource Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/annual/by-state?stateCode=GU|MP&facilityId=<number>|<number>&unitType=Other boiler|Cement Kiln&unitFuelType=Residual Oil|Wood&controlTechnologies=Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection&programCodeInfo=CSSO2G1|NBP&year=<number>|<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "streaming-services",
+                                    "emissions",
+                                    "apportioned",
+                                    "annual",
+                                    "by-state"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "GU|MP"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Other boiler|Cement Kiln"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Residual Oil|Wood"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CSSO2G1|NBP"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:56:59.000Z",
+                              "updatedAt": "2026-07-28T10:56:59.000Z",
+                              "uid": "35240-deb6c1e0-1ed1-4b1b-a80a-b9eef9f29d6e"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T10:56:59.000Z",
+                          "updatedAt": "2026-07-28T10:56:59.000Z",
+                          "uid": "35240-00efa074-4127-4e2f-884b-33292d96b6be"
+                        }
+                      ],
+                      "id": "1f863eef-9621-46a0-a6cc-3d4b7e329397",
+                      "createdAt": "2026-07-28T10:56:59.000Z",
+                      "updatedAt": "2026-07-28T10:56:59.000Z",
+                      "uid": "35240-1f863eef-9621-46a0-a6cc-3d4b7e329397"
+                    },
+                    {
+                      "name": "nationally",
+                      "item": [
+                        {
+                          "name": "Annual Apportioned Emissions Controller stream Emissions National Aggregation",
+                          "id": "17886d07-04eb-465a-a317-c0e9b5657db7",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/annual/nationally?stateCode=GU|MP&facilityId=<number>|<number>&unitType=Other boiler|Cement Kiln&unitFuelType=Residual Oil|Wood&controlTechnologies=Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection&programCodeInfo=CSSO2G1|NBP&year=<number>|<number>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "streaming-services",
+                                "emissions",
+                                "apportioned",
+                                "annual",
+                                "nationally"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "GU|MP"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Other boiler|Cement Kiln"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Residual Oil|Wood"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "CSSO2G1|NBP"
+                                },
+                                {
+                                  "description": "(Required) The calendar year during which activity occurred.",
+                                  "key": "year",
+                                  "value": "<number>|<number>"
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "f2922d22-ba7f-4cb2-9203-ccd98477587f",
+                              "name": "Streams Annual Apportioned Emissions data per filter criteria aggregated nationally",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/annual/nationally?stateCode=GU|MP&facilityId=<number>|<number>&unitType=Other boiler|Cement Kiln&unitFuelType=Residual Oil|Wood&controlTechnologies=Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection&programCodeInfo=CSSO2G1|NBP&year=<number>|<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "streaming-services",
+                                    "emissions",
+                                    "apportioned",
+                                    "annual",
+                                    "nationally"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "GU|MP"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Other boiler|Cement Kiln"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Residual Oil|Wood"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CSSO2G1|NBP"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"year\": \"<number>\",\n  \"grossLoad\": \"<number>\",\n  \"steamLoad\": \"<number>\",\n  \"so2Mass\": \"<number>\",\n  \"co2Mass\": \"<number>\",\n  \"noxMass\": \"<number>\",\n  \"heatInput\": \"<number>\"\n}",
+                              "createdAt": "2026-07-28T10:56:59.000Z",
+                              "updatedAt": "2026-07-28T10:56:59.000Z",
+                              "uid": "35240-f2922d22-ba7f-4cb2-9203-ccd98477587f"
+                            },
+                            {
+                              "id": "c1339777-9767-43d4-887c-c6bed6be368c",
+                              "name": "Invalid Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/annual/nationally?stateCode=GU|MP&facilityId=<number>|<number>&unitType=Other boiler|Cement Kiln&unitFuelType=Residual Oil|Wood&controlTechnologies=Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection&programCodeInfo=CSSO2G1|NBP&year=<number>|<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "streaming-services",
+                                    "emissions",
+                                    "apportioned",
+                                    "annual",
+                                    "nationally"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "GU|MP"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Other boiler|Cement Kiln"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Residual Oil|Wood"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CSSO2G1|NBP"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:56:59.000Z",
+                              "updatedAt": "2026-07-28T10:56:59.000Z",
+                              "uid": "35240-c1339777-9767-43d4-887c-c6bed6be368c"
+                            },
+                            {
+                              "id": "6dda82fd-3565-4e13-a8c7-6294577b53f3",
+                              "name": "Resource Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/annual/nationally?stateCode=GU|MP&facilityId=<number>|<number>&unitType=Other boiler|Cement Kiln&unitFuelType=Residual Oil|Wood&controlTechnologies=Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection&programCodeInfo=CSSO2G1|NBP&year=<number>|<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "streaming-services",
+                                    "emissions",
+                                    "apportioned",
+                                    "annual",
+                                    "nationally"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "GU|MP"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Other boiler|Cement Kiln"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Residual Oil|Wood"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CSSO2G1|NBP"
+                                    },
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:56:59.000Z",
+                              "updatedAt": "2026-07-28T10:56:59.000Z",
+                              "uid": "35240-6dda82fd-3565-4e13-a8c7-6294577b53f3"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T10:56:59.000Z",
+                          "updatedAt": "2026-07-28T10:56:59.000Z",
+                          "uid": "35240-17886d07-04eb-465a-a317-c0e9b5657db7"
+                        }
+                      ],
+                      "id": "818bab0c-a522-4bad-87ce-931f19ecac24",
+                      "createdAt": "2026-07-28T10:56:59.000Z",
+                      "updatedAt": "2026-07-28T10:56:59.000Z",
+                      "uid": "35240-818bab0c-a522-4bad-87ce-931f19ecac24"
+                    },
+                    {
+                      "name": "Annual Apportioned Emissions Controller stream Emissions",
+                      "id": "166e4ff6-54c9-43e9-a4d8-514eff3873a1",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/annual?stateCode=GU|MP&facilityId=<number>|<number>&unitType=Other boiler|Cement Kiln&unitFuelType=Residual Oil|Wood&controlTechnologies=Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection&programCodeInfo=CSSO2G1|NBP&year=<number>|<number>&exclude=sumOpTime|steamLoad&addDate=<dateTime>&userid=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "streaming-services",
+                            "emissions",
+                            "apportioned",
+                            "annual"
+                          ],
+                          "query": [
+                            {
+                              "description": "Two letter abbreviation for the State.",
+                              "key": "stateCode",
+                              "value": "GU|MP"
+                            },
+                            {
+                              "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                              "key": "facilityId",
+                              "value": "<number>|<number>"
+                            },
+                            {
+                              "description": "Type of unit or boiler.",
+                              "key": "unitType",
+                              "value": "Other boiler|Cement Kiln"
+                            },
+                            {
+                              "description": "Primary or Secondary fuel types combusted by the unit.",
+                              "key": "unitFuelType",
+                              "value": "Residual Oil|Wood"
+                            },
+                            {
+                              "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                              "key": "controlTechnologies",
+                              "value": "Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection"
+                            },
+                            {
+                              "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                              "key": "programCodeInfo",
+                              "value": "CSSO2G1|NBP"
+                            },
+                            {
+                              "description": "(Required) The calendar year during which activity occurred.",
+                              "key": "year",
+                              "value": "<number>|<number>"
+                            },
+                            {
+                              "description": "Selected items will be excluded from the response",
+                              "key": "exclude",
+                              "value": "sumOpTime|steamLoad"
+                            },
+                            {
+                              "key": "addDate",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "key": "userid",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "bc4fcba5-d5fb-427c-9d84-2daa0637b665",
+                          "name": "Streams Annual Apportioned Emissions per filter criteria",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/annual?stateCode=GU|MP&facilityId=<number>|<number>&unitType=Other boiler|Cement Kiln&unitFuelType=Residual Oil|Wood&controlTechnologies=Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection&programCodeInfo=CSSO2G1|NBP&year=<number>|<number>&exclude=sumOpTime|steamLoad&addDate=<dateTime>&userid=<string>&key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "streaming-services",
+                                "emissions",
+                                "apportioned",
+                                "annual"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "GU|MP"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Other boiler|Cement Kiln"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Residual Oil|Wood"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "CSSO2G1|NBP"
+                                },
+                                {
+                                  "description": "(Required) The calendar year during which activity occurred.",
+                                  "key": "year",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Selected items will be excluded from the response",
+                                  "key": "exclude",
+                                  "value": "sumOpTime|steamLoad"
+                                },
+                                {
+                                  "key": "addDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "key": "userid",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"stateCode\": \"<string>\",\n  \"facilityName\": \"<string>\",\n  \"unitId\": \"<string>\",\n  \"unit_id\": \"<number>\",\n  \"unitType\": \"<string>\",\n  \"associatedStacks\": \"<string>\",\n  \"primaryFuelInfo\": \"<string>\",\n  \"secondaryFuelInfo\": \"<string>\",\n  \"so2ControlInfo\": \"<string>\",\n  \"pmControlInfo\": \"<string>\",\n  \"noxControlInfo\": \"<string>\",\n  \"hgControlInfo\": \"<string>\",\n  \"programCodeInfo\": \"<string>\",\n  \"year\": \"<number>\",\n  \"facilityId\": \"<number>\",\n  \"grossLoad\": \"<number>\",\n  \"steamLoad\": \"<number>\",\n  \"so2Mass\": \"<number>\",\n  \"so2Rate\": \"<number>\",\n  \"noxMass\": \"<number>\",\n  \"noxRate\": \"<number>\",\n  \"co2Mass\": \"<number>\",\n  \"co2Rate\": \"<number>\",\n  \"heatInput\": \"<number>\",\n  \"heatInputMeasureFlg\": \"<string>\",\n  \"sumOpTime\": \"<number>\",\n  \"countOpTime\": \"<number>\",\n  \"addDate\": \"<dateTime>\",\n  \"userId\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T10:56:59.000Z",
+                          "updatedAt": "2026-07-28T10:56:59.000Z",
+                          "uid": "35240-bc4fcba5-d5fb-427c-9d84-2daa0637b665"
+                        },
+                        {
+                          "id": "187070ef-42f5-405e-9d7c-e3ae7025333a",
+                          "name": "Invalid Request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/annual?stateCode=GU|MP&facilityId=<number>|<number>&unitType=Other boiler|Cement Kiln&unitFuelType=Residual Oil|Wood&controlTechnologies=Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection&programCodeInfo=CSSO2G1|NBP&year=<number>|<number>&exclude=sumOpTime|steamLoad&addDate=<dateTime>&userid=<string>&key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "streaming-services",
+                                "emissions",
+                                "apportioned",
+                                "annual"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "GU|MP"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Other boiler|Cement Kiln"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Residual Oil|Wood"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "CSSO2G1|NBP"
+                                },
+                                {
+                                  "description": "(Required) The calendar year during which activity occurred.",
+                                  "key": "year",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Selected items will be excluded from the response",
+                                  "key": "exclude",
+                                  "value": "sumOpTime|steamLoad"
+                                },
+                                {
+                                  "key": "addDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "key": "userid",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T10:56:59.000Z",
+                          "updatedAt": "2026-07-28T10:56:59.000Z",
+                          "uid": "35240-187070ef-42f5-405e-9d7c-e3ae7025333a"
+                        },
+                        {
+                          "id": "0b393cbc-fec4-4d39-b1c6-8f0d8a6b60c4",
+                          "name": "Resource Not Found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/annual?stateCode=GU|MP&facilityId=<number>|<number>&unitType=Other boiler|Cement Kiln&unitFuelType=Residual Oil|Wood&controlTechnologies=Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection&programCodeInfo=CSSO2G1|NBP&year=<number>|<number>&exclude=sumOpTime|steamLoad&addDate=<dateTime>&userid=<string>&key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "streaming-services",
+                                "emissions",
+                                "apportioned",
+                                "annual"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "GU|MP"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Other boiler|Cement Kiln"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Residual Oil|Wood"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Low NOx Burner Technology (Dry Bottom only)|Other (Non PAC) Sorbent Injection"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "CSSO2G1|NBP"
+                                },
+                                {
+                                  "description": "(Required) The calendar year during which activity occurred.",
+                                  "key": "year",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Selected items will be excluded from the response",
+                                  "key": "exclude",
+                                  "value": "sumOpTime|steamLoad"
+                                },
+                                {
+                                  "key": "addDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "key": "userid",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T10:56:59.000Z",
+                          "updatedAt": "2026-07-28T10:56:59.000Z",
+                          "uid": "35240-0b393cbc-fec4-4d39-b1c6-8f0d8a6b60c4"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T10:56:59.000Z",
+                      "updatedAt": "2026-07-28T10:56:59.000Z",
+                      "uid": "35240-166e4ff6-54c9-43e9-a4d8-514eff3873a1"
+                    }
+                  ],
+                  "id": "0fcae8ea-a996-442f-9322-51c8b357fab0",
+                  "createdAt": "2026-07-28T10:56:59.000Z",
+                  "updatedAt": "2026-07-28T10:56:59.000Z",
+                  "uid": "35240-0fcae8ea-a996-442f-9322-51c8b357fab0"
+                }
+              ],
+              "id": "317ff37e-e9fa-4d2a-b1a7-95a1da3e8d03",
+              "createdAt": "2026-07-28T10:56:59.000Z",
+              "updatedAt": "2026-07-28T10:56:59.000Z",
+              "uid": "35240-317ff37e-e9fa-4d2a-b1a7-95a1da3e8d03"
+            }
+          ],
+          "id": "20271e70-1fa1-4366-b4ca-e9f34ae8eb60",
+          "createdAt": "2026-07-28T10:56:59.000Z",
+          "updatedAt": "2026-07-28T10:56:59.000Z",
+          "uid": "35240-20271e70-1fa1-4366-b4ca-e9f34ae8eb60"
+        }
+      ],
+      "id": "94742044-a0c8-4834-8102-bbb7768dd6c0",
+      "createdAt": "2026-07-28T10:56:59.000Z",
+      "updatedAt": "2026-07-28T10:56:59.000Z",
+      "uid": "35240-94742044-a0c8-4834-8102-bbb7768dd6c0"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

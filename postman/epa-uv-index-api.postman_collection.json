@@ -1,0 +1,653 @@
+{
+  "info": {
+    "_postman_id": "3cec1a47-6c6d-44fa-b996-c4de1576d902",
+    "name": "EPA Air Quality System (AQS) Account Type Codes UV Index API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T11:01:11.000Z",
+    "updatedAt": "2026-07-28T11:01:11.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3cec1a47-6c6d-44fa-b996-c4de1576d902"
+  },
+  "item": [
+    {
+      "name": "dmapservice",
+      "item": [
+        {
+          "name": "getEnvirofactsUVHOURLY",
+          "item": [
+            {
+              "name": "ZIP",
+              "item": [
+                {
+                  "name": "{ZIP}",
+                  "item": [
+                    {
+                      "name": "{format}",
+                      "item": [
+                        {
+                          "name": "Get Hourly UV Forecast by ZIP",
+                          "id": "ea06574d-a125-4ae9-bdfc-192aea4ab39d",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/dmapservice/getEnvirofactsUVHOURLY/ZIP/:ZIP/:format",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "dmapservice",
+                                "getEnvirofactsUVHOURLY",
+                                "ZIP",
+                                ":ZIP",
+                                ":format"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "36a7a78f-94d1-4567-ae84-ebbf5905977d",
+                                  "key": "ZIP",
+                                  "value": "42536",
+                                  "description": "(Required) 5-digit ZIP code."
+                                },
+                                {
+                                  "id": "4996cc6c-25ca-4689-97fe-631613fc5307",
+                                  "key": "format",
+                                  "value": "HTML",
+                                  "description": "Output format (default JSON)."
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "fca8423f-d458-40a4-98d4-8cd15a6c08cb",
+                              "name": "24-hour UV index forecast for the ZIP code.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/dmapservice/getEnvirofactsUVHOURLY/ZIP/:ZIP/:format?key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "dmapservice",
+                                    "getEnvirofactsUVHOURLY",
+                                    "ZIP",
+                                    ":ZIP",
+                                    ":format"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "ZIP"
+                                    },
+                                    {
+                                      "key": "format"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "[\n  {\n    \"CITY\": \"<string>\",\n    \"STATE\": \"<string>\",\n    \"ZIP\": \"<string>\",\n    \"DATE_TIME\": \"<string>\",\n    \"UV_VALUE\": \"<integer>\"\n  },\n  {\n    \"CITY\": \"<string>\",\n    \"STATE\": \"<string>\",\n    \"ZIP\": \"<string>\",\n    \"DATE_TIME\": \"<string>\",\n    \"UV_VALUE\": \"<integer>\"\n  }\n]",
+                              "createdAt": "2026-07-28T11:01:12.000Z",
+                              "updatedAt": "2026-07-28T11:01:12.000Z",
+                              "uid": "35240-fca8423f-d458-40a4-98d4-8cd15a6c08cb"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T11:01:12.000Z",
+                          "updatedAt": "2026-07-28T11:01:12.000Z",
+                          "uid": "35240-ea06574d-a125-4ae9-bdfc-192aea4ab39d"
+                        }
+                      ],
+                      "id": "3e2d6ad5-947b-42c2-b91e-9aabaabfe08c",
+                      "createdAt": "2026-07-28T11:01:12.000Z",
+                      "updatedAt": "2026-07-28T11:01:12.000Z",
+                      "uid": "35240-3e2d6ad5-947b-42c2-b91e-9aabaabfe08c"
+                    }
+                  ],
+                  "id": "8092409c-dbba-4a7b-8f82-383b3fa64ecd",
+                  "createdAt": "2026-07-28T11:01:12.000Z",
+                  "updatedAt": "2026-07-28T11:01:12.000Z",
+                  "uid": "35240-8092409c-dbba-4a7b-8f82-383b3fa64ecd"
+                }
+              ],
+              "id": "3ceac521-d924-45e0-b70e-81d81089998a",
+              "createdAt": "2026-07-28T11:01:12.000Z",
+              "updatedAt": "2026-07-28T11:01:12.000Z",
+              "uid": "35240-3ceac521-d924-45e0-b70e-81d81089998a"
+            },
+            {
+              "name": "CITY",
+              "item": [
+                {
+                  "name": "{CITY}",
+                  "item": [
+                    {
+                      "name": "STATE",
+                      "item": [
+                        {
+                          "name": "{STATE}",
+                          "item": [
+                            {
+                              "name": "{format}",
+                              "item": [
+                                {
+                                  "name": "Get Hourly UV Forecast by City and State",
+                                  "id": "919cab6a-0e30-488d-919a-78930f463bb5",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/dmapservice/getEnvirofactsUVHOURLY/CITY/:CITY/STATE/:STATE/:format",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "dmapservice",
+                                        "getEnvirofactsUVHOURLY",
+                                        "CITY",
+                                        ":CITY",
+                                        "STATE",
+                                        ":STATE",
+                                        ":format"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "8d584879-5169-4e01-b34b-1b49a1608418",
+                                          "key": "CITY",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "e86cf15a-3833-4561-8fd7-b17a85d85061",
+                                          "key": "STATE",
+                                          "value": "WP",
+                                          "description": "(Required) 2-letter state abbreviation."
+                                        },
+                                        {
+                                          "id": "1804d89f-6be3-4c88-a948-06c4056219e8",
+                                          "key": "format",
+                                          "value": "HTML",
+                                          "description": "Output format (default JSON)."
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "c110e230-9f6b-436a-94be-1901830b67a0",
+                                      "name": "24-hour UV index forecast.",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/dmapservice/getEnvirofactsUVHOURLY/CITY/:CITY/STATE/:STATE/:format?key=<API Key>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "dmapservice",
+                                            "getEnvirofactsUVHOURLY",
+                                            "CITY",
+                                            ":CITY",
+                                            "STATE",
+                                            ":STATE",
+                                            ":format"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Added as a part of security scheme: apikey",
+                                              "key": "key",
+                                              "value": "<API Key>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "CITY"
+                                            },
+                                            {
+                                              "key": "STATE"
+                                            },
+                                            {
+                                              "key": "format"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "[\n  {\n    \"CITY\": \"<string>\",\n    \"STATE\": \"<string>\",\n    \"ZIP\": \"<string>\",\n    \"DATE_TIME\": \"<string>\",\n    \"UV_VALUE\": \"<integer>\"\n  },\n  {\n    \"CITY\": \"<string>\",\n    \"STATE\": \"<string>\",\n    \"ZIP\": \"<string>\",\n    \"DATE_TIME\": \"<string>\",\n    \"UV_VALUE\": \"<integer>\"\n  }\n]",
+                                      "createdAt": "2026-07-28T11:01:12.000Z",
+                                      "updatedAt": "2026-07-28T11:01:12.000Z",
+                                      "uid": "35240-c110e230-9f6b-436a-94be-1901830b67a0"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T11:01:12.000Z",
+                                  "updatedAt": "2026-07-28T11:01:12.000Z",
+                                  "uid": "35240-919cab6a-0e30-488d-919a-78930f463bb5"
+                                }
+                              ],
+                              "id": "5e2dc048-b3fb-4bbf-9684-ed4be34e477b",
+                              "createdAt": "2026-07-28T11:01:12.000Z",
+                              "updatedAt": "2026-07-28T11:01:12.000Z",
+                              "uid": "35240-5e2dc048-b3fb-4bbf-9684-ed4be34e477b"
+                            }
+                          ],
+                          "id": "4f2f80a5-71e8-421a-8891-f5b545d28626",
+                          "createdAt": "2026-07-28T11:01:12.000Z",
+                          "updatedAt": "2026-07-28T11:01:12.000Z",
+                          "uid": "35240-4f2f80a5-71e8-421a-8891-f5b545d28626"
+                        }
+                      ],
+                      "id": "bee358e7-fc2a-4da0-bbad-71e277c800d5",
+                      "createdAt": "2026-07-28T11:01:12.000Z",
+                      "updatedAt": "2026-07-28T11:01:12.000Z",
+                      "uid": "35240-bee358e7-fc2a-4da0-bbad-71e277c800d5"
+                    }
+                  ],
+                  "id": "3ac529d1-e1a2-4c5b-bf90-3220ed85c724",
+                  "createdAt": "2026-07-28T11:01:12.000Z",
+                  "updatedAt": "2026-07-28T11:01:12.000Z",
+                  "uid": "35240-3ac529d1-e1a2-4c5b-bf90-3220ed85c724"
+                }
+              ],
+              "id": "38fa5909-c47b-47db-b2e9-da574f43d5d9",
+              "createdAt": "2026-07-28T11:01:12.000Z",
+              "updatedAt": "2026-07-28T11:01:12.000Z",
+              "uid": "35240-38fa5909-c47b-47db-b2e9-da574f43d5d9"
+            }
+          ],
+          "id": "a3a060df-86f5-4bf7-8ac4-b37f7f2112b1",
+          "createdAt": "2026-07-28T11:01:12.000Z",
+          "updatedAt": "2026-07-28T11:01:12.000Z",
+          "uid": "35240-a3a060df-86f5-4bf7-8ac4-b37f7f2112b1"
+        },
+        {
+          "name": "getEnvirofactsUVDAILY",
+          "item": [
+            {
+              "name": "ZIP",
+              "item": [
+                {
+                  "name": "{ZIP}",
+                  "item": [
+                    {
+                      "name": "{format}",
+                      "item": [
+                        {
+                          "name": "Get Daily UV Forecast by ZIP",
+                          "id": "893ee7c4-e664-4875-9f57-4f0be9a0f3f7",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/dmapservice/getEnvirofactsUVDAILY/ZIP/:ZIP/:format",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "dmapservice",
+                                "getEnvirofactsUVDAILY",
+                                "ZIP",
+                                ":ZIP",
+                                ":format"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "afc2781a-f1b6-48b0-a419-f623f59f5df0",
+                                  "key": "ZIP",
+                                  "value": "42536",
+                                  "description": "(Required) 5-digit ZIP code."
+                                },
+                                {
+                                  "id": "8407249e-6741-4cbf-8169-3b85e12a526c",
+                                  "key": "format",
+                                  "value": "HTML",
+                                  "description": "Output format (default JSON)."
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "dfe325df-dc4f-4a88-bd66-b66f2dd579b7",
+                              "name": "Daily peak UV index forecast for the ZIP code.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/dmapservice/getEnvirofactsUVDAILY/ZIP/:ZIP/:format?key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "dmapservice",
+                                    "getEnvirofactsUVDAILY",
+                                    "ZIP",
+                                    ":ZIP",
+                                    ":format"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "ZIP"
+                                    },
+                                    {
+                                      "key": "format"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "[\n  {\n    \"CITY\": \"<string>\",\n    \"STATE\": \"<string>\",\n    \"ZIP\": \"<string>\",\n    \"DATE\": \"<string>\",\n    \"UV_INDEX\": \"<integer>\"\n  },\n  {\n    \"CITY\": \"<string>\",\n    \"STATE\": \"<string>\",\n    \"ZIP\": \"<string>\",\n    \"DATE\": \"<string>\",\n    \"UV_INDEX\": \"<integer>\"\n  }\n]",
+                              "createdAt": "2026-07-28T11:01:12.000Z",
+                              "updatedAt": "2026-07-28T11:01:12.000Z",
+                              "uid": "35240-dfe325df-dc4f-4a88-bd66-b66f2dd579b7"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T11:01:12.000Z",
+                          "updatedAt": "2026-07-28T11:01:12.000Z",
+                          "uid": "35240-893ee7c4-e664-4875-9f57-4f0be9a0f3f7"
+                        }
+                      ],
+                      "id": "0a265734-8047-4f6c-8866-6dcd0c46e114",
+                      "createdAt": "2026-07-28T11:01:12.000Z",
+                      "updatedAt": "2026-07-28T11:01:12.000Z",
+                      "uid": "35240-0a265734-8047-4f6c-8866-6dcd0c46e114"
+                    }
+                  ],
+                  "id": "b33a4dfc-bd4a-4f4d-8b92-e3e15d03f55d",
+                  "createdAt": "2026-07-28T11:01:12.000Z",
+                  "updatedAt": "2026-07-28T11:01:12.000Z",
+                  "uid": "35240-b33a4dfc-bd4a-4f4d-8b92-e3e15d03f55d"
+                }
+              ],
+              "id": "f62cf043-dc65-4446-b2e6-4d3cc4f22c98",
+              "createdAt": "2026-07-28T11:01:12.000Z",
+              "updatedAt": "2026-07-28T11:01:12.000Z",
+              "uid": "35240-f62cf043-dc65-4446-b2e6-4d3cc4f22c98"
+            },
+            {
+              "name": "CITY",
+              "item": [
+                {
+                  "name": "{CITY}",
+                  "item": [
+                    {
+                      "name": "STATE",
+                      "item": [
+                        {
+                          "name": "{STATE}",
+                          "item": [
+                            {
+                              "name": "{format}",
+                              "item": [
+                                {
+                                  "name": "Get Daily UV Forecast by City and State",
+                                  "id": "702c8516-fb7f-4f64-af4c-08399a745dc9",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/dmapservice/getEnvirofactsUVDAILY/CITY/:CITY/STATE/:STATE/:format",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "dmapservice",
+                                        "getEnvirofactsUVDAILY",
+                                        "CITY",
+                                        ":CITY",
+                                        "STATE",
+                                        ":STATE",
+                                        ":format"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "474d71ca-1bbd-431e-b688-0dc754938c48",
+                                          "key": "CITY",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "8fe62311-967f-43d7-9896-08655acc3d57",
+                                          "key": "STATE",
+                                          "value": "WP",
+                                          "description": "(Required) 2-letter state abbreviation."
+                                        },
+                                        {
+                                          "id": "15f2895b-a7ff-4378-9629-3b091d911eb8",
+                                          "key": "format",
+                                          "value": "HTML",
+                                          "description": "Output format (default JSON)."
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "6d71377f-dfe5-41b2-8e69-f75781cf5ff2",
+                                      "name": "Daily UV index forecast.",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/dmapservice/getEnvirofactsUVDAILY/CITY/:CITY/STATE/:STATE/:format?key=<API Key>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "dmapservice",
+                                            "getEnvirofactsUVDAILY",
+                                            "CITY",
+                                            ":CITY",
+                                            "STATE",
+                                            ":STATE",
+                                            ":format"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Added as a part of security scheme: apikey",
+                                              "key": "key",
+                                              "value": "<API Key>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "CITY"
+                                            },
+                                            {
+                                              "key": "STATE"
+                                            },
+                                            {
+                                              "key": "format"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "[\n  {\n    \"CITY\": \"<string>\",\n    \"STATE\": \"<string>\",\n    \"ZIP\": \"<string>\",\n    \"DATE\": \"<string>\",\n    \"UV_INDEX\": \"<integer>\"\n  },\n  {\n    \"CITY\": \"<string>\",\n    \"STATE\": \"<string>\",\n    \"ZIP\": \"<string>\",\n    \"DATE\": \"<string>\",\n    \"UV_INDEX\": \"<integer>\"\n  }\n]",
+                                      "createdAt": "2026-07-28T11:01:12.000Z",
+                                      "updatedAt": "2026-07-28T11:01:12.000Z",
+                                      "uid": "35240-6d71377f-dfe5-41b2-8e69-f75781cf5ff2"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T11:01:12.000Z",
+                                  "updatedAt": "2026-07-28T11:01:12.000Z",
+                                  "uid": "35240-702c8516-fb7f-4f64-af4c-08399a745dc9"
+                                }
+                              ],
+                              "id": "a1a2571e-1931-4688-8748-66d570139807",
+                              "createdAt": "2026-07-28T11:01:12.000Z",
+                              "updatedAt": "2026-07-28T11:01:12.000Z",
+                              "uid": "35240-a1a2571e-1931-4688-8748-66d570139807"
+                            }
+                          ],
+                          "id": "a88002a4-afaa-465f-855d-6d204909ec7e",
+                          "createdAt": "2026-07-28T11:01:12.000Z",
+                          "updatedAt": "2026-07-28T11:01:12.000Z",
+                          "uid": "35240-a88002a4-afaa-465f-855d-6d204909ec7e"
+                        }
+                      ],
+                      "id": "6f998414-897c-4ba6-9677-430405440801",
+                      "createdAt": "2026-07-28T11:01:12.000Z",
+                      "updatedAt": "2026-07-28T11:01:12.000Z",
+                      "uid": "35240-6f998414-897c-4ba6-9677-430405440801"
+                    }
+                  ],
+                  "id": "08af00fb-1ae6-4c98-9cf2-519bb8a400a5",
+                  "createdAt": "2026-07-28T11:01:12.000Z",
+                  "updatedAt": "2026-07-28T11:01:12.000Z",
+                  "uid": "35240-08af00fb-1ae6-4c98-9cf2-519bb8a400a5"
+                }
+              ],
+              "id": "ccc1902a-aed9-475a-b231-1a4202926702",
+              "createdAt": "2026-07-28T11:01:12.000Z",
+              "updatedAt": "2026-07-28T11:01:12.000Z",
+              "uid": "35240-ccc1902a-aed9-475a-b231-1a4202926702"
+            }
+          ],
+          "id": "0d400374-1866-4246-88bb-eb2422c6dc21",
+          "createdAt": "2026-07-28T11:01:12.000Z",
+          "updatedAt": "2026-07-28T11:01:12.000Z",
+          "uid": "35240-0d400374-1866-4246-88bb-eb2422c6dc21"
+        }
+      ],
+      "id": "719154c3-4935-4491-9891-268327b9f679",
+      "createdAt": "2026-07-28T11:01:12.000Z",
+      "updatedAt": "2026-07-28T11:01:12.000Z",
+      "uid": "35240-719154c3-4935-4491-9891-268327b9f679"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

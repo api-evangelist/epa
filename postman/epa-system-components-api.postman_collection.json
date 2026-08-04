@@ -1,0 +1,200 @@
+{
+  "info": {
+    "_postman_id": "8a8f5017-d9a6-443e-b30b-8848e574189f",
+    "name": "EPA Air Quality System (AQS) Account Type Codes System Components API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T11:00:45.000Z",
+    "updatedAt": "2026-07-28T11:00:46.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8a8f5017-d9a6-443e-b30b-8848e574189f"
+  },
+  "item": [
+    {
+      "name": "monitor-plan-mgmt",
+      "item": [
+        {
+          "name": "locations",
+          "item": [
+            {
+              "name": "{locId}",
+              "item": [
+                {
+                  "name": "systems",
+                  "item": [
+                    {
+                      "name": "{sysId}",
+                      "item": [
+                        {
+                          "name": "components",
+                          "item": [
+                            {
+                              "name": "System Component Controller get Components",
+                              "id": "0af42337-d863-4df8-a5b6-103e1055024b",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/monitor-plan-mgmt/locations/:locId/systems/:sysId/components",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "monitor-plan-mgmt",
+                                    "locations",
+                                    ":locId",
+                                    "systems",
+                                    ":sysId",
+                                    "components"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "f346213c-acdf-4257-80cd-45f8028aaf63",
+                                      "key": "locId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "2ab81b1b-5643-4917-a226-83c261df13bd",
+                                      "key": "sysId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                }
+                              },
+                              "response": [
+                                {
+                                  "id": "e542999c-d8b4-4a5d-b3ec-362757d5afbc",
+                                  "name": "Retrieves official component records for a monitor system",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/monitor-plan-mgmt/locations/:locId/systems/:sysId/components?key=<API Key>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "monitor-plan-mgmt",
+                                        "locations",
+                                        ":locId",
+                                        "systems",
+                                        ":sysId",
+                                        "components"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Added as a part of security scheme: apikey",
+                                          "key": "key",
+                                          "value": "<API Key>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "locId"
+                                        },
+                                        {
+                                          "key": "sysId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"items\": [\n    {\n      \"componentId\": \"<string>\",\n      \"beginDate\": \"<dateTime>\",\n      \"beginHour\": \"<number>\",\n      \"endDate\": \"<dateTime>\",\n      \"endHour\": \"<number>\",\n      \"id\": \"<string>\",\n      \"locationId\": \"<string>\",\n      \"monitoringSystemRecordId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"active\": \"<boolean>\"\n    },\n    {\n      \"componentId\": \"<string>\",\n      \"beginDate\": \"<dateTime>\",\n      \"beginHour\": \"<number>\",\n      \"endDate\": \"<dateTime>\",\n      \"endHour\": \"<number>\",\n      \"id\": \"<string>\",\n      \"locationId\": \"<string>\",\n      \"monitoringSystemRecordId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"active\": \"<boolean>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T11:00:46.000Z",
+                                  "updatedAt": "2026-07-28T11:00:46.000Z",
+                                  "uid": "35240-e542999c-d8b4-4a5d-b3ec-362757d5afbc"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T11:00:46.000Z",
+                              "updatedAt": "2026-07-28T11:00:46.000Z",
+                              "uid": "35240-0af42337-d863-4df8-a5b6-103e1055024b"
+                            }
+                          ],
+                          "id": "ac775802-98f4-4686-b8b2-a91bc3f8443b",
+                          "createdAt": "2026-07-28T11:00:46.000Z",
+                          "updatedAt": "2026-07-28T11:00:46.000Z",
+                          "uid": "35240-ac775802-98f4-4686-b8b2-a91bc3f8443b"
+                        }
+                      ],
+                      "id": "b3d95caf-4878-41e2-ae55-c6c6541b8c83",
+                      "createdAt": "2026-07-28T11:00:46.000Z",
+                      "updatedAt": "2026-07-28T11:00:46.000Z",
+                      "uid": "35240-b3d95caf-4878-41e2-ae55-c6c6541b8c83"
+                    }
+                  ],
+                  "id": "5cea125d-7186-44fe-980b-341c4deb1b4c",
+                  "createdAt": "2026-07-28T11:00:46.000Z",
+                  "updatedAt": "2026-07-28T11:00:46.000Z",
+                  "uid": "35240-5cea125d-7186-44fe-980b-341c4deb1b4c"
+                }
+              ],
+              "id": "ec32e2f6-a9ff-4442-b3ab-f5f6028f7f81",
+              "createdAt": "2026-07-28T11:00:46.000Z",
+              "updatedAt": "2026-07-28T11:00:46.000Z",
+              "uid": "35240-ec32e2f6-a9ff-4442-b3ab-f5f6028f7f81"
+            }
+          ],
+          "id": "2a631489-0b6f-4695-8184-d5e9bdede8e2",
+          "createdAt": "2026-07-28T11:00:46.000Z",
+          "updatedAt": "2026-07-28T11:00:46.000Z",
+          "uid": "35240-2a631489-0b6f-4695-8184-d5e9bdede8e2"
+        }
+      ],
+      "id": "405d8912-ecb4-4ace-aa72-a18127397193",
+      "createdAt": "2026-07-28T11:00:46.000Z",
+      "updatedAt": "2026-07-28T11:00:46.000Z",
+      "uid": "35240-405d8912-ecb4-4ace-aa72-a18127397193"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

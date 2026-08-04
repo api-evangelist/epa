@@ -1,0 +1,2345 @@
+{
+  "info": {
+    "_postman_id": "14f9144a-2d53-452e-8f48-03bc4ff699c1",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Facilities API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:58:29.000Z",
+    "updatedAt": "2026-07-28T10:58:30.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-14f9144a-2d53-452e-8f48-03bc4ff699c1"
+  },
+  "item": [
+    {
+      "name": "facilities-mgmt",
+      "item": [
+        {
+          "name": "facilities",
+          "item": [
+            {
+              "name": "attributes",
+              "item": [
+                {
+                  "name": "applicable",
+                  "item": [
+                    {
+                      "name": "Facilities Controller get Applicable Facility Attributes",
+                      "id": "d454f6f4-76df-4ea9-91b6-7eb8d3474899",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/facilities-mgmt/facilities/attributes/applicable?year=<number>|<number>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "facilities-mgmt",
+                            "facilities",
+                            "attributes",
+                            "applicable"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The calendar year during which activity occurred.",
+                              "key": "year",
+                              "value": "<number>|<number>"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "f71bfcbf-9673-4f8e-bb37-72fafdd5d3e6",
+                          "name": "Retrieves Applicable Facility Attributes",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/facilities-mgmt/facilities/attributes/applicable?year=<number>|<number>&key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "facilities-mgmt",
+                                "facilities",
+                                "attributes",
+                                "applicable"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The calendar year during which activity occurred.",
+                                  "key": "year",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"items\": [\n    {\n      \"year\": \"<number>\",\n      \"programCode\": \"<string>\",\n      \"facilityId\": \"<number>\",\n      \"stateCode\": \"<string>\",\n      \"unitTypeCode\": \"<string>\",\n      \"fuelTypeCode\": \"<string>\",\n      \"controlCode\": \"<string>\",\n      \"sourceCategoryDescription\": \"<string>\"\n    },\n    {\n      \"year\": \"<number>\",\n      \"programCode\": \"<string>\",\n      \"facilityId\": \"<number>\",\n      \"stateCode\": \"<string>\",\n      \"unitTypeCode\": \"<string>\",\n      \"fuelTypeCode\": \"<string>\",\n      \"controlCode\": \"<string>\",\n      \"sourceCategoryDescription\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T10:58:30.000Z",
+                          "updatedAt": "2026-07-28T10:58:30.000Z",
+                          "uid": "35240-f71bfcbf-9673-4f8e-bb37-72fafdd5d3e6"
+                        },
+                        {
+                          "id": "7ee77dc8-9420-4090-ba0f-1333611b3fe4",
+                          "name": "Invalid Request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/facilities-mgmt/facilities/attributes/applicable?year=<number>|<number>&key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "facilities-mgmt",
+                                "facilities",
+                                "attributes",
+                                "applicable"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The calendar year during which activity occurred.",
+                                  "key": "year",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T10:58:30.000Z",
+                          "updatedAt": "2026-07-28T10:58:30.000Z",
+                          "uid": "35240-7ee77dc8-9420-4090-ba0f-1333611b3fe4"
+                        },
+                        {
+                          "id": "62b4d6e9-cf66-4d5c-a1d3-7b10f2cf702c",
+                          "name": "Resource Not Found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/facilities-mgmt/facilities/attributes/applicable?year=<number>|<number>&key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "facilities-mgmt",
+                                "facilities",
+                                "attributes",
+                                "applicable"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The calendar year during which activity occurred.",
+                                  "key": "year",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T10:58:30.000Z",
+                          "updatedAt": "2026-07-28T10:58:30.000Z",
+                          "uid": "35240-62b4d6e9-cf66-4d5c-a1d3-7b10f2cf702c"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T10:58:30.000Z",
+                      "updatedAt": "2026-07-28T10:58:30.000Z",
+                      "uid": "35240-d454f6f4-76df-4ea9-91b6-7eb8d3474899"
+                    }
+                  ],
+                  "id": "22a56c89-a8ae-4151-a04c-024aae40d0b8",
+                  "createdAt": "2026-07-28T10:58:30.000Z",
+                  "updatedAt": "2026-07-28T10:58:30.000Z",
+                  "uid": "35240-22a56c89-a8ae-4151-a04c-024aae40d0b8"
+                },
+                {
+                  "name": "Facilities Controller get All Facility Attributes",
+                  "id": "337052b4-d53f-4269-adb1-55a8b269347a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/facilities-mgmt/facilities/attributes?year=<number>|<number>&facilityId=<number>|<number>&stateCode=MS|OH&unitType=Pressurized fluidized bed boiler|Pressurized fluidized bed boiler&unitFuelType=Other Solid Fuel|Wood&controlTechnologies=Steam Injection|Steam Injection&sourceCategory=Portland Cement Plant|Electric Utility&programCodeInfo=NBP|CAIROS&page=<number>&perPage=<number>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "facilities-mgmt",
+                        "facilities",
+                        "attributes"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The calendar year during which activity occurred.",
+                          "key": "year",
+                          "value": "<number>|<number>"
+                        },
+                        {
+                          "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                          "key": "facilityId",
+                          "value": "<number>|<number>"
+                        },
+                        {
+                          "description": "Two letter abbreviation for the State.",
+                          "key": "stateCode",
+                          "value": "MS|OH"
+                        },
+                        {
+                          "description": "Type of unit or boiler.",
+                          "key": "unitType",
+                          "value": "Pressurized fluidized bed boiler|Pressurized fluidized bed boiler"
+                        },
+                        {
+                          "description": "Primary or Secondary fuel types combusted by the unit.",
+                          "key": "unitFuelType",
+                          "value": "Other Solid Fuel|Wood"
+                        },
+                        {
+                          "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                          "key": "controlTechnologies",
+                          "value": "Steam Injection|Steam Injection"
+                        },
+                        {
+                          "description": "Description of a unit that classifies it in terms of the primary function of the unit.",
+                          "key": "sourceCategory",
+                          "value": "Portland Cement Plant|Electric Utility"
+                        },
+                        {
+                          "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                          "key": "programCodeInfo",
+                          "value": "NBP|CAIROS"
+                        },
+                        {
+                          "description": "(Required) Page number of data being requested.",
+                          "key": "page",
+                          "value": "<number>"
+                        },
+                        {
+                          "description": "(Required) Number of results per page.",
+                          "key": "perPage",
+                          "value": "<number>"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "8fef19ef-c8b1-4e1d-aff2-7840620659a1",
+                      "name": "Retrieves Facility Unit Attributes",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/facilities-mgmt/facilities/attributes?year=<number>|<number>&facilityId=<number>|<number>&stateCode=MS|OH&unitType=Pressurized fluidized bed boiler|Pressurized fluidized bed boiler&unitFuelType=Other Solid Fuel|Wood&controlTechnologies=Steam Injection|Steam Injection&sourceCategory=Portland Cement Plant|Electric Utility&programCodeInfo=NBP|CAIROS&page=<number>&perPage=<number>&key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "facilities-mgmt",
+                            "facilities",
+                            "attributes"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The calendar year during which activity occurred.",
+                              "key": "year",
+                              "value": "<number>|<number>"
+                            },
+                            {
+                              "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                              "key": "facilityId",
+                              "value": "<number>|<number>"
+                            },
+                            {
+                              "description": "Two letter abbreviation for the State.",
+                              "key": "stateCode",
+                              "value": "MS|OH"
+                            },
+                            {
+                              "description": "Type of unit or boiler.",
+                              "key": "unitType",
+                              "value": "Pressurized fluidized bed boiler|Pressurized fluidized bed boiler"
+                            },
+                            {
+                              "description": "Primary or Secondary fuel types combusted by the unit.",
+                              "key": "unitFuelType",
+                              "value": "Other Solid Fuel|Wood"
+                            },
+                            {
+                              "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                              "key": "controlTechnologies",
+                              "value": "Steam Injection|Steam Injection"
+                            },
+                            {
+                              "description": "Description of a unit that classifies it in terms of the primary function of the unit.",
+                              "key": "sourceCategory",
+                              "value": "Portland Cement Plant|Electric Utility"
+                            },
+                            {
+                              "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                              "key": "programCodeInfo",
+                              "value": "NBP|CAIROS"
+                            },
+                            {
+                              "description": "(Required) Page number of data being requested.",
+                              "key": "page",
+                              "value": "<number>"
+                            },
+                            {
+                              "description": "(Required) Number of results per page.",
+                              "key": "perPage",
+                              "value": "<number>"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"items\": [\n    {\n      \"stateCode\": \"<string>\",\n      \"facilityName\": \"<string>\",\n      \"unitId\": \"<string>\",\n      \"associatedStacks\": \"<string>\",\n      \"year\": \"<number>\",\n      \"programCodeInfo\": \"<string>\",\n      \"primaryRepInfo\": \"<string>\",\n      \"nercRegion\": \"<string>\",\n      \"county\": \"<string>\",\n      \"countyCode\": \"<string>\",\n      \"fipsCode\": \"<string>\",\n      \"sourceCategory\": \"<string>\",\n      \"ownerOperator\": \"<string>\",\n      \"so2Phase\": \"<string>\",\n      \"noxPhase\": \"<string>\",\n      \"unitType\": \"<string>\",\n      \"primaryFuelInfo\": \"<string>\",\n      \"secondaryFuelInfo\": \"<string>\",\n      \"so2ControlInfo\": \"<string>\",\n      \"noxControlInfo\": \"<string>\",\n      \"pmControlInfo\": \"<string>\",\n      \"hgControlInfo\": \"<string>\",\n      \"commercialOperationDate\": \"<string>\",\n      \"operatingStatus\": \"<string>\",\n      \"associatedGeneratorsAndNameplateCapacity\": \"<string>\",\n      \"facilityId\": \"<number>\",\n      \"epaRegion\": \"<number>\",\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\",\n      \"maxHourlyHIRate\": \"<number>\"\n    },\n    {\n      \"stateCode\": \"<string>\",\n      \"facilityName\": \"<string>\",\n      \"unitId\": \"<string>\",\n      \"associatedStacks\": \"<string>\",\n      \"year\": \"<number>\",\n      \"programCodeInfo\": \"<string>\",\n      \"primaryRepInfo\": \"<string>\",\n      \"nercRegion\": \"<string>\",\n      \"county\": \"<string>\",\n      \"countyCode\": \"<string>\",\n      \"fipsCode\": \"<string>\",\n      \"sourceCategory\": \"<string>\",\n      \"ownerOperator\": \"<string>\",\n      \"so2Phase\": \"<string>\",\n      \"noxPhase\": \"<string>\",\n      \"unitType\": \"<string>\",\n      \"primaryFuelInfo\": \"<string>\",\n      \"secondaryFuelInfo\": \"<string>\",\n      \"so2ControlInfo\": \"<string>\",\n      \"noxControlInfo\": \"<string>\",\n      \"pmControlInfo\": \"<string>\",\n      \"hgControlInfo\": \"<string>\",\n      \"commercialOperationDate\": \"<string>\",\n      \"operatingStatus\": \"<string>\",\n      \"associatedGeneratorsAndNameplateCapacity\": \"<string>\",\n      \"facilityId\": \"<number>\",\n      \"epaRegion\": \"<number>\",\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\",\n      \"maxHourlyHIRate\": \"<number>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T10:58:30.000Z",
+                      "updatedAt": "2026-07-28T10:58:30.000Z",
+                      "uid": "35240-8fef19ef-c8b1-4e1d-aff2-7840620659a1"
+                    },
+                    {
+                      "id": "46d0e8fe-7132-46dc-a7f7-cea8cd01ac22",
+                      "name": "Invalid Request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/facilities-mgmt/facilities/attributes?year=<number>|<number>&facilityId=<number>|<number>&stateCode=MS|OH&unitType=Pressurized fluidized bed boiler|Pressurized fluidized bed boiler&unitFuelType=Other Solid Fuel|Wood&controlTechnologies=Steam Injection|Steam Injection&sourceCategory=Portland Cement Plant|Electric Utility&programCodeInfo=NBP|CAIROS&page=<number>&perPage=<number>&key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "facilities-mgmt",
+                            "facilities",
+                            "attributes"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The calendar year during which activity occurred.",
+                              "key": "year",
+                              "value": "<number>|<number>"
+                            },
+                            {
+                              "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                              "key": "facilityId",
+                              "value": "<number>|<number>"
+                            },
+                            {
+                              "description": "Two letter abbreviation for the State.",
+                              "key": "stateCode",
+                              "value": "MS|OH"
+                            },
+                            {
+                              "description": "Type of unit or boiler.",
+                              "key": "unitType",
+                              "value": "Pressurized fluidized bed boiler|Pressurized fluidized bed boiler"
+                            },
+                            {
+                              "description": "Primary or Secondary fuel types combusted by the unit.",
+                              "key": "unitFuelType",
+                              "value": "Other Solid Fuel|Wood"
+                            },
+                            {
+                              "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                              "key": "controlTechnologies",
+                              "value": "Steam Injection|Steam Injection"
+                            },
+                            {
+                              "description": "Description of a unit that classifies it in terms of the primary function of the unit.",
+                              "key": "sourceCategory",
+                              "value": "Portland Cement Plant|Electric Utility"
+                            },
+                            {
+                              "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                              "key": "programCodeInfo",
+                              "value": "NBP|CAIROS"
+                            },
+                            {
+                              "description": "(Required) Page number of data being requested.",
+                              "key": "page",
+                              "value": "<number>"
+                            },
+                            {
+                              "description": "(Required) Number of results per page.",
+                              "key": "perPage",
+                              "value": "<number>"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T10:58:30.000Z",
+                      "updatedAt": "2026-07-28T10:58:30.000Z",
+                      "uid": "35240-46d0e8fe-7132-46dc-a7f7-cea8cd01ac22"
+                    },
+                    {
+                      "id": "7936fba3-621f-47d1-9a85-f04f0768f0d5",
+                      "name": "Resource Not Found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/facilities-mgmt/facilities/attributes?year=<number>|<number>&facilityId=<number>|<number>&stateCode=MS|OH&unitType=Pressurized fluidized bed boiler|Pressurized fluidized bed boiler&unitFuelType=Other Solid Fuel|Wood&controlTechnologies=Steam Injection|Steam Injection&sourceCategory=Portland Cement Plant|Electric Utility&programCodeInfo=NBP|CAIROS&page=<number>&perPage=<number>&key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "facilities-mgmt",
+                            "facilities",
+                            "attributes"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The calendar year during which activity occurred.",
+                              "key": "year",
+                              "value": "<number>|<number>"
+                            },
+                            {
+                              "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                              "key": "facilityId",
+                              "value": "<number>|<number>"
+                            },
+                            {
+                              "description": "Two letter abbreviation for the State.",
+                              "key": "stateCode",
+                              "value": "MS|OH"
+                            },
+                            {
+                              "description": "Type of unit or boiler.",
+                              "key": "unitType",
+                              "value": "Pressurized fluidized bed boiler|Pressurized fluidized bed boiler"
+                            },
+                            {
+                              "description": "Primary or Secondary fuel types combusted by the unit.",
+                              "key": "unitFuelType",
+                              "value": "Other Solid Fuel|Wood"
+                            },
+                            {
+                              "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                              "key": "controlTechnologies",
+                              "value": "Steam Injection|Steam Injection"
+                            },
+                            {
+                              "description": "Description of a unit that classifies it in terms of the primary function of the unit.",
+                              "key": "sourceCategory",
+                              "value": "Portland Cement Plant|Electric Utility"
+                            },
+                            {
+                              "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                              "key": "programCodeInfo",
+                              "value": "NBP|CAIROS"
+                            },
+                            {
+                              "description": "(Required) Page number of data being requested.",
+                              "key": "page",
+                              "value": "<number>"
+                            },
+                            {
+                              "description": "(Required) Number of results per page.",
+                              "key": "perPage",
+                              "value": "<number>"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T10:58:30.000Z",
+                      "updatedAt": "2026-07-28T10:58:30.000Z",
+                      "uid": "35240-7936fba3-621f-47d1-9a85-f04f0768f0d5"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T10:58:30.000Z",
+                  "updatedAt": "2026-07-28T10:58:30.000Z",
+                  "uid": "35240-337052b4-d53f-4269-adb1-55a8b269347a"
+                }
+              ],
+              "id": "5955c066-55ef-4483-9b9b-8e2bb3ecdd6c",
+              "createdAt": "2026-07-28T10:58:30.000Z",
+              "updatedAt": "2026-07-28T10:58:30.000Z",
+              "uid": "35240-5955c066-55ef-4483-9b9b-8e2bb3ecdd6c"
+            },
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "Facilities Controller get Facility By Id",
+                  "id": "cbd756bf-20a1-4fd6-952a-41ef2bf306ff",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/facilities-mgmt/facilities/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "facilities-mgmt",
+                        "facilities",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "28d35959-c4d6-4338-9da6-bf5f7b034928",
+                          "key": "id",
+                          "value": "<number>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "53115803-edfb-4644-8802-0c90eea227d1",
+                      "name": "Retrieves a single Facilitiy By Id",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/facilities-mgmt/facilities/:id?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "facilities-mgmt",
+                            "facilities",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T10:58:30.000Z",
+                      "updatedAt": "2026-07-28T10:58:30.000Z",
+                      "uid": "35240-53115803-edfb-4644-8802-0c90eea227d1"
+                    },
+                    {
+                      "id": "ee6dfbd7-2275-4f74-abe5-4666f6cc30aa",
+                      "name": "Invalid Request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/facilities-mgmt/facilities/:id?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "facilities-mgmt",
+                            "facilities",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T10:58:30.000Z",
+                      "updatedAt": "2026-07-28T10:58:30.000Z",
+                      "uid": "35240-ee6dfbd7-2275-4f74-abe5-4666f6cc30aa"
+                    },
+                    {
+                      "id": "2aa2f87e-89a6-44f7-be28-e43249f32d16",
+                      "name": "Resource Not Found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/facilities-mgmt/facilities/:id?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "facilities-mgmt",
+                            "facilities",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T10:58:30.000Z",
+                      "updatedAt": "2026-07-28T10:58:30.000Z",
+                      "uid": "35240-2aa2f87e-89a6-44f7-be28-e43249f32d16"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T10:58:30.000Z",
+                  "updatedAt": "2026-07-28T10:58:30.000Z",
+                  "uid": "35240-cbd756bf-20a1-4fd6-952a-41ef2bf306ff"
+                }
+              ],
+              "id": "e5538125-e6a5-41f2-a1ae-104f8dbcef26",
+              "createdAt": "2026-07-28T10:58:30.000Z",
+              "updatedAt": "2026-07-28T10:58:30.000Z",
+              "uid": "35240-e5538125-e6a5-41f2-a1ae-104f8dbcef26"
+            },
+            {
+              "name": "Facilities Controller get Facilities",
+              "id": "317b581d-30ef-44f4-ab84-377b9c5b1464",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/facilities-mgmt/facilities?page=<number>&perPage=<number>&stateCode=HI&epaRegion=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "facilities-mgmt",
+                    "facilities"
+                  ],
+                  "query": [
+                    {
+                      "description": "Page number of data being requested.",
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "Number of results per page.",
+                      "key": "perPage",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "Two letter abbreviation for the State.",
+                      "key": "stateCode",
+                      "value": "HI"
+                    },
+                    {
+                      "description": "An EPA Region is a group of U.S. states. EPA Regions are numbered from 1 to 10 and each state belongs to one and only one EPA Region.",
+                      "key": "epaRegion",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "4e22afe0-a348-4cbf-874f-93346567b40b",
+                  "name": "Retrieves a list of Facilities",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/facilities-mgmt/facilities?page=<number>&perPage=<number>&stateCode=HI&epaRegion=<string>&key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "facilities-mgmt",
+                        "facilities"
+                      ],
+                      "query": [
+                        {
+                          "description": "Page number of data being requested.",
+                          "key": "page",
+                          "value": "<number>"
+                        },
+                        {
+                          "description": "Number of results per page.",
+                          "key": "perPage",
+                          "value": "<number>"
+                        },
+                        {
+                          "description": "Two letter abbreviation for the State.",
+                          "key": "stateCode",
+                          "value": "HI"
+                        },
+                        {
+                          "description": "An EPA Region is a group of U.S. states. EPA Regions are numbered from 1 to 10 and each state belongs to one and only one EPA Region.",
+                          "key": "epaRegion",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"items\": [\n    {\n      \"facilityId\": \"<number>\",\n      \"facilityName\": \"<string>\",\n      \"stateCode\": \"<string>\",\n      \"epaRegion\": \"<number>\",\n      \"facilityRecordId\": \"<number>\"\n    },\n    {\n      \"facilityId\": \"<number>\",\n      \"facilityName\": \"<string>\",\n      \"stateCode\": \"<string>\",\n      \"epaRegion\": \"<number>\",\n      \"facilityRecordId\": \"<number>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T10:58:30.000Z",
+                  "updatedAt": "2026-07-28T10:58:30.000Z",
+                  "uid": "35240-4e22afe0-a348-4cbf-874f-93346567b40b"
+                },
+                {
+                  "id": "5c3aad34-99dc-4cbb-9abc-2a181941d3d7",
+                  "name": "Invalid Request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/facilities-mgmt/facilities?page=<number>&perPage=<number>&stateCode=HI&epaRegion=<string>&key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "facilities-mgmt",
+                        "facilities"
+                      ],
+                      "query": [
+                        {
+                          "description": "Page number of data being requested.",
+                          "key": "page",
+                          "value": "<number>"
+                        },
+                        {
+                          "description": "Number of results per page.",
+                          "key": "perPage",
+                          "value": "<number>"
+                        },
+                        {
+                          "description": "Two letter abbreviation for the State.",
+                          "key": "stateCode",
+                          "value": "HI"
+                        },
+                        {
+                          "description": "An EPA Region is a group of U.S. states. EPA Regions are numbered from 1 to 10 and each state belongs to one and only one EPA Region.",
+                          "key": "epaRegion",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T10:58:30.000Z",
+                  "updatedAt": "2026-07-28T10:58:30.000Z",
+                  "uid": "35240-5c3aad34-99dc-4cbb-9abc-2a181941d3d7"
+                },
+                {
+                  "id": "7739b409-7941-4bdd-8558-65d5bfd86cae",
+                  "name": "Resource Not Found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/facilities-mgmt/facilities?page=<number>&perPage=<number>&stateCode=HI&epaRegion=<string>&key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "facilities-mgmt",
+                        "facilities"
+                      ],
+                      "query": [
+                        {
+                          "description": "Page number of data being requested.",
+                          "key": "page",
+                          "value": "<number>"
+                        },
+                        {
+                          "description": "Number of results per page.",
+                          "key": "perPage",
+                          "value": "<number>"
+                        },
+                        {
+                          "description": "Two letter abbreviation for the State.",
+                          "key": "stateCode",
+                          "value": "HI"
+                        },
+                        {
+                          "description": "An EPA Region is a group of U.S. states. EPA Regions are numbered from 1 to 10 and each state belongs to one and only one EPA Region.",
+                          "key": "epaRegion",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T10:58:30.000Z",
+                  "updatedAt": "2026-07-28T10:58:30.000Z",
+                  "uid": "35240-7739b409-7941-4bdd-8558-65d5bfd86cae"
+                }
+              ],
+              "createdAt": "2026-07-28T10:58:30.000Z",
+              "updatedAt": "2026-07-28T10:58:30.000Z",
+              "uid": "35240-317b581d-30ef-44f4-ab84-377b9c5b1464"
+            }
+          ],
+          "id": "9c35ee21-de0b-4329-b2de-9d642e0cd706",
+          "createdAt": "2026-07-28T10:58:30.000Z",
+          "updatedAt": "2026-07-28T10:58:30.000Z",
+          "uid": "35240-9c35ee21-de0b-4329-b2de-9d642e0cd706"
+        }
+      ],
+      "id": "a47e9546-b911-4bdb-8bed-e1397167f7ea",
+      "createdAt": "2026-07-28T10:58:30.000Z",
+      "updatedAt": "2026-07-28T10:58:30.000Z",
+      "uid": "35240-a47e9546-b911-4bdb-8bed-e1397167f7ea"
+    },
+    {
+      "name": "streaming-services",
+      "item": [
+        {
+          "name": "facilities",
+          "item": [
+            {
+              "name": "attributes",
+              "item": [
+                {
+                  "name": "Facilities Controller stream Attributes",
+                  "id": "2878f8b7-0a6a-45be-87aa-9e35bca80295",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/streaming-services/facilities/attributes?year=<number>|<number>&facilityId=<number>|<number>&stateCode=MS|OH&unitType=Pressurized fluidized bed boiler|Pressurized fluidized bed boiler&unitFuelType=Other Solid Fuel|Wood&controlTechnologies=Steam Injection|Steam Injection&sourceCategory=Portland Cement Plant|Electric Utility&programCodeInfo=NBP|CAIROS&exclude=operatingStatus|epaRegion",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "streaming-services",
+                        "facilities",
+                        "attributes"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The calendar year during which activity occurred.",
+                          "key": "year",
+                          "value": "<number>|<number>"
+                        },
+                        {
+                          "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                          "key": "facilityId",
+                          "value": "<number>|<number>"
+                        },
+                        {
+                          "description": "Two letter abbreviation for the State.",
+                          "key": "stateCode",
+                          "value": "MS|OH"
+                        },
+                        {
+                          "description": "Type of unit or boiler.",
+                          "key": "unitType",
+                          "value": "Pressurized fluidized bed boiler|Pressurized fluidized bed boiler"
+                        },
+                        {
+                          "description": "Primary or Secondary fuel types combusted by the unit.",
+                          "key": "unitFuelType",
+                          "value": "Other Solid Fuel|Wood"
+                        },
+                        {
+                          "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                          "key": "controlTechnologies",
+                          "value": "Steam Injection|Steam Injection"
+                        },
+                        {
+                          "description": "Description of a unit that classifies it in terms of the primary function of the unit.",
+                          "key": "sourceCategory",
+                          "value": "Portland Cement Plant|Electric Utility"
+                        },
+                        {
+                          "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                          "key": "programCodeInfo",
+                          "value": "NBP|CAIROS"
+                        },
+                        {
+                          "description": "Selected items will be excluded from the response",
+                          "key": "exclude",
+                          "value": "operatingStatus|epaRegion"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "0277c23c-d355-4ceb-bd9b-2daf377f5ff7",
+                      "name": "Streams a list of Facilities",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/streaming-services/facilities/attributes?year=<number>|<number>&facilityId=<number>|<number>&stateCode=MS|OH&unitType=Pressurized fluidized bed boiler|Pressurized fluidized bed boiler&unitFuelType=Other Solid Fuel|Wood&controlTechnologies=Steam Injection|Steam Injection&sourceCategory=Portland Cement Plant|Electric Utility&programCodeInfo=NBP|CAIROS&exclude=operatingStatus|epaRegion&key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "streaming-services",
+                            "facilities",
+                            "attributes"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The calendar year during which activity occurred.",
+                              "key": "year",
+                              "value": "<number>|<number>"
+                            },
+                            {
+                              "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                              "key": "facilityId",
+                              "value": "<number>|<number>"
+                            },
+                            {
+                              "description": "Two letter abbreviation for the State.",
+                              "key": "stateCode",
+                              "value": "MS|OH"
+                            },
+                            {
+                              "description": "Type of unit or boiler.",
+                              "key": "unitType",
+                              "value": "Pressurized fluidized bed boiler|Pressurized fluidized bed boiler"
+                            },
+                            {
+                              "description": "Primary or Secondary fuel types combusted by the unit.",
+                              "key": "unitFuelType",
+                              "value": "Other Solid Fuel|Wood"
+                            },
+                            {
+                              "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                              "key": "controlTechnologies",
+                              "value": "Steam Injection|Steam Injection"
+                            },
+                            {
+                              "description": "Description of a unit that classifies it in terms of the primary function of the unit.",
+                              "key": "sourceCategory",
+                              "value": "Portland Cement Plant|Electric Utility"
+                            },
+                            {
+                              "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                              "key": "programCodeInfo",
+                              "value": "NBP|CAIROS"
+                            },
+                            {
+                              "description": "Selected items will be excluded from the response",
+                              "key": "exclude",
+                              "value": "operatingStatus|epaRegion"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"stateCode\": \"<string>\",\n  \"facilityName\": \"<string>\",\n  \"unitId\": \"<string>\",\n  \"associatedStacks\": \"<string>\",\n  \"year\": \"<number>\",\n  \"programCodeInfo\": \"<string>\",\n  \"primaryRepInfo\": \"<string>\",\n  \"nercRegion\": \"<string>\",\n  \"county\": \"<string>\",\n  \"countyCode\": \"<string>\",\n  \"fipsCode\": \"<string>\",\n  \"sourceCategory\": \"<string>\",\n  \"ownerOperator\": \"<string>\",\n  \"so2Phase\": \"<string>\",\n  \"noxPhase\": \"<string>\",\n  \"unitType\": \"<string>\",\n  \"primaryFuelInfo\": \"<string>\",\n  \"secondaryFuelInfo\": \"<string>\",\n  \"so2ControlInfo\": \"<string>\",\n  \"noxControlInfo\": \"<string>\",\n  \"pmControlInfo\": \"<string>\",\n  \"hgControlInfo\": \"<string>\",\n  \"commercialOperationDate\": \"<string>\",\n  \"operatingStatus\": \"<string>\",\n  \"associatedGeneratorsAndNameplateCapacity\": \"<string>\",\n  \"facilityId\": \"<number>\",\n  \"epaRegion\": \"<number>\",\n  \"latitude\": \"<number>\",\n  \"longitude\": \"<number>\",\n  \"maxHourlyHIRate\": \"<number>\"\n}",
+                      "createdAt": "2026-07-28T10:58:30.000Z",
+                      "updatedAt": "2026-07-28T10:58:30.000Z",
+                      "uid": "35240-0277c23c-d355-4ceb-bd9b-2daf377f5ff7"
+                    },
+                    {
+                      "id": "1d876e6b-9b33-4ac6-86ae-e7c0b9cc4b2d",
+                      "name": "Invalid Request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/streaming-services/facilities/attributes?year=<number>|<number>&facilityId=<number>|<number>&stateCode=MS|OH&unitType=Pressurized fluidized bed boiler|Pressurized fluidized bed boiler&unitFuelType=Other Solid Fuel|Wood&controlTechnologies=Steam Injection|Steam Injection&sourceCategory=Portland Cement Plant|Electric Utility&programCodeInfo=NBP|CAIROS&exclude=operatingStatus|epaRegion&key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "streaming-services",
+                            "facilities",
+                            "attributes"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The calendar year during which activity occurred.",
+                              "key": "year",
+                              "value": "<number>|<number>"
+                            },
+                            {
+                              "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                              "key": "facilityId",
+                              "value": "<number>|<number>"
+                            },
+                            {
+                              "description": "Two letter abbreviation for the State.",
+                              "key": "stateCode",
+                              "value": "MS|OH"
+                            },
+                            {
+                              "description": "Type of unit or boiler.",
+                              "key": "unitType",
+                              "value": "Pressurized fluidized bed boiler|Pressurized fluidized bed boiler"
+                            },
+                            {
+                              "description": "Primary or Secondary fuel types combusted by the unit.",
+                              "key": "unitFuelType",
+                              "value": "Other Solid Fuel|Wood"
+                            },
+                            {
+                              "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                              "key": "controlTechnologies",
+                              "value": "Steam Injection|Steam Injection"
+                            },
+                            {
+                              "description": "Description of a unit that classifies it in terms of the primary function of the unit.",
+                              "key": "sourceCategory",
+                              "value": "Portland Cement Plant|Electric Utility"
+                            },
+                            {
+                              "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                              "key": "programCodeInfo",
+                              "value": "NBP|CAIROS"
+                            },
+                            {
+                              "description": "Selected items will be excluded from the response",
+                              "key": "exclude",
+                              "value": "operatingStatus|epaRegion"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T10:58:30.000Z",
+                      "updatedAt": "2026-07-28T10:58:30.000Z",
+                      "uid": "35240-1d876e6b-9b33-4ac6-86ae-e7c0b9cc4b2d"
+                    },
+                    {
+                      "id": "a07f83ba-1e95-4e03-8f34-54b6b869eaf0",
+                      "name": "Resource Not Found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/streaming-services/facilities/attributes?year=<number>|<number>&facilityId=<number>|<number>&stateCode=MS|OH&unitType=Pressurized fluidized bed boiler|Pressurized fluidized bed boiler&unitFuelType=Other Solid Fuel|Wood&controlTechnologies=Steam Injection|Steam Injection&sourceCategory=Portland Cement Plant|Electric Utility&programCodeInfo=NBP|CAIROS&exclude=operatingStatus|epaRegion&key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "streaming-services",
+                            "facilities",
+                            "attributes"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The calendar year during which activity occurred.",
+                              "key": "year",
+                              "value": "<number>|<number>"
+                            },
+                            {
+                              "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                              "key": "facilityId",
+                              "value": "<number>|<number>"
+                            },
+                            {
+                              "description": "Two letter abbreviation for the State.",
+                              "key": "stateCode",
+                              "value": "MS|OH"
+                            },
+                            {
+                              "description": "Type of unit or boiler.",
+                              "key": "unitType",
+                              "value": "Pressurized fluidized bed boiler|Pressurized fluidized bed boiler"
+                            },
+                            {
+                              "description": "Primary or Secondary fuel types combusted by the unit.",
+                              "key": "unitFuelType",
+                              "value": "Other Solid Fuel|Wood"
+                            },
+                            {
+                              "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                              "key": "controlTechnologies",
+                              "value": "Steam Injection|Steam Injection"
+                            },
+                            {
+                              "description": "Description of a unit that classifies it in terms of the primary function of the unit.",
+                              "key": "sourceCategory",
+                              "value": "Portland Cement Plant|Electric Utility"
+                            },
+                            {
+                              "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                              "key": "programCodeInfo",
+                              "value": "NBP|CAIROS"
+                            },
+                            {
+                              "description": "Selected items will be excluded from the response",
+                              "key": "exclude",
+                              "value": "operatingStatus|epaRegion"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T10:58:30.000Z",
+                      "updatedAt": "2026-07-28T10:58:30.000Z",
+                      "uid": "35240-a07f83ba-1e95-4e03-8f34-54b6b869eaf0"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T10:58:30.000Z",
+                  "updatedAt": "2026-07-28T10:58:30.000Z",
+                  "uid": "35240-2878f8b7-0a6a-45be-87aa-9e35bca80295"
+                }
+              ],
+              "id": "f1f95dc2-ae9f-4b19-965a-92d392caef9d",
+              "createdAt": "2026-07-28T10:58:30.000Z",
+              "updatedAt": "2026-07-28T10:58:30.000Z",
+              "uid": "35240-f1f95dc2-ae9f-4b19-965a-92d392caef9d"
+            }
+          ],
+          "id": "d42677f1-e190-4f76-b164-cc6fe459c13e",
+          "createdAt": "2026-07-28T10:58:30.000Z",
+          "updatedAt": "2026-07-28T10:58:30.000Z",
+          "uid": "35240-d42677f1-e190-4f76-b164-cc6fe459c13e"
+        }
+      ],
+      "id": "f25461da-359e-4bc7-8b9c-1456a7ee6be4",
+      "createdAt": "2026-07-28T10:58:30.000Z",
+      "updatedAt": "2026-07-28T10:58:30.000Z",
+      "uid": "35240-f25461da-359e-4bc7-8b9c-1456a7ee6be4"
+    },
+    {
+      "name": "air_rest_services.get_download",
+      "item": [
+        {
+          "name": "Clean Air Act Download Data Service",
+          "id": "ce407e38-1afa-406f-926a-c8e95ffbcb83",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/air_rest_services.get_download?output=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "air_rest_services.get_download"
+              ],
+              "query": [
+                {
+                  "description": "Output Format Flag.  Enter one of the following keywords:\n- CSV = Facility results formatted as comma delimited file download (default).\n- GEOJSOND = Facility results formatted as GeoJSON feature collection download.",
+                  "key": "output",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Based on the QID obtained from a get_facilities or get_facility_info query, return a comma sepated vaule (CSV) file of the facilities found."
+          },
+          "response": [
+            {
+              "id": "f23bb765-93d0-46f5-8eec-3d9b4e83903d",
+              "name": "Results are a comma separated value (CSV) file or a file containing a GeoJSON feature collection.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/air_rest_services.get_download?output=&key=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "air_rest_services.get_download"
+                  ],
+                  "query": [
+                    {
+                      "description": "Output Format Flag.  Enter one of the following keywords:\n- CSV = Facility results formatted as comma delimited file download (default).\n- GEOJSOND = Facility results formatted as GeoJSON feature collection download.",
+                      "key": "output",
+                      "value": ""
+                    },
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T10:58:30.000Z",
+              "updatedAt": "2026-07-28T10:58:30.000Z",
+              "uid": "35240-f23bb765-93d0-46f5-8eec-3d9b4e83903d"
+            }
+          ],
+          "createdAt": "2026-07-28T10:58:30.000Z",
+          "updatedAt": "2026-07-28T10:58:30.000Z",
+          "uid": "35240-ce407e38-1afa-406f-926a-c8e95ffbcb83"
+        },
+        {
+          "name": "Clean Air Act Download Data Service",
+          "id": "383ceddb-2343-4fe6-81cf-cc94ff6bc398",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/air_rest_services.get_download",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "air_rest_services.get_download"
+              ]
+            },
+            "description": "Based on the QID obtained from a get_facilities or get_facility_info query, return a comma sepated vaule (CSV) file of the facilities found."
+          },
+          "response": [
+            {
+              "id": "a4714224-bd95-42c6-946e-ba136864db97",
+              "name": "Results are a comma separated value (CSV) file or a file containing a GeoJSON feature collection.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/air_rest_services.get_download?key=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "air_rest_services.get_download"
+                  ],
+                  "query": [
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T10:58:30.000Z",
+              "updatedAt": "2026-07-28T10:58:30.000Z",
+              "uid": "35240-a4714224-bd95-42c6-946e-ba136864db97"
+            }
+          ],
+          "createdAt": "2026-07-28T10:58:30.000Z",
+          "updatedAt": "2026-07-28T10:58:30.000Z",
+          "uid": "35240-383ceddb-2343-4fe6-81cf-cc94ff6bc398"
+        }
+      ],
+      "id": "1788246b-6cf9-4912-83c9-a70b7d315f07",
+      "createdAt": "2026-07-28T10:58:30.000Z",
+      "updatedAt": "2026-07-28T10:58:30.000Z",
+      "uid": "35240-1788246b-6cf9-4912-83c9-a70b7d315f07"
+    },
+    {
+      "name": "air_rest_services.get_facilities",
+      "item": [
+        {
+          "name": "Clean Air Act Facility Search",
+          "id": "ebc9d8d4-019b-46eb-a463-acd60d4051bd",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/air_rest_services.get_facilities?output=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "air_rest_services.get_facilities"
+              ],
+              "query": [
+                {
+                  "description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language. (This can only be one of JSONP,JSON,XML)",
+                  "key": "output",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Validates query search parameters and returns query identifier.  Use the responseset parameter to set the page size"
+          },
+          "response": [
+            {
+              "id": "c4b92728-bbf4-42f8-aed8-ba2c160fb2b0",
+              "name": "Results are summary statistics for the query and a query identifier (QID).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/air_rest_services.get_facilities?output=&key=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "air_rest_services.get_facilities"
+                  ],
+                  "query": [
+                    {
+                      "description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language. (This can only be one of JSONP,JSON,XML)",
+                      "key": "output",
+                      "value": ""
+                    },
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T10:58:30.000Z",
+              "updatedAt": "2026-07-28T10:58:30.000Z",
+              "uid": "35240-c4b92728-bbf4-42f8-aed8-ba2c160fb2b0"
+            }
+          ],
+          "createdAt": "2026-07-28T10:58:30.000Z",
+          "updatedAt": "2026-07-28T10:58:30.000Z",
+          "uid": "35240-ebc9d8d4-019b-46eb-a463-acd60d4051bd"
+        },
+        {
+          "name": "Clean Air Act Facility Search",
+          "id": "c63895e6-adf5-4dec-a310-921e929ad869",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/air_rest_services.get_facilities",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "air_rest_services.get_facilities"
+              ]
+            },
+            "description": "Validates query search parameters and returns query identifier.  Use the responseset parameter to set the page size"
+          },
+          "response": [
+            {
+              "id": "be30122e-1695-4103-ad75-fbb86b2969f7",
+              "name": "Results are summary statistics for the query and a query identifier (QID).",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/air_rest_services.get_facilities?key=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "air_rest_services.get_facilities"
+                  ],
+                  "query": [
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T10:58:30.000Z",
+              "updatedAt": "2026-07-28T10:58:30.000Z",
+              "uid": "35240-be30122e-1695-4103-ad75-fbb86b2969f7"
+            }
+          ],
+          "createdAt": "2026-07-28T10:58:30.000Z",
+          "updatedAt": "2026-07-28T10:58:30.000Z",
+          "uid": "35240-c63895e6-adf5-4dec-a310-921e929ad869"
+        }
+      ],
+      "id": "c40f79b5-f560-4e02-8c7c-e415f4fcbad6",
+      "createdAt": "2026-07-28T10:58:30.000Z",
+      "updatedAt": "2026-07-28T10:58:30.000Z",
+      "uid": "35240-c40f79b5-f560-4e02-8c7c-e415f4fcbad6"
+    },
+    {
+      "name": "air_rest_services.get_facility_info",
+      "item": [
+        {
+          "name": "Clean Air Act Facility Enhanced Search",
+          "id": "15ac69a0-95e2-4ad6-9f76-515a880b1e40",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/air_rest_services.get_facility_info?output=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "air_rest_services.get_facility_info"
+              ],
+              "query": [
+                {
+                  "description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language.\n- CSV = Facility results formatted as comma delimited file download.\n- GEOJSON = Facility results formatted as GeoJSON feature collection.\n- GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.\n- GEOJSOND = Facility results formatted as GeoJSON feature collection download.",
+                  "key": "output",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Returns either an array of Facilities or an array of Clusters that meet the specified search criteria."
+          },
+          "response": [
+            {
+              "id": "dbc715fd-5091-42ac-b4e7-22ae87d695a4",
+              "name": "Results will either be an array of Facilities or an array of Clusters. The search will return clusters if the number of facilities returned is greater than the resposeset size, otherwise individual facility records will be returned.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/air_rest_services.get_facility_info?output=&key=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "air_rest_services.get_facility_info"
+                  ],
+                  "query": [
+                    {
+                      "description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language.\n- CSV = Facility results formatted as comma delimited file download.\n- GEOJSON = Facility results formatted as GeoJSON feature collection.\n- GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.\n- GEOJSOND = Facility results formatted as GeoJSON feature collection download.",
+                      "key": "output",
+                      "value": ""
+                    },
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T10:58:30.000Z",
+              "updatedAt": "2026-07-28T10:58:30.000Z",
+              "uid": "35240-dbc715fd-5091-42ac-b4e7-22ae87d695a4"
+            }
+          ],
+          "createdAt": "2026-07-28T10:58:30.000Z",
+          "updatedAt": "2026-07-28T10:58:30.000Z",
+          "uid": "35240-15ac69a0-95e2-4ad6-9f76-515a880b1e40"
+        },
+        {
+          "name": "Clean Air Act Facility Enhanced Search",
+          "id": "37d5ece4-568d-4731-a4a8-4d099fc8c8a3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/air_rest_services.get_facility_info",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "air_rest_services.get_facility_info"
+              ]
+            },
+            "description": "Returns either an array of Facilities or an array of Clusters that meet the specified search criteria."
+          },
+          "response": [
+            {
+              "id": "43607066-02f2-47c0-a531-c48ffcfb197a",
+              "name": "Results will either be an array of Facilities or an array of Clusters. The search will return clusters if the number of facilities returned is greater than the resposeset size, otherwise individual facility records will be returned.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/air_rest_services.get_facility_info?key=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "air_rest_services.get_facility_info"
+                  ],
+                  "query": [
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T10:58:30.000Z",
+              "updatedAt": "2026-07-28T10:58:30.000Z",
+              "uid": "35240-43607066-02f2-47c0-a531-c48ffcfb197a"
+            }
+          ],
+          "createdAt": "2026-07-28T10:58:30.000Z",
+          "updatedAt": "2026-07-28T10:58:30.000Z",
+          "uid": "35240-37d5ece4-568d-4731-a4a8-4d099fc8c8a3"
+        }
+      ],
+      "id": "8d6656ce-f98f-47b9-958a-b6391fd2e392",
+      "createdAt": "2026-07-28T10:58:30.000Z",
+      "updatedAt": "2026-07-28T10:58:30.000Z",
+      "uid": "35240-8d6656ce-f98f-47b9-958a-b6391fd2e392"
+    },
+    {
+      "name": "air_rest_services.get_geojson",
+      "item": [
+        {
+          "name": "Clean Air Act GeoJSON Service",
+          "id": "a0d3248d-a696-458e-845a-47a947996026",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/air_rest_services.get_geojson?output=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "air_rest_services.get_geojson"
+              ],
+              "query": [
+                {
+                  "description": "Output Format Flag.  Enter one of the following keywords:\n- GEOJSON = Facility results formatted as GeoJSON feature collection (default).\n- GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.\n- GEOJSOND = Facility results formatted as GeoJSON feature collection download.",
+                  "key": "output",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Based on the QID obtained from a get_facilities or get_facility_info query, return GeoJSON of the facilities found."
+          },
+          "response": [
+            {
+              "id": "759cf11a-da88-49dd-ad6b-49f6a85ea5af",
+              "name": "Results are formatted as a GeoJSON feature collection.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/air_rest_services.get_geojson?output=&key=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "air_rest_services.get_geojson"
+                  ],
+                  "query": [
+                    {
+                      "description": "Output Format Flag.  Enter one of the following keywords:\n- GEOJSON = Facility results formatted as GeoJSON feature collection (default).\n- GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.\n- GEOJSOND = Facility results formatted as GeoJSON feature collection download.",
+                      "key": "output",
+                      "value": ""
+                    },
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T10:58:30.000Z",
+              "updatedAt": "2026-07-28T10:58:30.000Z",
+              "uid": "35240-759cf11a-da88-49dd-ad6b-49f6a85ea5af"
+            }
+          ],
+          "createdAt": "2026-07-28T10:58:30.000Z",
+          "updatedAt": "2026-07-28T10:58:30.000Z",
+          "uid": "35240-a0d3248d-a696-458e-845a-47a947996026"
+        },
+        {
+          "name": "Clean Air Act GeoJSON Service",
+          "id": "ea9cc265-a87b-4558-a635-91fe06124b36",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/air_rest_services.get_geojson",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "air_rest_services.get_geojson"
+              ]
+            },
+            "description": "Based on the QID obtained from a get_facilities or get_facility_info query, return GeoJSON of the facilities found."
+          },
+          "response": [
+            {
+              "id": "cd8796a8-4681-40b7-83d6-645dff2aac92",
+              "name": "Results are formatted as a GeoJSON feature collection.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/air_rest_services.get_geojson?key=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "air_rest_services.get_geojson"
+                  ],
+                  "query": [
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T10:58:30.000Z",
+              "updatedAt": "2026-07-28T10:58:30.000Z",
+              "uid": "35240-cd8796a8-4681-40b7-83d6-645dff2aac92"
+            }
+          ],
+          "createdAt": "2026-07-28T10:58:30.000Z",
+          "updatedAt": "2026-07-28T10:58:30.000Z",
+          "uid": "35240-ea9cc265-a87b-4558-a635-91fe06124b36"
+        }
+      ],
+      "id": "61fe53c6-1b49-483f-ba5c-72f0bf581b51",
+      "createdAt": "2026-07-28T10:58:30.000Z",
+      "updatedAt": "2026-07-28T10:58:30.000Z",
+      "uid": "35240-61fe53c6-1b49-483f-ba5c-72f0bf581b51"
+    },
+    {
+      "name": "air_rest_services.get_info_clusters",
+      "item": [
+        {
+          "name": "Clean Air Act Info Clusters Service",
+          "id": "3e1c9ef7-1a94-473a-954a-7b2456fb043d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/air_rest_services.get_info_clusters?output=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "air_rest_services.get_info_clusters"
+              ],
+              "query": [
+                {
+                  "description": "Output Format Flag.  Enter one of the following keywords:\n- CSV = Facility results formatted as comma delimited file download (default).\n- GEOJSOND = Facility results formatted as GeoJSON feature collection download.",
+                  "key": "output",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Based on the QID obtained from a clustered get_facility_info query, download cluster facility information as either a CSV or GEOJSON file."
+          },
+          "response": [
+            {
+              "id": "09fde2c9-d015-47a8-af7d-9ba4f1c4fc68",
+              "name": "Results are a comma separated value (CSV) file or a file containing a GeoJSON feature collection.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/air_rest_services.get_info_clusters?output=&key=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "air_rest_services.get_info_clusters"
+                  ],
+                  "query": [
+                    {
+                      "description": "Output Format Flag.  Enter one of the following keywords:\n- CSV = Facility results formatted as comma delimited file download (default).\n- GEOJSOND = Facility results formatted as GeoJSON feature collection download.",
+                      "key": "output",
+                      "value": ""
+                    },
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T10:58:30.000Z",
+              "updatedAt": "2026-07-28T10:58:30.000Z",
+              "uid": "35240-09fde2c9-d015-47a8-af7d-9ba4f1c4fc68"
+            }
+          ],
+          "createdAt": "2026-07-28T10:58:30.000Z",
+          "updatedAt": "2026-07-28T10:58:30.000Z",
+          "uid": "35240-3e1c9ef7-1a94-473a-954a-7b2456fb043d"
+        },
+        {
+          "name": "Clean Air Act Info Clusters Service",
+          "id": "4e914a19-8dcd-4289-a58c-13a8132706e5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/air_rest_services.get_info_clusters",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "air_rest_services.get_info_clusters"
+              ]
+            },
+            "description": "Based on the QID obtained from a clustered get_facility_info query, download cluster facility information as either a CSV or GEOJSON file."
+          },
+          "response": [
+            {
+              "id": "671ef0d2-c96b-4c23-8e22-961c37d0bee8",
+              "name": "Results are a comma separated value (CSV) file or a file containing a GeoJSON feature collection.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/air_rest_services.get_info_clusters?key=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "air_rest_services.get_info_clusters"
+                  ],
+                  "query": [
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T10:58:30.000Z",
+              "updatedAt": "2026-07-28T10:58:30.000Z",
+              "uid": "35240-671ef0d2-c96b-4c23-8e22-961c37d0bee8"
+            }
+          ],
+          "createdAt": "2026-07-28T10:58:30.000Z",
+          "updatedAt": "2026-07-28T10:58:30.000Z",
+          "uid": "35240-4e914a19-8dcd-4289-a58c-13a8132706e5"
+        }
+      ],
+      "id": "4f09939d-0c52-4962-a85e-c1468e6694d3",
+      "createdAt": "2026-07-28T10:58:30.000Z",
+      "updatedAt": "2026-07-28T10:58:30.000Z",
+      "uid": "35240-4f09939d-0c52-4962-a85e-c1468e6694d3"
+    },
+    {
+      "name": "air_rest_services.get_map",
+      "item": [
+        {
+          "name": "Clean Air Act Map Service",
+          "id": "7e6b7c9f-04f0-46f3-92e8-be02a0620804",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/air_rest_services.get_map?output=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "air_rest_services.get_map"
+              ],
+              "query": [
+                {
+                  "description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language. (This can only be one of JSONP,JSON,XML)",
+                  "key": "output",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "The purpose of the GET_MAP service is to display facility coordinates and facility clusters related to a get_facilities facility query. Currently, the maximum number of coordinates returned is 500. GET_MAP performs automatic clustering at the state, county, and zip code levels to maximize the number of coordinates returned."
+          },
+          "response": [
+            {
+              "id": "c6ef4326-ae89-4d09-beac-0aad22186b7a",
+              "name": "Results are either an array of State, County, Zip Code facility cluster map coordinates or individual facility coordinates.  Coordinates provided are in WGS84.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/air_rest_services.get_map?output=&key=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "air_rest_services.get_map"
+                  ],
+                  "query": [
+                    {
+                      "description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language. (This can only be one of JSONP,JSON,XML)",
+                      "key": "output",
+                      "value": ""
+                    },
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T10:58:30.000Z",
+              "updatedAt": "2026-07-28T10:58:30.000Z",
+              "uid": "35240-c6ef4326-ae89-4d09-beac-0aad22186b7a"
+            }
+          ],
+          "createdAt": "2026-07-28T10:58:30.000Z",
+          "updatedAt": "2026-07-28T10:58:30.000Z",
+          "uid": "35240-7e6b7c9f-04f0-46f3-92e8-be02a0620804"
+        },
+        {
+          "name": "Clean Air Act Map Service",
+          "id": "4e642f0a-50ce-4363-85df-5c0d36fd1175",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/air_rest_services.get_map",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "air_rest_services.get_map"
+              ]
+            },
+            "description": "The purpose of the GET_MAP service is to display facility coordinates and facility clusters related to a get_facilities facility query. Currently, the maximum number of coordinates returned is 500. GET_MAP performs automatic clustering at the state, county, and zip code levels to maximize the number of coordinates returned."
+          },
+          "response": [
+            {
+              "id": "538a6f27-b6d7-4f3c-a52f-d911c5a05073",
+              "name": "Results are either an array of State, County, Zip Code facility cluster map coordinates or individual facility coordinates.  Coordinates provided are in WGS84.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/air_rest_services.get_map?key=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "air_rest_services.get_map"
+                  ],
+                  "query": [
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T10:58:30.000Z",
+              "updatedAt": "2026-07-28T10:58:30.000Z",
+              "uid": "35240-538a6f27-b6d7-4f3c-a52f-d911c5a05073"
+            }
+          ],
+          "createdAt": "2026-07-28T10:58:30.000Z",
+          "updatedAt": "2026-07-28T10:58:30.000Z",
+          "uid": "35240-4e642f0a-50ce-4363-85df-5c0d36fd1175"
+        }
+      ],
+      "id": "64e69381-913c-4942-a7cc-98dd0f152ffd",
+      "createdAt": "2026-07-28T10:58:30.000Z",
+      "updatedAt": "2026-07-28T10:58:30.000Z",
+      "uid": "35240-64e69381-913c-4942-a7cc-98dd0f152ffd"
+    },
+    {
+      "name": "air_rest_services.get_qid",
+      "item": [
+        {
+          "name": "Clean Air Act Search by Query ID",
+          "id": "1256ce3c-e03a-4853-a454-6bad27cb67cd",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/air_rest_services.get_qid?output=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "air_rest_services.get_qid"
+              ],
+              "query": [
+                {
+                  "description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language. (This can only be one of JSONP,JSON,XML)",
+                  "key": "output",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "GET_QID is passed with a query ID corresponding to a previously run get_facilities query. It then returns a Facility object containing all matching facilities. The main purpose of GET_QID is for large querysets that contain multiple pages (responsesets) of output. GET_QID allows for pagination and for the selection and sorting of columns. "
+          },
+          "response": [
+            {
+              "id": "e0fd5f58-bbba-491a-96b2-b41d30736cb3",
+              "name": "Results are an array (page)  of CAA (ICIS Air) Facilities with the number of facilities equal to the responseset (page size).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/air_rest_services.get_qid?output=&key=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "air_rest_services.get_qid"
+                  ],
+                  "query": [
+                    {
+                      "description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language. (This can only be one of JSONP,JSON,XML)",
+                      "key": "output",
+                      "value": ""
+                    },
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T10:58:30.000Z",
+              "updatedAt": "2026-07-28T10:58:30.000Z",
+              "uid": "35240-e0fd5f58-bbba-491a-96b2-b41d30736cb3"
+            }
+          ],
+          "createdAt": "2026-07-28T10:58:30.000Z",
+          "updatedAt": "2026-07-28T10:58:30.000Z",
+          "uid": "35240-1256ce3c-e03a-4853-a454-6bad27cb67cd"
+        },
+        {
+          "name": "Clean Air Act Search by Query ID",
+          "id": "1e671216-d0fd-4833-b4c7-fabdbb8f188d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/air_rest_services.get_qid",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "air_rest_services.get_qid"
+              ]
+            },
+            "description": "GET_QID is passed with a query ID corresponding to a previously run get_facilities query. It then returns a Facility object containing all matching facilities. The main purpose of GET_QID is for large querysets that contain multiple pages (responsesets) of output. GET_QID allows for pagination and for the selection and sorting of columns. "
+          },
+          "response": [
+            {
+              "id": "72a729d1-3740-464a-9366-591fd8b68988",
+              "name": "Results are an array (page)  of CAA (ICIS Air) Facilities with the number of facilities equal to the responseset (page size).",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/air_rest_services.get_qid?key=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "air_rest_services.get_qid"
+                  ],
+                  "query": [
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T10:58:30.000Z",
+              "updatedAt": "2026-07-28T10:58:30.000Z",
+              "uid": "35240-72a729d1-3740-464a-9366-591fd8b68988"
+            }
+          ],
+          "createdAt": "2026-07-28T10:58:30.000Z",
+          "updatedAt": "2026-07-28T10:58:30.000Z",
+          "uid": "35240-1e671216-d0fd-4833-b4c7-fabdbb8f188d"
+        }
+      ],
+      "id": "8adde4b2-5ce7-485c-ad3e-36ce429bd296",
+      "createdAt": "2026-07-28T10:58:30.000Z",
+      "updatedAt": "2026-07-28T10:58:30.000Z",
+      "uid": "35240-8adde4b2-5ce7-485c-ad3e-36ce429bd296"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

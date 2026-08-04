@@ -1,0 +1,135 @@
+{
+  "info": {
+    "_postman_id": "5da3440b-1124-431d-a337-df9cd0f101f2",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Unit Type Codes API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T11:01:06.000Z",
+    "updatedAt": "2026-07-28T11:01:07.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5da3440b-1124-431d-a337-df9cd0f101f2"
+  },
+  "item": [
+    {
+      "name": "master-data-mgmt",
+      "item": [
+        {
+          "name": "unit-type-codes",
+          "item": [
+            {
+              "name": "Unit Type Controller get Unit Type Codes",
+              "id": "aebc0beb-16bd-4bce-9b26-891ed1dc89a4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/master-data-mgmt/unit-type-codes",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "master-data-mgmt",
+                    "unit-type-codes"
+                  ]
+                },
+                "description": "Returns a list of Unit Type codes & descriptions."
+              },
+              "response": [
+                {
+                  "id": "9a1c1010-76db-4092-96ab-5e4bb5b5c3ce",
+                  "name": "Data retrieved successfully",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/master-data-mgmt/unit-type-codes?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "master-data-mgmt",
+                        "unit-type-codes"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"items\": [\n    {\n      \"unitTypeCode\": \"<string>\",\n      \"unitTypeDescription\": \"<string>\",\n      \"unitTypeGroupCode\": \"<string>\",\n      \"unitTypeGroupDescription\": \"<string>\",\n      \"sortOrder\": \"<string>\"\n    },\n    {\n      \"unitTypeCode\": \"<string>\",\n      \"unitTypeDescription\": \"<string>\",\n      \"unitTypeGroupCode\": \"<string>\",\n      \"unitTypeGroupDescription\": \"<string>\",\n      \"sortOrder\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T11:01:07.000Z",
+                  "updatedAt": "2026-07-28T11:01:07.000Z",
+                  "uid": "35240-9a1c1010-76db-4092-96ab-5e4bb5b5c3ce"
+                }
+              ],
+              "createdAt": "2026-07-28T11:01:07.000Z",
+              "updatedAt": "2026-07-28T11:01:07.000Z",
+              "uid": "35240-aebc0beb-16bd-4bce-9b26-891ed1dc89a4"
+            }
+          ],
+          "id": "11090e2d-b333-4209-9e06-df6d39f7a186",
+          "createdAt": "2026-07-28T11:01:07.000Z",
+          "updatedAt": "2026-07-28T11:01:07.000Z",
+          "uid": "35240-11090e2d-b333-4209-9e06-df6d39f7a186"
+        }
+      ],
+      "id": "aa12d45f-c6a2-44d2-ba65-8b013ecebf17",
+      "createdAt": "2026-07-28T11:01:07.000Z",
+      "updatedAt": "2026-07-28T11:01:07.000Z",
+      "uid": "35240-aa12d45f-c6a2-44d2-ba65-8b013ecebf17"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

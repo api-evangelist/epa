@@ -1,0 +1,619 @@
+{
+  "info": {
+    "_postman_id": "756a73be-0a5e-4c0c-afec-7dffb763bf13",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Analysis Services API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:56:42.000Z",
+    "updatedAt": "2026-07-28T10:56:43.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-756a73be-0a5e-4c0c-afec-7dffb763bf13"
+  },
+  "item": [
+    {
+      "name": "rpc",
+      "item": [
+        {
+          "name": "navigate",
+          "item": [
+            {
+              "name": "CIP-service Navigation",
+              "id": "9ddb3a7b-71d2-4056-aad0-d65e35fcec7f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nhdplus_version\": \"nhdplus_m\",\n  \"search_type\": \"UT\",\n  \"start_nhdplusid\": \"<long>\",\n  \"start_permanent_identifier\": \"<string>\",\n  \"start_reachcode\": \"<string>\",\n  \"start_hydroseq\": \"<long>\",\n  \"start_measure\": \"<number>\",\n  \"stop_nhdplusid\": \"<long>\",\n  \"stop_permanent_identifier\": \"<string>\",\n  \"stop_reachcode\": \"<string>\",\n  \"stop_hydroseq\": \"<long>\",\n  \"stop_measure\": \"<number>\",\n  \"max_distancekm\": \"<number>\",\n  \"max_flowtimeday\": \"<number>\",\n  \"return_flowline_details\": true,\n  \"return_flowline_geometry\": true,\n  \"known_region\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/rpc/navigate",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "rpc",
+                    "navigate"
+                  ]
+                },
+                "description": "CIP-service Navigation Endpoint"
+              },
+              "response": [
+                {
+                  "id": "6d094500-d062-42d4-88db-6b5bdeae66d6",
+                  "name": "CIP-service Navigation Response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"nhdplus_version\": \"nhdplus_m\",\n  \"search_type\": \"UT\",\n  \"start_nhdplusid\": \"<long>\",\n  \"start_permanent_identifier\": \"<string>\",\n  \"start_reachcode\": \"<string>\",\n  \"start_hydroseq\": \"<long>\",\n  \"start_measure\": \"<number>\",\n  \"stop_nhdplusid\": \"<long>\",\n  \"stop_permanent_identifier\": \"<string>\",\n  \"stop_reachcode\": \"<string>\",\n  \"stop_hydroseq\": \"<long>\",\n  \"stop_measure\": \"<number>\",\n  \"max_distancekm\": \"<number>\",\n  \"max_flowtimeday\": \"<number>\",\n  \"return_flowline_details\": true,\n  \"return_flowline_geometry\": true,\n  \"known_region\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/rpc/navigate?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rpc",
+                        "navigate"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"flowlines\": {\n    \"type\": \"FeatureCollection\",\n    \"features\": [\n      {\n        \"type\": \"Feature\",\n        \"geometry\": null,\n        \"properties\": {\n          \"globalid\": \"<string>\",\n          \"lengthkm\": \"<number>\",\n          \"areasqkm\": \"<number>\",\n          \"converted_to_ring\": \"<boolean>\",\n          \"indexing_method_used\": \"<string>\",\n          \"line_threshold_used\": \"<number>\",\n          \"areacat_threshold_used\": \"<number>\",\n          \"areaevt_threshold_used\": \"<number>\"\n        },\n        \"bbox\": [\n          \"<number>\",\n          \"<number>\",\n          \"<number>\",\n          \"<number>\"\n        ],\n        \"obj_type\": \"<string>\"\n      },\n      null\n    ]\n  },\n  \"flowline_count\": \"<integer>\",\n  \"nhdplus_version\": \"nhdplus_h\",\n  \"return_code\": \"<integer>\",\n  \"status_message\": \"<string,null>\"\n}",
+                  "createdAt": "2026-07-28T10:56:43.000Z",
+                  "updatedAt": "2026-07-28T10:56:43.000Z",
+                  "uid": "35240-6d094500-d062-42d4-88db-6b5bdeae66d6"
+                }
+              ],
+              "createdAt": "2026-07-28T10:56:42.000Z",
+              "updatedAt": "2026-07-28T10:56:42.000Z",
+              "uid": "35240-9ddb3a7b-71d2-4056-aad0-d65e35fcec7f"
+            }
+          ],
+          "id": "5f0b0075-cf1b-4d39-9894-d38ce7720803",
+          "createdAt": "2026-07-28T10:56:42.000Z",
+          "updatedAt": "2026-07-28T10:56:42.000Z",
+          "uid": "35240-5f0b0075-cf1b-4d39-9894-d38ce7720803"
+        },
+        {
+          "name": "delineate",
+          "item": [
+            {
+              "name": "CIP-service Delineation",
+              "id": "3d5b9d3a-124d-4cae-ab33-eb7b40a4ea59",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nhdplus_version\": \"nhdplus_h\",\n  \"search_type\": \"UM\",\n  \"start_nhdplusid\": \"<long>\",\n  \"start_permanent_identifier\": \"<string>\",\n  \"start_reachcode\": \"<string>\",\n  \"start_hydroseq\": \"<long>\",\n  \"start_measure\": \"<number>\",\n  \"stop_nhdplusid\": \"<long>\",\n  \"stop_permanent_identifier\": \"<string>\",\n  \"stop_reachcode\": \"<string>\",\n  \"stop_hydroseq\": \"<long>\",\n  \"stop_measure\": \"<number>\",\n  \"aggregation_engine\": \"TOPO\",\n  \"max_distancekm\": \"<number>\",\n  \"max_flowtimeday\": \"<number>\",\n  \"split_initial_catchment\": false,\n  \"fill_basin_holes\": false,\n  \"return_delineation_geometry\": true,\n  \"return_flowline_details\": true,\n  \"return_flowline_geometry\": true\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/rpc/delineate",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "rpc",
+                    "delineate"
+                  ]
+                },
+                "description": "CIP-service Delineation Endpoint"
+              },
+              "response": [
+                {
+                  "id": "bda6973f-f7eb-4bd3-a6dc-a6c00e88ac51",
+                  "name": "CIP-service Delineation Response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"nhdplus_version\": \"nhdplus_h\",\n  \"search_type\": \"UM\",\n  \"start_nhdplusid\": \"<long>\",\n  \"start_permanent_identifier\": \"<string>\",\n  \"start_reachcode\": \"<string>\",\n  \"start_hydroseq\": \"<long>\",\n  \"start_measure\": \"<number>\",\n  \"stop_nhdplusid\": \"<long>\",\n  \"stop_permanent_identifier\": \"<string>\",\n  \"stop_reachcode\": \"<string>\",\n  \"stop_hydroseq\": \"<long>\",\n  \"stop_measure\": \"<number>\",\n  \"aggregation_engine\": \"TOPO\",\n  \"max_distancekm\": \"<number>\",\n  \"max_flowtimeday\": \"<number>\",\n  \"split_initial_catchment\": false,\n  \"fill_basin_holes\": false,\n  \"return_delineation_geometry\": true,\n  \"return_flowline_details\": true,\n  \"return_flowline_geometry\": true\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/rpc/delineate?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rpc",
+                        "delineate"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"delineated_area\": {\n    \"type\": \"FeatureCollection\",\n    \"features\": [\n      null,\n      {\n        \"type\": \"Feature\",\n        \"geometry\": null,\n        \"properties\": {\n          \"globalid\": \"<string>\",\n          \"lengthkm\": \"<number>\",\n          \"areasqkm\": \"<number>\",\n          \"converted_to_ring\": \"<boolean>\",\n          \"indexing_method_used\": \"<string>\",\n          \"line_threshold_used\": \"<number>\",\n          \"areacat_threshold_used\": \"<number>\",\n          \"areaevt_threshold_used\": \"<number>\"\n        },\n        \"bbox\": [\n          \"<number>\",\n          \"<number>\",\n          \"<number>\",\n          \"<number>\"\n        ],\n        \"obj_type\": \"<string>\"\n      }\n    ]\n  },\n  \"aggregation_used\": \"<string>\",\n  \"flowlines\": {\n    \"type\": \"FeatureCollection\",\n    \"features\": [\n      null,\n      {\n        \"type\": \"Feature\",\n        \"geometry\": {\n          \"coordinates\": [\n            \"<number>\",\n            \"<number>\"\n          ],\n          \"type\": \"Point\"\n        },\n        \"properties\": {\n          \"globalid\": \"<string>\",\n          \"lengthkm\": \"<number>\",\n          \"areasqkm\": \"<number>\",\n          \"converted_to_ring\": \"<boolean>\",\n          \"indexing_method_used\": \"<string>\",\n          \"line_threshold_used\": \"<number>\",\n          \"areacat_threshold_used\": \"<number>\",\n          \"areaevt_threshold_used\": \"<number>\"\n        },\n        \"bbox\": [\n          \"<number>\",\n          \"<number>\",\n          \"<number>\",\n          \"<number>\"\n        ],\n        \"obj_type\": \"<string>\"\n      }\n    ]\n  },\n  \"flowline_count\": \"<integer>\",\n  \"nhdplus_version\": \"nhdplus_m\",\n  \"return_code\": \"<integer>\",\n  \"status_message\": \"<string,null>\"\n}",
+                  "createdAt": "2026-07-28T10:56:43.000Z",
+                  "updatedAt": "2026-07-28T10:56:43.000Z",
+                  "uid": "35240-bda6973f-f7eb-4bd3-a6dc-a6c00e88ac51"
+                }
+              ],
+              "createdAt": "2026-07-28T10:56:42.000Z",
+              "updatedAt": "2026-07-28T10:56:42.000Z",
+              "uid": "35240-3d5b9d3a-124d-4cae-ab33-eb7b40a4ea59"
+            }
+          ],
+          "id": "037ff75a-07f1-4ab8-baed-f1cdd7727a19",
+          "createdAt": "2026-07-28T10:56:42.000Z",
+          "updatedAt": "2026-07-28T10:56:42.000Z",
+          "uid": "35240-037ff75a-07f1-4ab8-baed-f1cdd7727a19"
+        },
+        {
+          "name": "pointindexing",
+          "item": [
+            {
+              "name": "CIP-service Point Indexing",
+              "id": "433d0808-376f-40a6-b3ec-e1819e905e8b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"point\": {\n    \"type\": \"FeatureCollection\",\n    \"features\": [\n      null,\n      null\n    ]\n  },\n  \"indexing_engine\": \"DISTANCE\",\n  \"fcode_allow\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"fcode_deny\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"distance_max_distkm\": \"<number>\",\n  \"raindrop_snap_max_distkm\": \"<number>\",\n  \"raindrop_path_max_distkm\": \"<number>\",\n  \"limit_innetwork\": \"<boolean>\",\n  \"limit_navigable\": \"<boolean>\",\n  \"return_link_path\": \"<boolean>\",\n  \"known_region\": \"<string>\",\n  \"known_catchment_nhdplusid\": \"<integer>\",\n  \"nhdplus_version\": \"nhdplus_h\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/rpc/pointindexing",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "rpc",
+                    "pointindexing"
+                  ]
+                },
+                "description": "CIP-service Point Indexing Endpoint"
+              },
+              "response": [
+                {
+                  "id": "2734c43d-ec7b-4574-a0e3-7bdef3cc60ec",
+                  "name": "CIP-service Point Indexing Response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"point\": {\n    \"type\": \"FeatureCollection\",\n    \"features\": [\n      null,\n      null\n    ]\n  },\n  \"indexing_engine\": \"DISTANCE\",\n  \"fcode_allow\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"fcode_deny\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"distance_max_distkm\": \"<number>\",\n  \"raindrop_snap_max_distkm\": \"<number>\",\n  \"raindrop_path_max_distkm\": \"<number>\",\n  \"limit_innetwork\": \"<boolean>\",\n  \"limit_navigable\": \"<boolean>\",\n  \"return_link_path\": \"<boolean>\",\n  \"known_region\": \"<string>\",\n  \"known_catchment_nhdplusid\": \"<integer>\",\n  \"nhdplus_version\": \"nhdplus_h\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/rpc/pointindexing?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rpc",
+                        "pointindexing"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"flowlines\": {\n    \"type\": \"FeatureCollection\",\n    \"features\": [\n      {\n        \"type\": \"Feature\",\n        \"geometry\": {\n          \"coordinates\": [\n            \"<number>\",\n            \"<number>\"\n          ],\n          \"type\": \"Point\"\n        },\n        \"properties\": {\n          \"globalid\": \"<string>\",\n          \"lengthkm\": \"<number>\",\n          \"areasqkm\": \"<number>\",\n          \"converted_to_ring\": \"<boolean>\",\n          \"indexing_method_used\": \"<string>\",\n          \"line_threshold_used\": \"<number>\",\n          \"areacat_threshold_used\": \"<number>\",\n          \"areaevt_threshold_used\": \"<number>\"\n        },\n        \"bbox\": [\n          \"<number>\",\n          \"<number>\",\n          \"<number>\",\n          \"<number>\"\n        ],\n        \"obj_type\": \"<string>\"\n      },\n      {\n        \"type\": \"Feature\",\n        \"geometry\": {\n          \"coordinates\": [\n            \"<number>\",\n            \"<number>\"\n          ],\n          \"type\": \"MultiPolygon\"\n        },\n        \"properties\": {\n          \"globalid\": \"<string>\",\n          \"lengthkm\": \"<number>\",\n          \"areasqkm\": \"<number>\",\n          \"converted_to_ring\": \"<boolean>\",\n          \"indexing_method_used\": \"<string>\",\n          \"line_threshold_used\": \"<number>\",\n          \"areacat_threshold_used\": \"<number>\",\n          \"areaevt_threshold_used\": \"<number>\"\n        },\n        \"bbox\": [\n          \"<number>\",\n          \"<number>\",\n          \"<number>\",\n          \"<number>\"\n        ],\n        \"obj_type\": \"<string>\"\n      }\n    ]\n  },\n  \"path_distance_km\": \"<number>\",\n  \"end_point\": null,\n  \"indexing_line\": null,\n  \"region\": \"<string>\",\n  \"nhdplusid\": \"<long>\",\n  \"reachcode\": \"<string>\",\n  \"hydroseq\": \"<long>\",\n  \"snap_measure\": \"<number>\",\n  \"return_code\": \"<integer>\",\n  \"status_message\": \"<string,null>\"\n}",
+                  "createdAt": "2026-07-28T10:56:43.000Z",
+                  "updatedAt": "2026-07-28T10:56:43.000Z",
+                  "uid": "35240-2734c43d-ec7b-4574-a0e3-7bdef3cc60ec"
+                }
+              ],
+              "createdAt": "2026-07-28T10:56:42.000Z",
+              "updatedAt": "2026-07-28T10:56:42.000Z",
+              "uid": "35240-433d0808-376f-40a6-b3ec-e1819e905e8b"
+            }
+          ],
+          "id": "39411d09-ddc5-456a-b3e9-82cda23369db",
+          "createdAt": "2026-07-28T10:56:42.000Z",
+          "updatedAt": "2026-07-28T10:56:42.000Z",
+          "uid": "35240-39411d09-ddc5-456a-b3e9-82cda23369db"
+        },
+        {
+          "name": "upstreamdownstream",
+          "item": [
+            {
+              "name": "CIP-service Upstream Downstream",
+              "id": "64676c52-3b51-4221-9790-4933cdd8f341",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nhdplus_version\": \"nhdplus_h\",\n  \"search_type\": \"UT\",\n  \"start_nhdplusid\": \"<long>\",\n  \"start_permanent_identifier\": \"<string>\",\n  \"start_reachcode\": \"<string>\",\n  \"start_hydroseq\": \"<long>\",\n  \"start_measure\": \"<number>\",\n  \"start_source_featureid\": \"<string>\",\n  \"start_source_featureid2\": \"<string>\",\n  \"start_source_originator\": \"<string>\",\n  \"start_source_series\": \"<string>\",\n  \"start_start_date\": \"<date>\",\n  \"start_end_date\": \"<date>\",\n  \"start_permid_joinkey\": \"<string>\",\n  \"start_source_joinkey\": \"<string>\",\n  \"start_cip_joinkey\": \"<string>\",\n  \"start_linked_data_program\": \"<string>\",\n  \"start_push_rad_for_permid\": \"<boolean>\",\n  \"stop_nhdplusid\": \"<long>\",\n  \"stop_permanent_identifier\": \"<string>\",\n  \"stop_reachcode\": \"<string>\",\n  \"stop_hydroseq\": \"<long>\",\n  \"stop_measure\": \"<number>\",\n  \"stop_source_featureid\": \"<string>\",\n  \"stop_source_featureid2\": \"<string>\",\n  \"stop_source_originator\": \"<string>\",\n  \"stop_source_series\": \"<string>\",\n  \"stop_start_date\": \"<date>\",\n  \"stop_end_date\": \"<date>\",\n  \"stop_permid_joinkey\": \"<string>\",\n  \"stop_source_joinkey\": \"<string>\",\n  \"stop_cip_joinkey\": \"<string>\",\n  \"stop_linked_data_program\": \"<string>\",\n  \"stop_push_rad_for_permid\": \"<boolean>\",\n  \"max_distancekm\": \"<number>\",\n  \"max_flowtimeday\": \"<number>\",\n  \"linked_data_search_list\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"search_precision\": \"<string>\",\n  \"return_flowlines\": \"<boolean>\",\n  \"return_flowline_details\": true,\n  \"return_flowline_geometry\": true,\n  \"return_catchments\": \"<boolean>\",\n  \"return_linked_data_cip\": \"<boolean>\",\n  \"return_linked_data_huc12\": \"<boolean>\",\n  \"return_linked_data_source\": \"<boolean>\",\n  \"return_linked_data_rad\": \"<boolean>\",\n  \"return_linked_data_attributes\": \"<boolean>\",\n  \"remove_stop_start_sfids\": \"<boolean>\",\n  \"push_source_geometry_as_rad\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/rpc/upstreamdownstream",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "rpc",
+                    "upstreamdownstream"
+                  ]
+                },
+                "description": "CIP-service Upstream Downstream Endpoint"
+              },
+              "response": [
+                {
+                  "id": "599072be-f253-4101-963f-e62bccfd5623",
+                  "name": "CIP-service Upstream Downstream Response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"nhdplus_version\": \"nhdplus_h\",\n  \"search_type\": \"UT\",\n  \"start_nhdplusid\": \"<long>\",\n  \"start_permanent_identifier\": \"<string>\",\n  \"start_reachcode\": \"<string>\",\n  \"start_hydroseq\": \"<long>\",\n  \"start_measure\": \"<number>\",\n  \"start_source_featureid\": \"<string>\",\n  \"start_source_featureid2\": \"<string>\",\n  \"start_source_originator\": \"<string>\",\n  \"start_source_series\": \"<string>\",\n  \"start_start_date\": \"<date>\",\n  \"start_end_date\": \"<date>\",\n  \"start_permid_joinkey\": \"<string>\",\n  \"start_source_joinkey\": \"<string>\",\n  \"start_cip_joinkey\": \"<string>\",\n  \"start_linked_data_program\": \"<string>\",\n  \"start_push_rad_for_permid\": \"<boolean>\",\n  \"stop_nhdplusid\": \"<long>\",\n  \"stop_permanent_identifier\": \"<string>\",\n  \"stop_reachcode\": \"<string>\",\n  \"stop_hydroseq\": \"<long>\",\n  \"stop_measure\": \"<number>\",\n  \"stop_source_featureid\": \"<string>\",\n  \"stop_source_featureid2\": \"<string>\",\n  \"stop_source_originator\": \"<string>\",\n  \"stop_source_series\": \"<string>\",\n  \"stop_start_date\": \"<date>\",\n  \"stop_end_date\": \"<date>\",\n  \"stop_permid_joinkey\": \"<string>\",\n  \"stop_source_joinkey\": \"<string>\",\n  \"stop_cip_joinkey\": \"<string>\",\n  \"stop_linked_data_program\": \"<string>\",\n  \"stop_push_rad_for_permid\": \"<boolean>\",\n  \"max_distancekm\": \"<number>\",\n  \"max_flowtimeday\": \"<number>\",\n  \"linked_data_search_list\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"search_precision\": \"<string>\",\n  \"return_flowlines\": \"<boolean>\",\n  \"return_flowline_details\": true,\n  \"return_flowline_geometry\": true,\n  \"return_catchments\": \"<boolean>\",\n  \"return_linked_data_cip\": \"<boolean>\",\n  \"return_linked_data_huc12\": \"<boolean>\",\n  \"return_linked_data_source\": \"<boolean>\",\n  \"return_linked_data_rad\": \"<boolean>\",\n  \"return_linked_data_attributes\": \"<boolean>\",\n  \"remove_stop_start_sfids\": \"<boolean>\",\n  \"push_source_geometry_as_rad\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/rpc/upstreamdownstream?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rpc",
+                        "upstreamdownstream"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"flowlines\": {\n    \"type\": \"FeatureCollection\",\n    \"features\": [\n      null,\n      null\n    ]\n  },\n  \"flowline_count\": \"<integer>\",\n  \"catchments\": {\n    \"type\": \"FeatureCollection\",\n    \"features\": [\n      {\n        \"type\": \"Feature\",\n        \"geometry\": null,\n        \"properties\": {\n          \"globalid\": \"<string>\",\n          \"lengthkm\": \"<number>\",\n          \"areasqkm\": \"<number>\",\n          \"converted_to_ring\": \"<boolean>\",\n          \"indexing_method_used\": \"<string>\",\n          \"line_threshold_used\": \"<number>\",\n          \"areacat_threshold_used\": \"<number>\",\n          \"areaevt_threshold_used\": \"<number>\"\n        },\n        \"bbox\": [\n          \"<number>\",\n          \"<number>\",\n          \"<number>\",\n          \"<number>\"\n        ],\n        \"obj_type\": \"<string>\"\n      },\n      {\n        \"type\": \"Feature\",\n        \"geometry\": {\n          \"coordinates\": [\n            \"<number>\",\n            \"<number>\"\n          ],\n          \"type\": \"MultiPolygon\"\n        },\n        \"properties\": {\n          \"globalid\": \"<string>\",\n          \"lengthkm\": \"<number>\",\n          \"areasqkm\": \"<number>\",\n          \"converted_to_ring\": \"<boolean>\",\n          \"indexing_method_used\": \"<string>\",\n          \"line_threshold_used\": \"<number>\",\n          \"areacat_threshold_used\": \"<number>\",\n          \"areaevt_threshold_used\": \"<number>\"\n        },\n        \"bbox\": [\n          \"<number>\",\n          \"<number>\",\n          \"<number>\",\n          \"<number>\"\n        ],\n        \"obj_type\": \"<string>\"\n      }\n    ]\n  },\n  \"catchment_count\": \"<integer>\",\n  \"linked_data_sfid_found\": {\n    \"type\": \"<string>\",\n    \"rows\": [\n      {\n        \"eventtype\": \"<integer>\",\n        \"source_originator\": \"<string>\",\n        \"source_featureid\": \"<string>\",\n        \"source_featureid2\": \"<string>\",\n        \"source_series\": \"<string>\",\n        \"source_subdivision\": \"<string>\",\n        \"source_joinkey\": \"<string>\",\n        \"start_date\": \"<date>\",\n        \"end_date\": \"<date>\",\n        \"sfiddetailurl\": \"<string>\",\n        \"src_event_count\": \"<integer>\",\n        \"rad_event_count\": \"<integer>\",\n        \"src_cat_joinkey_count\": \"<integer>\",\n        \"nearest_cip_distancekm_permid\": \"<number>\",\n        \"nearest_cip_distancekm_cat\": \"<number>\",\n        \"nearest_cip_network_distancekm\": \"<number>\",\n        \"nearest_rad_distancekm_permid\": \"<string>\",\n        \"nearest_rad_network_distancekm\": \"<number>\",\n        \"nearest_cip_flowtimeday_permid\": \"<string>\",\n        \"nearest_cip_flowtimeday_cat\": \"<number>\",\n        \"nearest_cip_network_flowtimeday\": \"<number>\",\n        \"nearest_rad_flowtimeday_permid\": \"<string>\",\n        \"nearest_rad_network_flowtimeday\": \"<number>\"\n      },\n      {\n        \"eventtype\": \"<integer>\",\n        \"source_originator\": \"<string>\",\n        \"source_featureid\": \"<string>\",\n        \"source_featureid2\": \"<string>\",\n        \"source_series\": \"<string>\",\n        \"source_subdivision\": \"<string>\",\n        \"source_joinkey\": \"<string>\",\n        \"start_date\": \"<date>\",\n        \"end_date\": \"<date>\",\n        \"sfiddetailurl\": \"<string>\",\n        \"src_event_count\": \"<integer>\",\n        \"rad_event_count\": \"<integer>\",\n        \"src_cat_joinkey_count\": \"<integer>\",\n        \"nearest_cip_distancekm_permid\": \"<number>\",\n        \"nearest_cip_distancekm_cat\": \"<number>\",\n        \"nearest_cip_network_distancekm\": \"<number>\",\n        \"nearest_rad_distancekm_permid\": \"<string>\",\n        \"nearest_rad_network_distancekm\": \"<number>\",\n        \"nearest_cip_flowtimeday_permid\": \"<string>\",\n        \"nearest_cip_flowtimeday_cat\": \"<number>\",\n        \"nearest_cip_network_flowtimeday\": \"<number>\",\n        \"nearest_rad_flowtimeday_permid\": \"<string>\",\n        \"nearest_rad_network_flowtimeday\": \"<number>\"\n      }\n    ]\n  },\n  \"linked_data_sfid_count\": \"<integer>\",\n  \"linked_data_cip_found\": {\n    \"type\": \"<string>\",\n    \"rows\": [\n      {\n        \"eventtype\": \"<integer>\",\n        \"permid_joinkey\": \"<string>\",\n        \"source_originator\": \"<string>\",\n        \"source_featureid\": \"<string>\",\n        \"source_featureid2\": \"<string>\",\n        \"source_series\": \"<string>\",\n        \"source_subdivision\": \"<string>\",\n        \"source_joinkey\": \"<string>\",\n        \"start_date\": \"<date>\",\n        \"end_date\": \"<date>\",\n        \"cat_joinkey\": \"<string>\",\n        \"catchmentstatecode\": \"<string>\",\n        \"nhdplusid\": \"<long>\",\n        \"xwalk_huc12\": \"<string>\",\n        \"network_distancekm\": \"<number>\",\n        \"network_flowtimeday\": \"<number>\"\n      },\n      {\n        \"eventtype\": \"<integer>\",\n        \"permid_joinkey\": \"<string>\",\n        \"source_originator\": \"<string>\",\n        \"source_featureid\": \"<string>\",\n        \"source_featureid2\": \"<string>\",\n        \"source_series\": \"<string>\",\n        \"source_subdivision\": \"<string>\",\n        \"source_joinkey\": \"<string>\",\n        \"start_date\": \"<date>\",\n        \"end_date\": \"<date>\",\n        \"cat_joinkey\": \"<string>\",\n        \"catchmentstatecode\": \"<string>\",\n        \"nhdplusid\": \"<long>\",\n        \"xwalk_huc12\": \"<string>\",\n        \"network_distancekm\": \"<number>\",\n        \"network_flowtimeday\": \"<number>\"\n      }\n    ]\n  },\n  \"linked_data_cip_count\": \"<integer>\",\n  \"linked_data_huc12_found\": {\n    \"type\": \"<string>\",\n    \"rows\": [\n      {\n        \"eventtype\": \"<integer>\",\n        \"permid_joinkey\": \"<string>\",\n        \"source_originator\": \"<string>\",\n        \"source_featureid\": \"<string>\",\n        \"source_featureid2\": \"<string>\",\n        \"source_series\": \"<string>\",\n        \"source_subdivision\": \"<string>\",\n        \"source_joinkey\": \"<string>\",\n        \"start_date\": \"<date>\",\n        \"end_date\": \"<date>\",\n        \"xwalk_huc12\": \"<string>\",\n        \"network_distancekm\": \"<number>\",\n        \"network_flowtimeday\": \"<number>\"\n      },\n      {\n        \"eventtype\": \"<integer>\",\n        \"permid_joinkey\": \"<string>\",\n        \"source_originator\": \"<string>\",\n        \"source_featureid\": \"<string>\",\n        \"source_featureid2\": \"<string>\",\n        \"source_series\": \"<string>\",\n        \"source_subdivision\": \"<string>\",\n        \"source_joinkey\": \"<string>\",\n        \"start_date\": \"<date>\",\n        \"end_date\": \"<date>\",\n        \"xwalk_huc12\": \"<string>\",\n        \"network_distancekm\": \"<number>\",\n        \"network_flowtimeday\": \"<number>\"\n      }\n    ]\n  },\n  \"linked_data_huc12_count\": \"<integer>\",\n  \"linked_data_source_points\": null,\n  \"linked_data_source_lines\": null,\n  \"linked_data_source_areas\": null,\n  \"linked_data_source_count\": \"<integer>\",\n  \"linked_data_reached_points\": {\n    \"type\": \"Feature\",\n    \"geometry\": null,\n    \"properties\": {\n      \"globalid\": \"<string>\",\n      \"lengthkm\": \"<number>\",\n      \"areasqkm\": \"<number>\",\n      \"converted_to_ring\": \"<boolean>\",\n      \"indexing_method_used\": \"<string>\",\n      \"line_threshold_used\": \"<number>\",\n      \"areacat_threshold_used\": \"<number>\",\n      \"areaevt_threshold_used\": \"<number>\"\n    },\n    \"bbox\": [\n      \"<number>\",\n      \"<number>\",\n      \"<number>\",\n      \"<number>\"\n    ],\n    \"obj_type\": \"<string>\"\n  },\n  \"linked_data_reached_lines\": {\n    \"type\": \"Feature\",\n    \"geometry\": {\n      \"coordinates\": [\n        \"<number>\",\n        \"<number>\"\n      ],\n      \"type\": \"Polygon\"\n    },\n    \"properties\": {\n      \"globalid\": \"<string>\",\n      \"lengthkm\": \"<number>\",\n      \"areasqkm\": \"<number>\",\n      \"converted_to_ring\": \"<boolean>\",\n      \"indexing_method_used\": \"<string>\",\n      \"line_threshold_used\": \"<number>\",\n      \"areacat_threshold_used\": \"<number>\",\n      \"areaevt_threshold_used\": \"<number>\"\n    },\n    \"bbox\": [\n      \"<number>\",\n      \"<number>\",\n      \"<number>\",\n      \"<number>\"\n    ],\n    \"obj_type\": \"<string>\"\n  },\n  \"linked_data_reached_areas\": {\n    \"type\": \"Feature\",\n    \"geometry\": null,\n    \"properties\": {\n      \"globalid\": \"<string>\",\n      \"lengthkm\": \"<number>\",\n      \"areasqkm\": \"<number>\",\n      \"converted_to_ring\": \"<boolean>\",\n      \"indexing_method_used\": \"<string>\",\n      \"line_threshold_used\": \"<number>\",\n      \"areacat_threshold_used\": \"<number>\",\n      \"areaevt_threshold_used\": \"<number>\"\n    },\n    \"bbox\": [\n      \"<number>\",\n      \"<number>\",\n      \"<number>\",\n      \"<number>\"\n    ],\n    \"obj_type\": \"<string>\"\n  },\n  \"linked_data_reached_count\": \"<integer>\",\n  \"linked_data_attributes\": {\n    \"type\": \"<string>\",\n    \"rows\": [\n      {\n        \"source_joinkey\": \"<string>\",\n        \"organizationidentifier\": \"<string>\",\n        \"organizationformalname\": \"<string>\",\n        \"monitoringlocationidentifier\": \"<string>\",\n        \"monitoringlocationname\": \"<string>\",\n        \"monitoringlocationtypename\": \"<string>\",\n        \"monitoringlocationdescription\": \"<string>\",\n        \"huceightdigitcode\": \"<string>\",\n        \"drainageareameasure_measureval\": \"<number>\",\n        \"drainageareameasure_measureunt\": \"<string>\",\n        \"contributingdrainageareameasva\": \"<string>\",\n        \"contributingdrainageareameasun\": \"<string>\",\n        \"latitudemeasure\": \"<number>\",\n        \"longitudemeasure\": \"<number>\",\n        \"sourcemapscalenumeric\": \"<number>\",\n        \"horizontalaccuracymeasureval\": \"<string>\",\n        \"horizontalaccuracymeasureunit\": \"<string>\",\n        \"horizontalcollectionmethodname\": \"<string>\",\n        \"horizontalcoordinatereferences\": \"<string>\",\n        \"verticalmeasure_measurevalue\": \"<string>\",\n        \"verticalmeasure_measureunit\": \"<string>\",\n        \"verticalaccuracymeasurevalue\": \"<string>\",\n        \"verticalaccuracymeasureunit\": \"<string>\",\n        \"verticalcollectionmethodname\": \"<string>\",\n        \"verticalcoordinatereferencesys\": \"<string>\",\n        \"countrycode\": \"<string>\",\n        \"statecode\": \"<string>\",\n        \"countycode\": \"<string>\",\n        \"aquifername\": \"<string>\",\n        \"formationtypetext\": \"<string>\",\n        \"aquifertypename\": \"<string>\",\n        \"constructiondatetext\": \"<string>\",\n        \"welldepthmeasure_measurevalue\": \"<string>\",\n        \"welldepthmeasure_measureunit\": \"<string>\",\n        \"wellholedepthmeasure_measureva\": \"<string>\",\n        \"wellholedepthmeasure_measureun\": \"<string>\",\n        \"providername\": \"<string>\",\n        \"nearest_cip_network_distancekm\": \"<number>\",\n        \"nearest_cip_network_flowtimeday\": \"<number>\",\n        \"nearest_rad_network_distancekm\": \"<number>\",\n        \"nearest_rad_network_flowtimeday\": \"<number>\"\n      },\n      {\n        \"source_joinkey\": \"<string>\",\n        \"organizationidentifier\": \"<string>\",\n        \"organizationformalname\": \"<string>\",\n        \"monitoringlocationidentifier\": \"<string>\",\n        \"monitoringlocationname\": \"<string>\",\n        \"monitoringlocationtypename\": \"<string>\",\n        \"monitoringlocationdescription\": \"<string>\",\n        \"huceightdigitcode\": \"<string>\",\n        \"drainageareameasure_measureval\": \"<number>\",\n        \"drainageareameasure_measureunt\": \"<string>\",\n        \"contributingdrainageareameasva\": \"<string>\",\n        \"contributingdrainageareameasun\": \"<string>\",\n        \"latitudemeasure\": \"<number>\",\n        \"longitudemeasure\": \"<number>\",\n        \"sourcemapscalenumeric\": \"<number>\",\n        \"horizontalaccuracymeasureval\": \"<string>\",\n        \"horizontalaccuracymeasureunit\": \"<string>\",\n        \"horizontalcollectionmethodname\": \"<string>\",\n        \"horizontalcoordinatereferences\": \"<string>\",\n        \"verticalmeasure_measurevalue\": \"<string>\",\n        \"verticalmeasure_measureunit\": \"<string>\",\n        \"verticalaccuracymeasurevalue\": \"<string>\",\n        \"verticalaccuracymeasureunit\": \"<string>\",\n        \"verticalcollectionmethodname\": \"<string>\",\n        \"verticalcoordinatereferencesys\": \"<string>\",\n        \"countrycode\": \"<string>\",\n        \"statecode\": \"<string>\",\n        \"countycode\": \"<string>\",\n        \"aquifername\": \"<string>\",\n        \"formationtypetext\": \"<string>\",\n        \"aquifertypename\": \"<string>\",\n        \"constructiondatetext\": \"<string>\",\n        \"welldepthmeasure_measurevalue\": \"<string>\",\n        \"welldepthmeasure_measureunit\": \"<string>\",\n        \"wellholedepthmeasure_measureva\": \"<string>\",\n        \"wellholedepthmeasure_measureun\": \"<string>\",\n        \"providername\": \"<string>\",\n        \"nearest_cip_network_distancekm\": \"<number>\",\n        \"nearest_cip_network_flowtimeday\": \"<number>\",\n        \"nearest_rad_network_distancekm\": \"<number>\",\n        \"nearest_rad_network_flowtimeday\": \"<number>\"\n      }\n    ]\n  },\n  \"start_nhdplusid\": \"<long>\",\n  \"start_measure\": \"<number>\",\n  \"start_linked_data_program\": \"<string>\",\n  \"stop_nhdplusid\": \"<long>\",\n  \"stop_measure\": \"<number>\",\n  \"stop_linked_data_program\": \"<string>\",\n  \"return_code\": \"<integer>\",\n  \"status_message\": \"<string,null>\"\n}",
+                  "createdAt": "2026-07-28T10:56:43.000Z",
+                  "updatedAt": "2026-07-28T10:56:43.000Z",
+                  "uid": "35240-599072be-f253-4101-963f-e62bccfd5623"
+                }
+              ],
+              "createdAt": "2026-07-28T10:56:42.000Z",
+              "updatedAt": "2026-07-28T10:56:42.000Z",
+              "uid": "35240-64676c52-3b51-4221-9790-4933cdd8f341"
+            }
+          ],
+          "id": "670f8bfc-eea2-42c8-9bab-3ced45f3f95b",
+          "createdAt": "2026-07-28T10:56:42.000Z",
+          "updatedAt": "2026-07-28T10:56:42.000Z",
+          "uid": "35240-670f8bfc-eea2-42c8-9bab-3ced45f3f95b"
+        },
+        {
+          "name": "flow_accumulation",
+          "item": [
+            {
+              "name": "CIP-service Flow Accumulation",
+              "id": "ab20a527-20e9-496f-9df5-197921aaa17f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"area_of_interest\": null,\n  \"default_weight\": \"<number>\",\n  \"known_region\": \"<string>\",\n  \"nhdplus_version\": \"nhdplus_h\",\n  \"image_format\": \"PNG\",\n  \"output_srid\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/rpc/flow_accumulation",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "rpc",
+                    "flow_accumulation"
+                  ]
+                },
+                "description": "CIP-service Flow Accumulation"
+              },
+              "response": [
+                {
+                  "id": "6db749e2-0b6b-44ac-81e2-ea40cec61712",
+                  "name": "CIP-service Flow Accumulation Response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"area_of_interest\": null,\n  \"default_weight\": \"<number>\",\n  \"known_region\": \"<string>\",\n  \"nhdplus_version\": \"nhdplus_h\",\n  \"image_format\": \"PNG\",\n  \"output_srid\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/rpc/flow_accumulation?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rpc",
+                        "flow_accumulation"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"flow_accumulation\": \"<string>\",\n  \"image_format\": \"GTIFF\",\n  \"image_bbox\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"max_accumulation\": \"<integer>\",\n  \"max_accumulation_x\": \"<integer>\",\n  \"max_accumulation_y\": \"<integer>\",\n  \"max_accumulation_pt\": \"<integer>\",\n  \"raster_srid\": \"<integer>\",\n  \"nhdplus_version\": \"nhdplus_h\",\n  \"return_code\": \"<integer>\",\n  \"status_message\": \"<string,null>\"\n}",
+                  "createdAt": "2026-07-28T10:56:43.000Z",
+                  "updatedAt": "2026-07-28T10:56:43.000Z",
+                  "uid": "35240-6db749e2-0b6b-44ac-81e2-ea40cec61712"
+                }
+              ],
+              "createdAt": "2026-07-28T10:56:42.000Z",
+              "updatedAt": "2026-07-28T10:56:42.000Z",
+              "uid": "35240-ab20a527-20e9-496f-9df5-197921aaa17f"
+            }
+          ],
+          "id": "8fd6ec9d-c052-4086-bdc4-f76baf541a4e",
+          "createdAt": "2026-07-28T10:56:42.000Z",
+          "updatedAt": "2026-07-28T10:56:42.000Z",
+          "uid": "35240-8fd6ec9d-c052-4086-bdc4-f76baf541a4e"
+        }
+      ],
+      "id": "3f54312a-e285-4120-ab63-7a41095f97b5",
+      "createdAt": "2026-07-28T10:56:42.000Z",
+      "updatedAt": "2026-07-28T10:56:42.000Z",
+      "uid": "35240-3f54312a-e285-4120-ab63-7a41095f97b5"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

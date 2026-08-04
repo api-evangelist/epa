@@ -1,0 +1,326 @@
+{
+  "info": {
+    "_postman_id": "87a8e743-e211-446d-b675-a3afe21c1745",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Cycle Time Summary API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:58:16.000Z",
+    "updatedAt": "2026-07-28T10:58:17.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-87a8e743-e211-446d-b675-a3afe21c1745"
+  },
+  "item": [
+    {
+      "name": "qa-certification-mgmt",
+      "item": [
+        {
+          "name": "locations",
+          "item": [
+            {
+              "name": "{locId}",
+              "item": [
+                {
+                  "name": "test-summary",
+                  "item": [
+                    {
+                      "name": "{testSumId}",
+                      "item": [
+                        {
+                          "name": "cycle-time-summaries",
+                          "item": [
+                            {
+                              "name": "{id}",
+                              "item": [
+                                {
+                                  "name": "Cycle Time Summary Controller get Cycle Time Summary",
+                                  "id": "0cca0fa6-4e4c-40e1-b393-a17e5c930bcd",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/cycle-time-summaries/:id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "qa-certification-mgmt",
+                                        "locations",
+                                        ":locId",
+                                        "test-summary",
+                                        ":testSumId",
+                                        "cycle-time-summaries",
+                                        ":id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "ff31aca7-a75f-4967-8385-333262726178",
+                                          "key": "locId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "a635f4fd-8caf-4e15-afe9-ace05840c692",
+                                          "key": "testSumId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "79367053-440f-436e-bcbb-cac2a0f1cbb5",
+                                          "key": "id",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "18affa53-8003-4969-98d1-234b3d779246",
+                                      "name": "Retrieves official Cycle Time Summary record by its Id",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/cycle-time-summaries/:id?key=<API Key>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "qa-certification-mgmt",
+                                            "locations",
+                                            ":locId",
+                                            "test-summary",
+                                            ":testSumId",
+                                            "cycle-time-summaries",
+                                            ":id"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Added as a part of security scheme: apikey",
+                                              "key": "key",
+                                              "value": "<API Key>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "locId"
+                                            },
+                                            {
+                                              "key": "testSumId"
+                                            },
+                                            {
+                                              "key": "id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"cycleTimeInjectionData\": [\n    {\n      \"id\": \"<string>\",\n      \"cycleTimeSumId\": \"<string>\",\n      \"calculatedInjectionCycleTime\": \"<number>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"gasLevelCode\": \"<string>\",\n      \"calibrationGasValue\": \"<number>\",\n      \"beginDate\": \"<dateTime>\",\n      \"beginHour\": \"<number>\",\n      \"beginMinute\": \"<number>\",\n      \"endDate\": \"<dateTime>\",\n      \"endHour\": \"<number>\",\n      \"endMinute\": \"<number>\",\n      \"injectionCycleTime\": \"<number>\",\n      \"beginMonitorValue\": \"<number>\",\n      \"endMonitorValue\": \"<number>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"cycleTimeSumId\": \"<string>\",\n      \"calculatedInjectionCycleTime\": \"<number>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"gasLevelCode\": \"<string>\",\n      \"calibrationGasValue\": \"<number>\",\n      \"beginDate\": \"<dateTime>\",\n      \"beginHour\": \"<number>\",\n      \"beginMinute\": \"<number>\",\n      \"endDate\": \"<dateTime>\",\n      \"endHour\": \"<number>\",\n      \"endMinute\": \"<number>\",\n      \"injectionCycleTime\": \"<number>\",\n      \"beginMonitorValue\": \"<number>\",\n      \"endMonitorValue\": \"<number>\"\n    }\n  ],\n  \"id\": \"<string>\",\n  \"testSumId\": \"<string>\",\n  \"calculatedTotalTime\": \"<number>\",\n  \"userId\": \"<string>\",\n  \"addDate\": \"<string>\",\n  \"updateDate\": \"<string>\",\n  \"totalTime\": \"<number>\"\n}",
+                                      "createdAt": "2026-07-28T10:58:17.000Z",
+                                      "updatedAt": "2026-07-28T10:58:17.000Z",
+                                      "uid": "35240-18affa53-8003-4969-98d1-234b3d779246"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T10:58:17.000Z",
+                                  "updatedAt": "2026-07-28T10:58:17.000Z",
+                                  "uid": "35240-0cca0fa6-4e4c-40e1-b393-a17e5c930bcd"
+                                }
+                              ],
+                              "id": "fa3322d4-a28c-4ee9-94ce-ed4f354a5942",
+                              "createdAt": "2026-07-28T10:58:17.000Z",
+                              "updatedAt": "2026-07-28T10:58:17.000Z",
+                              "uid": "35240-fa3322d4-a28c-4ee9-94ce-ed4f354a5942"
+                            },
+                            {
+                              "name": "Cycle Time Summary Controller get Cycle Time Summaries",
+                              "id": "09733dfe-d561-40f7-95e9-ba67cbd2d214",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/cycle-time-summaries",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "qa-certification-mgmt",
+                                    "locations",
+                                    ":locId",
+                                    "test-summary",
+                                    ":testSumId",
+                                    "cycle-time-summaries"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "50bc8da8-1348-48dc-a0d5-5c5841653606",
+                                      "key": "locId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "6df95e2b-2dc3-4fc0-a79e-0b2d9edaddd7",
+                                      "key": "testSumId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                }
+                              },
+                              "response": [
+                                {
+                                  "id": "fe0cff8c-2081-4a63-b0f2-2e99de71090e",
+                                  "name": "Retrieves official Cycle Time Summary records by Test Summary Id",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/cycle-time-summaries?key=<API Key>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "qa-certification-mgmt",
+                                        "locations",
+                                        ":locId",
+                                        "test-summary",
+                                        ":testSumId",
+                                        "cycle-time-summaries"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Added as a part of security scheme: apikey",
+                                          "key": "key",
+                                          "value": "<API Key>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "locId"
+                                        },
+                                        {
+                                          "key": "testSumId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"items\": [\n    {\n      \"cycleTimeInjectionData\": [\n        {\n          \"id\": \"<string>\",\n          \"cycleTimeSumId\": \"<string>\",\n          \"calculatedInjectionCycleTime\": \"<number>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"gasLevelCode\": \"<string>\",\n          \"calibrationGasValue\": \"<number>\",\n          \"beginDate\": \"<dateTime>\",\n          \"beginHour\": \"<number>\",\n          \"beginMinute\": \"<number>\",\n          \"endDate\": \"<dateTime>\",\n          \"endHour\": \"<number>\",\n          \"endMinute\": \"<number>\",\n          \"injectionCycleTime\": \"<number>\",\n          \"beginMonitorValue\": \"<number>\",\n          \"endMonitorValue\": \"<number>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"cycleTimeSumId\": \"<string>\",\n          \"calculatedInjectionCycleTime\": \"<number>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"gasLevelCode\": \"<string>\",\n          \"calibrationGasValue\": \"<number>\",\n          \"beginDate\": \"<dateTime>\",\n          \"beginHour\": \"<number>\",\n          \"beginMinute\": \"<number>\",\n          \"endDate\": \"<dateTime>\",\n          \"endHour\": \"<number>\",\n          \"endMinute\": \"<number>\",\n          \"injectionCycleTime\": \"<number>\",\n          \"beginMonitorValue\": \"<number>\",\n          \"endMonitorValue\": \"<number>\"\n        }\n      ],\n      \"id\": \"<string>\",\n      \"testSumId\": \"<string>\",\n      \"calculatedTotalTime\": \"<number>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"totalTime\": \"<number>\"\n    },\n    {\n      \"cycleTimeInjectionData\": [\n        {\n          \"id\": \"<string>\",\n          \"cycleTimeSumId\": \"<string>\",\n          \"calculatedInjectionCycleTime\": \"<number>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"gasLevelCode\": \"<string>\",\n          \"calibrationGasValue\": \"<number>\",\n          \"beginDate\": \"<dateTime>\",\n          \"beginHour\": \"<number>\",\n          \"beginMinute\": \"<number>\",\n          \"endDate\": \"<dateTime>\",\n          \"endHour\": \"<number>\",\n          \"endMinute\": \"<number>\",\n          \"injectionCycleTime\": \"<number>\",\n          \"beginMonitorValue\": \"<number>\",\n          \"endMonitorValue\": \"<number>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"cycleTimeSumId\": \"<string>\",\n          \"calculatedInjectionCycleTime\": \"<number>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"gasLevelCode\": \"<string>\",\n          \"calibrationGasValue\": \"<number>\",\n          \"beginDate\": \"<dateTime>\",\n          \"beginHour\": \"<number>\",\n          \"beginMinute\": \"<number>\",\n          \"endDate\": \"<dateTime>\",\n          \"endHour\": \"<number>\",\n          \"endMinute\": \"<number>\",\n          \"injectionCycleTime\": \"<number>\",\n          \"beginMonitorValue\": \"<number>\",\n          \"endMonitorValue\": \"<number>\"\n        }\n      ],\n      \"id\": \"<string>\",\n      \"testSumId\": \"<string>\",\n      \"calculatedTotalTime\": \"<number>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"totalTime\": \"<number>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T10:58:17.000Z",
+                                  "updatedAt": "2026-07-28T10:58:17.000Z",
+                                  "uid": "35240-fe0cff8c-2081-4a63-b0f2-2e99de71090e"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T10:58:17.000Z",
+                              "updatedAt": "2026-07-28T10:58:17.000Z",
+                              "uid": "35240-09733dfe-d561-40f7-95e9-ba67cbd2d214"
+                            }
+                          ],
+                          "id": "e7ddb60c-399c-47ae-af5e-998c2ee7b900",
+                          "createdAt": "2026-07-28T10:58:17.000Z",
+                          "updatedAt": "2026-07-28T10:58:17.000Z",
+                          "uid": "35240-e7ddb60c-399c-47ae-af5e-998c2ee7b900"
+                        }
+                      ],
+                      "id": "e378d77b-4825-47c0-ad73-e65dbb6cae2c",
+                      "createdAt": "2026-07-28T10:58:17.000Z",
+                      "updatedAt": "2026-07-28T10:58:17.000Z",
+                      "uid": "35240-e378d77b-4825-47c0-ad73-e65dbb6cae2c"
+                    }
+                  ],
+                  "id": "5b118dca-a450-4256-9e7a-9c6c5c39d791",
+                  "createdAt": "2026-07-28T10:58:17.000Z",
+                  "updatedAt": "2026-07-28T10:58:17.000Z",
+                  "uid": "35240-5b118dca-a450-4256-9e7a-9c6c5c39d791"
+                }
+              ],
+              "id": "8d4f6a7b-2177-450a-96d1-57b36e65f721",
+              "createdAt": "2026-07-28T10:58:17.000Z",
+              "updatedAt": "2026-07-28T10:58:17.000Z",
+              "uid": "35240-8d4f6a7b-2177-450a-96d1-57b36e65f721"
+            }
+          ],
+          "id": "aa13eb32-c69d-405e-87c2-bc10b5edeb07",
+          "createdAt": "2026-07-28T10:58:17.000Z",
+          "updatedAt": "2026-07-28T10:58:17.000Z",
+          "uid": "35240-aa13eb32-c69d-405e-87c2-bc10b5edeb07"
+        }
+      ],
+      "id": "cfbfa0a6-d629-455c-a027-d14a1d263a8b",
+      "createdAt": "2026-07-28T10:58:17.000Z",
+      "updatedAt": "2026-07-28T10:58:17.000Z",
+      "uid": "35240-cfbfa0a6-d629-455c-a027-d14a1d263a8b"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

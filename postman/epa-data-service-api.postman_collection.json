@@ -1,0 +1,437 @@
+{
+  "info": {
+    "_postman_id": "a0a9548b-6117-4248-bfef-c6bfab6dacba",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Data Service API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:58:18.000Z",
+    "updatedAt": "2026-07-28T10:58:19.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a0a9548b-6117-4248-bfef-c6bfab6dacba"
+  },
+  "item": [
+    {
+      "name": "efservice",
+      "item": [
+        {
+          "name": "{table}",
+          "item": [
+            {
+              "name": "{format}",
+              "item": [
+                {
+                  "name": "Query Envirofacts Table",
+                  "id": "e9cc5316-e168-445e-85f0-be9dc400f5e1",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/efservice/:table/:format",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "efservice",
+                        ":table",
+                        ":format"
+                      ],
+                      "variable": [
+                        {
+                          "id": "e40c97ce-98dc-4427-a797-5518c59b5764",
+                          "key": "table",
+                          "value": "<string>",
+                          "description": "(Required) Envirofacts table in `program.table` format (e.g., `rcra.rcra_facility`, `tri.tri_facility`, `sems.envirofacts_site`)."
+                        },
+                        {
+                          "id": "810b9d7e-2f09-4764-a55e-c80ad1f71626",
+                          "key": "format",
+                          "value": "EXCEL",
+                          "description": "Output format (default JSON)."
+                        }
+                      ]
+                    },
+                    "description": "Query any Envirofacts table. Append optional filter, join, range, and sort segments before the format."
+                  },
+                  "response": [
+                    {
+                      "id": "9d292c05-e091-4ed3-86a3-baa24774128b",
+                      "name": "Rows from the requested Envirofacts table.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/efservice/:table/:format?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "efservice",
+                            ":table",
+                            ":format"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "table"
+                            },
+                            {
+                              "key": "format"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"aliqua_17\": 23838618.765361235,\n    \"deserunt_5b\": 78824357\n  },\n  {\n    \"sed_bb\": -23882549.14726527\n  }\n]",
+                      "createdAt": "2026-07-28T10:58:19.000Z",
+                      "updatedAt": "2026-07-28T10:58:19.000Z",
+                      "uid": "35240-9d292c05-e091-4ed3-86a3-baa24774128b"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T10:58:19.000Z",
+                  "updatedAt": "2026-07-28T10:58:19.000Z",
+                  "uid": "35240-e9cc5316-e168-445e-85f0-be9dc400f5e1"
+                }
+              ],
+              "id": "3c1f6b51-82e8-48a8-8b77-1a2748733b7c",
+              "createdAt": "2026-07-28T10:58:19.000Z",
+              "updatedAt": "2026-07-28T10:58:19.000Z",
+              "uid": "35240-3c1f6b51-82e8-48a8-8b77-1a2748733b7c"
+            },
+            {
+              "name": "{filter}",
+              "item": [
+                {
+                  "name": "{format}",
+                  "item": [
+                    {
+                      "name": "Query Envirofacts Table with Filter",
+                      "id": "a6502fae-067b-4f85-b776-3f2f49bcb404",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/efservice/:table/:filter/:format",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "efservice",
+                            ":table",
+                            ":filter",
+                            ":format"
+                          ],
+                          "variable": [
+                            {
+                              "id": "98ca25ab-6fd9-4f81-bb34-46ac05a7937d",
+                              "key": "table",
+                              "value": "<string>",
+                              "description": "(Required) Envirofacts table in `program.table` format (e.g., `rcra.rcra_facility`, `tri.tri_facility`, `sems.envirofacts_site`)."
+                            },
+                            {
+                              "id": "9d5c0e77-b869-458d-8d8f-01c5cefcc538",
+                              "key": "filter",
+                              "value": "<string>",
+                              "description": "Optional filter clause `{column}{operator}{value}`. Operators include equals, notEquals, lessThan, greaterThan, beginsWith, endsWith, contains, like, in."
+                            },
+                            {
+                              "id": "5d812497-d006-4e54-a2c8-8c4acf33323a",
+                              "key": "format",
+                              "value": "EXCEL",
+                              "description": "Output format (default JSON)."
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "2d40972c-faf0-4807-9078-be8aff9e8bc7",
+                          "name": "Filtered rows.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/efservice/:table/:filter/:format?key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "efservice",
+                                ":table",
+                                ":filter",
+                                ":format"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "table"
+                                },
+                                {
+                                  "key": "filter"
+                                },
+                                {
+                                  "key": "format"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"aliqua_17\": 23838618.765361235,\n    \"deserunt_5b\": 78824357\n  },\n  {\n    \"sed_bb\": -23882549.14726527\n  }\n]",
+                          "createdAt": "2026-07-28T10:58:19.000Z",
+                          "updatedAt": "2026-07-28T10:58:19.000Z",
+                          "uid": "35240-2d40972c-faf0-4807-9078-be8aff9e8bc7"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T10:58:19.000Z",
+                      "updatedAt": "2026-07-28T10:58:19.000Z",
+                      "uid": "35240-a6502fae-067b-4f85-b776-3f2f49bcb404"
+                    }
+                  ],
+                  "id": "ecbfc90b-de7c-492e-8332-96a433704665",
+                  "createdAt": "2026-07-28T10:58:19.000Z",
+                  "updatedAt": "2026-07-28T10:58:19.000Z",
+                  "uid": "35240-ecbfc90b-de7c-492e-8332-96a433704665"
+                },
+                {
+                  "name": "{range}",
+                  "item": [
+                    {
+                      "name": "{format}",
+                      "item": [
+                        {
+                          "name": "Query Envirofacts Table with Filter and Pagination",
+                          "id": "94714a8d-57f1-4860-b09e-10295d7b8bb2",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/efservice/:table/:filter/:range/:format",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "efservice",
+                                ":table",
+                                ":filter",
+                                ":range",
+                                ":format"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "c90e50a6-ecf0-4ffd-bb3a-a6c78401f642",
+                                  "key": "table",
+                                  "value": "<string>",
+                                  "description": "(Required) Envirofacts table in `program.table` format (e.g., `rcra.rcra_facility`, `tri.tri_facility`, `sems.envirofacts_site`)."
+                                },
+                                {
+                                  "id": "4dfe91ab-77f6-49aa-bd9e-fb005200fdf8",
+                                  "key": "filter",
+                                  "value": "<string>",
+                                  "description": "Optional filter clause `{column}{operator}{value}`. Operators include equals, notEquals, lessThan, greaterThan, beginsWith, endsWith, contains, like, in."
+                                },
+                                {
+                                  "id": "847fb6ba-1f12-4fdb-88bb-52e8c00cf65f",
+                                  "key": "range",
+                                  "value": "731006:453331886",
+                                  "description": "Optional pagination range `first:last` (e.g., `1:100`)."
+                                },
+                                {
+                                  "id": "62b8b9c9-d692-4fc2-830d-1c43201076ed",
+                                  "key": "format",
+                                  "value": "EXCEL",
+                                  "description": "Output format (default JSON)."
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "72523111-f3b5-4afb-8063-b9792e9c79e8",
+                              "name": "Paginated filtered rows.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/efservice/:table/:filter/:range/:format?key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "efservice",
+                                    ":table",
+                                    ":filter",
+                                    ":range",
+                                    ":format"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "table"
+                                    },
+                                    {
+                                      "key": "filter"
+                                    },
+                                    {
+                                      "key": "range"
+                                    },
+                                    {
+                                      "key": "format"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "[\n  {\n    \"aliqua_17\": 23838618.765361235,\n    \"deserunt_5b\": 78824357\n  },\n  {\n    \"sed_bb\": -23882549.14726527\n  }\n]",
+                              "createdAt": "2026-07-28T10:58:19.000Z",
+                              "updatedAt": "2026-07-28T10:58:19.000Z",
+                              "uid": "35240-72523111-f3b5-4afb-8063-b9792e9c79e8"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T10:58:19.000Z",
+                          "updatedAt": "2026-07-28T10:58:19.000Z",
+                          "uid": "35240-94714a8d-57f1-4860-b09e-10295d7b8bb2"
+                        }
+                      ],
+                      "id": "7d70b120-5ee0-4220-887a-96a61f284399",
+                      "createdAt": "2026-07-28T10:58:19.000Z",
+                      "updatedAt": "2026-07-28T10:58:19.000Z",
+                      "uid": "35240-7d70b120-5ee0-4220-887a-96a61f284399"
+                    }
+                  ],
+                  "id": "c9b89774-4e81-4eed-9edb-485785d70079",
+                  "createdAt": "2026-07-28T10:58:19.000Z",
+                  "updatedAt": "2026-07-28T10:58:19.000Z",
+                  "uid": "35240-c9b89774-4e81-4eed-9edb-485785d70079"
+                }
+              ],
+              "id": "6563450c-c7a2-45a0-9605-7cab73996efc",
+              "createdAt": "2026-07-28T10:58:19.000Z",
+              "updatedAt": "2026-07-28T10:58:19.000Z",
+              "uid": "35240-6563450c-c7a2-45a0-9605-7cab73996efc"
+            }
+          ],
+          "id": "071ad349-6a5c-4afc-9f2a-d5e2007ac99c",
+          "createdAt": "2026-07-28T10:58:19.000Z",
+          "updatedAt": "2026-07-28T10:58:19.000Z",
+          "uid": "35240-071ad349-6a5c-4afc-9f2a-d5e2007ac99c"
+        }
+      ],
+      "id": "29bad5f2-2002-4424-9ae1-35ae63844497",
+      "createdAt": "2026-07-28T10:58:19.000Z",
+      "updatedAt": "2026-07-28T10:58:19.000Z",
+      "uid": "35240-29bad5f2-2002-4424-9ae1-35ae63844497"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

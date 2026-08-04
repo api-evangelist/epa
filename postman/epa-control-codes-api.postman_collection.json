@@ -1,0 +1,135 @@
+{
+  "info": {
+    "_postman_id": "b3e3d748-81df-489b-91bb-1471e2a51ac9",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Control Codes API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:57:26.000Z",
+    "updatedAt": "2026-07-28T10:57:26.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b3e3d748-81df-489b-91bb-1471e2a51ac9"
+  },
+  "item": [
+    {
+      "name": "master-data-mgmt",
+      "item": [
+        {
+          "name": "control-codes",
+          "item": [
+            {
+              "name": "Control Technology Controller get Control Technologies",
+              "id": "4fe70907-f9c6-44a5-946e-11152d57f2b0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/master-data-mgmt/control-codes",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "master-data-mgmt",
+                    "control-codes"
+                  ]
+                },
+                "description": "Returns list of Control codes & descriptions."
+              },
+              "response": [
+                {
+                  "id": "e26e8a4f-f345-4694-94d7-fa9f71b4a303",
+                  "name": "Data retrieved successfully",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/master-data-mgmt/control-codes?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "master-data-mgmt",
+                        "control-codes"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"items\": [\n    {\n      \"controlCode\": \"<string>\",\n      \"controlDescription\": \"<string>\",\n      \"controlEquipParamCode\": \"<string>\",\n      \"controlEquipParamDescription\": \"<string>\"\n    },\n    {\n      \"controlCode\": \"<string>\",\n      \"controlDescription\": \"<string>\",\n      \"controlEquipParamCode\": \"<string>\",\n      \"controlEquipParamDescription\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T10:57:26.000Z",
+                  "updatedAt": "2026-07-28T10:57:26.000Z",
+                  "uid": "35240-e26e8a4f-f345-4694-94d7-fa9f71b4a303"
+                }
+              ],
+              "createdAt": "2026-07-28T10:57:26.000Z",
+              "updatedAt": "2026-07-28T10:57:26.000Z",
+              "uid": "35240-4fe70907-f9c6-44a5-946e-11152d57f2b0"
+            }
+          ],
+          "id": "da5e6f89-86a2-4fd8-958f-15a715c5ed32",
+          "createdAt": "2026-07-28T10:57:26.000Z",
+          "updatedAt": "2026-07-28T10:57:26.000Z",
+          "uid": "35240-da5e6f89-86a2-4fd8-958f-15a715c5ed32"
+        }
+      ],
+      "id": "c5609e30-fee6-403b-8860-e836166d8682",
+      "createdAt": "2026-07-28T10:57:26.000Z",
+      "updatedAt": "2026-07-28T10:57:26.000Z",
+      "uid": "35240-c5609e30-fee6-403b-8860-e836166d8682"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

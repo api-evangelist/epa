@@ -1,0 +1,265 @@
+{
+  "info": {
+    "_postman_id": "a04d68b2-e306-417e-9006-49faf89907dd",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Apportioned Emissions API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:57:01.000Z",
+    "updatedAt": "2026-07-28T10:57:01.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a04d68b2-e306-417e-9006-49faf89907dd"
+  },
+  "item": [
+    {
+      "name": "emissions-mgmt",
+      "item": [
+        {
+          "name": "emissions",
+          "item": [
+            {
+              "name": "apportioned",
+              "item": [
+                {
+                  "name": "attributes",
+                  "item": [
+                    {
+                      "name": "applicable",
+                      "item": [
+                        {
+                          "name": "Apportioned Emissions Controller get Applicable Apportioned Emissions Attributes",
+                          "id": "5076a3e0-3237-4ac5-8a23-a49a87e7ce78",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/attributes/applicable?year=<number>|<number>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "emissions-mgmt",
+                                "emissions",
+                                "apportioned",
+                                "attributes",
+                                "applicable"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The calendar year during which activity occurred.",
+                                  "key": "year",
+                                  "value": "<number>|<number>"
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "6a7d36ae-dbc5-482e-9789-d0f967a15552",
+                              "name": "Retrieves Applicable Emissions Attributes",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/attributes/applicable?year=<number>|<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "attributes",
+                                    "applicable"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"items\": [\n    {\n      \"year\": \"<number>\",\n      \"programCode\": \"<string>\",\n      \"facilityId\": \"<number>\",\n      \"stateCode\": \"<string>\",\n      \"unitTypeCode\": \"<string>\",\n      \"fuelTypeCode\": \"<string>\",\n      \"controlCode\": \"<string>\"\n    },\n    {\n      \"year\": \"<number>\",\n      \"programCode\": \"<string>\",\n      \"facilityId\": \"<number>\",\n      \"stateCode\": \"<string>\",\n      \"unitTypeCode\": \"<string>\",\n      \"fuelTypeCode\": \"<string>\",\n      \"controlCode\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T10:57:01.000Z",
+                              "updatedAt": "2026-07-28T10:57:01.000Z",
+                              "uid": "35240-6a7d36ae-dbc5-482e-9789-d0f967a15552"
+                            },
+                            {
+                              "id": "1be88b3d-d9bb-46b2-88fe-375b8f3eaf88",
+                              "name": "Invalid Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/attributes/applicable?year=<number>|<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "attributes",
+                                    "applicable"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:01.000Z",
+                              "updatedAt": "2026-07-28T10:57:01.000Z",
+                              "uid": "35240-1be88b3d-d9bb-46b2-88fe-375b8f3eaf88"
+                            },
+                            {
+                              "id": "b7cfc38f-92e3-44a3-ae1f-192e6b69c086",
+                              "name": "Resource Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/attributes/applicable?year=<number>|<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "attributes",
+                                    "applicable"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) The calendar year during which activity occurred.",
+                                      "key": "year",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:01.000Z",
+                              "updatedAt": "2026-07-28T10:57:01.000Z",
+                              "uid": "35240-b7cfc38f-92e3-44a3-ae1f-192e6b69c086"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T10:57:01.000Z",
+                          "updatedAt": "2026-07-28T10:57:01.000Z",
+                          "uid": "35240-5076a3e0-3237-4ac5-8a23-a49a87e7ce78"
+                        }
+                      ],
+                      "id": "0a09f6eb-0b9a-4857-8029-968a22c229e2",
+                      "createdAt": "2026-07-28T10:57:01.000Z",
+                      "updatedAt": "2026-07-28T10:57:01.000Z",
+                      "uid": "35240-0a09f6eb-0b9a-4857-8029-968a22c229e2"
+                    }
+                  ],
+                  "id": "8faace4b-18ec-4cd8-9a60-bb1ed431a94b",
+                  "createdAt": "2026-07-28T10:57:01.000Z",
+                  "updatedAt": "2026-07-28T10:57:01.000Z",
+                  "uid": "35240-8faace4b-18ec-4cd8-9a60-bb1ed431a94b"
+                }
+              ],
+              "id": "953d3883-0303-426e-adcb-39b3c9502884",
+              "createdAt": "2026-07-28T10:57:01.000Z",
+              "updatedAt": "2026-07-28T10:57:01.000Z",
+              "uid": "35240-953d3883-0303-426e-adcb-39b3c9502884"
+            }
+          ],
+          "id": "5dac0d1c-a424-4dc4-b1a8-a715fabed65d",
+          "createdAt": "2026-07-28T10:57:01.000Z",
+          "updatedAt": "2026-07-28T10:57:01.000Z",
+          "uid": "35240-5dac0d1c-a424-4dc4-b1a8-a715fabed65d"
+        }
+      ],
+      "id": "2a0624ee-fc80-432b-89fa-ba69d989a52c",
+      "createdAt": "2026-07-28T10:57:01.000Z",
+      "updatedAt": "2026-07-28T10:57:01.000Z",
+      "uid": "35240-2a0624ee-fc80-432b-89fa-ba69d989a52c"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

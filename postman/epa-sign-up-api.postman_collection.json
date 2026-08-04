@@ -1,0 +1,120 @@
+{
+  "info": {
+    "_postman_id": "7b7d91a0-3bc0-47e6-b1e6-fd213f911837",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Sign Up API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T11:00:38.000Z",
+    "updatedAt": "2026-07-28T11:00:39.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7b7d91a0-3bc0-47e6-b1e6-fd213f911837"
+  },
+  "item": [
+    {
+      "name": "signup",
+      "item": [
+        {
+          "name": "Register for API Key",
+          "id": "da8d045f-b314-4934-a014-8327e7303f71",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/signup?email=<email>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "signup"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Registered email address.",
+                  "key": "email",
+                  "value": "<email>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9bfff32f-e88c-4ef2-a33b-0feb75035a5b",
+              "name": "Verification email sent.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/signup?email=<email>&key=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "signup"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Registered email address.",
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T11:00:39.000Z",
+              "updatedAt": "2026-07-28T11:00:39.000Z",
+              "uid": "35240-9bfff32f-e88c-4ef2-a33b-0feb75035a5b"
+            }
+          ],
+          "createdAt": "2026-07-28T11:00:39.000Z",
+          "updatedAt": "2026-07-28T11:00:39.000Z",
+          "uid": "35240-da8d045f-b314-4934-a014-8327e7303f71"
+        }
+      ],
+      "id": "3d28176c-5e37-4fb7-b5f1-5886e5dfbc6e",
+      "createdAt": "2026-07-28T11:00:39.000Z",
+      "updatedAt": "2026-07-28T11:00:39.000Z",
+      "uid": "35240-3d28176c-5e37-4fb7-b5f1-5886e5dfbc6e"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

@@ -1,0 +1,2930 @@
+{
+  "info": {
+    "_postman_id": "141ab7f5-76c8-4497-9a76-f935bad98257",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Apportioned Daily Emissions API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:57:00.000Z",
+    "updatedAt": "2026-07-28T10:57:00.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-141ab7f5-76c8-4497-9a76-f935bad98257"
+  },
+  "item": [
+    {
+      "name": "emissions-mgmt",
+      "item": [
+        {
+          "name": "emissions",
+          "item": [
+            {
+              "name": "apportioned",
+              "item": [
+                {
+                  "name": "daily",
+                  "item": [
+                    {
+                      "name": "by-facility",
+                      "item": [
+                        {
+                          "name": "Daily Apportioned Emissions Controller get Emissions Facility Aggregation",
+                          "id": "3f65734e-c08e-473f-abc0-aa787c655851",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/daily/by-facility?stateCode=ID|SD&facilityId=<number>|<number>&unitType=Circulating fluidized bed boiler|Combustion turbine&unitFuelType=Coal|Process Gas&controlTechnologies=Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA&programCodeInfo=CAIROS|RGGI&beginDate=<dateTime>&endDate=<dateTime>&page=<number>&perPage=<number>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "emissions-mgmt",
+                                "emissions",
+                                "apportioned",
+                                "daily",
+                                "by-facility"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "ID|SD"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Circulating fluidized bed boiler|Combustion turbine"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Coal|Process Gas"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "CAIROS|RGGI"
+                                },
+                                {
+                                  "description": "(Required) Begin date for a given period of a unit's emissions.",
+                                  "key": "beginDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "(Required) End date for a given period of a unit's emissions.",
+                                  "key": "endDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "(Required) Page number of data being requested.",
+                                  "key": "page",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "(Required) Number of results per page.",
+                                  "key": "perPage",
+                                  "value": "<number>"
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "ac089cd3-5f0f-46cb-ad37-bc0c52560782",
+                              "name": "Retrieves Daily Apportioned Emissions data per filter criteria aggregated by facility",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/daily/by-facility?stateCode=ID|SD&facilityId=<number>|<number>&unitType=Circulating fluidized bed boiler|Combustion turbine&unitFuelType=Coal|Process Gas&controlTechnologies=Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA&programCodeInfo=CAIROS|RGGI&beginDate=<dateTime>&endDate=<dateTime>&page=<number>&perPage=<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "daily",
+                                    "by-facility"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "ID|SD"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Circulating fluidized bed boiler|Combustion turbine"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Coal|Process Gas"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CAIROS|RGGI"
+                                    },
+                                    {
+                                      "description": "(Required) Begin date for a given period of a unit's emissions.",
+                                      "key": "beginDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "(Required) End date for a given period of a unit's emissions.",
+                                      "key": "endDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "(Required) Page number of data being requested.",
+                                      "key": "page",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Number of results per page.",
+                                      "key": "perPage",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"items\": [\n    {\n      \"date\": \"<string>\",\n      \"stateCode\": \"<string>\",\n      \"facilityName\": \"<string>\",\n      \"grossLoad\": \"<number>\",\n      \"steamLoad\": \"<number>\",\n      \"so2Mass\": \"<number>\",\n      \"co2Mass\": \"<number>\",\n      \"noxMass\": \"<number>\",\n      \"heatInput\": \"<number>\",\n      \"facilityId\": \"<number>\"\n    },\n    {\n      \"date\": \"<string>\",\n      \"stateCode\": \"<string>\",\n      \"facilityName\": \"<string>\",\n      \"grossLoad\": \"<number>\",\n      \"steamLoad\": \"<number>\",\n      \"so2Mass\": \"<number>\",\n      \"co2Mass\": \"<number>\",\n      \"noxMass\": \"<number>\",\n      \"heatInput\": \"<number>\",\n      \"facilityId\": \"<number>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T10:57:00.000Z",
+                              "updatedAt": "2026-07-28T10:57:00.000Z",
+                              "uid": "35240-ac089cd3-5f0f-46cb-ad37-bc0c52560782"
+                            },
+                            {
+                              "id": "8f0740c4-8e70-4902-ae9a-7611a22e798e",
+                              "name": "Invalid Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/daily/by-facility?stateCode=ID|SD&facilityId=<number>|<number>&unitType=Circulating fluidized bed boiler|Combustion turbine&unitFuelType=Coal|Process Gas&controlTechnologies=Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA&programCodeInfo=CAIROS|RGGI&beginDate=<dateTime>&endDate=<dateTime>&page=<number>&perPage=<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "daily",
+                                    "by-facility"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "ID|SD"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Circulating fluidized bed boiler|Combustion turbine"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Coal|Process Gas"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CAIROS|RGGI"
+                                    },
+                                    {
+                                      "description": "(Required) Begin date for a given period of a unit's emissions.",
+                                      "key": "beginDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "(Required) End date for a given period of a unit's emissions.",
+                                      "key": "endDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "(Required) Page number of data being requested.",
+                                      "key": "page",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Number of results per page.",
+                                      "key": "perPage",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:00.000Z",
+                              "updatedAt": "2026-07-28T10:57:00.000Z",
+                              "uid": "35240-8f0740c4-8e70-4902-ae9a-7611a22e798e"
+                            },
+                            {
+                              "id": "4fa215dd-18d4-45b9-b84c-3da26ca63b5f",
+                              "name": "Resource Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/daily/by-facility?stateCode=ID|SD&facilityId=<number>|<number>&unitType=Circulating fluidized bed boiler|Combustion turbine&unitFuelType=Coal|Process Gas&controlTechnologies=Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA&programCodeInfo=CAIROS|RGGI&beginDate=<dateTime>&endDate=<dateTime>&page=<number>&perPage=<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "daily",
+                                    "by-facility"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "ID|SD"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Circulating fluidized bed boiler|Combustion turbine"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Coal|Process Gas"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CAIROS|RGGI"
+                                    },
+                                    {
+                                      "description": "(Required) Begin date for a given period of a unit's emissions.",
+                                      "key": "beginDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "(Required) End date for a given period of a unit's emissions.",
+                                      "key": "endDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "(Required) Page number of data being requested.",
+                                      "key": "page",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Number of results per page.",
+                                      "key": "perPage",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:00.000Z",
+                              "updatedAt": "2026-07-28T10:57:00.000Z",
+                              "uid": "35240-4fa215dd-18d4-45b9-b84c-3da26ca63b5f"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T10:57:00.000Z",
+                          "updatedAt": "2026-07-28T10:57:00.000Z",
+                          "uid": "35240-3f65734e-c08e-473f-abc0-aa787c655851"
+                        }
+                      ],
+                      "id": "17049eee-8003-4fcf-aff0-7c2091434798",
+                      "createdAt": "2026-07-28T10:57:00.000Z",
+                      "updatedAt": "2026-07-28T10:57:00.000Z",
+                      "uid": "35240-17049eee-8003-4fcf-aff0-7c2091434798"
+                    },
+                    {
+                      "name": "by-state",
+                      "item": [
+                        {
+                          "name": "Daily Apportioned Emissions Controller get Emissions State Aggregation",
+                          "id": "e62b0dad-7f9a-4862-8646-e7c903a4dcf0",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/daily/by-state?stateCode=ID|SD&facilityId=<number>|<number>&unitType=Circulating fluidized bed boiler|Combustion turbine&unitFuelType=Coal|Process Gas&controlTechnologies=Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA&programCodeInfo=CAIROS|RGGI&beginDate=<dateTime>&endDate=<dateTime>&page=<number>&perPage=<number>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "emissions-mgmt",
+                                "emissions",
+                                "apportioned",
+                                "daily",
+                                "by-state"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "ID|SD"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Circulating fluidized bed boiler|Combustion turbine"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Coal|Process Gas"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "CAIROS|RGGI"
+                                },
+                                {
+                                  "description": "(Required) Begin date for a given period of a unit's emissions.",
+                                  "key": "beginDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "(Required) End date for a given period of a unit's emissions.",
+                                  "key": "endDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "(Required) Page number of data being requested.",
+                                  "key": "page",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "(Required) Number of results per page.",
+                                  "key": "perPage",
+                                  "value": "<number>"
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "eb541749-a909-4062-bc70-c4f57f05cb04",
+                              "name": "Retrieves Daily Apportioned Emissions data per filter criteria aggregated by state",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/daily/by-state?stateCode=ID|SD&facilityId=<number>|<number>&unitType=Circulating fluidized bed boiler|Combustion turbine&unitFuelType=Coal|Process Gas&controlTechnologies=Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA&programCodeInfo=CAIROS|RGGI&beginDate=<dateTime>&endDate=<dateTime>&page=<number>&perPage=<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "daily",
+                                    "by-state"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "ID|SD"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Circulating fluidized bed boiler|Combustion turbine"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Coal|Process Gas"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CAIROS|RGGI"
+                                    },
+                                    {
+                                      "description": "(Required) Begin date for a given period of a unit's emissions.",
+                                      "key": "beginDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "(Required) End date for a given period of a unit's emissions.",
+                                      "key": "endDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "(Required) Page number of data being requested.",
+                                      "key": "page",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Number of results per page.",
+                                      "key": "perPage",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"items\": [\n    {\n      \"date\": \"<string>\",\n      \"stateCode\": \"<string>\",\n      \"grossLoad\": \"<number>\",\n      \"steamLoad\": \"<number>\",\n      \"so2Mass\": \"<number>\",\n      \"co2Mass\": \"<number>\",\n      \"noxMass\": \"<number>\",\n      \"heatInput\": \"<number>\"\n    },\n    {\n      \"date\": \"<string>\",\n      \"stateCode\": \"<string>\",\n      \"grossLoad\": \"<number>\",\n      \"steamLoad\": \"<number>\",\n      \"so2Mass\": \"<number>\",\n      \"co2Mass\": \"<number>\",\n      \"noxMass\": \"<number>\",\n      \"heatInput\": \"<number>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T10:57:00.000Z",
+                              "updatedAt": "2026-07-28T10:57:00.000Z",
+                              "uid": "35240-eb541749-a909-4062-bc70-c4f57f05cb04"
+                            },
+                            {
+                              "id": "e89a98a1-bd35-4866-b16a-acd72010117e",
+                              "name": "Invalid Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/daily/by-state?stateCode=ID|SD&facilityId=<number>|<number>&unitType=Circulating fluidized bed boiler|Combustion turbine&unitFuelType=Coal|Process Gas&controlTechnologies=Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA&programCodeInfo=CAIROS|RGGI&beginDate=<dateTime>&endDate=<dateTime>&page=<number>&perPage=<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "daily",
+                                    "by-state"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "ID|SD"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Circulating fluidized bed boiler|Combustion turbine"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Coal|Process Gas"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CAIROS|RGGI"
+                                    },
+                                    {
+                                      "description": "(Required) Begin date for a given period of a unit's emissions.",
+                                      "key": "beginDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "(Required) End date for a given period of a unit's emissions.",
+                                      "key": "endDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "(Required) Page number of data being requested.",
+                                      "key": "page",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Number of results per page.",
+                                      "key": "perPage",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:00.000Z",
+                              "updatedAt": "2026-07-28T10:57:00.000Z",
+                              "uid": "35240-e89a98a1-bd35-4866-b16a-acd72010117e"
+                            },
+                            {
+                              "id": "aeeb691f-2387-4d81-a16a-395fe7235ac9",
+                              "name": "Resource Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/daily/by-state?stateCode=ID|SD&facilityId=<number>|<number>&unitType=Circulating fluidized bed boiler|Combustion turbine&unitFuelType=Coal|Process Gas&controlTechnologies=Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA&programCodeInfo=CAIROS|RGGI&beginDate=<dateTime>&endDate=<dateTime>&page=<number>&perPage=<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "daily",
+                                    "by-state"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "ID|SD"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Circulating fluidized bed boiler|Combustion turbine"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Coal|Process Gas"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CAIROS|RGGI"
+                                    },
+                                    {
+                                      "description": "(Required) Begin date for a given period of a unit's emissions.",
+                                      "key": "beginDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "(Required) End date for a given period of a unit's emissions.",
+                                      "key": "endDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "(Required) Page number of data being requested.",
+                                      "key": "page",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Number of results per page.",
+                                      "key": "perPage",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:00.000Z",
+                              "updatedAt": "2026-07-28T10:57:00.000Z",
+                              "uid": "35240-aeeb691f-2387-4d81-a16a-395fe7235ac9"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T10:57:00.000Z",
+                          "updatedAt": "2026-07-28T10:57:00.000Z",
+                          "uid": "35240-e62b0dad-7f9a-4862-8646-e7c903a4dcf0"
+                        }
+                      ],
+                      "id": "fb7f9e0a-ce91-438b-ba9f-6dba80f5ed07",
+                      "createdAt": "2026-07-28T10:57:00.000Z",
+                      "updatedAt": "2026-07-28T10:57:00.000Z",
+                      "uid": "35240-fb7f9e0a-ce91-438b-ba9f-6dba80f5ed07"
+                    },
+                    {
+                      "name": "nationally",
+                      "item": [
+                        {
+                          "name": "Daily Apportioned Emissions Controller get Emissions National Aggregation",
+                          "id": "210a17f4-c68c-4e3e-a4f4-aaa14576e906",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/daily/nationally?stateCode=ID|SD&facilityId=<number>|<number>&unitType=Circulating fluidized bed boiler|Combustion turbine&unitFuelType=Coal|Process Gas&controlTechnologies=Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA&programCodeInfo=CAIROS|RGGI&beginDate=<dateTime>&endDate=<dateTime>&page=<number>&perPage=<number>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "emissions-mgmt",
+                                "emissions",
+                                "apportioned",
+                                "daily",
+                                "nationally"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "ID|SD"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Circulating fluidized bed boiler|Combustion turbine"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Coal|Process Gas"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "CAIROS|RGGI"
+                                },
+                                {
+                                  "description": "(Required) Begin date for a given period of a unit's emissions.",
+                                  "key": "beginDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "(Required) End date for a given period of a unit's emissions.",
+                                  "key": "endDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "(Required) Page number of data being requested.",
+                                  "key": "page",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "(Required) Number of results per page.",
+                                  "key": "perPage",
+                                  "value": "<number>"
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "10e8fcda-f4ef-47a4-a444-f1dc9317df9c",
+                              "name": "Retrieves Daily Apportioned Emissions data per filter criteria aggregated nationally",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/daily/nationally?stateCode=ID|SD&facilityId=<number>|<number>&unitType=Circulating fluidized bed boiler|Combustion turbine&unitFuelType=Coal|Process Gas&controlTechnologies=Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA&programCodeInfo=CAIROS|RGGI&beginDate=<dateTime>&endDate=<dateTime>&page=<number>&perPage=<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "daily",
+                                    "nationally"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "ID|SD"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Circulating fluidized bed boiler|Combustion turbine"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Coal|Process Gas"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CAIROS|RGGI"
+                                    },
+                                    {
+                                      "description": "(Required) Begin date for a given period of a unit's emissions.",
+                                      "key": "beginDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "(Required) End date for a given period of a unit's emissions.",
+                                      "key": "endDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "(Required) Page number of data being requested.",
+                                      "key": "page",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Number of results per page.",
+                                      "key": "perPage",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"items\": [\n    {\n      \"date\": \"<string>\",\n      \"grossLoad\": \"<number>\",\n      \"steamLoad\": \"<number>\",\n      \"so2Mass\": \"<number>\",\n      \"co2Mass\": \"<number>\",\n      \"noxMass\": \"<number>\",\n      \"heatInput\": \"<number>\"\n    },\n    {\n      \"date\": \"<string>\",\n      \"grossLoad\": \"<number>\",\n      \"steamLoad\": \"<number>\",\n      \"so2Mass\": \"<number>\",\n      \"co2Mass\": \"<number>\",\n      \"noxMass\": \"<number>\",\n      \"heatInput\": \"<number>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T10:57:00.000Z",
+                              "updatedAt": "2026-07-28T10:57:00.000Z",
+                              "uid": "35240-10e8fcda-f4ef-47a4-a444-f1dc9317df9c"
+                            },
+                            {
+                              "id": "149ab548-3f14-4b64-bcc0-7897b7fc9208",
+                              "name": "Invalid Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/daily/nationally?stateCode=ID|SD&facilityId=<number>|<number>&unitType=Circulating fluidized bed boiler|Combustion turbine&unitFuelType=Coal|Process Gas&controlTechnologies=Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA&programCodeInfo=CAIROS|RGGI&beginDate=<dateTime>&endDate=<dateTime>&page=<number>&perPage=<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "daily",
+                                    "nationally"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "ID|SD"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Circulating fluidized bed boiler|Combustion turbine"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Coal|Process Gas"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CAIROS|RGGI"
+                                    },
+                                    {
+                                      "description": "(Required) Begin date for a given period of a unit's emissions.",
+                                      "key": "beginDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "(Required) End date for a given period of a unit's emissions.",
+                                      "key": "endDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "(Required) Page number of data being requested.",
+                                      "key": "page",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Number of results per page.",
+                                      "key": "perPage",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:00.000Z",
+                              "updatedAt": "2026-07-28T10:57:00.000Z",
+                              "uid": "35240-149ab548-3f14-4b64-bcc0-7897b7fc9208"
+                            },
+                            {
+                              "id": "6dd8cd02-b979-405f-9d03-f254f03c6107",
+                              "name": "Resource Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/daily/nationally?stateCode=ID|SD&facilityId=<number>|<number>&unitType=Circulating fluidized bed boiler|Combustion turbine&unitFuelType=Coal|Process Gas&controlTechnologies=Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA&programCodeInfo=CAIROS|RGGI&beginDate=<dateTime>&endDate=<dateTime>&page=<number>&perPage=<number>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "emissions-mgmt",
+                                    "emissions",
+                                    "apportioned",
+                                    "daily",
+                                    "nationally"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "ID|SD"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Circulating fluidized bed boiler|Combustion turbine"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Coal|Process Gas"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CAIROS|RGGI"
+                                    },
+                                    {
+                                      "description": "(Required) Begin date for a given period of a unit's emissions.",
+                                      "key": "beginDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "(Required) End date for a given period of a unit's emissions.",
+                                      "key": "endDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "(Required) Page number of data being requested.",
+                                      "key": "page",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "(Required) Number of results per page.",
+                                      "key": "perPage",
+                                      "value": "<number>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:00.000Z",
+                              "updatedAt": "2026-07-28T10:57:00.000Z",
+                              "uid": "35240-6dd8cd02-b979-405f-9d03-f254f03c6107"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T10:57:00.000Z",
+                          "updatedAt": "2026-07-28T10:57:00.000Z",
+                          "uid": "35240-210a17f4-c68c-4e3e-a4f4-aaa14576e906"
+                        }
+                      ],
+                      "id": "0c97b79f-114f-46fc-96fd-a404791d5191",
+                      "createdAt": "2026-07-28T10:57:00.000Z",
+                      "updatedAt": "2026-07-28T10:57:00.000Z",
+                      "uid": "35240-0c97b79f-114f-46fc-96fd-a404791d5191"
+                    },
+                    {
+                      "name": "Daily Apportioned Emissions Controller get Emissions",
+                      "id": "acd07a7b-486f-4b97-bb78-fc359938d47d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/daily?stateCode=ID|SD&facilityId=<number>|<number>&unitType=Circulating fluidized bed boiler|Combustion turbine&unitFuelType=Coal|Process Gas&controlTechnologies=Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA&programCodeInfo=CAIROS|RGGI&beginDate=<dateTime>&endDate=<dateTime>&page=<number>&perPage=<number>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "emissions-mgmt",
+                            "emissions",
+                            "apportioned",
+                            "daily"
+                          ],
+                          "query": [
+                            {
+                              "description": "Two letter abbreviation for the State.",
+                              "key": "stateCode",
+                              "value": "ID|SD"
+                            },
+                            {
+                              "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                              "key": "facilityId",
+                              "value": "<number>|<number>"
+                            },
+                            {
+                              "description": "Type of unit or boiler.",
+                              "key": "unitType",
+                              "value": "Circulating fluidized bed boiler|Combustion turbine"
+                            },
+                            {
+                              "description": "Primary or Secondary fuel types combusted by the unit.",
+                              "key": "unitFuelType",
+                              "value": "Coal|Process Gas"
+                            },
+                            {
+                              "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                              "key": "controlTechnologies",
+                              "value": "Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA"
+                            },
+                            {
+                              "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                              "key": "programCodeInfo",
+                              "value": "CAIROS|RGGI"
+                            },
+                            {
+                              "description": "(Required) Begin date for a given period of a unit's emissions.",
+                              "key": "beginDate",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "(Required) End date for a given period of a unit's emissions.",
+                              "key": "endDate",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "(Required) Page number of data being requested.",
+                              "key": "page",
+                              "value": "<number>"
+                            },
+                            {
+                              "description": "(Required) Number of results per page.",
+                              "key": "perPage",
+                              "value": "<number>"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "65f7d087-8781-4774-af4c-993968c1b383",
+                          "name": "Retrieves Daily Apportioned Emissions per filter criteria",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/daily?stateCode=ID|SD&facilityId=<number>|<number>&unitType=Circulating fluidized bed boiler|Combustion turbine&unitFuelType=Coal|Process Gas&controlTechnologies=Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA&programCodeInfo=CAIROS|RGGI&beginDate=<dateTime>&endDate=<dateTime>&page=<number>&perPage=<number>&key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "emissions-mgmt",
+                                "emissions",
+                                "apportioned",
+                                "daily"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "ID|SD"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Circulating fluidized bed boiler|Combustion turbine"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Coal|Process Gas"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "CAIROS|RGGI"
+                                },
+                                {
+                                  "description": "(Required) Begin date for a given period of a unit's emissions.",
+                                  "key": "beginDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "(Required) End date for a given period of a unit's emissions.",
+                                  "key": "endDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "(Required) Page number of data being requested.",
+                                  "key": "page",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "(Required) Number of results per page.",
+                                  "key": "perPage",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"items\": [\n    {\n      \"stateCode\": \"<string>\",\n      \"facilityName\": \"<string>\",\n      \"facilityId\": \"<number>\",\n      \"unitId\": \"<string>\",\n      \"associatedStacks\": \"<string>\",\n      \"date\": \"<dateTime>\",\n      \"sumOpTime\": \"<number>\",\n      \"countOpTime\": \"<number>\",\n      \"grossLoad\": \"<number>\",\n      \"steamLoad\": \"<number>\",\n      \"so2Mass\": \"<number>\",\n      \"so2Rate\": \"<number>\",\n      \"co2Mass\": \"<number>\",\n      \"co2Rate\": \"<number>\",\n      \"noxMass\": \"<number>\",\n      \"noxRate\": \"<number>\",\n      \"heatInput\": \"<number>\",\n      \"primaryFuelInfo\": \"<string>\",\n      \"secondaryFuelInfo\": \"<string>\",\n      \"unitType\": \"<string>\",\n      \"so2ControlInfo\": \"<string>\",\n      \"noxControlInfo\": \"<string>\",\n      \"pmControlInfo\": \"<string>\",\n      \"hgControlInfo\": \"<string>\",\n      \"programCodeInfo\": \"<string>\"\n    },\n    {\n      \"stateCode\": \"<string>\",\n      \"facilityName\": \"<string>\",\n      \"facilityId\": \"<number>\",\n      \"unitId\": \"<string>\",\n      \"associatedStacks\": \"<string>\",\n      \"date\": \"<dateTime>\",\n      \"sumOpTime\": \"<number>\",\n      \"countOpTime\": \"<number>\",\n      \"grossLoad\": \"<number>\",\n      \"steamLoad\": \"<number>\",\n      \"so2Mass\": \"<number>\",\n      \"so2Rate\": \"<number>\",\n      \"co2Mass\": \"<number>\",\n      \"co2Rate\": \"<number>\",\n      \"noxMass\": \"<number>\",\n      \"noxRate\": \"<number>\",\n      \"heatInput\": \"<number>\",\n      \"primaryFuelInfo\": \"<string>\",\n      \"secondaryFuelInfo\": \"<string>\",\n      \"unitType\": \"<string>\",\n      \"so2ControlInfo\": \"<string>\",\n      \"noxControlInfo\": \"<string>\",\n      \"pmControlInfo\": \"<string>\",\n      \"hgControlInfo\": \"<string>\",\n      \"programCodeInfo\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T10:57:00.000Z",
+                          "updatedAt": "2026-07-28T10:57:00.000Z",
+                          "uid": "35240-65f7d087-8781-4774-af4c-993968c1b383"
+                        },
+                        {
+                          "id": "6df71799-264f-4163-afa0-f2855ca60464",
+                          "name": "Invalid Request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/daily?stateCode=ID|SD&facilityId=<number>|<number>&unitType=Circulating fluidized bed boiler|Combustion turbine&unitFuelType=Coal|Process Gas&controlTechnologies=Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA&programCodeInfo=CAIROS|RGGI&beginDate=<dateTime>&endDate=<dateTime>&page=<number>&perPage=<number>&key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "emissions-mgmt",
+                                "emissions",
+                                "apportioned",
+                                "daily"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "ID|SD"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Circulating fluidized bed boiler|Combustion turbine"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Coal|Process Gas"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "CAIROS|RGGI"
+                                },
+                                {
+                                  "description": "(Required) Begin date for a given period of a unit's emissions.",
+                                  "key": "beginDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "(Required) End date for a given period of a unit's emissions.",
+                                  "key": "endDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "(Required) Page number of data being requested.",
+                                  "key": "page",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "(Required) Number of results per page.",
+                                  "key": "perPage",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T10:57:00.000Z",
+                          "updatedAt": "2026-07-28T10:57:00.000Z",
+                          "uid": "35240-6df71799-264f-4163-afa0-f2855ca60464"
+                        },
+                        {
+                          "id": "809e294f-68b6-4c9c-8b39-6d36c59fb140",
+                          "name": "Resource Not Found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/emissions-mgmt/emissions/apportioned/daily?stateCode=ID|SD&facilityId=<number>|<number>&unitType=Circulating fluidized bed boiler|Combustion turbine&unitFuelType=Coal|Process Gas&controlTechnologies=Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA&programCodeInfo=CAIROS|RGGI&beginDate=<dateTime>&endDate=<dateTime>&page=<number>&perPage=<number>&key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "emissions-mgmt",
+                                "emissions",
+                                "apportioned",
+                                "daily"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "ID|SD"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Circulating fluidized bed boiler|Combustion turbine"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Coal|Process Gas"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "CAIROS|RGGI"
+                                },
+                                {
+                                  "description": "(Required) Begin date for a given period of a unit's emissions.",
+                                  "key": "beginDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "(Required) End date for a given period of a unit's emissions.",
+                                  "key": "endDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "(Required) Page number of data being requested.",
+                                  "key": "page",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "(Required) Number of results per page.",
+                                  "key": "perPage",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T10:57:00.000Z",
+                          "updatedAt": "2026-07-28T10:57:00.000Z",
+                          "uid": "35240-809e294f-68b6-4c9c-8b39-6d36c59fb140"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T10:57:00.000Z",
+                      "updatedAt": "2026-07-28T10:57:00.000Z",
+                      "uid": "35240-acd07a7b-486f-4b97-bb78-fc359938d47d"
+                    }
+                  ],
+                  "id": "e8399cdb-c44f-4425-959f-7a1a908cdfa2",
+                  "createdAt": "2026-07-28T10:57:00.000Z",
+                  "updatedAt": "2026-07-28T10:57:00.000Z",
+                  "uid": "35240-e8399cdb-c44f-4425-959f-7a1a908cdfa2"
+                }
+              ],
+              "id": "9ec9c88e-6f13-43c5-8d7c-036ab870786a",
+              "createdAt": "2026-07-28T10:57:00.000Z",
+              "updatedAt": "2026-07-28T10:57:00.000Z",
+              "uid": "35240-9ec9c88e-6f13-43c5-8d7c-036ab870786a"
+            }
+          ],
+          "id": "3c7a6f52-ebfa-4805-bf48-a963eef30df6",
+          "createdAt": "2026-07-28T10:57:00.000Z",
+          "updatedAt": "2026-07-28T10:57:00.000Z",
+          "uid": "35240-3c7a6f52-ebfa-4805-bf48-a963eef30df6"
+        }
+      ],
+      "id": "56825a18-bfd6-482d-8d8a-818ad72723ab",
+      "createdAt": "2026-07-28T10:57:00.000Z",
+      "updatedAt": "2026-07-28T10:57:00.000Z",
+      "uid": "35240-56825a18-bfd6-482d-8d8a-818ad72723ab"
+    },
+    {
+      "name": "streaming-services",
+      "item": [
+        {
+          "name": "emissions",
+          "item": [
+            {
+              "name": "apportioned",
+              "item": [
+                {
+                  "name": "daily",
+                  "item": [
+                    {
+                      "name": "by-facility",
+                      "item": [
+                        {
+                          "name": "Daily Apportioned Emissions Controller stream Emissions Facility Aggregation",
+                          "id": "9de04f44-3a37-445c-8a7c-e4e8c326e4f4",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/daily/by-facility?stateCode=ID|SD&facilityId=<number>|<number>&unitType=Circulating fluidized bed boiler|Combustion turbine&unitFuelType=Coal|Process Gas&controlTechnologies=Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA&programCodeInfo=CAIROS|RGGI&beginDate=<dateTime>&endDate=<dateTime>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "streaming-services",
+                                "emissions",
+                                "apportioned",
+                                "daily",
+                                "by-facility"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "ID|SD"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Circulating fluidized bed boiler|Combustion turbine"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Coal|Process Gas"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "CAIROS|RGGI"
+                                },
+                                {
+                                  "description": "(Required) Begin date for a given period of a unit's emissions.",
+                                  "key": "beginDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "(Required) End date for a given period of a unit's emissions.",
+                                  "key": "endDate",
+                                  "value": "<dateTime>"
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "54d1e6c0-b3fa-4c14-b4d3-d1e115d4d7bd",
+                              "name": "Streams Daily Apportioned Emissions data per filter criteria aggregated by facility",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/daily/by-facility?stateCode=ID|SD&facilityId=<number>|<number>&unitType=Circulating fluidized bed boiler|Combustion turbine&unitFuelType=Coal|Process Gas&controlTechnologies=Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA&programCodeInfo=CAIROS|RGGI&beginDate=<dateTime>&endDate=<dateTime>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "streaming-services",
+                                    "emissions",
+                                    "apportioned",
+                                    "daily",
+                                    "by-facility"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "ID|SD"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Circulating fluidized bed boiler|Combustion turbine"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Coal|Process Gas"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CAIROS|RGGI"
+                                    },
+                                    {
+                                      "description": "(Required) Begin date for a given period of a unit's emissions.",
+                                      "key": "beginDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "(Required) End date for a given period of a unit's emissions.",
+                                      "key": "endDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"date\": \"<string>\",\n  \"stateCode\": \"<string>\",\n  \"facilityName\": \"<string>\",\n  \"grossLoad\": \"<number>\",\n  \"steamLoad\": \"<number>\",\n  \"so2Mass\": \"<number>\",\n  \"co2Mass\": \"<number>\",\n  \"noxMass\": \"<number>\",\n  \"heatInput\": \"<number>\",\n  \"facilityId\": \"<number>\"\n}",
+                              "createdAt": "2026-07-28T10:57:00.000Z",
+                              "updatedAt": "2026-07-28T10:57:00.000Z",
+                              "uid": "35240-54d1e6c0-b3fa-4c14-b4d3-d1e115d4d7bd"
+                            },
+                            {
+                              "id": "8a1698a0-b614-438c-8f6e-b04ec5edc734",
+                              "name": "Invalid Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/daily/by-facility?stateCode=ID|SD&facilityId=<number>|<number>&unitType=Circulating fluidized bed boiler|Combustion turbine&unitFuelType=Coal|Process Gas&controlTechnologies=Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA&programCodeInfo=CAIROS|RGGI&beginDate=<dateTime>&endDate=<dateTime>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "streaming-services",
+                                    "emissions",
+                                    "apportioned",
+                                    "daily",
+                                    "by-facility"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "ID|SD"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Circulating fluidized bed boiler|Combustion turbine"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Coal|Process Gas"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CAIROS|RGGI"
+                                    },
+                                    {
+                                      "description": "(Required) Begin date for a given period of a unit's emissions.",
+                                      "key": "beginDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "(Required) End date for a given period of a unit's emissions.",
+                                      "key": "endDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:00.000Z",
+                              "updatedAt": "2026-07-28T10:57:00.000Z",
+                              "uid": "35240-8a1698a0-b614-438c-8f6e-b04ec5edc734"
+                            },
+                            {
+                              "id": "6412e515-4be6-4b06-98f0-e7aa9162817c",
+                              "name": "Resource Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/daily/by-facility?stateCode=ID|SD&facilityId=<number>|<number>&unitType=Circulating fluidized bed boiler|Combustion turbine&unitFuelType=Coal|Process Gas&controlTechnologies=Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA&programCodeInfo=CAIROS|RGGI&beginDate=<dateTime>&endDate=<dateTime>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "streaming-services",
+                                    "emissions",
+                                    "apportioned",
+                                    "daily",
+                                    "by-facility"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "ID|SD"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Circulating fluidized bed boiler|Combustion turbine"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Coal|Process Gas"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CAIROS|RGGI"
+                                    },
+                                    {
+                                      "description": "(Required) Begin date for a given period of a unit's emissions.",
+                                      "key": "beginDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "(Required) End date for a given period of a unit's emissions.",
+                                      "key": "endDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:00.000Z",
+                              "updatedAt": "2026-07-28T10:57:00.000Z",
+                              "uid": "35240-6412e515-4be6-4b06-98f0-e7aa9162817c"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T10:57:00.000Z",
+                          "updatedAt": "2026-07-28T10:57:00.000Z",
+                          "uid": "35240-9de04f44-3a37-445c-8a7c-e4e8c326e4f4"
+                        }
+                      ],
+                      "id": "976d17a1-ef37-4466-aea9-a2188aa7f274",
+                      "createdAt": "2026-07-28T10:57:00.000Z",
+                      "updatedAt": "2026-07-28T10:57:00.000Z",
+                      "uid": "35240-976d17a1-ef37-4466-aea9-a2188aa7f274"
+                    },
+                    {
+                      "name": "by-state",
+                      "item": [
+                        {
+                          "name": "Daily Apportioned Emissions Controller stream Emissions State Aggregation",
+                          "id": "62dc13e4-937e-4809-a429-f6660270256d",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/daily/by-state?stateCode=ID|SD&facilityId=<number>|<number>&unitType=Circulating fluidized bed boiler|Combustion turbine&unitFuelType=Coal|Process Gas&controlTechnologies=Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA&programCodeInfo=CAIROS|RGGI&beginDate=<dateTime>&endDate=<dateTime>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "streaming-services",
+                                "emissions",
+                                "apportioned",
+                                "daily",
+                                "by-state"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "ID|SD"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Circulating fluidized bed boiler|Combustion turbine"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Coal|Process Gas"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "CAIROS|RGGI"
+                                },
+                                {
+                                  "description": "(Required) Begin date for a given period of a unit's emissions.",
+                                  "key": "beginDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "(Required) End date for a given period of a unit's emissions.",
+                                  "key": "endDate",
+                                  "value": "<dateTime>"
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "f333e3da-f6bc-4f9d-b482-03e6034d5a21",
+                              "name": "Streams Daily Apportioned Emissions data per filter criteria aggregated by state",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/daily/by-state?stateCode=ID|SD&facilityId=<number>|<number>&unitType=Circulating fluidized bed boiler|Combustion turbine&unitFuelType=Coal|Process Gas&controlTechnologies=Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA&programCodeInfo=CAIROS|RGGI&beginDate=<dateTime>&endDate=<dateTime>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "streaming-services",
+                                    "emissions",
+                                    "apportioned",
+                                    "daily",
+                                    "by-state"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "ID|SD"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Circulating fluidized bed boiler|Combustion turbine"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Coal|Process Gas"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CAIROS|RGGI"
+                                    },
+                                    {
+                                      "description": "(Required) Begin date for a given period of a unit's emissions.",
+                                      "key": "beginDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "(Required) End date for a given period of a unit's emissions.",
+                                      "key": "endDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"date\": \"<string>\",\n  \"stateCode\": \"<string>\",\n  \"grossLoad\": \"<number>\",\n  \"steamLoad\": \"<number>\",\n  \"so2Mass\": \"<number>\",\n  \"co2Mass\": \"<number>\",\n  \"noxMass\": \"<number>\",\n  \"heatInput\": \"<number>\"\n}",
+                              "createdAt": "2026-07-28T10:57:00.000Z",
+                              "updatedAt": "2026-07-28T10:57:00.000Z",
+                              "uid": "35240-f333e3da-f6bc-4f9d-b482-03e6034d5a21"
+                            },
+                            {
+                              "id": "e95c8cf2-8185-49ec-851e-863232bb1a47",
+                              "name": "Invalid Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/daily/by-state?stateCode=ID|SD&facilityId=<number>|<number>&unitType=Circulating fluidized bed boiler|Combustion turbine&unitFuelType=Coal|Process Gas&controlTechnologies=Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA&programCodeInfo=CAIROS|RGGI&beginDate=<dateTime>&endDate=<dateTime>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "streaming-services",
+                                    "emissions",
+                                    "apportioned",
+                                    "daily",
+                                    "by-state"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "ID|SD"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Circulating fluidized bed boiler|Combustion turbine"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Coal|Process Gas"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CAIROS|RGGI"
+                                    },
+                                    {
+                                      "description": "(Required) Begin date for a given period of a unit's emissions.",
+                                      "key": "beginDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "(Required) End date for a given period of a unit's emissions.",
+                                      "key": "endDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:00.000Z",
+                              "updatedAt": "2026-07-28T10:57:00.000Z",
+                              "uid": "35240-e95c8cf2-8185-49ec-851e-863232bb1a47"
+                            },
+                            {
+                              "id": "a5f48092-0b58-4957-95ca-2a899ccc9e07",
+                              "name": "Resource Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/daily/by-state?stateCode=ID|SD&facilityId=<number>|<number>&unitType=Circulating fluidized bed boiler|Combustion turbine&unitFuelType=Coal|Process Gas&controlTechnologies=Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA&programCodeInfo=CAIROS|RGGI&beginDate=<dateTime>&endDate=<dateTime>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "streaming-services",
+                                    "emissions",
+                                    "apportioned",
+                                    "daily",
+                                    "by-state"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "ID|SD"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Circulating fluidized bed boiler|Combustion turbine"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Coal|Process Gas"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CAIROS|RGGI"
+                                    },
+                                    {
+                                      "description": "(Required) Begin date for a given period of a unit's emissions.",
+                                      "key": "beginDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "(Required) End date for a given period of a unit's emissions.",
+                                      "key": "endDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:00.000Z",
+                              "updatedAt": "2026-07-28T10:57:00.000Z",
+                              "uid": "35240-a5f48092-0b58-4957-95ca-2a899ccc9e07"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T10:57:00.000Z",
+                          "updatedAt": "2026-07-28T10:57:00.000Z",
+                          "uid": "35240-62dc13e4-937e-4809-a429-f6660270256d"
+                        }
+                      ],
+                      "id": "3e39e88c-e055-4d63-8209-3947e83e0073",
+                      "createdAt": "2026-07-28T10:57:00.000Z",
+                      "updatedAt": "2026-07-28T10:57:00.000Z",
+                      "uid": "35240-3e39e88c-e055-4d63-8209-3947e83e0073"
+                    },
+                    {
+                      "name": "nationally",
+                      "item": [
+                        {
+                          "name": "Daily Apportioned Emissions Controller stream Emissions National Aggregation",
+                          "id": "e4b8cc94-8486-4c1e-9468-507257262a76",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/daily/nationally?stateCode=ID|SD&facilityId=<number>|<number>&unitType=Circulating fluidized bed boiler|Combustion turbine&unitFuelType=Coal|Process Gas&controlTechnologies=Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA&programCodeInfo=CAIROS|RGGI&beginDate=<dateTime>&endDate=<dateTime>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "streaming-services",
+                                "emissions",
+                                "apportioned",
+                                "daily",
+                                "nationally"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "ID|SD"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Circulating fluidized bed boiler|Combustion turbine"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Coal|Process Gas"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "CAIROS|RGGI"
+                                },
+                                {
+                                  "description": "(Required) Begin date for a given period of a unit's emissions.",
+                                  "key": "beginDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "(Required) End date for a given period of a unit's emissions.",
+                                  "key": "endDate",
+                                  "value": "<dateTime>"
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "663c7c95-ad12-4761-bf6c-d165d987ab90",
+                              "name": "Streams Daily Apportioned Emissions data per filter criteria aggregated nationally",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/daily/nationally?stateCode=ID|SD&facilityId=<number>|<number>&unitType=Circulating fluidized bed boiler|Combustion turbine&unitFuelType=Coal|Process Gas&controlTechnologies=Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA&programCodeInfo=CAIROS|RGGI&beginDate=<dateTime>&endDate=<dateTime>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "streaming-services",
+                                    "emissions",
+                                    "apportioned",
+                                    "daily",
+                                    "nationally"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "ID|SD"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Circulating fluidized bed boiler|Combustion turbine"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Coal|Process Gas"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CAIROS|RGGI"
+                                    },
+                                    {
+                                      "description": "(Required) Begin date for a given period of a unit's emissions.",
+                                      "key": "beginDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "(Required) End date for a given period of a unit's emissions.",
+                                      "key": "endDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"date\": \"<string>\",\n  \"grossLoad\": \"<number>\",\n  \"steamLoad\": \"<number>\",\n  \"so2Mass\": \"<number>\",\n  \"co2Mass\": \"<number>\",\n  \"noxMass\": \"<number>\",\n  \"heatInput\": \"<number>\"\n}",
+                              "createdAt": "2026-07-28T10:57:00.000Z",
+                              "updatedAt": "2026-07-28T10:57:00.000Z",
+                              "uid": "35240-663c7c95-ad12-4761-bf6c-d165d987ab90"
+                            },
+                            {
+                              "id": "20b064c7-979d-4bf7-8a40-4e25acd2eec3",
+                              "name": "Invalid Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/daily/nationally?stateCode=ID|SD&facilityId=<number>|<number>&unitType=Circulating fluidized bed boiler|Combustion turbine&unitFuelType=Coal|Process Gas&controlTechnologies=Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA&programCodeInfo=CAIROS|RGGI&beginDate=<dateTime>&endDate=<dateTime>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "streaming-services",
+                                    "emissions",
+                                    "apportioned",
+                                    "daily",
+                                    "nationally"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "ID|SD"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Circulating fluidized bed boiler|Combustion turbine"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Coal|Process Gas"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CAIROS|RGGI"
+                                    },
+                                    {
+                                      "description": "(Required) Begin date for a given period of a unit's emissions.",
+                                      "key": "beginDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "(Required) End date for a given period of a unit's emissions.",
+                                      "key": "endDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:00.000Z",
+                              "updatedAt": "2026-07-28T10:57:00.000Z",
+                              "uid": "35240-20b064c7-979d-4bf7-8a40-4e25acd2eec3"
+                            },
+                            {
+                              "id": "03079b89-0601-4201-85fc-3289271ea904",
+                              "name": "Resource Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/daily/nationally?stateCode=ID|SD&facilityId=<number>|<number>&unitType=Circulating fluidized bed boiler|Combustion turbine&unitFuelType=Coal|Process Gas&controlTechnologies=Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA&programCodeInfo=CAIROS|RGGI&beginDate=<dateTime>&endDate=<dateTime>&key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "streaming-services",
+                                    "emissions",
+                                    "apportioned",
+                                    "daily",
+                                    "nationally"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Two letter abbreviation for the State.",
+                                      "key": "stateCode",
+                                      "value": "ID|SD"
+                                    },
+                                    {
+                                      "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                      "key": "facilityId",
+                                      "value": "<number>|<number>"
+                                    },
+                                    {
+                                      "description": "Type of unit or boiler.",
+                                      "key": "unitType",
+                                      "value": "Circulating fluidized bed boiler|Combustion turbine"
+                                    },
+                                    {
+                                      "description": "Primary or Secondary fuel types combusted by the unit.",
+                                      "key": "unitFuelType",
+                                      "value": "Coal|Process Gas"
+                                    },
+                                    {
+                                      "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                      "key": "controlTechnologies",
+                                      "value": "Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA"
+                                    },
+                                    {
+                                      "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                      "key": "programCodeInfo",
+                                      "value": "CAIROS|RGGI"
+                                    },
+                                    {
+                                      "description": "(Required) Begin date for a given period of a unit's emissions.",
+                                      "key": "beginDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "(Required) End date for a given period of a unit's emissions.",
+                                      "key": "endDate",
+                                      "value": "<dateTime>"
+                                    },
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T10:57:00.000Z",
+                              "updatedAt": "2026-07-28T10:57:00.000Z",
+                              "uid": "35240-03079b89-0601-4201-85fc-3289271ea904"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T10:57:00.000Z",
+                          "updatedAt": "2026-07-28T10:57:00.000Z",
+                          "uid": "35240-e4b8cc94-8486-4c1e-9468-507257262a76"
+                        }
+                      ],
+                      "id": "eea876b0-5680-429d-8bc3-a5dc3da14a46",
+                      "createdAt": "2026-07-28T10:57:00.000Z",
+                      "updatedAt": "2026-07-28T10:57:00.000Z",
+                      "uid": "35240-eea876b0-5680-429d-8bc3-a5dc3da14a46"
+                    },
+                    {
+                      "name": "Daily Apportioned Emissions Controller stream Emissions",
+                      "id": "0eaf43ef-160b-4903-8c60-1cbf991c4f1b",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/daily?stateCode=ID|SD&facilityId=<number>|<number>&unitType=Circulating fluidized bed boiler|Combustion turbine&unitFuelType=Coal|Process Gas&controlTechnologies=Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA&programCodeInfo=CAIROS|RGGI&beginDate=<dateTime>&endDate=<dateTime>&exclude=steamLoad|sumOpTime&unitId=<string>&unit_id=<number>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "streaming-services",
+                            "emissions",
+                            "apportioned",
+                            "daily"
+                          ],
+                          "query": [
+                            {
+                              "description": "Two letter abbreviation for the State.",
+                              "key": "stateCode",
+                              "value": "ID|SD"
+                            },
+                            {
+                              "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                              "key": "facilityId",
+                              "value": "<number>|<number>"
+                            },
+                            {
+                              "description": "Type of unit or boiler.",
+                              "key": "unitType",
+                              "value": "Circulating fluidized bed boiler|Combustion turbine"
+                            },
+                            {
+                              "description": "Primary or Secondary fuel types combusted by the unit.",
+                              "key": "unitFuelType",
+                              "value": "Coal|Process Gas"
+                            },
+                            {
+                              "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                              "key": "controlTechnologies",
+                              "value": "Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA"
+                            },
+                            {
+                              "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                              "key": "programCodeInfo",
+                              "value": "CAIROS|RGGI"
+                            },
+                            {
+                              "description": "(Required) Begin date for a given period of a unit's emissions.",
+                              "key": "beginDate",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "(Required) End date for a given period of a unit's emissions.",
+                              "key": "endDate",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Selected items will be excluded from the response",
+                              "key": "exclude",
+                              "value": "steamLoad|sumOpTime"
+                            },
+                            {
+                              "key": "unitId",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "unit_id",
+                              "value": "<number>"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "79b481e9-e62e-44e8-a34e-2feff48a621c",
+                          "name": "Streams Daily Apportioned Emissions per filter criteria",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/daily?stateCode=ID|SD&facilityId=<number>|<number>&unitType=Circulating fluidized bed boiler|Combustion turbine&unitFuelType=Coal|Process Gas&controlTechnologies=Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA&programCodeInfo=CAIROS|RGGI&beginDate=<dateTime>&endDate=<dateTime>&exclude=steamLoad|sumOpTime&unitId=<string>&unit_id=<number>&key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "streaming-services",
+                                "emissions",
+                                "apportioned",
+                                "daily"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "ID|SD"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Circulating fluidized bed boiler|Combustion turbine"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Coal|Process Gas"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "CAIROS|RGGI"
+                                },
+                                {
+                                  "description": "(Required) Begin date for a given period of a unit's emissions.",
+                                  "key": "beginDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "(Required) End date for a given period of a unit's emissions.",
+                                  "key": "endDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "Selected items will be excluded from the response",
+                                  "key": "exclude",
+                                  "value": "steamLoad|sumOpTime"
+                                },
+                                {
+                                  "key": "unitId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "unit_id",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"stateCode\": \"<string>\",\n  \"facilityName\": \"<string>\",\n  \"unitId\": \"<string>\",\n  \"unit_id\": \"<number>\",\n  \"unitType\": \"<string>\",\n  \"associatedStacks\": \"<string>\",\n  \"primaryFuelInfo\": \"<string>\",\n  \"secondaryFuelInfo\": \"<string>\",\n  \"so2ControlInfo\": \"<string>\",\n  \"pmControlInfo\": \"<string>\",\n  \"noxControlInfo\": \"<string>\",\n  \"hgControlInfo\": \"<string>\",\n  \"programCodeInfo\": \"<string>\",\n  \"date\": \"<string>\",\n  \"facilityId\": \"<number>\",\n  \"grossLoad\": \"<number>\",\n  \"steamLoad\": \"<number>\",\n  \"so2Mass\": \"<number>\",\n  \"so2Rate\": \"<number>\",\n  \"noxMass\": \"<number>\",\n  \"noxRate\": \"<number>\",\n  \"co2Mass\": \"<number>\",\n  \"co2Rate\": \"<number>\",\n  \"heatInput\": \"<number>\",\n  \"heatInputMeasureFlg\": \"<string>\",\n  \"sumOpTime\": \"<number>\",\n  \"countOpTime\": \"<number>\"\n}",
+                          "createdAt": "2026-07-28T10:57:00.000Z",
+                          "updatedAt": "2026-07-28T10:57:00.000Z",
+                          "uid": "35240-79b481e9-e62e-44e8-a34e-2feff48a621c"
+                        },
+                        {
+                          "id": "b164a856-cf37-4501-ac57-ad398f7c3bfb",
+                          "name": "Invalid Request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/daily?stateCode=ID|SD&facilityId=<number>|<number>&unitType=Circulating fluidized bed boiler|Combustion turbine&unitFuelType=Coal|Process Gas&controlTechnologies=Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA&programCodeInfo=CAIROS|RGGI&beginDate=<dateTime>&endDate=<dateTime>&exclude=steamLoad|sumOpTime&unitId=<string>&unit_id=<number>&key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "streaming-services",
+                                "emissions",
+                                "apportioned",
+                                "daily"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "ID|SD"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Circulating fluidized bed boiler|Combustion turbine"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Coal|Process Gas"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "CAIROS|RGGI"
+                                },
+                                {
+                                  "description": "(Required) Begin date for a given period of a unit's emissions.",
+                                  "key": "beginDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "(Required) End date for a given period of a unit's emissions.",
+                                  "key": "endDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "Selected items will be excluded from the response",
+                                  "key": "exclude",
+                                  "value": "steamLoad|sumOpTime"
+                                },
+                                {
+                                  "key": "unitId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "unit_id",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T10:57:00.000Z",
+                          "updatedAt": "2026-07-28T10:57:00.000Z",
+                          "uid": "35240-b164a856-cf37-4501-ac57-ad398f7c3bfb"
+                        },
+                        {
+                          "id": "56f8606b-8248-4138-aecf-5f75c2ff2644",
+                          "name": "Resource Not Found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/streaming-services/emissions/apportioned/daily?stateCode=ID|SD&facilityId=<number>|<number>&unitType=Circulating fluidized bed boiler|Combustion turbine&unitFuelType=Coal|Process Gas&controlTechnologies=Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA&programCodeInfo=CAIROS|RGGI&beginDate=<dateTime>&endDate=<dateTime>&exclude=steamLoad|sumOpTime&unitId=<string>&unit_id=<number>&key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "streaming-services",
+                                "emissions",
+                                "apportioned",
+                                "daily"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Two letter abbreviation for the State.",
+                                  "key": "stateCode",
+                                  "value": "ID|SD"
+                                },
+                                {
+                                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                                  "key": "facilityId",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "description": "Type of unit or boiler.",
+                                  "key": "unitType",
+                                  "value": "Circulating fluidized bed boiler|Combustion turbine"
+                                },
+                                {
+                                  "description": "Primary or Secondary fuel types combusted by the unit.",
+                                  "key": "unitFuelType",
+                                  "value": "Coal|Process Gas"
+                                },
+                                {
+                                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions.",
+                                  "key": "controlTechnologies",
+                                  "value": "Water Injection|Low NOx Burner Technology w/ Closed-coupled OFA"
+                                },
+                                {
+                                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions.",
+                                  "key": "programCodeInfo",
+                                  "value": "CAIROS|RGGI"
+                                },
+                                {
+                                  "description": "(Required) Begin date for a given period of a unit's emissions.",
+                                  "key": "beginDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "(Required) End date for a given period of a unit's emissions.",
+                                  "key": "endDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "Selected items will be excluded from the response",
+                                  "key": "exclude",
+                                  "value": "steamLoad|sumOpTime"
+                                },
+                                {
+                                  "key": "unitId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "unit_id",
+                                  "value": "<number>"
+                                },
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T10:57:00.000Z",
+                          "updatedAt": "2026-07-28T10:57:00.000Z",
+                          "uid": "35240-56f8606b-8248-4138-aecf-5f75c2ff2644"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T10:57:00.000Z",
+                      "updatedAt": "2026-07-28T10:57:00.000Z",
+                      "uid": "35240-0eaf43ef-160b-4903-8c60-1cbf991c4f1b"
+                    }
+                  ],
+                  "id": "3ca4c51e-8327-4e96-83f4-c85527fafa0b",
+                  "createdAt": "2026-07-28T10:57:00.000Z",
+                  "updatedAt": "2026-07-28T10:57:00.000Z",
+                  "uid": "35240-3ca4c51e-8327-4e96-83f4-c85527fafa0b"
+                }
+              ],
+              "id": "61093547-1ba3-4be5-9643-cb29071fe3f8",
+              "createdAt": "2026-07-28T10:57:00.000Z",
+              "updatedAt": "2026-07-28T10:57:00.000Z",
+              "uid": "35240-61093547-1ba3-4be5-9643-cb29071fe3f8"
+            }
+          ],
+          "id": "1e59f036-b9b7-4aa2-9083-3801266d5115",
+          "createdAt": "2026-07-28T10:57:00.000Z",
+          "updatedAt": "2026-07-28T10:57:00.000Z",
+          "uid": "35240-1e59f036-b9b7-4aa2-9083-3801266d5115"
+        }
+      ],
+      "id": "2a7e90e4-8430-4440-9c61-38b82bc64e82",
+      "createdAt": "2026-07-28T10:57:00.000Z",
+      "updatedAt": "2026-07-28T10:57:00.000Z",
+      "uid": "35240-2a7e90e4-8430-4440-9c61-38b82bc64e82"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

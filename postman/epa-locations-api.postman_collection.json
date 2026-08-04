@@ -1,0 +1,260 @@
+{
+  "info": {
+    "_postman_id": "85f46354-05ac-4697-8781-596a558cc08b",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Locations API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:59:30.000Z",
+    "updatedAt": "2026-07-28T10:59:30.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-85f46354-05ac-4697-8781-596a558cc08b"
+  },
+  "item": [
+    {
+      "name": "monitor-plan-mgmt",
+      "item": [
+        {
+          "name": "locations",
+          "item": [
+            {
+              "name": "{locId}",
+              "item": [
+                {
+                  "name": "relationships",
+                  "item": [
+                    {
+                      "name": "Monitor Location Controller get Location Relationships",
+                      "id": "b811028f-950a-4bb9-a637-ce064561c04e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/monitor-plan-mgmt/locations/:locId/relationships",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "monitor-plan-mgmt",
+                            "locations",
+                            ":locId",
+                            "relationships"
+                          ],
+                          "variable": [
+                            {
+                              "id": "02f827df-e7b8-4eae-b424-a15520ded928",
+                              "key": "locId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "990ff531-bd12-4bb5-875e-01ecc1a29d9b",
+                          "name": "Retrieves official relationships record for a specific location ID",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/monitor-plan-mgmt/locations/:locId/relationships?key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "monitor-plan-mgmt",
+                                "locations",
+                                ":locId",
+                                "relationships"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "locId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"items\": [\n    {\n      \"beginDate\": \"<dateTime>\",\n      \"endDate\": \"<dateTime>\",\n      \"id\": \"<string>\",\n      \"unitRecordId\": \"<number>\",\n      \"stackPipeRecordId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"unitId\": \"<string>\",\n      \"stackPipeId\": \"<string>\"\n    },\n    {\n      \"beginDate\": \"<dateTime>\",\n      \"endDate\": \"<dateTime>\",\n      \"id\": \"<string>\",\n      \"unitRecordId\": \"<number>\",\n      \"stackPipeRecordId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"unitId\": \"<string>\",\n      \"stackPipeId\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T10:59:30.000Z",
+                          "updatedAt": "2026-07-28T10:59:30.000Z",
+                          "uid": "35240-990ff531-bd12-4bb5-875e-01ecc1a29d9b"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T10:59:30.000Z",
+                      "updatedAt": "2026-07-28T10:59:30.000Z",
+                      "uid": "35240-b811028f-950a-4bb9-a637-ce064561c04e"
+                    }
+                  ],
+                  "id": "e12618a1-0fab-4b45-b94d-47eb5b4bf46d",
+                  "createdAt": "2026-07-28T10:59:30.000Z",
+                  "updatedAt": "2026-07-28T10:59:30.000Z",
+                  "uid": "35240-e12618a1-0fab-4b45-b94d-47eb5b4bf46d"
+                },
+                {
+                  "name": "Monitor Location Controller get Location",
+                  "id": "00ebabab-6ee3-4fe1-b4ba-51ec454938b7",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/monitor-plan-mgmt/locations/:locId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "monitor-plan-mgmt",
+                        "locations",
+                        ":locId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "e6a70f26-e1fa-43dc-bde6-e84d67307887",
+                          "key": "locId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "b9d92db9-aea7-4a5a-840e-63cb03038244",
+                      "name": "Retrieves official location record from a specific location ID",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/monitor-plan-mgmt/locations/:locId?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "monitor-plan-mgmt",
+                            "locations",
+                            ":locId"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "locId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"unitId\": \"<string>\",\n  \"stackPipeId\": \"<string>\",\n  \"nonLoadBasedIndicator\": \"<number>\",\n  \"id\": \"<string>\",\n  \"unitRecordId\": \"<number>\",\n  \"stackPipeRecordId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"monitoringLocationAttribData\": [\n    {\n      \"ductIndicator\": \"<number>\",\n      \"bypassIndicator\": \"<number>\",\n      \"groundElevation\": \"<number>\",\n      \"stackHeight\": \"<number>\",\n      \"materialCode\": \"<string>\",\n      \"shapeCode\": \"<string>\",\n      \"crossAreaFlow\": \"<number>\",\n      \"crossAreaStackExit\": \"<number>\",\n      \"beginDate\": \"<dateTime>\",\n      \"endDate\": \"<dateTime>\",\n      \"id\": \"<string>\",\n      \"locationId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"active\": \"<boolean>\"\n    }\n  ],\n  \"unitCapacityData\": [\n    {\n      \"maximumHourlyHeatInputCapacity\": \"<number>\",\n      \"beginDate\": \"<dateTime>\",\n      \"endDate\": \"<dateTime>\",\n      \"id\": \"<string>\",\n      \"unitId\": \"<number>\",\n      \"commercialOperationDate\": \"<dateTime>\",\n      \"date\": \"<dateTime>\",\n      \"boilerTurbineBeginDate\": \"<dateTime>\",\n      \"boilerTurbineEndDate\": \"<dateTime>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"boilerTurbineType\": \"<string>\"\n    }\n  ],\n  \"unitControlData\": [\n    {\n      \"controlCode\": \"<string>\",\n      \"originalCode\": \"<string>\",\n      \"installDate\": \"<dateTime>\",\n      \"optimizationDate\": \"<dateTime>\",\n      \"seasonalControlsIndicator\": \"<string>\",\n      \"retireDate\": \"<dateTime>\",\n      \"id\": \"<string>\",\n      \"unitId\": \"<number>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"parameterCode\": \"<string>\"\n    }\n  ],\n  \"unitFuelData\": [\n    {\n      \"fuelCode\": \"<string>\",\n      \"indicatorCode\": \"<string>\",\n      \"ozoneSeasonIndicator\": \"<number>\",\n      \"demGCV\": \"<string>\",\n      \"demSO2\": \"<string>\",\n      \"beginDate\": \"<dateTime>\",\n      \"endDate\": \"<dateTime>\",\n      \"id\": \"<string>\",\n      \"unitId\": \"<number>\",\n      \"actualOrProjectCode\": \"<string>\",\n      \"sulfurContent\": \"<number>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"active\": \"<boolean>\"\n    }\n  ],\n  \"monitoringMethodData\": [\n    {\n      \"parameterCode\": \"<string>\",\n      \"monitoringMethodCode\": \"<string>\",\n      \"substituteDataCode\": \"<string>\",\n      \"bypassApproachCode\": \"<string>\",\n      \"beginDate\": \"<dateTime>\",\n      \"beginHour\": \"<number>\",\n      \"endDate\": \"<dateTime>\",\n      \"endHour\": \"<number>\",\n      \"id\": \"<string>\",\n      \"locationId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"active\": \"<boolean>\"\n    }\n  ],\n  \"supplementalMATSMonitoringMethodData\": [\n    {\n      \"supplementalMATSParameterCode\": \"<string>\",\n      \"supplementalMATSMonitoringMethodCode\": \"<string>\",\n      \"beginDate\": \"<dateTime>\",\n      \"beginHour\": \"<number>\",\n      \"endDate\": \"<dateTime>\",\n      \"endHour\": \"<number>\",\n      \"id\": \"<string>\",\n      \"locationId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"active\": \"<boolean>\"\n    }\n  ],\n  \"monitoringFormulaData\": [\n    {\n      \"formulaId\": \"<string>\",\n      \"parameterCode\": \"<string>\",\n      \"formulaCode\": \"<string>\",\n      \"formulaText\": \"<string>\",\n      \"beginDate\": \"<dateTime>\",\n      \"beginHour\": \"<number>\",\n      \"endDate\": \"<dateTime>\",\n      \"endHour\": \"<number>\",\n      \"id\": \"<string>\",\n      \"locationId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"active\": \"<boolean>\"\n    }\n  ],\n  \"monitoringDefaultData\": [\n    {\n      \"parameterCode\": \"<string>\",\n      \"defaultValue\": \"<number>\",\n      \"defaultUnitsOfMeasureCode\": \"<string>\",\n      \"defaultPurposeCode\": \"<string>\",\n      \"fuelCode\": \"<string>\",\n      \"operatingConditionCode\": \"<string>\",\n      \"defaultSourceCode\": \"<string>\",\n      \"groupId\": \"<string>\",\n      \"beginDate\": \"<dateTime>\",\n      \"beginHour\": \"<number>\",\n      \"endDate\": \"<dateTime>\",\n      \"endHour\": \"<number>\",\n      \"id\": \"<string>\",\n      \"locationId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"active\": \"<boolean>\"\n    }\n  ],\n  \"monitoringSpanData\": [\n    {\n      \"componentTypeCode\": \"<string>\",\n      \"spanScaleCode\": \"<string>\",\n      \"spanMethodCode\": \"<string>\",\n      \"mecValue\": \"<number>\",\n      \"mpcValue\": \"<number>\",\n      \"mpfValue\": \"<number>\",\n      \"spanValue\": \"<number>\",\n      \"fullScaleRange\": \"<number>\",\n      \"spanUnitsOfMeasureCode\": \"<string>\",\n      \"scaleTransitionPoint\": \"<number>\",\n      \"defaultHighRange\": \"<number>\",\n      \"flowSpanValue\": \"<number>\",\n      \"flowFullScaleRange\": \"<number>\",\n      \"beginDate\": \"<dateTime>\",\n      \"beginHour\": \"<number>\",\n      \"endDate\": \"<dateTime>\",\n      \"endHour\": \"<number>\",\n      \"id\": \"<string>\",\n      \"locationId\": \"<string>\",\n      \"userid\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"active\": \"<boolean>\"\n    }\n  ],\n  \"rectangularDuctWAFData\": [\n    {\n      \"wafDeterminationDate\": \"<dateTime>\",\n      \"wafBeginDate\": \"<dateTime>\",\n      \"wafBeginHour\": \"<number>\",\n      \"wafMethodCode\": \"<string>\",\n      \"wafValue\": \"<number>\",\n      \"numberOfTestRuns\": \"<number>\",\n      \"numberOfTraversePointsWAF\": \"<number>\",\n      \"numberOfTestPorts\": \"<number>\",\n      \"numberOfTraversePointsRef\": \"<number>\",\n      \"ductWidth\": \"<number>\",\n      \"ductDepth\": \"<number>\",\n      \"wafEndDate\": \"<dateTime>\",\n      \"wafEndHour\": \"<number>\",\n      \"id\": \"<string>\",\n      \"locationId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"active\": \"<boolean>\"\n    }\n  ],\n  \"monitoringLoadData\": [\n    {\n      \"maximumLoadValue\": \"<number>\",\n      \"maximumLoadUnitsOfMeasureCode\": \"<string>\",\n      \"lowerOperationBoundary\": \"<number>\",\n      \"upperOperationBoundary\": \"<number>\",\n      \"normalLevelCode\": \"<string>\",\n      \"secondLevelCode\": \"<string>\",\n      \"secondNormalIndicator\": \"<number>\",\n      \"loadAnalysisDate\": \"<dateTime>\",\n      \"beginDate\": \"<dateTime>\",\n      \"beginHour\": \"<number>\",\n      \"endDate\": \"<dateTime>\",\n      \"endHour\": \"<number>\",\n      \"id\": \"<string>\",\n      \"locationId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"active\": \"<boolean>\"\n    }\n  ],\n  \"componentData\": [\n    {\n      \"componentId\": \"<string>\",\n      \"componentTypeCode\": \"<string>\",\n      \"sampleAcquisitionMethodCode\": \"<string>\",\n      \"basisCode\": \"<string>\",\n      \"manufacturer\": \"<string>\",\n      \"modelVersion\": \"<string>\",\n      \"serialNumber\": \"<string>\",\n      \"hgConverterIndicator\": \"<number>\",\n      \"id\": \"<string>\",\n      \"locationId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"analyzerRangeData\": [\n        {\n          \"analyzerRangeCode\": \"<string>\",\n          \"dualRangeIndicator\": \"<number>\",\n          \"beginDate\": \"<dateTime>\",\n          \"beginHour\": \"<number>\",\n          \"endDate\": \"<dateTime>\",\n          \"endHour\": \"<number>\",\n          \"id\": \"<string>\",\n          \"componentRecordId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"active\": \"<boolean>\"\n        }\n      ]\n    }\n  ],\n  \"monitoringSystemData\": [\n    {\n      \"monitoringSystemId\": \"<string>\",\n      \"systemTypeCode\": \"<string>\",\n      \"systemDesignationCode\": \"<string>\",\n      \"fuelCode\": \"<string>\",\n      \"beginDate\": \"<dateTime>\",\n      \"endDate\": \"<dateTime>\",\n      \"beginHour\": \"<number>\",\n      \"endHour\": \"<number>\",\n      \"id\": \"<string>\",\n      \"locationId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"monitoringSystemComponentData\": [\n        {\n          \"componentId\": \"<string>\",\n          \"beginDate\": \"<dateTime>\",\n          \"beginHour\": \"<number>\",\n          \"endDate\": \"<dateTime>\",\n          \"endHour\": \"<number>\",\n          \"id\": \"<string>\",\n          \"locationId\": \"<string>\",\n          \"monitoringSystemRecordId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"active\": \"<boolean>\"\n        }\n      ],\n      \"monitoringSystemFuelFlowData\": [\n        {\n          \"maximumFuelFlowRate\": \"<number>\",\n          \"systemFuelFlowUOMCode\": \"<string>\",\n          \"maximumFuelFlowRateSourceCode\": \"<string>\",\n          \"beginDate\": \"<dateTime>\",\n          \"beginHour\": \"<number>\",\n          \"endDate\": \"<dateTime>\",\n          \"endHour\": \"<number>\",\n          \"id\": \"<string>\",\n          \"monitoringSystemRecordId\": \"<string>\",\n          \"fuelCode\": \"<string>\",\n          \"systemTypeCode\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"active\": \"<boolean>\"\n        }\n      ]\n    }\n  ],\n  \"monitoringQualificationData\": [\n    {\n      \"qualificationTypeCode\": \"<string>\",\n      \"beginDate\": \"<dateTime>\",\n      \"endDate\": \"<dateTime>\",\n      \"id\": \"<string>\",\n      \"locationId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"monitoringQualificationLEEData\": [\n        {\n          \"qualificationTestDate\": \"<dateTime>\",\n          \"parameterCode\": \"<string>\",\n          \"qualificationTestType\": \"<string>\",\n          \"potentialAnnualHgMassEmissions\": \"<number>\",\n          \"applicableEmissionStandard\": \"<number>\",\n          \"unitsOfStandard\": \"<string>\",\n          \"percentageOfEmissionStandard\": \"<number>\",\n          \"id\": \"<string>\",\n          \"qualificationId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\"\n        }\n      ],\n      \"monitoringQualificationLMEData\": [\n        {\n          \"qualificationDataYear\": \"<number>\",\n          \"operatingHours\": \"<number>\",\n          \"so2Tons\": \"<number>\",\n          \"noxTons\": \"<number>\",\n          \"id\": \"<string>\",\n          \"qualificationId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\"\n        }\n      ],\n      \"monitoringQualificationPercentData\": [\n        {\n          \"qualificationYear\": \"<number>\",\n          \"averagePercentValue\": \"<number>\",\n          \"yr1QualificationDataYear\": \"<number>\",\n          \"yr1QualificationDataTypeCode\": \"<string>\",\n          \"yr1PercentageValue\": \"<number>\",\n          \"yr2QualificationDataYear\": \"<number>\",\n          \"yr2QualificationDataTypeCode\": \"<string>\",\n          \"yr2PercentageValue\": \"<number>\",\n          \"yr3QualificationDataYear\": \"<number>\",\n          \"yr3QualificationDataTypeCode\": \"<string>\",\n          \"yr3PercentageValue\": \"<number>\",\n          \"id\": \"<string>\",\n          \"qualificationId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"activeDate\": \"<dateTime>\",\n  \"retireDate\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-07-28T10:59:30.000Z",
+                      "updatedAt": "2026-07-28T10:59:30.000Z",
+                      "uid": "35240-b9d92db9-aea7-4a5a-840e-63cb03038244"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T10:59:30.000Z",
+                  "updatedAt": "2026-07-28T10:59:30.000Z",
+                  "uid": "35240-00ebabab-6ee3-4fe1-b4ba-51ec454938b7"
+                }
+              ],
+              "id": "2c1e501a-9d2b-418b-b752-81f7c4a28138",
+              "createdAt": "2026-07-28T10:59:30.000Z",
+              "updatedAt": "2026-07-28T10:59:30.000Z",
+              "uid": "35240-2c1e501a-9d2b-418b-b752-81f7c4a28138"
+            }
+          ],
+          "id": "e770aa14-7215-4a0b-8c7e-856ca8a8cb5d",
+          "createdAt": "2026-07-28T10:59:30.000Z",
+          "updatedAt": "2026-07-28T10:59:30.000Z",
+          "uid": "35240-e770aa14-7215-4a0b-8c7e-856ca8a8cb5d"
+        }
+      ],
+      "id": "e9d50f3c-d5e0-4b52-b47b-fe848201b480",
+      "createdAt": "2026-07-28T10:59:30.000Z",
+      "updatedAt": "2026-07-28T10:59:30.000Z",
+      "uid": "35240-e9d50f3c-d5e0-4b52-b47b-fe848201b480"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

@@ -1,0 +1,299 @@
+{
+  "info": {
+    "_postman_id": "dd7f6b9b-15b2-4198-ae94-1ee8b2353af6",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Emissions Views API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:58:28.000Z",
+    "updatedAt": "2026-07-28T10:58:28.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-dd7f6b9b-15b2-4198-ae94-1ee8b2353af6"
+  },
+  "item": [
+    {
+      "name": "emissions-mgmt",
+      "item": [
+        {
+          "name": "emissions",
+          "item": [
+            {
+              "name": "views",
+              "item": [
+                {
+                  "name": "{viewCode}",
+                  "item": [
+                    {
+                      "name": "Emissions View Controller get View",
+                      "id": "df4097b2-ff60-4f3b-a7d3-2712b4ef7868",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/emissions-mgmt/emissions/views/:viewCode?monitorPlanId=<string>&unitIds=<string>|<string>&stackPipeIds=<string>|<string>&reportingPeriod=<string>|<string>&attachFile=false",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "emissions-mgmt",
+                            "emissions",
+                            "views",
+                            ":viewCode"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "monitorPlanId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Unique identifier for each unit at a facility.",
+                              "key": "unitIds",
+                              "value": "<string>|<string>"
+                            },
+                            {
+                              "description": "This is the alphanumeric code assigned by a source to identify a multiple or common stack or pipe at which emissions are determined.",
+                              "key": "stackPipeIds",
+                              "value": "<string>|<string>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "reportingPeriod",
+                              "value": "<string>|<string>"
+                            },
+                            {
+                              "description": "Attaches a file with data in the format specified by the Accept header",
+                              "key": "attachFile",
+                              "value": "false"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "a4381252-adfc-4bcb-b750-fab1b02e3769",
+                              "key": "viewCode",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "b8d9f319-e6a3-4e76-9944-bc65c6e6e67f",
+                          "name": "Retrieves the specified view of official Emissions data for the provided Monitor Plan & Reporting Period",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/emissions-mgmt/emissions/views/:viewCode?monitorPlanId=<string>&unitIds=<string>|<string>&stackPipeIds=<string>|<string>&reportingPeriod=<string>|<string>&attachFile=false&key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "emissions-mgmt",
+                                "emissions",
+                                "views",
+                                ":viewCode"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) ",
+                                  "key": "monitorPlanId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Unique identifier for each unit at a facility.",
+                                  "key": "unitIds",
+                                  "value": "<string>|<string>"
+                                },
+                                {
+                                  "description": "This is the alphanumeric code assigned by a source to identify a multiple or common stack or pipe at which emissions are determined.",
+                                  "key": "stackPipeIds",
+                                  "value": "<string>|<string>"
+                                },
+                                {
+                                  "description": "(Required) ",
+                                  "key": "reportingPeriod",
+                                  "value": "<string>|<string>"
+                                },
+                                {
+                                  "description": "Attaches a file with data in the format specified by the Accept header",
+                                  "key": "attachFile",
+                                  "value": "false"
+                                },
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "viewCode"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"examples\": {\n    \"EmissionsViewController_getView200Example\": {\n      \"summary\": \"Default EmissionsViewController_getView 200 response\",\n      \"x-microcks-default\": true,\n      \"value\": {\n        \"status\": \"ok\",\n        \"message\": \"Example response\"\n      }\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T10:58:28.000Z",
+                          "updatedAt": "2026-07-28T10:58:28.000Z",
+                          "uid": "35240-b8d9f319-e6a3-4e76-9944-bc65c6e6e67f"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T10:58:28.000Z",
+                      "updatedAt": "2026-07-28T10:58:28.000Z",
+                      "uid": "35240-df4097b2-ff60-4f3b-a7d3-2712b4ef7868"
+                    }
+                  ],
+                  "id": "254181d5-6050-418b-ab3c-18e7fa87163c",
+                  "createdAt": "2026-07-28T10:58:28.000Z",
+                  "updatedAt": "2026-07-28T10:58:28.000Z",
+                  "uid": "35240-254181d5-6050-418b-ab3c-18e7fa87163c"
+                },
+                {
+                  "name": "Emissions View Controller get Available Views",
+                  "id": "1919552b-68da-400f-89b6-d0179bd8f703",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/emissions-mgmt/emissions/views",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "emissions-mgmt",
+                        "emissions",
+                        "views"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "46166ba9-64ff-4788-afe8-4f89ccea988d",
+                      "name": "Retrieves a list of official Emissions data views that are available",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/emissions-mgmt/emissions/views?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "emissions-mgmt",
+                            "emissions",
+                            "views"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"items\": [\n    {\n      \"code\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T10:58:28.000Z",
+                      "updatedAt": "2026-07-28T10:58:28.000Z",
+                      "uid": "35240-46166ba9-64ff-4788-afe8-4f89ccea988d"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T10:58:28.000Z",
+                  "updatedAt": "2026-07-28T10:58:28.000Z",
+                  "uid": "35240-1919552b-68da-400f-89b6-d0179bd8f703"
+                }
+              ],
+              "id": "4e379dc6-f7d9-456f-a71d-c1d250a4e4ef",
+              "createdAt": "2026-07-28T10:58:28.000Z",
+              "updatedAt": "2026-07-28T10:58:28.000Z",
+              "uid": "35240-4e379dc6-f7d9-456f-a71d-c1d250a4e4ef"
+            }
+          ],
+          "id": "88b75bb1-0d5b-442b-a677-2f8200ba6d2e",
+          "createdAt": "2026-07-28T10:58:28.000Z",
+          "updatedAt": "2026-07-28T10:58:28.000Z",
+          "uid": "35240-88b75bb1-0d5b-442b-a677-2f8200ba6d2e"
+        }
+      ],
+      "id": "fc6039ab-c5f7-4f57-a22b-b1d3e8cff316",
+      "createdAt": "2026-07-28T10:58:28.000Z",
+      "updatedAt": "2026-07-28T10:58:28.000Z",
+      "uid": "35240-fc6039ab-c5f7-4f57-a22b-b1d3e8cff316"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

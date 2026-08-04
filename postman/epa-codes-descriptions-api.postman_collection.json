@@ -1,0 +1,219 @@
+{
+  "info": {
+    "_postman_id": "3e9f22d0-ed6b-494b-924b-35ec6cb76b1b",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Codes & Descriptions API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:57:17.000Z",
+    "updatedAt": "2026-07-28T10:57:18.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3e9f22d0-ed6b-494b-924b-35ec6cb76b1b"
+  },
+  "item": [
+    {
+      "name": "master-data-mgmt",
+      "item": [
+        {
+          "name": "list",
+          "item": [
+            {
+              "name": "Master Data Controller list Code Tables",
+              "id": "e36bfa6e-a45a-4233-9cd5-0950857737d2",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/master-data-mgmt/list",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "master-data-mgmt",
+                    "list"
+                  ]
+                },
+                "description": "Returns a list of Master Data code tables available."
+              },
+              "response": [
+                {
+                  "id": "60be75a3-1ce2-496e-8e54-52632eab63ed",
+                  "name": "Data retrieved successfully",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/master-data-mgmt/list?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "master-data-mgmt",
+                        "list"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"items\": [\n    {\n      \"code\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T10:57:18.000Z",
+                  "updatedAt": "2026-07-28T10:57:18.000Z",
+                  "uid": "35240-60be75a3-1ce2-496e-8e54-52632eab63ed"
+                }
+              ],
+              "createdAt": "2026-07-28T10:57:18.000Z",
+              "updatedAt": "2026-07-28T10:57:18.000Z",
+              "uid": "35240-e36bfa6e-a45a-4233-9cd5-0950857737d2"
+            }
+          ],
+          "id": "91ca5f5b-3a78-483b-a6b7-1777e722c63e",
+          "createdAt": "2026-07-28T10:57:18.000Z",
+          "updatedAt": "2026-07-28T10:57:18.000Z",
+          "uid": "35240-91ca5f5b-3a78-483b-a6b7-1777e722c63e"
+        },
+        {
+          "name": "{code}",
+          "item": [
+            {
+              "name": "Master Data Controller get Code Table",
+              "id": "6cba1ddf-d183-4111-a076-4c194d93ab90",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/master-data-mgmt/:code",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "master-data-mgmt",
+                    ":code"
+                  ],
+                  "variable": [
+                    {
+                      "id": "b4fbc015-8030-43b3-8745-0a37b17b3325",
+                      "key": "code",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Returns a list of Master Data codes & descriptions for the dataset provided."
+              },
+              "response": [
+                {
+                  "id": "cabca6fa-8cc6-47c5-8bb4-dad5a79228fb",
+                  "name": "Data retrieved successfully",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/master-data-mgmt/:code?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "master-data-mgmt",
+                        ":code"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "code"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T10:57:18.000Z",
+                  "updatedAt": "2026-07-28T10:57:18.000Z",
+                  "uid": "35240-cabca6fa-8cc6-47c5-8bb4-dad5a79228fb"
+                }
+              ],
+              "createdAt": "2026-07-28T10:57:18.000Z",
+              "updatedAt": "2026-07-28T10:57:18.000Z",
+              "uid": "35240-6cba1ddf-d183-4111-a076-4c194d93ab90"
+            }
+          ],
+          "id": "2db24c6b-60e4-4e41-b78d-6b789be47411",
+          "createdAt": "2026-07-28T10:57:18.000Z",
+          "updatedAt": "2026-07-28T10:57:18.000Z",
+          "uid": "35240-2db24c6b-60e4-4e41-b78d-6b789be47411"
+        }
+      ],
+      "id": "940f1499-60a8-4a18-ab66-4c4b57b300a2",
+      "createdAt": "2026-07-28T10:57:18.000Z",
+      "updatedAt": "2026-07-28T10:57:18.000Z",
+      "uid": "35240-940f1499-60a8-4a18-ab66-4c4b57b300a2"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

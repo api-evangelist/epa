@@ -1,0 +1,326 @@
+{
+  "info": {
+    "_postman_id": "bc972e9f-a09e-463b-bd72-c3cdccd0edfa",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Test Summary API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T11:00:53.000Z",
+    "updatedAt": "2026-07-28T11:00:53.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-bc972e9f-a09e-463b-bd72-c3cdccd0edfa"
+  },
+  "item": [
+    {
+      "name": "qa-certification-mgmt",
+      "item": [
+        {
+          "name": "locations",
+          "item": [
+            {
+              "name": "{locId}",
+              "item": [
+                {
+                  "name": "test-summary",
+                  "item": [
+                    {
+                      "name": "{id}",
+                      "item": [
+                        {
+                          "name": "Test Summary Controller get Test Summary",
+                          "id": "6024bb20-35ea-4546-891c-0bcbe9a0f9f6",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "qa-certification-mgmt",
+                                "locations",
+                                ":locId",
+                                "test-summary",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "8a3c857b-edda-417b-9b0f-c64e1b56169e",
+                                  "key": "locId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                },
+                                {
+                                  "id": "8c88db46-cc9d-45fe-8285-d568756a2560",
+                                  "key": "id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "04c1aadd-ef16-4064-9469-85e6800424c3",
+                              "name": "Retrieves official Test Summary record by its id",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:id?key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "qa-certification-mgmt",
+                                    "locations",
+                                    ":locId",
+                                    "test-summary",
+                                    ":id"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "locId"
+                                    },
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"stackPipeId\": \"<string>\",\n  \"unitId\": \"<string>\",\n  \"testTypeCode\": \"<string>\",\n  \"componentId\": \"<string>\",\n  \"testNumber\": \"<string>\",\n  \"id\": \"<string>\",\n  \"locationId\": \"<string>\",\n  \"calculatedGracePeriodIndicator\": \"<number>\",\n  \"calculatedTestResultCode\": \"<string>\",\n  \"reportPeriodId\": \"<number>\",\n  \"calculatedSpanValue\": \"<number>\",\n  \"userId\": \"<string>\",\n  \"addDate\": \"<string>\",\n  \"updateDate\": \"<string>\",\n  \"evalStatusCode\": \"<string>\",\n  \"evalStatusCodeDescription\": \"<string>\",\n  \"submissionAvailabilityCode\": \"<string>\",\n  \"submissionAvailabilityCodeDescription\": \"<string>\",\n  \"monitoringSystemId\": \"<string>\",\n  \"spanScaleCode\": \"<string>\",\n  \"testReasonCode\": \"<string>\",\n  \"testDescription\": \"<string>\",\n  \"testResultCode\": \"<string>\",\n  \"beginDate\": \"<dateTime>\",\n  \"beginHour\": \"<number>\",\n  \"beginMinute\": \"<number>\",\n  \"endDate\": \"<dateTime>\",\n  \"endHour\": \"<number>\",\n  \"endMinute\": \"<number>\",\n  \"gracePeriodIndicator\": \"<number>\",\n  \"year\": \"<number>\",\n  \"quarter\": \"<number>\",\n  \"testComment\": \"<string>\",\n  \"injectionProtocolCode\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T11:00:54.000Z",
+                              "updatedAt": "2026-07-28T11:00:54.000Z",
+                              "uid": "35240-04c1aadd-ef16-4064-9469-85e6800424c3"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T11:00:54.000Z",
+                          "updatedAt": "2026-07-28T11:00:54.000Z",
+                          "uid": "35240-6024bb20-35ea-4546-891c-0bcbe9a0f9f6"
+                        }
+                      ],
+                      "id": "59e99079-ca3f-4b01-bbdc-653814197d48",
+                      "createdAt": "2026-07-28T11:00:54.000Z",
+                      "updatedAt": "2026-07-28T11:00:54.000Z",
+                      "uid": "35240-59e99079-ca3f-4b01-bbdc-653814197d48"
+                    },
+                    {
+                      "name": "Test Summary Controller get Test Summaries",
+                      "id": "f958f4ef-636b-4ce6-94fb-146768dd2b6b",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary?testTypeCodes=PEMSACC|FF2LTST&systemTypeCodes=HF&systemTypeCodes=OILV&beginDate=<dateTime>&endDate=<dateTime>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "qa-certification-mgmt",
+                            "locations",
+                            ":locId",
+                            "test-summary"
+                          ],
+                          "query": [
+                            {
+                              "description": "Code used to identify test type or the type of test performed.",
+                              "key": "testTypeCodes",
+                              "value": "PEMSACC|FF2LTST"
+                            },
+                            {
+                              "key": "systemTypeCodes",
+                              "value": "HF"
+                            },
+                            {
+                              "key": "systemTypeCodes",
+                              "value": "OILV"
+                            },
+                            {
+                              "description": "Date in which information became effective or activity started.",
+                              "key": "beginDate",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "End date for a given period of a unit's emissions.",
+                              "key": "endDate",
+                              "value": "<dateTime>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "abb4da0f-a4e1-465a-9e6e-271e739c099c",
+                              "key": "locId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "2c455915-d557-483a-af3f-002212123193",
+                          "name": "Retrieves official Test Summary records per filter criteria",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary?testTypeCodes=PEMSACC|FF2LTST&systemTypeCodes=OILV&beginDate=<dateTime>&endDate=<dateTime>&key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "qa-certification-mgmt",
+                                "locations",
+                                ":locId",
+                                "test-summary"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Code used to identify test type or the type of test performed.",
+                                  "key": "testTypeCodes",
+                                  "value": "PEMSACC|FF2LTST"
+                                },
+                                {
+                                  "key": "systemTypeCodes",
+                                  "value": "OILV"
+                                },
+                                {
+                                  "description": "Date in which information became effective or activity started.",
+                                  "key": "beginDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "End date for a given period of a unit's emissions.",
+                                  "key": "endDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "locId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"items\": [\n    {\n      \"stackPipeId\": \"<string>\",\n      \"unitId\": \"<string>\",\n      \"testTypeCode\": \"<string>\",\n      \"componentId\": \"<string>\",\n      \"testNumber\": \"<string>\",\n      \"id\": \"<string>\",\n      \"locationId\": \"<string>\",\n      \"calculatedGracePeriodIndicator\": \"<number>\",\n      \"calculatedTestResultCode\": \"<string>\",\n      \"reportPeriodId\": \"<number>\",\n      \"calculatedSpanValue\": \"<number>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"evalStatusCode\": \"<string>\",\n      \"evalStatusCodeDescription\": \"<string>\",\n      \"submissionAvailabilityCode\": \"<string>\",\n      \"submissionAvailabilityCodeDescription\": \"<string>\",\n      \"monitoringSystemId\": \"<string>\",\n      \"spanScaleCode\": \"<string>\",\n      \"testReasonCode\": \"<string>\",\n      \"testDescription\": \"<string>\",\n      \"testResultCode\": \"<string>\",\n      \"beginDate\": \"<dateTime>\",\n      \"beginHour\": \"<number>\",\n      \"beginMinute\": \"<number>\",\n      \"endDate\": \"<dateTime>\",\n      \"endHour\": \"<number>\",\n      \"endMinute\": \"<number>\",\n      \"gracePeriodIndicator\": \"<number>\",\n      \"year\": \"<number>\",\n      \"quarter\": \"<number>\",\n      \"testComment\": \"<string>\",\n      \"injectionProtocolCode\": \"<string>\"\n    },\n    {\n      \"stackPipeId\": \"<string>\",\n      \"unitId\": \"<string>\",\n      \"testTypeCode\": \"<string>\",\n      \"componentId\": \"<string>\",\n      \"testNumber\": \"<string>\",\n      \"id\": \"<string>\",\n      \"locationId\": \"<string>\",\n      \"calculatedGracePeriodIndicator\": \"<number>\",\n      \"calculatedTestResultCode\": \"<string>\",\n      \"reportPeriodId\": \"<number>\",\n      \"calculatedSpanValue\": \"<number>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"evalStatusCode\": \"<string>\",\n      \"evalStatusCodeDescription\": \"<string>\",\n      \"submissionAvailabilityCode\": \"<string>\",\n      \"submissionAvailabilityCodeDescription\": \"<string>\",\n      \"monitoringSystemId\": \"<string>\",\n      \"spanScaleCode\": \"<string>\",\n      \"testReasonCode\": \"<string>\",\n      \"testDescription\": \"<string>\",\n      \"testResultCode\": \"<string>\",\n      \"beginDate\": \"<dateTime>\",\n      \"beginHour\": \"<number>\",\n      \"beginMinute\": \"<number>\",\n      \"endDate\": \"<dateTime>\",\n      \"endHour\": \"<number>\",\n      \"endMinute\": \"<number>\",\n      \"gracePeriodIndicator\": \"<number>\",\n      \"year\": \"<number>\",\n      \"quarter\": \"<number>\",\n      \"testComment\": \"<string>\",\n      \"injectionProtocolCode\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T11:00:54.000Z",
+                          "updatedAt": "2026-07-28T11:00:54.000Z",
+                          "uid": "35240-2c455915-d557-483a-af3f-002212123193"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T11:00:54.000Z",
+                      "updatedAt": "2026-07-28T11:00:54.000Z",
+                      "uid": "35240-f958f4ef-636b-4ce6-94fb-146768dd2b6b"
+                    }
+                  ],
+                  "id": "4506d506-5141-4e36-ad46-fc26b338b6cd",
+                  "createdAt": "2026-07-28T11:00:54.000Z",
+                  "updatedAt": "2026-07-28T11:00:54.000Z",
+                  "uid": "35240-4506d506-5141-4e36-ad46-fc26b338b6cd"
+                }
+              ],
+              "id": "f2fe84a4-81aa-4e0a-bef9-6e626f1b79e6",
+              "createdAt": "2026-07-28T11:00:54.000Z",
+              "updatedAt": "2026-07-28T11:00:54.000Z",
+              "uid": "35240-f2fe84a4-81aa-4e0a-bef9-6e626f1b79e6"
+            }
+          ],
+          "id": "7a329c7b-40eb-488d-a573-e244659b35d5",
+          "createdAt": "2026-07-28T11:00:54.000Z",
+          "updatedAt": "2026-07-28T11:00:54.000Z",
+          "uid": "35240-7a329c7b-40eb-488d-a573-e244659b35d5"
+        }
+      ],
+      "id": "4c5c1017-094c-48b2-96cb-475b0d7bfd64",
+      "createdAt": "2026-07-28T11:00:54.000Z",
+      "updatedAt": "2026-07-28T11:00:54.000Z",
+      "uid": "35240-4c5c1017-094c-48b2-96cb-475b0d7bfd64"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

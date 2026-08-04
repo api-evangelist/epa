@@ -1,0 +1,169 @@
+{
+  "info": {
+    "_postman_id": "297b4e5a-d9e3-48dd-bcb0-caa8bcb04c07",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Rectangular Duct WAF API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T11:00:04.000Z",
+    "updatedAt": "2026-07-28T11:00:04.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-297b4e5a-d9e3-48dd-bcb0-caa8bcb04c07"
+  },
+  "item": [
+    {
+      "name": "monitor-plan-mgmt",
+      "item": [
+        {
+          "name": "locations",
+          "item": [
+            {
+              "name": "{locId}",
+              "item": [
+                {
+                  "name": "duct-wafs",
+                  "item": [
+                    {
+                      "name": "Duct Waf Controller get Duct Wafs",
+                      "id": "b4ae51da-70a5-4237-ad25-c58cd6f0ec5a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/monitor-plan-mgmt/locations/:locId/duct-wafs",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "monitor-plan-mgmt",
+                            "locations",
+                            ":locId",
+                            "duct-wafs"
+                          ],
+                          "variable": [
+                            {
+                              "id": "7a607ae1-c263-4999-8eb8-47ff6b97e6a9",
+                              "key": "locId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "3699d03d-8f4a-40e2-8ad4-2a80142db3b9",
+                          "name": "Retrieves official duct waf records for a monitor location",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/monitor-plan-mgmt/locations/:locId/duct-wafs?key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "monitor-plan-mgmt",
+                                "locations",
+                                ":locId",
+                                "duct-wafs"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "locId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"items\": [\n    {\n      \"wafDeterminationDate\": \"<dateTime>\",\n      \"wafBeginDate\": \"<dateTime>\",\n      \"wafBeginHour\": \"<number>\",\n      \"wafMethodCode\": \"<string>\",\n      \"wafValue\": \"<number>\",\n      \"numberOfTestRuns\": \"<number>\",\n      \"numberOfTraversePointsWAF\": \"<number>\",\n      \"numberOfTestPorts\": \"<number>\",\n      \"numberOfTraversePointsRef\": \"<number>\",\n      \"ductWidth\": \"<number>\",\n      \"ductDepth\": \"<number>\",\n      \"wafEndDate\": \"<dateTime>\",\n      \"wafEndHour\": \"<number>\",\n      \"id\": \"<string>\",\n      \"locationId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"active\": \"<boolean>\"\n    },\n    {\n      \"wafDeterminationDate\": \"<dateTime>\",\n      \"wafBeginDate\": \"<dateTime>\",\n      \"wafBeginHour\": \"<number>\",\n      \"wafMethodCode\": \"<string>\",\n      \"wafValue\": \"<number>\",\n      \"numberOfTestRuns\": \"<number>\",\n      \"numberOfTraversePointsWAF\": \"<number>\",\n      \"numberOfTestPorts\": \"<number>\",\n      \"numberOfTraversePointsRef\": \"<number>\",\n      \"ductWidth\": \"<number>\",\n      \"ductDepth\": \"<number>\",\n      \"wafEndDate\": \"<dateTime>\",\n      \"wafEndHour\": \"<number>\",\n      \"id\": \"<string>\",\n      \"locationId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"active\": \"<boolean>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T11:00:04.000Z",
+                          "updatedAt": "2026-07-28T11:00:04.000Z",
+                          "uid": "35240-3699d03d-8f4a-40e2-8ad4-2a80142db3b9"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T11:00:04.000Z",
+                      "updatedAt": "2026-07-28T11:00:04.000Z",
+                      "uid": "35240-b4ae51da-70a5-4237-ad25-c58cd6f0ec5a"
+                    }
+                  ],
+                  "id": "876792b3-3b63-4fad-9d20-89298174072d",
+                  "createdAt": "2026-07-28T11:00:04.000Z",
+                  "updatedAt": "2026-07-28T11:00:04.000Z",
+                  "uid": "35240-876792b3-3b63-4fad-9d20-89298174072d"
+                }
+              ],
+              "id": "6760a629-1026-403a-aae0-cf0078be9c36",
+              "createdAt": "2026-07-28T11:00:04.000Z",
+              "updatedAt": "2026-07-28T11:00:04.000Z",
+              "uid": "35240-6760a629-1026-403a-aae0-cf0078be9c36"
+            }
+          ],
+          "id": "57014f1a-281b-4599-99db-a21da475e0e8",
+          "createdAt": "2026-07-28T11:00:04.000Z",
+          "updatedAt": "2026-07-28T11:00:04.000Z",
+          "uid": "35240-57014f1a-281b-4599-99db-a21da475e0e8"
+        }
+      ],
+      "id": "249154f8-a2db-45a2-965a-cd428b087fe1",
+      "createdAt": "2026-07-28T11:00:04.000Z",
+      "updatedAt": "2026-07-28T11:00:04.000Z",
+      "uid": "35240-249154f8-a2db-45a2-965a-cd428b087fe1"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

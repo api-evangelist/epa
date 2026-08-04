@@ -1,0 +1,326 @@
+{
+  "info": {
+    "_postman_id": "41a9c4da-73f9-4c3e-aa6d-56ec189489db",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Appendix E Correlation Test Summary API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:56:47.000Z",
+    "updatedAt": "2026-07-28T10:56:48.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-41a9c4da-73f9-4c3e-aa6d-56ec189489db"
+  },
+  "item": [
+    {
+      "name": "qa-certification-mgmt",
+      "item": [
+        {
+          "name": "locations",
+          "item": [
+            {
+              "name": "{locId}",
+              "item": [
+                {
+                  "name": "test-summary",
+                  "item": [
+                    {
+                      "name": "{testSumId}",
+                      "item": [
+                        {
+                          "name": "appendix-e-correlation-test-summaries",
+                          "item": [
+                            {
+                              "name": "{id}",
+                              "item": [
+                                {
+                                  "name": "Appendix E Test Summary Controller get App E Correlation",
+                                  "id": "9218d438-caf2-486d-84de-49c4929ae632",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/appendix-e-correlation-test-summaries/:id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "qa-certification-mgmt",
+                                        "locations",
+                                        ":locId",
+                                        "test-summary",
+                                        ":testSumId",
+                                        "appendix-e-correlation-test-summaries",
+                                        ":id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "83d1bf7e-7da8-484b-a658-df41ecdcc486",
+                                          "key": "locId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "1cf4176d-8dda-47da-ac4c-8799c8656b52",
+                                          "key": "testSumId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "cf1ab31d-8775-43a0-b332-1b1a4338013d",
+                                          "key": "id",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "7ade7f36-f140-4482-b10c-c2ed6625e111",
+                                      "name": "Retrieves an Appendix E Correlation Test Summary record by its Id",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/appendix-e-correlation-test-summaries/:id?key=<API Key>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "qa-certification-mgmt",
+                                            "locations",
+                                            ":locId",
+                                            "test-summary",
+                                            ":testSumId",
+                                            "appendix-e-correlation-test-summaries",
+                                            ":id"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Added as a part of security scheme: apikey",
+                                              "key": "key",
+                                              "value": "<API Key>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "locId"
+                                            },
+                                            {
+                                              "key": "testSumId"
+                                            },
+                                            {
+                                              "key": "id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"id\": \"<string>\",\n  \"testSumId\": \"<string>\",\n  \"calculatedMeanReferenceValue\": \"<number>\",\n  \"calculatedAverageHourlyHeatInputRate\": \"<number>\",\n  \"userId\": \"<string>\",\n  \"addDate\": \"<string>\",\n  \"updateDate\": \"<string>\",\n  \"operatingLevelForRun\": \"<number>\",\n  \"meanReferenceValue\": \"<number>\",\n  \"averageHourlyHeatInputRate\": \"<number>\",\n  \"fFactor\": \"<number>\"\n}",
+                                      "createdAt": "2026-07-28T10:56:48.000Z",
+                                      "updatedAt": "2026-07-28T10:56:48.000Z",
+                                      "uid": "35240-7ade7f36-f140-4482-b10c-c2ed6625e111"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T10:56:48.000Z",
+                                  "updatedAt": "2026-07-28T10:56:48.000Z",
+                                  "uid": "35240-9218d438-caf2-486d-84de-49c4929ae632"
+                                }
+                              ],
+                              "id": "eed43fed-52b1-40c6-92cb-6cd04e0ee654",
+                              "createdAt": "2026-07-28T10:56:48.000Z",
+                              "updatedAt": "2026-07-28T10:56:48.000Z",
+                              "uid": "35240-eed43fed-52b1-40c6-92cb-6cd04e0ee654"
+                            },
+                            {
+                              "name": "Appendix E Test Summary Controller get App E Correlations",
+                              "id": "a1421ef9-62c0-46d3-83d1-cc955d579c10",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/appendix-e-correlation-test-summaries",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "qa-certification-mgmt",
+                                    "locations",
+                                    ":locId",
+                                    "test-summary",
+                                    ":testSumId",
+                                    "appendix-e-correlation-test-summaries"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "85b2cc22-28ae-428a-85f1-b92e2013b9d5",
+                                      "key": "locId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "c8b932b2-c7de-4d24-a6a3-1f0a769f1d43",
+                                      "key": "testSumId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                }
+                              },
+                              "response": [
+                                {
+                                  "id": "8b1b6e9c-f0e8-4d92-82b7-c3eb8c86b1dc",
+                                  "name": "Retrieves Appendix E Correlation Test Summary records by Test Summary Id",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/appendix-e-correlation-test-summaries?key=<API Key>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "qa-certification-mgmt",
+                                        "locations",
+                                        ":locId",
+                                        "test-summary",
+                                        ":testSumId",
+                                        "appendix-e-correlation-test-summaries"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Added as a part of security scheme: apikey",
+                                          "key": "key",
+                                          "value": "<API Key>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "locId"
+                                        },
+                                        {
+                                          "key": "testSumId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"testSumId\": \"<string>\",\n      \"calculatedMeanReferenceValue\": \"<number>\",\n      \"calculatedAverageHourlyHeatInputRate\": \"<number>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"operatingLevelForRun\": \"<number>\",\n      \"meanReferenceValue\": \"<number>\",\n      \"averageHourlyHeatInputRate\": \"<number>\",\n      \"fFactor\": \"<number>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"testSumId\": \"<string>\",\n      \"calculatedMeanReferenceValue\": \"<number>\",\n      \"calculatedAverageHourlyHeatInputRate\": \"<number>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"operatingLevelForRun\": \"<number>\",\n      \"meanReferenceValue\": \"<number>\",\n      \"averageHourlyHeatInputRate\": \"<number>\",\n      \"fFactor\": \"<number>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T10:56:48.000Z",
+                                  "updatedAt": "2026-07-28T10:56:48.000Z",
+                                  "uid": "35240-8b1b6e9c-f0e8-4d92-82b7-c3eb8c86b1dc"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T10:56:48.000Z",
+                              "updatedAt": "2026-07-28T10:56:48.000Z",
+                              "uid": "35240-a1421ef9-62c0-46d3-83d1-cc955d579c10"
+                            }
+                          ],
+                          "id": "00d4c76b-f433-46bc-bfff-081ea1b7e93a",
+                          "createdAt": "2026-07-28T10:56:48.000Z",
+                          "updatedAt": "2026-07-28T10:56:48.000Z",
+                          "uid": "35240-00d4c76b-f433-46bc-bfff-081ea1b7e93a"
+                        }
+                      ],
+                      "id": "fc3777a4-37df-4a68-ba17-8edd11e84b59",
+                      "createdAt": "2026-07-28T10:56:48.000Z",
+                      "updatedAt": "2026-07-28T10:56:48.000Z",
+                      "uid": "35240-fc3777a4-37df-4a68-ba17-8edd11e84b59"
+                    }
+                  ],
+                  "id": "fb002f26-822b-4309-b38f-873ecc7a1a6a",
+                  "createdAt": "2026-07-28T10:56:48.000Z",
+                  "updatedAt": "2026-07-28T10:56:48.000Z",
+                  "uid": "35240-fb002f26-822b-4309-b38f-873ecc7a1a6a"
+                }
+              ],
+              "id": "2b0d6fa0-1951-4f3b-b7bc-9f8dd69ec58b",
+              "createdAt": "2026-07-28T10:56:48.000Z",
+              "updatedAt": "2026-07-28T10:56:48.000Z",
+              "uid": "35240-2b0d6fa0-1951-4f3b-b7bc-9f8dd69ec58b"
+            }
+          ],
+          "id": "28329ec3-abfd-4cc1-821b-a692d305cab9",
+          "createdAt": "2026-07-28T10:56:48.000Z",
+          "updatedAt": "2026-07-28T10:56:48.000Z",
+          "uid": "35240-28329ec3-abfd-4cc1-821b-a692d305cab9"
+        }
+      ],
+      "id": "fdc55328-a504-409f-b782-8063807f0798",
+      "createdAt": "2026-07-28T10:56:48.000Z",
+      "updatedAt": "2026-07-28T10:56:48.000Z",
+      "uid": "35240-fdc55328-a504-409f-b782-8063807f0798"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

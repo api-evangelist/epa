@@ -1,0 +1,326 @@
+{
+  "info": {
+    "_postman_id": "92842634-cca7-4520-aa61-e01d320042f8",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Rata API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:59:55.000Z",
+    "updatedAt": "2026-07-28T10:59:55.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-92842634-cca7-4520-aa61-e01d320042f8"
+  },
+  "item": [
+    {
+      "name": "qa-certification-mgmt",
+      "item": [
+        {
+          "name": "locations",
+          "item": [
+            {
+              "name": "{locId}",
+              "item": [
+                {
+                  "name": "test-summary",
+                  "item": [
+                    {
+                      "name": "{testSumId}",
+                      "item": [
+                        {
+                          "name": "rata",
+                          "item": [
+                            {
+                              "name": "{id}",
+                              "item": [
+                                {
+                                  "name": "Rata Controller get Rata",
+                                  "id": "6ddf5c05-06a9-45f1-9e77-50362358304d",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/rata/:id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "qa-certification-mgmt",
+                                        "locations",
+                                        ":locId",
+                                        "test-summary",
+                                        ":testSumId",
+                                        "rata",
+                                        ":id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "230874d4-54e9-4314-9266-cfb0d0029259",
+                                          "key": "locId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "7b5eaf6a-9e51-493f-8163-8f251d4f2c4a",
+                                          "key": "testSumId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "9cff0799-77b6-463e-beab-966f53c313e6",
+                                          "key": "id",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "5cde41fd-c4ff-445a-94a6-e263f518f112",
+                                      "name": "Retrieves workspace RATA record by its Id",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/rata/:id?key=<API Key>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "qa-certification-mgmt",
+                                            "locations",
+                                            ":locId",
+                                            "test-summary",
+                                            ":testSumId",
+                                            "rata",
+                                            ":id"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Added as a part of security scheme: apikey",
+                                              "key": "key",
+                                              "value": "<API Key>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "locId"
+                                            },
+                                            {
+                                              "key": "testSumId"
+                                            },
+                                            {
+                                              "key": "id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"id\": \"<string>\",\n  \"testSumId\": \"<string>\",\n  \"calculatedRataFrequencyCode\": \"<string>\",\n  \"calculatedRelativeAccuracy\": \"<number>\",\n  \"calculatedOverallBiasAdjustmentFactor\": \"<number>\",\n  \"calculatedNumberOfLoadLevel\": \"<number>\",\n  \"userId\": \"<string>\",\n  \"addDate\": \"<string>\",\n  \"updateDate\": \"<string>\",\n  \"numberOfLoadLevels\": \"<number>\",\n  \"relativeAccuracy\": \"<number>\",\n  \"rataFrequencyCode\": \"<string>\",\n  \"overallBiasAdjustmentFactor\": \"<number>\"\n}",
+                                      "createdAt": "2026-07-28T10:59:55.000Z",
+                                      "updatedAt": "2026-07-28T10:59:55.000Z",
+                                      "uid": "35240-5cde41fd-c4ff-445a-94a6-e263f518f112"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T10:59:55.000Z",
+                                  "updatedAt": "2026-07-28T10:59:55.000Z",
+                                  "uid": "35240-6ddf5c05-06a9-45f1-9e77-50362358304d"
+                                }
+                              ],
+                              "id": "b379e2ab-b0c6-4977-80d4-d71cc2b0ff80",
+                              "createdAt": "2026-07-28T10:59:55.000Z",
+                              "updatedAt": "2026-07-28T10:59:55.000Z",
+                              "uid": "35240-b379e2ab-b0c6-4977-80d4-d71cc2b0ff80"
+                            },
+                            {
+                              "name": "Rata Controller get Ratas",
+                              "id": "7d2965cb-d522-4a8f-a69c-d0c2c8599e01",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/rata",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "qa-certification-mgmt",
+                                    "locations",
+                                    ":locId",
+                                    "test-summary",
+                                    ":testSumId",
+                                    "rata"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "c6623ea8-8c6a-4a84-abea-8356f7a14560",
+                                      "key": "locId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "0dc97d6d-d705-4a34-8e01-b7d18ddb8438",
+                                      "key": "testSumId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                }
+                              },
+                              "response": [
+                                {
+                                  "id": "c8b93aee-282a-4ba7-8b2c-2684ce3f4253",
+                                  "name": "Retrieves workspace RATA records by Test Summary Id",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/rata?key=<API Key>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "qa-certification-mgmt",
+                                        "locations",
+                                        ":locId",
+                                        "test-summary",
+                                        ":testSumId",
+                                        "rata"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Added as a part of security scheme: apikey",
+                                          "key": "key",
+                                          "value": "<API Key>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "locId"
+                                        },
+                                        {
+                                          "key": "testSumId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"testSumId\": \"<string>\",\n      \"calculatedRataFrequencyCode\": \"<string>\",\n      \"calculatedRelativeAccuracy\": \"<number>\",\n      \"calculatedOverallBiasAdjustmentFactor\": \"<number>\",\n      \"calculatedNumberOfLoadLevel\": \"<number>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"numberOfLoadLevels\": \"<number>\",\n      \"relativeAccuracy\": \"<number>\",\n      \"rataFrequencyCode\": \"<string>\",\n      \"overallBiasAdjustmentFactor\": \"<number>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"testSumId\": \"<string>\",\n      \"calculatedRataFrequencyCode\": \"<string>\",\n      \"calculatedRelativeAccuracy\": \"<number>\",\n      \"calculatedOverallBiasAdjustmentFactor\": \"<number>\",\n      \"calculatedNumberOfLoadLevel\": \"<number>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"numberOfLoadLevels\": \"<number>\",\n      \"relativeAccuracy\": \"<number>\",\n      \"rataFrequencyCode\": \"<string>\",\n      \"overallBiasAdjustmentFactor\": \"<number>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T10:59:55.000Z",
+                                  "updatedAt": "2026-07-28T10:59:55.000Z",
+                                  "uid": "35240-c8b93aee-282a-4ba7-8b2c-2684ce3f4253"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T10:59:55.000Z",
+                              "updatedAt": "2026-07-28T10:59:55.000Z",
+                              "uid": "35240-7d2965cb-d522-4a8f-a69c-d0c2c8599e01"
+                            }
+                          ],
+                          "id": "94b376e2-6c0a-41c7-861b-c8959827d1e0",
+                          "createdAt": "2026-07-28T10:59:55.000Z",
+                          "updatedAt": "2026-07-28T10:59:55.000Z",
+                          "uid": "35240-94b376e2-6c0a-41c7-861b-c8959827d1e0"
+                        }
+                      ],
+                      "id": "49eb42d1-5556-48c6-ac29-214103192098",
+                      "createdAt": "2026-07-28T10:59:55.000Z",
+                      "updatedAt": "2026-07-28T10:59:55.000Z",
+                      "uid": "35240-49eb42d1-5556-48c6-ac29-214103192098"
+                    }
+                  ],
+                  "id": "590d5c0e-641c-457e-b3c0-5f83f6b317da",
+                  "createdAt": "2026-07-28T10:59:55.000Z",
+                  "updatedAt": "2026-07-28T10:59:55.000Z",
+                  "uid": "35240-590d5c0e-641c-457e-b3c0-5f83f6b317da"
+                }
+              ],
+              "id": "5039cbd0-37c2-4b12-b4dc-c9bed79827e3",
+              "createdAt": "2026-07-28T10:59:55.000Z",
+              "updatedAt": "2026-07-28T10:59:55.000Z",
+              "uid": "35240-5039cbd0-37c2-4b12-b4dc-c9bed79827e3"
+            }
+          ],
+          "id": "fda94dd2-30ac-4ead-ac7e-b950228b179b",
+          "createdAt": "2026-07-28T10:59:55.000Z",
+          "updatedAt": "2026-07-28T10:59:55.000Z",
+          "uid": "35240-fda94dd2-30ac-4ead-ac7e-b950228b179b"
+        }
+      ],
+      "id": "76d0c6cb-5e75-4bbd-8596-8cd9348dad6c",
+      "createdAt": "2026-07-28T10:59:55.000Z",
+      "updatedAt": "2026-07-28T10:59:55.000Z",
+      "uid": "35240-76d0c6cb-5e75-4bbd-8596-8cd9348dad6c"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

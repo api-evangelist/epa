@@ -1,0 +1,326 @@
+{
+  "info": {
+    "_postman_id": "051df8a3-4220-4f89-94c8-efcae86e3633",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Linearity Summary API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:59:22.000Z",
+    "updatedAt": "2026-07-28T10:59:23.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-051df8a3-4220-4f89-94c8-efcae86e3633"
+  },
+  "item": [
+    {
+      "name": "qa-certification-mgmt",
+      "item": [
+        {
+          "name": "locations",
+          "item": [
+            {
+              "name": "{locId}",
+              "item": [
+                {
+                  "name": "test-summary",
+                  "item": [
+                    {
+                      "name": "{testSumId}",
+                      "item": [
+                        {
+                          "name": "linearities",
+                          "item": [
+                            {
+                              "name": "{id}",
+                              "item": [
+                                {
+                                  "name": "Linearity Summary Controller get Linearity Summary",
+                                  "id": "e4780c47-96c5-4831-ad01-f406b146517b",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/linearities/:id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "qa-certification-mgmt",
+                                        "locations",
+                                        ":locId",
+                                        "test-summary",
+                                        ":testSumId",
+                                        "linearities",
+                                        ":id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "155e70e5-8c2f-4cd8-bf28-ee5b61828a74",
+                                          "key": "locId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "781e5851-1b4b-4983-9531-87cd1c979a1a",
+                                          "key": "testSumId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "31b8da79-10dc-419a-ae7f-1741196353d0",
+                                          "key": "id",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "ca750ec8-3d9c-400e-aaa2-410644a0e4c5",
+                                      "name": "Retrieves official Linearity Summary record by its Id",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/linearities/:id?key=<API Key>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "qa-certification-mgmt",
+                                            "locations",
+                                            ":locId",
+                                            "test-summary",
+                                            ":testSumId",
+                                            "linearities",
+                                            ":id"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Added as a part of security scheme: apikey",
+                                              "key": "key",
+                                              "value": "<API Key>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "locId"
+                                            },
+                                            {
+                                              "key": "testSumId"
+                                            },
+                                            {
+                                              "key": "id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"gasLevelCode\": \"<string>\",\n  \"id\": \"<string>\",\n  \"testSumId\": \"<string>\",\n  \"calculatedMeanReferenceValue\": \"<number>\",\n  \"calculatedMeanMeasuredValue\": \"<number>\",\n  \"calculatedPercentError\": \"<number>\",\n  \"calculatedAPSIndicator\": \"<number>\",\n  \"userId\": \"<string>\",\n  \"addDate\": \"<string>\",\n  \"updateDate\": \"<string>\",\n  \"meanMeasuredValue\": \"<number>\",\n  \"meanReferenceValue\": \"<number>\",\n  \"percentError\": \"<number>\",\n  \"apsIndicator\": \"<number>\"\n}",
+                                      "createdAt": "2026-07-28T10:59:23.000Z",
+                                      "updatedAt": "2026-07-28T10:59:23.000Z",
+                                      "uid": "35240-ca750ec8-3d9c-400e-aaa2-410644a0e4c5"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T10:59:23.000Z",
+                                  "updatedAt": "2026-07-28T10:59:23.000Z",
+                                  "uid": "35240-e4780c47-96c5-4831-ad01-f406b146517b"
+                                }
+                              ],
+                              "id": "3182990b-9226-4721-a8e9-9a1468ae51a0",
+                              "createdAt": "2026-07-28T10:59:23.000Z",
+                              "updatedAt": "2026-07-28T10:59:23.000Z",
+                              "uid": "35240-3182990b-9226-4721-a8e9-9a1468ae51a0"
+                            },
+                            {
+                              "name": "Linearity Summary Controller get Linearity Summaries",
+                              "id": "d11186e6-9c7e-400d-8554-2fafe6972c9d",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/linearities",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "qa-certification-mgmt",
+                                    "locations",
+                                    ":locId",
+                                    "test-summary",
+                                    ":testSumId",
+                                    "linearities"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "db6cbdd6-6033-459c-bc99-918c1fd9ec80",
+                                      "key": "locId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "0a1fab73-a689-4e4c-920d-d398c44dc115",
+                                      "key": "testSumId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                }
+                              },
+                              "response": [
+                                {
+                                  "id": "12f240a3-bbd6-496b-8813-b91146ecf627",
+                                  "name": "Retrieves official Linearity Summary records by Test Summary Id",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/linearities?key=<API Key>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "qa-certification-mgmt",
+                                        "locations",
+                                        ":locId",
+                                        "test-summary",
+                                        ":testSumId",
+                                        "linearities"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Added as a part of security scheme: apikey",
+                                          "key": "key",
+                                          "value": "<API Key>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "locId"
+                                        },
+                                        {
+                                          "key": "testSumId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"items\": [\n    {\n      \"gasLevelCode\": \"<string>\",\n      \"id\": \"<string>\",\n      \"testSumId\": \"<string>\",\n      \"calculatedMeanReferenceValue\": \"<number>\",\n      \"calculatedMeanMeasuredValue\": \"<number>\",\n      \"calculatedPercentError\": \"<number>\",\n      \"calculatedAPSIndicator\": \"<number>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"meanMeasuredValue\": \"<number>\",\n      \"meanReferenceValue\": \"<number>\",\n      \"percentError\": \"<number>\",\n      \"apsIndicator\": \"<number>\"\n    },\n    {\n      \"gasLevelCode\": \"<string>\",\n      \"id\": \"<string>\",\n      \"testSumId\": \"<string>\",\n      \"calculatedMeanReferenceValue\": \"<number>\",\n      \"calculatedMeanMeasuredValue\": \"<number>\",\n      \"calculatedPercentError\": \"<number>\",\n      \"calculatedAPSIndicator\": \"<number>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"meanMeasuredValue\": \"<number>\",\n      \"meanReferenceValue\": \"<number>\",\n      \"percentError\": \"<number>\",\n      \"apsIndicator\": \"<number>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T10:59:23.000Z",
+                                  "updatedAt": "2026-07-28T10:59:23.000Z",
+                                  "uid": "35240-12f240a3-bbd6-496b-8813-b91146ecf627"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T10:59:23.000Z",
+                              "updatedAt": "2026-07-28T10:59:23.000Z",
+                              "uid": "35240-d11186e6-9c7e-400d-8554-2fafe6972c9d"
+                            }
+                          ],
+                          "id": "cc4be1d0-4ac6-4bbf-92c2-b28a3bc0c2fd",
+                          "createdAt": "2026-07-28T10:59:23.000Z",
+                          "updatedAt": "2026-07-28T10:59:23.000Z",
+                          "uid": "35240-cc4be1d0-4ac6-4bbf-92c2-b28a3bc0c2fd"
+                        }
+                      ],
+                      "id": "73bd4c39-ed5f-4bb0-b095-5d9741844d83",
+                      "createdAt": "2026-07-28T10:59:23.000Z",
+                      "updatedAt": "2026-07-28T10:59:23.000Z",
+                      "uid": "35240-73bd4c39-ed5f-4bb0-b095-5d9741844d83"
+                    }
+                  ],
+                  "id": "3bf353b2-5e3f-45e4-afe1-1eb4a1063cfd",
+                  "createdAt": "2026-07-28T10:59:23.000Z",
+                  "updatedAt": "2026-07-28T10:59:23.000Z",
+                  "uid": "35240-3bf353b2-5e3f-45e4-afe1-1eb4a1063cfd"
+                }
+              ],
+              "id": "4391b183-cfb7-4bf9-ba62-c00611483aeb",
+              "createdAt": "2026-07-28T10:59:23.000Z",
+              "updatedAt": "2026-07-28T10:59:23.000Z",
+              "uid": "35240-4391b183-cfb7-4bf9-ba62-c00611483aeb"
+            }
+          ],
+          "id": "89d9b185-94c4-432c-8442-d67755c146b5",
+          "createdAt": "2026-07-28T10:59:23.000Z",
+          "updatedAt": "2026-07-28T10:59:23.000Z",
+          "uid": "35240-89d9b185-94c4-432c-8442-d67755c146b5"
+        }
+      ],
+      "id": "0715b56d-17a2-4d53-b121-e346ec342841",
+      "createdAt": "2026-07-28T10:59:23.000Z",
+      "updatedAt": "2026-07-28T10:59:23.000Z",
+      "uid": "35240-0715b56d-17a2-4d53-b121-e346ec342841"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

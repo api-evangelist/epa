@@ -1,0 +1,145 @@
+{
+  "info": {
+    "_postman_id": "cc225595-12ce-42e6-a172-28feeab3fd49",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Reporting Periods API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T11:00:09.000Z",
+    "updatedAt": "2026-07-28T11:00:09.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-cc225595-12ce-42e6-a172-28feeab3fd49"
+  },
+  "item": [
+    {
+      "name": "master-data-mgmt",
+      "item": [
+        {
+          "name": "reporting-periods",
+          "item": [
+            {
+              "name": "Reporting Period Controller get Reporting Periods",
+              "id": "94ece3d0-64aa-41c4-9f6a-e7c783c56f25",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/master-data-mgmt/reporting-periods?export=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "master-data-mgmt",
+                    "reporting-periods"
+                  ],
+                  "query": [
+                    {
+                      "key": "export",
+                      "value": "<boolean>"
+                    }
+                  ]
+                },
+                "description": "Returns a list of Reporting Periods."
+              },
+              "response": [
+                {
+                  "id": "c1fd2d3c-06b4-4f23-abeb-92bf0faf7a9a",
+                  "name": "Data retrieved successfully",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/master-data-mgmt/reporting-periods?export=<boolean>&key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "master-data-mgmt",
+                        "reporting-periods"
+                      ],
+                      "query": [
+                        {
+                          "key": "export",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"items\": [\n    {\n      \"id\": \"<number>\",\n      \"calendarYear\": \"<number>\",\n      \"quarter\": \"<number>\",\n      \"beginDate\": \"<dateTime>\",\n      \"endDate\": \"<dateTime>\",\n      \"periodDescription\": \"<string>\",\n      \"periodAbbreviation\": \"<string>\",\n      \"archiveInd\": \"<number>\"\n    },\n    {\n      \"id\": \"<number>\",\n      \"calendarYear\": \"<number>\",\n      \"quarter\": \"<number>\",\n      \"beginDate\": \"<dateTime>\",\n      \"endDate\": \"<dateTime>\",\n      \"periodDescription\": \"<string>\",\n      \"periodAbbreviation\": \"<string>\",\n      \"archiveInd\": \"<number>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T11:00:09.000Z",
+                  "updatedAt": "2026-07-28T11:00:09.000Z",
+                  "uid": "35240-c1fd2d3c-06b4-4f23-abeb-92bf0faf7a9a"
+                }
+              ],
+              "createdAt": "2026-07-28T11:00:09.000Z",
+              "updatedAt": "2026-07-28T11:00:09.000Z",
+              "uid": "35240-94ece3d0-64aa-41c4-9f6a-e7c783c56f25"
+            }
+          ],
+          "id": "a5885dba-317d-4120-9249-81ec977bdfa5",
+          "createdAt": "2026-07-28T11:00:09.000Z",
+          "updatedAt": "2026-07-28T11:00:09.000Z",
+          "uid": "35240-a5885dba-317d-4120-9249-81ec977bdfa5"
+        }
+      ],
+      "id": "07c423d1-20e0-4117-91a6-e17ec9e52a4f",
+      "createdAt": "2026-07-28T11:00:09.000Z",
+      "updatedAt": "2026-07-28T11:00:09.000Z",
+      "uid": "35240-07c423d1-20e0-4117-91a6-e17ec9e52a4f"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

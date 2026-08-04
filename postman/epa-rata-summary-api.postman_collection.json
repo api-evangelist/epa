@@ -1,0 +1,370 @@
+{
+  "info": {
+    "_postman_id": "a588c3a8-39e5-431c-98e4-a5afbdd55284",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Rata Summary API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:59:57.000Z",
+    "updatedAt": "2026-07-28T10:59:57.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a588c3a8-39e5-431c-98e4-a5afbdd55284"
+  },
+  "item": [
+    {
+      "name": "qa-certification-mgmt",
+      "item": [
+        {
+          "name": "locations",
+          "item": [
+            {
+              "name": "{locId}",
+              "item": [
+                {
+                  "name": "test-summary",
+                  "item": [
+                    {
+                      "name": "{testSumId}",
+                      "item": [
+                        {
+                          "name": "rata",
+                          "item": [
+                            {
+                              "name": "{rataId}",
+                              "item": [
+                                {
+                                  "name": "rata-summaries",
+                                  "item": [
+                                    {
+                                      "name": "{id}",
+                                      "item": [
+                                        {
+                                          "name": "Rata Summary Controller get Rata Summary",
+                                          "id": "8edbd612-1c26-4f8f-80c7-a19e6e94c28a",
+                                          "protocolProfileBehavior": {
+                                            "disableBodyPruning": true
+                                          },
+                                          "request": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/rata/:rataId/rata-summaries/:id",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "qa-certification-mgmt",
+                                                "locations",
+                                                ":locId",
+                                                "test-summary",
+                                                ":testSumId",
+                                                "rata",
+                                                ":rataId",
+                                                "rata-summaries",
+                                                ":id"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "id": "35c46f4e-b847-449c-a6f3-583f2bc52069",
+                                                  "key": "locId",
+                                                  "value": "<string>",
+                                                  "description": "(Required) "
+                                                },
+                                                {
+                                                  "id": "ff71e686-08fa-4d1c-9121-56fcd1e1b060",
+                                                  "key": "testSumId",
+                                                  "value": "<string>",
+                                                  "description": "(Required) "
+                                                },
+                                                {
+                                                  "id": "54f0ba80-d210-4bef-8c5e-def5f4bc959b",
+                                                  "key": "rataId",
+                                                  "value": "<string>",
+                                                  "description": "(Required) "
+                                                },
+                                                {
+                                                  "id": "c3a988ba-b36e-4062-8af3-b53c1d404642",
+                                                  "key": "id",
+                                                  "value": "<string>",
+                                                  "description": "(Required) "
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "response": [
+                                            {
+                                              "id": "298a50c1-d5d0-4ad9-90fe-1b0a0a4f8cf6",
+                                              "name": "Retrieves an official Rata Summary record.",
+                                              "originalRequest": {
+                                                "method": "GET",
+                                                "header": [
+                                                  {
+                                                    "key": "Accept",
+                                                    "value": "application/json"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/rata/:rataId/rata-summaries/:id?key=<API Key>",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "qa-certification-mgmt",
+                                                    "locations",
+                                                    ":locId",
+                                                    "test-summary",
+                                                    ":testSumId",
+                                                    "rata",
+                                                    ":rataId",
+                                                    "rata-summaries",
+                                                    ":id"
+                                                  ],
+                                                  "query": [
+                                                    {
+                                                      "description": "Added as a part of security scheme: apikey",
+                                                      "key": "key",
+                                                      "value": "<API Key>"
+                                                    }
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "locId"
+                                                    },
+                                                    {
+                                                      "key": "testSumId"
+                                                    },
+                                                    {
+                                                      "key": "rataId"
+                                                    },
+                                                    {
+                                                      "key": "id"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "OK",
+                                              "code": 200,
+                                              "_postman_previewlanguage": "json",
+                                              "header": [
+                                                {
+                                                  "key": "Content-Type",
+                                                  "value": "application/json"
+                                                }
+                                              ],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": "{\n  \"operatingLevelCode\": \"<string>\",\n  \"id\": \"<string>\",\n  \"rataId\": \"<string>\",\n  \"calculatedAverageGrossUnitLoad\": \"<number>\",\n  \"calculatedMeanCEMValue\": \"<number>\",\n  \"calculatedMeanRATAReferenceValue\": \"<number>\",\n  \"calculatedMeanDifference\": \"<number>\",\n  \"calculatedStandardDeviationDifference\": \"<number>\",\n  \"calculatedConfidenceCoefficient\": \"<number>\",\n  \"calculatedTValue\": \"<number>\",\n  \"calculatedApsIndicator\": \"<number>\",\n  \"calculatedRelativeAccuracy\": \"<number>\",\n  \"calculatedBiasAdjustmentFactor\": \"<number>\",\n  \"calculatedStackArea\": \"<number>\",\n  \"calculatedCalculatedWAF\": \"<number>\",\n  \"userId\": \"<string>\",\n  \"addDate\": \"<string>\",\n  \"updateDate\": \"<string>\",\n  \"averageGrossUnitLoad\": \"<number>\",\n  \"referenceMethodCode\": \"<string>\",\n  \"meanCEMValue\": \"<number>\",\n  \"meanRATAReferenceValue\": \"<number>\",\n  \"meanDifference\": \"<number>\",\n  \"standardDeviationDifference\": \"<number>\",\n  \"confidenceCoefficient\": \"<number>\",\n  \"tValue\": \"<number>\",\n  \"apsIndicator\": \"<number>\",\n  \"apsCode\": \"<string>\",\n  \"relativeAccuracy\": \"<number>\",\n  \"biasAdjustmentFactor\": \"<number>\",\n  \"co2OrO2ReferenceMethodCode\": \"<string>\",\n  \"stackDiameter\": \"<number>\",\n  \"stackArea\": \"<number>\",\n  \"numberOfTraversePoints\": \"<number>\",\n  \"calculatedWAF\": \"<number>\",\n  \"defaultWAF\": \"<number>\"\n}",
+                                              "createdAt": "2026-07-28T10:59:58.000Z",
+                                              "updatedAt": "2026-07-28T10:59:58.000Z",
+                                              "uid": "35240-298a50c1-d5d0-4ad9-90fe-1b0a0a4f8cf6"
+                                            }
+                                          ],
+                                          "createdAt": "2026-07-28T10:59:58.000Z",
+                                          "updatedAt": "2026-07-28T10:59:58.000Z",
+                                          "uid": "35240-8edbd612-1c26-4f8f-80c7-a19e6e94c28a"
+                                        }
+                                      ],
+                                      "id": "42110ba2-7025-4ca5-8d6f-1a4c9eb594e1",
+                                      "createdAt": "2026-07-28T10:59:58.000Z",
+                                      "updatedAt": "2026-07-28T10:59:58.000Z",
+                                      "uid": "35240-42110ba2-7025-4ca5-8d6f-1a4c9eb594e1"
+                                    },
+                                    {
+                                      "name": "Rata Summary Controller et Rata Summaries",
+                                      "id": "1ee8a4f0-ca34-42fe-a3fb-a1f7770efe55",
+                                      "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                      },
+                                      "request": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/rata/:rataId/rata-summaries",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "qa-certification-mgmt",
+                                            "locations",
+                                            ":locId",
+                                            "test-summary",
+                                            ":testSumId",
+                                            "rata",
+                                            ":rataId",
+                                            "rata-summaries"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "id": "e8e27f3d-8328-4ec8-bf48-e6b229c090a8",
+                                              "key": "locId",
+                                              "value": "<string>",
+                                              "description": "(Required) "
+                                            },
+                                            {
+                                              "id": "278c2b25-01f5-4d22-9f82-fbf6657c991e",
+                                              "key": "testSumId",
+                                              "value": "<string>",
+                                              "description": "(Required) "
+                                            },
+                                            {
+                                              "id": "2a55f9de-174e-4fcf-aa1a-3392664ca822",
+                                              "key": "rataId",
+                                              "value": "<string>",
+                                              "description": "(Required) "
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "response": [
+                                        {
+                                          "id": "570526d5-6a33-45d7-96af-7535b020c043",
+                                          "name": "Retrieves official Rata Summary records.",
+                                          "originalRequest": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/rata/:rataId/rata-summaries?key=<API Key>",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "qa-certification-mgmt",
+                                                "locations",
+                                                ":locId",
+                                                "test-summary",
+                                                ":testSumId",
+                                                "rata",
+                                                ":rataId",
+                                                "rata-summaries"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "Added as a part of security scheme: apikey",
+                                                  "key": "key",
+                                                  "value": "<API Key>"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "locId"
+                                                },
+                                                {
+                                                  "key": "testSumId"
+                                                },
+                                                {
+                                                  "key": "rataId"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "OK",
+                                          "code": 200,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"items\": [\n    {\n      \"operatingLevelCode\": \"<string>\",\n      \"rataRunData\": [\n        {\n          \"flowRataRunData\": [\n            {\n              \"rataTraverseData\": [\n                {\n                  \"id\": \"<string>\",\n                  \"flowRataRunId\": \"<string>\",\n                  \"calculatedCalculatedVelocity\": \"<number>\",\n                  \"userId\": \"<string>\",\n                  \"addDate\": \"<string>\",\n                  \"updateDate\": \"<string>\",\n                  \"probeId\": \"<string>\",\n                  \"probeTypeCode\": \"<string>\",\n                  \"pressureMeasureCode\": \"<string>\",\n                  \"methodTraversePointId\": \"<string>\",\n                  \"velocityCalibrationCoefficient\": \"<number>\",\n                  \"lastProbeDate\": \"<dateTime>\",\n                  \"tStackTemperature\": \"<number>\",\n                  \"averageVelocityDifferencePressure\": \"<number>\",\n                  \"averageSquareVelocityDifferencePressure\": \"<number>\",\n                  \"pointUsedIndicator\": \"<number>\",\n                  \"numberWallEffectsPoints\": \"<number>\",\n                  \"yawAngle\": \"<number>\",\n                  \"pitchAngle\": \"<number>\",\n                  \"calculatedVelocity\": \"<number>\",\n                  \"replacementVelocity\": \"<number>\"\n                },\n                {\n                  \"id\": \"<string>\",\n                  \"flowRataRunId\": \"<string>\",\n                  \"calculatedCalculatedVelocity\": \"<number>\",\n                  \"userId\": \"<string>\",\n                  \"addDate\": \"<string>\",\n                  \"updateDate\": \"<string>\",\n                  \"probeId\": \"<string>\",\n                  \"probeTypeCode\": \"<string>\",\n                  \"pressureMeasureCode\": \"<string>\",\n                  \"methodTraversePointId\": \"<string>\",\n                  \"velocityCalibrationCoefficient\": \"<number>\",\n                  \"lastProbeDate\": \"<dateTime>\",\n                  \"tStackTemperature\": \"<number>\",\n                  \"averageVelocityDifferencePressure\": \"<number>\",\n                  \"averageSquareVelocityDifferencePressure\": \"<number>\",\n                  \"pointUsedIndicator\": \"<number>\",\n                  \"numberWallEffectsPoints\": \"<number>\",\n                  \"yawAngle\": \"<number>\",\n                  \"pitchAngle\": \"<number>\",\n                  \"calculatedVelocity\": \"<number>\",\n                  \"replacementVelocity\": \"<number>\"\n                }\n              ],\n              \"id\": \"<string>\",\n              \"rataRunId\": \"<string>\",\n              \"calculatedDryMolecularWeight\": \"<number>\",\n              \"calculatedWetMolecularWeight\": \"<number>\",\n              \"calculatedAverageVelocityWithoutWallEffects\": \"<number>\",\n              \"calculatedAverageVelocityWithWallEffects\": \"<number>\",\n              \"calculatedCalculatedWAF\": \"<number>\",\n              \"userId\": \"<string>\",\n              \"addDate\": \"<string>\",\n              \"updateDate\": \"<string>\",\n              \"numberOfTraversePoints\": \"<number>\",\n              \"barometricPressure\": \"<number>\",\n              \"staticStackPressure\": \"<number>\",\n              \"percentCO2\": \"<number>\",\n              \"percentO2\": \"<number>\",\n              \"percentMoisture\": \"<number>\",\n              \"wetMolecularWeight\": \"<number>\",\n              \"averageVelocityWithoutWallEffects\": \"<number>\",\n              \"averageStackFlowRate\": \"<number>\",\n              \"dryMolecularWeight\": \"<number>\",\n              \"averageVelocityWithWallEffects\": \"<number>\",\n              \"calculatedWAF\": \"<number>\"\n            },\n            {\n              \"rataTraverseData\": [\n                {\n                  \"id\": \"<string>\",\n                  \"flowRataRunId\": \"<string>\",\n                  \"calculatedCalculatedVelocity\": \"<number>\",\n                  \"userId\": \"<string>\",\n                  \"addDate\": \"<string>\",\n                  \"updateDate\": \"<string>\",\n                  \"probeId\": \"<string>\",\n                  \"probeTypeCode\": \"<string>\",\n                  \"pressureMeasureCode\": \"<string>\",\n                  \"methodTraversePointId\": \"<string>\",\n                  \"velocityCalibrationCoefficient\": \"<number>\",\n                  \"lastProbeDate\": \"<dateTime>\",\n                  \"tStackTemperature\": \"<number>\",\n                  \"averageVelocityDifferencePressure\": \"<number>\",\n                  \"averageSquareVelocityDifferencePressure\": \"<number>\",\n                  \"pointUsedIndicator\": \"<number>\",\n                  \"numberWallEffectsPoints\": \"<number>\",\n                  \"yawAngle\": \"<number>\",\n                  \"pitchAngle\": \"<number>\",\n                  \"calculatedVelocity\": \"<number>\",\n                  \"replacementVelocity\": \"<number>\"\n                },\n                {\n                  \"id\": \"<string>\",\n                  \"flowRataRunId\": \"<string>\",\n                  \"calculatedCalculatedVelocity\": \"<number>\",\n                  \"userId\": \"<string>\",\n                  \"addDate\": \"<string>\",\n                  \"updateDate\": \"<string>\",\n                  \"probeId\": \"<string>\",\n                  \"probeTypeCode\": \"<string>\",\n                  \"pressureMeasureCode\": \"<string>\",\n                  \"methodTraversePointId\": \"<string>\",\n                  \"velocityCalibrationCoefficient\": \"<number>\",\n                  \"lastProbeDate\": \"<dateTime>\",\n                  \"tStackTemperature\": \"<number>\",\n                  \"averageVelocityDifferencePressure\": \"<number>\",\n                  \"averageSquareVelocityDifferencePressure\": \"<number>\",\n                  \"pointUsedIndicator\": \"<number>\",\n                  \"numberWallEffectsPoints\": \"<number>\",\n                  \"yawAngle\": \"<number>\",\n                  \"pitchAngle\": \"<number>\",\n                  \"calculatedVelocity\": \"<number>\",\n                  \"replacementVelocity\": \"<number>\"\n                }\n              ],\n              \"id\": \"<string>\",\n              \"rataRunId\": \"<string>\",\n              \"calculatedDryMolecularWeight\": \"<number>\",\n              \"calculatedWetMolecularWeight\": \"<number>\",\n              \"calculatedAverageVelocityWithoutWallEffects\": \"<number>\",\n              \"calculatedAverageVelocityWithWallEffects\": \"<number>\",\n              \"calculatedCalculatedWAF\": \"<number>\",\n              \"userId\": \"<string>\",\n              \"addDate\": \"<string>\",\n              \"updateDate\": \"<string>\",\n              \"numberOfTraversePoints\": \"<number>\",\n              \"barometricPressure\": \"<number>\",\n              \"staticStackPressure\": \"<number>\",\n              \"percentCO2\": \"<number>\",\n              \"percentO2\": \"<number>\",\n              \"percentMoisture\": \"<number>\",\n              \"wetMolecularWeight\": \"<number>\",\n              \"averageVelocityWithoutWallEffects\": \"<number>\",\n              \"averageStackFlowRate\": \"<number>\",\n              \"dryMolecularWeight\": \"<number>\",\n              \"averageVelocityWithWallEffects\": \"<number>\",\n              \"calculatedWAF\": \"<number>\"\n            }\n          ],\n          \"id\": \"<string>\",\n          \"rataSumId\": \"<string>\",\n          \"calculatedRataReferenceValue\": \"<number>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"runNumber\": \"<number>\",\n          \"beginDate\": \"<dateTime>\",\n          \"beginHour\": \"<number>\",\n          \"beginMinute\": \"<number>\",\n          \"endDate\": \"<dateTime>\",\n          \"endHour\": \"<number>\",\n          \"endMinute\": \"<number>\",\n          \"runStatusCode\": \"<string>\",\n          \"cemValue\": \"<number>\",\n          \"rataReferenceValue\": \"<number>\",\n          \"grossUnitLoad\": \"<number>\"\n        },\n        {\n          \"flowRataRunData\": [\n            {\n              \"rataTraverseData\": [\n                {\n                  \"id\": \"<string>\",\n                  \"flowRataRunId\": \"<string>\",\n                  \"calculatedCalculatedVelocity\": \"<number>\",\n                  \"userId\": \"<string>\",\n                  \"addDate\": \"<string>\",\n                  \"updateDate\": \"<string>\",\n                  \"probeId\": \"<string>\",\n                  \"probeTypeCode\": \"<string>\",\n                  \"pressureMeasureCode\": \"<string>\",\n                  \"methodTraversePointId\": \"<string>\",\n                  \"velocityCalibrationCoefficient\": \"<number>\",\n                  \"lastProbeDate\": \"<dateTime>\",\n                  \"tStackTemperature\": \"<number>\",\n                  \"averageVelocityDifferencePressure\": \"<number>\",\n                  \"averageSquareVelocityDifferencePressure\": \"<number>\",\n                  \"pointUsedIndicator\": \"<number>\",\n                  \"numberWallEffectsPoints\": \"<number>\",\n                  \"yawAngle\": \"<number>\",\n                  \"pitchAngle\": \"<number>\",\n                  \"calculatedVelocity\": \"<number>\",\n                  \"replacementVelocity\": \"<number>\"\n                },\n                {\n                  \"id\": \"<string>\",\n                  \"flowRataRunId\": \"<string>\",\n                  \"calculatedCalculatedVelocity\": \"<number>\",\n                  \"userId\": \"<string>\",\n                  \"addDate\": \"<string>\",\n                  \"updateDate\": \"<string>\",\n                  \"probeId\": \"<string>\",\n                  \"probeTypeCode\": \"<string>\",\n                  \"pressureMeasureCode\": \"<string>\",\n                  \"methodTraversePointId\": \"<string>\",\n                  \"velocityCalibrationCoefficient\": \"<number>\",\n                  \"lastProbeDate\": \"<dateTime>\",\n                  \"tStackTemperature\": \"<number>\",\n                  \"averageVelocityDifferencePressure\": \"<number>\",\n                  \"averageSquareVelocityDifferencePressure\": \"<number>\",\n                  \"pointUsedIndicator\": \"<number>\",\n                  \"numberWallEffectsPoints\": \"<number>\",\n                  \"yawAngle\": \"<number>\",\n                  \"pitchAngle\": \"<number>\",\n                  \"calculatedVelocity\": \"<number>\",\n                  \"replacementVelocity\": \"<number>\"\n                }\n              ],\n              \"id\": \"<string>\",\n              \"rataRunId\": \"<string>\",\n              \"calculatedDryMolecularWeight\": \"<number>\",\n              \"calculatedWetMolecularWeight\": \"<number>\",\n              \"calculatedAverageVelocityWithoutWallEffects\": \"<number>\",\n              \"calculatedAverageVelocityWithWallEffects\": \"<number>\",\n              \"calculatedCalculatedWAF\": \"<number>\",\n              \"userId\": \"<string>\",\n              \"addDate\": \"<string>\",\n              \"updateDate\": \"<string>\",\n              \"numberOfTraversePoints\": \"<number>\",\n              \"barometricPressure\": \"<number>\",\n              \"staticStackPressure\": \"<number>\",\n              \"percentCO2\": \"<number>\",\n              \"percentO2\": \"<number>\",\n              \"percentMoisture\": \"<number>\",\n              \"wetMolecularWeight\": \"<number>\",\n              \"averageVelocityWithoutWallEffects\": \"<number>\",\n              \"averageStackFlowRate\": \"<number>\",\n              \"dryMolecularWeight\": \"<number>\",\n              \"averageVelocityWithWallEffects\": \"<number>\",\n              \"calculatedWAF\": \"<number>\"\n            },\n            {\n              \"rataTraverseData\": [\n                {\n                  \"id\": \"<string>\",\n                  \"flowRataRunId\": \"<string>\",\n                  \"calculatedCalculatedVelocity\": \"<number>\",\n                  \"userId\": \"<string>\",\n                  \"addDate\": \"<string>\",\n                  \"updateDate\": \"<string>\",\n                  \"probeId\": \"<string>\",\n                  \"probeTypeCode\": \"<string>\",\n                  \"pressureMeasureCode\": \"<string>\",\n                  \"methodTraversePointId\": \"<string>\",\n                  \"velocityCalibrationCoefficient\": \"<number>\",\n                  \"lastProbeDate\": \"<dateTime>\",\n                  \"tStackTemperature\": \"<number>\",\n                  \"averageVelocityDifferencePressure\": \"<number>\",\n                  \"averageSquareVelocityDifferencePressure\": \"<number>\",\n                  \"pointUsedIndicator\": \"<number>\",\n                  \"numberWallEffectsPoints\": \"<number>\",\n                  \"yawAngle\": \"<number>\",\n                  \"pitchAngle\": \"<number>\",\n                  \"calculatedVelocity\": \"<number>\",\n                  \"replacementVelocity\": \"<number>\"\n                },\n                {\n                  \"id\": \"<string>\",\n                  \"flowRataRunId\": \"<string>\",\n                  \"calculatedCalculatedVelocity\": \"<number>\",\n                  \"userId\": \"<string>\",\n                  \"addDate\": \"<string>\",\n                  \"updateDate\": \"<string>\",\n                  \"probeId\": \"<string>\",\n                  \"probeTypeCode\": \"<string>\",\n                  \"pressureMeasureCode\": \"<string>\",\n                  \"methodTraversePointId\": \"<string>\",\n                  \"velocityCalibrationCoefficient\": \"<number>\",\n                  \"lastProbeDate\": \"<dateTime>\",\n                  \"tStackTemperature\": \"<number>\",\n                  \"averageVelocityDifferencePressure\": \"<number>\",\n                  \"averageSquareVelocityDifferencePressure\": \"<number>\",\n                  \"pointUsedIndicator\": \"<number>\",\n                  \"numberWallEffectsPoints\": \"<number>\",\n                  \"yawAngle\": \"<number>\",\n                  \"pitchAngle\": \"<number>\",\n                  \"calculatedVelocity\": \"<number>\",\n                  \"replacementVelocity\": \"<number>\"\n                }\n              ],\n              \"id\": \"<string>\",\n              \"rataRunId\": \"<string>\",\n              \"calculatedDryMolecularWeight\": \"<number>\",\n              \"calculatedWetMolecularWeight\": \"<number>\",\n              \"calculatedAverageVelocityWithoutWallEffects\": \"<number>\",\n              \"calculatedAverageVelocityWithWallEffects\": \"<number>\",\n              \"calculatedCalculatedWAF\": \"<number>\",\n              \"userId\": \"<string>\",\n              \"addDate\": \"<string>\",\n              \"updateDate\": \"<string>\",\n              \"numberOfTraversePoints\": \"<number>\",\n              \"barometricPressure\": \"<number>\",\n              \"staticStackPressure\": \"<number>\",\n              \"percentCO2\": \"<number>\",\n              \"percentO2\": \"<number>\",\n              \"percentMoisture\": \"<number>\",\n              \"wetMolecularWeight\": \"<number>\",\n              \"averageVelocityWithoutWallEffects\": \"<number>\",\n              \"averageStackFlowRate\": \"<number>\",\n              \"dryMolecularWeight\": \"<number>\",\n              \"averageVelocityWithWallEffects\": \"<number>\",\n              \"calculatedWAF\": \"<number>\"\n            }\n          ],\n          \"id\": \"<string>\",\n          \"rataSumId\": \"<string>\",\n          \"calculatedRataReferenceValue\": \"<number>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"runNumber\": \"<number>\",\n          \"beginDate\": \"<dateTime>\",\n          \"beginHour\": \"<number>\",\n          \"beginMinute\": \"<number>\",\n          \"endDate\": \"<dateTime>\",\n          \"endHour\": \"<number>\",\n          \"endMinute\": \"<number>\",\n          \"runStatusCode\": \"<string>\",\n          \"cemValue\": \"<number>\",\n          \"rataReferenceValue\": \"<number>\",\n          \"grossUnitLoad\": \"<number>\"\n        }\n      ],\n      \"id\": \"<string>\",\n      \"rataId\": \"<string>\",\n      \"calculatedAverageGrossUnitLoad\": \"<number>\",\n      \"calculatedMeanCEMValue\": \"<number>\",\n      \"calculatedMeanRATAReferenceValue\": \"<number>\",\n      \"calculatedMeanDifference\": \"<number>\",\n      \"calculatedStandardDeviationDifference\": \"<number>\",\n      \"calculatedConfidenceCoefficient\": \"<number>\",\n      \"calculatedTValue\": \"<number>\",\n      \"calculatedApsIndicator\": \"<number>\",\n      \"calculatedRelativeAccuracy\": \"<number>\",\n      \"calculatedBiasAdjustmentFactor\": \"<number>\",\n      \"calculatedStackArea\": \"<number>\",\n      \"calculatedCalculatedWAF\": \"<number>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"averageGrossUnitLoad\": \"<number>\",\n      \"referenceMethodCode\": \"<string>\",\n      \"meanCEMValue\": \"<number>\",\n      \"meanRATAReferenceValue\": \"<number>\",\n      \"meanDifference\": \"<number>\",\n      \"standardDeviationDifference\": \"<number>\",\n      \"confidenceCoefficient\": \"<number>\",\n      \"tValue\": \"<number>\",\n      \"apsIndicator\": \"<number>\",\n      \"apsCode\": \"<string>\",\n      \"relativeAccuracy\": \"<number>\",\n      \"biasAdjustmentFactor\": \"<number>\",\n      \"co2OrO2ReferenceMethodCode\": \"<string>\",\n      \"stackDiameter\": \"<number>\",\n      \"stackArea\": \"<number>\",\n      \"numberOfTraversePoints\": \"<number>\",\n      \"calculatedWAF\": \"<number>\",\n      \"defaultWAF\": \"<number>\"\n    },\n    {\n      \"operatingLevelCode\": \"<string>\",\n      \"rataRunData\": [\n        {\n          \"flowRataRunData\": [\n            {\n              \"rataTraverseData\": [\n                {\n                  \"id\": \"<string>\",\n                  \"flowRataRunId\": \"<string>\",\n                  \"calculatedCalculatedVelocity\": \"<number>\",\n                  \"userId\": \"<string>\",\n                  \"addDate\": \"<string>\",\n                  \"updateDate\": \"<string>\",\n                  \"probeId\": \"<string>\",\n                  \"probeTypeCode\": \"<string>\",\n                  \"pressureMeasureCode\": \"<string>\",\n                  \"methodTraversePointId\": \"<string>\",\n                  \"velocityCalibrationCoefficient\": \"<number>\",\n                  \"lastProbeDate\": \"<dateTime>\",\n                  \"tStackTemperature\": \"<number>\",\n                  \"averageVelocityDifferencePressure\": \"<number>\",\n                  \"averageSquareVelocityDifferencePressure\": \"<number>\",\n                  \"pointUsedIndicator\": \"<number>\",\n                  \"numberWallEffectsPoints\": \"<number>\",\n                  \"yawAngle\": \"<number>\",\n                  \"pitchAngle\": \"<number>\",\n                  \"calculatedVelocity\": \"<number>\",\n                  \"replacementVelocity\": \"<number>\"\n                },\n                {\n                  \"id\": \"<string>\",\n                  \"flowRataRunId\": \"<string>\",\n                  \"calculatedCalculatedVelocity\": \"<number>\",\n                  \"userId\": \"<string>\",\n                  \"addDate\": \"<string>\",\n                  \"updateDate\": \"<string>\",\n                  \"probeId\": \"<string>\",\n                  \"probeTypeCode\": \"<string>\",\n                  \"pressureMeasureCode\": \"<string>\",\n                  \"methodTraversePointId\": \"<string>\",\n                  \"velocityCalibrationCoefficient\": \"<number>\",\n                  \"lastProbeDate\": \"<dateTime>\",\n                  \"tStackTemperature\": \"<number>\",\n                  \"averageVelocityDifferencePressure\": \"<number>\",\n                  \"averageSquareVelocityDifferencePressure\": \"<number>\",\n                  \"pointUsedIndicator\": \"<number>\",\n                  \"numberWallEffectsPoints\": \"<number>\",\n                  \"yawAngle\": \"<number>\",\n                  \"pitchAngle\": \"<number>\",\n                  \"calculatedVelocity\": \"<number>\",\n                  \"replacementVelocity\": \"<number>\"\n                }\n              ],\n              \"id\": \"<string>\",\n              \"rataRunId\": \"<string>\",\n              \"calculatedDryMolecularWeight\": \"<number>\",\n              \"calculatedWetMolecularWeight\": \"<number>\",\n              \"calculatedAverageVelocityWithoutWallEffects\": \"<number>\",\n              \"calculatedAverageVelocityWithWallEffects\": \"<number>\",\n              \"calculatedCalculatedWAF\": \"<number>\",\n              \"userId\": \"<string>\",\n              \"addDate\": \"<string>\",\n              \"updateDate\": \"<string>\",\n              \"numberOfTraversePoints\": \"<number>\",\n              \"barometricPressure\": \"<number>\",\n              \"staticStackPressure\": \"<number>\",\n              \"percentCO2\": \"<number>\",\n              \"percentO2\": \"<number>\",\n              \"percentMoisture\": \"<number>\",\n              \"wetMolecularWeight\": \"<number>\",\n              \"averageVelocityWithoutWallEffects\": \"<number>\",\n              \"averageStackFlowRate\": \"<number>\",\n              \"dryMolecularWeight\": \"<number>\",\n              \"averageVelocityWithWallEffects\": \"<number>\",\n              \"calculatedWAF\": \"<number>\"\n            },\n            {\n              \"rataTraverseData\": [\n                {\n                  \"id\": \"<string>\",\n                  \"flowRataRunId\": \"<string>\",\n                  \"calculatedCalculatedVelocity\": \"<number>\",\n                  \"userId\": \"<string>\",\n                  \"addDate\": \"<string>\",\n                  \"updateDate\": \"<string>\",\n                  \"probeId\": \"<string>\",\n                  \"probeTypeCode\": \"<string>\",\n                  \"pressureMeasureCode\": \"<string>\",\n                  \"methodTraversePointId\": \"<string>\",\n                  \"velocityCalibrationCoefficient\": \"<number>\",\n                  \"lastProbeDate\": \"<dateTime>\",\n                  \"tStackTemperature\": \"<number>\",\n                  \"averageVelocityDifferencePressure\": \"<number>\",\n                  \"averageSquareVelocityDifferencePressure\": \"<number>\",\n                  \"pointUsedIndicator\": \"<number>\",\n                  \"numberWallEffectsPoints\": \"<number>\",\n                  \"yawAngle\": \"<number>\",\n                  \"pitchAngle\": \"<number>\",\n                  \"calculatedVelocity\": \"<number>\",\n                  \"replacementVelocity\": \"<number>\"\n                },\n                {\n                  \"id\": \"<string>\",\n                  \"flowRataRunId\": \"<string>\",\n                  \"calculatedCalculatedVelocity\": \"<number>\",\n                  \"userId\": \"<string>\",\n                  \"addDate\": \"<string>\",\n                  \"updateDate\": \"<string>\",\n                  \"probeId\": \"<string>\",\n                  \"probeTypeCode\": \"<string>\",\n                  \"pressureMeasureCode\": \"<string>\",\n                  \"methodTraversePointId\": \"<string>\",\n                  \"velocityCalibrationCoefficient\": \"<number>\",\n                  \"lastProbeDate\": \"<dateTime>\",\n                  \"tStackTemperature\": \"<number>\",\n                  \"averageVelocityDifferencePressure\": \"<number>\",\n                  \"averageSquareVelocityDifferencePressure\": \"<number>\",\n                  \"pointUsedIndicator\": \"<number>\",\n                  \"numberWallEffectsPoints\": \"<number>\",\n                  \"yawAngle\": \"<number>\",\n                  \"pitchAngle\": \"<number>\",\n                  \"calculatedVelocity\": \"<number>\",\n                  \"replacementVelocity\": \"<number>\"\n                }\n              ],\n              \"id\": \"<string>\",\n              \"rataRunId\": \"<string>\",\n              \"calculatedDryMolecularWeight\": \"<number>\",\n              \"calculatedWetMolecularWeight\": \"<number>\",\n              \"calculatedAverageVelocityWithoutWallEffects\": \"<number>\",\n              \"calculatedAverageVelocityWithWallEffects\": \"<number>\",\n              \"calculatedCalculatedWAF\": \"<number>\",\n              \"userId\": \"<string>\",\n              \"addDate\": \"<string>\",\n              \"updateDate\": \"<string>\",\n              \"numberOfTraversePoints\": \"<number>\",\n              \"barometricPressure\": \"<number>\",\n              \"staticStackPressure\": \"<number>\",\n              \"percentCO2\": \"<number>\",\n              \"percentO2\": \"<number>\",\n              \"percentMoisture\": \"<number>\",\n              \"wetMolecularWeight\": \"<number>\",\n              \"averageVelocityWithoutWallEffects\": \"<number>\",\n              \"averageStackFlowRate\": \"<number>\",\n              \"dryMolecularWeight\": \"<number>\",\n              \"averageVelocityWithWallEffects\": \"<number>\",\n              \"calculatedWAF\": \"<number>\"\n            }\n          ],\n          \"id\": \"<string>\",\n          \"rataSumId\": \"<string>\",\n          \"calculatedRataReferenceValue\": \"<number>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"runNumber\": \"<number>\",\n          \"beginDate\": \"<dateTime>\",\n          \"beginHour\": \"<number>\",\n          \"beginMinute\": \"<number>\",\n          \"endDate\": \"<dateTime>\",\n          \"endHour\": \"<number>\",\n          \"endMinute\": \"<number>\",\n          \"runStatusCode\": \"<string>\",\n          \"cemValue\": \"<number>\",\n          \"rataReferenceValue\": \"<number>\",\n          \"grossUnitLoad\": \"<number>\"\n        },\n        {\n          \"flowRataRunData\": [\n            {\n              \"rataTraverseData\": [\n                {\n                  \"id\": \"<string>\",\n                  \"flowRataRunId\": \"<string>\",\n                  \"calculatedCalculatedVelocity\": \"<number>\",\n                  \"userId\": \"<string>\",\n                  \"addDate\": \"<string>\",\n                  \"updateDate\": \"<string>\",\n                  \"probeId\": \"<string>\",\n                  \"probeTypeCode\": \"<string>\",\n                  \"pressureMeasureCode\": \"<string>\",\n                  \"methodTraversePointId\": \"<string>\",\n                  \"velocityCalibrationCoefficient\": \"<number>\",\n                  \"lastProbeDate\": \"<dateTime>\",\n                  \"tStackTemperature\": \"<number>\",\n                  \"averageVelocityDifferencePressure\": \"<number>\",\n                  \"averageSquareVelocityDifferencePressure\": \"<number>\",\n                  \"pointUsedIndicator\": \"<number>\",\n                  \"numberWallEffectsPoints\": \"<number>\",\n                  \"yawAngle\": \"<number>\",\n                  \"pitchAngle\": \"<number>\",\n                  \"calculatedVelocity\": \"<number>\",\n                  \"replacementVelocity\": \"<number>\"\n                },\n                {\n                  \"id\": \"<string>\",\n                  \"flowRataRunId\": \"<string>\",\n                  \"calculatedCalculatedVelocity\": \"<number>\",\n                  \"userId\": \"<string>\",\n                  \"addDate\": \"<string>\",\n                  \"updateDate\": \"<string>\",\n                  \"probeId\": \"<string>\",\n                  \"probeTypeCode\": \"<string>\",\n                  \"pressureMeasureCode\": \"<string>\",\n                  \"methodTraversePointId\": \"<string>\",\n                  \"velocityCalibrationCoefficient\": \"<number>\",\n                  \"lastProbeDate\": \"<dateTime>\",\n                  \"tStackTemperature\": \"<number>\",\n                  \"averageVelocityDifferencePressure\": \"<number>\",\n                  \"averageSquareVelocityDifferencePressure\": \"<number>\",\n                  \"pointUsedIndicator\": \"<number>\",\n                  \"numberWallEffectsPoints\": \"<number>\",\n                  \"yawAngle\": \"<number>\",\n                  \"pitchAngle\": \"<number>\",\n                  \"calculatedVelocity\": \"<number>\",\n                  \"replacementVelocity\": \"<number>\"\n                }\n              ],\n              \"id\": \"<string>\",\n              \"rataRunId\": \"<string>\",\n              \"calculatedDryMolecularWeight\": \"<number>\",\n              \"calculatedWetMolecularWeight\": \"<number>\",\n              \"calculatedAverageVelocityWithoutWallEffects\": \"<number>\",\n              \"calculatedAverageVelocityWithWallEffects\": \"<number>\",\n              \"calculatedCalculatedWAF\": \"<number>\",\n              \"userId\": \"<string>\",\n              \"addDate\": \"<string>\",\n              \"updateDate\": \"<string>\",\n              \"numberOfTraversePoints\": \"<number>\",\n              \"barometricPressure\": \"<number>\",\n              \"staticStackPressure\": \"<number>\",\n              \"percentCO2\": \"<number>\",\n              \"percentO2\": \"<number>\",\n              \"percentMoisture\": \"<number>\",\n              \"wetMolecularWeight\": \"<number>\",\n              \"averageVelocityWithoutWallEffects\": \"<number>\",\n              \"averageStackFlowRate\": \"<number>\",\n              \"dryMolecularWeight\": \"<number>\",\n              \"averageVelocityWithWallEffects\": \"<number>\",\n              \"calculatedWAF\": \"<number>\"\n            },\n            {\n              \"rataTraverseData\": [\n                {\n                  \"id\": \"<string>\",\n                  \"flowRataRunId\": \"<string>\",\n                  \"calculatedCalculatedVelocity\": \"<number>\",\n                  \"userId\": \"<string>\",\n                  \"addDate\": \"<string>\",\n                  \"updateDate\": \"<string>\",\n                  \"probeId\": \"<string>\",\n                  \"probeTypeCode\": \"<string>\",\n                  \"pressureMeasureCode\": \"<string>\",\n                  \"methodTraversePointId\": \"<string>\",\n                  \"velocityCalibrationCoefficient\": \"<number>\",\n                  \"lastProbeDate\": \"<dateTime>\",\n                  \"tStackTemperature\": \"<number>\",\n                  \"averageVelocityDifferencePressure\": \"<number>\",\n                  \"averageSquareVelocityDifferencePressure\": \"<number>\",\n                  \"pointUsedIndicator\": \"<number>\",\n                  \"numberWallEffectsPoints\": \"<number>\",\n                  \"yawAngle\": \"<number>\",\n                  \"pitchAngle\": \"<number>\",\n                  \"calculatedVelocity\": \"<number>\",\n                  \"replacementVelocity\": \"<number>\"\n                },\n                {\n                  \"id\": \"<string>\",\n                  \"flowRataRunId\": \"<string>\",\n                  \"calculatedCalculatedVelocity\": \"<number>\",\n                  \"userId\": \"<string>\",\n                  \"addDate\": \"<string>\",\n                  \"updateDate\": \"<string>\",\n                  \"probeId\": \"<string>\",\n                  \"probeTypeCode\": \"<string>\",\n                  \"pressureMeasureCode\": \"<string>\",\n                  \"methodTraversePointId\": \"<string>\",\n                  \"velocityCalibrationCoefficient\": \"<number>\",\n                  \"lastProbeDate\": \"<dateTime>\",\n                  \"tStackTemperature\": \"<number>\",\n                  \"averageVelocityDifferencePressure\": \"<number>\",\n                  \"averageSquareVelocityDifferencePressure\": \"<number>\",\n                  \"pointUsedIndicator\": \"<number>\",\n                  \"numberWallEffectsPoints\": \"<number>\",\n                  \"yawAngle\": \"<number>\",\n                  \"pitchAngle\": \"<number>\",\n                  \"calculatedVelocity\": \"<number>\",\n                  \"replacementVelocity\": \"<number>\"\n                }\n              ],\n              \"id\": \"<string>\",\n              \"rataRunId\": \"<string>\",\n              \"calculatedDryMolecularWeight\": \"<number>\",\n              \"calculatedWetMolecularWeight\": \"<number>\",\n              \"calculatedAverageVelocityWithoutWallEffects\": \"<number>\",\n              \"calculatedAverageVelocityWithWallEffects\": \"<number>\",\n              \"calculatedCalculatedWAF\": \"<number>\",\n              \"userId\": \"<string>\",\n              \"addDate\": \"<string>\",\n              \"updateDate\": \"<string>\",\n              \"numberOfTraversePoints\": \"<number>\",\n              \"barometricPressure\": \"<number>\",\n              \"staticStackPressure\": \"<number>\",\n              \"percentCO2\": \"<number>\",\n              \"percentO2\": \"<number>\",\n              \"percentMoisture\": \"<number>\",\n              \"wetMolecularWeight\": \"<number>\",\n              \"averageVelocityWithoutWallEffects\": \"<number>\",\n              \"averageStackFlowRate\": \"<number>\",\n              \"dryMolecularWeight\": \"<number>\",\n              \"averageVelocityWithWallEffects\": \"<number>\",\n              \"calculatedWAF\": \"<number>\"\n            }\n          ],\n          \"id\": \"<string>\",\n          \"rataSumId\": \"<string>\",\n          \"calculatedRataReferenceValue\": \"<number>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"runNumber\": \"<number>\",\n          \"beginDate\": \"<dateTime>\",\n          \"beginHour\": \"<number>\",\n          \"beginMinute\": \"<number>\",\n          \"endDate\": \"<dateTime>\",\n          \"endHour\": \"<number>\",\n          \"endMinute\": \"<number>\",\n          \"runStatusCode\": \"<string>\",\n          \"cemValue\": \"<number>\",\n          \"rataReferenceValue\": \"<number>\",\n          \"grossUnitLoad\": \"<number>\"\n        }\n      ],\n      \"id\": \"<string>\",\n      \"rataId\": \"<string>\",\n      \"calculatedAverageGrossUnitLoad\": \"<number>\",\n      \"calculatedMeanCEMValue\": \"<number>\",\n      \"calculatedMeanRATAReferenceValue\": \"<number>\",\n      \"calculatedMeanDifference\": \"<number>\",\n      \"calculatedStandardDeviationDifference\": \"<number>\",\n      \"calculatedConfidenceCoefficient\": \"<number>\",\n      \"calculatedTValue\": \"<number>\",\n      \"calculatedApsIndicator\": \"<number>\",\n      \"calculatedRelativeAccuracy\": \"<number>\",\n      \"calculatedBiasAdjustmentFactor\": \"<number>\",\n      \"calculatedStackArea\": \"<number>\",\n      \"calculatedCalculatedWAF\": \"<number>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"averageGrossUnitLoad\": \"<number>\",\n      \"referenceMethodCode\": \"<string>\",\n      \"meanCEMValue\": \"<number>\",\n      \"meanRATAReferenceValue\": \"<number>\",\n      \"meanDifference\": \"<number>\",\n      \"standardDeviationDifference\": \"<number>\",\n      \"confidenceCoefficient\": \"<number>\",\n      \"tValue\": \"<number>\",\n      \"apsIndicator\": \"<number>\",\n      \"apsCode\": \"<string>\",\n      \"relativeAccuracy\": \"<number>\",\n      \"biasAdjustmentFactor\": \"<number>\",\n      \"co2OrO2ReferenceMethodCode\": \"<string>\",\n      \"stackDiameter\": \"<number>\",\n      \"stackArea\": \"<number>\",\n      \"numberOfTraversePoints\": \"<number>\",\n      \"calculatedWAF\": \"<number>\",\n      \"defaultWAF\": \"<number>\"\n    }\n  ]\n}",
+                                          "createdAt": "2026-07-28T10:59:58.000Z",
+                                          "updatedAt": "2026-07-28T10:59:58.000Z",
+                                          "uid": "35240-570526d5-6a33-45d7-96af-7535b020c043"
+                                        }
+                                      ],
+                                      "createdAt": "2026-07-28T10:59:58.000Z",
+                                      "updatedAt": "2026-07-28T10:59:58.000Z",
+                                      "uid": "35240-1ee8a4f0-ca34-42fe-a3fb-a1f7770efe55"
+                                    }
+                                  ],
+                                  "id": "c2a58a1e-c3d0-4bcd-8387-3497ebcf97d4",
+                                  "createdAt": "2026-07-28T10:59:58.000Z",
+                                  "updatedAt": "2026-07-28T10:59:58.000Z",
+                                  "uid": "35240-c2a58a1e-c3d0-4bcd-8387-3497ebcf97d4"
+                                }
+                              ],
+                              "id": "e1a99ec2-7ecb-493b-9072-704c273b250c",
+                              "createdAt": "2026-07-28T10:59:58.000Z",
+                              "updatedAt": "2026-07-28T10:59:58.000Z",
+                              "uid": "35240-e1a99ec2-7ecb-493b-9072-704c273b250c"
+                            }
+                          ],
+                          "id": "47c777ea-be00-4988-97e0-01c0161561d5",
+                          "createdAt": "2026-07-28T10:59:58.000Z",
+                          "updatedAt": "2026-07-28T10:59:58.000Z",
+                          "uid": "35240-47c777ea-be00-4988-97e0-01c0161561d5"
+                        }
+                      ],
+                      "id": "8b6cba19-d290-4498-8e9f-d8734ddc2f67",
+                      "createdAt": "2026-07-28T10:59:58.000Z",
+                      "updatedAt": "2026-07-28T10:59:58.000Z",
+                      "uid": "35240-8b6cba19-d290-4498-8e9f-d8734ddc2f67"
+                    }
+                  ],
+                  "id": "ae2190b6-507a-45ad-9d83-6d201db448eb",
+                  "createdAt": "2026-07-28T10:59:58.000Z",
+                  "updatedAt": "2026-07-28T10:59:58.000Z",
+                  "uid": "35240-ae2190b6-507a-45ad-9d83-6d201db448eb"
+                }
+              ],
+              "id": "598b84ab-280a-45cb-a3c5-036a979c7026",
+              "createdAt": "2026-07-28T10:59:58.000Z",
+              "updatedAt": "2026-07-28T10:59:58.000Z",
+              "uid": "35240-598b84ab-280a-45cb-a3c5-036a979c7026"
+            }
+          ],
+          "id": "397cb646-66c7-4186-a09e-f5cb5bfb6689",
+          "createdAt": "2026-07-28T10:59:58.000Z",
+          "updatedAt": "2026-07-28T10:59:58.000Z",
+          "uid": "35240-397cb646-66c7-4186-a09e-f5cb5bfb6689"
+        }
+      ],
+      "id": "a8e79de6-3c9c-447a-9359-ca750ec6f001",
+      "createdAt": "2026-07-28T10:59:58.000Z",
+      "updatedAt": "2026-07-28T10:59:58.000Z",
+      "uid": "35240-a8e79de6-3c9c-447a-9359-ca750ec6f001"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

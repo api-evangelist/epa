@@ -1,0 +1,200 @@
+{
+  "info": {
+    "_postman_id": "131ca475-331d-44a2-861a-a9f75aa3fe79",
+    "name": "EPA Air Quality System (AQS) Account Type Codes System Fuel Flows API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T11:00:47.000Z",
+    "updatedAt": "2026-07-28T11:00:47.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-131ca475-331d-44a2-861a-a9f75aa3fe79"
+  },
+  "item": [
+    {
+      "name": "monitor-plan-mgmt",
+      "item": [
+        {
+          "name": "locations",
+          "item": [
+            {
+              "name": "{locId}",
+              "item": [
+                {
+                  "name": "systems",
+                  "item": [
+                    {
+                      "name": "{sysId}",
+                      "item": [
+                        {
+                          "name": "fuel-flows",
+                          "item": [
+                            {
+                              "name": "System Fuel Flow Controller get Fuel Flows",
+                              "id": "e67a3d6f-936f-4993-ac35-c07fcad664ef",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/monitor-plan-mgmt/locations/:locId/systems/:sysId/fuel-flows",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "monitor-plan-mgmt",
+                                    "locations",
+                                    ":locId",
+                                    "systems",
+                                    ":sysId",
+                                    "fuel-flows"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "c291f270-277c-43d0-a6bf-a5020344e6b4",
+                                      "key": "locId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "8d6bceab-2d38-4a8e-871a-b518e9a45e71",
+                                      "key": "sysId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                }
+                              },
+                              "response": [
+                                {
+                                  "id": "66d9e4bb-8f86-4ddc-9eb7-a3ab2e176ad8",
+                                  "name": "Retrieves official fuel flow records for a monitor system",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/monitor-plan-mgmt/locations/:locId/systems/:sysId/fuel-flows?key=<API Key>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "monitor-plan-mgmt",
+                                        "locations",
+                                        ":locId",
+                                        "systems",
+                                        ":sysId",
+                                        "fuel-flows"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Added as a part of security scheme: apikey",
+                                          "key": "key",
+                                          "value": "<API Key>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "locId"
+                                        },
+                                        {
+                                          "key": "sysId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"items\": [\n    {\n      \"maximumFuelFlowRate\": \"<number>\",\n      \"systemFuelFlowUOMCode\": \"<string>\",\n      \"maximumFuelFlowRateSourceCode\": \"<string>\",\n      \"beginDate\": \"<dateTime>\",\n      \"beginHour\": \"<number>\",\n      \"endDate\": \"<dateTime>\",\n      \"endHour\": \"<number>\",\n      \"id\": \"<string>\",\n      \"monitoringSystemRecordId\": \"<string>\",\n      \"fuelCode\": \"<string>\",\n      \"systemTypeCode\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"active\": \"<boolean>\"\n    },\n    {\n      \"maximumFuelFlowRate\": \"<number>\",\n      \"systemFuelFlowUOMCode\": \"<string>\",\n      \"maximumFuelFlowRateSourceCode\": \"<string>\",\n      \"beginDate\": \"<dateTime>\",\n      \"beginHour\": \"<number>\",\n      \"endDate\": \"<dateTime>\",\n      \"endHour\": \"<number>\",\n      \"id\": \"<string>\",\n      \"monitoringSystemRecordId\": \"<string>\",\n      \"fuelCode\": \"<string>\",\n      \"systemTypeCode\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"active\": \"<boolean>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T11:00:47.000Z",
+                                  "updatedAt": "2026-07-28T11:00:47.000Z",
+                                  "uid": "35240-66d9e4bb-8f86-4ddc-9eb7-a3ab2e176ad8"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T11:00:47.000Z",
+                              "updatedAt": "2026-07-28T11:00:47.000Z",
+                              "uid": "35240-e67a3d6f-936f-4993-ac35-c07fcad664ef"
+                            }
+                          ],
+                          "id": "d208b467-84e3-40f8-a61e-406d1dc310e0",
+                          "createdAt": "2026-07-28T11:00:47.000Z",
+                          "updatedAt": "2026-07-28T11:00:47.000Z",
+                          "uid": "35240-d208b467-84e3-40f8-a61e-406d1dc310e0"
+                        }
+                      ],
+                      "id": "f1d55f45-f9dd-4640-a2d6-922ece7514cd",
+                      "createdAt": "2026-07-28T11:00:47.000Z",
+                      "updatedAt": "2026-07-28T11:00:47.000Z",
+                      "uid": "35240-f1d55f45-f9dd-4640-a2d6-922ece7514cd"
+                    }
+                  ],
+                  "id": "2cefb9b2-603d-495d-bfb1-208026dbdad6",
+                  "createdAt": "2026-07-28T11:00:47.000Z",
+                  "updatedAt": "2026-07-28T11:00:47.000Z",
+                  "uid": "35240-2cefb9b2-603d-495d-bfb1-208026dbdad6"
+                }
+              ],
+              "id": "7a0171c2-4b5b-4df5-93c6-6c332d3bd6c7",
+              "createdAt": "2026-07-28T11:00:47.000Z",
+              "updatedAt": "2026-07-28T11:00:47.000Z",
+              "uid": "35240-7a0171c2-4b5b-4df5-93c6-6c332d3bd6c7"
+            }
+          ],
+          "id": "d1ddc438-96ba-4b19-934d-58868cf5679c",
+          "createdAt": "2026-07-28T11:00:47.000Z",
+          "updatedAt": "2026-07-28T11:00:47.000Z",
+          "uid": "35240-d1ddc438-96ba-4b19-934d-58868cf5679c"
+        }
+      ],
+      "id": "54f51b0c-b6cf-4a5a-8a46-27a5899b6a6c",
+      "createdAt": "2026-07-28T11:00:47.000Z",
+      "updatedAt": "2026-07-28T11:00:47.000Z",
+      "uid": "35240-54f51b0c-b6cf-4a5a-8a46-27a5899b6a6c"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

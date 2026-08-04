@@ -1,0 +1,169 @@
+{
+  "info": {
+    "_postman_id": "b510d98e-eef4-4897-9c6a-05816fe2904f",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Spans API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T11:00:40.000Z",
+    "updatedAt": "2026-07-28T11:00:40.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b510d98e-eef4-4897-9c6a-05816fe2904f"
+  },
+  "item": [
+    {
+      "name": "monitor-plan-mgmt",
+      "item": [
+        {
+          "name": "locations",
+          "item": [
+            {
+              "name": "{locId}",
+              "item": [
+                {
+                  "name": "spans",
+                  "item": [
+                    {
+                      "name": "Monitor Span Controller get Spans",
+                      "id": "44f31a2c-e0e7-44c1-9a64-dac65fff06fd",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/monitor-plan-mgmt/locations/:locId/spans",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "monitor-plan-mgmt",
+                            "locations",
+                            ":locId",
+                            "spans"
+                          ],
+                          "variable": [
+                            {
+                              "id": "edb01490-7637-403e-a615-bd7494751239",
+                              "key": "locId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "5703d90b-8b83-42c7-a943-2357c31890f3",
+                          "name": "Retrieves official span records for a monitor location",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/monitor-plan-mgmt/locations/:locId/spans?key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "monitor-plan-mgmt",
+                                "locations",
+                                ":locId",
+                                "spans"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "locId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"items\": [\n    {\n      \"componentTypeCode\": \"<string>\",\n      \"spanScaleCode\": \"<string>\",\n      \"spanMethodCode\": \"<string>\",\n      \"mecValue\": \"<number>\",\n      \"mpcValue\": \"<number>\",\n      \"mpfValue\": \"<number>\",\n      \"spanValue\": \"<number>\",\n      \"fullScaleRange\": \"<number>\",\n      \"spanUnitsOfMeasureCode\": \"<string>\",\n      \"scaleTransitionPoint\": \"<number>\",\n      \"defaultHighRange\": \"<number>\",\n      \"flowSpanValue\": \"<number>\",\n      \"flowFullScaleRange\": \"<number>\",\n      \"beginDate\": \"<dateTime>\",\n      \"beginHour\": \"<number>\",\n      \"endDate\": \"<dateTime>\",\n      \"endHour\": \"<number>\",\n      \"id\": \"<string>\",\n      \"locationId\": \"<string>\",\n      \"userid\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"active\": \"<boolean>\"\n    },\n    {\n      \"componentTypeCode\": \"<string>\",\n      \"spanScaleCode\": \"<string>\",\n      \"spanMethodCode\": \"<string>\",\n      \"mecValue\": \"<number>\",\n      \"mpcValue\": \"<number>\",\n      \"mpfValue\": \"<number>\",\n      \"spanValue\": \"<number>\",\n      \"fullScaleRange\": \"<number>\",\n      \"spanUnitsOfMeasureCode\": \"<string>\",\n      \"scaleTransitionPoint\": \"<number>\",\n      \"defaultHighRange\": \"<number>\",\n      \"flowSpanValue\": \"<number>\",\n      \"flowFullScaleRange\": \"<number>\",\n      \"beginDate\": \"<dateTime>\",\n      \"beginHour\": \"<number>\",\n      \"endDate\": \"<dateTime>\",\n      \"endHour\": \"<number>\",\n      \"id\": \"<string>\",\n      \"locationId\": \"<string>\",\n      \"userid\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"active\": \"<boolean>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T11:00:41.000Z",
+                          "updatedAt": "2026-07-28T11:00:41.000Z",
+                          "uid": "35240-5703d90b-8b83-42c7-a943-2357c31890f3"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T11:00:41.000Z",
+                      "updatedAt": "2026-07-28T11:00:41.000Z",
+                      "uid": "35240-44f31a2c-e0e7-44c1-9a64-dac65fff06fd"
+                    }
+                  ],
+                  "id": "f13ce88d-e668-4137-a327-812a13e4892c",
+                  "createdAt": "2026-07-28T11:00:41.000Z",
+                  "updatedAt": "2026-07-28T11:00:41.000Z",
+                  "uid": "35240-f13ce88d-e668-4137-a327-812a13e4892c"
+                }
+              ],
+              "id": "273a6084-6f27-417f-b449-72edcf32b111",
+              "createdAt": "2026-07-28T11:00:41.000Z",
+              "updatedAt": "2026-07-28T11:00:41.000Z",
+              "uid": "35240-273a6084-6f27-417f-b449-72edcf32b111"
+            }
+          ],
+          "id": "ecba644b-8b38-4755-bb11-41b962c1f927",
+          "createdAt": "2026-07-28T11:00:41.000Z",
+          "updatedAt": "2026-07-28T11:00:41.000Z",
+          "uid": "35240-ecba644b-8b38-4755-bb11-41b962c1f927"
+        }
+      ],
+      "id": "f90d9722-f78d-4717-b4ff-87f49d08db77",
+      "createdAt": "2026-07-28T11:00:41.000Z",
+      "updatedAt": "2026-07-28T11:00:41.000Z",
+      "uid": "35240-f90d9722-f78d-4717-b4ff-87f49d08db77"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

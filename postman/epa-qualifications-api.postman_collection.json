@@ -1,0 +1,169 @@
+{
+  "info": {
+    "_postman_id": "bc255fad-a6a3-4ec1-b360-4cb6f6a7f05e",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Qualifications API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:59:51.000Z",
+    "updatedAt": "2026-07-28T10:59:52.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-bc255fad-a6a3-4ec1-b360-4cb6f6a7f05e"
+  },
+  "item": [
+    {
+      "name": "monitor-plan-mgmt",
+      "item": [
+        {
+          "name": "locations",
+          "item": [
+            {
+              "name": "{locId}",
+              "item": [
+                {
+                  "name": "qualifications",
+                  "item": [
+                    {
+                      "name": "Monitor Qualification Controller get Qualifications",
+                      "id": "465add35-d652-47d1-9f64-1cba98873114",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/monitor-plan-mgmt/locations/:locId/qualifications",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "monitor-plan-mgmt",
+                            "locations",
+                            ":locId",
+                            "qualifications"
+                          ],
+                          "variable": [
+                            {
+                              "id": "05adf1b0-0663-4b91-8b9b-d9e242e5ffbe",
+                              "key": "locId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "d7b4998b-1f4f-43f8-8c3d-e196cce8d1a0",
+                          "name": "Retrieves official qualification records for a monitor location",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/monitor-plan-mgmt/locations/:locId/qualifications?key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "monitor-plan-mgmt",
+                                "locations",
+                                ":locId",
+                                "qualifications"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "locId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"items\": [\n    {\n      \"qualificationTypeCode\": \"<string>\",\n      \"beginDate\": \"<dateTime>\",\n      \"endDate\": \"<dateTime>\",\n      \"id\": \"<string>\",\n      \"locationId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"monitoringQualificationLEEData\": [\n        {\n          \"qualificationTestDate\": \"<dateTime>\",\n          \"parameterCode\": \"<string>\",\n          \"qualificationTestType\": \"<string>\",\n          \"potentialAnnualHgMassEmissions\": \"<number>\",\n          \"applicableEmissionStandard\": \"<number>\",\n          \"unitsOfStandard\": \"<string>\",\n          \"percentageOfEmissionStandard\": \"<number>\",\n          \"id\": \"<string>\",\n          \"qualificationId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\"\n        },\n        {\n          \"qualificationTestDate\": \"<dateTime>\",\n          \"parameterCode\": \"<string>\",\n          \"qualificationTestType\": \"<string>\",\n          \"potentialAnnualHgMassEmissions\": \"<number>\",\n          \"applicableEmissionStandard\": \"<number>\",\n          \"unitsOfStandard\": \"<string>\",\n          \"percentageOfEmissionStandard\": \"<number>\",\n          \"id\": \"<string>\",\n          \"qualificationId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\"\n        }\n      ],\n      \"monitoringQualificationLMEData\": [\n        {\n          \"qualificationDataYear\": \"<number>\",\n          \"operatingHours\": \"<number>\",\n          \"so2Tons\": \"<number>\",\n          \"noxTons\": \"<number>\",\n          \"id\": \"<string>\",\n          \"qualificationId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\"\n        },\n        {\n          \"qualificationDataYear\": \"<number>\",\n          \"operatingHours\": \"<number>\",\n          \"so2Tons\": \"<number>\",\n          \"noxTons\": \"<number>\",\n          \"id\": \"<string>\",\n          \"qualificationId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\"\n        }\n      ],\n      \"monitoringQualificationPercentData\": [\n        {\n          \"qualificationYear\": \"<number>\",\n          \"averagePercentValue\": \"<number>\",\n          \"yr1QualificationDataYear\": \"<number>\",\n          \"yr1QualificationDataTypeCode\": \"<string>\",\n          \"yr1PercentageValue\": \"<number>\",\n          \"yr2QualificationDataYear\": \"<number>\",\n          \"yr2QualificationDataTypeCode\": \"<string>\",\n          \"yr2PercentageValue\": \"<number>\",\n          \"yr3QualificationDataYear\": \"<number>\",\n          \"yr3QualificationDataTypeCode\": \"<string>\",\n          \"yr3PercentageValue\": \"<number>\",\n          \"id\": \"<string>\",\n          \"qualificationId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\"\n        },\n        {\n          \"qualificationYear\": \"<number>\",\n          \"averagePercentValue\": \"<number>\",\n          \"yr1QualificationDataYear\": \"<number>\",\n          \"yr1QualificationDataTypeCode\": \"<string>\",\n          \"yr1PercentageValue\": \"<number>\",\n          \"yr2QualificationDataYear\": \"<number>\",\n          \"yr2QualificationDataTypeCode\": \"<string>\",\n          \"yr2PercentageValue\": \"<number>\",\n          \"yr3QualificationDataYear\": \"<number>\",\n          \"yr3QualificationDataTypeCode\": \"<string>\",\n          \"yr3PercentageValue\": \"<number>\",\n          \"id\": \"<string>\",\n          \"qualificationId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"qualificationTypeCode\": \"<string>\",\n      \"beginDate\": \"<dateTime>\",\n      \"endDate\": \"<dateTime>\",\n      \"id\": \"<string>\",\n      \"locationId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"monitoringQualificationLEEData\": [\n        {\n          \"qualificationTestDate\": \"<dateTime>\",\n          \"parameterCode\": \"<string>\",\n          \"qualificationTestType\": \"<string>\",\n          \"potentialAnnualHgMassEmissions\": \"<number>\",\n          \"applicableEmissionStandard\": \"<number>\",\n          \"unitsOfStandard\": \"<string>\",\n          \"percentageOfEmissionStandard\": \"<number>\",\n          \"id\": \"<string>\",\n          \"qualificationId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\"\n        },\n        {\n          \"qualificationTestDate\": \"<dateTime>\",\n          \"parameterCode\": \"<string>\",\n          \"qualificationTestType\": \"<string>\",\n          \"potentialAnnualHgMassEmissions\": \"<number>\",\n          \"applicableEmissionStandard\": \"<number>\",\n          \"unitsOfStandard\": \"<string>\",\n          \"percentageOfEmissionStandard\": \"<number>\",\n          \"id\": \"<string>\",\n          \"qualificationId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\"\n        }\n      ],\n      \"monitoringQualificationLMEData\": [\n        {\n          \"qualificationDataYear\": \"<number>\",\n          \"operatingHours\": \"<number>\",\n          \"so2Tons\": \"<number>\",\n          \"noxTons\": \"<number>\",\n          \"id\": \"<string>\",\n          \"qualificationId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\"\n        },\n        {\n          \"qualificationDataYear\": \"<number>\",\n          \"operatingHours\": \"<number>\",\n          \"so2Tons\": \"<number>\",\n          \"noxTons\": \"<number>\",\n          \"id\": \"<string>\",\n          \"qualificationId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\"\n        }\n      ],\n      \"monitoringQualificationPercentData\": [\n        {\n          \"qualificationYear\": \"<number>\",\n          \"averagePercentValue\": \"<number>\",\n          \"yr1QualificationDataYear\": \"<number>\",\n          \"yr1QualificationDataTypeCode\": \"<string>\",\n          \"yr1PercentageValue\": \"<number>\",\n          \"yr2QualificationDataYear\": \"<number>\",\n          \"yr2QualificationDataTypeCode\": \"<string>\",\n          \"yr2PercentageValue\": \"<number>\",\n          \"yr3QualificationDataYear\": \"<number>\",\n          \"yr3QualificationDataTypeCode\": \"<string>\",\n          \"yr3PercentageValue\": \"<number>\",\n          \"id\": \"<string>\",\n          \"qualificationId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\"\n        },\n        {\n          \"qualificationYear\": \"<number>\",\n          \"averagePercentValue\": \"<number>\",\n          \"yr1QualificationDataYear\": \"<number>\",\n          \"yr1QualificationDataTypeCode\": \"<string>\",\n          \"yr1PercentageValue\": \"<number>\",\n          \"yr2QualificationDataYear\": \"<number>\",\n          \"yr2QualificationDataTypeCode\": \"<string>\",\n          \"yr2PercentageValue\": \"<number>\",\n          \"yr3QualificationDataYear\": \"<number>\",\n          \"yr3QualificationDataTypeCode\": \"<string>\",\n          \"yr3PercentageValue\": \"<number>\",\n          \"id\": \"<string>\",\n          \"qualificationId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T10:59:52.000Z",
+                          "updatedAt": "2026-07-28T10:59:52.000Z",
+                          "uid": "35240-d7b4998b-1f4f-43f8-8c3d-e196cce8d1a0"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T10:59:52.000Z",
+                      "updatedAt": "2026-07-28T10:59:52.000Z",
+                      "uid": "35240-465add35-d652-47d1-9f64-1cba98873114"
+                    }
+                  ],
+                  "id": "d26297c3-b71d-49af-860b-7b92d24754d8",
+                  "createdAt": "2026-07-28T10:59:52.000Z",
+                  "updatedAt": "2026-07-28T10:59:52.000Z",
+                  "uid": "35240-d26297c3-b71d-49af-860b-7b92d24754d8"
+                }
+              ],
+              "id": "32eeb39b-fd75-4126-97fe-f301317ac0e5",
+              "createdAt": "2026-07-28T10:59:52.000Z",
+              "updatedAt": "2026-07-28T10:59:52.000Z",
+              "uid": "35240-32eeb39b-fd75-4126-97fe-f301317ac0e5"
+            }
+          ],
+          "id": "eca055c1-7314-46b6-9432-2e20be12f50d",
+          "createdAt": "2026-07-28T10:59:52.000Z",
+          "updatedAt": "2026-07-28T10:59:52.000Z",
+          "uid": "35240-eca055c1-7314-46b6-9432-2e20be12f50d"
+        }
+      ],
+      "id": "d676236f-0ad4-4a0d-9811-38ae14341183",
+      "createdAt": "2026-07-28T10:59:52.000Z",
+      "updatedAt": "2026-07-28T10:59:52.000Z",
+      "uid": "35240-d676236f-0ad4-4a0d-9811-38ae14341183"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

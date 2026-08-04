@@ -1,0 +1,169 @@
+{
+  "info": {
+    "_postman_id": "c015809d-29bf-4a51-9f02-3d3ac3e4b6f0",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Systems API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T11:00:48.000Z",
+    "updatedAt": "2026-07-28T11:00:48.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c015809d-29bf-4a51-9f02-3d3ac3e4b6f0"
+  },
+  "item": [
+    {
+      "name": "monitor-plan-mgmt",
+      "item": [
+        {
+          "name": "locations",
+          "item": [
+            {
+              "name": "{locId}",
+              "item": [
+                {
+                  "name": "systems",
+                  "item": [
+                    {
+                      "name": "Monitor System Controller get Systems",
+                      "id": "135f3e30-0af2-4ba0-9c7b-a21d559891df",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/monitor-plan-mgmt/locations/:locId/systems",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "monitor-plan-mgmt",
+                            "locations",
+                            ":locId",
+                            "systems"
+                          ],
+                          "variable": [
+                            {
+                              "id": "00e0f63c-a56d-49e2-ac7a-33828c7ffcac",
+                              "key": "locId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "424fbe6b-2a14-4327-a669-f2cf2dbcc6aa",
+                          "name": "Retrieves official system records for a monitor location",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/monitor-plan-mgmt/locations/:locId/systems?key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "monitor-plan-mgmt",
+                                "locations",
+                                ":locId",
+                                "systems"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "locId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"items\": [\n    {\n      \"monitoringSystemId\": \"<string>\",\n      \"systemTypeCode\": \"<string>\",\n      \"systemDesignationCode\": \"<string>\",\n      \"fuelCode\": \"<string>\",\n      \"beginDate\": \"<dateTime>\",\n      \"endDate\": \"<dateTime>\",\n      \"beginHour\": \"<number>\",\n      \"endHour\": \"<number>\",\n      \"id\": \"<string>\",\n      \"locationId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"monitoringSystemComponentData\": [\n        {\n          \"componentId\": \"<string>\",\n          \"beginDate\": \"<dateTime>\",\n          \"beginHour\": \"<number>\",\n          \"endDate\": \"<dateTime>\",\n          \"endHour\": \"<number>\",\n          \"id\": \"<string>\",\n          \"locationId\": \"<string>\",\n          \"monitoringSystemRecordId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"active\": \"<boolean>\"\n        },\n        {\n          \"componentId\": \"<string>\",\n          \"beginDate\": \"<dateTime>\",\n          \"beginHour\": \"<number>\",\n          \"endDate\": \"<dateTime>\",\n          \"endHour\": \"<number>\",\n          \"id\": \"<string>\",\n          \"locationId\": \"<string>\",\n          \"monitoringSystemRecordId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"active\": \"<boolean>\"\n        }\n      ],\n      \"monitoringSystemFuelFlowData\": [\n        {\n          \"maximumFuelFlowRate\": \"<number>\",\n          \"systemFuelFlowUOMCode\": \"<string>\",\n          \"maximumFuelFlowRateSourceCode\": \"<string>\",\n          \"beginDate\": \"<dateTime>\",\n          \"beginHour\": \"<number>\",\n          \"endDate\": \"<dateTime>\",\n          \"endHour\": \"<number>\",\n          \"id\": \"<string>\",\n          \"monitoringSystemRecordId\": \"<string>\",\n          \"fuelCode\": \"<string>\",\n          \"systemTypeCode\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"active\": \"<boolean>\"\n        },\n        {\n          \"maximumFuelFlowRate\": \"<number>\",\n          \"systemFuelFlowUOMCode\": \"<string>\",\n          \"maximumFuelFlowRateSourceCode\": \"<string>\",\n          \"beginDate\": \"<dateTime>\",\n          \"beginHour\": \"<number>\",\n          \"endDate\": \"<dateTime>\",\n          \"endHour\": \"<number>\",\n          \"id\": \"<string>\",\n          \"monitoringSystemRecordId\": \"<string>\",\n          \"fuelCode\": \"<string>\",\n          \"systemTypeCode\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"active\": \"<boolean>\"\n        }\n      ]\n    },\n    {\n      \"monitoringSystemId\": \"<string>\",\n      \"systemTypeCode\": \"<string>\",\n      \"systemDesignationCode\": \"<string>\",\n      \"fuelCode\": \"<string>\",\n      \"beginDate\": \"<dateTime>\",\n      \"endDate\": \"<dateTime>\",\n      \"beginHour\": \"<number>\",\n      \"endHour\": \"<number>\",\n      \"id\": \"<string>\",\n      \"locationId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"monitoringSystemComponentData\": [\n        {\n          \"componentId\": \"<string>\",\n          \"beginDate\": \"<dateTime>\",\n          \"beginHour\": \"<number>\",\n          \"endDate\": \"<dateTime>\",\n          \"endHour\": \"<number>\",\n          \"id\": \"<string>\",\n          \"locationId\": \"<string>\",\n          \"monitoringSystemRecordId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"active\": \"<boolean>\"\n        },\n        {\n          \"componentId\": \"<string>\",\n          \"beginDate\": \"<dateTime>\",\n          \"beginHour\": \"<number>\",\n          \"endDate\": \"<dateTime>\",\n          \"endHour\": \"<number>\",\n          \"id\": \"<string>\",\n          \"locationId\": \"<string>\",\n          \"monitoringSystemRecordId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"active\": \"<boolean>\"\n        }\n      ],\n      \"monitoringSystemFuelFlowData\": [\n        {\n          \"maximumFuelFlowRate\": \"<number>\",\n          \"systemFuelFlowUOMCode\": \"<string>\",\n          \"maximumFuelFlowRateSourceCode\": \"<string>\",\n          \"beginDate\": \"<dateTime>\",\n          \"beginHour\": \"<number>\",\n          \"endDate\": \"<dateTime>\",\n          \"endHour\": \"<number>\",\n          \"id\": \"<string>\",\n          \"monitoringSystemRecordId\": \"<string>\",\n          \"fuelCode\": \"<string>\",\n          \"systemTypeCode\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"active\": \"<boolean>\"\n        },\n        {\n          \"maximumFuelFlowRate\": \"<number>\",\n          \"systemFuelFlowUOMCode\": \"<string>\",\n          \"maximumFuelFlowRateSourceCode\": \"<string>\",\n          \"beginDate\": \"<dateTime>\",\n          \"beginHour\": \"<number>\",\n          \"endDate\": \"<dateTime>\",\n          \"endHour\": \"<number>\",\n          \"id\": \"<string>\",\n          \"monitoringSystemRecordId\": \"<string>\",\n          \"fuelCode\": \"<string>\",\n          \"systemTypeCode\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"active\": \"<boolean>\"\n        }\n      ]\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T11:00:48.000Z",
+                          "updatedAt": "2026-07-28T11:00:48.000Z",
+                          "uid": "35240-424fbe6b-2a14-4327-a669-f2cf2dbcc6aa"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T11:00:48.000Z",
+                      "updatedAt": "2026-07-28T11:00:48.000Z",
+                      "uid": "35240-135f3e30-0af2-4ba0-9c7b-a21d559891df"
+                    }
+                  ],
+                  "id": "81eccc1d-157d-4ed8-af97-9dff171aef5f",
+                  "createdAt": "2026-07-28T11:00:48.000Z",
+                  "updatedAt": "2026-07-28T11:00:48.000Z",
+                  "uid": "35240-81eccc1d-157d-4ed8-af97-9dff171aef5f"
+                }
+              ],
+              "id": "5d1f947a-c881-4d75-9448-92cadb3b4afe",
+              "createdAt": "2026-07-28T11:00:48.000Z",
+              "updatedAt": "2026-07-28T11:00:48.000Z",
+              "uid": "35240-5d1f947a-c881-4d75-9448-92cadb3b4afe"
+            }
+          ],
+          "id": "e7afd4b5-a444-4753-b691-17b9c697fa38",
+          "createdAt": "2026-07-28T11:00:48.000Z",
+          "updatedAt": "2026-07-28T11:00:48.000Z",
+          "uid": "35240-e7afd4b5-a444-4753-b691-17b9c697fa38"
+        }
+      ],
+      "id": "268cf9a9-94db-4e1e-9f4c-79c10161d71c",
+      "createdAt": "2026-07-28T11:00:48.000Z",
+      "updatedAt": "2026-07-28T11:00:48.000Z",
+      "uid": "35240-268cf9a9-94db-4e1e-9f4c-79c10161d71c"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

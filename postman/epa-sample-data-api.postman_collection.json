@@ -1,0 +1,969 @@
+{
+  "info": {
+    "_postman_id": "cb9c50bb-074c-4e43-b118-59b2f36f2189",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Sample Data API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T11:00:36.000Z",
+    "updatedAt": "2026-07-28T11:00:36.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-cb9c50bb-074c-4e43-b118-59b2f36f2189"
+  },
+  "item": [
+    {
+      "name": "sampleData",
+      "item": [
+        {
+          "name": "bySite",
+          "item": [
+            {
+              "name": "Get Sample Data by Site",
+              "id": "f452dc8d-eafb-4a5a-9a26-503dd75e4cee",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/sampleData/bySite?email=<email>&key=<string>&param=<string>&bdate=89712420&edate=89712420&state=52&county=115&site=5086&duration=<string>&cbdate=89712420&cedate=89712420",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sampleData",
+                    "bySite"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Registered email address.",
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "description": "(Required) Account-specific access key.",
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Comma-separated list of up to 5 AQS 5-digit parameter codes.",
+                      "key": "param",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Begin date (YYYYMMDD).",
+                      "key": "bdate",
+                      "value": "89712420"
+                    },
+                    {
+                      "description": "(Required) End date (YYYYMMDD). Must be in the same year as bdate for most services.",
+                      "key": "edate",
+                      "value": "89712420"
+                    },
+                    {
+                      "description": "(Required) 2-digit state FIPS code.",
+                      "key": "state",
+                      "value": "52"
+                    },
+                    {
+                      "description": "(Required) 3-digit county code.",
+                      "key": "county",
+                      "value": "115"
+                    },
+                    {
+                      "description": "(Required) 4-digit site code.",
+                      "key": "site",
+                      "value": "5086"
+                    },
+                    {
+                      "description": "1-character duration code filter.",
+                      "key": "duration",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional change begin date (returns records updated since cbdate).",
+                      "key": "cbdate",
+                      "value": "89712420"
+                    },
+                    {
+                      "description": "Optional change end date.",
+                      "key": "cedate",
+                      "value": "89712420"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "b3803f6d-7f4b-4d4f-9b0d-510e79734212",
+                  "name": "Samples at site",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sampleData/bySite?email=<email>&key=<API Key>&param=<string>&bdate=89712420&edate=89712420&state=52&county=115&site=5086&duration=<string>&cbdate=89712420&cedate=89712420",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sampleData",
+                        "bySite"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Registered email address.",
+                          "key": "email",
+                          "value": "<email>"
+                        },
+                        {
+                          "description": "(Required) Account-specific access key.",
+                          "key": "key",
+                          "value": "<API Key>"
+                        },
+                        {
+                          "description": "(Required) Comma-separated list of up to 5 AQS 5-digit parameter codes.",
+                          "key": "param",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Begin date (YYYYMMDD).",
+                          "key": "bdate",
+                          "value": "89712420"
+                        },
+                        {
+                          "description": "(Required) End date (YYYYMMDD). Must be in the same year as bdate for most services.",
+                          "key": "edate",
+                          "value": "89712420"
+                        },
+                        {
+                          "description": "(Required) 2-digit state FIPS code.",
+                          "key": "state",
+                          "value": "52"
+                        },
+                        {
+                          "description": "(Required) 3-digit county code.",
+                          "key": "county",
+                          "value": "115"
+                        },
+                        {
+                          "description": "(Required) 4-digit site code.",
+                          "key": "site",
+                          "value": "5086"
+                        },
+                        {
+                          "description": "1-character duration code filter.",
+                          "key": "duration",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Optional change begin date (returns records updated since cbdate).",
+                          "key": "cbdate",
+                          "value": "89712420"
+                        },
+                        {
+                          "description": "Optional change end date.",
+                          "key": "cedate",
+                          "value": "89712420"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Header\": [\n    {\n      \"status\": \"<string>\",\n      \"request_time\": \"<string>\",\n      \"url\": \"<string>\",\n      \"rows\": \"<integer>\",\n      \"error\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"status\": \"<string>\",\n      \"request_time\": \"<string>\",\n      \"url\": \"<string>\",\n      \"rows\": \"<integer>\",\n      \"error\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"Data\": []\n}",
+                  "createdAt": "2026-07-28T11:00:37.000Z",
+                  "updatedAt": "2026-07-28T11:00:37.000Z",
+                  "uid": "35240-b3803f6d-7f4b-4d4f-9b0d-510e79734212"
+                }
+              ],
+              "createdAt": "2026-07-28T11:00:36.000Z",
+              "updatedAt": "2026-07-28T11:00:36.000Z",
+              "uid": "35240-f452dc8d-eafb-4a5a-9a26-503dd75e4cee"
+            }
+          ],
+          "id": "0b396572-06f8-46b4-a0c8-e8c58c4632a5",
+          "createdAt": "2026-07-28T11:00:36.000Z",
+          "updatedAt": "2026-07-28T11:00:36.000Z",
+          "uid": "35240-0b396572-06f8-46b4-a0c8-e8c58c4632a5"
+        },
+        {
+          "name": "byCounty",
+          "item": [
+            {
+              "name": "Get Sample Data by County",
+              "id": "696cff3e-4b99-470d-92d4-fb4e950d4dd6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/sampleData/byCounty?email=<email>&key=<string>&param=<string>&bdate=89712420&edate=89712420&state=52&county=115&duration=<string>&cbdate=89712420&cedate=89712420",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sampleData",
+                    "byCounty"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Registered email address.",
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "description": "(Required) Account-specific access key.",
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Comma-separated list of up to 5 AQS 5-digit parameter codes.",
+                      "key": "param",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Begin date (YYYYMMDD).",
+                      "key": "bdate",
+                      "value": "89712420"
+                    },
+                    {
+                      "description": "(Required) End date (YYYYMMDD). Must be in the same year as bdate for most services.",
+                      "key": "edate",
+                      "value": "89712420"
+                    },
+                    {
+                      "description": "(Required) 2-digit state FIPS code.",
+                      "key": "state",
+                      "value": "52"
+                    },
+                    {
+                      "description": "(Required) 3-digit county code.",
+                      "key": "county",
+                      "value": "115"
+                    },
+                    {
+                      "description": "1-character duration code filter.",
+                      "key": "duration",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional change begin date (returns records updated since cbdate).",
+                      "key": "cbdate",
+                      "value": "89712420"
+                    },
+                    {
+                      "description": "Optional change end date.",
+                      "key": "cedate",
+                      "value": "89712420"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "608b1b76-0b6f-4932-a19b-89293854abcc",
+                  "name": "Samples in county",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sampleData/byCounty?email=<email>&key=<API Key>&param=<string>&bdate=89712420&edate=89712420&state=52&county=115&duration=<string>&cbdate=89712420&cedate=89712420",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sampleData",
+                        "byCounty"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Registered email address.",
+                          "key": "email",
+                          "value": "<email>"
+                        },
+                        {
+                          "description": "(Required) Account-specific access key.",
+                          "key": "key",
+                          "value": "<API Key>"
+                        },
+                        {
+                          "description": "(Required) Comma-separated list of up to 5 AQS 5-digit parameter codes.",
+                          "key": "param",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Begin date (YYYYMMDD).",
+                          "key": "bdate",
+                          "value": "89712420"
+                        },
+                        {
+                          "description": "(Required) End date (YYYYMMDD). Must be in the same year as bdate for most services.",
+                          "key": "edate",
+                          "value": "89712420"
+                        },
+                        {
+                          "description": "(Required) 2-digit state FIPS code.",
+                          "key": "state",
+                          "value": "52"
+                        },
+                        {
+                          "description": "(Required) 3-digit county code.",
+                          "key": "county",
+                          "value": "115"
+                        },
+                        {
+                          "description": "1-character duration code filter.",
+                          "key": "duration",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Optional change begin date (returns records updated since cbdate).",
+                          "key": "cbdate",
+                          "value": "89712420"
+                        },
+                        {
+                          "description": "Optional change end date.",
+                          "key": "cedate",
+                          "value": "89712420"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Header\": [\n    {\n      \"status\": \"<string>\",\n      \"request_time\": \"<string>\",\n      \"url\": \"<string>\",\n      \"rows\": \"<integer>\",\n      \"error\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"status\": \"<string>\",\n      \"request_time\": \"<string>\",\n      \"url\": \"<string>\",\n      \"rows\": \"<integer>\",\n      \"error\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"Data\": []\n}",
+                  "createdAt": "2026-07-28T11:00:37.000Z",
+                  "updatedAt": "2026-07-28T11:00:37.000Z",
+                  "uid": "35240-608b1b76-0b6f-4932-a19b-89293854abcc"
+                }
+              ],
+              "createdAt": "2026-07-28T11:00:36.000Z",
+              "updatedAt": "2026-07-28T11:00:36.000Z",
+              "uid": "35240-696cff3e-4b99-470d-92d4-fb4e950d4dd6"
+            }
+          ],
+          "id": "8f035fc5-a562-44be-8e74-2ed58296b372",
+          "createdAt": "2026-07-28T11:00:36.000Z",
+          "updatedAt": "2026-07-28T11:00:36.000Z",
+          "uid": "35240-8f035fc5-a562-44be-8e74-2ed58296b372"
+        },
+        {
+          "name": "byState",
+          "item": [
+            {
+              "name": "Get Sample Data by State",
+              "id": "a8bac4ed-72e1-4d20-8454-5c82cfa01d73",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/sampleData/byState?email=<email>&key=<string>&param=<string>&bdate=89712420&edate=89712420&state=52&duration=<string>&cbdate=89712420&cedate=89712420",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sampleData",
+                    "byState"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Registered email address.",
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "description": "(Required) Account-specific access key.",
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Comma-separated list of up to 5 AQS 5-digit parameter codes.",
+                      "key": "param",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Begin date (YYYYMMDD).",
+                      "key": "bdate",
+                      "value": "89712420"
+                    },
+                    {
+                      "description": "(Required) End date (YYYYMMDD). Must be in the same year as bdate for most services.",
+                      "key": "edate",
+                      "value": "89712420"
+                    },
+                    {
+                      "description": "(Required) 2-digit state FIPS code.",
+                      "key": "state",
+                      "value": "52"
+                    },
+                    {
+                      "description": "1-character duration code filter.",
+                      "key": "duration",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional change begin date (returns records updated since cbdate).",
+                      "key": "cbdate",
+                      "value": "89712420"
+                    },
+                    {
+                      "description": "Optional change end date.",
+                      "key": "cedate",
+                      "value": "89712420"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "80016747-b99f-40fd-ace1-0bb368854237",
+                  "name": "Samples in state",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sampleData/byState?email=<email>&key=<API Key>&param=<string>&bdate=89712420&edate=89712420&state=52&duration=<string>&cbdate=89712420&cedate=89712420",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sampleData",
+                        "byState"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Registered email address.",
+                          "key": "email",
+                          "value": "<email>"
+                        },
+                        {
+                          "description": "(Required) Account-specific access key.",
+                          "key": "key",
+                          "value": "<API Key>"
+                        },
+                        {
+                          "description": "(Required) Comma-separated list of up to 5 AQS 5-digit parameter codes.",
+                          "key": "param",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Begin date (YYYYMMDD).",
+                          "key": "bdate",
+                          "value": "89712420"
+                        },
+                        {
+                          "description": "(Required) End date (YYYYMMDD). Must be in the same year as bdate for most services.",
+                          "key": "edate",
+                          "value": "89712420"
+                        },
+                        {
+                          "description": "(Required) 2-digit state FIPS code.",
+                          "key": "state",
+                          "value": "52"
+                        },
+                        {
+                          "description": "1-character duration code filter.",
+                          "key": "duration",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Optional change begin date (returns records updated since cbdate).",
+                          "key": "cbdate",
+                          "value": "89712420"
+                        },
+                        {
+                          "description": "Optional change end date.",
+                          "key": "cedate",
+                          "value": "89712420"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Header\": [\n    {\n      \"status\": \"<string>\",\n      \"request_time\": \"<string>\",\n      \"url\": \"<string>\",\n      \"rows\": \"<integer>\",\n      \"error\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"status\": \"<string>\",\n      \"request_time\": \"<string>\",\n      \"url\": \"<string>\",\n      \"rows\": \"<integer>\",\n      \"error\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"Data\": []\n}",
+                  "createdAt": "2026-07-28T11:00:37.000Z",
+                  "updatedAt": "2026-07-28T11:00:37.000Z",
+                  "uid": "35240-80016747-b99f-40fd-ace1-0bb368854237"
+                }
+              ],
+              "createdAt": "2026-07-28T11:00:36.000Z",
+              "updatedAt": "2026-07-28T11:00:36.000Z",
+              "uid": "35240-a8bac4ed-72e1-4d20-8454-5c82cfa01d73"
+            }
+          ],
+          "id": "72094e3a-ec87-45e7-afce-f2d965f8470a",
+          "createdAt": "2026-07-28T11:00:36.000Z",
+          "updatedAt": "2026-07-28T11:00:36.000Z",
+          "uid": "35240-72094e3a-ec87-45e7-afce-f2d965f8470a"
+        },
+        {
+          "name": "byBox",
+          "item": [
+            {
+              "name": "Get Sample Data by Bounding Box",
+              "id": "ffd2b462-7fc9-4f1c-b705-2ee57b5aba3d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/sampleData/byBox?email=<email>&key=<string>&param=<string>&bdate=89712420&edate=89712420&minlat=<float>&maxlat=<float>&minlon=<float>&maxlon=<float>&duration=<string>&cbdate=89712420&cedate=89712420",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sampleData",
+                    "byBox"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Registered email address.",
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "description": "(Required) Account-specific access key.",
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Comma-separated list of up to 5 AQS 5-digit parameter codes.",
+                      "key": "param",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Begin date (YYYYMMDD).",
+                      "key": "bdate",
+                      "value": "89712420"
+                    },
+                    {
+                      "description": "(Required) End date (YYYYMMDD). Must be in the same year as bdate for most services.",
+                      "key": "edate",
+                      "value": "89712420"
+                    },
+                    {
+                      "description": "(Required) Minimum latitude of bounding box.",
+                      "key": "minlat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "maxlat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "minlon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "maxlon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "1-character duration code filter.",
+                      "key": "duration",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional change begin date (returns records updated since cbdate).",
+                      "key": "cbdate",
+                      "value": "89712420"
+                    },
+                    {
+                      "description": "Optional change end date.",
+                      "key": "cedate",
+                      "value": "89712420"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "bbf67378-b458-47f0-ab24-0d7f82f285d3",
+                  "name": "Samples in box",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sampleData/byBox?email=<email>&key=<API Key>&param=<string>&bdate=89712420&edate=89712420&minlat=<float>&maxlat=<float>&minlon=<float>&maxlon=<float>&duration=<string>&cbdate=89712420&cedate=89712420",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sampleData",
+                        "byBox"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Registered email address.",
+                          "key": "email",
+                          "value": "<email>"
+                        },
+                        {
+                          "description": "(Required) Account-specific access key.",
+                          "key": "key",
+                          "value": "<API Key>"
+                        },
+                        {
+                          "description": "(Required) Comma-separated list of up to 5 AQS 5-digit parameter codes.",
+                          "key": "param",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Begin date (YYYYMMDD).",
+                          "key": "bdate",
+                          "value": "89712420"
+                        },
+                        {
+                          "description": "(Required) End date (YYYYMMDD). Must be in the same year as bdate for most services.",
+                          "key": "edate",
+                          "value": "89712420"
+                        },
+                        {
+                          "description": "(Required) Minimum latitude of bounding box.",
+                          "key": "minlat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "maxlat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "minlon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "maxlon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "1-character duration code filter.",
+                          "key": "duration",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Optional change begin date (returns records updated since cbdate).",
+                          "key": "cbdate",
+                          "value": "89712420"
+                        },
+                        {
+                          "description": "Optional change end date.",
+                          "key": "cedate",
+                          "value": "89712420"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Header\": [\n    {\n      \"status\": \"<string>\",\n      \"request_time\": \"<string>\",\n      \"url\": \"<string>\",\n      \"rows\": \"<integer>\",\n      \"error\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"status\": \"<string>\",\n      \"request_time\": \"<string>\",\n      \"url\": \"<string>\",\n      \"rows\": \"<integer>\",\n      \"error\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"Data\": []\n}",
+                  "createdAt": "2026-07-28T11:00:37.000Z",
+                  "updatedAt": "2026-07-28T11:00:37.000Z",
+                  "uid": "35240-bbf67378-b458-47f0-ab24-0d7f82f285d3"
+                }
+              ],
+              "createdAt": "2026-07-28T11:00:36.000Z",
+              "updatedAt": "2026-07-28T11:00:36.000Z",
+              "uid": "35240-ffd2b462-7fc9-4f1c-b705-2ee57b5aba3d"
+            }
+          ],
+          "id": "78bfe640-1f13-4f7c-83db-979c178e8752",
+          "createdAt": "2026-07-28T11:00:36.000Z",
+          "updatedAt": "2026-07-28T11:00:36.000Z",
+          "uid": "35240-78bfe640-1f13-4f7c-83db-979c178e8752"
+        },
+        {
+          "name": "byCBSA",
+          "item": [
+            {
+              "name": "Get Sample Data by CBSA",
+              "id": "ff2d4cdb-2e95-44ba-babf-3661aa806d05",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/sampleData/byCBSA?email=<email>&key=<string>&param=<string>&bdate=89712420&edate=89712420&cbsa=67304&duration=<string>&cbdate=89712420&cedate=89712420",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sampleData",
+                    "byCBSA"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Registered email address.",
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "description": "(Required) Account-specific access key.",
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Comma-separated list of up to 5 AQS 5-digit parameter codes.",
+                      "key": "param",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Begin date (YYYYMMDD).",
+                      "key": "bdate",
+                      "value": "89712420"
+                    },
+                    {
+                      "description": "(Required) End date (YYYYMMDD). Must be in the same year as bdate for most services.",
+                      "key": "edate",
+                      "value": "89712420"
+                    },
+                    {
+                      "description": "(Required) 5-digit Core Based Statistical Area code.",
+                      "key": "cbsa",
+                      "value": "67304"
+                    },
+                    {
+                      "description": "1-character duration code filter.",
+                      "key": "duration",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional change begin date (returns records updated since cbdate).",
+                      "key": "cbdate",
+                      "value": "89712420"
+                    },
+                    {
+                      "description": "Optional change end date.",
+                      "key": "cedate",
+                      "value": "89712420"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "348b2e3d-351a-426b-a9c9-8bea1b2873b3",
+                  "name": "Samples in CBSA",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sampleData/byCBSA?email=<email>&key=<API Key>&param=<string>&bdate=89712420&edate=89712420&cbsa=67304&duration=<string>&cbdate=89712420&cedate=89712420",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sampleData",
+                        "byCBSA"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Registered email address.",
+                          "key": "email",
+                          "value": "<email>"
+                        },
+                        {
+                          "description": "(Required) Account-specific access key.",
+                          "key": "key",
+                          "value": "<API Key>"
+                        },
+                        {
+                          "description": "(Required) Comma-separated list of up to 5 AQS 5-digit parameter codes.",
+                          "key": "param",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Begin date (YYYYMMDD).",
+                          "key": "bdate",
+                          "value": "89712420"
+                        },
+                        {
+                          "description": "(Required) End date (YYYYMMDD). Must be in the same year as bdate for most services.",
+                          "key": "edate",
+                          "value": "89712420"
+                        },
+                        {
+                          "description": "(Required) 5-digit Core Based Statistical Area code.",
+                          "key": "cbsa",
+                          "value": "67304"
+                        },
+                        {
+                          "description": "1-character duration code filter.",
+                          "key": "duration",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Optional change begin date (returns records updated since cbdate).",
+                          "key": "cbdate",
+                          "value": "89712420"
+                        },
+                        {
+                          "description": "Optional change end date.",
+                          "key": "cedate",
+                          "value": "89712420"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Header\": [\n    {\n      \"status\": \"<string>\",\n      \"request_time\": \"<string>\",\n      \"url\": \"<string>\",\n      \"rows\": \"<integer>\",\n      \"error\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"status\": \"<string>\",\n      \"request_time\": \"<string>\",\n      \"url\": \"<string>\",\n      \"rows\": \"<integer>\",\n      \"error\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"Data\": []\n}",
+                  "createdAt": "2026-07-28T11:00:37.000Z",
+                  "updatedAt": "2026-07-28T11:00:37.000Z",
+                  "uid": "35240-348b2e3d-351a-426b-a9c9-8bea1b2873b3"
+                }
+              ],
+              "createdAt": "2026-07-28T11:00:36.000Z",
+              "updatedAt": "2026-07-28T11:00:36.000Z",
+              "uid": "35240-ff2d4cdb-2e95-44ba-babf-3661aa806d05"
+            }
+          ],
+          "id": "3014be42-f2f2-476f-ab5c-7eb03fbcec6c",
+          "createdAt": "2026-07-28T11:00:36.000Z",
+          "updatedAt": "2026-07-28T11:00:36.000Z",
+          "uid": "35240-3014be42-f2f2-476f-ab5c-7eb03fbcec6c"
+        }
+      ],
+      "id": "c5cc1a57-1dbe-4e21-afe8-d95cb17358ba",
+      "createdAt": "2026-07-28T11:00:36.000Z",
+      "updatedAt": "2026-07-28T11:00:36.000Z",
+      "uid": "35240-c5cc1a57-1dbe-4e21-afe8-d95cb17358ba"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

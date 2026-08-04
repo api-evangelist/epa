@@ -1,0 +1,326 @@
+{
+  "info": {
+    "_postman_id": "a7a50878-2f27-4731-9848-b4402a4eb7eb",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Flow To Load Reference API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:58:37.000Z",
+    "updatedAt": "2026-07-28T10:58:37.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a7a50878-2f27-4731-9848-b4402a4eb7eb"
+  },
+  "item": [
+    {
+      "name": "qa-certification-mgmt",
+      "item": [
+        {
+          "name": "locations",
+          "item": [
+            {
+              "name": "{locId}",
+              "item": [
+                {
+                  "name": "test-summary",
+                  "item": [
+                    {
+                      "name": "{testSumId}",
+                      "item": [
+                        {
+                          "name": "flow-to-load-references",
+                          "item": [
+                            {
+                              "name": "{id}",
+                              "item": [
+                                {
+                                  "name": "Flow To Load Reference Controller get Flow To Load Reference",
+                                  "id": "cfdd63d7-7301-489a-958f-6f2f529fd542",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/flow-to-load-references/:id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "qa-certification-mgmt",
+                                        "locations",
+                                        ":locId",
+                                        "test-summary",
+                                        ":testSumId",
+                                        "flow-to-load-references",
+                                        ":id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "6302dc11-c69c-414d-8bf1-a37dbe87b323",
+                                          "key": "locId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "c6eb5e15-42a3-40a3-a749-bf43a2dcb7ac",
+                                          "key": "testSumId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "d7f10e20-06a7-4603-8f0b-4e44e1c24201",
+                                          "key": "id",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "c72f5bb4-4e6e-476c-aa2e-cd67aefc9d89",
+                                      "name": "Retrieves a Flow To Load Reference record by its Id",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/flow-to-load-references/:id?key=<API Key>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "qa-certification-mgmt",
+                                            "locations",
+                                            ":locId",
+                                            "test-summary",
+                                            ":testSumId",
+                                            "flow-to-load-references",
+                                            ":id"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Added as a part of security scheme: apikey",
+                                              "key": "key",
+                                              "value": "<API Key>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "locId"
+                                            },
+                                            {
+                                              "key": "testSumId"
+                                            },
+                                            {
+                                              "key": "id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"id\": \"<string>\",\n  \"testSumId\": \"<string>\",\n  \"calculatedAverageGrossUnitLoad\": \"<number>\",\n  \"calculatedAverageReferenceMethodFlow\": \"<number>\",\n  \"calculatedReferenceFlowToLoadRatio\": \"<number>\",\n  \"calculatedReferenceGrossHeatRate\": \"<number>\",\n  \"userId\": \"<string>\",\n  \"addDate\": \"<string>\",\n  \"updateDate\": \"<string>\",\n  \"operatingLevelCode\": \"<string>\",\n  \"rataTestNumber\": \"<string>\",\n  \"averageGrossUnitLoad\": \"<number>\",\n  \"averageReferenceMethodFlow\": \"<number>\",\n  \"referenceFlowLoadRatio\": \"<number>\",\n  \"averageHourlyHeatInputRate\": \"<number>\",\n  \"referenceGrossHeatRate\": \"<number>\",\n  \"calculatedSeparateReferenceIndicator\": \"<number>\"\n}",
+                                      "createdAt": "2026-07-28T10:58:37.000Z",
+                                      "updatedAt": "2026-07-28T10:58:37.000Z",
+                                      "uid": "35240-c72f5bb4-4e6e-476c-aa2e-cd67aefc9d89"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T10:58:37.000Z",
+                                  "updatedAt": "2026-07-28T10:58:37.000Z",
+                                  "uid": "35240-cfdd63d7-7301-489a-958f-6f2f529fd542"
+                                }
+                              ],
+                              "id": "457b9359-2285-4dd2-8a05-a9a17012afd2",
+                              "createdAt": "2026-07-28T10:58:37.000Z",
+                              "updatedAt": "2026-07-28T10:58:37.000Z",
+                              "uid": "35240-457b9359-2285-4dd2-8a05-a9a17012afd2"
+                            },
+                            {
+                              "name": "Flow To Load Reference Controller get Flow To Load References",
+                              "id": "9d01460d-42b6-4b12-acfa-a0caccdb81e7",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/flow-to-load-references",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "qa-certification-mgmt",
+                                    "locations",
+                                    ":locId",
+                                    "test-summary",
+                                    ":testSumId",
+                                    "flow-to-load-references"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "68926f99-1ba1-4458-bb0b-7191e0fc1678",
+                                      "key": "locId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "5c94698c-765c-44f9-9d04-1e4c1ba2a5b0",
+                                      "key": "testSumId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                }
+                              },
+                              "response": [
+                                {
+                                  "id": "1f186f05-c604-4be4-b78b-b387efe09022",
+                                  "name": "Retrieves Flow To Load Reference records by Test Summary Id",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/flow-to-load-references?key=<API Key>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "qa-certification-mgmt",
+                                        "locations",
+                                        ":locId",
+                                        "test-summary",
+                                        ":testSumId",
+                                        "flow-to-load-references"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Added as a part of security scheme: apikey",
+                                          "key": "key",
+                                          "value": "<API Key>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "locId"
+                                        },
+                                        {
+                                          "key": "testSumId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"testSumId\": \"<string>\",\n      \"calculatedAverageGrossUnitLoad\": \"<number>\",\n      \"calculatedAverageReferenceMethodFlow\": \"<number>\",\n      \"calculatedReferenceFlowToLoadRatio\": \"<number>\",\n      \"calculatedReferenceGrossHeatRate\": \"<number>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"operatingLevelCode\": \"<string>\",\n      \"rataTestNumber\": \"<string>\",\n      \"averageGrossUnitLoad\": \"<number>\",\n      \"averageReferenceMethodFlow\": \"<number>\",\n      \"referenceFlowLoadRatio\": \"<number>\",\n      \"averageHourlyHeatInputRate\": \"<number>\",\n      \"referenceGrossHeatRate\": \"<number>\",\n      \"calculatedSeparateReferenceIndicator\": \"<number>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"testSumId\": \"<string>\",\n      \"calculatedAverageGrossUnitLoad\": \"<number>\",\n      \"calculatedAverageReferenceMethodFlow\": \"<number>\",\n      \"calculatedReferenceFlowToLoadRatio\": \"<number>\",\n      \"calculatedReferenceGrossHeatRate\": \"<number>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"operatingLevelCode\": \"<string>\",\n      \"rataTestNumber\": \"<string>\",\n      \"averageGrossUnitLoad\": \"<number>\",\n      \"averageReferenceMethodFlow\": \"<number>\",\n      \"referenceFlowLoadRatio\": \"<number>\",\n      \"averageHourlyHeatInputRate\": \"<number>\",\n      \"referenceGrossHeatRate\": \"<number>\",\n      \"calculatedSeparateReferenceIndicator\": \"<number>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T10:58:37.000Z",
+                                  "updatedAt": "2026-07-28T10:58:37.000Z",
+                                  "uid": "35240-1f186f05-c604-4be4-b78b-b387efe09022"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T10:58:37.000Z",
+                              "updatedAt": "2026-07-28T10:58:37.000Z",
+                              "uid": "35240-9d01460d-42b6-4b12-acfa-a0caccdb81e7"
+                            }
+                          ],
+                          "id": "face5719-b9af-4ed4-b29e-56ac919cf88d",
+                          "createdAt": "2026-07-28T10:58:37.000Z",
+                          "updatedAt": "2026-07-28T10:58:37.000Z",
+                          "uid": "35240-face5719-b9af-4ed4-b29e-56ac919cf88d"
+                        }
+                      ],
+                      "id": "34d7a077-d55e-4653-9b44-afcdb7bf576e",
+                      "createdAt": "2026-07-28T10:58:37.000Z",
+                      "updatedAt": "2026-07-28T10:58:37.000Z",
+                      "uid": "35240-34d7a077-d55e-4653-9b44-afcdb7bf576e"
+                    }
+                  ],
+                  "id": "35b602e1-43c5-47d8-bada-6549d7cdd63c",
+                  "createdAt": "2026-07-28T10:58:37.000Z",
+                  "updatedAt": "2026-07-28T10:58:37.000Z",
+                  "uid": "35240-35b602e1-43c5-47d8-bada-6549d7cdd63c"
+                }
+              ],
+              "id": "2b707c48-354a-404e-bcca-8d20e0f63442",
+              "createdAt": "2026-07-28T10:58:37.000Z",
+              "updatedAt": "2026-07-28T10:58:37.000Z",
+              "uid": "35240-2b707c48-354a-404e-bcca-8d20e0f63442"
+            }
+          ],
+          "id": "77c9ef92-e3b3-42e8-9c05-eb53904857bb",
+          "createdAt": "2026-07-28T10:58:37.000Z",
+          "updatedAt": "2026-07-28T10:58:37.000Z",
+          "uid": "35240-77c9ef92-e3b3-42e8-9c05-eb53904857bb"
+        }
+      ],
+      "id": "8af7fab4-cb1d-48ac-a282-755598542f98",
+      "createdAt": "2026-07-28T10:58:37.000Z",
+      "updatedAt": "2026-07-28T10:58:37.000Z",
+      "uid": "35240-8af7fab4-cb1d-48ac-a282-755598542f98"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

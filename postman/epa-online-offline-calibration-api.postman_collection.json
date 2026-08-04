@@ -1,0 +1,326 @@
+{
+  "info": {
+    "_postman_id": "846b0197-027f-495c-b29b-87cd187c0ff9",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Online Offline Calibration API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:59:40.000Z",
+    "updatedAt": "2026-07-28T10:59:40.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-846b0197-027f-495c-b29b-87cd187c0ff9"
+  },
+  "item": [
+    {
+      "name": "qa-certification-mgmt",
+      "item": [
+        {
+          "name": "locations",
+          "item": [
+            {
+              "name": "{locId}",
+              "item": [
+                {
+                  "name": "test-summary",
+                  "item": [
+                    {
+                      "name": "{testSumId}",
+                      "item": [
+                        {
+                          "name": "online-offline-calibration",
+                          "item": [
+                            {
+                              "name": "{id}",
+                              "item": [
+                                {
+                                  "name": "Online Offline Calibration Controller get Online Offline Calibration",
+                                  "id": "c672fa2a-3359-48fb-b707-fbb74ce46e53",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/online-offline-calibration/:id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "qa-certification-mgmt",
+                                        "locations",
+                                        ":locId",
+                                        "test-summary",
+                                        ":testSumId",
+                                        "online-offline-calibration",
+                                        ":id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "e1c8792c-cea5-42ce-bc97-fd7921329611",
+                                          "key": "locId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "16ce4b58-bd55-4970-8f30-d5c1f61cd9c6",
+                                          "key": "testSumId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "fe8300e1-8349-45da-bba8-bdcf1bafe7f9",
+                                          "key": "id",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "68f30c4d-b032-4ea3-97eb-2b2f7ce60a7d",
+                                      "name": "Retrieves official Online Offline Calibration record by its Id",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/online-offline-calibration/:id?key=<API Key>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "qa-certification-mgmt",
+                                            "locations",
+                                            ":locId",
+                                            "test-summary",
+                                            ":testSumId",
+                                            "online-offline-calibration",
+                                            ":id"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "Added as a part of security scheme: apikey",
+                                              "key": "key",
+                                              "value": "<API Key>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "locId"
+                                            },
+                                            {
+                                              "key": "testSumId"
+                                            },
+                                            {
+                                              "key": "id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"id\": \"<string>\",\n  \"testSumId\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"addDate\": \"<string>\",\n  \"updateDate\": \"<string>\",\n  \"onlineZeroInjectionDate\": \"<dateTime>\",\n  \"onlineZeroInjectionHour\": \"<number>\",\n  \"onlineZeroCalibrationError\": \"<number>\",\n  \"onlineZeroAPSIndicator\": \"<number>\",\n  \"onlineZeroMeasuredValue\": \"<number>\",\n  \"onlineZeroReferenceValue\": \"<number>\",\n  \"onlineUpscaleCalibrationError\": \"<number>\",\n  \"onlineUpscaleAPSIndicator\": \"<number>\",\n  \"onlineUpscaleInjectionDate\": \"<dateTime>\",\n  \"onlineUpscaleInjectionHour\": \"<number>\",\n  \"onlineUpscaleMeasuredValue\": \"<number>\",\n  \"onlineUpscaleReferenceValue\": \"<number>\",\n  \"offlineZeroCalibrationError\": \"<number>\",\n  \"offlineZeroAPSIndicator\": \"<number>\",\n  \"offlineZeroInjectionDate\": \"<dateTime>\",\n  \"offlineZeroInjectionHour\": \"<number>\",\n  \"offlineZeroMeasuredValue\": \"<number>\",\n  \"offlineZeroReferenceValue\": \"<number>\",\n  \"offlineUpscaleCalibrationError\": \"<number>\",\n  \"offlineUpscaleAPSIndicator\": \"<number>\",\n  \"offlineUpscaleInjectionDate\": \"<dateTime>\",\n  \"offlineUpscaleInjectionHour\": \"<number>\",\n  \"offlineUpscaleMeasuredValue\": \"<number>\",\n  \"offlineUpscaleReferenceValue\": \"<number>\",\n  \"upscaleGasLevelCode\": \"<string>\"\n}",
+                                      "createdAt": "2026-07-28T10:59:40.000Z",
+                                      "updatedAt": "2026-07-28T10:59:40.000Z",
+                                      "uid": "35240-68f30c4d-b032-4ea3-97eb-2b2f7ce60a7d"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T10:59:40.000Z",
+                                  "updatedAt": "2026-07-28T10:59:40.000Z",
+                                  "uid": "35240-c672fa2a-3359-48fb-b707-fbb74ce46e53"
+                                }
+                              ],
+                              "id": "17fe8919-1fb6-4f0c-b05b-4e9b7505f40b",
+                              "createdAt": "2026-07-28T10:59:40.000Z",
+                              "updatedAt": "2026-07-28T10:59:40.000Z",
+                              "uid": "35240-17fe8919-1fb6-4f0c-b05b-4e9b7505f40b"
+                            },
+                            {
+                              "name": "Online Offline Calibration Controller get Online Offline Calibrations",
+                              "id": "7fd9c2f5-616f-4336-b469-1773f2b97adb",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/online-offline-calibration",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "qa-certification-mgmt",
+                                    "locations",
+                                    ":locId",
+                                    "test-summary",
+                                    ":testSumId",
+                                    "online-offline-calibration"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "95c49670-d384-4f21-ad82-346abddd2f0c",
+                                      "key": "locId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "02863ca3-b976-4580-beff-73cd45edc31c",
+                                      "key": "testSumId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                }
+                              },
+                              "response": [
+                                {
+                                  "id": "841119ca-c15f-4004-ab4d-17d70c05227a",
+                                  "name": "Retrieves official Online Offline Calibration records by Test Summary Id",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/online-offline-calibration?key=<API Key>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "qa-certification-mgmt",
+                                        "locations",
+                                        ":locId",
+                                        "test-summary",
+                                        ":testSumId",
+                                        "online-offline-calibration"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Added as a part of security scheme: apikey",
+                                          "key": "key",
+                                          "value": "<API Key>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "locId"
+                                        },
+                                        {
+                                          "key": "testSumId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"testSumId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"onlineZeroInjectionDate\": \"<dateTime>\",\n      \"onlineZeroInjectionHour\": \"<number>\",\n      \"onlineZeroCalibrationError\": \"<number>\",\n      \"onlineZeroAPSIndicator\": \"<number>\",\n      \"onlineZeroMeasuredValue\": \"<number>\",\n      \"onlineZeroReferenceValue\": \"<number>\",\n      \"onlineUpscaleCalibrationError\": \"<number>\",\n      \"onlineUpscaleAPSIndicator\": \"<number>\",\n      \"onlineUpscaleInjectionDate\": \"<dateTime>\",\n      \"onlineUpscaleInjectionHour\": \"<number>\",\n      \"onlineUpscaleMeasuredValue\": \"<number>\",\n      \"onlineUpscaleReferenceValue\": \"<number>\",\n      \"offlineZeroCalibrationError\": \"<number>\",\n      \"offlineZeroAPSIndicator\": \"<number>\",\n      \"offlineZeroInjectionDate\": \"<dateTime>\",\n      \"offlineZeroInjectionHour\": \"<number>\",\n      \"offlineZeroMeasuredValue\": \"<number>\",\n      \"offlineZeroReferenceValue\": \"<number>\",\n      \"offlineUpscaleCalibrationError\": \"<number>\",\n      \"offlineUpscaleAPSIndicator\": \"<number>\",\n      \"offlineUpscaleInjectionDate\": \"<dateTime>\",\n      \"offlineUpscaleInjectionHour\": \"<number>\",\n      \"offlineUpscaleMeasuredValue\": \"<number>\",\n      \"offlineUpscaleReferenceValue\": \"<number>\",\n      \"upscaleGasLevelCode\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"testSumId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"onlineZeroInjectionDate\": \"<dateTime>\",\n      \"onlineZeroInjectionHour\": \"<number>\",\n      \"onlineZeroCalibrationError\": \"<number>\",\n      \"onlineZeroAPSIndicator\": \"<number>\",\n      \"onlineZeroMeasuredValue\": \"<number>\",\n      \"onlineZeroReferenceValue\": \"<number>\",\n      \"onlineUpscaleCalibrationError\": \"<number>\",\n      \"onlineUpscaleAPSIndicator\": \"<number>\",\n      \"onlineUpscaleInjectionDate\": \"<dateTime>\",\n      \"onlineUpscaleInjectionHour\": \"<number>\",\n      \"onlineUpscaleMeasuredValue\": \"<number>\",\n      \"onlineUpscaleReferenceValue\": \"<number>\",\n      \"offlineZeroCalibrationError\": \"<number>\",\n      \"offlineZeroAPSIndicator\": \"<number>\",\n      \"offlineZeroInjectionDate\": \"<dateTime>\",\n      \"offlineZeroInjectionHour\": \"<number>\",\n      \"offlineZeroMeasuredValue\": \"<number>\",\n      \"offlineZeroReferenceValue\": \"<number>\",\n      \"offlineUpscaleCalibrationError\": \"<number>\",\n      \"offlineUpscaleAPSIndicator\": \"<number>\",\n      \"offlineUpscaleInjectionDate\": \"<dateTime>\",\n      \"offlineUpscaleInjectionHour\": \"<number>\",\n      \"offlineUpscaleMeasuredValue\": \"<number>\",\n      \"offlineUpscaleReferenceValue\": \"<number>\",\n      \"upscaleGasLevelCode\": \"<string>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T10:59:40.000Z",
+                                  "updatedAt": "2026-07-28T10:59:40.000Z",
+                                  "uid": "35240-841119ca-c15f-4004-ab4d-17d70c05227a"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T10:59:40.000Z",
+                              "updatedAt": "2026-07-28T10:59:40.000Z",
+                              "uid": "35240-7fd9c2f5-616f-4336-b469-1773f2b97adb"
+                            }
+                          ],
+                          "id": "edd1299d-518a-4935-8aa7-425fed475b18",
+                          "createdAt": "2026-07-28T10:59:40.000Z",
+                          "updatedAt": "2026-07-28T10:59:40.000Z",
+                          "uid": "35240-edd1299d-518a-4935-8aa7-425fed475b18"
+                        }
+                      ],
+                      "id": "ff72ccd6-a93d-431c-a3e7-57b3234613c8",
+                      "createdAt": "2026-07-28T10:59:40.000Z",
+                      "updatedAt": "2026-07-28T10:59:40.000Z",
+                      "uid": "35240-ff72ccd6-a93d-431c-a3e7-57b3234613c8"
+                    }
+                  ],
+                  "id": "157ec2b9-e04d-4131-9f29-acb77fb68142",
+                  "createdAt": "2026-07-28T10:59:40.000Z",
+                  "updatedAt": "2026-07-28T10:59:40.000Z",
+                  "uid": "35240-157ec2b9-e04d-4131-9f29-acb77fb68142"
+                }
+              ],
+              "id": "792944ba-5b7a-46d7-9164-b8a634f1ad43",
+              "createdAt": "2026-07-28T10:59:40.000Z",
+              "updatedAt": "2026-07-28T10:59:40.000Z",
+              "uid": "35240-792944ba-5b7a-46d7-9164-b8a634f1ad43"
+            }
+          ],
+          "id": "fd9c4894-4f41-44ca-a496-608379438f1d",
+          "createdAt": "2026-07-28T10:59:40.000Z",
+          "updatedAt": "2026-07-28T10:59:40.000Z",
+          "uid": "35240-fd9c4894-4f41-44ca-a496-608379438f1d"
+        }
+      ],
+      "id": "4d80df3c-e0f4-475e-b55f-26f3ff0934a2",
+      "createdAt": "2026-07-28T10:59:40.000Z",
+      "updatedAt": "2026-07-28T10:59:40.000Z",
+      "uid": "35240-4d80df3c-e0f4-475e-b55f-26f3ff0934a2"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

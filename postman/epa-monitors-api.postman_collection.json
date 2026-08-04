@@ -1,0 +1,819 @@
+{
+  "info": {
+    "_postman_id": "fef5d626-f871-4f1c-8663-7645c128b3c2",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Monitors API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:59:39.000Z",
+    "updatedAt": "2026-07-28T10:59:39.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-fef5d626-f871-4f1c-8663-7645c128b3c2"
+  },
+  "item": [
+    {
+      "name": "monitors",
+      "item": [
+        {
+          "name": "bySite",
+          "item": [
+            {
+              "name": "List Monitors by Site",
+              "id": "adb2a6b0-7537-4bc5-a1d5-44cca9acdf14",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/monitors/bySite?email=<email>&key=<string>&param=<string>&bdate=93810227&edate=93810227&state=58&county=747&site=7490",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "monitors",
+                    "bySite"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Registered email address.",
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "description": "(Required) Account-specific access key.",
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Comma-separated list of up to 5 AQS 5-digit parameter codes.",
+                      "key": "param",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Begin date (YYYYMMDD).",
+                      "key": "bdate",
+                      "value": "93810227"
+                    },
+                    {
+                      "description": "(Required) End date (YYYYMMDD). Must be in the same year as bdate for most services.",
+                      "key": "edate",
+                      "value": "93810227"
+                    },
+                    {
+                      "description": "(Required) 2-digit state FIPS code.",
+                      "key": "state",
+                      "value": "58"
+                    },
+                    {
+                      "description": "(Required) 3-digit county code.",
+                      "key": "county",
+                      "value": "747"
+                    },
+                    {
+                      "description": "(Required) 4-digit site code.",
+                      "key": "site",
+                      "value": "7490"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "7dfae1e3-a97f-4ca8-919b-ad2bd18dee19",
+                  "name": "Monitors at site",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/monitors/bySite?email=<email>&key=<API Key>&param=<string>&bdate=93810227&edate=93810227&state=58&county=747&site=7490",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "monitors",
+                        "bySite"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Registered email address.",
+                          "key": "email",
+                          "value": "<email>"
+                        },
+                        {
+                          "description": "(Required) Account-specific access key.",
+                          "key": "key",
+                          "value": "<API Key>"
+                        },
+                        {
+                          "description": "(Required) Comma-separated list of up to 5 AQS 5-digit parameter codes.",
+                          "key": "param",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Begin date (YYYYMMDD).",
+                          "key": "bdate",
+                          "value": "93810227"
+                        },
+                        {
+                          "description": "(Required) End date (YYYYMMDD). Must be in the same year as bdate for most services.",
+                          "key": "edate",
+                          "value": "93810227"
+                        },
+                        {
+                          "description": "(Required) 2-digit state FIPS code.",
+                          "key": "state",
+                          "value": "58"
+                        },
+                        {
+                          "description": "(Required) 3-digit county code.",
+                          "key": "county",
+                          "value": "747"
+                        },
+                        {
+                          "description": "(Required) 4-digit site code.",
+                          "key": "site",
+                          "value": "7490"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Header\": [\n    {\n      \"status\": \"<string>\",\n      \"request_time\": \"<string>\",\n      \"url\": \"<string>\",\n      \"rows\": \"<integer>\",\n      \"error\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"status\": \"<string>\",\n      \"request_time\": \"<string>\",\n      \"url\": \"<string>\",\n      \"rows\": \"<integer>\",\n      \"error\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"Data\": []\n}",
+                  "createdAt": "2026-07-28T10:59:39.000Z",
+                  "updatedAt": "2026-07-28T10:59:39.000Z",
+                  "uid": "35240-7dfae1e3-a97f-4ca8-919b-ad2bd18dee19"
+                }
+              ],
+              "createdAt": "2026-07-28T10:59:39.000Z",
+              "updatedAt": "2026-07-28T10:59:39.000Z",
+              "uid": "35240-adb2a6b0-7537-4bc5-a1d5-44cca9acdf14"
+            }
+          ],
+          "id": "32c8125e-a52d-4803-971e-977ae5e1ba43",
+          "createdAt": "2026-07-28T10:59:39.000Z",
+          "updatedAt": "2026-07-28T10:59:39.000Z",
+          "uid": "35240-32c8125e-a52d-4803-971e-977ae5e1ba43"
+        },
+        {
+          "name": "byCounty",
+          "item": [
+            {
+              "name": "List Monitors by County",
+              "id": "ef68cdce-031c-4aaf-9a85-c046c7ab4b89",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/monitors/byCounty?email=<email>&key=<string>&param=<string>&bdate=93810227&edate=93810227&state=58&county=747",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "monitors",
+                    "byCounty"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Registered email address.",
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "description": "(Required) Account-specific access key.",
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Comma-separated list of up to 5 AQS 5-digit parameter codes.",
+                      "key": "param",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Begin date (YYYYMMDD).",
+                      "key": "bdate",
+                      "value": "93810227"
+                    },
+                    {
+                      "description": "(Required) End date (YYYYMMDD). Must be in the same year as bdate for most services.",
+                      "key": "edate",
+                      "value": "93810227"
+                    },
+                    {
+                      "description": "(Required) 2-digit state FIPS code.",
+                      "key": "state",
+                      "value": "58"
+                    },
+                    {
+                      "description": "(Required) 3-digit county code.",
+                      "key": "county",
+                      "value": "747"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "59d74e95-7612-47d3-9df8-ef12281e39a1",
+                  "name": "Monitors in county",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/monitors/byCounty?email=<email>&key=<API Key>&param=<string>&bdate=93810227&edate=93810227&state=58&county=747",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "monitors",
+                        "byCounty"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Registered email address.",
+                          "key": "email",
+                          "value": "<email>"
+                        },
+                        {
+                          "description": "(Required) Account-specific access key.",
+                          "key": "key",
+                          "value": "<API Key>"
+                        },
+                        {
+                          "description": "(Required) Comma-separated list of up to 5 AQS 5-digit parameter codes.",
+                          "key": "param",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Begin date (YYYYMMDD).",
+                          "key": "bdate",
+                          "value": "93810227"
+                        },
+                        {
+                          "description": "(Required) End date (YYYYMMDD). Must be in the same year as bdate for most services.",
+                          "key": "edate",
+                          "value": "93810227"
+                        },
+                        {
+                          "description": "(Required) 2-digit state FIPS code.",
+                          "key": "state",
+                          "value": "58"
+                        },
+                        {
+                          "description": "(Required) 3-digit county code.",
+                          "key": "county",
+                          "value": "747"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Header\": [\n    {\n      \"status\": \"<string>\",\n      \"request_time\": \"<string>\",\n      \"url\": \"<string>\",\n      \"rows\": \"<integer>\",\n      \"error\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"status\": \"<string>\",\n      \"request_time\": \"<string>\",\n      \"url\": \"<string>\",\n      \"rows\": \"<integer>\",\n      \"error\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"Data\": []\n}",
+                  "createdAt": "2026-07-28T10:59:39.000Z",
+                  "updatedAt": "2026-07-28T10:59:39.000Z",
+                  "uid": "35240-59d74e95-7612-47d3-9df8-ef12281e39a1"
+                }
+              ],
+              "createdAt": "2026-07-28T10:59:39.000Z",
+              "updatedAt": "2026-07-28T10:59:39.000Z",
+              "uid": "35240-ef68cdce-031c-4aaf-9a85-c046c7ab4b89"
+            }
+          ],
+          "id": "360a0b42-202b-4ccb-98b4-d513887cb742",
+          "createdAt": "2026-07-28T10:59:39.000Z",
+          "updatedAt": "2026-07-28T10:59:39.000Z",
+          "uid": "35240-360a0b42-202b-4ccb-98b4-d513887cb742"
+        },
+        {
+          "name": "byState",
+          "item": [
+            {
+              "name": "List Monitors by State",
+              "id": "6ee23797-e45b-446b-bb36-24fc0fa24617",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/monitors/byState?email=<email>&key=<string>&param=<string>&bdate=93810227&edate=93810227&state=58",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "monitors",
+                    "byState"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Registered email address.",
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "description": "(Required) Account-specific access key.",
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Comma-separated list of up to 5 AQS 5-digit parameter codes.",
+                      "key": "param",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Begin date (YYYYMMDD).",
+                      "key": "bdate",
+                      "value": "93810227"
+                    },
+                    {
+                      "description": "(Required) End date (YYYYMMDD). Must be in the same year as bdate for most services.",
+                      "key": "edate",
+                      "value": "93810227"
+                    },
+                    {
+                      "description": "(Required) 2-digit state FIPS code.",
+                      "key": "state",
+                      "value": "58"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "1cf24651-1e2e-4c36-b8aa-4db8af5820bd",
+                  "name": "Monitors in state",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/monitors/byState?email=<email>&key=<API Key>&param=<string>&bdate=93810227&edate=93810227&state=58",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "monitors",
+                        "byState"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Registered email address.",
+                          "key": "email",
+                          "value": "<email>"
+                        },
+                        {
+                          "description": "(Required) Account-specific access key.",
+                          "key": "key",
+                          "value": "<API Key>"
+                        },
+                        {
+                          "description": "(Required) Comma-separated list of up to 5 AQS 5-digit parameter codes.",
+                          "key": "param",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Begin date (YYYYMMDD).",
+                          "key": "bdate",
+                          "value": "93810227"
+                        },
+                        {
+                          "description": "(Required) End date (YYYYMMDD). Must be in the same year as bdate for most services.",
+                          "key": "edate",
+                          "value": "93810227"
+                        },
+                        {
+                          "description": "(Required) 2-digit state FIPS code.",
+                          "key": "state",
+                          "value": "58"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Header\": [\n    {\n      \"status\": \"<string>\",\n      \"request_time\": \"<string>\",\n      \"url\": \"<string>\",\n      \"rows\": \"<integer>\",\n      \"error\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"status\": \"<string>\",\n      \"request_time\": \"<string>\",\n      \"url\": \"<string>\",\n      \"rows\": \"<integer>\",\n      \"error\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"Data\": []\n}",
+                  "createdAt": "2026-07-28T10:59:39.000Z",
+                  "updatedAt": "2026-07-28T10:59:39.000Z",
+                  "uid": "35240-1cf24651-1e2e-4c36-b8aa-4db8af5820bd"
+                }
+              ],
+              "createdAt": "2026-07-28T10:59:39.000Z",
+              "updatedAt": "2026-07-28T10:59:39.000Z",
+              "uid": "35240-6ee23797-e45b-446b-bb36-24fc0fa24617"
+            }
+          ],
+          "id": "0dbdb5cb-5cbc-4e4a-a231-fd7da2c4f820",
+          "createdAt": "2026-07-28T10:59:39.000Z",
+          "updatedAt": "2026-07-28T10:59:39.000Z",
+          "uid": "35240-0dbdb5cb-5cbc-4e4a-a231-fd7da2c4f820"
+        },
+        {
+          "name": "byBox",
+          "item": [
+            {
+              "name": "List Monitors by Bounding Box",
+              "id": "c9dd4ff5-0b7b-473c-be80-f44810d69979",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/monitors/byBox?email=<email>&key=<string>&param=<string>&bdate=93810227&edate=93810227&minlat=<float>&maxlat=<float>&minlon=<float>&maxlon=<float>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "monitors",
+                    "byBox"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Registered email address.",
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "description": "(Required) Account-specific access key.",
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Comma-separated list of up to 5 AQS 5-digit parameter codes.",
+                      "key": "param",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Begin date (YYYYMMDD).",
+                      "key": "bdate",
+                      "value": "93810227"
+                    },
+                    {
+                      "description": "(Required) End date (YYYYMMDD). Must be in the same year as bdate for most services.",
+                      "key": "edate",
+                      "value": "93810227"
+                    },
+                    {
+                      "description": "(Required) Minimum latitude of bounding box.",
+                      "key": "minlat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "maxlat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "minlon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "maxlon",
+                      "value": "<float>"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "9f5303d1-1869-41fb-b2ae-fa6be0c10bc9",
+                  "name": "Monitors in bounding box",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/monitors/byBox?email=<email>&key=<API Key>&param=<string>&bdate=93810227&edate=93810227&minlat=<float>&maxlat=<float>&minlon=<float>&maxlon=<float>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "monitors",
+                        "byBox"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Registered email address.",
+                          "key": "email",
+                          "value": "<email>"
+                        },
+                        {
+                          "description": "(Required) Account-specific access key.",
+                          "key": "key",
+                          "value": "<API Key>"
+                        },
+                        {
+                          "description": "(Required) Comma-separated list of up to 5 AQS 5-digit parameter codes.",
+                          "key": "param",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Begin date (YYYYMMDD).",
+                          "key": "bdate",
+                          "value": "93810227"
+                        },
+                        {
+                          "description": "(Required) End date (YYYYMMDD). Must be in the same year as bdate for most services.",
+                          "key": "edate",
+                          "value": "93810227"
+                        },
+                        {
+                          "description": "(Required) Minimum latitude of bounding box.",
+                          "key": "minlat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "maxlat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "minlon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "maxlon",
+                          "value": "<float>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Header\": [\n    {\n      \"status\": \"<string>\",\n      \"request_time\": \"<string>\",\n      \"url\": \"<string>\",\n      \"rows\": \"<integer>\",\n      \"error\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"status\": \"<string>\",\n      \"request_time\": \"<string>\",\n      \"url\": \"<string>\",\n      \"rows\": \"<integer>\",\n      \"error\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"Data\": []\n}",
+                  "createdAt": "2026-07-28T10:59:39.000Z",
+                  "updatedAt": "2026-07-28T10:59:39.000Z",
+                  "uid": "35240-9f5303d1-1869-41fb-b2ae-fa6be0c10bc9"
+                }
+              ],
+              "createdAt": "2026-07-28T10:59:39.000Z",
+              "updatedAt": "2026-07-28T10:59:39.000Z",
+              "uid": "35240-c9dd4ff5-0b7b-473c-be80-f44810d69979"
+            }
+          ],
+          "id": "c31ee2a6-b018-4f84-97a3-674034b6f3f1",
+          "createdAt": "2026-07-28T10:59:39.000Z",
+          "updatedAt": "2026-07-28T10:59:39.000Z",
+          "uid": "35240-c31ee2a6-b018-4f84-97a3-674034b6f3f1"
+        },
+        {
+          "name": "byCBSA",
+          "item": [
+            {
+              "name": "List Monitors by CBSA",
+              "id": "20add874-cfab-4d86-a5a7-1850b355beef",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/monitors/byCBSA?email=<email>&key=<string>&param=<string>&bdate=93810227&edate=93810227&cbsa=67394",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "monitors",
+                    "byCBSA"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Registered email address.",
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "description": "(Required) Account-specific access key.",
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Comma-separated list of up to 5 AQS 5-digit parameter codes.",
+                      "key": "param",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Begin date (YYYYMMDD).",
+                      "key": "bdate",
+                      "value": "93810227"
+                    },
+                    {
+                      "description": "(Required) End date (YYYYMMDD). Must be in the same year as bdate for most services.",
+                      "key": "edate",
+                      "value": "93810227"
+                    },
+                    {
+                      "description": "(Required) 5-digit Core Based Statistical Area code.",
+                      "key": "cbsa",
+                      "value": "67394"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "7d9f0b2a-b220-4f9c-af99-a27f8f3a2854",
+                  "name": "Monitors in CBSA",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/monitors/byCBSA?email=<email>&key=<API Key>&param=<string>&bdate=93810227&edate=93810227&cbsa=67394",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "monitors",
+                        "byCBSA"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Registered email address.",
+                          "key": "email",
+                          "value": "<email>"
+                        },
+                        {
+                          "description": "(Required) Account-specific access key.",
+                          "key": "key",
+                          "value": "<API Key>"
+                        },
+                        {
+                          "description": "(Required) Comma-separated list of up to 5 AQS 5-digit parameter codes.",
+                          "key": "param",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Begin date (YYYYMMDD).",
+                          "key": "bdate",
+                          "value": "93810227"
+                        },
+                        {
+                          "description": "(Required) End date (YYYYMMDD). Must be in the same year as bdate for most services.",
+                          "key": "edate",
+                          "value": "93810227"
+                        },
+                        {
+                          "description": "(Required) 5-digit Core Based Statistical Area code.",
+                          "key": "cbsa",
+                          "value": "67394"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Header\": [\n    {\n      \"status\": \"<string>\",\n      \"request_time\": \"<string>\",\n      \"url\": \"<string>\",\n      \"rows\": \"<integer>\",\n      \"error\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"status\": \"<string>\",\n      \"request_time\": \"<string>\",\n      \"url\": \"<string>\",\n      \"rows\": \"<integer>\",\n      \"error\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"Data\": []\n}",
+                  "createdAt": "2026-07-28T10:59:39.000Z",
+                  "updatedAt": "2026-07-28T10:59:39.000Z",
+                  "uid": "35240-7d9f0b2a-b220-4f9c-af99-a27f8f3a2854"
+                }
+              ],
+              "createdAt": "2026-07-28T10:59:39.000Z",
+              "updatedAt": "2026-07-28T10:59:39.000Z",
+              "uid": "35240-20add874-cfab-4d86-a5a7-1850b355beef"
+            }
+          ],
+          "id": "ea132eca-d2b9-4288-ac0a-8b759d27f728",
+          "createdAt": "2026-07-28T10:59:39.000Z",
+          "updatedAt": "2026-07-28T10:59:39.000Z",
+          "uid": "35240-ea132eca-d2b9-4288-ac0a-8b759d27f728"
+        }
+      ],
+      "id": "dda515e1-df57-4680-ba1b-92e41fe0a2e2",
+      "createdAt": "2026-07-28T10:59:39.000Z",
+      "updatedAt": "2026-07-28T10:59:39.000Z",
+      "uid": "35240-dda515e1-df57-4680-ba1b-92e41fe0a2e2"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

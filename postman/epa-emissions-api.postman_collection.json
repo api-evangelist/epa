@@ -1,0 +1,946 @@
+{
+  "info": {
+    "_postman_id": "7e1ec164-e8cf-42a8-ab37-fa6dbe83cbb8",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Emissions API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:58:26.000Z",
+    "updatedAt": "2026-07-28T10:58:26.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7e1ec164-e8cf-42a8-ab37-fa6dbe83cbb8"
+  },
+  "item": [
+    {
+      "name": "emissions-mgmt",
+      "item": [
+        {
+          "name": "emissions",
+          "item": [
+            {
+              "name": "export",
+              "item": [
+                {
+                  "name": "Exports Emissions Data for the Specified Monitor Plan & Reporting Period",
+                  "id": "8a8dd7a2-e906-4e4d-8adf-f76dcc757399",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/emissions-mgmt/emissions/export?monitorPlanId=<string>&year=<number>&quarter=<number>&reportedValuesOnly=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "emissions-mgmt",
+                        "emissions",
+                        "export"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "monitorPlanId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "year",
+                          "value": "<number>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "quarter",
+                          "value": "<number>"
+                        },
+                        {
+                          "key": "reportedValuesOnly",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "02dc5f2a-709e-4f17-aedf-27af5243ed5b",
+                      "name": "Successfull export of emissions data",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/emissions-mgmt/emissions/export?monitorPlanId=<string>&year=<number>&quarter=<number>&reportedValuesOnly=<boolean>&key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "emissions-mgmt",
+                            "emissions",
+                            "export"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "monitorPlanId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "year",
+                              "value": "<number>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "quarter",
+                              "value": "<number>"
+                            },
+                            {
+                              "key": "reportedValuesOnly",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": \"reference #/components/schemas/EmissionsDTO not found in the OpenAPI spec\"\n}",
+                      "createdAt": "2026-07-28T10:58:26.000Z",
+                      "updatedAt": "2026-07-28T10:58:26.000Z",
+                      "uid": "35240-02dc5f2a-709e-4f17-aedf-27af5243ed5b"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T10:58:26.000Z",
+                  "updatedAt": "2026-07-28T10:58:26.000Z",
+                  "uid": "35240-8a8dd7a2-e906-4e4d-8adf-f76dcc757399"
+                }
+              ],
+              "id": "6757424d-7d68-4061-b24e-edac6b5adc76",
+              "createdAt": "2026-07-28T10:58:26.000Z",
+              "updatedAt": "2026-07-28T10:58:26.000Z",
+              "uid": "35240-6757424d-7d68-4061-b24e-edac6b5adc76"
+            },
+            {
+              "name": "submission-progress",
+              "item": [
+                {
+                  "name": "Emissions Controller submission Progress",
+                  "id": "ebb59cc0-b006-4a24-8788-e74168a9e717",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/emissions-mgmt/emissions/submission-progress?submissionPeriod=<date>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "emissions-mgmt",
+                        "emissions",
+                        "submission-progress"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Date on which activity occurred.",
+                          "key": "submissionPeriod",
+                          "value": "<date>"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "457217eb-a975-4572-8731-81d6d8a45bd2",
+                      "name": "Retrieve submissions for current time period",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/emissions-mgmt/emissions/submission-progress?submissionPeriod=<date>&key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "emissions-mgmt",
+                            "emissions",
+                            "submission-progress"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Date on which activity occurred.",
+                              "key": "submissionPeriod",
+                              "value": "<date>"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T10:58:26.000Z",
+                      "updatedAt": "2026-07-28T10:58:26.000Z",
+                      "uid": "35240-457217eb-a975-4572-8731-81d6d8a45bd2"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T10:58:26.000Z",
+                  "updatedAt": "2026-07-28T10:58:26.000Z",
+                  "uid": "35240-ebb59cc0-b006-4a24-8788-e74168a9e717"
+                }
+              ],
+              "id": "a1d54941-6e0e-4600-93c6-cac609aa62ed",
+              "createdAt": "2026-07-28T10:58:26.000Z",
+              "updatedAt": "2026-07-28T10:58:26.000Z",
+              "uid": "35240-a1d54941-6e0e-4600-93c6-cac609aa62ed"
+            },
+            {
+              "name": "Emissions Controller get Emissions",
+              "id": "214a3690-c449-46ac-9a99-e9cf00754b03",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/emissions-mgmt/emissions?orisCodes=<number>|<number>&monPlanIds=<string>|<string>&quarters=<string>|<string>&mode=submit",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "emissions-mgmt",
+                    "emissions"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Array of oris codes",
+                      "key": "orisCodes",
+                      "value": "<number>|<number>"
+                    },
+                    {
+                      "description": "Array of configurations",
+                      "key": "monPlanIds",
+                      "value": "<string>|<string>"
+                    },
+                    {
+                      "description": "(Required) Array of quarter abbreviations",
+                      "key": "quarters",
+                      "value": "<string>|<string>"
+                    },
+                    {
+                      "description": "Flag to indicate the mode of operation",
+                      "key": "mode",
+                      "value": "submit"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "ce12c2c5-5bf0-49aa-8047-4e7baabd1c34",
+                  "name": "Retrieves emissions review and submit records",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/emissions-mgmt/emissions?orisCodes=<number>|<number>&monPlanIds=<string>|<string>&quarters=<string>|<string>&mode=submit&key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "emissions-mgmt",
+                        "emissions"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Array of oris codes",
+                          "key": "orisCodes",
+                          "value": "<number>|<number>"
+                        },
+                        {
+                          "description": "Array of configurations",
+                          "key": "monPlanIds",
+                          "value": "<string>|<string>"
+                        },
+                        {
+                          "description": "(Required) Array of quarter abbreviations",
+                          "key": "quarters",
+                          "value": "<string>|<string>"
+                        },
+                        {
+                          "description": "Flag to indicate the mode of operation",
+                          "key": "mode",
+                          "value": "submit"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"items\": [\n    {\n      \"orisCode\": \"<number>\",\n      \"facilityName\": \"<string>\",\n      \"monPlanId\": \"<string>\",\n      \"configuration\": \"<string>\",\n      \"evalStatusCode\": \"<string>\",\n      \"evalStatusCodeDescription\": \"<string>\",\n      \"severityCode\": \"<string>\",\n      \"severityDescription\": \"<string>\",\n      \"submissionAvailabilityCode\": \"<string>\",\n      \"submissionAvailabilityCodeDescription\": \"<string>\",\n      \"userid\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"windowStatus\": \"<string>\",\n      \"windowExpiredDate\": \"<string>\",\n      \"periodAbbreviation\": \"<string>\"\n    },\n    {\n      \"orisCode\": \"<number>\",\n      \"facilityName\": \"<string>\",\n      \"monPlanId\": \"<string>\",\n      \"configuration\": \"<string>\",\n      \"evalStatusCode\": \"<string>\",\n      \"evalStatusCodeDescription\": \"<string>\",\n      \"severityCode\": \"<string>\",\n      \"severityDescription\": \"<string>\",\n      \"submissionAvailabilityCode\": \"<string>\",\n      \"submissionAvailabilityCodeDescription\": \"<string>\",\n      \"userid\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"windowStatus\": \"<string>\",\n      \"windowExpiredDate\": \"<string>\",\n      \"periodAbbreviation\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T10:58:26.000Z",
+                  "updatedAt": "2026-07-28T10:58:26.000Z",
+                  "uid": "35240-ce12c2c5-5bf0-49aa-8047-4e7baabd1c34"
+                }
+              ],
+              "createdAt": "2026-07-28T10:58:26.000Z",
+              "updatedAt": "2026-07-28T10:58:26.000Z",
+              "uid": "35240-214a3690-c449-46ac-9a99-e9cf00754b03"
+            }
+          ],
+          "id": "c7e116f8-9aef-49b4-8e45-65717b6abf1b",
+          "createdAt": "2026-07-28T10:58:26.000Z",
+          "updatedAt": "2026-07-28T10:58:26.000Z",
+          "uid": "35240-c7e116f8-9aef-49b4-8e45-65717b6abf1b"
+        }
+      ],
+      "id": "bc8f8ecf-d68b-4d82-aca0-0e0d42fe2bd2",
+      "createdAt": "2026-07-28T10:58:26.000Z",
+      "updatedAt": "2026-07-28T10:58:26.000Z",
+      "uid": "35240-bc8f8ecf-d68b-4d82-aca0-0e0d42fe2bd2"
+    },
+    {
+      "name": "streaming-services",
+      "item": [
+        {
+          "name": "emissions",
+          "item": [
+            {
+              "name": "summary-values",
+              "item": [
+                {
+                  "name": "Summary Value Controller summary Value Stream",
+                  "id": "b563067a-dba3-4ecd-90ac-6e57cf4d94e7",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/streaming-services/emissions/summary-values?orisCode=<number>&beginYear=<number>&beginQuarter=<number>&endYear=<number>&endQuarter=<number>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "streaming-services",
+                        "emissions",
+                        "summary-values"
+                      ],
+                      "query": [
+                        {
+                          "key": "orisCode",
+                          "value": "<number>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "beginYear",
+                          "value": "<number>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "beginQuarter",
+                          "value": "<number>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "endYear",
+                          "value": "<number>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "endQuarter",
+                          "value": "<number>"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "8a29cd10-be28-474f-bdb7-c93b16c83622",
+                      "name": "Exports summary values",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/streaming-services/emissions/summary-values?orisCode=<number>&beginYear=<number>&beginQuarter=<number>&endYear=<number>&endQuarter=<number>&key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "streaming-services",
+                            "emissions",
+                            "summary-values"
+                          ],
+                          "query": [
+                            {
+                              "key": "orisCode",
+                              "value": "<number>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "beginYear",
+                              "value": "<number>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "beginQuarter",
+                              "value": "<number>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "endYear",
+                              "value": "<number>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "endQuarter",
+                              "value": "<number>"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"locationId\": \"<string>\",\n  \"reportPeriodId\": \"<number>\",\n  \"parameterCode\": \"<string>\",\n  \"quarterlyValue\": \"<number>\",\n  \"yearTotal\": \"<number>\",\n  \"ozoneSeasonTotal\": \"<number>\",\n  \"userId\": \"<string>\",\n  \"addDate\": \"<string>\",\n  \"updateDate\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T10:58:26.000Z",
+                      "updatedAt": "2026-07-28T10:58:26.000Z",
+                      "uid": "35240-8a29cd10-be28-474f-bdb7-c93b16c83622"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T10:58:26.000Z",
+                  "updatedAt": "2026-07-28T10:58:26.000Z",
+                  "uid": "35240-b563067a-dba3-4ecd-90ac-6e57cf4d94e7"
+                }
+              ],
+              "id": "10dc859a-8c6a-4bd8-aa13-17f5a66e965a",
+              "createdAt": "2026-07-28T10:58:26.000Z",
+              "updatedAt": "2026-07-28T10:58:26.000Z",
+              "uid": "35240-10dc859a-8c6a-4bd8-aa13-17f5a66e965a"
+            },
+            {
+              "name": "supplemental-operating",
+              "item": [
+                {
+                  "name": "Supplemental Operating Controller supplemental Operating Stream",
+                  "id": "413442d2-9a6b-49da-a9ef-dc6522dccb7c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/streaming-services/emissions/supplemental-operating?orisCode=<number>&beginYear=<number>&beginQuarter=<number>&endYear=<number>&endQuarter=<number>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "streaming-services",
+                        "emissions",
+                        "supplemental-operating"
+                      ],
+                      "query": [
+                        {
+                          "key": "orisCode",
+                          "value": "<number>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "beginYear",
+                          "value": "<number>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "beginQuarter",
+                          "value": "<number>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "endYear",
+                          "value": "<number>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "endQuarter",
+                          "value": "<number>"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "cf434e55-f643-4cb2-acbd-ab7eba5494ec",
+                      "name": "Exports supplemental operating values",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/streaming-services/emissions/supplemental-operating?orisCode=<number>&beginYear=<number>&beginQuarter=<number>&endYear=<number>&endQuarter=<number>&key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "streaming-services",
+                            "emissions",
+                            "supplemental-operating"
+                          ],
+                          "query": [
+                            {
+                              "key": "orisCode",
+                              "value": "<number>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "beginYear",
+                              "value": "<number>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "beginQuarter",
+                              "value": "<number>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "endYear",
+                              "value": "<number>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "endQuarter",
+                              "value": "<number>"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"locationId\": \"<string>\",\n  \"reportPeriodId\": \"<number>\",\n  \"operatingTypeCode\": \"<string>\",\n  \"fuelCode\": \"<string>\",\n  \"operatingValue\": \"<number>\",\n  \"userId\": \"<string>\",\n  \"addDate\": \"<string>\",\n  \"updateDate\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T10:58:26.000Z",
+                      "updatedAt": "2026-07-28T10:58:26.000Z",
+                      "uid": "35240-cf434e55-f643-4cb2-acbd-ab7eba5494ec"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T10:58:26.000Z",
+                  "updatedAt": "2026-07-28T10:58:26.000Z",
+                  "uid": "35240-413442d2-9a6b-49da-a9ef-dc6522dccb7c"
+                }
+              ],
+              "id": "f234dc50-71b4-4318-a913-ff2cc6581b83",
+              "createdAt": "2026-07-28T10:58:26.000Z",
+              "updatedAt": "2026-07-28T10:58:26.000Z",
+              "uid": "35240-f234dc50-71b4-4318-a913-ff2cc6581b83"
+            },
+            {
+              "name": "hourly",
+              "item": [
+                {
+                  "name": "derived-values",
+                  "item": [
+                    {
+                      "name": "Derived Hourly Controller derived Hourly Stream",
+                      "id": "e01e76b1-0ef5-4048-b76c-7c55519c4c77",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/streaming-services/emissions/hourly/derived-values?orisCode=<number>|<number>&locationName=<string>|<string>&beginDate=<dateTime>&endDate=<dateTime>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "streaming-services",
+                            "emissions",
+                            "hourly",
+                            "derived-values"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "orisCode",
+                              "value": "<number>|<number>"
+                            },
+                            {
+                              "key": "locationName",
+                              "value": "<string>|<string>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "beginDate",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "endDate",
+                              "value": "<dateTime>"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "cdfd3022-7e14-42d9-b644-8608bc5fad71",
+                          "name": "Exports supplemental operating values",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/streaming-services/emissions/hourly/derived-values?orisCode=<number>|<number>&locationName=<string>|<string>&beginDate=<dateTime>&endDate=<dateTime>&key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "streaming-services",
+                                "emissions",
+                                "hourly",
+                                "derived-values"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) ",
+                                  "key": "orisCode",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "key": "locationName",
+                                  "value": "<string>|<string>"
+                                },
+                                {
+                                  "description": "(Required) ",
+                                  "key": "beginDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "(Required) ",
+                                  "key": "endDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"hourId\": \"<string>\",\n  \"parameterCode\": \"<string>\",\n  \"adjustedHourlyValue\": \"<string>\",\n  \"modcCode\": \"<string>\",\n  \"locationId\": \"<string>\",\n  \"reportPeriodId\": \"<number>\",\n  \"userId\": \"<string>\",\n  \"addDate\": \"<string>\",\n  \"updateDate\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T10:58:26.000Z",
+                          "updatedAt": "2026-07-28T10:58:26.000Z",
+                          "uid": "35240-cdfd3022-7e14-42d9-b644-8608bc5fad71"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T10:58:26.000Z",
+                      "updatedAt": "2026-07-28T10:58:26.000Z",
+                      "uid": "35240-e01e76b1-0ef5-4048-b76c-7c55519c4c77"
+                    }
+                  ],
+                  "id": "2abc64a4-e501-432c-a4a9-0bb6e2054a4e",
+                  "createdAt": "2026-07-28T10:58:26.000Z",
+                  "updatedAt": "2026-07-28T10:58:26.000Z",
+                  "uid": "35240-2abc64a4-e501-432c-a4a9-0bb6e2054a4e"
+                },
+                {
+                  "name": "operating",
+                  "item": [
+                    {
+                      "name": "Hourly Operating Controller hourly Operating Stream",
+                      "id": "a363cfad-0d71-4867-83b2-3a76573e9e9c",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/streaming-services/emissions/hourly/operating?orisCode=<number>|<number>&locationName=<string>|<string>&beginDate=<dateTime>&endDate=<dateTime>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "streaming-services",
+                            "emissions",
+                            "hourly",
+                            "operating"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "orisCode",
+                              "value": "<number>|<number>"
+                            },
+                            {
+                              "key": "locationName",
+                              "value": "<string>|<string>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "beginDate",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "endDate",
+                              "value": "<dateTime>"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "220ea6d4-1792-4f38-8825-ee2fd85bdda7",
+                          "name": "Exports hourly operating values",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/streaming-services/emissions/hourly/operating?orisCode=<number>|<number>&locationName=<string>|<string>&beginDate=<dateTime>&endDate=<dateTime>&key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "streaming-services",
+                                "emissions",
+                                "hourly",
+                                "operating"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) ",
+                                  "key": "orisCode",
+                                  "value": "<number>|<number>"
+                                },
+                                {
+                                  "key": "locationName",
+                                  "value": "<string>|<string>"
+                                },
+                                {
+                                  "description": "(Required) ",
+                                  "key": "beginDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "(Required) ",
+                                  "key": "endDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"locationId\": \"<string>\",\n  \"reportPeriodId\": \"<number>\",\n  \"beginDate\": \"<dateTime>\",\n  \"beginHour\": \"<number>\",\n  \"operatingTime\": \"<number>\",\n  \"hourLoad\": \"<number>\",\n  \"loadUnitsOfMeasureCode\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"addDate\": \"<dateTime>\",\n  \"updateDate\": \"<dateTime>\"\n}",
+                          "createdAt": "2026-07-28T10:58:26.000Z",
+                          "updatedAt": "2026-07-28T10:58:26.000Z",
+                          "uid": "35240-220ea6d4-1792-4f38-8825-ee2fd85bdda7"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T10:58:26.000Z",
+                      "updatedAt": "2026-07-28T10:58:26.000Z",
+                      "uid": "35240-a363cfad-0d71-4867-83b2-3a76573e9e9c"
+                    }
+                  ],
+                  "id": "fae497a4-09dd-4b99-91e7-2fd18878dd4f",
+                  "createdAt": "2026-07-28T10:58:26.000Z",
+                  "updatedAt": "2026-07-28T10:58:26.000Z",
+                  "uid": "35240-fae497a4-09dd-4b99-91e7-2fd18878dd4f"
+                }
+              ],
+              "id": "2774b9cf-68cd-4d43-860b-3500895f87d0",
+              "createdAt": "2026-07-28T10:58:26.000Z",
+              "updatedAt": "2026-07-28T10:58:26.000Z",
+              "uid": "35240-2774b9cf-68cd-4d43-860b-3500895f87d0"
+            }
+          ],
+          "id": "5c7011ee-b6c2-414e-af23-47c14ff6cab5",
+          "createdAt": "2026-07-28T10:58:26.000Z",
+          "updatedAt": "2026-07-28T10:58:26.000Z",
+          "uid": "35240-5c7011ee-b6c2-414e-af23-47c14ff6cab5"
+        }
+      ],
+      "id": "d1f0612a-385d-4b9e-a764-237dc8fe32ed",
+      "createdAt": "2026-07-28T10:58:26.000Z",
+      "updatedAt": "2026-07-28T10:58:26.000Z",
+      "uid": "35240-d1f0612a-385d-4b9e-a764-237dc8fe32ed"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

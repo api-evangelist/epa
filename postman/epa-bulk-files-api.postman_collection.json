@@ -1,0 +1,135 @@
+{
+  "info": {
+    "_postman_id": "e199fac1-8cdc-4c07-8780-c8003852190f",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Bulk Files API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:57:13.000Z",
+    "updatedAt": "2026-07-28T10:57:13.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e199fac1-8cdc-4c07-8780-c8003852190f"
+  },
+  "item": [
+    {
+      "name": "camd-services",
+      "item": [
+        {
+          "name": "bulk-files",
+          "item": [
+            {
+              "name": "Bulk File Controller get Bulk Files",
+              "id": "8c50aa47-2cfb-4846-a6d8-3b18b88fefc5",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/camd-services/bulk-files",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "camd-services",
+                    "bulk-files"
+                  ]
+                },
+                "description": "Retrieves a list of bulk data files and their metadata from S3."
+              },
+              "response": [
+                {
+                  "id": "6da1e9d7-21d7-418d-8bb7-c1fd9658008d",
+                  "name": "Data retrieved successfully",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/camd-services/bulk-files?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "camd-services",
+                        "bulk-files"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"items\": [\n    {\n      \"filename\": \"<string>\",\n      \"s3Path\": \"<string>\",\n      \"bytes\": \"<number>\",\n      \"kiloBytes\": \"<number>\",\n      \"megaBytes\": \"<number>\",\n      \"gigaBytes\": \"<number>\",\n      \"lastUpdated\": \"<dateTime>\",\n      \"metadata\": {}\n    },\n    {\n      \"filename\": \"<string>\",\n      \"s3Path\": \"<string>\",\n      \"bytes\": \"<number>\",\n      \"kiloBytes\": \"<number>\",\n      \"megaBytes\": \"<number>\",\n      \"gigaBytes\": \"<number>\",\n      \"lastUpdated\": \"<dateTime>\",\n      \"metadata\": {}\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T10:57:14.000Z",
+                  "updatedAt": "2026-07-28T10:57:14.000Z",
+                  "uid": "35240-6da1e9d7-21d7-418d-8bb7-c1fd9658008d"
+                }
+              ],
+              "createdAt": "2026-07-28T10:57:14.000Z",
+              "updatedAt": "2026-07-28T10:57:14.000Z",
+              "uid": "35240-8c50aa47-2cfb-4846-a6d8-3b18b88fefc5"
+            }
+          ],
+          "id": "8266d8f4-d66b-4ce2-9001-9702c4c63b5f",
+          "createdAt": "2026-07-28T10:57:14.000Z",
+          "updatedAt": "2026-07-28T10:57:14.000Z",
+          "uid": "35240-8266d8f4-d66b-4ce2-9001-9702c4c63b5f"
+        }
+      ],
+      "id": "abc32049-f5dd-4932-8c87-87e3d0ff9e41",
+      "createdAt": "2026-07-28T10:57:14.000Z",
+      "updatedAt": "2026-07-28T10:57:14.000Z",
+      "uid": "35240-abc32049-f5dd-4932-8c87-87e3d0ff9e41"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

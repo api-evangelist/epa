@@ -1,0 +1,200 @@
+{
+  "info": {
+    "_postman_id": "b928a274-b8df-4ce6-aa0b-b6ef6f8eed08",
+    "name": "EPA Air Quality System (AQS) Account Type Codes PCT Qualifications API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:59:41.000Z",
+    "updatedAt": "2026-07-28T10:59:41.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b928a274-b8df-4ce6-aa0b-b6ef6f8eed08"
+  },
+  "item": [
+    {
+      "name": "monitor-plan-mgmt",
+      "item": [
+        {
+          "name": "locations",
+          "item": [
+            {
+              "name": "{locId}",
+              "item": [
+                {
+                  "name": "qualifications",
+                  "item": [
+                    {
+                      "name": "{qualId}",
+                      "item": [
+                        {
+                          "name": "pct-qualifications",
+                          "item": [
+                            {
+                              "name": "PCT Qualification Controller get PCT Qualifications",
+                              "id": "0bbb9628-ae50-4414-9e94-d724dc43486a",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/monitor-plan-mgmt/locations/:locId/qualifications/:qualId/pct-qualifications",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "monitor-plan-mgmt",
+                                    "locations",
+                                    ":locId",
+                                    "qualifications",
+                                    ":qualId",
+                                    "pct-qualifications"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "b359ac8a-4455-4e74-8a98-ebfa6b8a795a",
+                                      "key": "locId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "c70aa5d8-84dc-455a-965c-c740bd50ed2d",
+                                      "key": "qualId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                }
+                              },
+                              "response": [
+                                {
+                                  "id": "019755c9-d770-4d0e-ae3d-6e82deec6330",
+                                  "name": "Retrieves official pct qualification records for a monitor location",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/monitor-plan-mgmt/locations/:locId/qualifications/:qualId/pct-qualifications?key=<API Key>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "monitor-plan-mgmt",
+                                        "locations",
+                                        ":locId",
+                                        "qualifications",
+                                        ":qualId",
+                                        "pct-qualifications"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Added as a part of security scheme: apikey",
+                                          "key": "key",
+                                          "value": "<API Key>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "locId"
+                                        },
+                                        {
+                                          "key": "qualId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"items\": [\n    {\n      \"qualificationYear\": \"<number>\",\n      \"averagePercentValue\": \"<number>\",\n      \"yr1QualificationDataYear\": \"<number>\",\n      \"yr1QualificationDataTypeCode\": \"<string>\",\n      \"yr1PercentageValue\": \"<number>\",\n      \"yr2QualificationDataYear\": \"<number>\",\n      \"yr2QualificationDataTypeCode\": \"<string>\",\n      \"yr2PercentageValue\": \"<number>\",\n      \"yr3QualificationDataYear\": \"<number>\",\n      \"yr3QualificationDataTypeCode\": \"<string>\",\n      \"yr3PercentageValue\": \"<number>\",\n      \"id\": \"<string>\",\n      \"qualificationId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\"\n    },\n    {\n      \"qualificationYear\": \"<number>\",\n      \"averagePercentValue\": \"<number>\",\n      \"yr1QualificationDataYear\": \"<number>\",\n      \"yr1QualificationDataTypeCode\": \"<string>\",\n      \"yr1PercentageValue\": \"<number>\",\n      \"yr2QualificationDataYear\": \"<number>\",\n      \"yr2QualificationDataTypeCode\": \"<string>\",\n      \"yr2PercentageValue\": \"<number>\",\n      \"yr3QualificationDataYear\": \"<number>\",\n      \"yr3QualificationDataTypeCode\": \"<string>\",\n      \"yr3PercentageValue\": \"<number>\",\n      \"id\": \"<string>\",\n      \"qualificationId\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T10:59:41.000Z",
+                                  "updatedAt": "2026-07-28T10:59:41.000Z",
+                                  "uid": "35240-019755c9-d770-4d0e-ae3d-6e82deec6330"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T10:59:41.000Z",
+                              "updatedAt": "2026-07-28T10:59:41.000Z",
+                              "uid": "35240-0bbb9628-ae50-4414-9e94-d724dc43486a"
+                            }
+                          ],
+                          "id": "2d1be323-d8e5-42c0-967d-06990942ba72",
+                          "createdAt": "2026-07-28T10:59:41.000Z",
+                          "updatedAt": "2026-07-28T10:59:41.000Z",
+                          "uid": "35240-2d1be323-d8e5-42c0-967d-06990942ba72"
+                        }
+                      ],
+                      "id": "2779534a-88e8-482d-b39a-0761f5d41311",
+                      "createdAt": "2026-07-28T10:59:41.000Z",
+                      "updatedAt": "2026-07-28T10:59:41.000Z",
+                      "uid": "35240-2779534a-88e8-482d-b39a-0761f5d41311"
+                    }
+                  ],
+                  "id": "bc30d414-d784-4ff5-ba70-14da716f1975",
+                  "createdAt": "2026-07-28T10:59:41.000Z",
+                  "updatedAt": "2026-07-28T10:59:41.000Z",
+                  "uid": "35240-bc30d414-d784-4ff5-ba70-14da716f1975"
+                }
+              ],
+              "id": "d2514965-2660-4a38-a783-9b07fb195545",
+              "createdAt": "2026-07-28T10:59:41.000Z",
+              "updatedAt": "2026-07-28T10:59:41.000Z",
+              "uid": "35240-d2514965-2660-4a38-a783-9b07fb195545"
+            }
+          ],
+          "id": "1c027845-e266-4bce-8403-af91eeee9981",
+          "createdAt": "2026-07-28T10:59:41.000Z",
+          "updatedAt": "2026-07-28T10:59:41.000Z",
+          "uid": "35240-1c027845-e266-4bce-8403-af91eeee9981"
+        }
+      ],
+      "id": "a5c5652e-7bad-4777-aa0d-bd98bf88d3eb",
+      "createdAt": "2026-07-28T10:59:41.000Z",
+      "updatedAt": "2026-07-28T10:59:41.000Z",
+      "uid": "35240-a5c5652e-7bad-4777-aa0d-bd98bf88d3eb"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

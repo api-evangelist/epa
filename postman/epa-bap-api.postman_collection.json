@@ -1,0 +1,324 @@
+{
+  "info": {
+    "_postman_id": "598055d5-7a06-4165-83bd-98425e046f33",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Bap API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:57:12.000Z",
+    "updatedAt": "2026-07-28T10:57:12.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-598055d5-7a06-4165-83bd-98425e046f33"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "bap",
+          "item": [
+            {
+              "name": "sam",
+              "item": [
+                {
+                  "name": "Get User's SAM.gov Data from the BAP.",
+                  "id": "c25c9c57-f1f5-4dfe-bb9c-d89ba11ca97e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/bap/sam",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "bap",
+                        "sam"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "9deb03bf-7c71-4538-be6c-940e620bf535",
+                      "name": "A boolean indicating whether any SAM.gov results were returned (to support helpdesk users without SAM.gov entities), along with an array of SAM.gov entities.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/bap/sam?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "bap",
+                            "sam"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"results\": \"<boolean>\"\n}",
+                      "createdAt": "2026-07-28T10:57:13.000Z",
+                      "updatedAt": "2026-07-28T10:57:13.000Z",
+                      "uid": "35240-9deb03bf-7c71-4538-be6c-940e620bf535"
+                    },
+                    {
+                      "id": "5cedbd42-c41b-438a-b546-d489279577d2",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/bap/sam?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "bap",
+                            "sam"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T10:57:13.000Z",
+                      "updatedAt": "2026-07-28T10:57:13.000Z",
+                      "uid": "35240-5cedbd42-c41b-438a-b546-d489279577d2"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T10:57:13.000Z",
+                  "updatedAt": "2026-07-28T10:57:13.000Z",
+                  "uid": "35240-c25c9c57-f1f5-4dfe-bb9c-d89ba11ca97e"
+                }
+              ],
+              "id": "d255262e-3513-4bb7-a710-8c83865e9068",
+              "createdAt": "2026-07-28T10:57:13.000Z",
+              "updatedAt": "2026-07-28T10:57:13.000Z",
+              "uid": "35240-d255262e-3513-4bb7-a710-8c83865e9068"
+            },
+            {
+              "name": "submissions",
+              "item": [
+                {
+                  "name": "Get User's Form Submissions Statuses from the BAP.",
+                  "id": "2dd69922-9c3c-4a07-8ace-9372dd9230d1",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/bap/submissions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "bap",
+                        "submissions"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "42b08b0c-603b-4bc1-9611-67e62073f06d",
+                      "name": "An array of form submission statuses, and other relevant fields.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/bap/submissions?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "bap",
+                            "submissions"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[]",
+                      "createdAt": "2026-07-28T10:57:13.000Z",
+                      "updatedAt": "2026-07-28T10:57:13.000Z",
+                      "uid": "35240-42b08b0c-603b-4bc1-9611-67e62073f06d"
+                    },
+                    {
+                      "id": "beb9eb02-67e5-46ed-a745-4288fa130dd5",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/bap/submissions?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "bap",
+                            "submissions"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T10:57:13.000Z",
+                      "updatedAt": "2026-07-28T10:57:13.000Z",
+                      "uid": "35240-beb9eb02-67e5-46ed-a745-4288fa130dd5"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T10:57:13.000Z",
+                  "updatedAt": "2026-07-28T10:57:13.000Z",
+                  "uid": "35240-2dd69922-9c3c-4a07-8ace-9372dd9230d1"
+                }
+              ],
+              "id": "dcf8bf3d-2848-466a-adbf-5da90c82f049",
+              "createdAt": "2026-07-28T10:57:13.000Z",
+              "updatedAt": "2026-07-28T10:57:13.000Z",
+              "uid": "35240-dcf8bf3d-2848-466a-adbf-5da90c82f049"
+            }
+          ],
+          "id": "50a8e8e8-07cd-4715-ba67-19160fc95037",
+          "createdAt": "2026-07-28T10:57:13.000Z",
+          "updatedAt": "2026-07-28T10:57:13.000Z",
+          "uid": "35240-50a8e8e8-07cd-4715-ba67-19160fc95037"
+        }
+      ],
+      "id": "d8d2f92a-d51b-4418-ba8e-b5bdb11e1948",
+      "createdAt": "2026-07-28T10:57:13.000Z",
+      "updatedAt": "2026-07-28T10:57:13.000Z",
+      "uid": "35240-d8d2f92a-d51b-4418-ba8e-b5bdb11e1948"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}

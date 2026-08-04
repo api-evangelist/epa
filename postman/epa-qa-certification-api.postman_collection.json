@@ -1,0 +1,595 @@
+{
+  "info": {
+    "_postman_id": "8fbeaa23-86e9-47ad-8759-c5534ee486f5",
+    "name": "EPA Air Quality System (AQS) Account Type Codes QA Certification API",
+    "description": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:59:49.000Z",
+    "updatedAt": "2026-07-28T10:59:50.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8fbeaa23-86e9-47ad-8759-c5534ee486f5"
+  },
+  "item": [
+    {
+      "name": "qa-certification-mgmt",
+      "item": [
+        {
+          "name": "export",
+          "item": [
+            {
+              "name": "Exports Official QA Certification Data",
+              "id": "52a60af5-76e9-4b0e-8965-127309372261",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/qa-certification-mgmt/export?facilityId=<number>&unitIds=<string>|<string>&stackPipeIds=<string>|<string>&testSummaryIds=<string>|<string>&qaCertificationEventIds=<string>&qaCertificationEventIds=<string>&testTypeCodes=AF2LCHK|RATA&qaTestExtensionExemptionIds=<string>&qaTestExtensionExemptionIds=<string>&beginDate=<dateTime>&endDate=<dateTime>&reportedValuesOnly=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "qa-certification-mgmt",
+                    "export"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                      "key": "facilityId",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "Unique identifier for each unit at a facility.",
+                      "key": "unitIds",
+                      "value": "<string>|<string>"
+                    },
+                    {
+                      "description": "This is the alphanumeric code assigned by a source to identify a multiple or common stack or pipe at which emissions are determined.",
+                      "key": "stackPipeIds",
+                      "value": "<string>|<string>"
+                    },
+                    {
+                      "description": "Unique identifier of a test summary record.",
+                      "key": "testSummaryIds",
+                      "value": "<string>|<string>"
+                    },
+                    {
+                      "description": "Unique identifier of a QA certification event record.",
+                      "key": "qaCertificationEventIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Unique identifier of a QA certification event record.",
+                      "key": "qaCertificationEventIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Code used to identify test type or the type of test performed.",
+                      "key": "testTypeCodes",
+                      "value": "AF2LCHK|RATA"
+                    },
+                    {
+                      "description": "Unique Id for variances from prescribed testing requirements or extensions to the normal QA testing schedule.",
+                      "key": "qaTestExtensionExemptionIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Unique Id for variances from prescribed testing requirements or extensions to the normal QA testing schedule.",
+                      "key": "qaTestExtensionExemptionIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Date in which information became effective or activity started.",
+                      "key": "beginDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "End date for a given period of a unit's emissions.",
+                      "key": "endDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "reportedValuesOnly",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "6ee3dc94-d4f9-4fa6-9b35-bfee7a3bed0f",
+                  "name": "Successfull export of official QA Certification data",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/qa-certification-mgmt/export?facilityId=<number>&unitIds=<string>|<string>&stackPipeIds=<string>|<string>&testSummaryIds=<string>|<string>&qaCertificationEventIds=<string>&testTypeCodes=AF2LCHK|RATA&qaTestExtensionExemptionIds=<string>&beginDate=<dateTime>&endDate=<dateTime>&reportedValuesOnly=<boolean>&key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "qa-certification-mgmt",
+                        "export"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting.",
+                          "key": "facilityId",
+                          "value": "<number>"
+                        },
+                        {
+                          "description": "Unique identifier for each unit at a facility.",
+                          "key": "unitIds",
+                          "value": "<string>|<string>"
+                        },
+                        {
+                          "description": "This is the alphanumeric code assigned by a source to identify a multiple or common stack or pipe at which emissions are determined.",
+                          "key": "stackPipeIds",
+                          "value": "<string>|<string>"
+                        },
+                        {
+                          "description": "Unique identifier of a test summary record.",
+                          "key": "testSummaryIds",
+                          "value": "<string>|<string>"
+                        },
+                        {
+                          "description": "Unique identifier of a QA certification event record.",
+                          "key": "qaCertificationEventIds",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Code used to identify test type or the type of test performed.",
+                          "key": "testTypeCodes",
+                          "value": "AF2LCHK|RATA"
+                        },
+                        {
+                          "description": "Unique Id for variances from prescribed testing requirements or extensions to the normal QA testing schedule.",
+                          "key": "qaTestExtensionExemptionIds",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Date in which information became effective or activity started.",
+                          "key": "beginDate",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "End date for a given period of a unit's emissions.",
+                          "key": "endDate",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "key": "reportedValuesOnly",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"orisCode\": \"<number>\",\n  \"testSummaryData\": [\n    {\n      \"stackPipeId\": \"<string>\",\n      \"unitId\": \"<string>\",\n      \"testTypeCode\": \"<string>\",\n      \"componentId\": \"<string>\",\n      \"testNumber\": \"<string>\",\n      \"calibrationInjectionData\": [\n        {\n          \"id\": \"<string>\",\n          \"testSumId\": \"<string>\",\n          \"calculatedZeroCalibrationError\": \"<number>\",\n          \"calculatedZeroAPSIndicator\": \"<number>\",\n          \"calculatedUpscaleCalibrationError\": \"<number>\",\n          \"calculatedUpscaleAPSIndicator\": \"<number>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"onlineOfflineIndicator\": \"<number>\",\n          \"upscaleGasLevelCode\": \"<string>\",\n          \"zeroInjectionDate\": \"<dateTime>\",\n          \"zeroInjectionHour\": \"<number>\",\n          \"zeroInjectionMinute\": \"<number>\",\n          \"upscaleInjectionDate\": \"<dateTime>\",\n          \"upscaleInjectionHour\": \"<number>\",\n          \"upscaleInjectionMinute\": \"<number>\",\n          \"zeroMeasuredValue\": \"<number>\",\n          \"upscaleMeasuredValue\": \"<number>\",\n          \"zeroAPSIndicator\": \"<number>\",\n          \"upscaleAPSIndicator\": \"<number>\",\n          \"zeroCalibrationError\": \"<number>\",\n          \"upscaleCalibrationError\": \"<number>\",\n          \"zeroReferenceValue\": \"<number>\",\n          \"upscaleReferenceValue\": \"<number>\"\n        }\n      ],\n      \"linearitySummaryData\": [\n        {\n          \"gasLevelCode\": \"<string>\",\n          \"linearityInjectionData\": [\n            {\n              \"injectionDate\": \"<dateTime>\",\n              \"injectionMinute\": \"<number>\",\n              \"id\": \"<string>\",\n              \"linSumId\": \"<string>\",\n              \"userId\": \"<string>\",\n              \"addDate\": \"<string>\",\n              \"updateDate\": \"<string>\",\n              \"injectionHour\": \"<number>\",\n              \"measuredValue\": \"<number>\",\n              \"referenceValue\": \"<number>\"\n            }\n          ],\n          \"id\": \"<string>\",\n          \"testSumId\": \"<string>\",\n          \"calculatedMeanReferenceValue\": \"<number>\",\n          \"calculatedMeanMeasuredValue\": \"<number>\",\n          \"calculatedPercentError\": \"<number>\",\n          \"calculatedAPSIndicator\": \"<number>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"meanMeasuredValue\": \"<number>\",\n          \"meanReferenceValue\": \"<number>\",\n          \"percentError\": \"<number>\",\n          \"apsIndicator\": \"<number>\"\n        }\n      ],\n      \"rataData\": [\n        {\n          \"rataSummaryData\": [\n            {\n              \"operatingLevelCode\": \"<string>\",\n              \"rataRunData\": [\n                {\n                  \"flowRataRunData\": [\n                    {\n                      \"rataTraverseData\": [\n                        {\n                          \"id\": \"<string>\",\n                          \"flowRataRunId\": \"<string>\",\n                          \"calculatedCalculatedVelocity\": \"<number>\",\n                          \"userId\": \"<string>\",\n                          \"addDate\": \"<string>\",\n                          \"updateDate\": \"<string>\",\n                          \"probeId\": \"<string>\",\n                          \"probeTypeCode\": \"<string>\",\n                          \"pressureMeasureCode\": \"<string>\",\n                          \"methodTraversePointId\": \"<string>\",\n                          \"velocityCalibrationCoefficient\": \"<number>\",\n                          \"lastProbeDate\": \"<dateTime>\",\n                          \"tStackTemperature\": \"<number>\",\n                          \"averageVelocityDifferencePressure\": \"<number>\",\n                          \"averageSquareVelocityDifferencePressure\": \"<number>\",\n                          \"pointUsedIndicator\": \"<number>\",\n                          \"numberWallEffectsPoints\": \"<number>\",\n                          \"yawAngle\": \"<number>\",\n                          \"pitchAngle\": \"<number>\",\n                          \"calculatedVelocity\": \"<number>\",\n                          \"replacementVelocity\": \"<number>\"\n                        }\n                      ],\n                      \"id\": \"<string>\",\n                      \"rataRunId\": \"<string>\",\n                      \"calculatedDryMolecularWeight\": \"<number>\",\n                      \"calculatedWetMolecularWeight\": \"<number>\",\n                      \"calculatedAverageVelocityWithoutWallEffects\": \"<number>\",\n                      \"calculatedAverageVelocityWithWallEffects\": \"<number>\",\n                      \"calculatedCalculatedWAF\": \"<number>\",\n                      \"userId\": \"<string>\",\n                      \"addDate\": \"<string>\",\n                      \"updateDate\": \"<string>\",\n                      \"numberOfTraversePoints\": \"<number>\",\n                      \"barometricPressure\": \"<number>\",\n                      \"staticStackPressure\": \"<number>\",\n                      \"percentCO2\": \"<number>\",\n                      \"percentO2\": \"<number>\",\n                      \"percentMoisture\": \"<number>\",\n                      \"wetMolecularWeight\": \"<number>\",\n                      \"averageVelocityWithoutWallEffects\": \"<number>\",\n                      \"averageStackFlowRate\": \"<number>\",\n                      \"dryMolecularWeight\": \"<number>\",\n                      \"averageVelocityWithWallEffects\": \"<number>\",\n                      \"calculatedWAF\": \"<number>\"\n                    }\n                  ],\n                  \"id\": \"<string>\",\n                  \"rataSumId\": \"<string>\",\n                  \"calculatedRataReferenceValue\": \"<number>\",\n                  \"userId\": \"<string>\",\n                  \"addDate\": \"<string>\",\n                  \"updateDate\": \"<string>\",\n                  \"runNumber\": \"<number>\",\n                  \"beginDate\": \"<dateTime>\",\n                  \"beginHour\": \"<number>\",\n                  \"beginMinute\": \"<number>\",\n                  \"endDate\": \"<dateTime>\",\n                  \"endHour\": \"<number>\",\n                  \"endMinute\": \"<number>\",\n                  \"runStatusCode\": \"<string>\",\n                  \"cemValue\": \"<number>\",\n                  \"rataReferenceValue\": \"<number>\",\n                  \"grossUnitLoad\": \"<number>\"\n                }\n              ],\n              \"id\": \"<string>\",\n              \"rataId\": \"<string>\",\n              \"calculatedAverageGrossUnitLoad\": \"<number>\",\n              \"calculatedMeanCEMValue\": \"<number>\",\n              \"calculatedMeanRATAReferenceValue\": \"<number>\",\n              \"calculatedMeanDifference\": \"<number>\",\n              \"calculatedStandardDeviationDifference\": \"<number>\",\n              \"calculatedConfidenceCoefficient\": \"<number>\",\n              \"calculatedTValue\": \"<number>\",\n              \"calculatedApsIndicator\": \"<number>\",\n              \"calculatedRelativeAccuracy\": \"<number>\",\n              \"calculatedBiasAdjustmentFactor\": \"<number>\",\n              \"calculatedStackArea\": \"<number>\",\n              \"calculatedCalculatedWAF\": \"<number>\",\n              \"userId\": \"<string>\",\n              \"addDate\": \"<string>\",\n              \"updateDate\": \"<string>\",\n              \"averageGrossUnitLoad\": \"<number>\",\n              \"referenceMethodCode\": \"<string>\",\n              \"meanCEMValue\": \"<number>\",\n              \"meanRATAReferenceValue\": \"<number>\",\n              \"meanDifference\": \"<number>\",\n              \"standardDeviationDifference\": \"<number>\",\n              \"confidenceCoefficient\": \"<number>\",\n              \"tValue\": \"<number>\",\n              \"apsIndicator\": \"<number>\",\n              \"apsCode\": \"<string>\",\n              \"relativeAccuracy\": \"<number>\",\n              \"biasAdjustmentFactor\": \"<number>\",\n              \"co2OrO2ReferenceMethodCode\": \"<string>\",\n              \"stackDiameter\": \"<number>\",\n              \"stackArea\": \"<number>\",\n              \"numberOfTraversePoints\": \"<number>\",\n              \"calculatedWAF\": \"<number>\",\n              \"defaultWAF\": \"<number>\"\n            }\n          ],\n          \"id\": \"<string>\",\n          \"testSumId\": \"<string>\",\n          \"calculatedRataFrequencyCode\": \"<string>\",\n          \"calculatedRelativeAccuracy\": \"<number>\",\n          \"calculatedOverallBiasAdjustmentFactor\": \"<number>\",\n          \"calculatedNumberOfLoadLevel\": \"<number>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"numberOfLoadLevels\": \"<number>\",\n          \"relativeAccuracy\": \"<number>\",\n          \"rataFrequencyCode\": \"<string>\",\n          \"overallBiasAdjustmentFactor\": \"<number>\"\n        }\n      ],\n      \"flowToLoadReferenceData\": [\n        {\n          \"id\": \"<string>\",\n          \"testSumId\": \"<string>\",\n          \"calculatedAverageGrossUnitLoad\": \"<number>\",\n          \"calculatedAverageReferenceMethodFlow\": \"<number>\",\n          \"calculatedReferenceFlowToLoadRatio\": \"<number>\",\n          \"calculatedReferenceGrossHeatRate\": \"<number>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"operatingLevelCode\": \"<string>\",\n          \"rataTestNumber\": \"<string>\",\n          \"averageGrossUnitLoad\": \"<number>\",\n          \"averageReferenceMethodFlow\": \"<number>\",\n          \"referenceFlowLoadRatio\": \"<number>\",\n          \"averageHourlyHeatInputRate\": \"<number>\",\n          \"referenceGrossHeatRate\": \"<number>\",\n          \"calculatedSeparateReferenceIndicator\": \"<number>\"\n        }\n      ],\n      \"flowToLoadCheckData\": [\n        {\n          \"id\": \"<string>\",\n          \"testSumId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"testBasisCode\": \"<string>\",\n          \"biasAdjustedIndicator\": \"<number>\",\n          \"averageAbsolutePercentDifference\": \"<number>\",\n          \"numberOfHours\": \"<number>\",\n          \"numberOfHoursExcludedForFuel\": \"<number>\",\n          \"numberOfHoursExcludedRamping\": \"<number>\",\n          \"numberOfHoursExcludedBypass\": \"<number>\",\n          \"numberOfHoursExcludedPreRATA\": \"<number>\",\n          \"numberOfHoursExcludedTest\": \"<number>\",\n          \"numberOfHoursExcludedMainBypass\": \"<number>\",\n          \"operatingLevelCode\": \"<string>\"\n        }\n      ],\n      \"cycleTimeSummaryData\": [\n        {\n          \"cycleTimeInjectionData\": [\n            {\n              \"id\": \"<string>\",\n              \"cycleTimeSumId\": \"<string>\",\n              \"calculatedInjectionCycleTime\": \"<number>\",\n              \"userId\": \"<string>\",\n              \"addDate\": \"<string>\",\n              \"updateDate\": \"<string>\",\n              \"gasLevelCode\": \"<string>\",\n              \"calibrationGasValue\": \"<number>\",\n              \"beginDate\": \"<dateTime>\",\n              \"beginHour\": \"<number>\",\n              \"beginMinute\": \"<number>\",\n              \"endDate\": \"<dateTime>\",\n              \"endHour\": \"<number>\",\n              \"endMinute\": \"<number>\",\n              \"injectionCycleTime\": \"<number>\",\n              \"beginMonitorValue\": \"<number>\",\n              \"endMonitorValue\": \"<number>\"\n            }\n          ],\n          \"id\": \"<string>\",\n          \"testSumId\": \"<string>\",\n          \"calculatedTotalTime\": \"<number>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"totalTime\": \"<number>\"\n        }\n      ],\n      \"onlineOfflineCalibrationData\": [\n        {\n          \"id\": \"<string>\",\n          \"testSumId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"onlineZeroInjectionDate\": \"<dateTime>\",\n          \"onlineZeroInjectionHour\": \"<number>\",\n          \"onlineZeroCalibrationError\": \"<number>\",\n          \"onlineZeroAPSIndicator\": \"<number>\",\n          \"onlineZeroMeasuredValue\": \"<number>\",\n          \"onlineZeroReferenceValue\": \"<number>\",\n          \"onlineUpscaleCalibrationError\": \"<number>\",\n          \"onlineUpscaleAPSIndicator\": \"<number>\",\n          \"onlineUpscaleInjectionDate\": \"<dateTime>\",\n          \"onlineUpscaleInjectionHour\": \"<number>\",\n          \"onlineUpscaleMeasuredValue\": \"<number>\",\n          \"onlineUpscaleReferenceValue\": \"<number>\",\n          \"offlineZeroCalibrationError\": \"<number>\",\n          \"offlineZeroAPSIndicator\": \"<number>\",\n          \"offlineZeroInjectionDate\": \"<dateTime>\",\n          \"offlineZeroInjectionHour\": \"<number>\",\n          \"offlineZeroMeasuredValue\": \"<number>\",\n          \"offlineZeroReferenceValue\": \"<number>\",\n          \"offlineUpscaleCalibrationError\": \"<number>\",\n          \"offlineUpscaleAPSIndicator\": \"<number>\",\n          \"offlineUpscaleInjectionDate\": \"<dateTime>\",\n          \"offlineUpscaleInjectionHour\": \"<number>\",\n          \"offlineUpscaleMeasuredValue\": \"<number>\",\n          \"offlineUpscaleReferenceValue\": \"<number>\",\n          \"upscaleGasLevelCode\": \"<string>\"\n        }\n      ],\n      \"fuelFlowmeterAccuracyData\": [\n        {\n          \"id\": \"<string>\",\n          \"testSumId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"accuracyTestMethodCode\": \"<string>\",\n          \"lowFuelAccuracy\": \"<number>\",\n          \"midFuelAccuracy\": \"<number>\",\n          \"highFuelAccuracy\": \"<number>\",\n          \"reinstallationDate\": \"<dateTime>\",\n          \"reinstallationHour\": \"<number>\"\n        }\n      ],\n      \"transmitterTransducerData\": [\n        {\n          \"id\": \"<string>\",\n          \"testSumId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"lowLevelAccuracy\": \"<number>\",\n          \"lowLevelAccuracySpecCode\": \"<string>\",\n          \"midLevelAccuracy\": \"<number>\",\n          \"midLevelAccuracySpecCode\": \"<string>\",\n          \"highLevelAccuracy\": \"<number>\",\n          \"highLevelAccuracySpecCode\": \"<string>\"\n        }\n      ],\n      \"fuelFlowToLoadBaselineData\": [\n        {\n          \"id\": \"<string>\",\n          \"testSumId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"accuracyTestNumber\": \"<string>\",\n          \"peiTestNumber\": \"<string>\",\n          \"averageFuelFlowRate\": \"<number>\",\n          \"averageLoad\": \"<number>\",\n          \"baselineFuelFlowToLoadRatio\": \"<number>\",\n          \"fuelFlowToLoadUnitsOfMeasureCode\": \"<string>\",\n          \"averageHourlyHeatInputRate\": \"<number>\",\n          \"baselineGHR\": \"<number>\",\n          \"ghrUnitsOfMeasureCode\": \"<string>\",\n          \"numberOfHoursExcludedCofiring\": \"<number>\",\n          \"numberOfHoursExcludedRamping\": \"<number>\",\n          \"numberOfHoursExcludedLowRange\": \"<number>\"\n        }\n      ],\n      \"fuelFlowToLoadTestData\": [\n        {\n          \"id\": \"<string>\",\n          \"testSumId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"testBasisCode\": \"<string>\",\n          \"averageDifference\": \"<number>\",\n          \"numberOfHoursUsed\": \"<number>\",\n          \"numberOfHoursExcludedCofiring\": \"<number>\",\n          \"numberOfHoursExcludedRamping\": \"<number>\",\n          \"numberOfHoursExcludedLowRange\": \"<number>\"\n        }\n      ],\n      \"appendixECorrelationTestSummaryData\": [\n        {\n          \"appendixECorrelationTestRunData\": [\n            {\n              \"appendixEHeatInputFromOilData\": [\n                {\n                  \"id\": \"<string>\",\n                  \"appECorrTestRunId\": \"<string>\",\n                  \"calculatedOilMass\": \"<number>\",\n                  \"calculatedOilHeatInput\": \"<number>\",\n                  \"userId\": \"<string>\",\n                  \"addDate\": \"<string>\",\n                  \"updateDate\": \"<string>\",\n                  \"monitoringSystemId\": \"<string>\",\n                  \"oilMass\": \"<number>\",\n                  \"oilGCV\": \"<number>\",\n                  \"oilGCVUnitsOfMeasureCode\": \"<string>\",\n                  \"oilHeatInput\": \"<number>\",\n                  \"oilVolume\": \"<number>\",\n                  \"oilVolumeUnitsOfMeasureCode\": \"<string>\",\n                  \"oilDensity\": \"<number>\",\n                  \"oilDensityUnitsOfMeasureCode\": \"<string>\"\n                }\n              ],\n              \"appendixEHeatInputFromGasData\": [\n                {\n                  \"id\": \"<string>\",\n                  \"appECorrTestRunId\": \"<string>\",\n                  \"calculatedGasHeatInput\": \"<number>\",\n                  \"userId\": \"<string>\",\n                  \"addDate\": \"<string>\",\n                  \"updateDate\": \"<string>\",\n                  \"monitoringSystemId\": \"<string>\",\n                  \"gasGCV\": \"<number>\",\n                  \"gasVolume\": \"<number>\",\n                  \"gasHeatInput\": \"<number>\"\n                }\n              ],\n              \"id\": \"<string>\",\n              \"appECorrTestSumId\": \"<string>\",\n              \"calculatedHourlyHeatInputRate\": \"<number>\",\n              \"calculatedTotalHeatInput\": \"<number>\",\n              \"userId\": \"<string>\",\n              \"addDate\": \"<string>\",\n              \"updateDate\": \"<string>\",\n              \"runNumber\": \"<number>\",\n              \"beginDate\": \"<dateTime>\",\n              \"beginHour\": \"<number>\",\n              \"beginMinute\": \"<number>\",\n              \"endDate\": \"<dateTime>\",\n              \"endHour\": \"<number>\",\n              \"endMinute\": \"<number>\",\n              \"referenceValue\": \"<number>\",\n              \"hourlyHeatInputRate\": \"<number>\",\n              \"totalHeatInput\": \"<number>\",\n              \"responseTime\": \"<number>\"\n            }\n          ],\n          \"id\": \"<string>\",\n          \"testSumId\": \"<string>\",\n          \"calculatedMeanReferenceValue\": \"<number>\",\n          \"calculatedAverageHourlyHeatInputRate\": \"<number>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"operatingLevelForRun\": \"<number>\",\n          \"meanReferenceValue\": \"<number>\",\n          \"averageHourlyHeatInputRate\": \"<number>\",\n          \"fFactor\": \"<number>\"\n        }\n      ],\n      \"unitDefaultTestData\": [\n        {\n          \"unitDefaultTestRunData\": [\n            {\n              \"id\": \"<string>\",\n              \"unitDefaultTestSumId\": \"<string>\",\n              \"userId\": \"<string>\",\n              \"addDate\": \"<string>\",\n              \"updateDate\": \"<string>\",\n              \"operatingLevelForRun\": \"<number>\",\n              \"runNumber\": \"<number>\",\n              \"beginDate\": \"<dateTime>\",\n              \"beginHour\": \"<number>\",\n              \"beginMinute\": \"<number>\",\n              \"endDate\": \"<dateTime>\",\n              \"endHour\": \"<number>\",\n              \"endMinute\": \"<number>\",\n              \"responseTime\": \"<number>\",\n              \"referenceValue\": \"<number>\",\n              \"runUsedIndicator\": \"<number>\"\n            }\n          ],\n          \"id\": \"<string>\",\n          \"testSumId\": \"<string>\",\n          \"calculatedNoxDefaultRate\": \"<number>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"fuelCode\": \"<string>\",\n          \"noxDefaultRate\": \"<number>\",\n          \"operatingConditionCode\": \"<string>\",\n          \"groupId\": \"<string>\",\n          \"numberOfUnitsInGroup\": \"<number>\",\n          \"numberOfTestsForGroup\": \"<number>\"\n        }\n      ],\n      \"hgSummaryData\": [\n        {\n          \"hgInjectionData\": [\n            {\n              \"id\": \"<string>\",\n              \"hgTestSumId\": \"<string>\",\n              \"userId\": \"<string>\",\n              \"addDate\": \"<string>\",\n              \"updateDate\": \"<string>\",\n              \"injectionDate\": \"<dateTime>\",\n              \"injectionHour\": \"<number>\",\n              \"injectionMinute\": \"<number>\",\n              \"measuredValue\": \"<number>\",\n              \"referenceValue\": \"<number>\"\n            }\n          ],\n          \"id\": \"<string>\",\n          \"testSumId\": \"<string>\",\n          \"calculatedMeanMeasuredValue\": \"<number>\",\n          \"calculatedMeanReferenceValue\": \"<number>\",\n          \"calculatedPercentError\": \"<number>\",\n          \"calculatedAPSIndicator\": \"<number>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"gasLevelCode\": \"<string>\",\n          \"meanMeasuredValue\": \"<number>\",\n          \"meanReferenceValue\": \"<number>\",\n          \"percentError\": \"<number>\",\n          \"apsIndicator\": \"<number>\"\n        }\n      ],\n      \"testQualificationData\": [\n        {\n          \"id\": \"<string>\",\n          \"testSumId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"testClaimCode\": \"<string>\",\n          \"beginDate\": \"<dateTime>\",\n          \"endDate\": \"<dateTime>\",\n          \"highLoadPercentage\": \"<number>\",\n          \"midLoadPercentage\": \"<number>\",\n          \"lowLoadPercentage\": \"<number>\"\n        }\n      ],\n      \"protocolGasData\": [\n        {\n          \"gasTypeCode\": \"<string>\",\n          \"id\": \"<string>\",\n          \"testSumId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"gasLevelCode\": \"<string>\",\n          \"cylinderIdentifier\": \"<string>\",\n          \"vendorIdentifier\": \"<string>\",\n          \"expirationDate\": \"<dateTime>\"\n        }\n      ],\n      \"airEmissionTestingData\": [\n        {\n          \"id\": \"<string>\",\n          \"testSumId\": \"<string>\",\n          \"userId\": \"<string>\",\n          \"addDate\": \"<string>\",\n          \"updateDate\": \"<string>\",\n          \"qiLastName\": \"<string>\",\n          \"qiFirstName\": \"<string>\",\n          \"aetbName\": \"<string>\",\n          \"aetbPhoneNumber\": \"<string>\",\n          \"aetbEmail\": \"<email>\",\n          \"examDate\": \"<dateTime>\",\n          \"providerName\": \"<string>\",\n          \"providerEmail\": \"<email>\",\n          \"qiMiddleInitial\": \"<string>\"\n        }\n      ],\n      \"id\": \"<string>\",\n      \"locationId\": \"<string>\",\n      \"calculatedGracePeriodIndicator\": \"<number>\",\n      \"calculatedTestResultCode\": \"<string>\",\n      \"reportPeriodId\": \"<number>\",\n      \"calculatedSpanValue\": \"<number>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"evalStatusCode\": \"<string>\",\n      \"evalStatusCodeDescription\": \"<string>\",\n      \"submissionAvailabilityCode\": \"<string>\",\n      \"submissionAvailabilityCodeDescription\": \"<string>\",\n      \"monitoringSystemId\": \"<string>\",\n      \"spanScaleCode\": \"<string>\",\n      \"testReasonCode\": \"<string>\",\n      \"testDescription\": \"<string>\",\n      \"testResultCode\": \"<string>\",\n      \"beginDate\": \"<dateTime>\",\n      \"beginHour\": \"<number>\",\n      \"beginMinute\": \"<number>\",\n      \"endDate\": \"<dateTime>\",\n      \"endHour\": \"<number>\",\n      \"endMinute\": \"<number>\",\n      \"gracePeriodIndicator\": \"<number>\",\n      \"year\": \"<number>\",\n      \"quarter\": \"<number>\",\n      \"testComment\": \"<string>\",\n      \"injectionProtocolCode\": \"<string>\"\n    }\n  ],\n  \"certificationEventData\": [\n    {\n      \"stackPipeId\": \"<string>\",\n      \"unitId\": \"<string>\",\n      \"id\": \"<string>\",\n      \"locationId\": \"<string>\",\n      \"lastUpdated\": \"<dateTime>\",\n      \"updatedStatusFlag\": \"<string>\",\n      \"needsEvalFlag\": \"<string>\",\n      \"checkSessionId\": \"<string>\",\n      \"submissionId\": \"<number>\",\n      \"submissionAvailabilityCode\": \"<string>\",\n      \"pendingStatusCode\": \"<string>\",\n      \"evalStatusCode\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"certificationEventCode\": \"<string>\",\n      \"certificationEventDate\": \"<dateTime>\",\n      \"monitoringSystemId\": \"<string>\",\n      \"componentId\": \"<string>\",\n      \"isSubmitted\": \"<boolean>\",\n      \"isSavedNotSubmitted\": \"<boolean>\",\n      \"certificationEventHour\": \"<number>\",\n      \"requiredTestCode\": \"<string>\",\n      \"conditionalBeginDate\": \"<dateTime>\",\n      \"conditionalBeginHour\": \"<number>\",\n      \"completionTestDate\": \"<dateTime>\",\n      \"completionTestHour\": \"<number>\",\n      \"version\": \"<string>\"\n    }\n  ],\n  \"testExtensionExemptionData\": [\n    {\n      \"stackPipeId\": \"<string>\",\n      \"unitId\": \"<string>\",\n      \"year\": \"<number>\",\n      \"quarter\": \"<number>\",\n      \"id\": \"<string>\",\n      \"locationId\": \"<string>\",\n      \"reportPeriodId\": \"<number>\",\n      \"checkSessionId\": \"<string>\",\n      \"submissionId\": \"<string>\",\n      \"submissionAvailabilityCode\": \"<string>\",\n      \"pendingStatusCode\": \"<string>\",\n      \"evalStatusCode\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"addDate\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"extensionOrExemptionCode\": \"<string>\",\n      \"monitoringSystemId\": \"<string>\",\n      \"componentId\": \"<string>\",\n      \"spanScaleCode\": \"<string>\",\n      \"isSubmitted\": \"<boolean>\",\n      \"isSavedNotSubmitted\": \"<boolean>\",\n      \"hoursUsed\": \"<number>\",\n      \"fuelCode\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T10:59:50.000Z",
+                  "updatedAt": "2026-07-28T10:59:50.000Z",
+                  "uid": "35240-6ee3dc94-d4f9-4fa6-9b35-bfee7a3bed0f"
+                }
+              ],
+              "createdAt": "2026-07-28T10:59:50.000Z",
+              "updatedAt": "2026-07-28T10:59:50.000Z",
+              "uid": "35240-52a60af5-76e9-4b0e-8965-127309372261"
+            }
+          ],
+          "id": "372a16e2-c50a-4f20-b79f-c814a5ef0398",
+          "createdAt": "2026-07-28T10:59:50.000Z",
+          "updatedAt": "2026-07-28T10:59:50.000Z",
+          "uid": "35240-372a16e2-c50a-4f20-b79f-c814a5ef0398"
+        },
+        {
+          "name": "cert-events",
+          "item": [
+            {
+              "name": "QA Certification Controller get Filtered Certs",
+              "id": "c168d9c6-c1ca-4525-bb28-481dd70d03a8",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/qa-certification-mgmt/cert-events?orisCodes=<number>|<number>&monPlanIds=<string>|<string>&quarters=<string>|<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "qa-certification-mgmt",
+                    "cert-events"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Array of oris codes",
+                      "key": "orisCodes",
+                      "value": "<number>|<number>"
+                    },
+                    {
+                      "description": "Array of configurations",
+                      "key": "monPlanIds",
+                      "value": "<string>|<string>"
+                    },
+                    {
+                      "description": "Array of quarter abbreviations",
+                      "key": "quarters",
+                      "value": "<string>|<string>"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "24b5c156-2a53-4aac-9fae-838a2c5af352",
+                  "name": "Retrieves workspace test summary records given a list of oris codes and or mon plan ids",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/qa-certification-mgmt/cert-events?orisCodes=<number>|<number>&monPlanIds=<string>|<string>&quarters=<string>|<string>&key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "qa-certification-mgmt",
+                        "cert-events"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Array of oris codes",
+                          "key": "orisCodes",
+                          "value": "<number>|<number>"
+                        },
+                        {
+                          "description": "Array of configurations",
+                          "key": "monPlanIds",
+                          "value": "<string>|<string>"
+                        },
+                        {
+                          "description": "Array of quarter abbreviations",
+                          "key": "quarters",
+                          "value": "<string>|<string>"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"items\": [\n    {\n      \"orisCode\": \"<number>\",\n      \"facilityName\": \"<string>\",\n      \"monPlanId\": \"<string>\",\n      \"locationInfo\": \"<string>\",\n      \"qaCertEventIdentifier\": \"<string>\",\n      \"qaCertEventCode\": \"<string>\",\n      \"monLocIdentifier\": \"<string>\",\n      \"systemComponentIdentifier\": \"<string>\",\n      \"rptPeriodIdentifier\": \"<number>\",\n      \"eventDate\": \"<string>\",\n      \"conditionDate\": \"<string>\",\n      \"lastCompletion\": \"<string>\",\n      \"userid\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"evalStatusCode\": \"<string>\",\n      \"evalStatusCodeDescription\": \"<string>\",\n      \"severityCode\": \"<string>\",\n      \"severityDescription\": \"<string>\",\n      \"submissionAvailabilityCode\": \"<string>\",\n      \"submissionAvailabilityDescription\": \"<string>\",\n      \"requiredTestCode\": \"<string>\",\n      \"periodAbbreviation\": \"<string>\"\n    },\n    {\n      \"orisCode\": \"<number>\",\n      \"facilityName\": \"<string>\",\n      \"monPlanId\": \"<string>\",\n      \"locationInfo\": \"<string>\",\n      \"qaCertEventIdentifier\": \"<string>\",\n      \"qaCertEventCode\": \"<string>\",\n      \"monLocIdentifier\": \"<string>\",\n      \"systemComponentIdentifier\": \"<string>\",\n      \"rptPeriodIdentifier\": \"<number>\",\n      \"eventDate\": \"<string>\",\n      \"conditionDate\": \"<string>\",\n      \"lastCompletion\": \"<string>\",\n      \"userid\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"evalStatusCode\": \"<string>\",\n      \"evalStatusCodeDescription\": \"<string>\",\n      \"severityCode\": \"<string>\",\n      \"severityDescription\": \"<string>\",\n      \"submissionAvailabilityCode\": \"<string>\",\n      \"submissionAvailabilityDescription\": \"<string>\",\n      \"requiredTestCode\": \"<string>\",\n      \"periodAbbreviation\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T10:59:50.000Z",
+                  "updatedAt": "2026-07-28T10:59:50.000Z",
+                  "uid": "35240-24b5c156-2a53-4aac-9fae-838a2c5af352"
+                }
+              ],
+              "createdAt": "2026-07-28T10:59:50.000Z",
+              "updatedAt": "2026-07-28T10:59:50.000Z",
+              "uid": "35240-c168d9c6-c1ca-4525-bb28-481dd70d03a8"
+            }
+          ],
+          "id": "b6d56d7b-35aa-4f42-a83e-ffcdc659f8f7",
+          "createdAt": "2026-07-28T10:59:50.000Z",
+          "updatedAt": "2026-07-28T10:59:50.000Z",
+          "uid": "35240-b6d56d7b-35aa-4f42-a83e-ffcdc659f8f7"
+        },
+        {
+          "name": "test-summary",
+          "item": [
+            {
+              "name": "QA Certification Controller get Filtered Test Sums",
+              "id": "feff2122-b7aa-4cd4-86ed-b7e86335ba26",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/qa-certification-mgmt/test-summary?orisCodes=<number>|<number>&monPlanIds=<string>|<string>&quarters=<string>|<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "qa-certification-mgmt",
+                    "test-summary"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Array of oris codes",
+                      "key": "orisCodes",
+                      "value": "<number>|<number>"
+                    },
+                    {
+                      "description": "Array of configurations",
+                      "key": "monPlanIds",
+                      "value": "<string>|<string>"
+                    },
+                    {
+                      "description": "Array of quarter abbreviations",
+                      "key": "quarters",
+                      "value": "<string>|<string>"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "5b6a80a6-78b4-44c2-9e7b-1c8a4ece2c0e",
+                  "name": "Retrieves workspace test summary records given a list of oris codes and or mon plan ids",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/qa-certification-mgmt/test-summary?orisCodes=<number>|<number>&monPlanIds=<string>|<string>&quarters=<string>|<string>&key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "qa-certification-mgmt",
+                        "test-summary"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Array of oris codes",
+                          "key": "orisCodes",
+                          "value": "<number>|<number>"
+                        },
+                        {
+                          "description": "Array of configurations",
+                          "key": "monPlanIds",
+                          "value": "<string>|<string>"
+                        },
+                        {
+                          "description": "Array of quarter abbreviations",
+                          "key": "quarters",
+                          "value": "<string>|<string>"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"items\": [\n    {\n      \"orisCode\": \"<number>\",\n      \"facilityName\": \"<string>\",\n      \"monPlanId\": \"<string>\",\n      \"locationInfo\": \"<string>\",\n      \"testSumId\": \"<string>\",\n      \"systemComponentId\": \"<string>\",\n      \"testTypeCode\": \"<string>\",\n      \"testNum\": \"<string>\",\n      \"beginDate\": \"<string>\",\n      \"endDate\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"evalStatusCode\": \"<string>\",\n      \"submissionAvailabilityCode\": \"<string>\",\n      \"evalStatusCodeDescription\": \"<string>\",\n      \"severityCode\": \"<string>\",\n      \"severityDescription\": \"<string>\",\n      \"submissionCodeDescription\": \"<string>\",\n      \"periodAbbreviation\": \"<string>\"\n    },\n    {\n      \"orisCode\": \"<number>\",\n      \"facilityName\": \"<string>\",\n      \"monPlanId\": \"<string>\",\n      \"locationInfo\": \"<string>\",\n      \"testSumId\": \"<string>\",\n      \"systemComponentId\": \"<string>\",\n      \"testTypeCode\": \"<string>\",\n      \"testNum\": \"<string>\",\n      \"beginDate\": \"<string>\",\n      \"endDate\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"evalStatusCode\": \"<string>\",\n      \"submissionAvailabilityCode\": \"<string>\",\n      \"evalStatusCodeDescription\": \"<string>\",\n      \"severityCode\": \"<string>\",\n      \"severityDescription\": \"<string>\",\n      \"submissionCodeDescription\": \"<string>\",\n      \"periodAbbreviation\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T10:59:50.000Z",
+                  "updatedAt": "2026-07-28T10:59:50.000Z",
+                  "uid": "35240-5b6a80a6-78b4-44c2-9e7b-1c8a4ece2c0e"
+                }
+              ],
+              "createdAt": "2026-07-28T10:59:50.000Z",
+              "updatedAt": "2026-07-28T10:59:50.000Z",
+              "uid": "35240-feff2122-b7aa-4cd4-86ed-b7e86335ba26"
+            }
+          ],
+          "id": "e64a5b01-00a4-4d41-81ed-50d3515d788a",
+          "createdAt": "2026-07-28T10:59:50.000Z",
+          "updatedAt": "2026-07-28T10:59:50.000Z",
+          "uid": "35240-e64a5b01-00a4-4d41-81ed-50d3515d788a"
+        },
+        {
+          "name": "test-extension-exemption",
+          "item": [
+            {
+              "name": "QA Certification Controller get Filtered Tee",
+              "id": "d05faeec-fa61-45f9-8b5f-e5c5dc07d9e0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/qa-certification-mgmt/test-extension-exemption?orisCodes=<number>|<number>&monPlanIds=<string>|<string>&quarters=<string>|<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "qa-certification-mgmt",
+                    "test-extension-exemption"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Array of oris codes",
+                      "key": "orisCodes",
+                      "value": "<number>|<number>"
+                    },
+                    {
+                      "description": "Array of configurations",
+                      "key": "monPlanIds",
+                      "value": "<string>|<string>"
+                    },
+                    {
+                      "description": "Array of quarter abbreviations",
+                      "key": "quarters",
+                      "value": "<string>|<string>"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "cbc1b12a-45ad-419b-972d-89969ade5336",
+                  "name": "Retrieves workspace tee records given a list of oris codes and or mon plan ids",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/qa-certification-mgmt/test-extension-exemption?orisCodes=<number>|<number>&monPlanIds=<string>|<string>&quarters=<string>|<string>&key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "qa-certification-mgmt",
+                        "test-extension-exemption"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Array of oris codes",
+                          "key": "orisCodes",
+                          "value": "<number>|<number>"
+                        },
+                        {
+                          "description": "Array of configurations",
+                          "key": "monPlanIds",
+                          "value": "<string>|<string>"
+                        },
+                        {
+                          "description": "Array of quarter abbreviations",
+                          "key": "quarters",
+                          "value": "<string>|<string>"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"items\": [\n    {\n      \"orisCode\": \"<number>\",\n      \"facilityName\": \"<string>\",\n      \"monPlanId\": \"<string>\",\n      \"locationInfo\": \"<string>\",\n      \"testExtensionExemptionIdentifier\": \"<string>\",\n      \"extensExemptCode\": \"<string>\",\n      \"monLocIdentifier\": \"<string>\",\n      \"systemComponentIdentifier\": \"<string>\",\n      \"rptPeriodIdentifier\": \"<number>\",\n      \"userid\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"evalStatusCode\": \"<string>\",\n      \"evalStatusCodeDescription\": \"<string>\",\n      \"severityCode\": \"<string>\",\n      \"severityDescription\": \"<string>\",\n      \"submissionAvailabilityCode\": \"<string>\",\n      \"submissionAvailabilityCodeDescription\": \"<string>\",\n      \"periodAbbreviation\": \"<string>\",\n      \"fuelCode\": \"<string>\",\n      \"hoursUsed\": \"<number>\",\n      \"spanScaleCode\": \"<string>\"\n    },\n    {\n      \"orisCode\": \"<number>\",\n      \"facilityName\": \"<string>\",\n      \"monPlanId\": \"<string>\",\n      \"locationInfo\": \"<string>\",\n      \"testExtensionExemptionIdentifier\": \"<string>\",\n      \"extensExemptCode\": \"<string>\",\n      \"monLocIdentifier\": \"<string>\",\n      \"systemComponentIdentifier\": \"<string>\",\n      \"rptPeriodIdentifier\": \"<number>\",\n      \"userid\": \"<string>\",\n      \"updateDate\": \"<string>\",\n      \"evalStatusCode\": \"<string>\",\n      \"evalStatusCodeDescription\": \"<string>\",\n      \"severityCode\": \"<string>\",\n      \"severityDescription\": \"<string>\",\n      \"submissionAvailabilityCode\": \"<string>\",\n      \"submissionAvailabilityCodeDescription\": \"<string>\",\n      \"periodAbbreviation\": \"<string>\",\n      \"fuelCode\": \"<string>\",\n      \"hoursUsed\": \"<number>\",\n      \"spanScaleCode\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T10:59:50.000Z",
+                  "updatedAt": "2026-07-28T10:59:50.000Z",
+                  "uid": "35240-cbc1b12a-45ad-419b-972d-89969ade5336"
+                }
+              ],
+              "createdAt": "2026-07-28T10:59:50.000Z",
+              "updatedAt": "2026-07-28T10:59:50.000Z",
+              "uid": "35240-d05faeec-fa61-45f9-8b5f-e5c5dc07d9e0"
+            }
+          ],
+          "id": "be88f633-3dad-4cb2-9994-c6e028dd73ce",
+          "createdAt": "2026-07-28T10:59:50.000Z",
+          "updatedAt": "2026-07-28T10:59:50.000Z",
+          "uid": "35240-be88f633-3dad-4cb2-9994-c6e028dd73ce"
+        }
+      ],
+      "id": "f8789f6a-d95c-476a-8f88-2924c8fd0f23",
+      "createdAt": "2026-07-28T10:59:50.000Z",
+      "updatedAt": "2026-07-28T10:59:50.000Z",
+      "uid": "35240-f8789f6a-d95c-476a-8f88-2924c8fd0f23"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://aqs.epa.gov/data/api"
+    }
+  ]
+}
