@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "EPA Air Quality System (AQS) Account Type Codes Configurations API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Configurations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "MonitorConfigurationsController_getConfigurations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/monitor-plan-mgmt/configurations",
+            "params": [
+              {
+                "name": "orisCodes",
+                "value": "0",
+                "type": "query",
+                "description": "Array of oris codes"
+              },
+              {
+                "name": "monPlanIds",
+                "value": "12345",
+                "type": "query",
+                "description": "Array of configurations"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "MonitorConfigurationsController_getLastUpdated",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/monitor-plan-mgmt/configurations/last-updated",
+            "params": [
+              {
+                "name": "date",
+                "value": "2019-01-01",
+                "type": "query",
+                "description": "Date on which activity occurred. Must be within the last year from current date and cannot be in the future."
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

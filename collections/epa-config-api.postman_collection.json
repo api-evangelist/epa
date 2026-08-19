@@ -1,0 +1,243 @@
+{
+  "item": [
+    {
+      "id": "dba9bcc6-b46e-4f50-92e6-57b06efa15fd",
+      "name": "Config",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "38706897-3b05-49bc-885b-7a93661572ef",
+          "name": "Get CSB App Specific Public Configuration (csb App Login Status and Static Content)",
+          "request": {
+            "name": "Get CSB App Specific Public Configuration (csb App Login Status and Static Content)",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "config",
+                "public"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "89625a2f-0844-470c-a568-d471d578a3bb",
+              "name": "CSB app login status and static content from S3.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "config",
+                    "public"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"message\": \"Example response\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d951af75-2c56-494c-94de-b94e0187c5a7",
+          "name": "Get CSB App Specific Private Configuration (form Open Enrollment Status, Etc.)",
+          "request": {
+            "name": "Get CSB App Specific Private Configuration (form Open Enrollment Status, Etc.)",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "config",
+                "private"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ccdfded4-cc50-43ec-88c7-6a1e85c7af02",
+              "name": "Formio base URL and project name, CSB rebate year and open enrollment status.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "config",
+                    "private"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"message\": \"Example response\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cca45783-422a-4154-af32-faa9fdddde7a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "config",
+                    "private"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://aqs.epa.gov/data/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "13ec3d8c-d81b-41e4-aee8-4dbd6323dad4",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Config API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+      "type": "text/plain"
+    }
+  }
+}

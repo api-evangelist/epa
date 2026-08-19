@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "EPA Air Quality System (AQS) Account Type Codes Fuel Flow To Load Test API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Fuel Flow To Load Test",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "FuelFlowToLoadTestController_getFuelFlowToLoadTests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/fuel-flow-to-load-tests",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "FuelFlowToLoadTestController_getFuelFlowToLoadTest",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/fuel-flow-to-load-tests/:id",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "12345",
+                "type": "path"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

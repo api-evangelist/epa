@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "EPA Air Quality System (AQS) Account Type Codes Codes & Descriptions API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Codes & Descriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "MasterDataController_listCodeTables",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/master-data-mgmt/list"
+          },
+          "docs": "Returns a list of Master Data code tables available."
+        },
+        {
+          "info": {
+            "name": "MasterDataController_getCodeTable",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/master-data-mgmt/:code",
+            "params": [
+              {
+                "name": "code",
+                "value": "string",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns a list of Master Data codes & descriptions for the dataset provided."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,64 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "EPA Air Quality System (AQS) Account Type Codes Program Codes API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Program Codes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ProgramController_getProgramCodes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/master-data-mgmt/program-codes",
+            "params": [
+              {
+                "name": "exclude",
+                "value": "ARP",
+                "type": "query"
+              },
+              {
+                "name": "isActive",
+                "value": "true",
+                "type": "query"
+              },
+              {
+                "name": "emissionsUIFilter",
+                "value": "true",
+                "type": "query"
+              },
+              {
+                "name": "allowanceUIFilter",
+                "value": "true",
+                "type": "query"
+              },
+              {
+                "name": "complianceUIFilter",
+                "value": "true",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a list of Program codes & descriptions."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

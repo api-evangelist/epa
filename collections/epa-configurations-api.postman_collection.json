@@ -1,0 +1,229 @@
+{
+  "item": [
+    {
+      "id": "ccae2254-5b99-454d-85b2-70abac486850",
+      "name": "Configurations",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d5f37fb3-bfd1-46b8-9ee5-d0ece413375c",
+          "name": "Monitor Configurations Controller get Configurations",
+          "request": {
+            "name": "Monitor Configurations Controller get Configurations",
+            "description": {},
+            "url": {
+              "path": [
+                "monitor-plan-mgmt",
+                "configurations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "orisCodes",
+                  "value": "<number>|<number>",
+                  "description": "(Required) Array of oris codes"
+                },
+                {
+                  "disabled": false,
+                  "key": "monPlanIds",
+                  "value": "<string>|<string>",
+                  "description": "Array of configurations"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "07bbc941-dd17-49bc-b2f1-cf92d6d24076",
+              "name": "Retrieves official Monitor Plan configurations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "monitor-plan-mgmt",
+                    "configurations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "orisCodes",
+                      "value": "0"
+                    },
+                    {
+                      "key": "monPlanIds",
+                      "value": "12345"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"message\": \"Example response\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f6456aba-72ec-47c4-9c29-1605a38e42a0",
+          "name": "Monitor Configurations Controller get Last Updated",
+          "request": {
+            "name": "Monitor Configurations Controller get Last Updated",
+            "description": {},
+            "url": {
+              "path": [
+                "monitor-plan-mgmt",
+                "configurations",
+                "last-updated"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "date",
+                  "value": "<date>",
+                  "description": "(Required) Date on which activity occurred. Must be within the last year from current date and cannot be in the future."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "8f0cffb2-a4da-4fc6-af4a-123420e0768c",
+              "name": "Retrieves workspace Monitor Plan configurations that have been updated after a certain date",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "monitor-plan-mgmt",
+                    "configurations",
+                    "last-updated"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date",
+                      "value": "2019-01-01"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"message\": \"Example response\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://aqs.epa.gov/data/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "38eb74bc-23fd-4625-90db-00401390b916",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Configurations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+      "type": "text/plain"
+    }
+  }
+}

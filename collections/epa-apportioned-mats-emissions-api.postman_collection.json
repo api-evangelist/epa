@@ -1,0 +1,233 @@
+{
+  "item": [
+    {
+      "id": "c804cda2-9c28-4d8d-9293-c6933eccfc9f",
+      "name": "Apportioned MATS Emissions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dd8d3589-376b-4398-af81-35eae0b1f028",
+          "name": "Mats Apportioned Emissions Controller get Applicable Emissions",
+          "request": {
+            "name": "Mats Apportioned Emissions Controller get Applicable Emissions",
+            "description": {},
+            "url": {
+              "path": [
+                "emissions-mgmt",
+                "emissions",
+                "apportioned",
+                "mats",
+                "attributes",
+                "applicable"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "year",
+                  "value": "<number>",
+                  "description": "(Required) The calendar year during which activity occurred."
+                },
+                {
+                  "disabled": false,
+                  "key": "year",
+                  "value": "<number>",
+                  "description": "(Required) The calendar year during which activity occurred."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "34fb02d8-198d-4ad5-9dd1-bba76f948f4f",
+              "name": "Retrieved All Applicable MATS Apportioned Emissions Attributes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "emissions-mgmt",
+                    "emissions",
+                    "apportioned",
+                    "mats",
+                    "attributes",
+                    "applicable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": "2024"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"message\": \"Example response\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8e76f607-a382-45d2-9673-b0c1a345eb41",
+              "name": "Invalid Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "emissions-mgmt",
+                    "emissions",
+                    "apportioned",
+                    "mats",
+                    "attributes",
+                    "applicable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": "2024"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5ba851b6-140c-4f22-9595-75173605a508",
+              "name": "Resource Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "emissions-mgmt",
+                    "emissions",
+                    "apportioned",
+                    "mats",
+                    "attributes",
+                    "applicable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": "2024"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://aqs.epa.gov/data/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e887c6a7-11dd-4ca9-92fd-5b6c8c4676e2",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Apportioned MATS Emissions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+      "type": "text/plain"
+    }
+  }
+}

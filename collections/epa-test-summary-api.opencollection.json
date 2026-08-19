@@ -1,0 +1,88 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "EPA Air Quality System (AQS) Account Type Codes Test Summary API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Test Summary",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "TestSummaryController_getTestSummaries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/qa-certification-mgmt/locations/:locId/test-summary",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testTypeCodes",
+                "value": "7DAY",
+                "type": "query",
+                "description": "Code used to identify test type or the type of test performed."
+              },
+              {
+                "name": "systemTypeCodes",
+                "value": "CO2",
+                "type": "query"
+              },
+              {
+                "name": "beginDate",
+                "value": "2024-01-15T12:00:00Z",
+                "type": "query",
+                "description": "Date in which information became effective or activity started."
+              },
+              {
+                "name": "endDate",
+                "value": "2024-01-15T12:00:00Z",
+                "type": "query",
+                "description": "End date for a given period of a unit's emissions."
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "TestSummaryController_getTestSummary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/qa-certification-mgmt/locations/:locId/test-summary/:id",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "12345",
+                "type": "path"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

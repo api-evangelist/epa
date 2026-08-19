@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "EPA Air Quality System (AQS) Account Type Codes Cycle Time Summary API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cycle Time Summary",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "CycleTimeSummaryController_getCycleTimeSummaries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/cycle-time-summaries",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "CycleTimeSummaryController_getCycleTimeSummary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/cycle-time-summaries/:id",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "12345",
+                "type": "path"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,466 @@
+{
+  "item": [
+    {
+      "id": "c1ac813a-41b9-45f9-8a4d-d4e9d1bcc81d",
+      "name": "Safe Drinking Water",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a3f065f8-366a-4c6d-984d-bf035f2341a4",
+          "name": "Safe Drinking Water Act (SDWA) Download Data Service",
+          "request": {
+            "name": "Safe Drinking Water Act (SDWA) Download Data Service",
+            "description": {
+              "content": "Based on the QID obtained from a get_systems query, return a comma separated value (CSV) file of the water systems found.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sdw_rest_services.get_download"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Output Format Flag.  Enter one of the following keywords:\n- CSV = Facility results formatted as comma delimited file download (default).",
+                    "type": "text/plain"
+                  },
+                  "key": "output",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "94e25303-7abb-4867-83e6-57e6f08f8e51",
+              "name": "Results are a comma separated value (CSV) file.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdw_rest_services.get_download"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "output",
+                      "value": ""
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d44de184-473f-4b06-9828-7c68b02f5970",
+          "name": "Safe Drinking Water Act (SDWA) Download Data Service",
+          "request": {
+            "name": "Safe Drinking Water Act (SDWA) Download Data Service",
+            "description": {
+              "content": "Based on the QID obtained from a get_systems query, return a comma separated value (CSV) file of the water systems found.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sdw_rest_services.get_download"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b0be1a0f-56e2-4b22-8589-06806ed7c234",
+              "name": "Results are a comma separated value (CSV) file.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdw_rest_services.get_download"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "45847c1f-c71c-4c1f-9d51-c7f94bb27265",
+          "name": "Safe Drinking Water Act (SDWA) Paginated Results Service",
+          "request": {
+            "name": "Safe Drinking Water Act (SDWA) Paginated Results Service",
+            "description": {
+              "content": "GET_QID is passed with a query ID corresponding to a previously run get_systems query. It then returns a Systems object containing all matching water systems. The main purpose of GET_QID is for large querysets that contain multiple pages (responsesets) of output. GET_QID allows for pagination and for the selection and sorting of columns. ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sdw_rest_services.get_qid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language. (This can only be one of JSONP,JSON,XML)",
+                    "type": "text/plain"
+                  },
+                  "key": "output",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1471100c-4fb1-455a-b5ba-cf3a28b306ae",
+              "name": "Results are an array (page)  of SDWA (SDWIS) Water Systems with the number of systems equal to the responseset (page size).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdw_rest_services.get_qid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "output",
+                      "value": ""
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "78b89672-ffdf-43f9-9789-ec48388f6aff",
+          "name": "Safe Drinking Water Act (SDWA) Paginated Results Service",
+          "request": {
+            "name": "Safe Drinking Water Act (SDWA) Paginated Results Service",
+            "description": {
+              "content": "GET_QID is passed with a query ID corresponding to a previously run get_systems query. It then returns a Systems object containing all matching water systems. The main purpose of GET_QID is for large querysets that contain multiple pages (responsesets) of output. GET_QID allows for pagination and for the selection and sorting of columns. ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sdw_rest_services.get_qid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "83003956-c18b-4593-84f4-0fcf423cc9ca",
+              "name": "Results are an array (page)  of SDWA (SDWIS) Water Systems with the number of systems equal to the responseset (page size).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdw_rest_services.get_qid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fc1fed49-8317-4e1d-9927-0ebe76111456",
+          "name": "Safe Drinking Water Act (SDWA) Systems Search Service",
+          "request": {
+            "name": "Safe Drinking Water Act (SDWA) Systems Search Service",
+            "description": {
+              "content": "Returns an array of public water systems that meet the specified search criteria.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sdw_rest_services.get_systems"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "description": {
+                    "content": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language. (This can only be one of JSONP,JSON,XML)",
+                    "type": "text/plain"
+                  },
+                  "key": "output",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c1eff569-9227-4817-8bb5-cf9ce01abc56",
+              "name": "Returns an array of public water systems that meet the specified search criteria.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdw_rest_services.get_systems"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "output",
+                      "value": ""
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6508a854-f6e4-4ade-a166-5d0288607d70",
+          "name": "Safe Drinking Water Act (SDWA) Systems Search Service",
+          "request": {
+            "name": "Safe Drinking Water Act (SDWA) Systems Search Service",
+            "description": {
+              "content": "Returns an array of public water systems that meet the specified search criteria.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sdw_rest_services.get_systems"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0910cdda-df62-4dc6-9871-2237606d7a2b",
+              "name": "Returns an array of public water systems that meet the specified search criteria.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sdw_rest_services.get_systems"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://aqs.epa.gov/data/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "00f9c57a-7c7a-43c1-915d-c053d8fb4376",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Safe Drinking Water API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+      "type": "text/plain"
+    }
+  }
+}

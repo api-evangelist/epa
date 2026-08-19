@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "EPA Air Quality System (AQS) Account Type Codes Flow To Load Check API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Flow To Load Check",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "FlowToLoadCheckController_getFlowToLoadChecks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/flow-to-load-checks",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "FlowToLoadCheckController_getFlowToLoadCheck",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/flow-to-load-checks/:id",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "12345",
+                "type": "path"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

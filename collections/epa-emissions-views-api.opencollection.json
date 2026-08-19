@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "EPA Air Quality System (AQS) Account Type Codes Emissions Views API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Emissions Views",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "EmissionsViewController_getAvailableViews",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/emissions-mgmt/emissions/views"
+          }
+        },
+        {
+          "info": {
+            "name": "EmissionsViewController_getView",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/emissions-mgmt/emissions/views/:viewCode",
+            "params": [
+              {
+                "name": "viewCode",
+                "value": "string",
+                "type": "path"
+              },
+              {
+                "name": "monitorPlanId",
+                "value": "12345",
+                "type": "query"
+              },
+              {
+                "name": "unitIds",
+                "value": "12345",
+                "type": "query",
+                "description": "Unique identifier for each unit at a facility."
+              },
+              {
+                "name": "stackPipeIds",
+                "value": "12345",
+                "type": "query",
+                "description": "This is the alphanumeric code assigned by a source to identify a multiple or common stack or pipe at which emissions are determined."
+              },
+              {
+                "name": "reportingPeriod",
+                "value": "string",
+                "type": "query"
+              },
+              {
+                "name": "attachFile",
+                "value": "true",
+                "type": "query",
+                "description": "Attaches a file with data in the format specified by the Accept header"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

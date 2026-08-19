@@ -1,0 +1,172 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "EPA Air Quality System (AQS) Account Type Codes Allowance Holdings API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Allowance Holdings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AllowanceHoldingsController_getAllowanceHoldings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/account-mgmt/allowance-holdings",
+            "params": [
+              {
+                "name": "accountType",
+                "value": "Compliance Assurance Surrender Account",
+                "type": "query",
+                "description": "Type of allowance account (Facility, General, etc.)."
+              },
+              {
+                "name": "accountNumber",
+                "value": "string",
+                "type": "query",
+                "description": "The unique identification number of an account."
+              },
+              {
+                "name": "facilityId",
+                "value": "0",
+                "type": "query",
+                "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting."
+              },
+              {
+                "name": "stateCode",
+                "value": "AL",
+                "type": "query",
+                "description": "Two letter abbreviation for the State."
+              },
+              {
+                "name": "vintageYear",
+                "value": "2024",
+                "type": "query",
+                "description": "Year allowance becomes eligible for use in compliance."
+              },
+              {
+                "name": "ownerOperator",
+                "value": "string",
+                "type": "query",
+                "description": "The name of any company that owns an allowance account or an affected unit.The name of any company that operates an affected unit."
+              },
+              {
+                "name": "programCodeInfo",
+                "value": "ARP",
+                "type": "query",
+                "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions."
+              },
+              {
+                "name": "page",
+                "value": "0",
+                "type": "query",
+                "description": "Page number of data being requested."
+              },
+              {
+                "name": "perPage",
+                "value": "0",
+                "type": "query",
+                "description": "Number of results per page."
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "AllowanceHoldingsController_getAllApplicableAllowanceHoldingsAttributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/account-mgmt/allowance-holdings/attributes/applicable"
+          }
+        },
+        {
+          "info": {
+            "name": "AllowanceHoldingsController_getAllOwnerOperators",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/account-mgmt/allowance-holdings/owner-operators"
+          }
+        },
+        {
+          "info": {
+            "name": "AllowanceHoldingsController_streamAllowanceHoldings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/streaming-services/allowance-holdings",
+            "params": [
+              {
+                "name": "accountType",
+                "value": "Compliance Assurance Surrender Account",
+                "type": "query",
+                "description": "Type of allowance account (Facility, General, etc.)."
+              },
+              {
+                "name": "accountNumber",
+                "value": "string",
+                "type": "query",
+                "description": "The unique identification number of an account."
+              },
+              {
+                "name": "facilityId",
+                "value": "0",
+                "type": "query",
+                "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting."
+              },
+              {
+                "name": "stateCode",
+                "value": "AL",
+                "type": "query",
+                "description": "Two letter abbreviation for the State."
+              },
+              {
+                "name": "vintageYear",
+                "value": "2024",
+                "type": "query",
+                "description": "Year allowance becomes eligible for use in compliance."
+              },
+              {
+                "name": "ownerOperator",
+                "value": "string",
+                "type": "query",
+                "description": "The name of any company that owns an allowance account or an affected unit.The name of any company that operates an affected unit."
+              },
+              {
+                "name": "programCodeInfo",
+                "value": "ARP",
+                "type": "query",
+                "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions."
+              },
+              {
+                "name": "exclude",
+                "value": "epaRegion",
+                "type": "query",
+                "description": "Selected items will be excluded from the response"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,44 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "EPA Air Quality System (AQS) Account Type Codes Reporting Periods API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reporting Periods",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ReportingPeriodController_getReportingPeriods",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/master-data-mgmt/reporting-periods",
+            "params": [
+              {
+                "name": "export",
+                "value": "true",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a list of Reporting Periods."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1202 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "EPA Air Quality System (AQS) Account Type Codes Formio API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Formio",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the School District Info Associated with a Provided CSB Rebate ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2022/district/:rebateId",
+            "params": [
+              {
+                "name": "rebateId",
+                "value": "000000",
+                "type": "path",
+                "description": "The CSB Rebate ID"
+              }
+            ]
+          },
+          "docs": "Get the School District Info Associated with a Provided CSB Rebate ID"
+        },
+        {
+          "info": {
+            "name": "Download Formio File Attachment from S3 for a 2022 Submission.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2022/s3/:formType/:mongoId/:comboKey/storage/s3",
+            "params": [
+              {
+                "name": "formType",
+                "value": "frf",
+                "type": "path",
+                "description": "The Formio form type (frf, prf, crf)."
+              },
+              {
+                "name": "mongoId",
+                "value": "000000000000000000000000",
+                "type": "path",
+                "description": "The Formio submission's MongoDB ObjectId."
+              },
+              {
+                "name": "comboKey",
+                "value": "0000000000000000",
+                "type": "path",
+                "description": "The SAM.gov entity's UEI/EFTI combo key."
+              },
+              {
+                "name": "bucket",
+                "value": "cleanschoolbus",
+                "type": "query",
+                "description": "The S3 bucket name where the file is stored."
+              },
+              {
+                "name": "key",
+                "value": "placeholder-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.png",
+                "type": "query",
+                "description": "The S3 object key for the file."
+              }
+            ]
+          },
+          "docs": "Download Formio File Attachment from S3 for a 2022 Submission."
+        },
+        {
+          "info": {
+            "name": "Upload Formio File Attachment to S3 for a 2022 Submission.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2022/s3/:formType/:mongoId/:comboKey/storage/s3",
+            "params": [
+              {
+                "name": "formType",
+                "value": "frf",
+                "type": "path",
+                "description": "The Formio form type (frf, prf, crf)."
+              },
+              {
+                "name": "mongoId",
+                "value": "000000000000000000000000",
+                "type": "path",
+                "description": "The Formio submission's MongoDB ObjectId."
+              },
+              {
+                "name": "comboKey",
+                "value": "0000000000000000",
+                "type": "path",
+                "description": "The SAM.gov entity's UEI/EFTI combo key."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Upload Formio File Attachment to S3 for a 2022 Submission."
+        },
+        {
+          "info": {
+            "name": "Delete Formio File Attachment from S3 for a 2022 Submission.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2022/s3/:formType/:mongoId/:comboKey/storage/s3",
+            "params": [
+              {
+                "name": "formType",
+                "value": "frf",
+                "type": "path",
+                "description": "The Formio form type (frf, prf, crf)."
+              },
+              {
+                "name": "mongoId",
+                "value": "000000000000000000000000",
+                "type": "path",
+                "description": "The Formio submission's MongoDB ObjectId."
+              },
+              {
+                "name": "comboKey",
+                "value": "0000000000000000",
+                "type": "path",
+                "description": "The SAM.gov entity's UEI/EFTI combo key."
+              }
+            ]
+          },
+          "docs": "Delete Formio File Attachment from S3 for a 2022 Submission."
+        },
+        {
+          "info": {
+            "name": "Download a PDF of a 2022 Form Submission.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2022/pdf/:formType/:mongoId",
+            "params": [
+              {
+                "name": "formType",
+                "value": "frf",
+                "type": "path",
+                "description": "The Formio form type (frf, prf, crf)."
+              },
+              {
+                "name": "mongoId",
+                "value": "000000000000000000000000",
+                "type": "path",
+                "description": "The Formio submission's MongoDB ObjectId."
+              }
+            ]
+          },
+          "docs": "Download a PDF of a 2022 Form Submission."
+        },
+        {
+          "info": {
+            "name": "Get User's 2022 FRF Submissions from Formio.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2022/frf-submissions"
+          },
+          "docs": "Get User's 2022 FRF Submissions from Formio."
+        },
+        {
+          "info": {
+            "name": "Post a New 2022 FRF Submission to Formio.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2022/frf-submission",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Post a New 2022 FRF Submission to Formio."
+        },
+        {
+          "info": {
+            "name": "Get an Existing 2022 FRF's Schema and Submission Data from Formio.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2022/frf-submission/:mongoId",
+            "params": [
+              {
+                "name": "mongoId",
+                "value": "000000000000000000000000",
+                "type": "path",
+                "description": "The Formio submission's MongoDB ObjectId."
+              }
+            ]
+          },
+          "docs": "Get an Existing 2022 FRF's Schema and Submission Data from Formio."
+        },
+        {
+          "info": {
+            "name": "Post an Update to an Existing Draft 2022 FRF Submission to Formio.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2022/frf-submission/:mongoId",
+            "params": [
+              {
+                "name": "mongoId",
+                "value": "000000000000000000000000",
+                "type": "path",
+                "description": "The Formio submission's MongoDB ObjectId."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Post an Update to an Existing Draft 2022 FRF Submission to Formio."
+        },
+        {
+          "info": {
+            "name": "Get User's 2022 PRF Submissions from Formio.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2022/prf-submissions"
+          },
+          "docs": "Get User's 2022 PRF Submissions from Formio."
+        },
+        {
+          "info": {
+            "name": "Post a New 2022 PRF Submission to Formio.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2022/prf-submission",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Post a New 2022 PRF Submission to Formio."
+        },
+        {
+          "info": {
+            "name": "Get an Existing 2022 PRF's Schema and Submission Data from Formio.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2022/prf-submission/:rebateId",
+            "params": [
+              {
+                "name": "rebateId",
+                "value": "000000",
+                "type": "path",
+                "description": "The CSB Rebate ID"
+              }
+            ]
+          },
+          "docs": "Get an Existing 2022 PRF's Schema and Submission Data from Formio."
+        },
+        {
+          "info": {
+            "name": "Post an Update to an Existing Draft 2022 PRF Submission to Formio.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2022/prf-submission/:rebateId",
+            "params": [
+              {
+                "name": "rebateId",
+                "value": "000000",
+                "type": "path",
+                "description": "The CSB Rebate ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Post an Update to an Existing Draft 2022 PRF Submission to Formio."
+        },
+        {
+          "info": {
+            "name": "Delete an Existing 2022 PRF Submission from Formio.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2022/delete-prf-submission",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete an Existing 2022 PRF Submission from Formio."
+        },
+        {
+          "info": {
+            "name": "Get User's 2022 CRF Submissions from Formio.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2022/crf-submissions"
+          },
+          "docs": "Get User's 2022 CRF Submissions from Formio."
+        },
+        {
+          "info": {
+            "name": "Post a New 2022 CRF Submission to Formio.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2022/crf-submission",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Post a New 2022 CRF Submission to Formio."
+        },
+        {
+          "info": {
+            "name": "Get an Existing 2022 CRF's Schema and Submission Data from Formio.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2022/crf-submission/:rebateId",
+            "params": [
+              {
+                "name": "rebateId",
+                "value": "000000",
+                "type": "path",
+                "description": "The CSB Rebate ID"
+              }
+            ]
+          },
+          "docs": "Get an Existing 2022 CRF's Schema and Submission Data from Formio."
+        },
+        {
+          "info": {
+            "name": "Post an Update to an Existing Draft 2022 CRF Submission to Formio.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2022/crf-submission/:rebateId",
+            "params": [
+              {
+                "name": "rebateId",
+                "value": "000000",
+                "type": "path",
+                "description": "The CSB Rebate ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Post an Update to an Existing Draft 2022 CRF Submission to Formio."
+        },
+        {
+          "info": {
+            "name": "Get User's 2022 Change Request Form Submissions from Formio.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2022/changes"
+          },
+          "docs": "Get User's 2022 Change Request Form Submissions from Formio."
+        },
+        {
+          "info": {
+            "name": "Check for Duplicate VINs in the BAP.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2023/check-vin/:vin",
+            "params": [
+              {
+                "name": "vin",
+                "value": "11111111111111111",
+                "type": "path",
+                "description": "The bus VIN to search for."
+              },
+              {
+                "name": "rebateId",
+                "value": "123456",
+                "type": "query",
+                "description": "The CSB Rebate ID of the current submission."
+              },
+              {
+                "name": "debug",
+                "value": "true",
+                "type": "query",
+                "description": "Return debug info from the BAP in the response."
+              }
+            ]
+          },
+          "docs": "Check for Duplicate VINs in the BAP."
+        },
+        {
+          "info": {
+            "name": "Search 2023 NCES Data with the Provided NCES ID and Return a Match.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2023/nces/:searchText",
+            "params": [
+              {
+                "name": "searchText",
+                "value": "A999999",
+                "type": "path",
+                "description": "The NCES ID to search for."
+              }
+            ]
+          },
+          "docs": "Search 2023 NCES Data with the Provided NCES ID and Return a Match."
+        },
+        {
+          "info": {
+            "name": "Get the School District Info Associated with a Provided CSB Rebate ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2023/district/:rebateId",
+            "params": [
+              {
+                "name": "rebateId",
+                "value": "000000",
+                "type": "path",
+                "description": "The CSB Rebate ID"
+              }
+            ]
+          },
+          "docs": "Get the School District Info Associated with a Provided CSB Rebate ID"
+        },
+        {
+          "info": {
+            "name": "Get Contacts Associated with a Provided CSB Rebate ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2023/contacts/:rebateId",
+            "params": [
+              {
+                "name": "rebateId",
+                "value": "000000",
+                "type": "path",
+                "description": "The CSB Rebate ID"
+              }
+            ]
+          },
+          "docs": "Get Contacts Associated with a Provided CSB Rebate ID"
+        },
+        {
+          "info": {
+            "name": "Download Formio File Attachment from S3 for a 2023 Submission.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2023/s3/:formType/:mongoId/:comboKey/storage/s3",
+            "params": [
+              {
+                "name": "formType",
+                "value": "frf",
+                "type": "path",
+                "description": "The Formio form type (frf, prf, crf)."
+              },
+              {
+                "name": "mongoId",
+                "value": "000000000000000000000000",
+                "type": "path",
+                "description": "The Formio submission's MongoDB ObjectId."
+              },
+              {
+                "name": "comboKey",
+                "value": "0000000000000000",
+                "type": "path",
+                "description": "The SAM.gov entity's UEI/EFTI combo key."
+              },
+              {
+                "name": "bucket",
+                "value": "cleanschoolbus",
+                "type": "query",
+                "description": "The S3 bucket name where the file is stored."
+              },
+              {
+                "name": "key",
+                "value": "placeholder-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.png",
+                "type": "query",
+                "description": "The S3 object key for the file."
+              }
+            ]
+          },
+          "docs": "Download Formio File Attachment from S3 for a 2023 Submission."
+        },
+        {
+          "info": {
+            "name": "Upload Formio File Attachment to S3 for a 2023 Submission.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2023/s3/:formType/:mongoId/:comboKey/storage/s3",
+            "params": [
+              {
+                "name": "formType",
+                "value": "frf",
+                "type": "path",
+                "description": "The Formio form type (frf, prf, crf)."
+              },
+              {
+                "name": "mongoId",
+                "value": "000000000000000000000000",
+                "type": "path",
+                "description": "The Formio submission's MongoDB ObjectId."
+              },
+              {
+                "name": "comboKey",
+                "value": "0000000000000000",
+                "type": "path",
+                "description": "The SAM.gov entity's UEI/EFTI combo key."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Upload Formio File Attachment to S3 for a 2023 Submission."
+        },
+        {
+          "info": {
+            "name": "Delete Formio File Attachment from S3 for a 2023 Submission.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2023/s3/:formType/:mongoId/:comboKey/storage/s3",
+            "params": [
+              {
+                "name": "formType",
+                "value": "frf",
+                "type": "path",
+                "description": "The Formio form type (frf, prf, crf)."
+              },
+              {
+                "name": "mongoId",
+                "value": "000000000000000000000000",
+                "type": "path",
+                "description": "The Formio submission's MongoDB ObjectId."
+              },
+              {
+                "name": "comboKey",
+                "value": "0000000000000000",
+                "type": "path",
+                "description": "The SAM.gov entity's UEI/EFTI combo key."
+              }
+            ]
+          },
+          "docs": "Delete Formio File Attachment from S3 for a 2023 Submission."
+        },
+        {
+          "info": {
+            "name": "Download a PDF of a 2023 Form Submission.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2023/pdf/:formType/:mongoId",
+            "params": [
+              {
+                "name": "formType",
+                "value": "frf",
+                "type": "path",
+                "description": "The Formio form type (frf, prf, crf)."
+              },
+              {
+                "name": "mongoId",
+                "value": "000000000000000000000000",
+                "type": "path",
+                "description": "The Formio submission's MongoDB ObjectId."
+              }
+            ]
+          },
+          "docs": "Download a PDF of a 2023 Form Submission."
+        },
+        {
+          "info": {
+            "name": "Get User's 2023 FRF Submissions from Formio.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2023/frf-submissions"
+          },
+          "docs": "Get User's 2023 FRF Submissions from Formio."
+        },
+        {
+          "info": {
+            "name": "Post a New 2023 FRF Submission to Formio.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2023/frf-submission",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Post a New 2023 FRF Submission to Formio."
+        },
+        {
+          "info": {
+            "name": "Get an Existing 2023 FRF's Schema and Submission Data from Formio.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2023/frf-submission/:mongoId",
+            "params": [
+              {
+                "name": "mongoId",
+                "value": "000000000000000000000000",
+                "type": "path",
+                "description": "The Formio submission's MongoDB ObjectId."
+              }
+            ]
+          },
+          "docs": "Get an Existing 2023 FRF's Schema and Submission Data from Formio."
+        },
+        {
+          "info": {
+            "name": "Post an Update to an Existing Draft 2023 FRF Submission to Formio.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2023/frf-submission/:mongoId",
+            "params": [
+              {
+                "name": "mongoId",
+                "value": "000000000000000000000000",
+                "type": "path",
+                "description": "The Formio submission's MongoDB ObjectId."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Post an Update to an Existing Draft 2023 FRF Submission to Formio."
+        },
+        {
+          "info": {
+            "name": "Get User's 2023 PRF Submissions from Formio.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2023/prf-submissions"
+          },
+          "docs": "Get User's 2023 PRF Submissions from Formio."
+        },
+        {
+          "info": {
+            "name": "Post a New 2023 PRF Submission to Formio.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2023/prf-submission",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Post a New 2023 PRF Submission to Formio."
+        },
+        {
+          "info": {
+            "name": "Get an Existing 2023 PRF's Schema and Submission Data from Formio.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2023/prf-submission/:rebateId",
+            "params": [
+              {
+                "name": "rebateId",
+                "value": "000000",
+                "type": "path",
+                "description": "The CSB Rebate ID"
+              }
+            ]
+          },
+          "docs": "Get an Existing 2023 PRF's Schema and Submission Data from Formio."
+        },
+        {
+          "info": {
+            "name": "Post an Update to an Existing Draft 2023 PRF Submission to Formio.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2023/prf-submission/:rebateId",
+            "params": [
+              {
+                "name": "rebateId",
+                "value": "000000",
+                "type": "path",
+                "description": "The CSB Rebate ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Post an Update to an Existing Draft 2023 PRF Submission to Formio."
+        },
+        {
+          "info": {
+            "name": "Delete an Existing 2023 PRF Submission from Formio.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2023/delete-prf-submission",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete an Existing 2023 PRF Submission from Formio."
+        },
+        {
+          "info": {
+            "name": "Get User's 2023 CRF Submissions from Formio.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2023/crf-submissions"
+          },
+          "docs": "Get User's 2023 CRF Submissions from Formio."
+        },
+        {
+          "info": {
+            "name": "Post a New 2023 CRF Submission to Formio.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2023/crf-submission",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Post a New 2023 CRF Submission to Formio."
+        },
+        {
+          "info": {
+            "name": "Get an Existing 2023 CRF's Schema and Submission Data from Formio.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2023/crf-submission/:rebateId",
+            "params": [
+              {
+                "name": "rebateId",
+                "value": "000000",
+                "type": "path",
+                "description": "The CSB Rebate ID"
+              }
+            ]
+          },
+          "docs": "Get an Existing 2023 CRF's Schema and Submission Data from Formio."
+        },
+        {
+          "info": {
+            "name": "Post an Update to an Existing Draft 2023 CRF Submission to Formio.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2023/crf-submission/:rebateId",
+            "params": [
+              {
+                "name": "rebateId",
+                "value": "000000",
+                "type": "path",
+                "description": "The CSB Rebate ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Post an Update to an Existing Draft 2023 CRF Submission to Formio."
+        },
+        {
+          "info": {
+            "name": "Get User's 2023 Change Request Form Submissions from Formio.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2023/changes"
+          },
+          "docs": "Get User's 2023 Change Request Form Submissions from Formio."
+        },
+        {
+          "info": {
+            "name": "Get the 2023 Change Request Form's Schema from Formio.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2023/change"
+          },
+          "docs": "Get the 2023 Change Request Form's Schema from Formio."
+        },
+        {
+          "info": {
+            "name": "Post a New 2023 Change Request Form Submission to Formio.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2023/change",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Post a New 2023 Change Request Form Submission to Formio."
+        },
+        {
+          "info": {
+            "name": "Get an Existing 2023 Change Request Form's Schema and Submission Data from Formio.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2023/change/:mongoId",
+            "params": [
+              {
+                "name": "mongoId",
+                "value": "000000000000000000000000",
+                "type": "path",
+                "description": "The Formio submission's MongoDB ObjectId."
+              }
+            ]
+          },
+          "docs": "Get an Existing 2023 Change Request Form's Schema and Submission Data from Formio."
+        },
+        {
+          "info": {
+            "name": "Search 2024 NCES Data with the Provided NCES ID and Return a Match.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2024/nces/:searchText",
+            "params": [
+              {
+                "name": "searchText",
+                "value": "A999999",
+                "type": "path",
+                "description": "The NCES ID to search for."
+              }
+            ]
+          },
+          "docs": "Search 2024 NCES Data with the Provided NCES ID and Return a Match."
+        },
+        {
+          "info": {
+            "name": "Get the School District Info Associated with a Provided CSB Rebate ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2024/district/:rebateId",
+            "params": [
+              {
+                "name": "rebateId",
+                "value": "000000",
+                "type": "path",
+                "description": "The CSB Rebate ID"
+              }
+            ]
+          },
+          "docs": "Get the School District Info Associated with a Provided CSB Rebate ID"
+        },
+        {
+          "info": {
+            "name": "Download Formio File Attachment from S3 for a 2024 Submission.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2024/s3/:formType/:mongoId/:comboKey/storage/s3",
+            "params": [
+              {
+                "name": "formType",
+                "value": "frf",
+                "type": "path",
+                "description": "The Formio form type (frf, prf, crf)."
+              },
+              {
+                "name": "mongoId",
+                "value": "000000000000000000000000",
+                "type": "path",
+                "description": "The Formio submission's MongoDB ObjectId."
+              },
+              {
+                "name": "comboKey",
+                "value": "0000000000000000",
+                "type": "path",
+                "description": "The SAM.gov entity's UEI/EFTI combo key."
+              },
+              {
+                "name": "bucket",
+                "value": "cleanschoolbus",
+                "type": "query",
+                "description": "The S3 bucket name where the file is stored."
+              },
+              {
+                "name": "key",
+                "value": "placeholder-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.png",
+                "type": "query",
+                "description": "The S3 object key for the file."
+              }
+            ]
+          },
+          "docs": "Download Formio File Attachment from S3 for a 2024 Submission."
+        },
+        {
+          "info": {
+            "name": "Upload Formio File Attachment to S3 for a 2024 Submission.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2024/s3/:formType/:mongoId/:comboKey/storage/s3",
+            "params": [
+              {
+                "name": "formType",
+                "value": "frf",
+                "type": "path",
+                "description": "The Formio form type (frf, prf, crf)."
+              },
+              {
+                "name": "mongoId",
+                "value": "000000000000000000000000",
+                "type": "path",
+                "description": "The Formio submission's MongoDB ObjectId."
+              },
+              {
+                "name": "comboKey",
+                "value": "0000000000000000",
+                "type": "path",
+                "description": "The SAM.gov entity's UEI/EFTI combo key."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Upload Formio File Attachment to S3 for a 2024 Submission."
+        },
+        {
+          "info": {
+            "name": "Delete Formio File Attachment from S3 for a 2024 Submission.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2024/s3/:formType/:mongoId/:comboKey/storage/s3",
+            "params": [
+              {
+                "name": "formType",
+                "value": "frf",
+                "type": "path",
+                "description": "The Formio form type (frf, prf, crf)."
+              },
+              {
+                "name": "mongoId",
+                "value": "000000000000000000000000",
+                "type": "path",
+                "description": "The Formio submission's MongoDB ObjectId."
+              },
+              {
+                "name": "comboKey",
+                "value": "0000000000000000",
+                "type": "path",
+                "description": "The SAM.gov entity's UEI/EFTI combo key."
+              }
+            ]
+          },
+          "docs": "Delete Formio File Attachment from S3 for a 2024 Submission."
+        },
+        {
+          "info": {
+            "name": "Download a PDF of a 2024 Form Submission.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2024/pdf/:formType/:mongoId",
+            "params": [
+              {
+                "name": "formType",
+                "value": "frf",
+                "type": "path",
+                "description": "The Formio form type (frf, prf, crf)."
+              },
+              {
+                "name": "mongoId",
+                "value": "000000000000000000000000",
+                "type": "path",
+                "description": "The Formio submission's MongoDB ObjectId."
+              }
+            ]
+          },
+          "docs": "Download a PDF of a 2024 Form Submission."
+        },
+        {
+          "info": {
+            "name": "Get User's 2024 FRF Submissions from Formio.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2024/frf-submissions"
+          },
+          "docs": "Get User's 2024 FRF Submissions from Formio."
+        },
+        {
+          "info": {
+            "name": "Post a New 2024 FRF Submission to Formio.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2024/frf-submission",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Post a New 2024 FRF Submission to Formio."
+        },
+        {
+          "info": {
+            "name": "Get an Existing 2024 FRF's Schema and Submission Data from Formio.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2024/frf-submission/:mongoId",
+            "params": [
+              {
+                "name": "mongoId",
+                "value": "000000000000000000000000",
+                "type": "path",
+                "description": "The Formio submission's MongoDB ObjectId."
+              }
+            ]
+          },
+          "docs": "Get an Existing 2024 FRF's Schema and Submission Data from Formio."
+        },
+        {
+          "info": {
+            "name": "Post an Update to an Existing Draft 2024 FRF Submission to Formio.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2024/frf-submission/:mongoId",
+            "params": [
+              {
+                "name": "mongoId",
+                "value": "000000000000000000000000",
+                "type": "path",
+                "description": "The Formio submission's MongoDB ObjectId."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Post an Update to an Existing Draft 2024 FRF Submission to Formio."
+        },
+        {
+          "info": {
+            "name": "Get User's 2024 Change Request Form Submissions from Formio.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2024/changes"
+          },
+          "docs": "Get User's 2024 Change Request Form Submissions from Formio."
+        },
+        {
+          "info": {
+            "name": "Get the 2024 Change Request Form's Schema from Formio.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2024/change"
+          },
+          "docs": "Get the 2024 Change Request Form's Schema from Formio."
+        },
+        {
+          "info": {
+            "name": "Post a New 2024 Change Request Form Submission to Formio.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2024/change",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Post a New 2024 Change Request Form Submission to Formio."
+        },
+        {
+          "info": {
+            "name": "Get an Existing 2024 Change Request Form's Schema and Submission Data from Formio.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/api/formio/2024/change/:mongoId",
+            "params": [
+              {
+                "name": "mongoId",
+                "value": "000000000000000000000000",
+                "type": "path",
+                "description": "The Formio submission's MongoDB ObjectId."
+              }
+            ]
+          },
+          "docs": "Get an Existing 2024 Change Request Form's Schema and Submission Data from Formio."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

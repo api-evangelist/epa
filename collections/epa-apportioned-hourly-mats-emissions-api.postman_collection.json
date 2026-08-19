@@ -1,0 +1,703 @@
+{
+  "item": [
+    {
+      "id": "c66e6b63-9dc4-4c72-9699-23e13b29110e",
+      "name": "Apportioned Hourly MATS Emissions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "24730c0a-f5cc-4138-882e-0f030c9f64d8",
+          "name": "Hourly Mats Apportioned Emissions Controller get Emissions",
+          "request": {
+            "name": "Hourly Mats Apportioned Emissions Controller get Emissions",
+            "description": {},
+            "url": {
+              "path": [
+                "emissions-mgmt",
+                "emissions",
+                "apportioned",
+                "mats",
+                "hourly"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "stateCode",
+                  "value": "<string>|<string>",
+                  "description": "Two letter abbreviation for the State."
+                },
+                {
+                  "disabled": false,
+                  "key": "facilityId",
+                  "value": "<number>|<number>",
+                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting."
+                },
+                {
+                  "disabled": false,
+                  "key": "unitType",
+                  "value": "<string>|<string>",
+                  "description": "Type of unit or boiler."
+                },
+                {
+                  "disabled": false,
+                  "key": "unitFuelType",
+                  "value": "<string>|<string>",
+                  "description": "Primary or Secondary fuel types combusted by the unit."
+                },
+                {
+                  "disabled": false,
+                  "key": "controlTechnologies",
+                  "value": "<string>|<string>",
+                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions."
+                },
+                {
+                  "disabled": false,
+                  "key": "beginDate",
+                  "value": "<dateTime>",
+                  "description": "(Required) Begin date for a given period of a unit's emissions."
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<dateTime>",
+                  "description": "(Required) End date for a given period of a unit's emissions."
+                },
+                {
+                  "disabled": false,
+                  "key": "operatingHoursOnly",
+                  "value": "<boolean>",
+                  "description": "Indicator of whether or not a request should return only data for hours where a unit operated."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "(Required) Page number of data being requested."
+                },
+                {
+                  "disabled": false,
+                  "key": "perPage",
+                  "value": "<number>",
+                  "description": "(Required) Number of results per page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "c1db4ff0-c3db-47f5-b233-2eabc0007b11",
+              "name": "Retrieves Hourly MATS Apportioned Emissions per filter criteria",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "emissions-mgmt",
+                    "emissions",
+                    "apportioned",
+                    "mats",
+                    "hourly"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "stateCode",
+                      "value": "AL"
+                    },
+                    {
+                      "key": "facilityId",
+                      "value": "0"
+                    },
+                    {
+                      "key": "unitType",
+                      "value": "Arch-fired boiler"
+                    },
+                    {
+                      "key": "unitFuelType",
+                      "value": "Coal"
+                    },
+                    {
+                      "key": "controlTechnologies",
+                      "value": "Additives to Enhance PAC and Existing Equipment Performance"
+                    },
+                    {
+                      "key": "beginDate",
+                      "value": "2024-01-15T12:00:00Z"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2024-01-15T12:00:00Z"
+                    },
+                    {
+                      "key": "operatingHoursOnly",
+                      "value": "true"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "perPage",
+                      "value": "0"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"message\": \"Example response\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "be4a6564-a0a3-4069-b1fc-4c58e7b2dec7",
+              "name": "Invalid Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "emissions-mgmt",
+                    "emissions",
+                    "apportioned",
+                    "mats",
+                    "hourly"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "stateCode",
+                      "value": "AL"
+                    },
+                    {
+                      "key": "facilityId",
+                      "value": "0"
+                    },
+                    {
+                      "key": "unitType",
+                      "value": "Arch-fired boiler"
+                    },
+                    {
+                      "key": "unitFuelType",
+                      "value": "Coal"
+                    },
+                    {
+                      "key": "controlTechnologies",
+                      "value": "Additives to Enhance PAC and Existing Equipment Performance"
+                    },
+                    {
+                      "key": "beginDate",
+                      "value": "2024-01-15T12:00:00Z"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2024-01-15T12:00:00Z"
+                    },
+                    {
+                      "key": "operatingHoursOnly",
+                      "value": "true"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "perPage",
+                      "value": "0"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f84059b9-1a79-4793-a85d-ede8a769a1b7",
+              "name": "Resource Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "emissions-mgmt",
+                    "emissions",
+                    "apportioned",
+                    "mats",
+                    "hourly"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "stateCode",
+                      "value": "AL"
+                    },
+                    {
+                      "key": "facilityId",
+                      "value": "0"
+                    },
+                    {
+                      "key": "unitType",
+                      "value": "Arch-fired boiler"
+                    },
+                    {
+                      "key": "unitFuelType",
+                      "value": "Coal"
+                    },
+                    {
+                      "key": "controlTechnologies",
+                      "value": "Additives to Enhance PAC and Existing Equipment Performance"
+                    },
+                    {
+                      "key": "beginDate",
+                      "value": "2024-01-15T12:00:00Z"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2024-01-15T12:00:00Z"
+                    },
+                    {
+                      "key": "operatingHoursOnly",
+                      "value": "true"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "perPage",
+                      "value": "0"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "29919873-8523-414c-8cac-20a878439911",
+          "name": "Hourly Mats Apportioned Emissions Controller stream Emissions",
+          "request": {
+            "name": "Hourly Mats Apportioned Emissions Controller stream Emissions",
+            "description": {},
+            "url": {
+              "path": [
+                "streaming-services",
+                "emissions",
+                "apportioned",
+                "mats",
+                "hourly"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "stateCode",
+                  "value": "<string>|<string>",
+                  "description": "Two letter abbreviation for the State."
+                },
+                {
+                  "disabled": false,
+                  "key": "facilityId",
+                  "value": "<number>|<number>",
+                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting."
+                },
+                {
+                  "disabled": false,
+                  "key": "unitType",
+                  "value": "<string>|<string>",
+                  "description": "Type of unit or boiler."
+                },
+                {
+                  "disabled": false,
+                  "key": "unitFuelType",
+                  "value": "<string>|<string>",
+                  "description": "Primary or Secondary fuel types combusted by the unit."
+                },
+                {
+                  "disabled": false,
+                  "key": "controlTechnologies",
+                  "value": "<string>|<string>",
+                  "description": "Method or equipment used by the combustion unit to minimize Hg, NOx, PM, or SO2 emissions."
+                },
+                {
+                  "disabled": false,
+                  "key": "beginDate",
+                  "value": "<dateTime>",
+                  "description": "(Required) Begin date for a given period of a unit's emissions."
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<dateTime>",
+                  "description": "(Required) End date for a given period of a unit's emissions."
+                },
+                {
+                  "disabled": false,
+                  "key": "operatingHoursOnly",
+                  "value": "<boolean>",
+                  "description": "Indicator of whether or not a request should return only data for hours where a unit operated."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude",
+                  "value": "<string>|<string>",
+                  "description": "Selected items will be excluded from the response"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "155712ca-117c-4ae4-b267-a1ab728e2210",
+              "name": "Streams Hourly MATS Apportioned Emissions per filter criteria",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "streaming-services",
+                    "emissions",
+                    "apportioned",
+                    "mats",
+                    "hourly"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "stateCode",
+                      "value": "AL"
+                    },
+                    {
+                      "key": "facilityId",
+                      "value": "0"
+                    },
+                    {
+                      "key": "unitType",
+                      "value": "Arch-fired boiler"
+                    },
+                    {
+                      "key": "unitFuelType",
+                      "value": "Coal"
+                    },
+                    {
+                      "key": "controlTechnologies",
+                      "value": "Additives to Enhance PAC and Existing Equipment Performance"
+                    },
+                    {
+                      "key": "beginDate",
+                      "value": "2024-01-15T12:00:00Z"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2024-01-15T12:00:00Z"
+                    },
+                    {
+                      "key": "operatingHoursOnly",
+                      "value": "true"
+                    },
+                    {
+                      "key": "exclude",
+                      "value": "hclInputRate"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"message\": \"Example response\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d4af3306-8b88-4d0f-a24d-1d76e353d46c",
+              "name": "Invalid Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "streaming-services",
+                    "emissions",
+                    "apportioned",
+                    "mats",
+                    "hourly"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "stateCode",
+                      "value": "AL"
+                    },
+                    {
+                      "key": "facilityId",
+                      "value": "0"
+                    },
+                    {
+                      "key": "unitType",
+                      "value": "Arch-fired boiler"
+                    },
+                    {
+                      "key": "unitFuelType",
+                      "value": "Coal"
+                    },
+                    {
+                      "key": "controlTechnologies",
+                      "value": "Additives to Enhance PAC and Existing Equipment Performance"
+                    },
+                    {
+                      "key": "beginDate",
+                      "value": "2024-01-15T12:00:00Z"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2024-01-15T12:00:00Z"
+                    },
+                    {
+                      "key": "operatingHoursOnly",
+                      "value": "true"
+                    },
+                    {
+                      "key": "exclude",
+                      "value": "hclInputRate"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6c7d6385-ef7d-449b-aead-2776deff276f",
+              "name": "Resource Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "streaming-services",
+                    "emissions",
+                    "apportioned",
+                    "mats",
+                    "hourly"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "stateCode",
+                      "value": "AL"
+                    },
+                    {
+                      "key": "facilityId",
+                      "value": "0"
+                    },
+                    {
+                      "key": "unitType",
+                      "value": "Arch-fired boiler"
+                    },
+                    {
+                      "key": "unitFuelType",
+                      "value": "Coal"
+                    },
+                    {
+                      "key": "controlTechnologies",
+                      "value": "Additives to Enhance PAC and Existing Equipment Performance"
+                    },
+                    {
+                      "key": "beginDate",
+                      "value": "2024-01-15T12:00:00Z"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2024-01-15T12:00:00Z"
+                    },
+                    {
+                      "key": "operatingHoursOnly",
+                      "value": "true"
+                    },
+                    {
+                      "key": "exclude",
+                      "value": "hclInputRate"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://aqs.epa.gov/data/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ada27964-9273-48f6-983f-16233322fb4e",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Apportioned Hourly MATS Emissions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+      "type": "text/plain"
+    }
+  }
+}

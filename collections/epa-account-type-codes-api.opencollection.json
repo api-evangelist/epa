@@ -1,0 +1,44 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "EPA Air Quality System (AQS) Account Type Codes API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Account Type Codes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AccountTypeController_getAccountTypeCodes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/master-data-mgmt/account-type-codes",
+            "params": [
+              {
+                "name": "exclude",
+                "value": "CASURR",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a list of Account Type codes & descriptions."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

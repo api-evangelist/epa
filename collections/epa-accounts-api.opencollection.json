@@ -1,0 +1,170 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "EPA Air Quality System (AQS) Account Type Codes Accounts API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AccountController_getAllAccounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/account-mgmt/accounts"
+          }
+        },
+        {
+          "info": {
+            "name": "AccountController_getAllAccountAttributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/account-mgmt/accounts/attributes",
+            "params": [
+              {
+                "name": "accountType",
+                "value": "Compliance Assurance Surrender Account",
+                "type": "query",
+                "description": "Type of allowance account (Facility, General, etc.)."
+              },
+              {
+                "name": "accountNumber",
+                "value": "string",
+                "type": "query",
+                "description": "The unique identification number of an account."
+              },
+              {
+                "name": "facilityId",
+                "value": "0",
+                "type": "query",
+                "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting."
+              },
+              {
+                "name": "stateCode",
+                "value": "AL",
+                "type": "query",
+                "description": "Two letter abbreviation for the State."
+              },
+              {
+                "name": "ownerOperator",
+                "value": "string",
+                "type": "query",
+                "description": "The name of any company that owns an allowance account or an affected unit.The name of any company that operates an affected unit."
+              },
+              {
+                "name": "programCodeInfo",
+                "value": "ARP",
+                "type": "query",
+                "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions."
+              },
+              {
+                "name": "page",
+                "value": "0",
+                "type": "query",
+                "description": "Page number of data being requested."
+              },
+              {
+                "name": "perPage",
+                "value": "0",
+                "type": "query",
+                "description": "Number of results per page."
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "AccountController_getAllApplicableAccountAttributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/account-mgmt/accounts/attributes/applicable"
+          }
+        },
+        {
+          "info": {
+            "name": "AccountController_getAllOwnerOperators",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/account-mgmt/accounts/owner-operators"
+          }
+        },
+        {
+          "info": {
+            "name": "AccountController_streamAllAccountAttributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/streaming-services/accounts/attributes",
+            "params": [
+              {
+                "name": "accountType",
+                "value": "Compliance Assurance Surrender Account",
+                "type": "query",
+                "description": "Type of allowance account (Facility, General, etc.)."
+              },
+              {
+                "name": "accountNumber",
+                "value": "string",
+                "type": "query",
+                "description": "The unique identification number of an account."
+              },
+              {
+                "name": "facilityId",
+                "value": "0",
+                "type": "query",
+                "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting."
+              },
+              {
+                "name": "stateCode",
+                "value": "AL",
+                "type": "query",
+                "description": "Two letter abbreviation for the State."
+              },
+              {
+                "name": "ownerOperator",
+                "value": "string",
+                "type": "query",
+                "description": "The name of any company that owns an allowance account or an affected unit.The name of any company that operates an affected unit."
+              },
+              {
+                "name": "programCodeInfo",
+                "value": "ARP",
+                "type": "query",
+                "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions."
+              },
+              {
+                "name": "exclude",
+                "value": "accountType",
+                "type": "query",
+                "description": "Selected items will be excluded from the response"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

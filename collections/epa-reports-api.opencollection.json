@@ -1,0 +1,100 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "EPA Air Quality System (AQS) Account Type Codes Reports API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ReportController_getAvailableReports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/camd-services/reports/list"
+          },
+          "docs": "Retrieves list of official reports available."
+        },
+        {
+          "info": {
+            "name": "ReportController_getReport",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/camd-services/reports",
+            "params": [
+              {
+                "name": "reportCode",
+                "value": "string",
+                "type": "query"
+              },
+              {
+                "name": "facilityId",
+                "value": "0",
+                "type": "query"
+              },
+              {
+                "name": "monitorPlanId",
+                "value": "12345",
+                "type": "query"
+              },
+              {
+                "name": "testId",
+                "value": "12345",
+                "type": "query"
+              },
+              {
+                "name": "qceId",
+                "value": "12345",
+                "type": "query"
+              },
+              {
+                "name": "teeId",
+                "value": "12345",
+                "type": "query"
+              },
+              {
+                "name": "year",
+                "value": "2024",
+                "type": "query"
+              },
+              {
+                "name": "quarter",
+                "value": "0",
+                "type": "query"
+              },
+              {
+                "name": "locationId",
+                "value": "12345",
+                "type": "query"
+              },
+              {
+                "name": "reportingPeriodIds",
+                "value": "12345",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves official data for various reports based on criteria."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

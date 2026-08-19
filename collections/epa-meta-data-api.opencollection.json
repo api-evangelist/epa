@@ -1,0 +1,131 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "EPA Air Quality System (AQS) Account Type Codes Meta Data API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Meta Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Check API Availability",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/metaData/isAvailable",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              }
+            ]
+          },
+          "docs": "Check API Availability"
+        },
+        {
+          "info": {
+            "name": "Get Revision History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/metaData/revisionHistory",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              }
+            ]
+          },
+          "docs": "Get Revision History"
+        },
+        {
+          "info": {
+            "name": "List Fields by Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/metaData/fieldsByService",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              },
+              {
+                "name": "service",
+                "value": "string",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Fields by Service"
+        },
+        {
+          "info": {
+            "name": "List Known Issues",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/metaData/issues",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Registered email address."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Account-specific access key."
+              }
+            ]
+          },
+          "docs": "List Known Issues"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

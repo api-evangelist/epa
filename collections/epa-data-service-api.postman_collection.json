@@ -1,0 +1,418 @@
+{
+  "item": [
+    {
+      "id": "9c6846fd-fd85-4409-9ee5-b27c66e6c17d",
+      "name": "Data Service",
+      "description": {
+        "content": "Generic Envirofacts REST data service supporting any program.table.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "55773dc0-19c9-4473-94a3-8c2b59ee7c79",
+          "name": "Query Envirofacts Table",
+          "request": {
+            "name": "Query Envirofacts Table",
+            "description": {
+              "content": "Query any Envirofacts table. Append optional filter, join, range, and sort segments before the format.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "efservice",
+                ":table",
+                ":format"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "table",
+                  "description": "(Required) Envirofacts table in `program.table` format (e.g., `rcra.rcra_facility`, `tri.tri_facility`, `sems.envirofacts_site`)."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "format",
+                  "description": "Output format (default JSON)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "45320f00-2d35-44a7-8920-705ab45ef39f",
+              "name": "Rows from the requested Envirofacts table.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "efservice",
+                    ":table",
+                    ":format"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "table",
+                      "description": "(Required) Envirofacts table in `program.table` format (e.g., `rcra.rcra_facility`, `tri.tri_facility`, `sems.envirofacts_site`)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "format",
+                      "description": "Output format (default JSON)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"message\": \"Example response\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "29e2b631-c9e1-42ff-8e13-7f0d8f581b42",
+          "name": "Query Envirofacts Table with Filter",
+          "request": {
+            "name": "Query Envirofacts Table with Filter",
+            "description": {},
+            "url": {
+              "path": [
+                "efservice",
+                ":table",
+                ":filter",
+                ":format"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "table",
+                  "description": "(Required) Envirofacts table in `program.table` format (e.g., `rcra.rcra_facility`, `tri.tri_facility`, `sems.envirofacts_site`)."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "filter",
+                  "description": "Optional filter clause `{column}{operator}{value}`. Operators include equals, notEquals, lessThan, greaterThan, beginsWith, endsWith, contains, like, in."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "format",
+                  "description": "Output format (default JSON)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cdfbcc9c-b6c6-4b0d-8d14-6e9f4573332b",
+              "name": "Filtered rows.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "efservice",
+                    ":table",
+                    ":filter",
+                    ":format"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "table",
+                      "description": "(Required) Envirofacts table in `program.table` format (e.g., `rcra.rcra_facility`, `tri.tri_facility`, `sems.envirofacts_site`)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "filter",
+                      "description": "Optional filter clause `{column}{operator}{value}`. Operators include equals, notEquals, lessThan, greaterThan, beginsWith, endsWith, contains, like, in."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "format",
+                      "description": "Output format (default JSON)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"message\": \"Example response\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c06515a6-6669-443c-a09e-a9fcbb03358d",
+          "name": "Query Envirofacts Table with Filter and Pagination",
+          "request": {
+            "name": "Query Envirofacts Table with Filter and Pagination",
+            "description": {},
+            "url": {
+              "path": [
+                "efservice",
+                ":table",
+                ":filter",
+                ":range",
+                ":format"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "table",
+                  "description": "(Required) Envirofacts table in `program.table` format (e.g., `rcra.rcra_facility`, `tri.tri_facility`, `sems.envirofacts_site`)."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "filter",
+                  "description": "Optional filter clause `{column}{operator}{value}`. Operators include equals, notEquals, lessThan, greaterThan, beginsWith, endsWith, contains, like, in."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "range",
+                  "description": "Optional pagination range `first:last` (e.g., `1:100`)."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "format",
+                  "description": "Output format (default JSON)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c37a80ff-7a13-4234-9779-166c25dc787c",
+              "name": "Paginated filtered rows.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "efservice",
+                    ":table",
+                    ":filter",
+                    ":range",
+                    ":format"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "table",
+                      "description": "(Required) Envirofacts table in `program.table` format (e.g., `rcra.rcra_facility`, `tri.tri_facility`, `sems.envirofacts_site`)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "filter",
+                      "description": "Optional filter clause `{column}{operator}{value}`. Operators include equals, notEquals, lessThan, greaterThan, beginsWith, endsWith, contains, like, in."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "range",
+                      "description": "Optional pagination range `first:last` (e.g., `1:100`)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "format",
+                      "description": "Output format (default JSON)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"message\": \"Example response\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://aqs.epa.gov/data/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7b82c782-bd9c-45fd-99c6-c84c007fb4d3",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Data Service API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+      "type": "text/plain"
+    }
+  }
+}

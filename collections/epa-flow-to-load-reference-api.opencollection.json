@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "EPA Air Quality System (AQS) Account Type Codes Flow To Load Reference API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Flow To Load Reference",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "FlowToLoadReferenceController_getFlowToLoadReferences",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/flow-to-load-references",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "FlowToLoadReferenceController_getFlowToLoadReference",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/qa-certification-mgmt/locations/:locId/test-summary/:testSumId/flow-to-load-references/:id",
+            "params": [
+              {
+                "name": "locId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "testSumId",
+                "value": "12345",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "12345",
+                "type": "path"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

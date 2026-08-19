@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "EPA Air Quality System (AQS) Account Type Codes Relationships API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Relationships",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "RelationshipsController_listRelationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/master-data-mgmt/relationships/list"
+          },
+          "docs": "Returns a list of Master Data relationships available."
+        },
+        {
+          "info": {
+            "name": "RelationshipsController_getRelationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/master-data-mgmt/relationships/:code",
+            "params": [
+              {
+                "name": "code",
+                "value": "string",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns a list of Master Data relationships for the dataset provided."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

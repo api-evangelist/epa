@@ -1,0 +1,66 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "EPA Air Quality System (AQS) Account Type Codes Plans API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Plans",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "MonitorPlanController_exportMonitorPlan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/monitor-plan-mgmt/plans/export",
+            "params": [
+              {
+                "name": "planId",
+                "value": "12345",
+                "type": "query",
+                "description": "The Monintor Plan Summary ID is a unique identifier for a monitor plan record"
+              },
+              {
+                "name": "reportedValuesOnly",
+                "value": "true",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "MonitorPlanController_getMonitorPlan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/monitor-plan-mgmt/plans/:planId",
+            "params": [
+              {
+                "name": "planId",
+                "value": "12345",
+                "type": "path"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

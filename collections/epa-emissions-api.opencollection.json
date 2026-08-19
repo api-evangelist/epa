@@ -1,0 +1,251 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "EPA Air Quality System (AQS) Account Type Codes Emissions API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Emissions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Exports Emissions Data for the Specified Monitor Plan & Reporting Period",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/emissions-mgmt/emissions/export",
+            "params": [
+              {
+                "name": "monitorPlanId",
+                "value": "12345",
+                "type": "query"
+              },
+              {
+                "name": "year",
+                "value": "2024",
+                "type": "query"
+              },
+              {
+                "name": "quarter",
+                "value": "0",
+                "type": "query"
+              },
+              {
+                "name": "reportedValuesOnly",
+                "value": "true",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Exports Emissions Data for the Specified Monitor Plan & Reporting Period"
+        },
+        {
+          "info": {
+            "name": "EmissionsController_submissionProgress",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/emissions-mgmt/emissions/submission-progress",
+            "params": [
+              {
+                "name": "submissionPeriod",
+                "value": "2019-01-01",
+                "type": "query",
+                "description": "Date on which activity occurred."
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "EmissionsController_getEmissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/emissions-mgmt/emissions",
+            "params": [
+              {
+                "name": "orisCodes",
+                "value": "0",
+                "type": "query",
+                "description": "Array of oris codes"
+              },
+              {
+                "name": "monPlanIds",
+                "value": "12345",
+                "type": "query",
+                "description": "Array of configurations"
+              },
+              {
+                "name": "quarters",
+                "value": "string",
+                "type": "query",
+                "description": "Array of quarter abbreviations"
+              },
+              {
+                "name": "mode",
+                "value": "report",
+                "type": "query",
+                "description": "Flag to indicate the mode of operation"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "SummaryValueController_summaryValueStream",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/streaming-services/emissions/summary-values",
+            "params": [
+              {
+                "name": "orisCode",
+                "value": "0",
+                "type": "query"
+              },
+              {
+                "name": "beginYear",
+                "value": "2024",
+                "type": "query"
+              },
+              {
+                "name": "beginQuarter",
+                "value": "0",
+                "type": "query"
+              },
+              {
+                "name": "endYear",
+                "value": "2024",
+                "type": "query"
+              },
+              {
+                "name": "endQuarter",
+                "value": "0",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "SupplementalOperatingController_supplementalOperatingStream",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/streaming-services/emissions/supplemental-operating",
+            "params": [
+              {
+                "name": "orisCode",
+                "value": "0",
+                "type": "query"
+              },
+              {
+                "name": "beginYear",
+                "value": "2024",
+                "type": "query"
+              },
+              {
+                "name": "beginQuarter",
+                "value": "0",
+                "type": "query"
+              },
+              {
+                "name": "endYear",
+                "value": "2024",
+                "type": "query"
+              },
+              {
+                "name": "endQuarter",
+                "value": "0",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "DerivedHourlyController_derivedHourlyStream",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/streaming-services/emissions/hourly/derived-values",
+            "params": [
+              {
+                "name": "orisCode",
+                "value": "0",
+                "type": "query"
+              },
+              {
+                "name": "locationName",
+                "value": "EPA Facility",
+                "type": "query"
+              },
+              {
+                "name": "beginDate",
+                "value": "2024-01-15T12:00:00Z",
+                "type": "query"
+              },
+              {
+                "name": "endDate",
+                "value": "2024-01-15T12:00:00Z",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "HourlyOperatingController_hourlyOperatingStream",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/streaming-services/emissions/hourly/operating",
+            "params": [
+              {
+                "name": "orisCode",
+                "value": "0",
+                "type": "query"
+              },
+              {
+                "name": "locationName",
+                "value": "EPA Facility",
+                "type": "query"
+              },
+              {
+                "name": "beginDate",
+                "value": "2024-01-15T12:00:00Z",
+                "type": "query"
+              },
+              {
+                "name": "endDate",
+                "value": "2024-01-15T12:00:00Z",
+                "type": "query"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

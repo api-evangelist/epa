@@ -1,0 +1,119 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "EPA Air Quality System (AQS) Account Type Codes Data Service API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Data Service",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query Envirofacts Table",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/efservice/:table/:format",
+            "params": [
+              {
+                "name": "table",
+                "value": "",
+                "type": "path",
+                "description": "Envirofacts table in `program.table` format (e.g., `rcra.rcra_facility`, `tri.tri_facility`, `sems.envirofacts_site`)."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "path",
+                "description": "Output format (default JSON)."
+              }
+            ]
+          },
+          "docs": "Query any Envirofacts table. Append optional filter, join, range, and sort segments before the format."
+        },
+        {
+          "info": {
+            "name": "Query Envirofacts Table with Filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/efservice/:table/:filter/:format",
+            "params": [
+              {
+                "name": "table",
+                "value": "",
+                "type": "path",
+                "description": "Envirofacts table in `program.table` format (e.g., `rcra.rcra_facility`, `tri.tri_facility`, `sems.envirofacts_site`)."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "path",
+                "description": "Optional filter clause `{column}{operator}{value}`. Operators include equals, notEquals, lessThan, greaterThan, beginsWith, endsWith, contains, like, in."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "path",
+                "description": "Output format (default JSON)."
+              }
+            ]
+          },
+          "docs": "Query Envirofacts Table with Filter"
+        },
+        {
+          "info": {
+            "name": "Query Envirofacts Table with Filter and Pagination",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aqs.epa.gov/data/api/efservice/:table/:filter/:range/:format",
+            "params": [
+              {
+                "name": "table",
+                "value": "",
+                "type": "path",
+                "description": "Envirofacts table in `program.table` format (e.g., `rcra.rcra_facility`, `tri.tri_facility`, `sems.envirofacts_site`)."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "path",
+                "description": "Optional filter clause `{column}{operator}{value}`. Operators include equals, notEquals, lessThan, greaterThan, beginsWith, endsWith, contains, like, in."
+              },
+              {
+                "name": "range",
+                "value": "",
+                "type": "path",
+                "description": "Optional pagination range `first:last` (e.g., `1:100`)."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "path",
+                "description": "Output format (default JSON)."
+              }
+            ]
+          },
+          "docs": "Query Envirofacts Table with Filter and Pagination"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

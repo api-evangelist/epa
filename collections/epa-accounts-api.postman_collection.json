@@ -1,0 +1,1056 @@
+{
+  "item": [
+    {
+      "id": "c3b7a804-7111-4572-a70b-88bd371581ed",
+      "name": "Accounts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d6c3e787-72dd-4750-840a-b1c86670bde8",
+          "name": "Account Controller get All Accounts",
+          "request": {
+            "name": "Account Controller get All Accounts",
+            "description": {},
+            "url": {
+              "path": [
+                "account-mgmt",
+                "accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "1f6d6d6e-4ecf-4275-a985-d7120de0c9f9",
+              "name": "Retrieved All Valid Accounts",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "account-mgmt",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"message\": \"Example response\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "edffc691-3e86-4ce2-8fb6-26f5d0c9b54c",
+              "name": "Invalid Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "account-mgmt",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4339b0db-5bbc-4f99-b991-c763231bf674",
+              "name": "Resource Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "account-mgmt",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0ee912c1-0ce6-4b15-a110-ce6b8291a20a",
+          "name": "Account Controller get All Account Attributes",
+          "request": {
+            "name": "Account Controller get All Account Attributes",
+            "description": {},
+            "url": {
+              "path": [
+                "account-mgmt",
+                "accounts",
+                "attributes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "accountType",
+                  "value": "<string>|<string>",
+                  "description": "Type of allowance account (Facility, General, etc.)."
+                },
+                {
+                  "disabled": false,
+                  "key": "accountNumber",
+                  "value": "<string>|<string>",
+                  "description": "The unique identification number of an account."
+                },
+                {
+                  "disabled": false,
+                  "key": "facilityId",
+                  "value": "<number>|<number>",
+                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting."
+                },
+                {
+                  "disabled": false,
+                  "key": "stateCode",
+                  "value": "<string>|<string>",
+                  "description": "Two letter abbreviation for the State."
+                },
+                {
+                  "disabled": false,
+                  "key": "ownerOperator",
+                  "value": "<string>|<string>",
+                  "description": "The name of any company that owns an allowance account or an affected unit.The name of any company that operates an affected unit."
+                },
+                {
+                  "disabled": false,
+                  "key": "programCodeInfo",
+                  "value": "<string>|<string>",
+                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "(Required) Page number of data being requested."
+                },
+                {
+                  "disabled": false,
+                  "key": "perPage",
+                  "value": "<number>",
+                  "description": "(Required) Number of results per page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "66dbb9b4-2a28-4d61-9892-739110e860ad",
+              "name": "Retrieved All Valid Account Attributes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "account-mgmt",
+                    "accounts",
+                    "attributes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountType",
+                      "value": "Compliance Assurance Surrender Account"
+                    },
+                    {
+                      "key": "accountNumber",
+                      "value": "string"
+                    },
+                    {
+                      "key": "facilityId",
+                      "value": "0"
+                    },
+                    {
+                      "key": "stateCode",
+                      "value": "AL"
+                    },
+                    {
+                      "key": "ownerOperator",
+                      "value": "string"
+                    },
+                    {
+                      "key": "programCodeInfo",
+                      "value": "ARP"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "perPage",
+                      "value": "0"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"message\": \"Example response\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "472524a7-14c0-4c0a-bbef-52bfe521dac6",
+              "name": "Invalid Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "account-mgmt",
+                    "accounts",
+                    "attributes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountType",
+                      "value": "Compliance Assurance Surrender Account"
+                    },
+                    {
+                      "key": "accountNumber",
+                      "value": "string"
+                    },
+                    {
+                      "key": "facilityId",
+                      "value": "0"
+                    },
+                    {
+                      "key": "stateCode",
+                      "value": "AL"
+                    },
+                    {
+                      "key": "ownerOperator",
+                      "value": "string"
+                    },
+                    {
+                      "key": "programCodeInfo",
+                      "value": "ARP"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "perPage",
+                      "value": "0"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f7426f54-16d2-46f8-8a32-433858114d7e",
+              "name": "Resource Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "account-mgmt",
+                    "accounts",
+                    "attributes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountType",
+                      "value": "Compliance Assurance Surrender Account"
+                    },
+                    {
+                      "key": "accountNumber",
+                      "value": "string"
+                    },
+                    {
+                      "key": "facilityId",
+                      "value": "0"
+                    },
+                    {
+                      "key": "stateCode",
+                      "value": "AL"
+                    },
+                    {
+                      "key": "ownerOperator",
+                      "value": "string"
+                    },
+                    {
+                      "key": "programCodeInfo",
+                      "value": "ARP"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "perPage",
+                      "value": "0"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a3616e2f-aab4-4c3d-a4ab-d36ba10b55fd",
+          "name": "Account Controller get All Applicable Account Attributes",
+          "request": {
+            "name": "Account Controller get All Applicable Account Attributes",
+            "description": {},
+            "url": {
+              "path": [
+                "account-mgmt",
+                "accounts",
+                "attributes",
+                "applicable"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "93805787-5996-462c-b936-775486791815",
+              "name": "Retrieved All Applicable Account Attributes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "account-mgmt",
+                    "accounts",
+                    "attributes",
+                    "applicable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"message\": \"Example response\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e5deaad0-c8d8-4a68-a1b7-32e7d471ad5a",
+              "name": "Invalid Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "account-mgmt",
+                    "accounts",
+                    "attributes",
+                    "applicable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "70e17bc0-d5b4-4e15-8eb0-854d9e063028",
+              "name": "Resource Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "account-mgmt",
+                    "accounts",
+                    "attributes",
+                    "applicable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d30493e0-9b44-4825-8264-4a94bd8ac3d3",
+          "name": "Account Controller get All Owner Operators",
+          "request": {
+            "name": "Account Controller get All Owner Operators",
+            "description": {},
+            "url": {
+              "path": [
+                "account-mgmt",
+                "accounts",
+                "owner-operators"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "27be83e2-f0fd-4c22-9abe-c2e14850051a",
+              "name": "Retrieved All Valid Owner Operators",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "account-mgmt",
+                    "accounts",
+                    "owner-operators"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"message\": \"Example response\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b00ea83c-4e54-4f14-bca2-c13de4db6ceb",
+              "name": "Invalid Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "account-mgmt",
+                    "accounts",
+                    "owner-operators"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a8ef79b0-1638-495c-98f9-b255c7ecfc5a",
+              "name": "Resource Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "account-mgmt",
+                    "accounts",
+                    "owner-operators"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "78c280c7-2d9b-435f-a2f1-b82ead895de9",
+          "name": "Account Controller stream All Account Attributes",
+          "request": {
+            "name": "Account Controller stream All Account Attributes",
+            "description": {},
+            "url": {
+              "path": [
+                "streaming-services",
+                "accounts",
+                "attributes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "accountType",
+                  "value": "<string>|<string>",
+                  "description": "Type of allowance account (Facility, General, etc.)."
+                },
+                {
+                  "disabled": false,
+                  "key": "accountNumber",
+                  "value": "<string>|<string>",
+                  "description": "The unique identification number of an account."
+                },
+                {
+                  "disabled": false,
+                  "key": "facilityId",
+                  "value": "<number>|<number>",
+                  "description": "The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the \"ORIS code\", \"ORISPL code\", \"Facility ID\", or \"Facility code\", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with \"88\" assigned by the EPA's Clean Air Markets Division for electronic reporting."
+                },
+                {
+                  "disabled": false,
+                  "key": "stateCode",
+                  "value": "<string>|<string>",
+                  "description": "Two letter abbreviation for the State."
+                },
+                {
+                  "disabled": false,
+                  "key": "ownerOperator",
+                  "value": "<string>|<string>",
+                  "description": "The name of any company that owns an allowance account or an affected unit.The name of any company that operates an affected unit."
+                },
+                {
+                  "disabled": false,
+                  "key": "programCodeInfo",
+                  "value": "<string>|<string>",
+                  "description": "Statutory or regulatory based options for tracking and reducing air pollution emissions."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude",
+                  "value": "<string>|<string>",
+                  "description": "Selected items will be excluded from the response"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "186a34e4-19bc-4e44-ad6c-a8481b8eb23e",
+              "name": "Streams All Valid Account Attributes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "streaming-services",
+                    "accounts",
+                    "attributes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountType",
+                      "value": "Compliance Assurance Surrender Account"
+                    },
+                    {
+                      "key": "accountNumber",
+                      "value": "string"
+                    },
+                    {
+                      "key": "facilityId",
+                      "value": "0"
+                    },
+                    {
+                      "key": "stateCode",
+                      "value": "AL"
+                    },
+                    {
+                      "key": "ownerOperator",
+                      "value": "string"
+                    },
+                    {
+                      "key": "programCodeInfo",
+                      "value": "ARP"
+                    },
+                    {
+                      "key": "exclude",
+                      "value": "accountType"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"message\": \"Example response\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d365fc3f-46b0-4f0e-81fa-0b932674ba50",
+              "name": "Invalid Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "streaming-services",
+                    "accounts",
+                    "attributes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountType",
+                      "value": "Compliance Assurance Surrender Account"
+                    },
+                    {
+                      "key": "accountNumber",
+                      "value": "string"
+                    },
+                    {
+                      "key": "facilityId",
+                      "value": "0"
+                    },
+                    {
+                      "key": "stateCode",
+                      "value": "AL"
+                    },
+                    {
+                      "key": "ownerOperator",
+                      "value": "string"
+                    },
+                    {
+                      "key": "programCodeInfo",
+                      "value": "ARP"
+                    },
+                    {
+                      "key": "exclude",
+                      "value": "accountType"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f7909c83-16d2-4c6d-af40-b27b2bf446d6",
+              "name": "Resource Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "streaming-services",
+                    "accounts",
+                    "attributes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountType",
+                      "value": "Compliance Assurance Surrender Account"
+                    },
+                    {
+                      "key": "accountNumber",
+                      "value": "string"
+                    },
+                    {
+                      "key": "facilityId",
+                      "value": "0"
+                    },
+                    {
+                      "key": "stateCode",
+                      "value": "AL"
+                    },
+                    {
+                      "key": "ownerOperator",
+                      "value": "string"
+                    },
+                    {
+                      "key": "programCodeInfo",
+                      "value": "ARP"
+                    },
+                    {
+                      "key": "exclude",
+                      "value": "accountType"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://aqs.epa.gov/data/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b2bbcdd3-514e-4e65-beba-0df68c44f0c2",
+    "name": "EPA Air Quality System (AQS) Account Type Codes Accounts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air\nsample data collected by state, local, tribal and federal air pollution control agencies\nfrom thousands of monitors across the United States. The API exposes monitor metadata,\nraw sample observations, daily/quarterly/annual aggregates, and quality assurance results.\n\n\nContact Support:\n Name: AQS Data Mart Support\n Email: aqsdatamart@epa.gov",
+      "type": "text/plain"
+    }
+  }
+}
