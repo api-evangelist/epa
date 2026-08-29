@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: EPA Air Quality System (AQS) Account Type Codes Transactions API
+  title: EPA Air Quality System (AQS) Transactions API
   description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
 
     sample data collected by state, local, tribal and federal air pollution control agencies
@@ -125,38 +125,6 @@ paths:
         dispatcher: FALLBACK
 components:
   parameters:
-    State:
-      name: state
-      in: query
-      required: true
-      schema:
-        type: string
-        pattern: ^\d{2}$
-      description: 2-digit state FIPS code.
-    Bdate:
-      name: bdate
-      in: query
-      required: true
-      schema:
-        type: string
-        pattern: ^\d{8}$
-      description: Begin date (YYYYMMDD).
-    Cbdate:
-      name: cbdate
-      in: query
-      required: false
-      schema:
-        type: string
-        pattern: ^\d{8}$
-      description: Optional change begin date (returns records updated since cbdate).
-    County:
-      name: county
-      in: query
-      required: true
-      schema:
-        type: string
-        pattern: ^\d{3}$
-      description: 3-digit county code.
     Email:
       name: email
       in: query
@@ -165,36 +133,6 @@ components:
         type: string
         format: email
       description: Registered email address.
-    Key:
-      name: key
-      in: query
-      required: true
-      schema:
-        type: string
-      description: Account-specific access key.
-    Param:
-      name: param
-      in: query
-      required: true
-      schema:
-        type: string
-      description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
-    Site:
-      name: site
-      in: query
-      required: true
-      schema:
-        type: string
-        pattern: ^\d{4}$
-      description: 4-digit site code.
-    Cedate:
-      name: cedate
-      in: query
-      required: false
-      schema:
-        type: string
-        pattern: ^\d{8}$
-      description: Optional change end date.
     Edate:
       name: edate
       in: query
@@ -203,6 +141,68 @@ components:
         type: string
         pattern: ^\d{8}$
       description: End date (YYYYMMDD). Must be in the same year as bdate for most services.
+    Key:
+      name: key
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Account-specific access key.
+    County:
+      name: county
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{3}$
+      description: 3-digit county code.
+    Cbdate:
+      name: cbdate
+      in: query
+      required: false
+      schema:
+        type: string
+        pattern: ^\d{8}$
+      description: Optional change begin date (returns records updated since cbdate).
+    State:
+      name: state
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{2}$
+      description: 2-digit state FIPS code.
+    Param:
+      name: param
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
+    Bdate:
+      name: bdate
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{8}$
+      description: Begin date (YYYYMMDD).
+    Cedate:
+      name: cedate
+      in: query
+      required: false
+      schema:
+        type: string
+        pattern: ^\d{8}$
+      description: Optional change end date.
+    Site:
+      name: site
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{4}$
+      description: 4-digit site code.
   schemas:
     Header:
       type: object

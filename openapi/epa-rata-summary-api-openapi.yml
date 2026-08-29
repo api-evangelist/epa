@@ -1,28 +1,11 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: EPA Air Quality System (AQS) Account Type Codes Rata Summary API
-  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
-
-    sample data collected by state, local, tribal and federal air pollution control agencies
-
-    from thousands of monitors across the United States. The API exposes monitor metadata,
-
-    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
-
-    '
-  version: '1.0'
-  contact:
-    name: AQS Data Mart Support
-    email: aqsdatamart@epa.gov
-    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
-  license:
-    name: U.S. Government Work / Public Domain
-    url: https://www.usa.gov/government-works
+  title: QA Certification Management OpenAPI Specification Rata Summary API
+  description: QA & Certification management API endpoints for qa test data, qa cert events, and test extension & exemption data
+  version: 'v2.0.80 published: Thu Mar 26 2026'
+  contact: {}
 servers:
-- url: https://aqs.epa.gov/data/api
-  description: Production AQS Data Mart API
-security:
-- emailKey: []
+- url: https://api.epa.gov/easey
 tags:
 - name: Rata Summary
 paths:
@@ -125,84 +108,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    RataRunDTO:
-      type: object
-      properties:
-        flowRataRunData:
-          type: array
-          items:
-            $ref: '#/components/schemas/FlowRataRunDTO'
-          example:
-          - string
-        id:
-          type: string
-          example: '12345'
-        rataSumId:
-          type: string
-          example: '12345'
-        calculatedRataReferenceValue:
-          type: number
-          example: 35.5
-        userId:
-          type: string
-          example: '12345'
-        addDate:
-          type: string
-          example: string
-        updateDate:
-          type: string
-          example: string
-        runNumber:
-          type: number
-          example: 0.0
-        beginDate:
-          format: date-time
-          type: string
-          example: '2024-01-15T12:00:00Z'
-        beginHour:
-          type: number
-          example: 0.0
-        beginMinute:
-          type: number
-          example: 0.0
-        endDate:
-          format: date-time
-          type: string
-          example: '2024-01-15T12:00:00Z'
-        endHour:
-          type: number
-          example: 0.0
-        endMinute:
-          type: number
-          example: 0.0
-        cemValue:
-          type: number
-          example: 0.0
-        rataReferenceValue:
-          type: number
-          example: 0.0
-        grossUnitLoad:
-          type: number
-          example: 0.0
-        runStatusCode:
-          type: string
-          example: active
-      required:
-      - flowRataRunData
-      - id
-      - rataSumId
-      - calculatedRataReferenceValue
-      - userId
-      - addDate
-      - updateDate
-      - runNumber
-      - beginDate
-      - beginHour
-      - beginMinute
-      - endDate
-      - endHour
-      - endMinute
-      - runStatusCode
     FlowRataRunDTO:
       type: object
       properties:
@@ -303,16 +208,22 @@ components:
       - wetMolecularWeight
       - averageVelocityWithoutWallEffects
       - averageStackFlowRate
-    RataTraverseDTO:
+    RataRunDTO:
       type: object
       properties:
+        flowRataRunData:
+          type: array
+          items:
+            $ref: '#/components/schemas/FlowRataRunDTO'
+          example:
+          - string
         id:
           type: string
           example: '12345'
-        flowRataRunId:
+        rataSumId:
           type: string
           example: '12345'
-        calculatedCalculatedVelocity:
+        calculatedRataReferenceValue:
           type: number
           example: 35.5
         userId:
@@ -324,69 +235,57 @@ components:
         updateDate:
           type: string
           example: string
-        probeId:
-          type: string
-          maxLength: 11
-          example: '12345'
-        probeTypeCode:
-          type: string
-          example: string
-        pressureMeasureCode:
-          type: string
-          example: string
-        methodTraversePointId:
-          type: string
-          minLength: 1
-          maxLength: 3
-          example: '12345'
-        velocityCalibrationCoefficient:
+        runNumber:
           type: number
           example: 0.0
-        lastProbeDate:
+        beginDate:
           format: date-time
           type: string
           example: '2024-01-15T12:00:00Z'
-        averageVelocityDifferencePressure:
+        beginHour:
           type: number
           example: 0.0
-        averageSquareVelocityDifferencePressure:
+        beginMinute:
           type: number
           example: 0.0
-        tStackTemperature:
+        endDate:
+          format: date-time
+          type: string
+          example: '2024-01-15T12:00:00Z'
+        endHour:
           type: number
           example: 0.0
-        pointUsedIndicator:
+        endMinute:
           type: number
           example: 0.0
-        numberWallEffectsPoints:
+        cemValue:
           type: number
           example: 0.0
-        yawAngle:
+        rataReferenceValue:
           type: number
           example: 0.0
-        pitchAngle:
+        grossUnitLoad:
           type: number
           example: 0.0
-        calculatedVelocity:
-          type: number
-          example: 35.5
-        replacementVelocity:
-          type: number
-          example: 0.0
+        runStatusCode:
+          type: string
+          example: active
       required:
+      - flowRataRunData
       - id
-      - flowRataRunId
-      - calculatedCalculatedVelocity
+      - rataSumId
+      - calculatedRataReferenceValue
       - userId
       - addDate
       - updateDate
-      - probeId
-      - probeTypeCode
-      - pressureMeasureCode
-      - methodTraversePointId
-      - velocityCalibrationCoefficient
-      - lastProbeDate
-      - tStackTemperature
+      - runNumber
+      - beginDate
+      - beginHour
+      - beginMinute
+      - endDate
+      - endHour
+      - endMinute
+      - runStatusCode
     RataSummaryRecordDTO:
       type: object
       properties:
@@ -694,13 +593,98 @@ components:
       - userId
       - addDate
       - updateDate
+    RataTraverseDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '12345'
+        flowRataRunId:
+          type: string
+          example: '12345'
+        calculatedCalculatedVelocity:
+          type: number
+          example: 35.5
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+        probeId:
+          type: string
+          maxLength: 11
+          example: '12345'
+        probeTypeCode:
+          type: string
+          example: string
+        pressureMeasureCode:
+          type: string
+          example: string
+        methodTraversePointId:
+          type: string
+          minLength: 1
+          maxLength: 3
+          example: '12345'
+        velocityCalibrationCoefficient:
+          type: number
+          example: 0.0
+        lastProbeDate:
+          format: date-time
+          type: string
+          example: '2024-01-15T12:00:00Z'
+        averageVelocityDifferencePressure:
+          type: number
+          example: 0.0
+        averageSquareVelocityDifferencePressure:
+          type: number
+          example: 0.0
+        tStackTemperature:
+          type: number
+          example: 0.0
+        pointUsedIndicator:
+          type: number
+          example: 0.0
+        numberWallEffectsPoints:
+          type: number
+          example: 0.0
+        yawAngle:
+          type: number
+          example: 0.0
+        pitchAngle:
+          type: number
+          example: 0.0
+        calculatedVelocity:
+          type: number
+          example: 35.5
+        replacementVelocity:
+          type: number
+          example: 0.0
+      required:
+      - id
+      - flowRataRunId
+      - calculatedCalculatedVelocity
+      - userId
+      - addDate
+      - updateDate
+      - probeId
+      - probeTypeCode
+      - pressureMeasureCode
+      - methodTraversePointId
+      - velocityCalibrationCoefficient
+      - lastProbeDate
+      - tStackTemperature
   securitySchemes:
-    emailKey:
+    APIKey:
       type: apiKey
-      in: query
-      name: key
-      description: 'AQS requires `email` and `key` query parameters on every request. Register at
-
-        `/signup?email=YOUR_EMAIL` to receive a key by email.
-
-        '
+      in: header
+      name: x-api-key
+      description: API Key required via "x-api-key" request header!
+    Token:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http
+      description: Authorization "bearer" token required for data modification operations

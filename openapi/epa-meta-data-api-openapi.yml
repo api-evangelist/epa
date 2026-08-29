@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: EPA Air Quality System (AQS) Account Type Codes Meta Data API
+  title: EPA Air Quality System (AQS) Meta Data API
   description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
 
     sample data collected by state, local, tribal and federal air pollution control agencies
@@ -139,6 +139,13 @@ paths:
         dispatcher: FALLBACK
 components:
   parameters:
+    Key:
+      name: key
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Account-specific access key.
     Email:
       name: email
       in: query
@@ -147,32 +154,7 @@ components:
         type: string
         format: email
       description: Registered email address.
-    Key:
-      name: key
-      in: query
-      required: true
-      schema:
-        type: string
-      description: Account-specific access key.
   schemas:
-    Envelope:
-      type: object
-      required:
-      - Header
-      - Data
-      properties:
-        Header:
-          type: array
-          items:
-            $ref: '#/components/schemas/Header'
-          example:
-          - string
-        Data:
-          type: array
-          items:
-            type: object
-          example:
-          - {}
     Header:
       type: object
       properties:
@@ -194,6 +176,24 @@ components:
             type: string
           example:
           - string
+    Envelope:
+      type: object
+      required:
+      - Header
+      - Data
+      properties:
+        Header:
+          type: array
+          items:
+            $ref: '#/components/schemas/Header'
+          example:
+          - string
+        Data:
+          type: array
+          items:
+            type: object
+          example:
+          - {}
   securitySchemes:
     emailKey:
       type: apiKey

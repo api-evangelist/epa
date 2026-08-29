@@ -1,28 +1,11 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: EPA Air Quality System (AQS) Account Type Codes Allowance Compliance API
-  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
-
-    sample data collected by state, local, tribal and federal air pollution control agencies
-
-    from thousands of monitors across the United States. The API exposes monitor metadata,
-
-    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
-
-    '
+  title: Epa Allowance Compliance API
+  contact: {}
   version: '1.0'
-  contact:
-    name: AQS Data Mart Support
-    email: aqsdatamart@epa.gov
-    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
-  license:
-    name: U.S. Government Work / Public Domain
-    url: https://www.usa.gov/government-works
+  description: 'Operations tagged Allowance Compliance across 2 of this provider''s published API definitions: cam-account-openapi.json, cam-streaming-openapi.json. Each path carries the servers of the definition it was published in.'
 servers:
-- url: https://aqs.epa.gov/data/api
-  description: Production AQS Data Mart API
-security:
-- emailKey: []
+- url: https://api.epa.gov/easey
 tags:
 - name: Allowance Compliance
 paths:
@@ -221,6 +204,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.epa.gov/easey
   /account-mgmt/allowance-compliance/attributes/applicable:
     get:
       operationId: AllowanceComplianceController_getAllApplicableAllowanceComplianceAttributes
@@ -255,6 +240,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.epa.gov/easey
   /account-mgmt/allowance-compliance/owner-operators:
     get:
       operationId: AllowanceComplianceController_getAllOwnerOperators
@@ -289,6 +276,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.epa.gov/easey
   /streaming-services/allowance-compliance:
     get:
       operationId: AllowanceComplianceController_streamAllowanceCompliance
@@ -491,6 +480,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.epa.gov/easey
 components:
   schemas:
     OwnerOperatorsDTO:
@@ -634,12 +625,11 @@ components:
       - ownerOperator
       - stateCode
   securitySchemes:
-    emailKey:
+    APIKey:
       type: apiKey
-      in: query
-      name: key
-      description: 'AQS requires `email` and `key` query parameters on every request. Register at
-
-        `/signup?email=YOUR_EMAIL` to receive a key by email.
-
-        '
+      in: header
+      name: x-api-key
+      description: API Key required via "x-api-key" request header!
+x-refined-from:
+- cam-account-openapi.json
+- cam-streaming-openapi.json

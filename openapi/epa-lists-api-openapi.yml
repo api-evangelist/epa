@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: EPA Air Quality System (AQS) Account Type Codes Lists API
+  title: EPA Air Quality System (AQS) Lists API
   description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
 
     sample data collected by state, local, tribal and federal air pollution control agencies
@@ -246,22 +246,6 @@ paths:
         dispatcher: FALLBACK
 components:
   parameters:
-    State:
-      name: state
-      in: query
-      required: true
-      schema:
-        type: string
-        pattern: ^\d{2}$
-      description: 2-digit state FIPS code.
-    County:
-      name: county
-      in: query
-      required: true
-      schema:
-        type: string
-        pattern: ^\d{3}$
-      description: 3-digit county code.
     Email:
       name: email
       in: query
@@ -277,6 +261,22 @@ components:
       schema:
         type: string
       description: Account-specific access key.
+    County:
+      name: county
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{3}$
+      description: 3-digit county code.
+    State:
+      name: state
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{2}$
+      description: 2-digit state FIPS code.
   schemas:
     Header:
       type: object

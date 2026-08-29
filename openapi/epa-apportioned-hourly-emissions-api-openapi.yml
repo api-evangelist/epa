@@ -1,28 +1,11 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: EPA Air Quality System (AQS) Account Type Codes Apportioned Hourly Emissions API
-  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
-
-    sample data collected by state, local, tribal and federal air pollution control agencies
-
-    from thousands of monitors across the United States. The API exposes monitor metadata,
-
-    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
-
-    '
+  title: Epa Apportioned Hourly Emissions API
+  contact: {}
   version: '1.0'
-  contact:
-    name: AQS Data Mart Support
-    email: aqsdatamart@epa.gov
-    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
-  license:
-    name: U.S. Government Work / Public Domain
-    url: https://www.usa.gov/government-works
+  description: 'Operations tagged Apportioned Hourly Emissions across 2 of this provider''s published API definitions: cam-emissions-openapi.json, cam-streaming-openapi.json. Each path carries the servers of the definition it was published in.'
 servers:
-- url: https://aqs.epa.gov/data/api
-  description: Production AQS Data Mart API
-security:
-- emailKey: []
+- url: https://api.epa.gov/easey
 tags:
 - name: Apportioned Hourly Emissions
 paths:
@@ -348,6 +331,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.epa.gov/easey
   /emissions-mgmt/emissions/apportioned/hourly/by-facility:
     get:
       operationId: HourlyApportionedEmissionsController_getEmissionsFacilityAggregation
@@ -670,6 +655,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.epa.gov/easey
   /emissions-mgmt/emissions/apportioned/hourly/by-state:
     get:
       operationId: HourlyApportionedEmissionsController_getEmissionsStateAggregation
@@ -992,6 +979,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.epa.gov/easey
   /emissions-mgmt/emissions/apportioned/hourly/nationally:
     get:
       operationId: HourlyApportionedEmissionsController_getEmissionsNationalAggregation
@@ -1314,6 +1303,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.epa.gov/easey
   /streaming-services/emissions/apportioned/hourly:
     get:
       operationId: HourlyApportionedEmissionsController_streamEmissions
@@ -1650,6 +1641,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.epa.gov/easey
   /streaming-services/emissions/apportioned/hourly/by-facility:
     get:
       operationId: HourlyApportionedEmissionsController_streamEmissionsFacilityAggregation
@@ -1953,6 +1946,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.epa.gov/easey
   /streaming-services/emissions/apportioned/hourly/by-state:
     get:
       operationId: HourlyApportionedEmissionsController_streamEmissionsStateAggregation
@@ -2256,6 +2251,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.epa.gov/easey
   /streaming-services/emissions/apportioned/hourly/nationally:
     get:
       operationId: HourlyApportionedEmissionsController_streamEmissionsNationalAggregation
@@ -2559,8 +2556,194 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.epa.gov/easey
 components:
   schemas:
+    HourUnitDataView:
+      type: object
+      properties:
+        stateCode:
+          type: string
+          example: NC
+        facilityName:
+          type: string
+          example: EPA Facility
+        facilityId:
+          type: number
+          example: 0.0
+        unit_id:
+          type: string
+          example: '12345'
+        unitId:
+          type: string
+          example: '12345'
+        associatedStacks:
+          type: string
+          example: string
+        year:
+          type: number
+          example: 2024
+        date:
+          format: date-time
+          type: string
+          example: '2024-01-15T12:00:00Z'
+        hour:
+          type: number
+          example: 0.0
+        opTime:
+          type: number
+          example: 0.0
+        grossLoad:
+          type: number
+          example: 0.0
+        steamLoad:
+          type: number
+          example: 0.0
+        so2Mass:
+          type: number
+          example: 0.0
+        so2MassMeasureFlg:
+          type: string
+          example: string
+        so2Rate:
+          type: number
+          example: 0.0
+        so2RateMeasureFlg:
+          type: string
+          example: string
+        co2Mass:
+          type: number
+          example: 0.0
+        co2MassMeasureFlg:
+          type: string
+          example: string
+        co2Rate:
+          type: number
+          example: 0.0
+        co2RateMeasureFlg:
+          type: string
+          example: string
+        noxMass:
+          type: number
+          example: 0.0
+        noxMassMeasureFlg:
+          type: string
+          example: string
+        noxRate:
+          type: number
+          example: 0.0
+        noxRateMeasureFlg:
+          type: string
+          example: string
+        heatInput:
+          type: number
+          example: 0.0
+        heatInputMeasureFlg:
+          type: string
+          example: string
+        primaryFuelInfo:
+          type: string
+          example: string
+        secondaryFuelInfo:
+          type: string
+          example: string
+        unitType:
+          type: string
+          example: string
+        so2ControlInfo:
+          type: string
+          example: string
+        noxControlInfo:
+          type: string
+          example: string
+        pmControlInfo:
+          type: string
+          example: string
+        hgControlInfo:
+          type: string
+          example: string
+        programCodeInfo:
+          type: string
+          example: string
+      required:
+      - stateCode
+      - facilityName
+      - facilityId
+      - unit_id
+      - unitId
+      - associatedStacks
+      - year
+      - date
+      - hour
+      - opTime
+      - grossLoad
+      - steamLoad
+      - so2Mass
+      - so2MassMeasureFlg
+      - so2Rate
+      - so2RateMeasureFlg
+      - co2Mass
+      - co2MassMeasureFlg
+      - co2Rate
+      - co2RateMeasureFlg
+      - noxMass
+      - noxMassMeasureFlg
+      - noxRate
+      - noxRateMeasureFlg
+      - heatInput
+      - heatInputMeasureFlg
+      - primaryFuelInfo
+      - secondaryFuelInfo
+      - unitType
+      - so2ControlInfo
+      - noxControlInfo
+      - pmControlInfo
+      - hgControlInfo
+      - programCodeInfo
+    HourlyApportionedEmissionsStateAggregationDTO:
+      type: object
+      properties:
+        grossLoad:
+          type: number
+          description: Electrical generation in MW produced by combusting a given heat input of fuel.
+          example: 146
+        steamLoad:
+          type: number
+          description: Rate of steam pressure generated by a unit or source produced by combusting a given heat input of fuel. (1000 lb/hr)
+          example: 387
+        so2Mass:
+          type: number
+          description: SO2 Mass Emissions (lbs)
+          example: 15.7
+        co2Mass:
+          type: number
+          description: CO2 mass emissions (short tons)
+          example: 150.8
+        noxMass:
+          type: number
+          description: NOx mass emissions (lbs)
+          example: 552.8
+        heatInput:
+          type: number
+          description: Quantity of heat in mmBtu calculated by multiplying the quantity of fuel by the fuels heat content.
+          example: 1470.2
+        date:
+          type: string
+          description: Date on which activity occurred.
+          example: '2019-01-01'
+        hour:
+          type: number
+          description: Hour in which activity occurred, recorded using local, standard time.
+          example: 23
+        stateCode:
+          type: string
+          description: Two letter abbreviation for the State.
+          example: AK
+      required:
+      - date
+      - hour
+      - stateCode
     HourlyApportionedEmissionsFacilityAggregationDTO:
       type: object
       properties:
@@ -2613,6 +2796,44 @@ components:
       - hour
       - stateCode
       - facilityName
+    HourlyApportionedEmissionsNationalAggregationDTO:
+      type: object
+      properties:
+        grossLoad:
+          type: number
+          description: Electrical generation in MW produced by combusting a given heat input of fuel.
+          example: 146
+        steamLoad:
+          type: number
+          description: Rate of steam pressure generated by a unit or source produced by combusting a given heat input of fuel. (1000 lb/hr)
+          example: 387
+        so2Mass:
+          type: number
+          description: SO2 Mass Emissions (lbs)
+          example: 15.7
+        co2Mass:
+          type: number
+          description: CO2 mass emissions (short tons)
+          example: 150.8
+        noxMass:
+          type: number
+          description: NOx mass emissions (lbs)
+          example: 552.8
+        heatInput:
+          type: number
+          description: Quantity of heat in mmBtu calculated by multiplying the quantity of fuel by the fuels heat content.
+          example: 1470.2
+        date:
+          type: string
+          description: Date on which activity occurred.
+          example: '2019-01-01'
+        hour:
+          type: number
+          description: Hour in which activity occurred, recorded using local, standard time.
+          example: 23
+      required:
+      - date
+      - hour
     HourlyApportionedEmissionsDTO:
       type: object
       properties:
@@ -2774,235 +2995,17 @@ components:
       - date
       - hour
       - year
-    HourlyApportionedEmissionsNationalAggregationDTO:
-      type: object
-      properties:
-        grossLoad:
-          type: number
-          description: Electrical generation in MW produced by combusting a given heat input of fuel.
-          example: 146
-        steamLoad:
-          type: number
-          description: Rate of steam pressure generated by a unit or source produced by combusting a given heat input of fuel. (1000 lb/hr)
-          example: 387
-        so2Mass:
-          type: number
-          description: SO2 Mass Emissions (lbs)
-          example: 15.7
-        co2Mass:
-          type: number
-          description: CO2 mass emissions (short tons)
-          example: 150.8
-        noxMass:
-          type: number
-          description: NOx mass emissions (lbs)
-          example: 552.8
-        heatInput:
-          type: number
-          description: Quantity of heat in mmBtu calculated by multiplying the quantity of fuel by the fuels heat content.
-          example: 1470.2
-        date:
-          type: string
-          description: Date on which activity occurred.
-          example: '2019-01-01'
-        hour:
-          type: number
-          description: Hour in which activity occurred, recorded using local, standard time.
-          example: 23
-      required:
-      - date
-      - hour
-    HourlyApportionedEmissionsStateAggregationDTO:
-      type: object
-      properties:
-        grossLoad:
-          type: number
-          description: Electrical generation in MW produced by combusting a given heat input of fuel.
-          example: 146
-        steamLoad:
-          type: number
-          description: Rate of steam pressure generated by a unit or source produced by combusting a given heat input of fuel. (1000 lb/hr)
-          example: 387
-        so2Mass:
-          type: number
-          description: SO2 Mass Emissions (lbs)
-          example: 15.7
-        co2Mass:
-          type: number
-          description: CO2 mass emissions (short tons)
-          example: 150.8
-        noxMass:
-          type: number
-          description: NOx mass emissions (lbs)
-          example: 552.8
-        heatInput:
-          type: number
-          description: Quantity of heat in mmBtu calculated by multiplying the quantity of fuel by the fuels heat content.
-          example: 1470.2
-        date:
-          type: string
-          description: Date on which activity occurred.
-          example: '2019-01-01'
-        hour:
-          type: number
-          description: Hour in which activity occurred, recorded using local, standard time.
-          example: 23
-        stateCode:
-          type: string
-          description: Two letter abbreviation for the State.
-          example: AK
-      required:
-      - date
-      - hour
-      - stateCode
-    HourUnitDataView:
-      type: object
-      properties:
-        stateCode:
-          type: string
-          example: NC
-        facilityName:
-          type: string
-          example: EPA Facility
-        facilityId:
-          type: number
-          example: 0.0
-        unit_id:
-          type: string
-          example: '12345'
-        unitId:
-          type: string
-          example: '12345'
-        associatedStacks:
-          type: string
-          example: string
-        year:
-          type: number
-          example: 2024
-        date:
-          format: date-time
-          type: string
-          example: '2024-01-15T12:00:00Z'
-        hour:
-          type: number
-          example: 0.0
-        opTime:
-          type: number
-          example: 0.0
-        grossLoad:
-          type: number
-          example: 0.0
-        steamLoad:
-          type: number
-          example: 0.0
-        so2Mass:
-          type: number
-          example: 0.0
-        so2MassMeasureFlg:
-          type: string
-          example: string
-        so2Rate:
-          type: number
-          example: 0.0
-        so2RateMeasureFlg:
-          type: string
-          example: string
-        co2Mass:
-          type: number
-          example: 0.0
-        co2MassMeasureFlg:
-          type: string
-          example: string
-        co2Rate:
-          type: number
-          example: 0.0
-        co2RateMeasureFlg:
-          type: string
-          example: string
-        noxMass:
-          type: number
-          example: 0.0
-        noxMassMeasureFlg:
-          type: string
-          example: string
-        noxRate:
-          type: number
-          example: 0.0
-        noxRateMeasureFlg:
-          type: string
-          example: string
-        heatInput:
-          type: number
-          example: 0.0
-        heatInputMeasureFlg:
-          type: string
-          example: string
-        primaryFuelInfo:
-          type: string
-          example: string
-        secondaryFuelInfo:
-          type: string
-          example: string
-        unitType:
-          type: string
-          example: string
-        so2ControlInfo:
-          type: string
-          example: string
-        noxControlInfo:
-          type: string
-          example: string
-        pmControlInfo:
-          type: string
-          example: string
-        hgControlInfo:
-          type: string
-          example: string
-        programCodeInfo:
-          type: string
-          example: string
-      required:
-      - stateCode
-      - facilityName
-      - facilityId
-      - unit_id
-      - unitId
-      - associatedStacks
-      - year
-      - date
-      - hour
-      - opTime
-      - grossLoad
-      - steamLoad
-      - so2Mass
-      - so2MassMeasureFlg
-      - so2Rate
-      - so2RateMeasureFlg
-      - co2Mass
-      - co2MassMeasureFlg
-      - co2Rate
-      - co2RateMeasureFlg
-      - noxMass
-      - noxMassMeasureFlg
-      - noxRate
-      - noxRateMeasureFlg
-      - heatInput
-      - heatInputMeasureFlg
-      - primaryFuelInfo
-      - secondaryFuelInfo
-      - unitType
-      - so2ControlInfo
-      - noxControlInfo
-      - pmControlInfo
-      - hgControlInfo
-      - programCodeInfo
   securitySchemes:
-    emailKey:
+    APIKey:
       type: apiKey
-      in: query
-      name: key
-      description: 'AQS requires `email` and `key` query parameters on every request. Register at
-
-        `/signup?email=YOUR_EMAIL` to receive a key by email.
-
-        '
+      in: header
+      name: x-api-key
+      description: API Key required via "x-api-key" request header!
+    Token:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http
+      description: Authorization "bearer" token required for data modification operations
+x-refined-from:
+- cam-emissions-openapi.json
+- cam-streaming-openapi.json

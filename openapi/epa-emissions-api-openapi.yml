@@ -1,28 +1,11 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: EPA Air Quality System (AQS) Account Type Codes Emissions API
-  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
-
-    sample data collected by state, local, tribal and federal air pollution control agencies
-
-    from thousands of monitors across the United States. The API exposes monitor metadata,
-
-    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
-
-    '
+  title: Epa Emissions API
+  contact: {}
   version: '1.0'
-  contact:
-    name: AQS Data Mart Support
-    email: aqsdatamart@epa.gov
-    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
-  license:
-    name: U.S. Government Work / Public Domain
-    url: https://www.usa.gov/government-works
+  description: 'Operations tagged Emissions across 2 of this provider''s published API definitions: cam-emissions-openapi.json, cam-streaming-openapi.json. Each path carries the servers of the definition it was published in.'
 servers:
-- url: https://aqs.epa.gov/data/api
-  description: Production AQS Data Mart API
-security:
-- emailKey: []
+- url: https://api.epa.gov/easey
 tags:
 - name: Emissions
 paths:
@@ -80,6 +63,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.epa.gov/easey
   /emissions-mgmt/emissions/submission-progress:
     get:
       operationId: EmissionsController_submissionProgress
@@ -103,6 +88,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.epa.gov/easey
   /emissions-mgmt/emissions:
     get:
       operationId: EmissionsController_getEmissions
@@ -180,6 +167,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.epa.gov/easey
   /streaming-services/emissions/summary-values:
     get:
       operationId: SummaryValueController_summaryValueStream
@@ -242,6 +231,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.epa.gov/easey
   /streaming-services/emissions/supplemental-operating:
     get:
       operationId: SupplementalOperatingController_supplementalOperatingStream
@@ -304,6 +295,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.epa.gov/easey
   /streaming-services/emissions/hourly/derived-values:
     get:
       operationId: DerivedHourlyController_derivedHourlyStream
@@ -365,6 +358,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.epa.gov/easey
   /streaming-services/emissions/hourly/operating:
     get:
       operationId: HourlyOperatingController_hourlyOperatingStream
@@ -426,6 +421,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.epa.gov/easey
 components:
   schemas:
     EmissionsReviewDTO:
@@ -492,6 +489,94 @@ components:
       - windowStatus
       - windowExpiredDate
       - periodAbbreviation
+    SummaryValueBaseDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '12345'
+        locationId:
+          type: string
+          example: '12345'
+        reportPeriodId:
+          type: number
+          example: 0.0
+        parameterCode:
+          type: string
+          example: string
+        quarterlyValue:
+          type: number
+          example: 0.0
+        yearTotal:
+          type: number
+          example: 2024
+        ozoneSeasonTotal:
+          type: number
+          example: 0.0
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+      required:
+      - id
+      - locationId
+      - reportPeriodId
+      - parameterCode
+      - quarterlyValue
+      - yearTotal
+      - ozoneSeasonTotal
+      - userId
+      - addDate
+      - updateDate
+    DerivedHourlyValueBaseDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '12345'
+        hourId:
+          type: string
+          example: '12345'
+        parameterCode:
+          type: string
+          example: string
+        adjustedHourlyValue:
+          type: string
+          example: https://example.com
+        modcCode:
+          type: string
+          example: string
+        locationId:
+          type: string
+          example: '12345'
+        reportPeriodId:
+          type: number
+          example: 0.0
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+      required:
+      - id
+      - hourId
+      - parameterCode
+      - adjustedHourlyValue
+      - modcCode
+      - locationId
+      - reportPeriodId
+      - userId
+      - addDate
+      - updateDate
     HourlyOperatingDTO:
       type: object
       properties:
@@ -583,101 +668,17 @@ components:
       - userId
       - addDate
       - updateDate
-    SummaryValueBaseDTO:
-      type: object
-      properties:
-        id:
-          type: string
-          example: '12345'
-        locationId:
-          type: string
-          example: '12345'
-        reportPeriodId:
-          type: number
-          example: 0.0
-        parameterCode:
-          type: string
-          example: string
-        quarterlyValue:
-          type: number
-          example: 0.0
-        yearTotal:
-          type: number
-          example: 2024
-        ozoneSeasonTotal:
-          type: number
-          example: 0.0
-        userId:
-          type: string
-          example: '12345'
-        addDate:
-          type: string
-          example: string
-        updateDate:
-          type: string
-          example: string
-      required:
-      - id
-      - locationId
-      - reportPeriodId
-      - parameterCode
-      - quarterlyValue
-      - yearTotal
-      - ozoneSeasonTotal
-      - userId
-      - addDate
-      - updateDate
-    DerivedHourlyValueBaseDTO:
-      type: object
-      properties:
-        id:
-          type: string
-          example: '12345'
-        hourId:
-          type: string
-          example: '12345'
-        parameterCode:
-          type: string
-          example: string
-        adjustedHourlyValue:
-          type: string
-          example: https://example.com
-        modcCode:
-          type: string
-          example: string
-        locationId:
-          type: string
-          example: '12345'
-        reportPeriodId:
-          type: number
-          example: 0.0
-        userId:
-          type: string
-          example: '12345'
-        addDate:
-          type: string
-          example: string
-        updateDate:
-          type: string
-          example: string
-      required:
-      - id
-      - hourId
-      - parameterCode
-      - adjustedHourlyValue
-      - modcCode
-      - locationId
-      - reportPeriodId
-      - userId
-      - addDate
-      - updateDate
   securitySchemes:
-    emailKey:
+    APIKey:
       type: apiKey
-      in: query
-      name: key
-      description: 'AQS requires `email` and `key` query parameters on every request. Register at
-
-        `/signup?email=YOUR_EMAIL` to receive a key by email.
-
-        '
+      in: header
+      name: x-api-key
+      description: API Key required via "x-api-key" request header!
+    Token:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http
+      description: Authorization "bearer" token required for data modification operations
+x-refined-from:
+- cam-emissions-openapi.json
+- cam-streaming-openapi.json

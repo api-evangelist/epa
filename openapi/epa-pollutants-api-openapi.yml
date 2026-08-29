@@ -1,28 +1,17 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: EPA Air Quality System (AQS) Account Type Codes Pollutants API
-  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
-
-    sample data collected by state, local, tribal and federal air pollution control agencies
-
-    from thousands of monitors across the United States. The API exposes monitor metadata,
-
-    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
-
-    '
-  version: '1.0'
+  title: U.S. EPA WaterSense Pollutants API
+  description: placeholder
   contact:
-    name: AQS Data Mart Support
-    email: aqsdatamart@epa.gov
-    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+    name: US EPA, ELG
   license:
-    name: U.S. Government Work / Public Domain
-    url: https://www.usa.gov/government-works
+    name: Creative Commons Zero Public Domain Dedication
+    url: https://edg.epa.gov/EPA_Data_License.html
+  version: 0.0.0
 servers:
-- url: https://aqs.epa.gov/data/api
-  description: Production AQS Data Mart API
+- url: https://owapps-stage.app.cloud.gov/elg
 security:
-- emailKey: []
+- basicAuth: []
 tags:
 - name: Pollutants
 paths:
@@ -208,29 +197,7 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    limitation.read:
-      type: object
-      description: Placeholder
-      properties:
-        Dummy:
-          type: string
-          title: Dummy
-          example: Dummy
-          description: Dummy
-      required:
-      - Dummy
     pollutant.read:
-      type: object
-      description: Placeholder
-      properties:
-        Dummy:
-          type: string
-          title: Dummy
-          example: Dummy
-          description: Dummy
-      required:
-      - Dummy
-    pollutant.readCategory:
       type: object
       description: Placeholder
       properties:
@@ -252,17 +219,6 @@ components:
           description: Dummy
       required:
       - Dummy
-    pollutant.limitations:
-      type: object
-      description: Placeholder
-      properties:
-        Dummy:
-          type: string
-          title: Dummy
-          example: Dummy
-          description: Dummy
-      required:
-      - Dummy
     pollutant.listCategories:
       type: object
       description: Placeholder
@@ -274,17 +230,40 @@ components:
           description: Dummy
       required:
       - Dummy
+    pollutant.readCategory:
+      type: object
+      description: Placeholder
+      properties:
+        Dummy:
+          type: string
+          title: Dummy
+          example: Dummy
+          description: Dummy
+      required:
+      - Dummy
+    limitation.read:
+      type: object
+      description: Placeholder
+      properties:
+        Dummy:
+          type: string
+          title: Dummy
+          example: Dummy
+          description: Dummy
+      required:
+      - Dummy
+    pollutant.limitations:
+      type: object
+      description: Placeholder
+      properties:
+        Dummy:
+          type: string
+          title: Dummy
+          example: Dummy
+          description: Dummy
+      required:
+      - Dummy
   parameters:
-    download:
-      name: download
-      in: query
-      description: Placeholder.
-      required: false
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
     pointSourceCategoryCode:
       name: pointSourceCategoryCode
       in: query
@@ -352,6 +331,16 @@ components:
         - 468
         - 469
         - 471
+    download:
+      name: download
+      in: query
+      description: Placeholder.
+      required: false
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
     pollutantId:
       name: pollutantId
       in: query
@@ -360,12 +349,6 @@ components:
       schema:
         type: integer
   securitySchemes:
-    emailKey:
-      type: apiKey
-      in: query
-      name: key
-      description: 'AQS requires `email` and `key` query parameters on every request. Register at
-
-        `/signup?email=YOUR_EMAIL` to receive a key by email.
-
-        '
+    basicAuth:
+      type: http
+      scheme: basic

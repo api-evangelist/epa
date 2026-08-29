@@ -1,28 +1,11 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: EPA Air Quality System (AQS) Account Type Codes Systems API
-  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
-
-    sample data collected by state, local, tribal and federal air pollution control agencies
-
-    from thousands of monitors across the United States. The API exposes monitor metadata,
-
-    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
-
-    '
-  version: '1.0'
-  contact:
-    name: AQS Data Mart Support
-    email: aqsdatamart@epa.gov
-    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
-  license:
-    name: U.S. Government Work / Public Domain
-    url: https://www.usa.gov/government-works
+  title: Monitor Plan Management OpenAPI Specification Systems API
+  description: Monitor Plan management API endpoints for all monitor plan data & operations
+  version: 'v2.0.118 published: Thu Mar 26 2026'
+  contact: {}
 servers:
-- url: https://aqs.epa.gov/data/api
-  description: Production AQS Data Mart API
-security:
-- emailKey: []
+- url: https://api.epa.gov/easey
 tags:
 - name: Systems
 paths:
@@ -64,87 +47,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    SystemFuelFlowDTO:
-      type: object
-      properties:
-        maximumFuelFlowRate:
-          type: number
-          description: Maximum fuel flow rate.
-          example: 30667
-        systemFuelFlowUOMCode:
-          type: string
-          description: Code used to identify the fuel flow units of measure.
-          example: HSCF
-        maximumFuelFlowRateSourceCode:
-          type: string
-          description: Code used to identify the source of maximum fuel flow.
-          example: URV
-        beginDate:
-          format: date-time
-          type: string
-          description: Date on which information became effective or activity started.
-          example: '2010-08-01'
-        beginHour:
-          type: number
-          description: Hour in which information became effective.
-          example: 12
-        endDate:
-          format: date-time
-          type: string
-          description: Last date in which information was effective.  This date will be null for active records.
-          example: null
-        endHour:
-          type: number
-          description: Last hour in which information was effective or hour in which activity ended. This value will be null for active records.
-          example: null
-        id:
-          type: string
-          description: Unique identifier of a system fuel flow record.
-          example: WS150071-0C5A8F50F7F24DB8B73E65C18C2063E3
-        monitoringSystemRecordId:
-          type: string
-          description: Unique identifier of a monitoring system record.
-          example: WS150071-1BCDEDC4D2944376ACA55FCABE9D60A1
-        fuelCode:
-          type: string
-          description: The type of fuel measured by the system.
-          example: PNG
-        systemTypeCode:
-          type: string
-          description: Code used to identify the type (parameter) of the system.
-          example: GAS
-        userId:
-          type: string
-          description: User account or source of data that added or updated record.
-          example: abcde
-        addDate:
-          type: string
-          description: Date and time in which record was added.
-          example: '2009-02-20'
-        updateDate:
-          type: string
-          description: Date and time in which record was last updated.
-          example: '2010-09-01'
-        active:
-          type: boolean
-          description: Flag for active monitor location record
-          example: true
-      required:
-      - maximumFuelFlowRate
-      - systemFuelFlowUOMCode
-      - maximumFuelFlowRateSourceCode
-      - beginDate
-      - beginHour
-      - endDate
-      - endHour
-      - id
-      - monitoringSystemRecordId
-      - fuelCode
-      - systemTypeCode
-      - userId
-      - addDate
-      - updateDate
-      - active
     MonitorSystemDTO:
       type: object
       properties:
@@ -301,13 +203,95 @@ components:
       - addDate
       - updateDate
       - active
+    SystemFuelFlowDTO:
+      type: object
+      properties:
+        maximumFuelFlowRate:
+          type: number
+          description: Maximum fuel flow rate.
+          example: 30667
+        systemFuelFlowUOMCode:
+          type: string
+          description: Code used to identify the fuel flow units of measure.
+          example: HSCF
+        maximumFuelFlowRateSourceCode:
+          type: string
+          description: Code used to identify the source of maximum fuel flow.
+          example: URV
+        beginDate:
+          format: date-time
+          type: string
+          description: Date on which information became effective or activity started.
+          example: '2010-08-01'
+        beginHour:
+          type: number
+          description: Hour in which information became effective.
+          example: 12
+        endDate:
+          format: date-time
+          type: string
+          description: Last date in which information was effective.  This date will be null for active records.
+          example: null
+        endHour:
+          type: number
+          description: Last hour in which information was effective or hour in which activity ended. This value will be null for active records.
+          example: null
+        id:
+          type: string
+          description: Unique identifier of a system fuel flow record.
+          example: WS150071-0C5A8F50F7F24DB8B73E65C18C2063E3
+        monitoringSystemRecordId:
+          type: string
+          description: Unique identifier of a monitoring system record.
+          example: WS150071-1BCDEDC4D2944376ACA55FCABE9D60A1
+        fuelCode:
+          type: string
+          description: The type of fuel measured by the system.
+          example: PNG
+        systemTypeCode:
+          type: string
+          description: Code used to identify the type (parameter) of the system.
+          example: GAS
+        userId:
+          type: string
+          description: User account or source of data that added or updated record.
+          example: abcde
+        addDate:
+          type: string
+          description: Date and time in which record was added.
+          example: '2009-02-20'
+        updateDate:
+          type: string
+          description: Date and time in which record was last updated.
+          example: '2010-09-01'
+        active:
+          type: boolean
+          description: Flag for active monitor location record
+          example: true
+      required:
+      - maximumFuelFlowRate
+      - systemFuelFlowUOMCode
+      - maximumFuelFlowRateSourceCode
+      - beginDate
+      - beginHour
+      - endDate
+      - endHour
+      - id
+      - monitoringSystemRecordId
+      - fuelCode
+      - systemTypeCode
+      - userId
+      - addDate
+      - updateDate
+      - active
   securitySchemes:
-    emailKey:
+    APIKey:
       type: apiKey
-      in: query
-      name: key
-      description: 'AQS requires `email` and `key` query parameters on every request. Register at
-
-        `/signup?email=YOUR_EMAIL` to receive a key by email.
-
-        '
+      in: header
+      name: x-api-key
+      description: API Key required via "x-api-key" request header!
+    Token:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http
+      description: Authorization "bearer" token required for data modification operations

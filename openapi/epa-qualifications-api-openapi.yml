@@ -1,28 +1,11 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: EPA Air Quality System (AQS) Account Type Codes Qualifications API
-  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
-
-    sample data collected by state, local, tribal and federal air pollution control agencies
-
-    from thousands of monitors across the United States. The API exposes monitor metadata,
-
-    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
-
-    '
-  version: '1.0'
-  contact:
-    name: AQS Data Mart Support
-    email: aqsdatamart@epa.gov
-    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
-  license:
-    name: U.S. Government Work / Public Domain
-    url: https://www.usa.gov/government-works
+  title: Monitor Plan Management OpenAPI Specification Qualifications API
+  description: Monitor Plan management API endpoints for all monitor plan data & operations
+  version: 'v2.0.118 published: Thu Mar 26 2026'
+  contact: {}
 servers:
-- url: https://aqs.epa.gov/data/api
-  description: Production AQS Data Mart API
-security:
-- emailKey: []
+- url: https://api.epa.gov/easey
 tags:
 - name: Qualifications
 paths:
@@ -64,6 +47,90 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    PCTQualificationDTO:
+      type: object
+      properties:
+        qualificationYear:
+          type: number
+          description: The calendar year during which activity occurred.
+          example: 2020
+        averagePercentValue:
+          type: number
+          description: The average percent capacity or heat input usage.
+          example: 100
+        yr1QualificationDataYear:
+          type: number
+          description: The first year corresponding to the qualification data.
+          example: 2018
+        yr1QualificationDataTypeCode:
+          type: string
+          description: Code used to identify the type qualification in the first year.
+          example: A
+        yr1PercentageValue:
+          type: number
+          description: The percent capacity or heat input usage in the first year.
+          example: 100
+        yr2QualificationDataYear:
+          type: number
+          description: The second year corresponding to the qualification data.
+          example: 2019
+        yr2QualificationDataTypeCode:
+          type: string
+          description: Code used to identify the type qualification in the second year.
+          example: A
+        yr2PercentageValue:
+          type: number
+          description: The percent capacity or heat input usage in the second year.
+          example: 100
+        yr3QualificationDataYear:
+          type: number
+          description: The third year corresponding to the qualification data.
+          example: 2020
+        yr3QualificationDataTypeCode:
+          type: string
+          description: Code used to indicate type of data for year (actual or projected) used to determine peaking or gas-fired qualification.
+          example: A
+        yr3PercentageValue:
+          type: number
+          description: The percent capacity or heat input usage in the third year.
+          example: 100
+        id:
+          type: string
+          description: Unique identifier of a monitoring qualification percentage record.
+          example: 02227-BSGR-56EB0D4D400642A4860D6402698BBE16
+        qualificationId:
+          type: string
+          description: Unique identifier of a monitoring qualification record.
+          example: 02022-614W-608B84AEDB8148C7B3935EE935AB835F
+        userId:
+          type: string
+          description: User account or source of data that added or updated record.
+          example: abcde
+        addDate:
+          type: string
+          description: Date and time in which record was added.
+          example: '2021-04-01'
+        updateDate:
+          type: string
+          description: Date and time in which record was last updated.
+          example: '2021-04-01'
+      required:
+      - qualificationYear
+      - averagePercentValue
+      - yr1QualificationDataYear
+      - yr1QualificationDataTypeCode
+      - yr1PercentageValue
+      - yr2QualificationDataYear
+      - yr2QualificationDataTypeCode
+      - yr2PercentageValue
+      - yr3QualificationDataYear
+      - yr3QualificationDataTypeCode
+      - yr3PercentageValue
+      - id
+      - qualificationId
+      - userId
+      - addDate
+      - updateDate
     LEEQualificationDTO:
       type: object
       properties:
@@ -250,97 +317,14 @@ components:
       - userId
       - addDate
       - updateDate
-    PCTQualificationDTO:
-      type: object
-      properties:
-        qualificationYear:
-          type: number
-          description: The calendar year during which activity occurred.
-          example: 2020
-        averagePercentValue:
-          type: number
-          description: The average percent capacity or heat input usage.
-          example: 100
-        yr1QualificationDataYear:
-          type: number
-          description: The first year corresponding to the qualification data.
-          example: 2018
-        yr1QualificationDataTypeCode:
-          type: string
-          description: Code used to identify the type qualification in the first year.
-          example: A
-        yr1PercentageValue:
-          type: number
-          description: The percent capacity or heat input usage in the first year.
-          example: 100
-        yr2QualificationDataYear:
-          type: number
-          description: The second year corresponding to the qualification data.
-          example: 2019
-        yr2QualificationDataTypeCode:
-          type: string
-          description: Code used to identify the type qualification in the second year.
-          example: A
-        yr2PercentageValue:
-          type: number
-          description: The percent capacity or heat input usage in the second year.
-          example: 100
-        yr3QualificationDataYear:
-          type: number
-          description: The third year corresponding to the qualification data.
-          example: 2020
-        yr3QualificationDataTypeCode:
-          type: string
-          description: Code used to indicate type of data for year (actual or projected) used to determine peaking or gas-fired qualification.
-          example: A
-        yr3PercentageValue:
-          type: number
-          description: The percent capacity or heat input usage in the third year.
-          example: 100
-        id:
-          type: string
-          description: Unique identifier of a monitoring qualification percentage record.
-          example: 02227-BSGR-56EB0D4D400642A4860D6402698BBE16
-        qualificationId:
-          type: string
-          description: Unique identifier of a monitoring qualification record.
-          example: 02022-614W-608B84AEDB8148C7B3935EE935AB835F
-        userId:
-          type: string
-          description: User account or source of data that added or updated record.
-          example: abcde
-        addDate:
-          type: string
-          description: Date and time in which record was added.
-          example: '2021-04-01'
-        updateDate:
-          type: string
-          description: Date and time in which record was last updated.
-          example: '2021-04-01'
-      required:
-      - qualificationYear
-      - averagePercentValue
-      - yr1QualificationDataYear
-      - yr1QualificationDataTypeCode
-      - yr1PercentageValue
-      - yr2QualificationDataYear
-      - yr2QualificationDataTypeCode
-      - yr2PercentageValue
-      - yr3QualificationDataYear
-      - yr3QualificationDataTypeCode
-      - yr3PercentageValue
-      - id
-      - qualificationId
-      - userId
-      - addDate
-      - updateDate
   securitySchemes:
-    emailKey:
+    APIKey:
       type: apiKey
-      in: query
-      name: key
-      description: 'AQS requires `email` and `key` query parameters on every request. Register at
-
-        `/signup?email=YOUR_EMAIL` to receive a key by email.
-
-        '
+      in: header
+      name: x-api-key
+      description: API Key required via "x-api-key" request header!
+    Token:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http
+      description: Authorization "bearer" token required for data modification operations

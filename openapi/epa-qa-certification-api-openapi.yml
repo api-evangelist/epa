@@ -1,28 +1,11 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: EPA Air Quality System (AQS) Account Type Codes QA Certification API
-  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
-
-    sample data collected by state, local, tribal and federal air pollution control agencies
-
-    from thousands of monitors across the United States. The API exposes monitor metadata,
-
-    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
-
-    '
-  version: '1.0'
-  contact:
-    name: AQS Data Mart Support
-    email: aqsdatamart@epa.gov
-    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
-  license:
-    name: U.S. Government Work / Public Domain
-    url: https://www.usa.gov/government-works
+  title: Management OpenAPI Specification QA Certification API
+  description: QA & Certification management API endpoints for qa test data, qa cert events, and test extension & exemption data
+  version: 'v2.0.80 published: Thu Mar 26 2026'
+  contact: {}
 servers:
-- url: https://aqs.epa.gov/data/api
-  description: Production AQS Data Mart API
-security:
-- emailKey: []
+- url: https://api.epa.gov/easey
 tags:
 - name: QA Certification
 paths:
@@ -380,22 +363,31 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    RataRunDTO:
+    AppECorrelationTestRunDTO:
       type: object
       properties:
-        flowRataRunData:
+        appendixEHeatInputFromOilData:
           type: array
           items:
-            $ref: '#/components/schemas/FlowRataRunDTO'
+            $ref: '#/components/schemas/AppEHeatInputFromOilDTO'
+          example:
+          - string
+        appendixEHeatInputFromGasData:
+          type: array
+          items:
+            $ref: '#/components/schemas/AppEHeatInputFromGasDTO'
           example:
           - string
         id:
           type: string
           example: '12345'
-        rataSumId:
+        appECorrTestSumId:
           type: string
           example: '12345'
-        calculatedRataReferenceValue:
+        calculatedHourlyHeatInputRate:
+          type: number
+          example: 35.5
+        calculatedTotalHeatInput:
           type: number
           example: 35.5
         userId:
@@ -408,6 +400,18 @@ components:
           type: string
           example: string
         runNumber:
+          type: number
+          example: 0.0
+        referenceValue:
+          type: number
+          example: 0.0
+        hourlyHeatInputRate:
+          type: number
+          example: 0.0
+        totalHeatInput:
+          type: number
+          example: 0.0
+        responseTime:
           type: number
           example: 0.0
         beginDate:
@@ -430,23 +434,13 @@ components:
         endMinute:
           type: number
           example: 0.0
-        cemValue:
-          type: number
-          example: 0.0
-        rataReferenceValue:
-          type: number
-          example: 0.0
-        grossUnitLoad:
-          type: number
-          example: 0.0
-        runStatusCode:
-          type: string
-          example: active
       required:
-      - flowRataRunData
+      - appendixEHeatInputFromOilData
+      - appendixEHeatInputFromGasData
       - id
-      - rataSumId
-      - calculatedRataReferenceValue
+      - appECorrTestSumId
+      - calculatedHourlyHeatInputRate
+      - calculatedTotalHeatInput
       - userId
       - addDate
       - updateDate
@@ -457,141 +451,6 @@ components:
       - endDate
       - endHour
       - endMinute
-      - runStatusCode
-    ProtocolGasDTO:
-      type: object
-      properties:
-        gasTypeCode:
-          type: string
-          description: gasTypeCode. ADD TO PROPERTY METADATA
-          example: string
-        id:
-          type: string
-          example: '12345'
-        testSumId:
-          type: string
-          example: '12345'
-        userId:
-          type: string
-          example: '12345'
-        addDate:
-          type: string
-          example: string
-        updateDate:
-          type: string
-          example: string
-        gasLevelCode:
-          type: string
-          example: string
-        cylinderIdentifier:
-          type: string
-          maxLength: 25
-          example: '12345'
-        vendorIdentifier:
-          type: string
-          example: '12345'
-        expirationDate:
-          format: date-time
-          type: string
-          example: '2024-01-15T12:00:00Z'
-      required:
-      - gasTypeCode
-      - id
-      - testSumId
-      - userId
-      - addDate
-      - updateDate
-      - gasLevelCode
-    CalibrationInjectionDTO:
-      type: object
-      properties:
-        id:
-          type: string
-          example: '12345'
-        testSumId:
-          type: string
-          example: '12345'
-        calculatedZeroCalibrationError:
-          type: number
-          example: 35.5
-        calculatedZeroAPSIndicator:
-          type: number
-          example: 35.5
-        calculatedUpscaleCalibrationError:
-          type: number
-          example: 35.5
-        calculatedUpscaleAPSIndicator:
-          type: number
-          example: 35.5
-        userId:
-          type: string
-          example: '12345'
-        addDate:
-          type: string
-          example: string
-        updateDate:
-          type: string
-          example: string
-        onlineOfflineIndicator:
-          type: number
-          example: 0.0
-        upscaleGasLevelCode:
-          type: string
-          example: string
-        zeroInjectionDate:
-          format: date-time
-          type: string
-          example: '2024-01-15T12:00:00Z'
-        zeroInjectionHour:
-          type: number
-          example: 0.0
-        zeroInjectionMinute:
-          type: number
-          example: 0.0
-        upscaleInjectionDate:
-          format: date-time
-          type: string
-          example: '2024-01-15T12:00:00Z'
-        upscaleInjectionHour:
-          type: number
-          example: 0.0
-        upscaleInjectionMinute:
-          type: number
-          example: 0.0
-        zeroMeasuredValue:
-          type: number
-          example: 0.0
-        upscaleMeasuredValue:
-          type: number
-          example: 0.0
-        zeroAPSIndicator:
-          type: number
-          example: 0.0
-        upscaleAPSIndicator:
-          type: number
-          example: 0.0
-        zeroCalibrationError:
-          type: number
-          example: 0.0
-        upscaleCalibrationError:
-          type: number
-          example: 0.0
-        zeroReferenceValue:
-          type: number
-          example: 0.0
-        upscaleReferenceValue:
-          type: number
-          example: 0.0
-      required:
-      - id
-      - testSumId
-      - calculatedZeroCalibrationError
-      - calculatedZeroAPSIndicator
-      - calculatedUpscaleCalibrationError
-      - calculatedUpscaleAPSIndicator
-      - userId
-      - addDate
-      - updateDate
     TestSummaryDTO:
       type: object
       properties:
@@ -861,16 +720,22 @@ components:
       - evalStatusCodeDescription
       - submissionAvailabilityCode
       - submissionAvailabilityCodeDescription
-    AppEHeatInputFromGasDTO:
+    RataRunDTO:
       type: object
       properties:
+        flowRataRunData:
+          type: array
+          items:
+            $ref: '#/components/schemas/FlowRataRunDTO'
+          example:
+          - string
         id:
           type: string
           example: '12345'
-        appECorrTestRunId:
+        rataSumId:
           type: string
           example: '12345'
-        calculatedGasHeatInput:
+        calculatedRataReferenceValue:
           type: number
           example: 35.5
         userId:
@@ -882,26 +747,57 @@ components:
         updateDate:
           type: string
           example: string
-        monitoringSystemId:
+        runNumber:
+          type: number
+          example: 0.0
+        beginDate:
+          format: date-time
           type: string
-          example: '12345'
-        gasGCV:
+          example: '2024-01-15T12:00:00Z'
+        beginHour:
           type: number
           example: 0.0
-        gasVolume:
+        beginMinute:
           type: number
           example: 0.0
-        gasHeatInput:
+        endDate:
+          format: date-time
+          type: string
+          example: '2024-01-15T12:00:00Z'
+        endHour:
           type: number
           example: 0.0
+        endMinute:
+          type: number
+          example: 0.0
+        cemValue:
+          type: number
+          example: 0.0
+        rataReferenceValue:
+          type: number
+          example: 0.0
+        grossUnitLoad:
+          type: number
+          example: 0.0
+        runStatusCode:
+          type: string
+          example: active
       required:
+      - flowRataRunData
       - id
-      - appECorrTestRunId
-      - calculatedGasHeatInput
+      - rataSumId
+      - calculatedRataReferenceValue
       - userId
       - addDate
       - updateDate
-      - monitoringSystemId
+      - runNumber
+      - beginDate
+      - beginHour
+      - beginMinute
+      - endDate
+      - endHour
+      - endMinute
+      - runStatusCode
     FuelFlowToLoadTestDTO:
       type: object
       properties:
@@ -941,573 +837,6 @@ components:
       required:
       - id
       - testSumId
-      - userId
-      - addDate
-      - updateDate
-    AirEmissionTestingDTO:
-      type: object
-      properties:
-        id:
-          type: string
-          example: '12345'
-        testSumId:
-          type: string
-          example: '12345'
-        userId:
-          type: string
-          example: '12345'
-        addDate:
-          type: string
-          example: string
-        updateDate:
-          type: string
-          example: string
-        qiLastName:
-          type: string
-          maxLength: 25
-          example: EPA Facility
-        qiFirstName:
-          type: string
-          maxLength: 25
-          example: EPA Facility
-        qiMiddleInitial:
-          type: string
-          maxLength: 1
-          example: '12345'
-        aetbName:
-          type: string
-          maxLength: 50
-          example: EPA Facility
-        aetbPhoneNumber:
-          type: string
-          maxLength: 18
-          example: string
-        aetbEmail:
-          type: string
-          maxLength: 70
-          format: email
-          example: analyst@example.com
-        examDate:
-          format: date-time
-          type: string
-          example: '2024-01-15T12:00:00Z'
-        providerName:
-          type: string
-          maxLength: 50
-          example: EPA Facility
-        providerEmail:
-          type: string
-          maxLength: 70
-          format: email
-          example: analyst@example.com
-      required:
-      - id
-      - testSumId
-      - userId
-      - addDate
-      - updateDate
-      - qiLastName
-      - qiFirstName
-      - aetbName
-      - aetbPhoneNumber
-      - aetbEmail
-      - examDate
-      - providerName
-      - providerEmail
-    LinearityInjectionDTO:
-      type: object
-      properties:
-        injectionDate:
-          format: date-time
-          type: string
-          description: injectionDate. ADD TO PROPERTY METADATA
-          example: '2024-01-15T12:00:00Z'
-        injectionHour:
-          type: number
-          description: injectionHour. ADD TO PROPERTY METADATA
-          example: 0.0
-        injectionMinute:
-          type: number
-          description: injectionMinute. ADD TO PROPERTY METADATA
-          example: 0.0
-        measuredValue:
-          type: number
-          description: measuredValue. ADD TO PROPERTY METADATA
-          example: 0.0
-        referenceValue:
-          type: number
-          description: referenceValue. ADD TO PROPERTY METADATA
-          example: 0.0
-        id:
-          type: string
-          example: '12345'
-        linSumId:
-          type: string
-          example: '12345'
-        userId:
-          type: string
-          example: '12345'
-        addDate:
-          type: string
-          example: string
-        updateDate:
-          type: string
-          example: string
-      required:
-      - injectionDate
-      - injectionMinute
-      - id
-      - linSumId
-      - userId
-      - addDate
-      - updateDate
-    FuelFlowToLoadBaselineDTO:
-      type: object
-      properties:
-        id:
-          type: string
-          example: '12345'
-        testSumId:
-          type: string
-          example: '12345'
-        userId:
-          type: string
-          example: '12345'
-        addDate:
-          type: string
-          example: string
-        updateDate:
-          type: string
-          example: string
-        accuracyTestNumber:
-          type: string
-          maxLength: 18
-          example: string
-        peiTestNumber:
-          type: string
-          maxLength: 18
-          example: string
-        averageFuelFlowRate:
-          type: number
-          example: 0.0
-        averageLoad:
-          type: number
-          example: 0.0
-        baselineFuelFlowToLoadRatio:
-          type: number
-          example: 0.0
-        fuelFlowToLoadUnitsOfMeasureCode:
-          type: string
-          example: string
-        averageHourlyHeatInputRate:
-          type: number
-          example: 0.0
-        baselineGHR:
-          type: number
-          example: 0.0
-        ghrUnitsOfMeasureCode:
-          type: string
-          example: string
-        numberOfHoursExcludedCofiring:
-          type: number
-          example: 0.0
-        numberOfHoursExcludedRamping:
-          type: number
-          example: 0.0
-        numberOfHoursExcludedLowRange:
-          type: number
-          example: 0.0
-      required:
-      - id
-      - testSumId
-      - userId
-      - addDate
-      - updateDate
-    CycleTimeInjectionDTO:
-      type: object
-      properties:
-        id:
-          type: string
-          example: '12345'
-        cycleTimeSumId:
-          type: string
-          example: '12345'
-        calculatedInjectionCycleTime:
-          type: number
-          example: 35.5
-        userId:
-          type: string
-          example: '12345'
-        addDate:
-          type: string
-          example: string
-        updateDate:
-          type: string
-          example: string
-        gasLevelCode:
-          type: string
-          example: string
-        calibrationGasValue:
-          type: number
-          example: 0.0
-        beginDate:
-          format: date-time
-          type: string
-          example: '2024-01-15T12:00:00Z'
-        beginHour:
-          type: number
-          example: 0.0
-        beginMinute:
-          type: number
-          example: 0.0
-        endDate:
-          format: date-time
-          type: string
-          example: '2024-01-15T12:00:00Z'
-        endHour:
-          type: number
-          example: 0.0
-        endMinute:
-          type: number
-          example: 0.0
-        injectionCycleTime:
-          type: number
-          example: 0.0
-        beginMonitorValue:
-          type: number
-          example: 0.0
-        endMonitorValue:
-          type: number
-          example: 0.0
-      required:
-      - id
-      - cycleTimeSumId
-      - calculatedInjectionCycleTime
-      - userId
-      - addDate
-      - updateDate
-      - gasLevelCode
-    UnitDefaultTestDTO:
-      type: object
-      properties:
-        unitDefaultTestRunData:
-          type: array
-          items:
-            $ref: '#/components/schemas/UnitDefaultTestRunDTO'
-          example:
-          - string
-        id:
-          type: string
-          example: '12345'
-        testSumId:
-          type: string
-          example: '12345'
-        calculatedNoxDefaultRate:
-          type: number
-          example: 35.5
-        userId:
-          type: string
-          example: '12345'
-        addDate:
-          type: string
-          example: string
-        updateDate:
-          type: string
-          example: string
-        fuelCode:
-          type: string
-          example: string
-        noxDefaultRate:
-          type: number
-          example: 0.0
-        operatingConditionCode:
-          type: string
-          example: string
-        groupId:
-          type: string
-          maxLength: 10
-          example: '12345'
-        numberOfUnitsInGroup:
-          type: number
-          example: 0.0
-        numberOfTestsForGroup:
-          type: number
-          example: 0.0
-      required:
-      - unitDefaultTestRunData
-      - id
-      - testSumId
-      - calculatedNoxDefaultRate
-      - userId
-      - addDate
-      - updateDate
-    FlowRataRunDTO:
-      type: object
-      properties:
-        rataTraverseData:
-          type: array
-          items:
-            $ref: '#/components/schemas/RataTraverseDTO'
-          example:
-          - string
-        id:
-          type: string
-          example: '12345'
-        rataRunId:
-          type: string
-          example: '12345'
-        calculatedDryMolecularWeight:
-          type: number
-          example: 35.5
-        calculatedWetMolecularWeight:
-          type: number
-          example: 35.5
-        calculatedAverageVelocityWithoutWallEffects:
-          type: number
-          example: 35.5
-        calculatedAverageVelocityWithWallEffects:
-          type: number
-          example: 35.5
-        calculatedCalculatedWAF:
-          type: number
-          example: 35.5
-        userId:
-          type: string
-          example: '12345'
-        addDate:
-          type: string
-          example: string
-        updateDate:
-          type: string
-          example: string
-        numberOfTraversePoints:
-          type: number
-          minimum: 12
-          maximum: 99
-          example: 0.0
-        barometricPressure:
-          type: number
-          example: 0.0
-        staticStackPressure:
-          type: number
-          example: 0.0
-        percentCO2:
-          type: number
-          example: 0.0
-        percentO2:
-          type: number
-          example: 0.0
-        percentMoisture:
-          type: number
-          example: 0.0
-        dryMolecularWeight:
-          type: number
-          example: 0.0
-        wetMolecularWeight:
-          type: number
-          example: 0.0
-        averageVelocityWithoutWallEffects:
-          type: number
-          maximum: 9999.99
-          example: 0.0
-        averageVelocityWithWallEffects:
-          type: number
-          example: 0.0
-        calculatedWAF:
-          type: number
-          example: 35.5
-        averageStackFlowRate:
-          type: number
-          maximum: 9999999999
-          example: 0.0
-      required:
-      - rataTraverseData
-      - id
-      - rataRunId
-      - calculatedDryMolecularWeight
-      - calculatedWetMolecularWeight
-      - calculatedAverageVelocityWithoutWallEffects
-      - calculatedAverageVelocityWithWallEffects
-      - calculatedCalculatedWAF
-      - userId
-      - addDate
-      - updateDate
-      - numberOfTraversePoints
-      - barometricPressure
-      - staticStackPressure
-      - percentCO2
-      - percentO2
-      - percentMoisture
-      - wetMolecularWeight
-      - averageVelocityWithoutWallEffects
-      - averageStackFlowRate
-    FlowToLoadCheckDTO:
-      type: object
-      properties:
-        id:
-          type: string
-          example: '12345'
-        testSumId:
-          type: string
-          example: '12345'
-        userId:
-          type: string
-          example: '12345'
-        addDate:
-          type: string
-          example: string
-        updateDate:
-          type: string
-          example: string
-        testBasisCode:
-          type: string
-          example: string
-        biasAdjustedIndicator:
-          type: number
-          example: 0.0
-        averageAbsolutePercentDifference:
-          type: number
-          example: 0.0
-        numberOfHours:
-          type: number
-          example: 0.0
-        numberOfHoursExcludedForFuel:
-          type: number
-          example: 0.0
-        numberOfHoursExcludedRamping:
-          type: number
-          example: 0.0
-        numberOfHoursExcludedBypass:
-          type: number
-          example: 0.0
-        numberOfHoursExcludedPreRATA:
-          type: number
-          example: 0.0
-        numberOfHoursExcludedTest:
-          type: number
-          example: 0.0
-        numberOfHoursExcludedMainBypass:
-          type: number
-          example: 0.0
-        operatingLevelCode:
-          type: string
-          example: string
-      required:
-      - id
-      - testSumId
-      - userId
-      - addDate
-      - updateDate
-    TestQualificationDTO:
-      type: object
-      properties:
-        id:
-          type: string
-          example: '12345'
-        testSumId:
-          type: string
-          example: '12345'
-        userId:
-          type: string
-          example: '12345'
-        addDate:
-          type: string
-          example: string
-        updateDate:
-          type: string
-          example: string
-        testClaimCode:
-          type: string
-          example: string
-        beginDate:
-          format: date-time
-          type: string
-          example: '2024-01-15T12:00:00Z'
-        endDate:
-          format: date-time
-          type: string
-          example: '2024-01-15T12:00:00Z'
-        highLoadPercentage:
-          type: number
-          example: 0.0
-        midLoadPercentage:
-          type: number
-          example: 0.0
-        lowLoadPercentage:
-          type: number
-          example: 0.0
-      required:
-      - id
-      - testSumId
-      - userId
-      - addDate
-      - updateDate
-      - testClaimCode
-    LinearitySummaryDTO:
-      type: object
-      properties:
-        gasLevelCode:
-          type: string
-          description: gasLevelCode. ADD TO PROPERTY METADATA
-          example: string
-        meanMeasuredValue:
-          type: number
-          description: meanMeasuredValue. ADD TO PROPERTY METADATA
-          example: 0.0
-        meanReferenceValue:
-          type: number
-          description: meanReferenceValue. ADD TO PROPERTY METADATA
-          example: 0.0
-        percentError:
-          type: number
-          description: percentError. ADD TO PROPERTY METADATA
-          example: 0.0
-        apsIndicator:
-          type: number
-          description: Used to indicate if the alternative performance specification (APS) is used.
-          example: 0
-        linearityInjectionData:
-          type: array
-          items:
-            $ref: '#/components/schemas/LinearityInjectionDTO'
-          example:
-          - string
-        id:
-          type: string
-          example: '12345'
-        testSumId:
-          type: string
-          example: '12345'
-        calculatedMeanReferenceValue:
-          type: number
-          example: 35.5
-        calculatedMeanMeasuredValue:
-          type: number
-          example: 35.5
-        calculatedPercentError:
-          type: number
-          example: 35.5
-        calculatedAPSIndicator:
-          type: number
-          example: 35.5
-        userId:
-          type: string
-          example: '12345'
-        addDate:
-          type: string
-          example: string
-        updateDate:
-          type: string
-          example: string
-      required:
-      - gasLevelCode
-      - linearityInjectionData
-      - id
-      - testSumId
-      - calculatedMeanReferenceValue
-      - calculatedMeanMeasuredValue
-      - calculatedPercentError
-      - calculatedAPSIndicator
       - userId
       - addDate
       - updateDate
@@ -1614,311 +943,76 @@ components:
       - userId
       - addDate
       - updateDate
-    AppECorrelationTestRunDTO:
+    LinearityInjectionDTO:
       type: object
       properties:
-        appendixEHeatInputFromOilData:
-          type: array
-          items:
-            $ref: '#/components/schemas/AppEHeatInputFromOilDTO'
-          example:
-          - string
-        appendixEHeatInputFromGasData:
-          type: array
-          items:
-            $ref: '#/components/schemas/AppEHeatInputFromGasDTO'
-          example:
-          - string
-        id:
+        injectionDate:
+          format: date-time
           type: string
-          example: '12345'
-        appECorrTestSumId:
-          type: string
-          example: '12345'
-        calculatedHourlyHeatInputRate:
+          description: injectionDate. ADD TO PROPERTY METADATA
+          example: '2024-01-15T12:00:00Z'
+        injectionHour:
           type: number
-          example: 35.5
-        calculatedTotalHeatInput:
+          description: injectionHour. ADD TO PROPERTY METADATA
+          example: 0.0
+        injectionMinute:
           type: number
-          example: 35.5
-        userId:
-          type: string
-          example: '12345'
-        addDate:
-          type: string
-          example: string
-        updateDate:
-          type: string
-          example: string
-        runNumber:
+          description: injectionMinute. ADD TO PROPERTY METADATA
+          example: 0.0
+        measuredValue:
           type: number
+          description: measuredValue. ADD TO PROPERTY METADATA
           example: 0.0
         referenceValue:
           type: number
+          description: referenceValue. ADD TO PROPERTY METADATA
           example: 0.0
-        hourlyHeatInputRate:
-          type: number
-          example: 0.0
-        totalHeatInput:
-          type: number
-          example: 0.0
-        responseTime:
-          type: number
-          example: 0.0
-        beginDate:
-          format: date-time
+        id:
           type: string
-          example: '2024-01-15T12:00:00Z'
-        beginHour:
-          type: number
-          example: 0.0
-        beginMinute:
-          type: number
-          example: 0.0
-        endDate:
-          format: date-time
+          example: '12345'
+        linSumId:
           type: string
-          example: '2024-01-15T12:00:00Z'
-        endHour:
-          type: number
-          example: 0.0
-        endMinute:
-          type: number
-          example: 0.0
+          example: '12345'
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
       required:
-      - appendixEHeatInputFromOilData
-      - appendixEHeatInputFromGasData
+      - injectionDate
+      - injectionMinute
       - id
-      - appECorrTestSumId
-      - calculatedHourlyHeatInputRate
-      - calculatedTotalHeatInput
+      - linSumId
       - userId
       - addDate
       - updateDate
-      - runNumber
-      - beginDate
-      - beginHour
-      - beginMinute
-      - endDate
-      - endHour
-      - endMinute
-    QACertificationDTO:
+    RataDTO:
       type: object
       properties:
-        orisCode:
+        numberOfLoadLevels:
           type: number
-          description: The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the "ORIS code", "ORISPL code", "Facility ID", or "Facility code", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with "88" assigned by the EPA's Clean Air Markets Division for electronic reporting.
+          description: NumberOfLoadLevels. ADD TO PROPERTY METADATA
           example: 0.0
-        testSummaryData:
+        relativeAccuracy:
+          type: number
+          description: relativeAccuracy. ADD TO PROPERTY METADATA
+          example: 35.5
+        rataFrequencyCode:
+          type: string
+          description: rataFrequencyCode. ADD TO PROPERTY METADATA
+          example: string
+        overallBiasAdjustmentFactor:
+          type: number
+          description: overallBiasAdjustmentFactor. ADD TO PROPERTY METADATA
+          example: 0.0
+        rataSummaryData:
           type: array
           items:
-            $ref: '#/components/schemas/TestSummaryDTO'
-          example:
-          - string
-        certificationEventData:
-          type: array
-          items:
-            $ref: '#/components/schemas/QACertificationEventDTO'
-          example:
-          - string
-        testExtensionExemptionData:
-          type: array
-          items:
-            $ref: '#/components/schemas/TestExtensionExemptionDTO'
-          example:
-          - string
-      required:
-      - orisCode
-      - testSummaryData
-      - certificationEventData
-      - testExtensionExemptionData
-    CertEventReviewAndSubmitDTO:
-      type: object
-      properties:
-        orisCode:
-          type: number
-          example: 0.0
-        facilityName:
-          type: string
-          example: EPA Facility
-        monPlanId:
-          type: string
-          example: '12345'
-        locationInfo:
-          type: string
-          example: string
-        qaCertEventIdentifier:
-          type: string
-          example: '12345'
-        qaCertEventCode:
-          type: string
-          example: string
-        monLocIdentifier:
-          type: string
-          example: '12345'
-        systemComponentIdentifier:
-          type: string
-          example: '12345'
-        rptPeriodIdentifier:
-          type: number
-          example: 0.0
-        eventDate:
-          type: string
-          example: string
-        conditionDate:
-          type: string
-          example: string
-        lastCompletion:
-          type: string
-          example: string
-        userid:
-          type: string
-          example: '12345'
-        updateDate:
-          type: string
-          example: string
-        evalStatusCode:
-          type: string
-          example: active
-        evalStatusCodeDescription:
-          type: string
-          example: active
-        severityCode:
-          type: string
-          example: string
-        severityDescription:
-          type: string
-          example: string
-        submissionAvailabilityCode:
-          type: string
-          example: string
-        submissionAvailabilityDescription:
-          type: string
-          example: string
-        requiredTestCode:
-          type: string
-          example: string
-        periodAbbreviation:
-          type: string
-          example: string
-      required:
-      - orisCode
-      - facilityName
-      - monPlanId
-      - locationInfo
-      - qaCertEventIdentifier
-      - qaCertEventCode
-      - monLocIdentifier
-      - systemComponentIdentifier
-      - rptPeriodIdentifier
-      - eventDate
-      - conditionDate
-      - lastCompletion
-      - userid
-      - updateDate
-      - evalStatusCode
-      - evalStatusCodeDescription
-      - severityCode
-      - severityDescription
-      - submissionAvailabilityCode
-      - submissionAvailabilityDescription
-      - requiredTestCode
-      - periodAbbreviation
-    TeeReviewAndSubmitDTO:
-      type: object
-      properties:
-        orisCode:
-          type: number
-          example: 0.0
-        facilityName:
-          type: string
-          example: EPA Facility
-        monPlanId:
-          type: string
-          example: '12345'
-        locationInfo:
-          type: string
-          example: string
-        testExtensionExemptionIdentifier:
-          type: string
-          example: '12345'
-        extensExemptCode:
-          type: string
-          example: string
-        monLocIdentifier:
-          type: string
-          example: '12345'
-        systemComponentIdentifier:
-          type: string
-          example: '12345'
-        rptPeriodIdentifier:
-          type: number
-          example: 0.0
-        userid:
-          type: string
-          example: '12345'
-        updateDate:
-          type: string
-          example: string
-        evalStatusCode:
-          type: string
-          example: active
-        evalStatusCodeDescription:
-          type: string
-          example: active
-        severityCode:
-          type: string
-          example: string
-        severityDescription:
-          type: string
-          example: string
-        submissionAvailabilityCode:
-          type: string
-          example: string
-        submissionAvailabilityCodeDescription:
-          type: string
-          example: string
-        periodAbbreviation:
-          type: string
-          example: string
-        fuelCode:
-          type: string
-          example: string
-        hoursUsed:
-          type: number
-          example: 0.0
-        spanScaleCode:
-          type: string
-          example: string
-      required:
-      - orisCode
-      - facilityName
-      - monPlanId
-      - locationInfo
-      - testExtensionExemptionIdentifier
-      - extensExemptCode
-      - monLocIdentifier
-      - systemComponentIdentifier
-      - rptPeriodIdentifier
-      - userid
-      - updateDate
-      - evalStatusCode
-      - evalStatusCodeDescription
-      - severityCode
-      - severityDescription
-      - submissionAvailabilityCode
-      - submissionAvailabilityCodeDescription
-      - periodAbbreviation
-      - fuelCode
-      - hoursUsed
-      - spanScaleCode
-    HgSummaryDTO:
-      type: object
-      properties:
-        hgInjectionData:
-          type: array
-          items:
-            $ref: '#/components/schemas/HgInjectionDTO'
+            $ref: '#/components/schemas/RataSummaryDTO'
           example:
           - string
         id:
@@ -1927,16 +1021,16 @@ components:
         testSumId:
           type: string
           example: '12345'
-        calculatedMeanMeasuredValue:
+        calculatedRataFrequencyCode:
+          type: string
+          example: string
+        calculatedRelativeAccuracy:
           type: number
           example: 35.5
-        calculatedMeanReferenceValue:
+        calculatedOverallBiasAdjustmentFactor:
           type: number
           example: 35.5
-        calculatedPercentError:
-          type: number
-          example: 35.5
-        calculatedAPSIndicator:
+        calculatedNumberOfLoadLevel:
           type: number
           example: 35.5
         userId:
@@ -1948,34 +1042,18 @@ components:
         updateDate:
           type: string
           example: string
-        gasLevelCode:
-          type: string
-          example: string
-        meanMeasuredValue:
-          type: number
-          example: 0.0
-        meanReferenceValue:
-          type: number
-          example: 0.0
-        percentError:
-          type: number
-          example: 0.0
-        apsIndicator:
-          type: number
-          example: 0.0
       required:
-      - hgInjectionData
+      - rataSummaryData
       - id
       - testSumId
-      - calculatedMeanMeasuredValue
-      - calculatedMeanReferenceValue
-      - calculatedPercentError
-      - calculatedAPSIndicator
+      - calculatedRataFrequencyCode
+      - calculatedRelativeAccuracy
+      - calculatedOverallBiasAdjustmentFactor
+      - calculatedNumberOfLoadLevel
       - userId
       - addDate
       - updateDate
-      - gasLevelCode
-    TransmitterTransducerAccuracyDTO:
+    AirEmissionTestingDTO:
       type: object
       properties:
         id:
@@ -1993,40 +1071,68 @@ components:
         updateDate:
           type: string
           example: string
-        lowLevelAccuracy:
-          type: number
-          example: 0.0
-        lowLevelAccuracySpecCode:
+        qiLastName:
           type: string
-          example: string
-        midLevelAccuracy:
-          type: number
-          example: 0.0
-        midLevelAccuracySpecCode:
+          maxLength: 25
+          example: EPA Facility
+        qiFirstName:
           type: string
+          maxLength: 25
+          example: EPA Facility
+        qiMiddleInitial:
+          type: string
+          maxLength: 1
           example: '12345'
-        highLevelAccuracy:
-          type: number
-          example: 0.0
-        highLevelAccuracySpecCode:
+        aetbName:
           type: string
+          maxLength: 50
+          example: EPA Facility
+        aetbPhoneNumber:
+          type: string
+          maxLength: 18
           example: string
+        aetbEmail:
+          type: string
+          maxLength: 70
+          format: email
+          example: analyst@example.com
+        examDate:
+          format: date-time
+          type: string
+          example: '2024-01-15T12:00:00Z'
+        providerName:
+          type: string
+          maxLength: 50
+          example: EPA Facility
+        providerEmail:
+          type: string
+          maxLength: 70
+          format: email
+          example: analyst@example.com
       required:
       - id
       - testSumId
       - userId
       - addDate
       - updateDate
-    RataTraverseDTO:
+      - qiLastName
+      - qiFirstName
+      - aetbName
+      - aetbPhoneNumber
+      - aetbEmail
+      - examDate
+      - providerName
+      - providerEmail
+    AppEHeatInputFromGasDTO:
       type: object
       properties:
         id:
           type: string
           example: '12345'
-        flowRataRunId:
+        appECorrTestRunId:
           type: string
           example: '12345'
-        calculatedCalculatedVelocity:
+        calculatedGasHeatInput:
           type: number
           example: 35.5
         userId:
@@ -2038,69 +1144,69 @@ components:
         updateDate:
           type: string
           example: string
-        probeId:
+        monitoringSystemId:
           type: string
-          maxLength: 11
           example: '12345'
-        probeTypeCode:
-          type: string
-          example: string
-        pressureMeasureCode:
-          type: string
-          example: string
-        methodTraversePointId:
-          type: string
-          minLength: 1
-          maxLength: 3
-          example: '12345'
-        velocityCalibrationCoefficient:
+        gasGCV:
           type: number
           example: 0.0
-        lastProbeDate:
-          format: date-time
-          type: string
-          example: '2024-01-15T12:00:00Z'
-        averageVelocityDifferencePressure:
+        gasVolume:
           type: number
           example: 0.0
-        averageSquareVelocityDifferencePressure:
-          type: number
-          example: 0.0
-        tStackTemperature:
-          type: number
-          example: 0.0
-        pointUsedIndicator:
-          type: number
-          example: 0.0
-        numberWallEffectsPoints:
-          type: number
-          example: 0.0
-        yawAngle:
-          type: number
-          example: 0.0
-        pitchAngle:
-          type: number
-          example: 0.0
-        calculatedVelocity:
-          type: number
-          example: 35.5
-        replacementVelocity:
+        gasHeatInput:
           type: number
           example: 0.0
       required:
       - id
-      - flowRataRunId
-      - calculatedCalculatedVelocity
+      - appECorrTestRunId
+      - calculatedGasHeatInput
       - userId
       - addDate
       - updateDate
-      - probeId
-      - probeTypeCode
-      - pressureMeasureCode
-      - methodTraversePointId
-      - velocityCalibrationCoefficient
-      - lastProbeDate
-      - tStackTemperature
+      - monitoringSystemId
+    FuelFlowmeterAccuracyDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '12345'
+        testSumId:
+          type: string
+          example: '12345'
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+        accuracyTestMethodCode:
+          type: string
+          example: string
+        lowFuelAccuracy:
+          type: number
+          example: 0.0
+        midFuelAccuracy:
+          type: number
+          example: 0.0
+        highFuelAccuracy:
+          type: number
+          example: 0.0
+        reinstallationDate:
+          format: date-time
+          type: string
+          example: '2024-01-15T12:00:00Z'
+        reinstallationHour:
+          type: number
+          example: 35.5
+      required:
+      - id
+      - testSumId
+      - userId
+      - addDate
+      - updateDate
     QACertificationEventDTO:
       type: object
       properties:
@@ -2214,129 +1320,94 @@ components:
       - updateDate
       - certificationEventCode
       - certificationEventDate
-    RataDTO:
+    TeeReviewAndSubmitDTO:
       type: object
       properties:
-        numberOfLoadLevels:
+        orisCode:
           type: number
-          description: NumberOfLoadLevels. ADD TO PROPERTY METADATA
           example: 0.0
-        relativeAccuracy:
-          type: number
-          description: relativeAccuracy. ADD TO PROPERTY METADATA
-          example: 35.5
-        rataFrequencyCode:
+        facilityName:
           type: string
-          description: rataFrequencyCode. ADD TO PROPERTY METADATA
+          example: EPA Facility
+        monPlanId:
+          type: string
+          example: '12345'
+        locationInfo:
+          type: string
           example: string
-        overallBiasAdjustmentFactor:
+        testExtensionExemptionIdentifier:
+          type: string
+          example: '12345'
+        extensExemptCode:
+          type: string
+          example: string
+        monLocIdentifier:
+          type: string
+          example: '12345'
+        systemComponentIdentifier:
+          type: string
+          example: '12345'
+        rptPeriodIdentifier:
           type: number
-          description: overallBiasAdjustmentFactor. ADD TO PROPERTY METADATA
           example: 0.0
-        rataSummaryData:
-          type: array
-          items:
-            $ref: '#/components/schemas/RataSummaryDTO'
-          example:
-          - string
-        id:
+        userid:
           type: string
           example: '12345'
-        testSumId:
-          type: string
-          example: '12345'
-        calculatedRataFrequencyCode:
-          type: string
-          example: string
-        calculatedRelativeAccuracy:
-          type: number
-          example: 35.5
-        calculatedOverallBiasAdjustmentFactor:
-          type: number
-          example: 35.5
-        calculatedNumberOfLoadLevel:
-          type: number
-          example: 35.5
-        userId:
-          type: string
-          example: '12345'
-        addDate:
-          type: string
-          example: string
         updateDate:
           type: string
           example: string
-      required:
-      - rataSummaryData
-      - id
-      - testSumId
-      - calculatedRataFrequencyCode
-      - calculatedRelativeAccuracy
-      - calculatedOverallBiasAdjustmentFactor
-      - calculatedNumberOfLoadLevel
-      - userId
-      - addDate
-      - updateDate
-    AppEHeatInputFromOilDTO:
-      type: object
-      properties:
-        id:
+        evalStatusCode:
           type: string
-          example: '12345'
-        appECorrTestRunId:
+          example: active
+        evalStatusCodeDescription:
           type: string
-          example: '12345'
-        calculatedOilMass:
-          type: number
-          example: 35.5
-        calculatedOilHeatInput:
-          type: number
-          example: 35.5
-        userId:
-          type: string
-          example: '12345'
-        addDate:
+          example: active
+        severityCode:
           type: string
           example: string
-        updateDate:
+        severityDescription:
           type: string
           example: string
-        monitoringSystemId:
-          type: string
-          example: '12345'
-        oilMass:
-          type: number
-          example: 0.0
-        oilGCV:
-          type: number
-          example: 0.0
-        oilGCVUnitsOfMeasureCode:
+        submissionAvailabilityCode:
           type: string
           example: string
-        oilHeatInput:
-          type: number
-          example: 0.0
-        oilVolume:
-          type: number
-          example: 0.0
-        oilVolumeUnitsOfMeasureCode:
+        submissionAvailabilityCodeDescription:
           type: string
           example: string
-        oilDensity:
+        periodAbbreviation:
+          type: string
+          example: string
+        fuelCode:
+          type: string
+          example: string
+        hoursUsed:
           type: number
           example: 0.0
-        oilDensityUnitsOfMeasureCode:
+        spanScaleCode:
           type: string
           example: string
       required:
-      - id
-      - appECorrTestRunId
-      - calculatedOilMass
-      - calculatedOilHeatInput
-      - userId
-      - addDate
+      - orisCode
+      - facilityName
+      - monPlanId
+      - locationInfo
+      - testExtensionExemptionIdentifier
+      - extensExemptCode
+      - monLocIdentifier
+      - systemComponentIdentifier
+      - rptPeriodIdentifier
+      - userid
       - updateDate
-      - monitoringSystemId
+      - evalStatusCode
+      - evalStatusCodeDescription
+      - severityCode
+      - severityDescription
+      - submissionAvailabilityCode
+      - submissionAvailabilityCodeDescription
+      - periodAbbreviation
+      - fuelCode
+      - hoursUsed
+      - spanScaleCode
     HgInjectionDTO:
       type: object
       properties:
@@ -2380,6 +1451,559 @@ components:
       - injectionDate
       - injectionHour
       - injectionMinute
+    CycleTimeInjectionDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '12345'
+        cycleTimeSumId:
+          type: string
+          example: '12345'
+        calculatedInjectionCycleTime:
+          type: number
+          example: 35.5
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+        gasLevelCode:
+          type: string
+          example: string
+        calibrationGasValue:
+          type: number
+          example: 0.0
+        beginDate:
+          format: date-time
+          type: string
+          example: '2024-01-15T12:00:00Z'
+        beginHour:
+          type: number
+          example: 0.0
+        beginMinute:
+          type: number
+          example: 0.0
+        endDate:
+          format: date-time
+          type: string
+          example: '2024-01-15T12:00:00Z'
+        endHour:
+          type: number
+          example: 0.0
+        endMinute:
+          type: number
+          example: 0.0
+        injectionCycleTime:
+          type: number
+          example: 0.0
+        beginMonitorValue:
+          type: number
+          example: 0.0
+        endMonitorValue:
+          type: number
+          example: 0.0
+      required:
+      - id
+      - cycleTimeSumId
+      - calculatedInjectionCycleTime
+      - userId
+      - addDate
+      - updateDate
+      - gasLevelCode
+    TransmitterTransducerAccuracyDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '12345'
+        testSumId:
+          type: string
+          example: '12345'
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+        lowLevelAccuracy:
+          type: number
+          example: 0.0
+        lowLevelAccuracySpecCode:
+          type: string
+          example: string
+        midLevelAccuracy:
+          type: number
+          example: 0.0
+        midLevelAccuracySpecCode:
+          type: string
+          example: '12345'
+        highLevelAccuracy:
+          type: number
+          example: 0.0
+        highLevelAccuracySpecCode:
+          type: string
+          example: string
+      required:
+      - id
+      - testSumId
+      - userId
+      - addDate
+      - updateDate
+    QACertificationDTO:
+      type: object
+      properties:
+        orisCode:
+          type: number
+          description: The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the "ORIS code", "ORISPL code", "Facility ID", or "Facility code", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with "88" assigned by the EPA's Clean Air Markets Division for electronic reporting.
+          example: 0.0
+        testSummaryData:
+          type: array
+          items:
+            $ref: '#/components/schemas/TestSummaryDTO'
+          example:
+          - string
+        certificationEventData:
+          type: array
+          items:
+            $ref: '#/components/schemas/QACertificationEventDTO'
+          example:
+          - string
+        testExtensionExemptionData:
+          type: array
+          items:
+            $ref: '#/components/schemas/TestExtensionExemptionDTO'
+          example:
+          - string
+      required:
+      - orisCode
+      - testSummaryData
+      - certificationEventData
+      - testExtensionExemptionData
+    FlowToLoadReferenceDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '12345'
+        testSumId:
+          type: string
+          example: '12345'
+        calculatedAverageGrossUnitLoad:
+          type: number
+          example: 35.5
+        calculatedAverageReferenceMethodFlow:
+          type: number
+          example: 35.5
+        calculatedReferenceFlowToLoadRatio:
+          type: number
+          example: 35.5
+        calculatedReferenceGrossHeatRate:
+          type: number
+          example: 35.5
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+        rataTestNumber:
+          type: string
+          maxLength: 18
+          example: string
+        operatingLevelCode:
+          type: string
+          example: string
+        averageGrossUnitLoad:
+          type: number
+          example: 0.0
+        averageReferenceMethodFlow:
+          type: number
+          example: 0.0
+        referenceFlowLoadRatio:
+          type: number
+          example: 0.0
+        averageHourlyHeatInputRate:
+          type: number
+          example: 0.0
+        referenceGrossHeatRate:
+          type: number
+          example: 0.0
+        calculatedSeparateReferenceIndicator:
+          type: number
+          example: 35.5
+      required:
+      - id
+      - testSumId
+      - calculatedAverageGrossUnitLoad
+      - calculatedAverageReferenceMethodFlow
+      - calculatedReferenceFlowToLoadRatio
+      - calculatedReferenceGrossHeatRate
+      - userId
+      - addDate
+      - updateDate
+      - operatingLevelCode
+    FlowRataRunDTO:
+      type: object
+      properties:
+        rataTraverseData:
+          type: array
+          items:
+            $ref: '#/components/schemas/RataTraverseDTO'
+          example:
+          - string
+        id:
+          type: string
+          example: '12345'
+        rataRunId:
+          type: string
+          example: '12345'
+        calculatedDryMolecularWeight:
+          type: number
+          example: 35.5
+        calculatedWetMolecularWeight:
+          type: number
+          example: 35.5
+        calculatedAverageVelocityWithoutWallEffects:
+          type: number
+          example: 35.5
+        calculatedAverageVelocityWithWallEffects:
+          type: number
+          example: 35.5
+        calculatedCalculatedWAF:
+          type: number
+          example: 35.5
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+        numberOfTraversePoints:
+          type: number
+          minimum: 12
+          maximum: 99
+          example: 0.0
+        barometricPressure:
+          type: number
+          example: 0.0
+        staticStackPressure:
+          type: number
+          example: 0.0
+        percentCO2:
+          type: number
+          example: 0.0
+        percentO2:
+          type: number
+          example: 0.0
+        percentMoisture:
+          type: number
+          example: 0.0
+        dryMolecularWeight:
+          type: number
+          example: 0.0
+        wetMolecularWeight:
+          type: number
+          example: 0.0
+        averageVelocityWithoutWallEffects:
+          type: number
+          maximum: 9999.99
+          example: 0.0
+        averageVelocityWithWallEffects:
+          type: number
+          example: 0.0
+        calculatedWAF:
+          type: number
+          example: 35.5
+        averageStackFlowRate:
+          type: number
+          maximum: 9999999999
+          example: 0.0
+      required:
+      - rataTraverseData
+      - id
+      - rataRunId
+      - calculatedDryMolecularWeight
+      - calculatedWetMolecularWeight
+      - calculatedAverageVelocityWithoutWallEffects
+      - calculatedAverageVelocityWithWallEffects
+      - calculatedCalculatedWAF
+      - userId
+      - addDate
+      - updateDate
+      - numberOfTraversePoints
+      - barometricPressure
+      - staticStackPressure
+      - percentCO2
+      - percentO2
+      - percentMoisture
+      - wetMolecularWeight
+      - averageVelocityWithoutWallEffects
+      - averageStackFlowRate
+    HgSummaryDTO:
+      type: object
+      properties:
+        hgInjectionData:
+          type: array
+          items:
+            $ref: '#/components/schemas/HgInjectionDTO'
+          example:
+          - string
+        id:
+          type: string
+          example: '12345'
+        testSumId:
+          type: string
+          example: '12345'
+        calculatedMeanMeasuredValue:
+          type: number
+          example: 35.5
+        calculatedMeanReferenceValue:
+          type: number
+          example: 35.5
+        calculatedPercentError:
+          type: number
+          example: 35.5
+        calculatedAPSIndicator:
+          type: number
+          example: 35.5
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+        gasLevelCode:
+          type: string
+          example: string
+        meanMeasuredValue:
+          type: number
+          example: 0.0
+        meanReferenceValue:
+          type: number
+          example: 0.0
+        percentError:
+          type: number
+          example: 0.0
+        apsIndicator:
+          type: number
+          example: 0.0
+      required:
+      - hgInjectionData
+      - id
+      - testSumId
+      - calculatedMeanMeasuredValue
+      - calculatedMeanReferenceValue
+      - calculatedPercentError
+      - calculatedAPSIndicator
+      - userId
+      - addDate
+      - updateDate
+      - gasLevelCode
+    AppECorrelationTestSummaryDTO:
+      type: object
+      properties:
+        appendixECorrelationTestRunData:
+          type: array
+          items:
+            $ref: '#/components/schemas/AppECorrelationTestRunDTO'
+          example:
+          - string
+        id:
+          type: string
+          example: '12345'
+        testSumId:
+          type: string
+          example: '12345'
+        calculatedMeanReferenceValue:
+          type: number
+          example: 35.5
+        calculatedAverageHourlyHeatInputRate:
+          type: number
+          example: 35.5
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+        operatingLevelForRun:
+          type: number
+          example: 0.0
+        meanReferenceValue:
+          type: number
+          example: 0.0
+        averageHourlyHeatInputRate:
+          type: number
+          example: 0.0
+        fFactor:
+          type: number
+          example: 0.0
+      required:
+      - appendixECorrelationTestRunData
+      - id
+      - testSumId
+      - calculatedMeanReferenceValue
+      - calculatedAverageHourlyHeatInputRate
+      - userId
+      - addDate
+      - updateDate
+      - operatingLevelForRun
+    ProtocolGasDTO:
+      type: object
+      properties:
+        gasTypeCode:
+          type: string
+          description: gasTypeCode. ADD TO PROPERTY METADATA
+          example: string
+        id:
+          type: string
+          example: '12345'
+        testSumId:
+          type: string
+          example: '12345'
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+        gasLevelCode:
+          type: string
+          example: string
+        cylinderIdentifier:
+          type: string
+          maxLength: 25
+          example: '12345'
+        vendorIdentifier:
+          type: string
+          example: '12345'
+        expirationDate:
+          format: date-time
+          type: string
+          example: '2024-01-15T12:00:00Z'
+      required:
+      - gasTypeCode
+      - id
+      - testSumId
+      - userId
+      - addDate
+      - updateDate
+      - gasLevelCode
+    CertEventReviewAndSubmitDTO:
+      type: object
+      properties:
+        orisCode:
+          type: number
+          example: 0.0
+        facilityName:
+          type: string
+          example: EPA Facility
+        monPlanId:
+          type: string
+          example: '12345'
+        locationInfo:
+          type: string
+          example: string
+        qaCertEventIdentifier:
+          type: string
+          example: '12345'
+        qaCertEventCode:
+          type: string
+          example: string
+        monLocIdentifier:
+          type: string
+          example: '12345'
+        systemComponentIdentifier:
+          type: string
+          example: '12345'
+        rptPeriodIdentifier:
+          type: number
+          example: 0.0
+        eventDate:
+          type: string
+          example: string
+        conditionDate:
+          type: string
+          example: string
+        lastCompletion:
+          type: string
+          example: string
+        userid:
+          type: string
+          example: '12345'
+        updateDate:
+          type: string
+          example: string
+        evalStatusCode:
+          type: string
+          example: active
+        evalStatusCodeDescription:
+          type: string
+          example: active
+        severityCode:
+          type: string
+          example: string
+        severityDescription:
+          type: string
+          example: string
+        submissionAvailabilityCode:
+          type: string
+          example: string
+        submissionAvailabilityDescription:
+          type: string
+          example: string
+        requiredTestCode:
+          type: string
+          example: string
+        periodAbbreviation:
+          type: string
+          example: string
+      required:
+      - orisCode
+      - facilityName
+      - monPlanId
+      - locationInfo
+      - qaCertEventIdentifier
+      - qaCertEventCode
+      - monLocIdentifier
+      - systemComponentIdentifier
+      - rptPeriodIdentifier
+      - eventDate
+      - conditionDate
+      - lastCompletion
+      - userid
+      - updateDate
+      - evalStatusCode
+      - evalStatusCodeDescription
+      - severityCode
+      - severityDescription
+      - submissionAvailabilityCode
+      - submissionAvailabilityDescription
+      - requiredTestCode
+      - periodAbbreviation
     ReviewAndSubmitTestSummaryDTO:
       type: object
       properties:
@@ -2460,13 +2084,33 @@ components:
       - severityDescription
       - submissionCodeDescription
       - periodAbbreviation
-    AppECorrelationTestSummaryDTO:
+    LinearitySummaryDTO:
       type: object
       properties:
-        appendixECorrelationTestRunData:
+        gasLevelCode:
+          type: string
+          description: gasLevelCode. ADD TO PROPERTY METADATA
+          example: string
+        meanMeasuredValue:
+          type: number
+          description: meanMeasuredValue. ADD TO PROPERTY METADATA
+          example: 0.0
+        meanReferenceValue:
+          type: number
+          description: meanReferenceValue. ADD TO PROPERTY METADATA
+          example: 0.0
+        percentError:
+          type: number
+          description: percentError. ADD TO PROPERTY METADATA
+          example: 0.0
+        apsIndicator:
+          type: number
+          description: Used to indicate if the alternative performance specification (APS) is used.
+          example: 0
+        linearityInjectionData:
           type: array
           items:
-            $ref: '#/components/schemas/AppECorrelationTestRunDTO'
+            $ref: '#/components/schemas/LinearityInjectionDTO'
           example:
           - string
         id:
@@ -2478,7 +2122,13 @@ components:
         calculatedMeanReferenceValue:
           type: number
           example: 35.5
-        calculatedAverageHourlyHeatInputRate:
+        calculatedMeanMeasuredValue:
+          type: number
+          example: 35.5
+        calculatedPercentError:
+          type: number
+          example: 35.5
+        calculatedAPSIndicator:
           type: number
           example: 35.5
         userId:
@@ -2490,28 +2140,198 @@ components:
         updateDate:
           type: string
           example: string
-        operatingLevelForRun:
-          type: number
-          example: 0.0
-        meanReferenceValue:
-          type: number
-          example: 0.0
-        averageHourlyHeatInputRate:
-          type: number
-          example: 0.0
-        fFactor:
-          type: number
-          example: 0.0
       required:
-      - appendixECorrelationTestRunData
+      - gasLevelCode
+      - linearityInjectionData
       - id
       - testSumId
       - calculatedMeanReferenceValue
-      - calculatedAverageHourlyHeatInputRate
+      - calculatedMeanMeasuredValue
+      - calculatedPercentError
+      - calculatedAPSIndicator
       - userId
       - addDate
       - updateDate
-      - operatingLevelForRun
+    RataTraverseDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '12345'
+        flowRataRunId:
+          type: string
+          example: '12345'
+        calculatedCalculatedVelocity:
+          type: number
+          example: 35.5
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+        probeId:
+          type: string
+          maxLength: 11
+          example: '12345'
+        probeTypeCode:
+          type: string
+          example: string
+        pressureMeasureCode:
+          type: string
+          example: string
+        methodTraversePointId:
+          type: string
+          minLength: 1
+          maxLength: 3
+          example: '12345'
+        velocityCalibrationCoefficient:
+          type: number
+          example: 0.0
+        lastProbeDate:
+          format: date-time
+          type: string
+          example: '2024-01-15T12:00:00Z'
+        averageVelocityDifferencePressure:
+          type: number
+          example: 0.0
+        averageSquareVelocityDifferencePressure:
+          type: number
+          example: 0.0
+        tStackTemperature:
+          type: number
+          example: 0.0
+        pointUsedIndicator:
+          type: number
+          example: 0.0
+        numberWallEffectsPoints:
+          type: number
+          example: 0.0
+        yawAngle:
+          type: number
+          example: 0.0
+        pitchAngle:
+          type: number
+          example: 0.0
+        calculatedVelocity:
+          type: number
+          example: 35.5
+        replacementVelocity:
+          type: number
+          example: 0.0
+      required:
+      - id
+      - flowRataRunId
+      - calculatedCalculatedVelocity
+      - userId
+      - addDate
+      - updateDate
+      - probeId
+      - probeTypeCode
+      - pressureMeasureCode
+      - methodTraversePointId
+      - velocityCalibrationCoefficient
+      - lastProbeDate
+      - tStackTemperature
+    TestExtensionExemptionDTO:
+      type: object
+      properties:
+        stackPipeId:
+          type: string
+          description: Stack Pipe Identifier. ADD TO PROPERTY METADATA
+          example: '12345'
+        unitId:
+          type: string
+          description: Unique identifier for each unit at a facility.
+          example: '12345'
+        year:
+          type: number
+          description: The calendar year during which activity occurred.
+          example: 2024
+        quarter:
+          type: number
+          description: Calendar quarter in which activity occurred.
+          example: 0.0
+        monitoringSystemId:
+          type: string
+          description: Unique identifier of a monitoring system record.
+          example: '12345'
+        componentId:
+          type: string
+          description: The three digit code assigned by the source to identify the component.
+          example: '12345'
+        spanScaleCode:
+          type: string
+          description: Code used to identify the span scale.
+          example: string
+        id:
+          type: string
+          example: '12345'
+        locationId:
+          type: string
+          example: '12345'
+        reportPeriodId:
+          type: number
+          example: 0.0
+        checkSessionId:
+          type: string
+          example: '12345'
+        submissionId:
+          type: string
+          example: '12345'
+        submissionAvailabilityCode:
+          type: string
+          example: string
+        pendingStatusCode:
+          type: string
+          example: active
+        evalStatusCode:
+          type: string
+          example: active
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+        isSubmitted:
+          type: boolean
+          example: true
+        isSavedNotSubmitted:
+          type: boolean
+          example: true
+        hoursUsed:
+          type: number
+          example: 0.0
+        fuelCode:
+          type: string
+          example: string
+        extensionOrExemptionCode:
+          type: string
+          example: string
+      required:
+      - stackPipeId
+      - unitId
+      - year
+      - quarter
+      - id
+      - locationId
+      - reportPeriodId
+      - checkSessionId
+      - submissionId
+      - submissionAvailabilityCode
+      - pendingStatusCode
+      - evalStatusCode
+      - userId
+      - addDate
+      - updateDate
+      - extensionOrExemptionCode
     CycleTimeSummaryDTO:
       type: object
       properties:
@@ -2550,7 +2370,7 @@ components:
       - userId
       - addDate
       - updateDate
-    FlowToLoadReferenceDTO:
+    FuelFlowToLoadBaselineDTO:
       type: object
       properties:
         id:
@@ -2559,18 +2379,6 @@ components:
         testSumId:
           type: string
           example: '12345'
-        calculatedAverageGrossUnitLoad:
-          type: number
-          example: 35.5
-        calculatedAverageReferenceMethodFlow:
-          type: number
-          example: 35.5
-        calculatedReferenceFlowToLoadRatio:
-          type: number
-          example: 35.5
-        calculatedReferenceGrossHeatRate:
-          type: number
-          example: 35.5
         userId:
           type: string
           example: '12345'
@@ -2580,43 +2388,51 @@ components:
         updateDate:
           type: string
           example: string
-        rataTestNumber:
+        accuracyTestNumber:
           type: string
           maxLength: 18
           example: string
-        operatingLevelCode:
+        peiTestNumber:
+          type: string
+          maxLength: 18
+          example: string
+        averageFuelFlowRate:
+          type: number
+          example: 0.0
+        averageLoad:
+          type: number
+          example: 0.0
+        baselineFuelFlowToLoadRatio:
+          type: number
+          example: 0.0
+        fuelFlowToLoadUnitsOfMeasureCode:
           type: string
           example: string
-        averageGrossUnitLoad:
-          type: number
-          example: 0.0
-        averageReferenceMethodFlow:
-          type: number
-          example: 0.0
-        referenceFlowLoadRatio:
-          type: number
-          example: 0.0
         averageHourlyHeatInputRate:
           type: number
           example: 0.0
-        referenceGrossHeatRate:
+        baselineGHR:
           type: number
           example: 0.0
-        calculatedSeparateReferenceIndicator:
+        ghrUnitsOfMeasureCode:
+          type: string
+          example: string
+        numberOfHoursExcludedCofiring:
           type: number
-          example: 35.5
+          example: 0.0
+        numberOfHoursExcludedRamping:
+          type: number
+          example: 0.0
+        numberOfHoursExcludedLowRange:
+          type: number
+          example: 0.0
       required:
       - id
       - testSumId
-      - calculatedAverageGrossUnitLoad
-      - calculatedAverageReferenceMethodFlow
-      - calculatedReferenceFlowToLoadRatio
-      - calculatedReferenceGrossHeatRate
       - userId
       - addDate
       - updateDate
-      - operatingLevelCode
-    FuelFlowmeterAccuracyDTO:
+    FlowToLoadCheckDTO:
       type: object
       properties:
         id:
@@ -2634,28 +2450,352 @@ components:
         updateDate:
           type: string
           example: string
-        accuracyTestMethodCode:
+        testBasisCode:
           type: string
           example: string
-        lowFuelAccuracy:
+        biasAdjustedIndicator:
           type: number
           example: 0.0
-        midFuelAccuracy:
+        averageAbsolutePercentDifference:
           type: number
           example: 0.0
-        highFuelAccuracy:
+        numberOfHours:
           type: number
           example: 0.0
-        reinstallationDate:
-          format: date-time
+        numberOfHoursExcludedForFuel:
+          type: number
+          example: 0.0
+        numberOfHoursExcludedRamping:
+          type: number
+          example: 0.0
+        numberOfHoursExcludedBypass:
+          type: number
+          example: 0.0
+        numberOfHoursExcludedPreRATA:
+          type: number
+          example: 0.0
+        numberOfHoursExcludedTest:
+          type: number
+          example: 0.0
+        numberOfHoursExcludedMainBypass:
+          type: number
+          example: 0.0
+        operatingLevelCode:
           type: string
-          example: '2024-01-15T12:00:00Z'
-        reinstallationHour:
-          type: number
-          example: 35.5
+          example: string
       required:
       - id
       - testSumId
+      - userId
+      - addDate
+      - updateDate
+    UnitDefaultTestRunDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '12345'
+        unitDefaultTestSumId:
+          type: string
+          example: '12345'
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+        operatingLevelForRun:
+          type: number
+          example: 0.0
+        runNumber:
+          type: number
+          example: 0.0
+        beginDate:
+          format: date-time
+          type: string
+          example: '2024-01-15T12:00:00Z'
+        beginHour:
+          type: number
+          example: 0.0
+        beginMinute:
+          type: number
+          example: 0.0
+        endDate:
+          format: date-time
+          type: string
+          example: '2024-01-15T12:00:00Z'
+        endHour:
+          type: number
+          example: 0.0
+        endMinute:
+          type: number
+          example: 0.0
+        responseTime:
+          type: number
+          example: 0.0
+        referenceValue:
+          type: number
+          example: 0.0
+        runUsedIndicator:
+          type: number
+          example: 0.0
+      required:
+      - id
+      - unitDefaultTestSumId
+      - userId
+      - addDate
+      - updateDate
+      - operatingLevelForRun
+      - runNumber
+    TestQualificationDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '12345'
+        testSumId:
+          type: string
+          example: '12345'
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+        testClaimCode:
+          type: string
+          example: string
+        beginDate:
+          format: date-time
+          type: string
+          example: '2024-01-15T12:00:00Z'
+        endDate:
+          format: date-time
+          type: string
+          example: '2024-01-15T12:00:00Z'
+        highLoadPercentage:
+          type: number
+          example: 0.0
+        midLoadPercentage:
+          type: number
+          example: 0.0
+        lowLoadPercentage:
+          type: number
+          example: 0.0
+      required:
+      - id
+      - testSumId
+      - userId
+      - addDate
+      - updateDate
+      - testClaimCode
+    UnitDefaultTestDTO:
+      type: object
+      properties:
+        unitDefaultTestRunData:
+          type: array
+          items:
+            $ref: '#/components/schemas/UnitDefaultTestRunDTO'
+          example:
+          - string
+        id:
+          type: string
+          example: '12345'
+        testSumId:
+          type: string
+          example: '12345'
+        calculatedNoxDefaultRate:
+          type: number
+          example: 35.5
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+        fuelCode:
+          type: string
+          example: string
+        noxDefaultRate:
+          type: number
+          example: 0.0
+        operatingConditionCode:
+          type: string
+          example: string
+        groupId:
+          type: string
+          maxLength: 10
+          example: '12345'
+        numberOfUnitsInGroup:
+          type: number
+          example: 0.0
+        numberOfTestsForGroup:
+          type: number
+          example: 0.0
+      required:
+      - unitDefaultTestRunData
+      - id
+      - testSumId
+      - calculatedNoxDefaultRate
+      - userId
+      - addDate
+      - updateDate
+    AppEHeatInputFromOilDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '12345'
+        appECorrTestRunId:
+          type: string
+          example: '12345'
+        calculatedOilMass:
+          type: number
+          example: 35.5
+        calculatedOilHeatInput:
+          type: number
+          example: 35.5
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+        monitoringSystemId:
+          type: string
+          example: '12345'
+        oilMass:
+          type: number
+          example: 0.0
+        oilGCV:
+          type: number
+          example: 0.0
+        oilGCVUnitsOfMeasureCode:
+          type: string
+          example: string
+        oilHeatInput:
+          type: number
+          example: 0.0
+        oilVolume:
+          type: number
+          example: 0.0
+        oilVolumeUnitsOfMeasureCode:
+          type: string
+          example: string
+        oilDensity:
+          type: number
+          example: 0.0
+        oilDensityUnitsOfMeasureCode:
+          type: string
+          example: string
+      required:
+      - id
+      - appECorrTestRunId
+      - calculatedOilMass
+      - calculatedOilHeatInput
+      - userId
+      - addDate
+      - updateDate
+      - monitoringSystemId
+    CalibrationInjectionDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '12345'
+        testSumId:
+          type: string
+          example: '12345'
+        calculatedZeroCalibrationError:
+          type: number
+          example: 35.5
+        calculatedZeroAPSIndicator:
+          type: number
+          example: 35.5
+        calculatedUpscaleCalibrationError:
+          type: number
+          example: 35.5
+        calculatedUpscaleAPSIndicator:
+          type: number
+          example: 35.5
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+        onlineOfflineIndicator:
+          type: number
+          example: 0.0
+        upscaleGasLevelCode:
+          type: string
+          example: string
+        zeroInjectionDate:
+          format: date-time
+          type: string
+          example: '2024-01-15T12:00:00Z'
+        zeroInjectionHour:
+          type: number
+          example: 0.0
+        zeroInjectionMinute:
+          type: number
+          example: 0.0
+        upscaleInjectionDate:
+          format: date-time
+          type: string
+          example: '2024-01-15T12:00:00Z'
+        upscaleInjectionHour:
+          type: number
+          example: 0.0
+        upscaleInjectionMinute:
+          type: number
+          example: 0.0
+        zeroMeasuredValue:
+          type: number
+          example: 0.0
+        upscaleMeasuredValue:
+          type: number
+          example: 0.0
+        zeroAPSIndicator:
+          type: number
+          example: 0.0
+        upscaleAPSIndicator:
+          type: number
+          example: 0.0
+        zeroCalibrationError:
+          type: number
+          example: 0.0
+        upscaleCalibrationError:
+          type: number
+          example: 0.0
+        zeroReferenceValue:
+          type: number
+          example: 0.0
+        upscaleReferenceValue:
+          type: number
+          example: 0.0
+      required:
+      - id
+      - testSumId
+      - calculatedZeroCalibrationError
+      - calculatedZeroAPSIndicator
+      - calculatedUpscaleCalibrationError
+      - calculatedUpscaleAPSIndicator
       - userId
       - addDate
       - updateDate
@@ -2816,170 +2956,14 @@ components:
       - userId
       - addDate
       - updateDate
-    TestExtensionExemptionDTO:
-      type: object
-      properties:
-        stackPipeId:
-          type: string
-          description: Stack Pipe Identifier. ADD TO PROPERTY METADATA
-          example: '12345'
-        unitId:
-          type: string
-          description: Unique identifier for each unit at a facility.
-          example: '12345'
-        year:
-          type: number
-          description: The calendar year during which activity occurred.
-          example: 2024
-        quarter:
-          type: number
-          description: Calendar quarter in which activity occurred.
-          example: 0.0
-        monitoringSystemId:
-          type: string
-          description: Unique identifier of a monitoring system record.
-          example: '12345'
-        componentId:
-          type: string
-          description: The three digit code assigned by the source to identify the component.
-          example: '12345'
-        spanScaleCode:
-          type: string
-          description: Code used to identify the span scale.
-          example: string
-        id:
-          type: string
-          example: '12345'
-        locationId:
-          type: string
-          example: '12345'
-        reportPeriodId:
-          type: number
-          example: 0.0
-        checkSessionId:
-          type: string
-          example: '12345'
-        submissionId:
-          type: string
-          example: '12345'
-        submissionAvailabilityCode:
-          type: string
-          example: string
-        pendingStatusCode:
-          type: string
-          example: active
-        evalStatusCode:
-          type: string
-          example: active
-        userId:
-          type: string
-          example: '12345'
-        addDate:
-          type: string
-          example: string
-        updateDate:
-          type: string
-          example: string
-        isSubmitted:
-          type: boolean
-          example: true
-        isSavedNotSubmitted:
-          type: boolean
-          example: true
-        hoursUsed:
-          type: number
-          example: 0.0
-        fuelCode:
-          type: string
-          example: string
-        extensionOrExemptionCode:
-          type: string
-          example: string
-      required:
-      - stackPipeId
-      - unitId
-      - year
-      - quarter
-      - id
-      - locationId
-      - reportPeriodId
-      - checkSessionId
-      - submissionId
-      - submissionAvailabilityCode
-      - pendingStatusCode
-      - evalStatusCode
-      - userId
-      - addDate
-      - updateDate
-      - extensionOrExemptionCode
-    UnitDefaultTestRunDTO:
-      type: object
-      properties:
-        id:
-          type: string
-          example: '12345'
-        unitDefaultTestSumId:
-          type: string
-          example: '12345'
-        userId:
-          type: string
-          example: '12345'
-        addDate:
-          type: string
-          example: string
-        updateDate:
-          type: string
-          example: string
-        operatingLevelForRun:
-          type: number
-          example: 0.0
-        runNumber:
-          type: number
-          example: 0.0
-        beginDate:
-          format: date-time
-          type: string
-          example: '2024-01-15T12:00:00Z'
-        beginHour:
-          type: number
-          example: 0.0
-        beginMinute:
-          type: number
-          example: 0.0
-        endDate:
-          format: date-time
-          type: string
-          example: '2024-01-15T12:00:00Z'
-        endHour:
-          type: number
-          example: 0.0
-        endMinute:
-          type: number
-          example: 0.0
-        responseTime:
-          type: number
-          example: 0.0
-        referenceValue:
-          type: number
-          example: 0.0
-        runUsedIndicator:
-          type: number
-          example: 0.0
-      required:
-      - id
-      - unitDefaultTestSumId
-      - userId
-      - addDate
-      - updateDate
-      - operatingLevelForRun
-      - runNumber
   securitySchemes:
-    emailKey:
+    APIKey:
       type: apiKey
-      in: query
-      name: key
-      description: 'AQS requires `email` and `key` query parameters on every request. Register at
-
-        `/signup?email=YOUR_EMAIL` to receive a key by email.
-
-        '
+      in: header
+      name: x-api-key
+      description: API Key required via "x-api-key" request header!
+    Token:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http
+      description: Authorization "bearer" token required for data modification operations

@@ -1,28 +1,19 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: EPA Air Quality System (AQS) Account Type Codes Lookups API
-  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
-
-    sample data collected by state, local, tribal and federal air pollution control agencies
-
-    from thousands of monitors across the United States. The API exposes monitor metadata,
-
-    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
-
-    '
+  title: Epa Lookups API
+  x-apisguru-categories:
+  - open_data
+  x-logo:
+    backgroundColor: '#FFFFFF'
+    url: https://api.apis.guru/v2/cache/logo/https_pbs.twimg.com_profile_images_632233890594299904_DgRDU6dx_400x400.png
+  x-refined-note:
+  - x-origin differs across the merged source definitions and was not carried
+  - x-serviceName differs across the merged source definitions and was not carried
+  x-providerName: epa.gov
   version: '1.0'
-  contact:
-    name: AQS Data Mart Support
-    email: aqsdatamart@epa.gov
-    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
-  license:
-    name: U.S. Government Work / Public Domain
-    url: https://www.usa.gov/government-works
+  description: 'Operations tagged Lookups across 3 of this provider''s published API definitions: echo-case-openapi.json, echo-cwa-openapi.json, echo-effluent-openapi.json. Each path carries the servers of the definition it was published in.'
 servers:
-- url: https://aqs.epa.gov/data/api
-  description: Production AQS Data Mart API
-security:
-- emailKey: []
+- url: https://echodata.epa.gov/echo
 tags:
 - name: Lookups
 paths:
@@ -31,34 +22,48 @@ paths:
       description: Returns the ICIS Law Section Descriptions.
       parameters:
       - description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
-        enum:
-        - JSONP
-        - JSON
-        - XML
         in: query
         name: output
         required: false
-        type: string
         example: string
-      - $ref: '#/parameters/q.callback'
-      - $ref: '#/parameters/q.statute_code'
-      - $ref: '#/parameters/q.status_flag'
-      - $ref: '#/parameters/q.search_term'
-      - $ref: '#/parameters/q.search_code'
-      - $ref: '#/parameters/q.sort_order'
+        schema:
+          type: string
+          enum:
+          - JSONP
+          - JSON
+          - XML
+      - $ref: '#/components/parameters/q.callback'
+      - $ref: '#/components/parameters/q.statute_code'
+      - $ref: '#/components/parameters/q.status_flag'
+      - $ref: '#/components/parameters/q.search_term'
+      - $ref: '#/components/parameters/q.search_code'
+      - $ref: '#/components/parameters/q.sort_order'
       responses:
         '200':
           description: Returns an array of icis_inspection_types codes and their description. If search term or search code is  not provided, all values are returned.
-          schema:
-            description: Root Object
-            properties:
-              Results:
-                $ref: '#/definitions/rlk51_Results'
-            required:
-            - Results
-            type: object
-            xml:
-              name: Root
+          content:
+            application/json:
+              schema:
+                description: Root Object
+                properties:
+                  Results:
+                    $ref: '#/components/schemas/rlk51_Results'
+                required:
+                - Results
+                type: object
+                xml:
+                  name: Root
+            application/xml:
+              schema:
+                description: Root Object
+                properties:
+                  Results:
+                    $ref: '#/components/schemas/rlk51_Results'
+                required:
+                - Results
+                type: object
+                xml:
+                  name: Root
       summary: ECHO ICIS Law Sections Lookup Service
       tags:
       - Lookups
@@ -68,71 +73,103 @@ paths:
     post:
       description: Returns the ICIS Law Section Descriptions.
       parameters:
-      - description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
-        enum:
-        - JSONP
-        - JSON
-        - XML
-        in: formData
-        name: output
-        required: false
-        type: string
-        example: string
-      - $ref: '#/parameters/f.callback'
-      - $ref: '#/parameters/f.statute_code'
-      - $ref: '#/parameters/f.status_flag'
-      - $ref: '#/parameters/f.search_term'
-      - $ref: '#/parameters/f.search_code'
-      - $ref: '#/parameters/f.sort_order'
+      - $ref: '#/components/parameters/f.callback'
+      - $ref: '#/components/parameters/f.statute_code'
+      - $ref: '#/components/parameters/f.status_flag'
+      - $ref: '#/components/parameters/f.search_term'
+      - $ref: '#/components/parameters/f.search_code'
+      - $ref: '#/components/parameters/f.sort_order'
       responses:
         '200':
           description: Returns an array of icis_inspection_types codes and their description. If search term or search code is  not provided, all values are returned.
-          schema:
-            description: Root Object
-            properties:
-              Results:
-                $ref: '#/definitions/rlk51_Results'
-            required:
-            - Results
-            type: object
-            xml:
-              name: Root
+          content:
+            application/json:
+              schema:
+                description: Root Object
+                properties:
+                  Results:
+                    $ref: '#/components/schemas/rlk51_Results'
+                required:
+                - Results
+                type: object
+                xml:
+                  name: Root
+            application/xml:
+              schema:
+                description: Root Object
+                properties:
+                  Results:
+                    $ref: '#/components/schemas/rlk51_Results'
+                required:
+                - Results
+                type: object
+                xml:
+                  name: Root
       summary: ECHO ICIS Law Sections Lookup Service
       tags:
       - Lookups
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                output:
+                  type: string
+                  enum:
+                  - JSONP
+                  - JSON
+                  - XML
+                  description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+    servers:
+    - url: https://echodata.epa.gov/echo
   /rest_lookups.bp_tribes:
     get:
       description: Returns the EPA Standard Indian Tribes and Native Alaskan Villages tribal_id and tribe_name.
       parameters:
       - description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
-        enum:
-        - JSONP
-        - JSON
-        - XML
         in: query
         name: output
         required: false
-        type: string
         example: string
-      - $ref: '#/parameters/q.callback'
-      - $ref: '#/parameters/q.search_term'
-      - $ref: '#/parameters/q.search_code'
+        schema:
+          type: string
+          enum:
+          - JSONP
+          - JSON
+          - XML
+      - $ref: '#/components/parameters/q.callback'
+      - $ref: '#/components/parameters/q.search_term'
+      - $ref: '#/components/parameters/q.search_code'
       responses:
         '200':
           description: Returns an array of tribes containing the search term. If search term not provided, returns all values.
-          schema:
-            description: Root Object
-            properties:
-              Results:
-                $ref: '#/definitions/rlup20'
-            required:
-            - Results
-            type: object
-            xml:
-              name: Root
+          content:
+            application/json:
+              schema:
+                description: Root Object
+                properties:
+                  Results:
+                    $ref: '#/components/schemas/rlup20'
+                required:
+                - Results
+                type: object
+                xml:
+                  name: Root
+            application/xml:
+              schema:
+                description: Root Object
+                properties:
+                  Results:
+                    $ref: '#/components/schemas/rlup20'
+                required:
+                - Results
+                type: object
+                xml:
+                  name: Root
       summary: ECHO BP Tribes Lookup Service
       tags:
       - Lookups
@@ -142,70 +179,102 @@ paths:
     post:
       description: Returns the EPA Standard Indian Tribes and Native Alaskan Villages tribal_id and tribe_name.
       parameters:
-      - description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
-        enum:
-        - JSONP
-        - JSON
-        - XML
-        in: formData
-        name: output
-        required: false
-        type: string
-        example: string
-      - $ref: '#/parameters/f.callback'
-      - $ref: '#/parameters/f.search_term'
-      - $ref: '#/parameters/f.search_code'
+      - $ref: '#/components/parameters/f.callback'
+      - $ref: '#/components/parameters/f.search_term'
+      - $ref: '#/components/parameters/f.search_code'
       responses:
         '200':
           description: Returns an array of tribes containing the search term. If search term not provided, returns all values.
-          schema:
-            description: Root Object
-            properties:
-              Results:
-                $ref: '#/definitions/rlup20'
-            required:
-            - Results
-            type: object
-            xml:
-              name: Root
+          content:
+            application/json:
+              schema:
+                description: Root Object
+                properties:
+                  Results:
+                    $ref: '#/components/schemas/rlup20'
+                required:
+                - Results
+                type: object
+                xml:
+                  name: Root
+            application/xml:
+              schema:
+                description: Root Object
+                properties:
+                  Results:
+                    $ref: '#/components/schemas/rlup20'
+                required:
+                - Results
+                type: object
+                xml:
+                  name: Root
       summary: ECHO BP Tribes Lookup Service
       tags:
       - Lookups
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                output:
+                  type: string
+                  enum:
+                  - JSONP
+                  - JSON
+                  - XML
+                  description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+    servers:
+    - url: https://echodata.epa.gov/echo
   /rest_lookups.cwa_parameters:
     get:
       description: Look up Clean Water Act parameter codes and descriptions in the Integrated Compliance Information System - National Pollutant Discharge Elimination System (ICIS-NPDES) by code or term.
       parameters:
       - description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
-        enum:
-        - JSONP
-        - JSON
-        - XML
         in: query
         name: output
         required: false
-        type: string
         example: string
-      - $ref: '#/parameters/q.callback'
-      - $ref: '#/parameters/q.search_term'
-      - $ref: '#/parameters/q.search_code'
+        schema:
+          type: string
+          enum:
+          - JSONP
+          - JSON
+          - XML
+      - $ref: '#/components/parameters/q.callback'
+      - $ref: '#/components/parameters/q.search_term'
+      - $ref: '#/components/parameters/q.search_code'
       responses:
         '200':
           description: 'Returns an array of parameter codes and descriptions that contain the search_term or search_code entered. If search term or search code not provided, returns all values. ValueCode is the 5-digit parameter code.
 
             ValueDescription is the parameter description.'
-          schema:
-            description: Root Object
-            properties:
-              Results:
-                $ref: '#/definitions/rlup23'
-            required:
-            - Results
-            type: object
-            xml:
-              name: Root
+          content:
+            application/json:
+              schema:
+                description: Root Object
+                properties:
+                  Results:
+                    $ref: '#/components/schemas/rlup23'
+                required:
+                - Results
+                type: object
+                xml:
+                  name: Root
+            application/xml:
+              schema:
+                description: Root Object
+                properties:
+                  Results:
+                    $ref: '#/components/schemas/rlup23'
+                required:
+                - Results
+                type: object
+                xml:
+                  name: Root
       summary: ECHO CWA Parameter Lookup Service
       tags:
       - Lookups
@@ -215,70 +284,102 @@ paths:
     post:
       description: Look up Clean Water Act parameter codes and descriptions in the Integrated Compliance Information System - National Pollutant Discharge Elimination System (ICIS-NPDES) by code or term.
       parameters:
-      - description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
-        enum:
-        - JSONP
-        - JSON
-        - XML
-        in: formData
-        name: output
-        required: false
-        type: string
-        example: string
-      - $ref: '#/parameters/f.callback'
-      - $ref: '#/parameters/f.search_term'
-      - $ref: '#/parameters/f.search_code'
+      - $ref: '#/components/parameters/f.callback'
+      - $ref: '#/components/parameters/f.search_term'
+      - $ref: '#/components/parameters/f.search_code'
       responses:
         '200':
           description: 'Returns an array of parameter codes and descriptions that contain the search_term or search_code entered. If search term or search code not provided, returns all values. ValueCode is the 5-digit parameter code.
 
             ValueDescription is the parameter description.'
-          schema:
-            description: Root Object
-            properties:
-              Results:
-                $ref: '#/definitions/rlup23'
-            required:
-            - Results
-            type: object
-            xml:
-              name: Root
+          content:
+            application/json:
+              schema:
+                description: Root Object
+                properties:
+                  Results:
+                    $ref: '#/components/schemas/rlup23'
+                required:
+                - Results
+                type: object
+                xml:
+                  name: Root
+            application/xml:
+              schema:
+                description: Root Object
+                properties:
+                  Results:
+                    $ref: '#/components/schemas/rlup23'
+                required:
+                - Results
+                type: object
+                xml:
+                  name: Root
       summary: ECHO CWA Parameter Lookup Service
       tags:
       - Lookups
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                output:
+                  type: string
+                  enum:
+                  - JSONP
+                  - JSON
+                  - XML
+                  description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+    servers:
+    - url: https://echodata.epa.gov/echo
   /rest_lookups.cwa_pollutants:
     get:
       description: Look up Clean Water Act pollutants by name
       parameters:
       - description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
-        enum:
-        - JSONP
-        - JSON
-        - XML
         in: query
         name: output
         required: false
-        type: string
         example: string
-      - $ref: '#/parameters/q.callback'
-      - $ref: '#/parameters/q.search_term'
-      - $ref: '#/parameters/q.search_code'
+        schema:
+          type: string
+          enum:
+          - JSONP
+          - JSON
+          - XML
+      - $ref: '#/components/parameters/q.callback'
+      - $ref: '#/components/parameters/q.search_term'
+      - $ref: '#/components/parameters/q.search_code'
       responses:
         '200':
           description: Returns an array of water polluntants containing search term or search code. If search term or search code not provided, returns all values.
-          schema:
-            description: Root Object
-            properties:
-              Results:
-                $ref: '#/definitions/rlup24'
-            required:
-            - Results
-            type: object
-            xml:
-              name: Root
+          content:
+            application/json:
+              schema:
+                description: Root Object
+                properties:
+                  Results:
+                    $ref: '#/components/schemas/rlup24'
+                required:
+                - Results
+                type: object
+                xml:
+                  name: Root
+            application/xml:
+              schema:
+                description: Root Object
+                properties:
+                  Results:
+                    $ref: '#/components/schemas/rlup24'
+                required:
+                - Results
+                type: object
+                xml:
+                  name: Root
       summary: ECHO CWA Pollutants Lookup Service
       tags:
       - Lookups
@@ -288,68 +389,100 @@ paths:
     post:
       description: Look up Clean Water Act pollutants by name
       parameters:
-      - description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
-        enum:
-        - JSONP
-        - JSON
-        - XML
-        in: formData
-        name: output
-        required: false
-        type: string
-        example: string
-      - $ref: '#/parameters/f.callback'
-      - $ref: '#/parameters/f.search_term'
-      - $ref: '#/parameters/f.search_code'
+      - $ref: '#/components/parameters/f.callback'
+      - $ref: '#/components/parameters/f.search_term'
+      - $ref: '#/components/parameters/f.search_code'
       responses:
         '200':
           description: Returns an array of water polluntants containing search term or search code. If search term or search code not provided, returns all values.
-          schema:
-            description: Root Object
-            properties:
-              Results:
-                $ref: '#/definitions/rlup24'
-            required:
-            - Results
-            type: object
-            xml:
-              name: Root
+          content:
+            application/json:
+              schema:
+                description: Root Object
+                properties:
+                  Results:
+                    $ref: '#/components/schemas/rlup24'
+                required:
+                - Results
+                type: object
+                xml:
+                  name: Root
+            application/xml:
+              schema:
+                description: Root Object
+                properties:
+                  Results:
+                    $ref: '#/components/schemas/rlup24'
+                required:
+                - Results
+                type: object
+                xml:
+                  name: Root
       summary: ECHO CWA Pollutants Lookup Service
       tags:
       - Lookups
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                output:
+                  type: string
+                  enum:
+                  - JSONP
+                  - JSON
+                  - XML
+                  description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+    servers:
+    - url: https://echodata.epa.gov/echo
   /rest_lookups.federal_agencies:
     get:
       description: Look up Federal Agency Code
       parameters:
       - description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
-        enum:
-        - JSONP
-        - JSON
-        - XML
         in: query
         name: output
         required: false
-        type: string
         example: string
-      - $ref: '#/parameters/q.callback'
-      - $ref: '#/parameters/q.search_term'
-      - $ref: '#/parameters/q.search_code'
+        schema:
+          type: string
+          enum:
+          - JSONP
+          - JSON
+          - XML
+      - $ref: '#/components/parameters/q.callback'
+      - $ref: '#/components/parameters/q.search_term'
+      - $ref: '#/components/parameters/q.search_code'
       responses:
         '200':
           description: Returns an array of federal agency codes and their descriptions.
-          schema:
-            description: Root Object
-            properties:
-              Results:
-                $ref: '#/definitions/rlup54'
-            required:
-            - Results
-            type: object
-            xml:
-              name: Root
+          content:
+            application/json:
+              schema:
+                description: Root Object
+                properties:
+                  Results:
+                    $ref: '#/components/schemas/rlup54'
+                required:
+                - Results
+                type: object
+                xml:
+                  name: Root
+            application/xml:
+              schema:
+                description: Root Object
+                properties:
+                  Results:
+                    $ref: '#/components/schemas/rlup54'
+                required:
+                - Results
+                type: object
+                xml:
+                  name: Root
       summary: ECHO Federal Agency Lookup Service
       tags:
       - Lookups
@@ -359,68 +492,100 @@ paths:
     post:
       description: Look up Federal Agency Code
       parameters:
-      - description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
-        enum:
-        - JSONP
-        - JSON
-        - XML
-        in: formData
-        name: output
-        required: false
-        type: string
-        example: string
-      - $ref: '#/parameters/f.callback'
-      - $ref: '#/parameters/f.search_term'
-      - $ref: '#/parameters/f.search_code'
+      - $ref: '#/components/parameters/f.callback'
+      - $ref: '#/components/parameters/f.search_term'
+      - $ref: '#/components/parameters/f.search_code'
       responses:
         '200':
           description: Returns an array of federal agency codes and their descriptions.
-          schema:
-            description: Root Object
-            properties:
-              Results:
-                $ref: '#/definitions/rlup54'
-            required:
-            - Results
-            type: object
-            xml:
-              name: Root
+          content:
+            application/json:
+              schema:
+                description: Root Object
+                properties:
+                  Results:
+                    $ref: '#/components/schemas/rlup54'
+                required:
+                - Results
+                type: object
+                xml:
+                  name: Root
+            application/xml:
+              schema:
+                description: Root Object
+                properties:
+                  Results:
+                    $ref: '#/components/schemas/rlup54'
+                required:
+                - Results
+                type: object
+                xml:
+                  name: Root
       summary: ECHO Federal Agency Lookup Service
       tags:
       - Lookups
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                output:
+                  type: string
+                  enum:
+                  - JSONP
+                  - JSON
+                  - XML
+                  description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+    servers:
+    - url: https://echodata.epa.gov/echo
   /rest_lookups.icis_inspection_types:
     get:
       description: Returns the ICIS NPDES Compliance Monitoring Type Code and Description.
       parameters:
       - description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
-        enum:
-        - JSONP
-        - JSON
-        - XML
         in: query
         name: output
         required: false
-        type: string
         example: string
-      - $ref: '#/parameters/q.callback'
-      - $ref: '#/parameters/q.search_term'
-      - $ref: '#/parameters/q.search_code'
+        schema:
+          type: string
+          enum:
+          - JSONP
+          - JSON
+          - XML
+      - $ref: '#/components/parameters/q.callback'
+      - $ref: '#/components/parameters/q.search_term'
+      - $ref: '#/components/parameters/q.search_code'
       responses:
         '200':
           description: Returns an array of icis_inspection_types codes and their description. If search term or search code is  not provided, all values are returned.
-          schema:
-            description: Root Object
-            properties:
-              Results:
-                $ref: '#/definitions/rlup58'
-            required:
-            - Results
-            type: object
-            xml:
-              name: Root
+          content:
+            application/json:
+              schema:
+                description: Root Object
+                properties:
+                  Results:
+                    $ref: '#/components/schemas/rlup58'
+                required:
+                - Results
+                type: object
+                xml:
+                  name: Root
+            application/xml:
+              schema:
+                description: Root Object
+                properties:
+                  Results:
+                    $ref: '#/components/schemas/rlup58'
+                required:
+                - Results
+                type: object
+                xml:
+                  name: Root
       summary: ECHO ICIS NPDES Inspection Types Lookup Service
       tags:
       - Lookups
@@ -430,67 +595,99 @@ paths:
     post:
       description: Returns the ICIS NPDES Compliance Monitoring Type Code and Description.
       parameters:
-      - description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
-        enum:
-        - JSONP
-        - JSON
-        - XML
-        in: formData
-        name: output
-        required: false
-        type: string
-        example: string
-      - $ref: '#/parameters/f.callback'
-      - $ref: '#/parameters/f.search_term'
-      - $ref: '#/parameters/f.search_code'
+      - $ref: '#/components/parameters/f.callback'
+      - $ref: '#/components/parameters/f.search_term'
+      - $ref: '#/components/parameters/f.search_code'
       responses:
         '200':
           description: Returns an array of icis_inspection_types codes and their description. If search term or search code is  not provided, all values are returned.
-          schema:
-            description: Root Object
-            properties:
-              Results:
-                $ref: '#/definitions/rlup58'
-            required:
-            - Results
-            type: object
-            xml:
-              name: Root
+          content:
+            application/json:
+              schema:
+                description: Root Object
+                properties:
+                  Results:
+                    $ref: '#/components/schemas/rlup58'
+                required:
+                - Results
+                type: object
+                xml:
+                  name: Root
+            application/xml:
+              schema:
+                description: Root Object
+                properties:
+                  Results:
+                    $ref: '#/components/schemas/rlup58'
+                required:
+                - Results
+                type: object
+                xml:
+                  name: Root
       summary: ECHO ICIS NPDES Inspection Types Lookup Service
       tags:
       - Lookups
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                output:
+                  type: string
+                  enum:
+                  - JSONP
+                  - JSON
+                  - XML
+                  description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+    servers:
+    - url: https://echodata.epa.gov/echo
   /rest_lookups.naics_codes:
     get:
       parameters:
       - description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
-        enum:
-        - JSONP
-        - JSON
-        - XML
         in: query
         name: output
         required: false
-        type: string
         example: string
-      - $ref: '#/parameters/q.callback'
-      - $ref: '#/parameters/q.search_term'
-      - $ref: '#/parameters/q.search_code'
+        schema:
+          type: string
+          enum:
+          - JSONP
+          - JSON
+          - XML
+      - $ref: '#/components/parameters/q.callback'
+      - $ref: '#/components/parameters/q.search_term'
+      - $ref: '#/components/parameters/q.search_code'
       responses:
         '200':
           description: Returns an array of NAICS codes and descriptions based on search term or search code. If search term or search code not provided, returns all values.
-          schema:
-            description: Root Object
-            properties:
-              Results:
-                $ref: '#/definitions/rlup61'
-            required:
-            - Results
-            type: object
-            xml:
-              name: Root
+          content:
+            application/json:
+              schema:
+                description: Root Object
+                properties:
+                  Results:
+                    $ref: '#/components/schemas/rlup61'
+                required:
+                - Results
+                type: object
+                xml:
+                  name: Root
+            application/xml:
+              schema:
+                description: Root Object
+                properties:
+                  Results:
+                    $ref: '#/components/schemas/rlup61'
+                required:
+                - Results
+                type: object
+                xml:
+                  name: Root
       summary: ECHO NAICS Codes Lookup Service
       tags:
       - Lookups
@@ -499,67 +696,99 @@ paths:
         dispatcher: FALLBACK
     post:
       parameters:
-      - description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
-        enum:
-        - JSONP
-        - JSON
-        - XML
-        in: formData
-        name: output
-        required: false
-        type: string
-        example: string
-      - $ref: '#/parameters/f.callback'
-      - $ref: '#/parameters/f.search_term'
-      - $ref: '#/parameters/f.search_code'
+      - $ref: '#/components/parameters/f.callback'
+      - $ref: '#/components/parameters/f.search_term'
+      - $ref: '#/components/parameters/f.search_code'
       responses:
         '200':
           description: Returns an array of NAICS codes and descriptions based on search term or search code. If search term or search code not provided, returns all values.
-          schema:
-            description: Root Object
-            properties:
-              Results:
-                $ref: '#/definitions/rlup61'
-            required:
-            - Results
-            type: object
-            xml:
-              name: Root
+          content:
+            application/json:
+              schema:
+                description: Root Object
+                properties:
+                  Results:
+                    $ref: '#/components/schemas/rlup61'
+                required:
+                - Results
+                type: object
+                xml:
+                  name: Root
+            application/xml:
+              schema:
+                description: Root Object
+                properties:
+                  Results:
+                    $ref: '#/components/schemas/rlup61'
+                required:
+                - Results
+                type: object
+                xml:
+                  name: Root
       summary: ECHO NAICS Codes Lookup Service
       tags:
       - Lookups
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                output:
+                  type: string
+                  enum:
+                  - JSONP
+                  - JSON
+                  - XML
+                  description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+    servers:
+    - url: https://echodata.epa.gov/echo
   /rest_lookups.npdes_parameters:
     get:
       description: ICIS Limit Parameter Code and Name lookup based on the supply of a partial parameter name. (NPDES = National Pollutant Discharge Elimination System)
       parameters:
       - description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
-        enum:
-        - JSONP
-        - JSON
-        - XML
         in: query
         name: output
         required: false
-        type: string
         example: string
-      - $ref: '#/parameters/q.callback'
-      - $ref: '#/parameters/q.search_term'
+        schema:
+          type: string
+          enum:
+          - JSONP
+          - JSON
+          - XML
+      - $ref: '#/components/parameters/q.callback'
+      - $ref: '#/components/parameters/q.search_term'
       responses:
         '200':
           description: Returns an array of NPDES Parameter Codes and their description that meet the search term. If the search term is not provided, returns all values.
-          schema:
-            description: Root Object
-            properties:
-              Results:
-                $ref: '#/definitions/rlup65'
-            required:
-            - Results
-            type: object
-            xml:
-              name: Root
+          content:
+            application/json:
+              schema:
+                description: Root Object
+                properties:
+                  Results:
+                    $ref: '#/components/schemas/rlup65'
+                required:
+                - Results
+                type: object
+                xml:
+                  name: Root
+            application/xml:
+              schema:
+                description: Root Object
+                properties:
+                  Results:
+                    $ref: '#/components/schemas/rlup65'
+                required:
+                - Results
+                type: object
+                xml:
+                  name: Root
       summary: ECHO NPDES Parameters Lookup Service
       tags:
       - Lookups
@@ -569,67 +798,99 @@ paths:
     post:
       description: ICIS Limit Parameter Code and Name lookup based on the supply of a partial parameter name. (NPDES = National Pollutant Discharge Elimination System)
       parameters:
-      - description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
-        enum:
-        - JSONP
-        - JSON
-        - XML
-        in: formData
-        name: output
-        required: false
-        type: string
-        example: string
-      - $ref: '#/parameters/f.callback'
-      - $ref: '#/parameters/f.search_term'
+      - $ref: '#/components/parameters/f.callback'
+      - $ref: '#/components/parameters/f.search_term'
       responses:
         '200':
           description: Returns an array of NPDES Parameter Codes and their description that meet the search term. If the search term is not provided, returns all values.
-          schema:
-            description: Root Object
-            properties:
-              Results:
-                $ref: '#/definitions/rlup65'
-            required:
-            - Results
-            type: object
-            xml:
-              name: Root
+          content:
+            application/json:
+              schema:
+                description: Root Object
+                properties:
+                  Results:
+                    $ref: '#/components/schemas/rlup65'
+                required:
+                - Results
+                type: object
+                xml:
+                  name: Root
+            application/xml:
+              schema:
+                description: Root Object
+                properties:
+                  Results:
+                    $ref: '#/components/schemas/rlup65'
+                required:
+                - Results
+                type: object
+                xml:
+                  name: Root
       summary: ECHO NPDES Parameters Lookup Service
       tags:
       - Lookups
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                output:
+                  type: string
+                  enum:
+                  - JSONP
+                  - JSON
+                  - XML
+                  description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+    servers:
+    - url: https://echodata.epa.gov/echo
   /rest_lookups.wbd_code_lu:
     get:
       description: USGS Watershed Boundary Dataset (WBD) Name lookup based on a supplied WBD Code and Watershed Level
       parameters:
       - description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
-        enum:
-        - JSONP
-        - JSON
-        - XML
         in: query
         name: output
         required: false
-        type: string
         example: string
-      - $ref: '#/parameters/q.callback'
-      - $ref: '#/parameters/q.wbd_code'
-      - $ref: '#/parameters/q.wbd_level'
+        schema:
+          type: string
+          enum:
+          - JSONP
+          - JSON
+          - XML
+      - $ref: '#/components/parameters/q.callback'
+      - $ref: '#/components/parameters/q.wbd_code'
+      - $ref: '#/components/parameters/q.wbd_level'
       responses:
         '200':
           description: Returns an array of WBD names and codes based on the WBD code and WBD level provided. If WBD Code not provided, returns all values. ValueCode is the WBD Code containing the number of digits provided in the WBD level.
-          schema:
-            description: Root Object
-            properties:
-              Results:
-                $ref: '#/definitions/rlup75'
-            required:
-            - Results
-            type: object
-            xml:
-              name: Root
+          content:
+            application/json:
+              schema:
+                description: Root Object
+                properties:
+                  Results:
+                    $ref: '#/components/schemas/rlup75'
+                required:
+                - Results
+                type: object
+                xml:
+                  name: Root
+            application/xml:
+              schema:
+                description: Root Object
+                properties:
+                  Results:
+                    $ref: '#/components/schemas/rlup75'
+                required:
+                - Results
+                type: object
+                xml:
+                  name: Root
       summary: ECHO WBD Code Lookup Service
       tags:
       - Lookups
@@ -639,68 +900,100 @@ paths:
     post:
       description: USGS Watershed Boundary Dataset (WBD) Name lookup based on a supplied WBD Code and Watershed Level
       parameters:
-      - description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
-        enum:
-        - JSONP
-        - JSON
-        - XML
-        in: formData
-        name: output
-        required: false
-        type: string
-        example: string
-      - $ref: '#/parameters/f.callback'
-      - $ref: '#/parameters/f.wbd_code'
-      - $ref: '#/parameters/f.wbd_level'
+      - $ref: '#/components/parameters/f.callback'
+      - $ref: '#/components/parameters/f.wbd_code'
+      - $ref: '#/components/parameters/f.wbd_level'
       responses:
         '200':
           description: Returns an array of WBD names and codes based on the WBD code and WBD level provided. If WBD Code not provided, returns all values. ValueCode is the WBD Code containing the number of digits provided in the WBD level.
-          schema:
-            description: Root Object
-            properties:
-              Results:
-                $ref: '#/definitions/rlup75'
-            required:
-            - Results
-            type: object
-            xml:
-              name: Root
+          content:
+            application/json:
+              schema:
+                description: Root Object
+                properties:
+                  Results:
+                    $ref: '#/components/schemas/rlup75'
+                required:
+                - Results
+                type: object
+                xml:
+                  name: Root
+            application/xml:
+              schema:
+                description: Root Object
+                properties:
+                  Results:
+                    $ref: '#/components/schemas/rlup75'
+                required:
+                - Results
+                type: object
+                xml:
+                  name: Root
       summary: ECHO WBD Code Lookup Service
       tags:
       - Lookups
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                output:
+                  type: string
+                  enum:
+                  - JSONP
+                  - JSON
+                  - XML
+                  description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+    servers:
+    - url: https://echodata.epa.gov/echo
   /rest_lookups.wbd_name_lu:
     get:
       description: USGS Watershed Boundary Dataset (WBD) Code lookup based on a supplied WBD Name and Watershed Level
       parameters:
       - description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
-        enum:
-        - JSONP
-        - JSON
-        - XML
         in: query
         name: output
         required: false
-        type: string
         example: string
-      - $ref: '#/parameters/q.callback'
-      - $ref: '#/parameters/q.wbd_name'
-      - $ref: '#/parameters/q.wbd_level'
+        schema:
+          type: string
+          enum:
+          - JSONP
+          - JSON
+          - XML
+      - $ref: '#/components/parameters/q.callback'
+      - $ref: '#/components/parameters/q.wbd_name'
+      - $ref: '#/components/parameters/q.wbd_level'
       responses:
         '200':
           description: Returns an array of WBD names and codes based on the WBD name and WBD level provided. ValueCode is the WBD Code containing the number of digits provided in the WBD level.
-          schema:
-            description: Root Object
-            properties:
-              Results:
-                $ref: '#/definitions/rlup77'
-            required:
-            - Results
-            type: object
-            xml:
-              name: Root
+          content:
+            application/json:
+              schema:
+                description: Root Object
+                properties:
+                  Results:
+                    $ref: '#/components/schemas/rlup77'
+                required:
+                - Results
+                type: object
+                xml:
+                  name: Root
+            application/xml:
+              schema:
+                description: Root Object
+                properties:
+                  Results:
+                    $ref: '#/components/schemas/rlup77'
+                required:
+                - Results
+                type: object
+                xml:
+                  name: Root
       summary: ECHO WBD Name Lookup Service
       tags:
       - Lookups
@@ -710,384 +1003,446 @@ paths:
     post:
       description: USGS Watershed Boundary Dataset (WBD) Code lookup based on a supplied WBD Name and Watershed Level
       parameters:
-      - description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
-        enum:
-        - JSONP
-        - JSON
-        - XML
-        in: formData
-        name: output
-        required: false
-        type: string
-        example: string
-      - $ref: '#/parameters/f.callback'
-      - $ref: '#/parameters/f.wbd_name'
-      - $ref: '#/parameters/f.wbd_level'
+      - $ref: '#/components/parameters/f.callback'
+      - $ref: '#/components/parameters/f.wbd_name'
+      - $ref: '#/components/parameters/f.wbd_level'
       responses:
         '200':
           description: Returns an array of WBD names and codes based on the WBD name and WBD level provided. ValueCode is the WBD Code containing the number of digits provided in the WBD level.
-          schema:
-            description: Root Object
-            properties:
-              Results:
-                $ref: '#/definitions/rlup77'
-            required:
-            - Results
-            type: object
-            xml:
-              name: Root
+          content:
+            application/json:
+              schema:
+                description: Root Object
+                properties:
+                  Results:
+                    $ref: '#/components/schemas/rlup77'
+                required:
+                - Results
+                type: object
+                xml:
+                  name: Root
+            application/xml:
+              schema:
+                description: Root Object
+                properties:
+                  Results:
+                    $ref: '#/components/schemas/rlup77'
+                required:
+                - Results
+                type: object
+                xml:
+                  name: Root
       summary: ECHO WBD Name Lookup Service
       tags:
       - Lookups
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                output:
+                  type: string
+                  enum:
+                  - JSONP
+                  - JSON
+                  - XML
+                  description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+    servers:
+    - url: https://echodata.epa.gov/echo
 components:
-  securitySchemes:
-    emailKey:
-      type: apiKey
+  parameters:
+    f.status_flag:
+      in: formData
+      name: status_flag
+      required: false
+      type: string
+    f.statute_code:
+      in: formData
+      name: statute_code
+      required: false
+      type: string
+    q.statute_code:
       in: query
-      name: key
-      description: 'AQS requires `email` and `key` query parameters on every request. Register at
-
-        `/signup?email=YOUR_EMAIL` to receive a key by email.
-
-        '
-definitions:
-  rlup24:
-    description: Results Object
-    properties:
-      LuValues:
-        items:
-          $ref: '#/definitions/rlup01'
-        type: array
-        xml:
-          name: LuValues
-          wrapped: true
-        example:
-        - string
-      Message:
-        description: Field to record messages (typically performance-related) about packet processing
-        example: Success
-        title: Message
+      name: statute_code
+      required: false
+      schema:
         type: string
-    required:
-    - Message
-    type: object
-  rlup61:
-    description: Results Object
-    properties:
-      LuValues:
-        items:
-          $ref: '#/definitions/rlup01'
-        type: array
-        xml:
-          name: LuValues
-          wrapped: true
-        example:
-        - string
-      Message:
-        description: Field to record messages (typically performance-related) about packet processing
-        example: Success
-        title: Message
+    f.sort_order:
+      in: formData
+      name: sort_order
+      required: false
+      type: number
+    q.status_flag:
+      in: query
+      name: status_flag
+      required: false
+      schema:
         type: string
-    required:
-    - Message
-    type: object
-  rlup77:
-    description: Results Object
-    properties:
-      LuValues:
-        items:
-          $ref: '#/definitions/rlup01'
-        type: array
-        xml:
-          name: LuValues
-          wrapped: true
-        example:
-        - string
-      Message:
-        description: Field to record messages (typically performance-related) about packet processing
-        example: Success
-        title: Message
+    q.callback:
+      description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
+      in: query
+      name: callback
+      required: false
+      schema:
         type: string
-    required:
-    - Message
-    type: object
-  rlup20:
-    description: Results Object
-    properties:
-      LuValues:
-        items:
-          $ref: '#/definitions/rlup01'
-        type: array
-        xml:
-          name: LuValues
-          wrapped: true
-        example:
-        - string
-      Message:
-        description: Field to record messages (typically performance-related) about packet processing
-        example: Success
-        title: Message
+    q.sort_order:
+      in: query
+      name: sort_order
+      required: false
+      schema:
+        type: number
+    f.search_code:
+      description: Enter a partial or complete code value.
+      in: formData
+      name: search_code
+      required: false
+      type: string
+    f.callback:
+      description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
+      in: formData
+      name: callback
+      required: false
+      type: string
+    q.search_term:
+      description: Enter a partial or complete search phrase or word.
+      in: query
+      name: search_term
+      required: false
+      schema:
         type: string
-    required:
-    - Message
-    type: object
-  rlup75:
-    description: Results Object
-    properties:
-      LuValues:
-        items:
-          $ref: '#/definitions/rlup01'
-        type: array
-        xml:
-          name: LuValues
-          wrapped: true
-        example:
-        - string
-      Message:
-        description: Field to record messages (typically performance-related) about packet processing
-        example: Success
-        title: Message
+    f.search_term:
+      description: Enter a partial or complete search phrase or word.
+      in: formData
+      name: search_term
+      required: false
+      type: string
+    q.search_code:
+      description: Enter a partial or complete code value.
+      in: query
+      name: search_code
+      required: false
+      schema:
         type: string
-    required:
-    - Message
-    type: object
-  rlup23:
-    description: Results Object
-    properties:
-      LuValues:
-        items:
-          $ref: '#/definitions/rlup01'
-        type: array
-        xml:
-          name: LuValues
-          wrapped: true
-        example:
-        - string
-      Message:
-        description: Field to record messages (typically performance-related) about packet processing
-        example: Success
-        title: Message
+    q.wbd_level:
+      description: The number of digits of the watershed code [Hydrologic Unit Code (HUC)] returned in the ValueCode. Must be an even number between 4 and 12.
+      in: query
+      name: wbd_level
+      required: false
+      schema:
         type: string
-    required:
-    - Message
-    type: object
-  rlup65:
-    description: Results Object
-    properties:
-      LuValues:
-        items:
-          $ref: '#/definitions/rlup01'
-        type: array
-        xml:
-          name: LuValues
-          wrapped: true
-        example:
-        - string
-      Message:
-        description: Field to record messages (typically performance-related) about packet processing
-        example: Success
-        title: Message
+    f.wbd_level:
+      description: The number of digits of the watershed code [Hydrologic Unit Code (HUC)] returned in the ValueCode. Must be an even number between 4 and 12.
+      in: formData
+      name: wbd_level
+      required: false
+      type: string
+    q.wbd_code:
+      description: Two-digit watershed code [Hydrologic Unit Code (HUC)].
+      in: query
+      name: wbd_code
+      required: false
+      schema:
         type: string
-    required:
-    - Message
-    type: object
-  rlk51_Results:
-    description: Results Object
-    properties:
-      LuValues:
-        items:
-          $ref: '#/definitions/rlk00_LuValues'
-        type: array
-        xml:
-          name: LuValues
-          wrapped: true
-        example:
-        - string
-      Message:
-        description: Field to record messages (typically performance-related) about packet processing
-        example: Success
-        title: Message
+    f.wbd_code:
+      description: Two-digit watershed code [Hydrologic Unit Code (HUC)].
+      in: formData
+      name: wbd_code
+      required: false
+      type: string
+    f.wbd_name:
+      description: Watershed Name Filter.
+      in: formData
+      name: wbd_name
+      required: true
+      type: string
+    q.wbd_name:
+      description: Watershed Name Filter.
+      in: query
+      name: wbd_name
+      required: true
+      schema:
         type: string
-    required:
-    - Message
-    type: object
-  rlup54:
-    description: Results Object
-    properties:
-      LuValues:
-        items:
-          $ref: '#/definitions/rlup01'
-        type: array
-        xml:
-          name: LuValues
-          wrapped: true
-        example:
-        - string
-      Message:
-        description: Field to record messages (typically performance-related) about packet processing
-        example: Success
-        title: Message
+    f.output:
+      description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+      enum:
+      - JSONP
+      - JSON
+      - XML
+      in: formData
+      name: output
+      required: false
+      type: string
+    q.output:
+      description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+      in: query
+      name: output
+      required: false
+      schema:
         type: string
-    required:
-    - Message
-    type: object
-  rlup01:
-    description: Lookup Values
-    properties:
-      ValueCode:
-        example: '77034'
-        title: Value Code
-        type: string
-      ValueDescription:
-        example: 1-Butanol
-        title: Value Description
-        type: string
-    required:
-    - ValueCode
-    - ValueDescription
-    type: object
-    xml:
-      name: LuValue
-  rlup58:
-    description: Results Object
-    properties:
-      LuValues:
-        items:
-          $ref: '#/definitions/rlup01'
-        type: array
-        xml:
-          name: LuValues
-          wrapped: true
-        example:
-        - string
-      Message:
-        description: Field to record messages (typically performance-related) about packet processing
-        example: Success
-        title: Message
-        type: string
-    required:
-    - Message
-    type: object
-  rlk00_LuValues:
-    description: Lookup Values
-    properties:
-      ValueCode:
-        example: '77034'
-        title: Value Code
-        type: string
-      ValueDescription:
-        example: 1-Butanol
-        title: Value Description
-        type: string
-    required:
-    - ValueCode
-    - ValueDescription
-    type: object
-    xml:
-      name: LuValue
-parameters:
-  f.wbd_level:
-    description: The number of digits of the watershed code [Hydrologic Unit Code (HUC)] returned in the ValueCode. Must be an even number between 4 and 12.
-    in: formData
-    name: wbd_level
-    required: false
-    type: string
-  f.search_term:
-    description: Enter a partial or complete search phrase or word.
-    in: formData
-    name: search_term
-    required: false
-    type: string
-  q.wbd_level:
-    description: The number of digits of the watershed code [Hydrologic Unit Code (HUC)] returned in the ValueCode. Must be an even number between 4 and 12.
-    in: query
-    name: wbd_level
-    required: false
-    type: string
-  f.callback:
-    description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
-    in: formData
-    name: callback
-    required: false
-    type: string
-  f.wbd_code:
-    description: Two-digit watershed code [Hydrologic Unit Code (HUC)].
-    in: formData
-    name: wbd_code
-    required: false
-    type: string
-  f.statute_code:
-    in: formData
-    name: statute_code
-    required: false
-    type: string
-  q.status_flag:
-    in: query
-    name: status_flag
-    required: false
-    type: string
-  q.callback:
-    description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
-    in: query
-    name: callback
-    required: false
-    type: string
-  q.search_term:
-    description: Enter a partial or complete search phrase or word.
-    in: query
-    name: search_term
-    required: false
-    type: string
-  q.search_code:
-    description: Enter a partial or complete code value.
-    in: query
-    name: search_code
-    required: false
-    type: string
-  q.wbd_name:
-    description: Watershed Name Filter.
-    in: query
-    name: wbd_name
-    required: true
-    type: string
-  f.wbd_name:
-    description: Watershed Name Filter.
-    in: formData
-    name: wbd_name
-    required: true
-    type: string
-  f.search_code:
-    description: Enter a partial or complete code value.
-    in: formData
-    name: search_code
-    required: false
-    type: string
-  q.statute_code:
-    in: query
-    name: statute_code
-    required: false
-    type: string
-  f.status_flag:
-    in: formData
-    name: status_flag
-    required: false
-    type: string
-  q.wbd_code:
-    description: Two-digit watershed code [Hydrologic Unit Code (HUC)].
-    in: query
-    name: wbd_code
-    required: false
-    type: string
-  f.sort_order:
-    in: formData
-    name: sort_order
-    required: false
-    type: number
-  q.sort_order:
-    in: query
-    name: sort_order
-    required: false
-    type: number
+        enum:
+        - JSONP
+        - JSON
+        - XML
+  schemas:
+    rlk00_LuValues:
+      description: Lookup Values
+      properties:
+        ValueCode:
+          example: '77034'
+          title: Value Code
+          type: string
+        ValueDescription:
+          example: 1-Butanol
+          title: Value Description
+          type: string
+      required:
+      - ValueCode
+      - ValueDescription
+      type: object
+      xml:
+        name: LuValue
+    rlk51_Results:
+      description: Results Object
+      properties:
+        LuValues:
+          items:
+            $ref: '#/components/schemas/rlk00_LuValues'
+          type: array
+          xml:
+            name: LuValues
+            wrapped: true
+          example:
+          - string
+        Message:
+          description: Field to record messages (typically performance-related) about packet processing
+          example: Success
+          title: Message
+          type: string
+      required:
+      - Message
+      type: object
+    rlup59:
+      description: Results Object
+      properties:
+        LuValues:
+          items:
+            $ref: '#/components/schemas/rlup01'
+          type: array
+          xml:
+            name: LuValues
+            wrapped: true
+          example:
+          - string
+        Message:
+          description: Field to record messages (typically performance-related) about packet processing
+          example: Success
+          title: Message
+          type: string
+      required:
+      - Message
+      type: object
+    rlup75:
+      description: Results Object
+      properties:
+        LuValues:
+          items:
+            $ref: '#/components/schemas/rlup01'
+          type: array
+          xml:
+            name: LuValues
+            wrapped: true
+          example:
+          - string
+        Message:
+          description: Field to record messages (typically performance-related) about packet processing
+          example: Success
+          title: Message
+          type: string
+      required:
+      - Message
+      type: object
+    rlup01:
+      description: Lookup Values
+      properties:
+        ValueCode:
+          example: '77034'
+          title: Value Code
+          type: string
+        ValueDescription:
+          example: 1-Butanol
+          title: Value Description
+          type: string
+      required:
+      - ValueCode
+      - ValueDescription
+      type: object
+      xml:
+        name: LuValue
+    rlup61:
+      description: Results Object
+      properties:
+        LuValues:
+          items:
+            $ref: '#/components/schemas/rlup01'
+          type: array
+          xml:
+            name: LuValues
+            wrapped: true
+          example:
+          - string
+        Message:
+          description: Field to record messages (typically performance-related) about packet processing
+          example: Success
+          title: Message
+          type: string
+      required:
+      - Message
+      type: object
+    rlup54:
+      description: Results Object
+      properties:
+        LuValues:
+          items:
+            $ref: '#/components/schemas/rlup01'
+          type: array
+          xml:
+            name: LuValues
+            wrapped: true
+          example:
+          - string
+        Message:
+          description: Field to record messages (typically performance-related) about packet processing
+          example: Success
+          title: Message
+          type: string
+      required:
+      - Message
+      type: object
+    rlup65:
+      description: Results Object
+      properties:
+        LuValues:
+          items:
+            $ref: '#/components/schemas/rlup01'
+          type: array
+          xml:
+            name: LuValues
+            wrapped: true
+          example:
+          - string
+        Message:
+          description: Field to record messages (typically performance-related) about packet processing
+          example: Success
+          title: Message
+          type: string
+      required:
+      - Message
+      type: object
+    rlup23:
+      description: Results Object
+      properties:
+        LuValues:
+          items:
+            $ref: '#/components/schemas/rlup01'
+          type: array
+          xml:
+            name: LuValues
+            wrapped: true
+          example:
+          - string
+        Message:
+          description: Field to record messages (typically performance-related) about packet processing
+          example: Success
+          title: Message
+          type: string
+      required:
+      - Message
+      type: object
+    rlup58:
+      description: Results Object
+      properties:
+        LuValues:
+          items:
+            $ref: '#/components/schemas/rlup01'
+          type: array
+          xml:
+            name: LuValues
+            wrapped: true
+          example:
+          - string
+        Message:
+          description: Field to record messages (typically performance-related) about packet processing
+          example: Success
+          title: Message
+          type: string
+      required:
+      - Message
+      type: object
+    rlup77:
+      description: Results Object
+      properties:
+        LuValues:
+          items:
+            $ref: '#/components/schemas/rlup01'
+          type: array
+          xml:
+            name: LuValues
+            wrapped: true
+          example:
+          - string
+        Message:
+          description: Field to record messages (typically performance-related) about packet processing
+          example: Success
+          title: Message
+          type: string
+      required:
+      - Message
+      type: object
+    rlup20:
+      description: Results Object
+      properties:
+        LuValues:
+          items:
+            $ref: '#/components/schemas/rlup01'
+          type: array
+          xml:
+            name: LuValues
+            wrapped: true
+          example:
+          - string
+        Message:
+          description: Field to record messages (typically performance-related) about packet processing
+          example: Success
+          title: Message
+          type: string
+      required:
+      - Message
+      type: object
+    rlup24:
+      description: Results Object
+      properties:
+        LuValues:
+          items:
+            $ref: '#/components/schemas/rlup01'
+          type: array
+          xml:
+            name: LuValues
+            wrapped: true
+          example:
+          - string
+        Message:
+          description: Field to record messages (typically performance-related) about packet processing
+          example: Success
+          title: Message
+          type: string
+      required:
+      - Message
+      type: object
+x-refined-from:
+- echo-case-openapi.json
+- echo-cwa-openapi.json
+- echo-effluent-openapi.json

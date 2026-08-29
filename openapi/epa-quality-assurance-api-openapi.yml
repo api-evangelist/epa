@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: EPA Air Quality System (AQS) Account Type Codes Quality Assurance API
+  title: EPA Air Quality System (AQS) Quality Assurance API
   description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
 
     sample data collected by state, local, tribal and federal air pollution control agencies
@@ -404,30 +404,29 @@ paths:
         dispatcher: FALLBACK
 components:
   parameters:
-    State:
-      name: state
+    Email:
+      name: email
       in: query
       required: true
       schema:
         type: string
-        pattern: ^\d{2}$
-      description: 2-digit state FIPS code.
-    Bdate:
-      name: bdate
+        format: email
+      description: Registered email address.
+    Edate:
+      name: edate
       in: query
       required: true
       schema:
         type: string
         pattern: ^\d{8}$
-      description: Begin date (YYYYMMDD).
-    County:
-      name: county
+      description: End date (YYYYMMDD). Must be in the same year as bdate for most services.
+    Key:
+      name: key
       in: query
       required: true
       schema:
         type: string
-        pattern: ^\d{3}$
-      description: 3-digit county code.
+      description: Account-specific access key.
     Pqao:
       name: pqao
       in: query
@@ -442,21 +441,22 @@ components:
       schema:
         type: string
       description: Monitoring Agency code.
-    Email:
-      name: email
+    County:
+      name: county
       in: query
       required: true
       schema:
         type: string
-        format: email
-      description: Registered email address.
-    Key:
-      name: key
+        pattern: ^\d{3}$
+      description: 3-digit county code.
+    State:
+      name: state
       in: query
       required: true
       schema:
         type: string
-      description: Account-specific access key.
+        pattern: ^\d{2}$
+      description: 2-digit state FIPS code.
     Param:
       name: param
       in: query
@@ -464,6 +464,14 @@ components:
       schema:
         type: string
       description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
+    Bdate:
+      name: bdate
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{8}$
+      description: Begin date (YYYYMMDD).
     Site:
       name: site
       in: query
@@ -472,14 +480,6 @@ components:
         type: string
         pattern: ^\d{4}$
       description: 4-digit site code.
-    Edate:
-      name: edate
-      in: query
-      required: true
-      schema:
-        type: string
-        pattern: ^\d{8}$
-      description: End date (YYYYMMDD). Must be in the same year as bdate for most services.
   schemas:
     Header:
       type: object

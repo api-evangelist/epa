@@ -1,28 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: EPA Air Quality System (AQS) Account Type Codes Formio API
-  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
-
-    sample data collected by state, local, tribal and federal air pollution control agencies
-
-    from thousands of monitors across the United States. The API exposes monitor metadata,
-
-    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
-
-    '
-  version: '1.0'
-  contact:
-    name: AQS Data Mart Support
-    email: aqsdatamart@epa.gov
-    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  title: epa-csb-server Formio API
+  version: 8.1.0
   license:
-    name: U.S. Government Work / Public Domain
-    url: https://www.usa.gov/government-works
-servers:
-- url: https://aqs.epa.gov/data/api
-  description: Production AQS Data Mart API
-security:
-- emailKey: []
+    name: CC0-1.0
+  description: U.S. EPA CSB Rebate Forms Application
 tags:
 - name: Formio
 paths:
@@ -1570,22 +1552,6 @@ paths:
       - Formio
 components:
   parameters:
-    rebateId:
-      in: path
-      name: rebateId
-      description: The CSB Rebate ID
-      required: true
-      example: '000000'
-      schema:
-        type: string
-    key:
-      in: query
-      name: key
-      description: The S3 object key for the file.
-      required: true
-      example: placeholder-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.png
-      schema:
-        type: string
     formType:
       in: path
       name: formType
@@ -1594,12 +1560,12 @@ components:
       example: frf
       schema:
         type: string
-    comboKey:
+    rebateId:
       in: path
-      name: comboKey
-      description: The SAM.gov entity's UEI/EFTI combo key.
+      name: rebateId
+      description: The CSB Rebate ID
       required: true
-      example: '0000000000000000'
+      example: '000000'
       schema:
         type: string
     bucket:
@@ -1618,6 +1584,37 @@ components:
       example: '000000000000000000000000'
       schema:
         type: string
+    comboKey:
+      in: path
+      name: comboKey
+      description: The SAM.gov entity's UEI/EFTI combo key.
+      required: true
+      example: '0000000000000000'
+      schema:
+        type: string
+    key:
+      in: query
+      name: key
+      description: The S3 object key for the file.
+      required: true
+      example: placeholder-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.png
+      schema:
+        type: string
+  schemas:
+    FormioSchemaAndSubmission:
+      type: object
+      properties:
+        access:
+          type: boolean
+          example: true
+        schema:
+          type:
+          - object
+          - 'null'
+          example: {}
+        submission:
+          type: object
+          example: {}
   responses:
     Unauthorized:
       description: Unauthorized
@@ -1629,27 +1626,3 @@ components:
               message:
                 type: string
                 example: Unauthorized
-  schemas:
-    FormioSchemaAndSubmission:
-      type: object
-      properties:
-        access:
-          type: boolean
-          example: true
-        schema:
-          type: object
-          nullable: true
-          example: {}
-        submission:
-          type: object
-          example: {}
-  securitySchemes:
-    emailKey:
-      type: apiKey
-      in: query
-      name: key
-      description: 'AQS requires `email` and `key` query parameters on every request. Register at
-
-        `/signup?email=YOUR_EMAIL` to receive a key by email.
-
-        '

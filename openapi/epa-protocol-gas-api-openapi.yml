@@ -1,28 +1,11 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: EPA Air Quality System (AQS) Account Type Codes Protocol Gas API
-  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
-
-    sample data collected by state, local, tribal and federal air pollution control agencies
-
-    from thousands of monitors across the United States. The API exposes monitor metadata,
-
-    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
-
-    '
-  version: '1.0'
-  contact:
-    name: AQS Data Mart Support
-    email: aqsdatamart@epa.gov
-    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
-  license:
-    name: U.S. Government Work / Public Domain
-    url: https://www.usa.gov/government-works
+  title: QA Certification Management OpenAPI Specification Protocol Gas API
+  description: QA & Certification management API endpoints for qa test data, qa cert events, and test extension & exemption data
+  version: 'v2.0.80 published: Thu Mar 26 2026'
+  contact: {}
 servers:
-- url: https://aqs.epa.gov/data/api
-  description: Production AQS Data Mart API
-security:
-- emailKey: []
+- url: https://api.epa.gov/easey
 tags:
 - name: Protocol Gas
 paths:
@@ -113,50 +96,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ProtocolGasDTO:
-      type: object
-      properties:
-        gasTypeCode:
-          type: string
-          description: gasTypeCode. ADD TO PROPERTY METADATA
-          example: string
-        id:
-          type: string
-          example: '12345'
-        testSumId:
-          type: string
-          example: '12345'
-        userId:
-          type: string
-          example: '12345'
-        addDate:
-          type: string
-          example: string
-        updateDate:
-          type: string
-          example: string
-        gasLevelCode:
-          type: string
-          example: string
-        cylinderIdentifier:
-          type: string
-          maxLength: 25
-          example: '12345'
-        vendorIdentifier:
-          type: string
-          example: '12345'
-        expirationDate:
-          format: date-time
-          type: string
-          example: '2024-01-15T12:00:00Z'
-      required:
-      - gasTypeCode
-      - id
-      - testSumId
-      - userId
-      - addDate
-      - updateDate
-      - gasLevelCode
     ProtocolGasRecordDTO:
       type: object
       properties:
@@ -201,13 +140,58 @@ components:
       - addDate
       - updateDate
       - gasLevelCode
+    ProtocolGasDTO:
+      type: object
+      properties:
+        gasTypeCode:
+          type: string
+          description: gasTypeCode. ADD TO PROPERTY METADATA
+          example: string
+        id:
+          type: string
+          example: '12345'
+        testSumId:
+          type: string
+          example: '12345'
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+        gasLevelCode:
+          type: string
+          example: string
+        cylinderIdentifier:
+          type: string
+          maxLength: 25
+          example: '12345'
+        vendorIdentifier:
+          type: string
+          example: '12345'
+        expirationDate:
+          format: date-time
+          type: string
+          example: '2024-01-15T12:00:00Z'
+      required:
+      - gasTypeCode
+      - id
+      - testSumId
+      - userId
+      - addDate
+      - updateDate
+      - gasLevelCode
   securitySchemes:
-    emailKey:
+    APIKey:
       type: apiKey
-      in: query
-      name: key
-      description: 'AQS requires `email` and `key` query parameters on every request. Register at
-
-        `/signup?email=YOUR_EMAIL` to receive a key by email.
-
-        '
+      in: header
+      name: x-api-key
+      description: API Key required via "x-api-key" request header!
+    Token:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http
+      description: Authorization "bearer" token required for data modification operations

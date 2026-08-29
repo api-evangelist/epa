@@ -1,28 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: EPA Air Quality System (AQS) Account Type Codes Help API
-  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
-
-    sample data collected by state, local, tribal and federal air pollution control agencies
-
-    from thousands of monitors across the United States. The API exposes monitor metadata,
-
-    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
-
-    '
+  title: Epa Help API
   version: '1.0'
-  contact:
-    name: AQS Data Mart Support
-    email: aqsdatamart@epa.gov
-    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
-  license:
-    name: U.S. Government Work / Public Domain
-    url: https://www.usa.gov/government-works
+  description: 'Operations tagged Help across 2 of this provider''s published API definitions: csb-rebate-openapi.json, elg-search-openapi.json. Each path carries the servers of the definition it was published in.'
 servers:
-- url: https://aqs.epa.gov/data/api
-  description: Production AQS Data Mart API
-security:
-- emailKey: []
+- url: https://owapps-stage.app.cloud.gov/elg
 tags:
 - name: Help
 paths:
@@ -66,18 +48,22 @@ paths:
                 type: object
                 properties:
                   rebateId:
-                    type: string
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
                     example: '000000'
                   schema:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                   formio:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                   bap:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     properties:
                       modified:
                         type: string
@@ -234,35 +220,12 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      security:
+      - basicAuth: []
+    servers:
+    - url: https://owapps-stage.app.cloud.gov/elg
 components:
-  responses:
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              message:
-                type: string
-                example: Unauthorized
   parameters:
-    key:
-      in: query
-      name: key
-      description: The S3 object key for the file.
-      required: true
-      example: placeholder-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.png
-      schema:
-        type: string
-    rebateYear:
-      in: path
-      name: rebateYear
-      description: The Clean School Bus Rebate year (2022, 2023, 2024).
-      required: true
-      example: '2022'
-      schema:
-        type: string
     formType:
       in: path
       name: formType
@@ -271,12 +234,12 @@ components:
       example: frf
       schema:
         type: string
-    formId:
+    rebateYear:
       in: path
-      name: formId
-      description: The Formio form's MongoDB ObjectId.
+      name: rebateYear
+      description: The Clean School Bus Rebate year (2022, 2023, 2024).
       required: true
-      example: '000000000000000000000000'
+      example: '2022'
       schema:
         type: string
     bucket:
@@ -295,6 +258,33 @@ components:
       example: '000000000000000000000000'
       schema:
         type: string
+    formId:
+      in: path
+      name: formId
+      description: The Formio form's MongoDB ObjectId.
+      required: true
+      example: '000000000000000000000000'
+      schema:
+        type: string
+    key:
+      in: query
+      name: key
+      description: The S3 object key for the file.
+      required: true
+      example: placeholder-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.png
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: Unauthorized
   schemas:
     glossary.help:
       type: object
@@ -308,12 +298,9 @@ components:
       required:
       - Dummy
   securitySchemes:
-    emailKey:
-      type: apiKey
-      in: query
-      name: key
-      description: 'AQS requires `email` and `key` query parameters on every request. Register at
-
-        `/signup?email=YOUR_EMAIL` to receive a key by email.
-
-        '
+    basicAuth:
+      type: http
+      scheme: basic
+x-refined-from:
+- csb-rebate-openapi.json
+- elg-search-openapi.json

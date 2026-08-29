@@ -1,28 +1,11 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: EPA Air Quality System (AQS) Account Type Codes Accounts API
-  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
-
-    sample data collected by state, local, tribal and federal air pollution control agencies
-
-    from thousands of monitors across the United States. The API exposes monitor metadata,
-
-    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
-
-    '
+  title: Epa Accounts API
+  contact: {}
   version: '1.0'
-  contact:
-    name: AQS Data Mart Support
-    email: aqsdatamart@epa.gov
-    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
-  license:
-    name: U.S. Government Work / Public Domain
-    url: https://www.usa.gov/government-works
+  description: 'Operations tagged Accounts across 2 of this provider''s published API definitions: cam-account-openapi.json, cam-streaming-openapi.json. Each path carries the servers of the definition it was published in.'
 servers:
-- url: https://aqs.epa.gov/data/api
-  description: Production AQS Data Mart API
-security:
-- emailKey: []
+- url: https://api.epa.gov/easey
 tags:
 - name: Accounts
 paths:
@@ -60,6 +43,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.epa.gov/easey
   /account-mgmt/accounts/attributes:
     get:
       operationId: AccountController_getAllAccountAttributes
@@ -285,6 +270,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.epa.gov/easey
   /account-mgmt/accounts/attributes/applicable:
     get:
       operationId: AccountController_getAllApplicableAccountAttributes
@@ -319,6 +306,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.epa.gov/easey
   /account-mgmt/accounts/owner-operators:
     get:
       operationId: AccountController_getAllOwnerOperators
@@ -353,6 +342,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.epa.gov/easey
   /streaming-services/accounts/attributes:
     get:
       operationId: AccountController_streamAllAccountAttributes
@@ -578,8 +569,24 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.epa.gov/easey
 components:
   schemas:
+    AccountDTO:
+      type: object
+      properties:
+        accountNumber:
+          type: string
+          description: The unique identification number of an account.
+          example: 000003FACLTY
+        accountName:
+          type: string
+          description: The name of the account in which allowances are held.
+          example: Barry
+      required:
+      - accountNumber
+      - accountName
     OwnerOperatorsDTO:
       type: object
       properties:
@@ -594,39 +601,6 @@ components:
       required:
       - ownerOperator
       - ownType
-    ApplicableAccountAttributesDTO:
-      type: object
-      properties:
-        programCode:
-          type: string
-          description: Code for statutory or regulatory based options for tracking and reducing air pollution emissions.
-          example: CAIRNOX
-        facilityId:
-          type: number
-          description: The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the "ORIS code", "ORISPL code", "Facility ID", or "Facility code", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with "88" assigned by the EPA's Clean Air Markets Division for electronic reporting.
-          example: 3
-        stateCode:
-          type: string
-          description: Two letter abbreviation for the State.
-          example: AK
-        accountNumber:
-          type: string
-          description: The unique identification number of an account.
-          example: 000003FACLTY
-        accountTypeCode:
-          type: string
-          description: Code for the type of allowance account.
-          example: RESERVE
-        ownerOperator:
-          type: string
-          description: The name of any company that owns an allowance account or an affected unit.The name of any company that operates an affected unit.
-          example: Alabama Power Company
-      required:
-      - programCode
-      - stateCode
-      - accountNumber
-      - accountTypeCode
-      - ownerOperator
     AccountAttributesDTO:
       type: object
       properties:
@@ -679,27 +653,45 @@ components:
       - ownerOperator
       - stateCode
       - nercRegion
-    AccountDTO:
+    ApplicableAccountAttributesDTO:
       type: object
       properties:
+        programCode:
+          type: string
+          description: Code for statutory or regulatory based options for tracking and reducing air pollution emissions.
+          example: CAIRNOX
+        facilityId:
+          type: number
+          description: The Facility ID code assigned by the Department of Energy's Energy Information Administration. The Energy Information Administration Plant ID code is also referred to as the "ORIS code", "ORISPL code", "Facility ID", or "Facility code", among other names. If a Plant ID code has not been assigned by the Department of Energy's Energy Information Administration, then plant code means a code beginning with "88" assigned by the EPA's Clean Air Markets Division for electronic reporting.
+          example: 3
+        stateCode:
+          type: string
+          description: Two letter abbreviation for the State.
+          example: AK
         accountNumber:
           type: string
           description: The unique identification number of an account.
           example: 000003FACLTY
-        accountName:
+        accountTypeCode:
           type: string
-          description: The name of the account in which allowances are held.
-          example: Barry
+          description: Code for the type of allowance account.
+          example: RESERVE
+        ownerOperator:
+          type: string
+          description: The name of any company that owns an allowance account or an affected unit.The name of any company that operates an affected unit.
+          example: Alabama Power Company
       required:
+      - programCode
+      - stateCode
       - accountNumber
-      - accountName
+      - accountTypeCode
+      - ownerOperator
   securitySchemes:
-    emailKey:
+    APIKey:
       type: apiKey
-      in: query
-      name: key
-      description: 'AQS requires `email` and `key` query parameters on every request. Register at
-
-        `/signup?email=YOUR_EMAIL` to receive a key by email.
-
-        '
+      in: header
+      name: x-api-key
+      description: API Key required via "x-api-key" request header!
+x-refined-from:
+- cam-account-openapi.json
+- cam-streaming-openapi.json

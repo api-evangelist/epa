@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: EPA Air Quality System (AQS) Account Type Codes Sample Data API
+  title: EPA Air Quality System (AQS) Sample Data API
   description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
 
     sample data collected by state, local, tribal and federal air pollution control agencies
@@ -200,6 +200,59 @@ paths:
         dispatcher: FALLBACK
 components:
   parameters:
+    Email:
+      name: email
+      in: query
+      required: true
+      schema:
+        type: string
+        format: email
+      description: Registered email address.
+    Edate:
+      name: edate
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{8}$
+      description: End date (YYYYMMDD). Must be in the same year as bdate for most services.
+    MaxLat:
+      name: maxlat
+      in: query
+      required: true
+      schema:
+        type: number
+        format: float
+    Key:
+      name: key
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Account-specific access key.
+    MaxLon:
+      name: maxlon
+      in: query
+      required: true
+      schema:
+        type: number
+        format: float
+    County:
+      name: county
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{3}$
+      description: 3-digit county code.
+    Cbdate:
+      name: cbdate
+      in: query
+      required: false
+      schema:
+        type: string
+        pattern: ^\d{8}$
+      description: Optional change begin date (returns records updated since cbdate).
     State:
       name: state
       in: query
@@ -208,16 +261,15 @@ components:
         type: string
         pattern: ^\d{2}$
       description: 2-digit state FIPS code.
-    MinLat:
-      name: minlat
+    Param:
+      name: param
       in: query
       required: true
       schema:
-        type: number
-        format: float
-      description: Minimum latitude of bounding box.
-    MaxLon:
-      name: maxlon
+        type: string
+      description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
+    MinLon:
+      name: minlon
       in: query
       required: true
       schema:
@@ -231,44 +283,6 @@ components:
         type: string
         pattern: ^\d{8}$
       description: Begin date (YYYYMMDD).
-    Cbdate:
-      name: cbdate
-      in: query
-      required: false
-      schema:
-        type: string
-        pattern: ^\d{8}$
-      description: Optional change begin date (returns records updated since cbdate).
-    County:
-      name: county
-      in: query
-      required: true
-      schema:
-        type: string
-        pattern: ^\d{3}$
-      description: 3-digit county code.
-    MaxLat:
-      name: maxlat
-      in: query
-      required: true
-      schema:
-        type: number
-        format: float
-    MinLon:
-      name: minlon
-      in: query
-      required: true
-      schema:
-        type: number
-        format: float
-    Email:
-      name: email
-      in: query
-      required: true
-      schema:
-        type: string
-        format: email
-      description: Registered email address.
     Duration:
       name: duration
       in: query
@@ -276,28 +290,6 @@ components:
       schema:
         type: string
       description: 1-character duration code filter.
-    Key:
-      name: key
-      in: query
-      required: true
-      schema:
-        type: string
-      description: Account-specific access key.
-    Param:
-      name: param
-      in: query
-      required: true
-      schema:
-        type: string
-      description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
-    Site:
-      name: site
-      in: query
-      required: true
-      schema:
-        type: string
-        pattern: ^\d{4}$
-      description: 4-digit site code.
     Cedate:
       name: cedate
       in: query
@@ -314,14 +306,22 @@ components:
         type: string
         pattern: ^\d{5}$
       description: 5-digit Core Based Statistical Area code.
-    Edate:
-      name: edate
+    Site:
+      name: site
       in: query
       required: true
       schema:
         type: string
-        pattern: ^\d{8}$
-      description: End date (YYYYMMDD). Must be in the same year as bdate for most services.
+        pattern: ^\d{4}$
+      description: 4-digit site code.
+    MinLat:
+      name: minlat
+      in: query
+      required: true
+      schema:
+        type: number
+        format: float
+      description: Minimum latitude of bounding box.
   schemas:
     Header:
       type: object
