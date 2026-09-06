@@ -1,0 +1,57 @@
+generated: '2026-09-06'
+method: derived
+source: openapi/ (8 harvested EPA EASEY OpenAPI 3.0 documents + 2 Envirofacts/UV Index documents)
+format: plain-json
+note: 'EPA does not publish an RFC 9457 problem+json envelope on any surface profiled here. The EASEY (Clean Air
+  Markets) APIs return a JSON body with an `error` object carrying `code` and `message` (observed live: {"error":{"code":"API_KEY_MISSING",...}}
+  on api.epa.gov). The AQS Data Mart API returns HTTP 200 or 400 with a Header/Body envelope whose Header carries
+  `status` and an `errors` array. Envirofacts returns a JSON object with an `error` string. Titles below are the
+  response descriptions declared in the harvested contracts; nothing is invented.'
+envelopes:
+- surface: EASEY / Clean Air Markets (api.epa.gov/easey)
+  shape: '{"error":{"code":"<SLUG>","message":"<text>"}}'
+  evidence: observed live on https://api.epa.gov/easey/camd-services/api-docs (HTTP 403, API_KEY_MISSING) on 2026-09-06
+- surface: AQS Data Mart (aqs.epa.gov/data/api)
+  shape: '{"Header":[{"status":"...","error":[...]}],"Data":[...]}'
+  evidence: https://aqs.epa.gov/aqsweb/documents/data_api.html
+- surface: Envirofacts (data.epa.gov/efservice)
+  shape: '{"error": "<text>"}'
+  evidence: observed live on https://data.epa.gov/efservice/openapi.json (HTTP 404) on 2026-09-06
+problems:
+- status: 400
+  title: Invalid Request
+  occurrences: 79
+  example_operation: environmental-protection-agency-easey-account-mgmt-openapi.json#AllowanceHoldingsController_getAllowanceHoldings
+  sources:
+  - environmental-protection-agency-easey-account-mgmt-openapi.json
+  - environmental-protection-agency-easey-emissions-mgmt-openapi.json
+  - environmental-protection-agency-easey-facilities-mgmt-openapi.json
+  - environmental-protection-agency-easey-streaming-services-openapi.json
+- status: 404
+  title: Resource Not Found
+  occurrences: 79
+  example_operation: environmental-protection-agency-easey-account-mgmt-openapi.json#AllowanceHoldingsController_getAllowanceHoldings
+  sources:
+  - environmental-protection-agency-easey-account-mgmt-openapi.json
+  - environmental-protection-agency-easey-emissions-mgmt-openapi.json
+  - environmental-protection-agency-easey-facilities-mgmt-openapi.json
+  - environmental-protection-agency-easey-streaming-services-openapi.json
+- status: 500
+  title: null
+  occurrences: 1
+  example_operation: environmental-protection-agency-easey-camd-services-openapi.json#MailController_getEmailRecipientList
+  sources:
+  - environmental-protection-agency-easey-camd-services-openapi.json
+- status: 503
+  title: The Health Check is not successful
+  occurrences: 8
+  example_operation: environmental-protection-agency-easey-account-mgmt-openapi.json#HealthController_check
+  sources:
+  - environmental-protection-agency-easey-account-mgmt-openapi.json
+  - environmental-protection-agency-easey-camd-services-openapi.json
+  - environmental-protection-agency-easey-emissions-mgmt-openapi.json
+  - environmental-protection-agency-easey-facilities-mgmt-openapi.json
+  - environmental-protection-agency-easey-master-data-mgmt-openapi.json
+  - environmental-protection-agency-easey-monitor-plan-mgmt-openapi.json
+  - environmental-protection-agency-easey-qa-certification-mgmt-openapi.json
+  - environmental-protection-agency-easey-streaming-services-openapi.json

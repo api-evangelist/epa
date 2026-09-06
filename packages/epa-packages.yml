@@ -1,0 +1,65 @@
+generated: '2026-09-06'
+method: searched
+source: >-
+  PyPI (pypi.org/pypi/<pkg>/json), CRAN (crandb.r-pkg.org), the npm registry search API, and the
+  USEPA + US-EPA-CAMD GitHub organizations, probed 2026-09-06.
+note: >-
+  EPA ships first-party client libraries only for the Air Quality System (AQS) Data Mart API, and
+  ships them as a matched pair — RAQSAPI for R and pyaqsapi for Python — both maintained in the
+  USEPA GitHub organization by EPA Region 3 staff. No first-party client library was found for
+  Envirofacts, ECHO, the UV Index service, or the Clean Air Markets (EASEY) APIs; for EASEY, EPA
+  publishes worked request examples (USEPA/cam-api-examples) rather than a packaged SDK.
+  @us-epa-camd/easey-design-system exists on npm but is NOT first-party — it was published in 2023
+  by an unrelated individual at v0.0.1-beta and is recorded here only so it is not mistaken for one.
+packages:
+  - language: python
+    registry: pypi
+    name: pyaqsapi
+    url: https://pypi.org/project/pyaqsapi/
+    install: pip install pyaqsapi
+    official: true
+    api: EPA Air Quality System (AQS) API
+    version: 1.0.2
+    published: '2025-05-07'
+    repository: https://github.com/USEPA/pyaqsapi
+    docs: https://usepa.github.io/pyaqsapi/
+    note: >-
+      Maintained in the USEPA GitHub organization; the PyPI project_urls point at aqs.epa.gov and
+      the sibling R package. Last release 2025-05-07 — roughly sixteen months before this probe.
+  - language: r
+    registry: cran
+    name: RAQSAPI
+    url: https://cran.r-project.org/package=RAQSAPI
+    install: install.packages("RAQSAPI")
+    official: true
+    api: EPA Air Quality System (AQS) API
+    version: 2.0.5
+    published: '2024-06-12'
+    repository: https://github.com/USEPA/RAQSAPI/
+    docs: https://aqs.epa.gov/aqsweb/documents/data_api.html
+    note: >-
+      CRAN metadata credits Clinton Mccrowey, US EPA Region 3 Air and Radiation Division, as author
+      and maintainer. Last CRAN publication 2024-06-12 — the oldest first-party artifact in this
+      record and the clearest decay signal on the AQS surface.
+  - language: javascript
+    registry: npm
+    name: "@us-epa-camd/easey-design-system"
+    url: https://www.npmjs.com/package/@us-epa-camd/easey-design-system
+    official: false
+    version: 0.0.1-beta
+    published: '2023-07-04'
+    note: >-
+      NOT an EPA package. The npm scope matches EPA's Clean Air Markets GitHub organization but the
+      publisher is an unrelated individual and the package never left 0.0.1-beta. EPA's real design
+      system lives at github.com/US-EPA-CAMD/easey-design-system and is not published to npm.
+  - language: none
+    registry: github
+    name: USEPA/cam-api-examples
+    url: https://github.com/USEPA/cam-api-examples
+    official: true
+    version: null
+    published: '2025-06-17'
+    note: >-
+      Not a package — Python request examples for the Clean Air Markets (EASEY) APIs, distributed
+      only as a repository with no tagged release and no registry entry, so there is no version to
+      record. `published:` is the last push date observed on 2026-09-06.

@@ -1,0 +1,73 @@
+generated: '2026-09-06'
+method: probed
+source: >-
+  Live probes of https://api.epa.gov/easey/dev/ and https://api.epa.gov/easey/beta/ on 2026-09-06,
+  plus https://www.epa.gov/power-sector/cam-api-portal and
+  https://aqs.epa.gov/aqsweb/documents/data_api.html.
+note: >-
+  EPA publishes no test cards, magic values or fixture tooling — there is nothing to simulate on a
+  read-only public-data API. What it does publish is separate non-production ENVIRONMENTS for the
+  Clean Air Markets (EASEY) platform, and one genuine no-credential smoke-test endpoint on AQS.
+  Both are recorded here verbatim; nothing below is invented.
+test_vs_live:
+  separation: environment-path
+  note: >-
+    EASEY is deployed at three path prefixes on the same host. The environment is a path segment,
+    not a key prefix — the same api.data.gov key shape works against each, and there is no
+    test-vs-live key convention to read from a credential.
+environments:
+  - name: production
+    base: https://api.epa.gov/easey
+    swagger: https://api.epa.gov/easey/{service}/swagger
+    status: 200
+    probed: '2026-09-06'
+  - name: beta
+    base: https://api.epa.gov/easey/beta
+    swagger: https://api.epa.gov/easey/beta/{service}/swagger
+    status: 200
+    probed: '2026-09-06'
+    evidence: https://api.epa.gov/easey/beta/emissions-mgmt/swagger returned HTTP 200 with a Swagger UI page.
+  - name: dev
+    base: https://api.epa.gov/easey/dev
+    swagger: https://api.epa.gov/easey/dev/{service}/swagger
+    status: 200
+    probed: '2026-09-06'
+    evidence: >-
+      https://api.epa.gov/easey/dev/camd-services/swagger and
+      https://api.epa.gov/easey/dev/auth-mgmt/swagger/ both returned HTTP 200 with a Swagger UI page.
+      Note that auth-mgmt is exposed in dev but is not one of the services documented on the CAM API
+      portal — it backs the ECMPS submission client, not the public read surface.
+health_and_smoke_tests:
+  - api: EPA Air Quality System (AQS)
+    endpoint: https://aqs.epa.gov/data/api/metaData/isAvailable
+    credentials_required: false
+    status: 200
+    probed: '2026-09-06'
+    note: >-
+      The one EPA endpoint that answers without a key. AQS documents it as the way to check the
+      service is up before spending a credentialed request; it is also the only availability signal
+      EPA offers, since there is no status page.
+  - api: Clean Air Markets (EASEY)
+    endpoint: https://api.epa.gov/easey/{service}/health
+    credentials_required: true
+    note: >-
+      Every harvested EASEY contract declares a /{service}/health operation
+      (HealthController_check). It still requires the x-api-key header — an unauthenticated call
+      returns HTTP 403 API_KEY_MISSING — so it cannot be used as an anonymous liveness probe.
+test_credentials:
+  published: false
+  note: >-
+    No shared test key, demo key or DEMO_KEY-style value is published for any EPA API. The
+    api.data.gov key that EASEY uses is issued per requester at https://api.data.gov/signup/, and
+    AQS emails a key to the address supplied at https://aqs.epa.gov/data/api/signup. Both are free
+    and self-service, so the absence of a shared test credential is a low barrier rather than a gate.
+test_data:
+  magic_values: []
+  test_cards: []
+  time_simulation: false
+  fixtures: false
+  note: >-
+    Not applicable. These are read-only observational and regulatory datasets; a caller exercises
+    them with real public identifiers (an ORIS code, a facility registry id, a ZIP code), not with
+    reserved test values. EPA publishes worked examples instead — https://github.com/USEPA/cam-api-examples
+    for EASEY, and sample applications under the USEPA organization for Envirofacts.

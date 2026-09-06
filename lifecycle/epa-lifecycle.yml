@@ -1,0 +1,96 @@
+generated: '2026-09-06'
+method: searched
+source: >-
+  https://aqs.epa.gov/aqsweb/documents/data_api.html, https://www.epa.gov/power-sector/cam-api-portal,
+  https://www.epa.gov/enviro/envirofacts-data-service-api, https://www.epa.gov/data/draft-api-strategy,
+  the harvested EASEY contracts in openapi/, and live host probes on 2026-09-06.
+versioning:
+  scheme: mixed
+  note: >-
+    EPA has no agency-wide versioning policy in force. Each surface versions itself, or does not.
+  surfaces:
+    - api: Clean Air Markets (EASEY)
+      scheme: semantic version declared inside the contract
+      in_url: false
+      docs: https://www.epa.gov/power-sector/cam-api-portal
+      services:
+        - {service: camd-services, version: v2.0.148, published: '2026-08-20', spec: openapi/environmental-protection-agency-easey-camd-services-openapi.json}
+        - {service: facilities-mgmt, version: v2.0.155, published: '2026-08-20', spec: openapi/environmental-protection-agency-easey-facilities-mgmt-openapi.json}
+        - {service: master-data-mgmt, version: v2.0.108, published: '2026-08-20', spec: openapi/environmental-protection-agency-easey-master-data-mgmt-openapi.json}
+        - {service: emissions-mgmt, version: v2.0.169, published: '2026-08-20', spec: openapi/environmental-protection-agency-easey-emissions-mgmt-openapi.json}
+        - {service: account-mgmt, version: v2.0.129, published: '2026-08-20', spec: openapi/environmental-protection-agency-easey-account-mgmt-openapi.json}
+        - {service: monitor-plan-mgmt, version: v2.0.120, published: '2026-08-20', spec: openapi/environmental-protection-agency-easey-monitor-plan-mgmt-openapi.json}
+        - {service: qa-certification-mgmt, version: v2.0.82, published: '2026-08-20', spec: openapi/environmental-protection-agency-easey-qa-certification-mgmt-openapi.json}
+        - {service: streaming-services, version: v2.0.103, published: '2026-08-20', spec: openapi/environmental-protection-agency-easey-streaming-services-openapi.json}
+      note: >-
+        Each EASEY contract carries its version AND its publication date inside info.version, in the
+        literal form "v2.0.169 published: Thu Aug 20 2026". That is the only dated release signal
+        EPA publishes for these APIs, and it is machine-readable — but it is a point-in-time stamp,
+        not a history: it says what is deployed now, never what changed.
+    - api: AQS Data Mart
+      scheme: uri-path
+      current: v2
+      in_url: true
+      docs: https://aqs.epa.gov/aqsweb/documents/data_api.html
+      note: >-
+        Version 1 lived at aqs.epa.gov/api; version 2 lives at aqs.epa.gov/data/api. The move is the
+        only version transition EPA documents anywhere in this record.
+    - api: Envirofacts / UV Index
+      scheme: none
+      current: null
+      in_url: false
+      note: No version identifier appears in the URL, the documentation or any response.
+    - api: ECHO
+      scheme: none
+      current: null
+      in_url: false
+deprecation:
+  policy_url: null
+  sunset_header: false
+  deprecation_header: false
+  policy_published: false
+  note: >-
+    EPA publishes no deprecation policy, no sunset schedule and no notice period for any API in this
+    record, and none of the harvested contracts marks an operation deprecated. Retirement happens and
+    is not announced through the API. Two observed instances are recorded below.
+  observed_retirements:
+    - what: CompTox Chemicals Dashboard API host api-ccte.epa.gov
+      evidence: >-
+        DNS resolution failed for api-ccte.epa.gov on 2026-09-06 ("Could not resolve host"). The
+        successor surface is https://comptox.epa.gov/ctx-api/ — a different host, a different path
+        prefix, and a hard API-key requirement (HTTP 401 "API Header Not Found" on
+        /ctx-api/chemical/v3/api-docs). No redirect, no Sunset header, no deprecation notice: the
+        old hostname simply stopped existing.
+      probed: '2026-09-06'
+    - what: USEEIO_API
+      evidence: >-
+        github.com/USEPA/USEEIO_API is marked "DEPRECATED - This repository is no longer being
+        maintained". The deprecation is announced on GitHub only, not on any EPA API surface.
+      probed: '2026-09-06'
+deprecated_operations: []
+sla:
+  url: null
+  uptime_target: null
+  note: >-
+    No SLA, no uptime commitment and no availability target is published for any EPA API. These are
+    federal public-data services offered without warranty; EPA's disclaimers page
+    (https://www.epa.gov/web-policies-and-procedures/epa-disclaimers) is the closest thing to terms.
+status_page: null
+status_page_note: >-
+  No status page exists. status.epa.gov does not resolve (DNS failure, 2026-09-06);
+  www.epa.gov/system-status and echo.epa.gov/resources/general-info/echo-status both return 404.
+  EPA publishes no availability signal an integrator can watch, which for a surface with a 15-minute
+  request timeout and no rate-limit headers means outages are indistinguishable from throttling.
+  No StatusPage pointer is wired into apis.yml, because there is nothing to point at.
+changelog: null
+changelog_note: >-
+  No dated changelog is published for any of these APIs. The GitHub release history on the
+  US-EPA-CAMD repositories stops in 2021 for the API services; the only current dated signal is the
+  publication date embedded in each EASEY contract's info.version, captured above. No ChangeLog
+  pointer is wired, because a version stamp is not a change log.
+governance:
+  api_strategy: https://www.epa.gov/data/draft-api-strategy
+  note: >-
+    EPA's API strategy is still published as a DRAFT and explicitly encourages, rather than requires,
+    common API definition formats. That draft status is the root cause of most of the divergence
+    recorded in conventions/ and above.

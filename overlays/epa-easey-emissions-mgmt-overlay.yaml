@@ -1,0 +1,19 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for EPA Emissions Management OpenAPI Specification
+  version: 1.0.0
+extends: openapi/environmental-protection-agency-easey-emissions-mgmt-openapi.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: environmental-protection-agency
+    x-apievangelist-harvested: '2026-09-06'
+    x-apievangelist-artifacts:
+      authentication: authentication/environmental-protection-agency-authentication.yml
+      conventions: conventions/environmental-protection-agency-conventions.yml
+      errors: errors/environmental-protection-agency-problem-types.yml
+      rate_limits: rate-limits/environmental-protection-agency-rate-limits.yml
+      lifecycle: lifecycle/environmental-protection-agency-lifecycle.yml
+- target: $.servers
+  update:
+    x-apievangelist-verified: '2026-09-06'

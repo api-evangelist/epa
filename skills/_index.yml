@@ -1,0 +1,42 @@
+generated: '2026-09-06'
+method: generated
+source: >-
+  Grounded in the OpenAPI documents in openapi/ — every operationId referenced was grepped from a
+  harvested contract, and the runtime rules come from
+  conventions/environmental-protection-agency-conventions.yml,
+  rate-limits/environmental-protection-agency-rate-limits.yml and
+  errors/environmental-protection-agency-problem-types.yml.
+note: >-
+  EPA publishes no AGENTS.md, no skill files and no agent guidance of its own — searched the EPA
+  developer pages and the USEPA and US-EPA-CAMD GitHub organizations on 2026-09-06. These three
+  skills are API Evangelist generations over EPA's published contracts, not provider-authored.
+  Every skill states the same two facts an agent most needs and EPA does not surface at runtime:
+  there are no rate-limit response headers, and there is no write surface to undo.
+skills:
+  - file: environmental-protection-agency-power-plant-emissions.md
+    name: Pull power-plant emissions from EPA Clean Air Markets
+    api: openapi/environmental-protection-agency-easey-emissions-mgmt-openapi.json
+    operations:
+      - FacilitiesController_getFacilities
+      - FacilitiesController_getFacilityById
+      - MasterDataController_listCodeTables
+      - HourlyApportionedEmissionsController_getEmissions
+      - AnnualApportionedEmissionsController_getEmissions
+      - HourlyApportionedEmissionsController_streamEmissions
+  - file: environmental-protection-agency-allowance-compliance.md
+    name: Check allowance holdings and compliance for a Clean Air Markets account
+    api: openapi/environmental-protection-agency-easey-account-mgmt-openapi.json
+    operations:
+      - AccountController_getAllAccounts
+      - AllowanceHoldingsController_getAllowanceHoldings
+      - AllowanceTransactionsController_getAllowanceTransactions
+      - AllowanceComplianceController_getAllowanceCompliance
+      - EmissionsComplianceController_getEmissionsCompliance
+  - file: environmental-protection-agency-envirofacts-query.md
+    name: Query EPA Envirofacts and the UV Index without a key
+    api: openapi/environmental-protection-agency-envirofacts-api-openapi.yml
+    operations:
+      - queryEnvirofactsTable
+      - queryEnvirofactsFiltered
+      - getUvHourlyByZip
+      - getUvDailyByZip

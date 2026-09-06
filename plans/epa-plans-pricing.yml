@@ -1,0 +1,65 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Environmental Protection Agency
+providerId: environmental-protection-agency
+generated: '2026-09-06'
+method: searched
+source: >-
+  https://www.epa.gov/power-sector/cam-api-portal, https://api.data.gov/signup/,
+  https://aqs.epa.gov/aqsweb/documents/data_api.html,
+  https://www.epa.gov/enviro/envirofacts-data-service-api
+created: '2026-05-04'
+modified: '2026-09-06'
+tags:
+  - Environment
+  - Federal Government
+  - Air Quality
+  - Open Data
+description: >-
+  EPA publishes no priced plans. Every API in this record is a U.S. federal public-data service
+  offered at no charge, with no billing surface, no paid tier, no metered overage and no contract.
+  There is nothing to buy and no sales gate — the only differentiator between "tiers" is whether a
+  key is required, and a key is free and self-service where one is needed. plan_count is 0 because
+  no priced plan exists, not because the pricing page could not be found; EPA has no pricing page,
+  and for a federal agency publishing public environmental data that is the correct end state.
+plan_count: 0
+currency: USD
+billing: none
+free_tier: true
+access_tiers:
+  - name: Anonymous — no registration
+    price: 0
+    apis:
+      - EPA Envirofacts Data Service API
+      - EPA UV Index API
+      - EPA ECHO Compliance and Enforcement API
+    quota: >-
+      No published request quota. Envirofacts enforces a 15-minute per-request execution timeout;
+      ECHO publishes no limit.
+    signup: null
+    source: https://www.epa.gov/enviro/envirofacts-data-service-api
+  - name: Free registered key — AQS Data Mart
+    price: 0
+    apis:
+      - EPA Air Quality System (AQS) API
+    quota: >-
+      10 requests per minute, 1,000,000 rows per query, 5 parameter codes per request, begin and end
+      dates within the same calendar year.
+    signup: https://aqs.epa.gov/data/api/signup
+    source: https://aqs.epa.gov/aqsweb/documents/data_api.html
+    note: >-
+      Self-service. The key is emailed to the address supplied; email + key are then passed as query
+      parameters on every request.
+  - name: Free registered key — Clean Air Markets (EASEY)
+    price: 0
+    apis:
+      - EPA Clean Air Markets (EASEY) APIs
+    quota: 1,000 requests per hour by default; 500 rows per page; 15-minute per-request timeout.
+    signup: https://api.data.gov/signup/
+    source: https://www.epa.gov/power-sector/cam-api-portal
+    note: >-
+      Issued through the government-wide api.data.gov key service and passed as the x-api-key
+      header. EPA states higher limits are available on request via the CAM API contact form —
+      by conversation, not by purchase.
+plans: []

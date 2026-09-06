@@ -1,0 +1,144 @@
+generated: '2026-09-06'
+method: searched
+source: >-
+  Derived from the 8 harvested EASEY OpenAPI 3.0 documents in openapi/ and searched against
+  https://www.epa.gov/power-sector/cam-api-portal, https://aqs.epa.gov/aqsweb/documents/data_api.html
+  and https://www.epa.gov/enviro/envirofacts-data-service-api.
+scope: >-
+  EPA runs four unrelated API surfaces on four different hosts with four different conventions.
+  There is no agency-wide API style guide in force — EPA's own Draft API Strategy
+  (https://www.epa.gov/data/draft-api-strategy) says so, and the divergence below is the evidence.
+  Read this file per surface, not as one contract.
+authentication:
+  style: mixed
+  surfaces:
+    - {api: Clean Air Markets (EASEY), mechanism: api-key, transport: 'x-api-key request header', issuer: api.data.gov, required: true}
+    - {api: AQS Data Mart, mechanism: api-key, transport: 'email + key query parameters', issuer: aqs.epa.gov, required: true}
+    - {api: Envirofacts / UV Index, mechanism: none, transport: null, issuer: null, required: false}
+    - {api: ECHO, mechanism: none, transport: null, issuer: null, required: false}
+  detail: authentication/environmental-protection-agency-authentication.yml
+  note: >-
+    The EASEY contracts additionally declare a bearer JWT (Token) and an x-client-id header
+    (ClientId) for the ECMPS data-submission client. Those are not part of the public read surface;
+    no operation in the harvested public specs requires them.
+idempotency:
+  coverage: none
+  supported: false
+  header: null
+  scope: []
+  retention: null
+  note: >-
+    No EPA surface in this record documents or accepts an idempotency key. This is not a gap being
+    papered over: 205 of the 206 harvested EASEY operations are GET, and the single POST
+    (MailController_getEmailRecipientList) is a read that uses POST only to carry a request body.
+    Envirofacts, the UV Index service and ECHO expose no write operations at all. With no mutating
+    surface there is nothing for replay protection to protect, so `none` here means "not applicable"
+    rather than "missing". No Idempotency pointer is wired into apis.yml.
+reversibility:
+  applicable: na
+  grade: na
+  reversal_operations: []
+  note: >-
+    Not applicable. Every public EPA API profiled here is read-only — an agent calling them cannot
+    take an action there is anything to take back. Recorded as `na` deliberately so it leaves the
+    denominator rather than scoring as an absent capability. No window is asserted because there is
+    no operation a window could apply to.
+dry_run_mode:
+  supported: na
+  note: Not applicable to a read-only surface.
+pagination:
+  surfaces:
+    - api: Clean Air Markets (EASEY)
+      style: page-number
+      params: [page, perPage]
+      max_page_size: 500
+      response_fields: []
+      headers: []
+      docs: https://www.epa.gov/power-sector/cam-api-portal
+      note: >-
+        page/perPage appear on 32 of the harvested operations. EPA states paging endpoints are
+        limited to 500 rows per page. The contracts declare no total-count field or Link header, so
+        a client learns it has reached the end by receiving a short page.
+    - api: Envirofacts
+      style: row-range in the URL path
+      params: ['<first>:<last>']
+      max_page_size: null
+      response_fields: []
+      headers: []
+      docs: https://www.epa.gov/enviro/envirofacts-data-service-api
+      note: >-
+        Paging is a path segment, not a query parameter — /efservice/<table>/<first>:<last>/JSON.
+        EPA documents it as the remedy for the 15-minute request timeout rather than as a row cap.
+    - api: AQS Data Mart
+      style: none
+      params: []
+      note: >-
+        No pagination. Result size is bounded instead by the documented request contract — one
+        calendar year per query, at most 5 parameter codes, and a requested ceiling of 1,000,000
+        rows per query.
+filtering_and_query:
+  - api: Clean Air Markets (EASEY)
+    style: query parameters
+    common_params: [locId, facilityId, stateCode, programCodeInfo, testSumId, unitType, unitFuelType, controlTechnologies, year, beginDate, endDate, exclude]
+    note: >-
+      The most-used parameters across the harvested contracts. `exclude` is a sparse-fieldset
+      control — it drops named columns from the response.
+  - api: Envirofacts
+    style: path-encoded query grammar
+    grammar: '/efservice/<table>/<column>/<operator>/<value>/<join>/<first>:<last>/<sort>/<format>'
+    note: >-
+      The whole query lives in the path. Operators (equals, beginning, containing, >, <) and joins
+      are path segments. This is the single most unusual convention in EPA's estate and the reason
+      a generic OpenAPI cannot describe the surface exhaustively — the harvested Envirofacts
+      document models the grammar with templated path parameters rather than enumerating tables.
+field_expansion:
+  supported: partial
+  note: >-
+    EASEY supports subtraction, not expansion — the `exclude` query parameter removes columns. No
+    EPA surface supports an `expand` or `include` parameter.
+metadata:
+  supported: false
+  note: No EPA surface accepts caller-supplied metadata; these are read-only data services.
+request_tracing:
+  header: null
+  supported: false
+  note: >-
+    No request-id or correlation-id header is documented or returned on any surface. An agent
+    debugging a failed EPA call has no identifier to quote back to support.
+versioning:
+  style: mixed
+  surfaces:
+    - {api: Clean Air Markets (EASEY), scheme: semantic version in the contract, current: 'v2.0.x per service, all published 2026-08-20', in_url: false}
+    - {api: AQS Data Mart, scheme: uri-path, current: v2, in_url: true, note: 'v1 was at aqs.epa.gov/api; v2 is at aqs.epa.gov/data/api'}
+    - {api: Envirofacts, scheme: none, current: null, in_url: false, note: 'No version is declared or documented anywhere on the surface.'}
+    - {api: ECHO, scheme: none, current: null, in_url: false}
+  detail: lifecycle/environmental-protection-agency-lifecycle.yml
+error_envelope:
+  standard: none
+  rfc9457: false
+  shapes:
+    - {api: Clean Air Markets (EASEY), shape: '{"error":{"code":"<SLUG>","message":"<text>"}}'}
+    - {api: AQS Data Mart, shape: '{"Header":[{"status":"...","error":[...]}],"Data":[...]}'}
+    - {api: Envirofacts, shape: '{"error":"<text>"}'}
+  detail: errors/environmental-protection-agency-problem-types.yml
+  note: >-
+    Three surfaces, three envelopes, none of them application/problem+json. A client that handles
+    EPA errors generically has to write three parsers.
+rate_limit_signaling:
+  runtime_headers: false
+  documented: true
+  detail: rate-limits/environmental-protection-agency-rate-limits.yml
+  note: >-
+    Limits are published in prose and enforced at runtime, but never signalled in a response header.
+    An agent cannot read its remaining budget from any EPA response; it learns it is over the line
+    only by being refused.
+content_negotiation:
+  - api: Envirofacts
+    mechanism: format is the last path segment
+    formats: [JSON, CSV, EXCEL, XML, HTML, JSONP, PARQUET, PDF]
+  - api: Clean Air Markets (EASEY)
+    mechanism: Accept header
+    formats: [application/json, text/csv]
+  - api: AQS Data Mart
+    mechanism: none
+    formats: [JSON]

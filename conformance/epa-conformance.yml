@@ -1,0 +1,103 @@
+generated: '2026-09-06'
+method: derived
+source: >-
+  openapi/ (8 harvested EASEY OpenAPI 3.0 documents + 2 Envirofacts/UV Index documents),
+  authentication/environmental-protection-agency-authentication.yml,
+  security/environmental-protection-agency-domain-security.yml,
+  well-known/environmental-protection-agency-well-known.yml, and the EPA documentation pages cited
+  per entry. Probed 2026-09-06.
+note: >-
+  Cross-cutting standards only. No published compliance program (SOC 2, ISO 27001, FedRAMP
+  authorization boundary, PCI, HIPAA) was found for these public data APIs, and none is claimed
+  here — no Compliance pointer is wired into apis.yml.
+standards:
+  - id: openapi-3.0
+    conforms: true
+    evidence: >-
+      Eight first-party OpenAPI 3.0.0 documents served live by EPA at
+      https://api.epa.gov/easey/<service>/swagger, 206 operations total, each declaring
+      servers[] https://api.epa.gov/easey.
+  - id: oauth2
+    conforms: false
+    evidence: No oauth2 securityScheme appears in any harvested contract and no EPA API documents an OAuth flow.
+  - id: oidc
+    conforms: false
+    evidence: /.well-known/openid-configuration returned 404 on every EPA host probed.
+  - id: api-key-auth
+    conforms: true
+    evidence: >-
+      EASEY declares apiKey in header (x-api-key) in all eight contracts; AQS Data Mart requires
+      email + key query parameters per https://aqs.epa.gov/aqsweb/documents/data_api.html.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: >-
+      No operation in any harvested contract declares application/problem+json. Three different
+      bespoke error envelopes are in use — see errors/environmental-protection-agency-problem-types.yml.
+  - id: rfc9116-security-txt
+    conforms: false
+    evidence: /.well-known/security.txt returned 404 (or a catch-all body) on all seven EPA hosts probed.
+  - id: rfc8594-sunset-header
+    conforms: false
+    evidence: No Sunset or Deprecation header is documented or observed; see lifecycle/.
+  - id: rfc8615-well-known
+    conforms: false
+    evidence: >-
+      No document was served at any named /.well-known/ path on any EPA host; data.epa.gov answers
+      every path with the same catch-all body, including a negative control.
+  - id: json-api
+    conforms: false
+    evidence: Response bodies are plain JSON arrays and objects; no JSON:API document structure.
+  - id: pagination
+    conforms: true
+    evidence: >-
+      EASEY exposes page/perPage on 32 operations with a documented 500-row page ceiling; Envirofacts
+      pages with a /<first>:<last>/ path segment. See conventions/.
+  - id: idempotency
+    conforms: false
+    evidence: >-
+      No idempotency key on any surface — and no mutating surface to apply one to (205 of 206
+      harvested operations are GET). Recorded as not-applicable in conventions/.
+  - id: cors
+    conforms: true
+    evidence: >-
+      Envirofacts, ECHO and AQS all answered cross-origin browser-style requests during probing on
+      2026-09-06; EPA documents browser use of Envirofacts directly.
+  - id: tls-1.2-plus
+    conforms: true
+    evidence: >-
+      TLSv1.3 on www.epa.gov, TLSv1.2 on data.epa.gov and aqs.epa.gov; HSTS with max-age 31536000 on
+      www.epa.gov and aqs.epa.gov. See security/environmental-protection-agency-domain-security.yml.
+  - id: dnssec
+    conforms: true
+    evidence: epa.gov is DNSSEC-signed (probed 2026-09-06).
+  - id: dmarc-reject
+    conforms: true
+    evidence: epa.gov publishes SPF and a DMARC record with policy p=reject.
+  - id: ogc-api
+    conforms: false
+    evidence: >-
+      Not probed blind. No baseURL, OpenAPI servers[] host or documentation link in this record names
+      a WMS/WFS/WCS/WMTS/CSW or OGC API surface, so no OGC probe was warranted. EPA does operate
+      geospatial services on other hosts, which are outside this record.
+  - id: mcp
+    conforms: false
+    evidence: >-
+      No first-party MCP server. The only MCP server wrapping EPA data is third-party
+      (@cyanheads/epa-mcp-server on npm). See mcp/environmental-protection-agency-mcp.yml.
+  - id: a2a
+    conforms: false
+    evidence: /.well-known/agent-card.json and /.well-known/agent.json returned no document on any EPA host.
+domain_standards:
+  note: >-
+    REWARD-ONLY, and honestly empty. EPA's regulatory data domains do have exchange standards — the
+    Environmental Information Exchange Network schemas that CDX uses for state-to-federal reporting,
+    and the Water Quality Exchange (WQX) schema — but NONE of the contracts harvested here declares
+    one. The EASEY, Envirofacts, ECHO and AQS contracts define EPA-specific field names and no
+    external namespace, schema URN, or standard message type. Nothing is asserted rather than
+    inventing a conformance to fill the slot.
+  candidates_checked:
+    - {standard: 'Environmental Information Exchange Network (EN) schemas', declared_in_contract: false, note: 'Used by CDX node services, which are not part of this record.'}
+    - {standard: 'Water Quality Exchange (WQX)', declared_in_contract: false, note: 'No WQX namespace or element appears in any harvested contract.'}
+    - {standard: 'OGC API / OWS', declared_in_contract: false}
+    - {standard: 'SCIM 2.0', declared_in_contract: false}
+    - {standard: 'OData', declared_in_contract: false}
