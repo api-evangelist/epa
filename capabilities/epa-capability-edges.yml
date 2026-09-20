@@ -11,7 +11,7 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 10
+edge_count: 12
 edges:
 - tag: Formio
   spec_file: epa-formio-api-openapi.yml
@@ -101,6 +101,28 @@ edges:
   reason: Operations expose enterprise reference/code tables from a master data management service — reference
     and master data stewardship. Sub-capability chosen from the explicit 'Master Data Management' framing,
     though the endpoints are read-only lookups rather than full MDM governance, hence 0.7.
+- tag: Emissions
+  spec_file: epa-emissions-api-openapi.yml
+  capability_id: BC-730.30
+  capability_id_l1: BC-730
+  capability_name: Environmental Management
+  confidence: 0.7
+  evidence: '"Exports Emissions Data for the Specified Monitor Plan & Reporting Period"; schemas HourlyOperatingDTO,
+    SummaryValueBaseDTO'
+  reason: Operations serve reported stack emissions data by monitoring plan and reporting period — environmental
+    emissions monitoring and reporting, not a generic data capability.
+  recovered_from: sweep-20260828T235257Z-edges.json
+- tag: Quarterly Data
+  spec_file: epa-quarterly-data-api-openapi.yml
+  capability_id: BC-730.30
+  capability_id_l1: BC-730
+  capability_name: Environmental Management
+  confidence: 0.7
+  evidence: GET /quarterlyData/bySite  Get Quarterly Data by Site; 'ambient air sample data collected
+    by state, local, tribal and federal air pollution control agencies'
+  reason: Quarterly aggregates of ambient air sample observations by site/county/state/CBSA — environmental
+    (air quality) monitoring data, mapping to Environmental Management.
+  recovered_from: sweep-20260828T235257Z-edges.json
 - tag: Unit Type Codes
   spec_file: epa-unit-type-codes-api-openapi.yml
   capability_id: BC-610.20
