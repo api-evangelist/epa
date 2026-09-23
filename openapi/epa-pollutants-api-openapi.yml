@@ -38,6 +38,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      operationId: getApiPollutants
+      x-operation-id-source: derived
   /api/pollutantCategories:
     get:
       summary: Pollutant Categories
@@ -61,6 +63,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      operationId: getApiPollutantCategories
+      x-operation-id-source: derived
   /api/pollutant:
     get:
       summary: Pollutant
@@ -104,6 +108,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      operationId: getApiPollutant
+      x-operation-id-source: derived
   /api/pollutantCategory:
     get:
       summary: Pollutant Category
@@ -136,6 +142,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      operationId: getApiPollutantCategory
+      x-operation-id-source: derived
   /api/pollutantLimitations:
     get:
       summary: Pollutant Limitations
@@ -163,6 +171,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      operationId: getApiPollutantLimitations
+      x-operation-id-source: derived
   /api/limitation:
     get:
       summary: Limitation
@@ -195,74 +205,9 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      operationId: getApiLimitation
+      x-operation-id-source: derived
 components:
-  schemas:
-    pollutant.read:
-      type: object
-      description: Placeholder
-      properties:
-        Dummy:
-          type: string
-          title: Dummy
-          example: Dummy
-          description: Dummy
-      required:
-      - Dummy
-    pollutant.list:
-      type: object
-      description: Placeholder
-      properties:
-        Dummy:
-          type: string
-          title: Dummy
-          example: Dummy
-          description: Dummy
-      required:
-      - Dummy
-    pollutant.listCategories:
-      type: object
-      description: Placeholder
-      properties:
-        Dummy:
-          type: string
-          title: Dummy
-          example: Dummy
-          description: Dummy
-      required:
-      - Dummy
-    pollutant.readCategory:
-      type: object
-      description: Placeholder
-      properties:
-        Dummy:
-          type: string
-          title: Dummy
-          example: Dummy
-          description: Dummy
-      required:
-      - Dummy
-    limitation.read:
-      type: object
-      description: Placeholder
-      properties:
-        Dummy:
-          type: string
-          title: Dummy
-          example: Dummy
-          description: Dummy
-      required:
-      - Dummy
-    pollutant.limitations:
-      type: object
-      description: Placeholder
-      properties:
-        Dummy:
-          type: string
-          title: Dummy
-          example: Dummy
-          description: Dummy
-      required:
-      - Dummy
   parameters:
     pointSourceCategoryCode:
       name: pointSourceCategoryCode
@@ -331,6 +276,13 @@ components:
         - 468
         - 469
         - 471
+    pollutantId:
+      name: pollutantId
+      in: query
+      description: Placeholder.
+      required: false
+      schema:
+        type: integer
     download:
       name: download
       in: query
@@ -341,13 +293,73 @@ components:
         enum:
         - 'true'
         - 'false'
-    pollutantId:
-      name: pollutantId
-      in: query
-      description: Placeholder.
-      required: false
-      schema:
-        type: integer
+  schemas:
+    pollutant.limitations:
+      type: object
+      description: Placeholder
+      properties:
+        Dummy:
+          type: string
+          title: Dummy
+          example: Dummy
+          description: Dummy
+      required:
+      - Dummy
+    pollutant.read:
+      type: object
+      description: Placeholder
+      properties:
+        Dummy:
+          type: string
+          title: Dummy
+          example: Dummy
+          description: Dummy
+      required:
+      - Dummy
+    limitation.read:
+      type: object
+      description: Placeholder
+      properties:
+        Dummy:
+          type: string
+          title: Dummy
+          example: Dummy
+          description: Dummy
+      required:
+      - Dummy
+    pollutant.list:
+      type: object
+      description: Placeholder
+      properties:
+        Dummy:
+          type: string
+          title: Dummy
+          example: Dummy
+          description: Dummy
+      required:
+      - Dummy
+    pollutant.readCategory:
+      type: object
+      description: Placeholder
+      properties:
+        Dummy:
+          type: string
+          title: Dummy
+          example: Dummy
+          description: Dummy
+      required:
+      - Dummy
+    pollutant.listCategories:
+      type: object
+      description: Placeholder
+      properties:
+        Dummy:
+          type: string
+          title: Dummy
+          example: Dummy
+          description: Dummy
+      required:
+      - Dummy
   securitySchemes:
     basicAuth:
       type: http

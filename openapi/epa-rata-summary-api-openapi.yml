@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: QA Certification Management OpenAPI Specification Rata Summary API
+  title: QA Certification Management OpenAPI Specification Rata…
   description: QA & Certification management API endpoints for qa test data, qa cert events, and test extension & exemption data
   version: 'v2.0.80 published: Thu Mar 26 2026'
   contact: {}
@@ -57,6 +57,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      summary: Rata summary controller et rata summaries
+      x-summary-source: derived
   /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/rata/{rataId}/rata-summaries/{id}:
     get:
       operationId: RataSummaryController_getRataSummary
@@ -106,8 +108,94 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      summary: Rata summary controller get rata summary
+      x-summary-source: derived
 components:
   schemas:
+    RataTraverseDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '12345'
+        flowRataRunId:
+          type: string
+          example: '12345'
+        calculatedCalculatedVelocity:
+          type: number
+          example: 35.5
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+        probeId:
+          type: string
+          maxLength: 11
+          example: '12345'
+        probeTypeCode:
+          type: string
+          example: string
+        pressureMeasureCode:
+          type: string
+          example: string
+        methodTraversePointId:
+          type: string
+          minLength: 1
+          maxLength: 3
+          example: '12345'
+        velocityCalibrationCoefficient:
+          type: number
+          example: 0.0
+        lastProbeDate:
+          format: date-time
+          type: string
+          example: '2024-01-15T12:00:00Z'
+        averageVelocityDifferencePressure:
+          type: number
+          example: 0.0
+        averageSquareVelocityDifferencePressure:
+          type: number
+          example: 0.0
+        tStackTemperature:
+          type: number
+          example: 0.0
+        pointUsedIndicator:
+          type: number
+          example: 0.0
+        numberWallEffectsPoints:
+          type: number
+          example: 0.0
+        yawAngle:
+          type: number
+          example: 0.0
+        pitchAngle:
+          type: number
+          example: 0.0
+        calculatedVelocity:
+          type: number
+          example: 35.5
+        replacementVelocity:
+          type: number
+          example: 0.0
+      required:
+      - id
+      - flowRataRunId
+      - calculatedCalculatedVelocity
+      - userId
+      - addDate
+      - updateDate
+      - probeId
+      - probeTypeCode
+      - pressureMeasureCode
+      - methodTraversePointId
+      - velocityCalibrationCoefficient
+      - lastProbeDate
+      - tStackTemperature
     FlowRataRunDTO:
       type: object
       properties:
@@ -208,6 +296,163 @@ components:
       - wetMolecularWeight
       - averageVelocityWithoutWallEffects
       - averageStackFlowRate
+    RataSummaryDTO:
+      type: object
+      properties:
+        operatingLevelCode:
+          type: string
+          description: operatingLevelCode. ADD TO PROPERTY METADATA
+          example: string
+        averageGrossUnitLoad:
+          type: number
+          description: Average gross unit load (MWe or steam) or average velocity at operating level.
+          example: 71
+        referenceMethodCode:
+          type: string
+          description: referenceMethodCode. ADD TO PROPERTY METADATA
+          example: string
+        meanCEMValue:
+          type: number
+          description: meanCEMValue. ADD TO PROPERTY METADATA
+          example: 0.0
+        meanRATAReferenceValue:
+          type: number
+          minimum: 1
+          description: meanRATAReferenceValue. ADD TO PROPERTY METADATA
+          example: 0.0
+        meanDifference:
+          type: number
+          description: meanDifference. ADD TO PROPERTY METADATA
+          example: 0.0
+        standardDeviationDifference:
+          type: number
+          description: standardDeviationDifference. ADD TO PROPERTY METADATA
+          example: 0.0
+        confidenceCoefficient:
+          type: number
+          description: confidenceCoefficient. ADD TO PROPERTY METADATA
+          example: 0.0
+        tValue:
+          type: number
+          description: tValue. ADD TO PROPERTY METADATA
+          example: 0.0
+        apsIndicator:
+          type: number
+          description: Used to indicate if the alternative performance specification (APS) is used.
+          example: 0
+        apsCode:
+          type: string
+          description: Code used to identify the Alternate Performance Spec.
+          example: PS15
+        relativeAccuracy:
+          type: number
+          description: relativeAccuracy. ADD TO PROPERTY METADATA
+          example: 35.5
+        biasAdjustmentFactor:
+          type: number
+          description: biasAdjustmentFactor. ADD TO PROPERTY METADATA
+          example: 0.0
+        co2OrO2ReferenceMethodCode:
+          type: string
+          description: co2OrO2ReferenceMethodCode. ADD TO PROPERTY METADATA
+          example: string
+        stackDiameter:
+          type: number
+          description: stackDiameter. ADD TO PROPERTY METADATA
+          example: 0.0
+        stackArea:
+          type: number
+          description: stackArea. ADD TO PROPERTY METADATA
+          example: 0.0
+        numberOfTraversePoints:
+          type: number
+          description: numberOfTraversePoints. ADD TO PROPERTY METADATA
+          example: 0.0
+        calculatedWAF:
+          type: number
+          description: calculatedWAF. ADD TO PROPERTY METADATA
+          example: 35.5
+        defaultWAF:
+          type: number
+          description: defaultWAF. ADD TO PROPERTY METADATA
+          example: 0.0
+        rataRunData:
+          type: array
+          items:
+            $ref: '#/components/schemas/RataRunDTO'
+          example:
+          - string
+        id:
+          type: string
+          example: '12345'
+        rataId:
+          type: string
+          example: '12345'
+        calculatedAverageGrossUnitLoad:
+          type: number
+          example: 35.5
+        calculatedMeanCEMValue:
+          type: number
+          example: 35.5
+        calculatedMeanRATAReferenceValue:
+          type: number
+          example: 35.5
+        calculatedMeanDifference:
+          type: number
+          example: 35.5
+        calculatedStandardDeviationDifference:
+          type: number
+          example: 35.5
+        calculatedConfidenceCoefficient:
+          type: number
+          example: 35.5
+        calculatedTValue:
+          type: number
+          example: 35.5
+        calculatedApsIndicator:
+          type: number
+          example: 35.5
+        calculatedRelativeAccuracy:
+          type: number
+          example: 35.5
+        calculatedBiasAdjustmentFactor:
+          type: number
+          example: 35.5
+        calculatedStackArea:
+          type: number
+          example: 35.5
+        calculatedCalculatedWAF:
+          type: number
+          example: 35.5
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+      required:
+      - operatingLevelCode
+      - rataRunData
+      - id
+      - rataId
+      - calculatedAverageGrossUnitLoad
+      - calculatedMeanCEMValue
+      - calculatedMeanRATAReferenceValue
+      - calculatedMeanDifference
+      - calculatedStandardDeviationDifference
+      - calculatedConfidenceCoefficient
+      - calculatedTValue
+      - calculatedApsIndicator
+      - calculatedRelativeAccuracy
+      - calculatedBiasAdjustmentFactor
+      - calculatedStackArea
+      - calculatedCalculatedWAF
+      - userId
+      - addDate
+      - updateDate
     RataRunDTO:
       type: object
       properties:
@@ -436,247 +681,6 @@ components:
       - userId
       - addDate
       - updateDate
-    RataSummaryDTO:
-      type: object
-      properties:
-        operatingLevelCode:
-          type: string
-          description: operatingLevelCode. ADD TO PROPERTY METADATA
-          example: string
-        averageGrossUnitLoad:
-          type: number
-          description: Average gross unit load (MWe or steam) or average velocity at operating level.
-          example: 71
-        referenceMethodCode:
-          type: string
-          description: referenceMethodCode. ADD TO PROPERTY METADATA
-          example: string
-        meanCEMValue:
-          type: number
-          description: meanCEMValue. ADD TO PROPERTY METADATA
-          example: 0.0
-        meanRATAReferenceValue:
-          type: number
-          minimum: 1
-          description: meanRATAReferenceValue. ADD TO PROPERTY METADATA
-          example: 0.0
-        meanDifference:
-          type: number
-          description: meanDifference. ADD TO PROPERTY METADATA
-          example: 0.0
-        standardDeviationDifference:
-          type: number
-          description: standardDeviationDifference. ADD TO PROPERTY METADATA
-          example: 0.0
-        confidenceCoefficient:
-          type: number
-          description: confidenceCoefficient. ADD TO PROPERTY METADATA
-          example: 0.0
-        tValue:
-          type: number
-          description: tValue. ADD TO PROPERTY METADATA
-          example: 0.0
-        apsIndicator:
-          type: number
-          description: Used to indicate if the alternative performance specification (APS) is used.
-          example: 0
-        apsCode:
-          type: string
-          description: Code used to identify the Alternate Performance Spec.
-          example: PS15
-        relativeAccuracy:
-          type: number
-          description: relativeAccuracy. ADD TO PROPERTY METADATA
-          example: 35.5
-        biasAdjustmentFactor:
-          type: number
-          description: biasAdjustmentFactor. ADD TO PROPERTY METADATA
-          example: 0.0
-        co2OrO2ReferenceMethodCode:
-          type: string
-          description: co2OrO2ReferenceMethodCode. ADD TO PROPERTY METADATA
-          example: string
-        stackDiameter:
-          type: number
-          description: stackDiameter. ADD TO PROPERTY METADATA
-          example: 0.0
-        stackArea:
-          type: number
-          description: stackArea. ADD TO PROPERTY METADATA
-          example: 0.0
-        numberOfTraversePoints:
-          type: number
-          description: numberOfTraversePoints. ADD TO PROPERTY METADATA
-          example: 0.0
-        calculatedWAF:
-          type: number
-          description: calculatedWAF. ADD TO PROPERTY METADATA
-          example: 35.5
-        defaultWAF:
-          type: number
-          description: defaultWAF. ADD TO PROPERTY METADATA
-          example: 0.0
-        rataRunData:
-          type: array
-          items:
-            $ref: '#/components/schemas/RataRunDTO'
-          example:
-          - string
-        id:
-          type: string
-          example: '12345'
-        rataId:
-          type: string
-          example: '12345'
-        calculatedAverageGrossUnitLoad:
-          type: number
-          example: 35.5
-        calculatedMeanCEMValue:
-          type: number
-          example: 35.5
-        calculatedMeanRATAReferenceValue:
-          type: number
-          example: 35.5
-        calculatedMeanDifference:
-          type: number
-          example: 35.5
-        calculatedStandardDeviationDifference:
-          type: number
-          example: 35.5
-        calculatedConfidenceCoefficient:
-          type: number
-          example: 35.5
-        calculatedTValue:
-          type: number
-          example: 35.5
-        calculatedApsIndicator:
-          type: number
-          example: 35.5
-        calculatedRelativeAccuracy:
-          type: number
-          example: 35.5
-        calculatedBiasAdjustmentFactor:
-          type: number
-          example: 35.5
-        calculatedStackArea:
-          type: number
-          example: 35.5
-        calculatedCalculatedWAF:
-          type: number
-          example: 35.5
-        userId:
-          type: string
-          example: '12345'
-        addDate:
-          type: string
-          example: string
-        updateDate:
-          type: string
-          example: string
-      required:
-      - operatingLevelCode
-      - rataRunData
-      - id
-      - rataId
-      - calculatedAverageGrossUnitLoad
-      - calculatedMeanCEMValue
-      - calculatedMeanRATAReferenceValue
-      - calculatedMeanDifference
-      - calculatedStandardDeviationDifference
-      - calculatedConfidenceCoefficient
-      - calculatedTValue
-      - calculatedApsIndicator
-      - calculatedRelativeAccuracy
-      - calculatedBiasAdjustmentFactor
-      - calculatedStackArea
-      - calculatedCalculatedWAF
-      - userId
-      - addDate
-      - updateDate
-    RataTraverseDTO:
-      type: object
-      properties:
-        id:
-          type: string
-          example: '12345'
-        flowRataRunId:
-          type: string
-          example: '12345'
-        calculatedCalculatedVelocity:
-          type: number
-          example: 35.5
-        userId:
-          type: string
-          example: '12345'
-        addDate:
-          type: string
-          example: string
-        updateDate:
-          type: string
-          example: string
-        probeId:
-          type: string
-          maxLength: 11
-          example: '12345'
-        probeTypeCode:
-          type: string
-          example: string
-        pressureMeasureCode:
-          type: string
-          example: string
-        methodTraversePointId:
-          type: string
-          minLength: 1
-          maxLength: 3
-          example: '12345'
-        velocityCalibrationCoefficient:
-          type: number
-          example: 0.0
-        lastProbeDate:
-          format: date-time
-          type: string
-          example: '2024-01-15T12:00:00Z'
-        averageVelocityDifferencePressure:
-          type: number
-          example: 0.0
-        averageSquareVelocityDifferencePressure:
-          type: number
-          example: 0.0
-        tStackTemperature:
-          type: number
-          example: 0.0
-        pointUsedIndicator:
-          type: number
-          example: 0.0
-        numberWallEffectsPoints:
-          type: number
-          example: 0.0
-        yawAngle:
-          type: number
-          example: 0.0
-        pitchAngle:
-          type: number
-          example: 0.0
-        calculatedVelocity:
-          type: number
-          example: 35.5
-        replacementVelocity:
-          type: number
-          example: 0.0
-      required:
-      - id
-      - flowRataRunId
-      - calculatedCalculatedVelocity
-      - userId
-      - addDate
-      - updateDate
-      - probeId
-      - probeTypeCode
-      - pressureMeasureCode
-      - methodTraversePointId
-      - velocityCalibrationCoefficient
-      - lastProbeDate
-      - tStackTemperature
   securitySchemes:
     APIKey:
       type: apiKey

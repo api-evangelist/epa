@@ -7,9 +7,7 @@ info:
 
     from thousands of monitors across the United States. The API exposes monitor metadata,
 
-    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
-
-    '
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.'
   version: '1.0'
   contact:
     name: AQS Data Mart Support
@@ -246,29 +244,6 @@ paths:
         dispatcher: FALLBACK
 components:
   parameters:
-    Email:
-      name: email
-      in: query
-      required: true
-      schema:
-        type: string
-        format: email
-      description: Registered email address.
-    Key:
-      name: key
-      in: query
-      required: true
-      schema:
-        type: string
-      description: Account-specific access key.
-    County:
-      name: county
-      in: query
-      required: true
-      schema:
-        type: string
-        pattern: ^\d{3}$
-      description: 3-digit county code.
     State:
       name: state
       in: query
@@ -277,7 +252,48 @@ components:
         type: string
         pattern: ^\d{2}$
       description: 2-digit state FIPS code.
+    Key:
+      name: key
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Account-specific access key.
+    Email:
+      name: email
+      in: query
+      required: true
+      schema:
+        type: string
+        format: email
+      description: Registered email address.
+    County:
+      name: county
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{3}$
+      description: 3-digit county code.
   schemas:
+    Envelope:
+      type: object
+      required:
+      - Header
+      - Data
+      properties:
+        Header:
+          type: array
+          items:
+            $ref: '#/components/schemas/Header'
+          example:
+          - string
+        Data:
+          type: array
+          items:
+            type: object
+          example:
+          - {}
     Header:
       type: object
       properties:
@@ -299,24 +315,6 @@ components:
             type: string
           example:
           - string
-    Envelope:
-      type: object
-      required:
-      - Header
-      - Data
-      properties:
-        Header:
-          type: array
-          items:
-            $ref: '#/components/schemas/Header'
-          example:
-          - string
-        Data:
-          type: array
-          items:
-            type: object
-          example:
-          - {}
   securitySchemes:
     emailKey:
       type: apiKey

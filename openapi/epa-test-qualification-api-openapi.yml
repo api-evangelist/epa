@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: QA Certification Management OpenAPI Specification Test Qualification API
+  title: QA Certification Management OpenAPI Specification Test…
   description: QA & Certification management API endpoints for qa test data, qa cert events, and test extension & exemption data
   version: 'v2.0.80 published: Thu Mar 26 2026'
   contact: {}
@@ -51,6 +51,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      summary: Test qualification controller get test qualifications
+      x-summary-source: derived
   /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/test-qualifications/{id}:
     get:
       operationId: TestQualificationController_getTestQualification
@@ -94,9 +96,11 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      summary: Test qualification controller get test qualification
+      x-summary-source: derived
 components:
   schemas:
-    TestQualificationDTO:
+    TestQualificationRecordDTO:
       type: object
       properties:
         id:
@@ -141,7 +145,7 @@ components:
       - addDate
       - updateDate
       - testClaimCode
-    TestQualificationRecordDTO:
+    TestQualificationDTO:
       type: object
       properties:
         id:

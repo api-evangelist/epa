@@ -3,26 +3,7 @@ info:
   title: EPA Envirofacts Data Service API
   description: 'The Envirofacts Data Service API (DMAP-EF) is a programmatic interface for querying the EPA''s
 
-    Envirofacts warehouse. It exposes data from multiple regulatory programs including
-
-    RCRA (hazardous waste), GHG (greenhouse gases), TRI (toxic release inventory), SEMS (Superfund),
-
-    NEI (National Emissions Inventory), SDWIS (drinking water) and more, plus UV index forecasts.
-
-
-    The service uses path-encoded queries instead of conventional query strings. The general pattern is:
-
-
-    ```
-
-    /efservice/{table}/{column}{operator}{value}/{join}/{first}:{last}/{sort}/{format}
-
-    ```
-
-
-    All components except `{table}` are optional. Queries must complete within 15 minutes.
-
-    '
+    Envirofacts warehouse.'
   version: '1.0'
   contact:
     name: Envirofacts Support
@@ -124,6 +105,13 @@ paths:
         dispatcher: FALLBACK
 components:
   parameters:
+    Filter:
+      name: filter
+      in: path
+      required: false
+      schema:
+        type: string
+      description: Optional filter clause `{column}{operator}{value}`. Operators include equals, notEquals, lessThan, greaterThan, beginsWith, endsWith, contains, like, in.
     Format:
       name: format
       in: path
@@ -140,13 +128,6 @@ components:
         - PDF
         - XML
       description: Output format (default JSON).
-    Filter:
-      name: filter
-      in: path
-      required: false
-      schema:
-        type: string
-      description: Optional filter clause `{column}{operator}{value}`. Operators include equals, notEquals, lessThan, greaterThan, beginsWith, endsWith, contains, like, in.
     Range:
       name: range
       in: path

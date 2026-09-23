@@ -3,26 +3,7 @@ info:
   title: EPA Envirofacts Data Service UV Index API
   description: 'The Envirofacts Data Service API (DMAP-EF) is a programmatic interface for querying the EPA''s
 
-    Envirofacts warehouse. It exposes data from multiple regulatory programs including
-
-    RCRA (hazardous waste), GHG (greenhouse gases), TRI (toxic release inventory), SEMS (Superfund),
-
-    NEI (National Emissions Inventory), SDWIS (drinking water) and more, plus UV index forecasts.
-
-
-    The service uses path-encoded queries instead of conventional query strings. The general pattern is:
-
-
-    ```
-
-    /efservice/{table}/{column}{operator}{value}/{join}/{first}:{last}/{sort}/{format}
-
-    ```
-
-
-    All components except `{table}` are optional. Queries must complete within 15 minutes.
-
-    '
+    Envirofacts warehouse.'
   version: '1.0'
   contact:
     name: Envirofacts Support
@@ -149,25 +130,46 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    State:
+      name: STATE
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: ^[A-Z]{2}$
+      description: 2-letter state abbreviation.
+    City:
+      name: CITY
+      in: path
+      required: true
+      schema:
+        type: string
+    Format:
+      name: format
+      in: path
+      required: false
+      schema:
+        type: string
+        enum:
+        - JSON
+        - CSV
+        - EXCEL
+        - HTML
+        - JSONP
+        - PARQUET
+        - PDF
+        - XML
+      description: Output format (default JSON).
+    Zip:
+      name: ZIP
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{5}$
+      description: 5-digit ZIP code.
   schemas:
-    UvHourly:
-      type: object
-      properties:
-        CITY:
-          type: string
-          example: Raleigh
-        STATE:
-          type: string
-          example: NC
-        ZIP:
-          type: string
-          example: '20460'
-        DATE_TIME:
-          type: string
-          example: string
-        UV_VALUE:
-          type: integer
-          example: 0
     UvDaily:
       type: object
       properties:
@@ -186,42 +188,21 @@ components:
         UV_INDEX:
           type: integer
           example: 0
-  parameters:
-    Format:
-      name: format
-      in: path
-      required: false
-      schema:
-        type: string
-        enum:
-        - JSON
-        - CSV
-        - EXCEL
-        - HTML
-        - JSONP
-        - PARQUET
-        - PDF
-        - XML
-      description: Output format (default JSON).
-    State:
-      name: STATE
-      in: path
-      required: true
-      schema:
-        type: string
-        pattern: ^[A-Z]{2}$
-      description: 2-letter state abbreviation.
-    City:
-      name: CITY
-      in: path
-      required: true
-      schema:
-        type: string
-    Zip:
-      name: ZIP
-      in: path
-      required: true
-      schema:
-        type: string
-        pattern: ^\d{5}$
-      description: 5-digit ZIP code.
+    UvHourly:
+      type: object
+      properties:
+        CITY:
+          type: string
+          example: Raleigh
+        STATE:
+          type: string
+          example: NC
+        ZIP:
+          type: string
+          example: '20460'
+        DATE_TIME:
+          type: string
+          example: string
+        UV_VALUE:
+          type: integer
+          example: 0

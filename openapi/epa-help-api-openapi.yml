@@ -10,7 +10,7 @@ tags:
 paths:
   /api/help/formio/s3/{rebateYear}/{formType}/storage/s3:
     get:
-      summary: Download Formio File Attachment from S3 for a Submission.
+      summary: Download Formio File Attachment from S3 for a Submission
       parameters:
       - $ref: '#/components/parameters/rebateYear'
       - $ref: '#/components/parameters/formType'
@@ -26,9 +26,11 @@ paths:
         dispatcher: FALLBACK
       tags:
       - Help
+      operationId: getApiHelpFormioS3ByRebateYearByFormTypeStorageS3
+      x-operation-id-source: derived
   /api/help/formio/submission/{rebateYear}/{formType}/{id}:
     get:
-      summary: Get an Existing Form's Submission Data from Formio.
+      summary: Get an Existing Form's Submission Data from Formio
       parameters:
       - $ref: '#/components/parameters/rebateYear'
       - $ref: '#/components/parameters/formType'
@@ -100,8 +102,10 @@ paths:
         dispatcher: FALLBACK
       tags:
       - Help
+      operationId: getApiHelpFormioSubmissionByRebateYearByFormTypeById
+      x-operation-id-source: derived
     post:
-      summary: Post an Update to an Existing Form Submission to Formio (change Submission to 'draft').
+      summary: Post an Update to an Existing Form Submission to Formio (change Submission to…
       parameters:
       - $ref: '#/components/parameters/rebateYear'
       - $ref: '#/components/parameters/formType'
@@ -140,9 +144,11 @@ paths:
         dispatcher: FALLBACK
       tags:
       - Help
+      operationId: postApiHelpFormioSubmissionByRebateYearByFormTypeById
+      x-operation-id-source: derived
   /api/help/formio/actions/{formId}/{mongoId}:
     get:
-      summary: Get All Actions Associated with a Form's Submission from Formio.
+      summary: Get All Actions Associated with a Form's Submission from Formio
       parameters:
       - $ref: '#/components/parameters/formId'
       - $ref: '#/components/parameters/mongoId'
@@ -169,9 +175,11 @@ paths:
         dispatcher: FALLBACK
       tags:
       - Help
+      operationId: getApiHelpFormioActionsByFormIdByMongoId
+      x-operation-id-source: derived
   /api/help/formio/pdf/{formId}/{mongoId}:
     get:
-      summary: Get a PDF of an Existing Form's Submission from Formio.
+      summary: Get a PDF of an Existing Form's Submission from Formio
       parameters:
       - $ref: '#/components/parameters/formId'
       - $ref: '#/components/parameters/mongoId'
@@ -197,6 +205,8 @@ paths:
         dispatcher: FALLBACK
       tags:
       - Help
+      operationId: getApiHelpFormioPdfByFormIdByMongoId
+      x-operation-id-source: derived
   /api/help:
     get:
       summary: Help
@@ -222,6 +232,8 @@ paths:
         dispatcher: FALLBACK
       security:
       - basicAuth: []
+      operationId: getApiHelp
+      x-operation-id-source: derived
     servers:
     - url: https://owapps-stage.app.cloud.gov/elg
 components:
@@ -234,20 +246,20 @@ components:
       example: frf
       schema:
         type: string
+    key:
+      in: query
+      name: key
+      description: The S3 object key for the file.
+      required: true
+      example: placeholder-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.png
+      schema:
+        type: string
     rebateYear:
       in: path
       name: rebateYear
       description: The Clean School Bus Rebate year (2022, 2023, 2024).
       required: true
       example: '2022'
-      schema:
-        type: string
-    bucket:
-      in: query
-      name: bucket
-      description: The S3 bucket name where the file is stored.
-      required: true
-      example: cleanschoolbus
       schema:
         type: string
     mongoId:
@@ -258,20 +270,20 @@ components:
       example: '000000000000000000000000'
       schema:
         type: string
+    bucket:
+      in: query
+      name: bucket
+      description: The S3 bucket name where the file is stored.
+      required: true
+      example: cleanschoolbus
+      schema:
+        type: string
     formId:
       in: path
       name: formId
       description: The Formio form's MongoDB ObjectId.
       required: true
       example: '000000000000000000000000'
-      schema:
-        type: string
-    key:
-      in: query
-      name: key
-      description: The S3 object key for the file.
-      required: true
-      example: placeholder-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.png
       schema:
         type: string
   responses:

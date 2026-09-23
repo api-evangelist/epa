@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: CAMD Administrative & General Services OpenAPI Specification Reports API
+  title: CAMD Administrative & General Services OpenAPI…
   description: Provides administrative & general services for CAMD applications.
   version: 'v2.0.146 published: Thu Mar 26 2026'
   contact: {}
@@ -30,12 +30,13 @@ paths:
                     message: Example response
       security:
       - APIKey: []
-      summary: ''
+      summary: Report controller get available reports
       tags:
       - Reports
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      x-summary-source: derived
   /camd-services/reports:
     get:
       description: Retrieves official data for various reports based on criteria.
@@ -128,36 +129,15 @@ paths:
                     message: Example response
       security:
       - APIKey: []
-      summary: ''
+      summary: Report controller get report
       tags:
       - Reports
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      x-summary-source: derived
 components:
   schemas:
-    ReportDTO:
-      type: object
-      properties:
-        displayName:
-          type: string
-          example: EPA Facility
-        columns:
-          type: array
-          items:
-            $ref: '#/components/schemas/ReportColumnDTO'
-          example:
-          - string
-        details:
-          type: array
-          items:
-            $ref: '#/components/schemas/ReportDetailDTO'
-          example:
-          - string
-      required:
-      - displayName
-      - columns
-      - details
     ReportDetailDTO:
       type: object
       properties:
@@ -196,6 +176,28 @@ components:
       required:
       - code
       - values
+    ReportDTO:
+      type: object
+      properties:
+        displayName:
+          type: string
+          example: EPA Facility
+        columns:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReportColumnDTO'
+          example:
+          - string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReportDetailDTO'
+          example:
+          - string
+      required:
+      - displayName
+      - columns
+      - details
   securitySchemes:
     APIKey:
       type: apiKey

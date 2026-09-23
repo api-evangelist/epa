@@ -38,6 +38,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      operationId: getApiMultiCriteriaSearchCriteria
+      x-operation-id-source: derived
   /api/multiCriteriaSearch:
     get:
       summary: Multi Criteria Search
@@ -548,6 +550,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      operationId: getApiMultiCriteriaSearch
+      x-operation-id-source: derived
   /api/keywordSearch:
     get:
       summary: Keyword Search
@@ -594,8 +598,17 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      operationId: getApiKeywordSearch
+      x-operation-id-source: derived
 components:
   parameters:
+    limit:
+      name: limit
+      in: query
+      description: Placeholder.
+      required: false
+      schema:
+        type: integer
     pointSourceCategoryCode:
       name: pointSourceCategoryCode
       in: query
@@ -673,30 +686,6 @@ components:
         enum:
         - asc
         - desc
-    download:
-      name: download
-      in: query
-      description: Placeholder.
-      required: false
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    offset:
-      name: offset
-      in: query
-      description: Placeholder.
-      required: false
-      schema:
-        type: integer
-    limit:
-      name: limit
-      in: query
-      description: Placeholder.
-      required: false
-      schema:
-        type: integer
     sortCol:
       name: sortCol
       in: query
@@ -738,6 +727,23 @@ components:
         - longTermAverageCount
         - pointSourceCategoryCode
         - pointSourceCategoryName
+    offset:
+      name: offset
+      in: query
+      description: Placeholder.
+      required: false
+      schema:
+        type: integer
+    download:
+      name: download
+      in: query
+      description: Placeholder.
+      required: false
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
   schemas:
     customSearch.multiCriteriaSearchCriteria:
       type: object

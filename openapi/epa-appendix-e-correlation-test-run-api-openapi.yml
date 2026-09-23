@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: QA Certification Management OpenAPI Specification Appendix E Correlation Test Run API
+  title: QA Certification Management OpenAPI Specification Appendix…
   description: QA & Certification management API endpoints for qa test data, qa cert events, and test extension & exemption data
   version: 'v2.0.80 published: Thu Mar 26 2026'
   contact: {}
@@ -57,6 +57,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      summary: App ECorrelation test run controller get app ECorrelation test runs
+      x-summary-source: derived
   ? /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/appendix-e-correlation-test-summaries/{appECorrTestSumId}/appendix-e-correlation-test-runs/{id}
   : get:
       operationId: AppECorrelationTestRunController_getAppECorrelationTestRun
@@ -106,8 +108,56 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      summary: App ECorrelation test run controller get app ECorrelation test run
+      x-summary-source: derived
 components:
   schemas:
+    AppECorrelationTestRunBaseDTO:
+      type: object
+      properties:
+        runNumber:
+          type: number
+          example: 0.0
+        referenceValue:
+          type: number
+          example: 0.0
+        hourlyHeatInputRate:
+          type: number
+          example: 0.0
+        totalHeatInput:
+          type: number
+          example: 0.0
+        responseTime:
+          type: number
+          example: 0.0
+        beginDate:
+          format: date-time
+          type: string
+          example: '2024-01-15T12:00:00Z'
+        beginHour:
+          type: number
+          example: 0.0
+        beginMinute:
+          type: number
+          example: 0.0
+        endDate:
+          format: date-time
+          type: string
+          example: '2024-01-15T12:00:00Z'
+        endHour:
+          type: number
+          example: 0.0
+        endMinute:
+          type: number
+          example: 0.0
+      required:
+      - runNumber
+      - beginDate
+      - beginHour
+      - beginMinute
+      - endDate
+      - endHour
+      - endMinute
     AppECorrelationTestRunRecordDTO:
       type: object
       properties:
@@ -182,52 +232,6 @@ components:
       - userId
       - addDate
       - updateDate
-    AppECorrelationTestRunBaseDTO:
-      type: object
-      properties:
-        runNumber:
-          type: number
-          example: 0.0
-        referenceValue:
-          type: number
-          example: 0.0
-        hourlyHeatInputRate:
-          type: number
-          example: 0.0
-        totalHeatInput:
-          type: number
-          example: 0.0
-        responseTime:
-          type: number
-          example: 0.0
-        beginDate:
-          format: date-time
-          type: string
-          example: '2024-01-15T12:00:00Z'
-        beginHour:
-          type: number
-          example: 0.0
-        beginMinute:
-          type: number
-          example: 0.0
-        endDate:
-          format: date-time
-          type: string
-          example: '2024-01-15T12:00:00Z'
-        endHour:
-          type: number
-          example: 0.0
-        endMinute:
-          type: number
-          example: 0.0
-      required:
-      - runNumber
-      - beginDate
-      - beginHour
-      - beginMinute
-      - endDate
-      - endHour
-      - endMinute
   securitySchemes:
     APIKey:
       type: apiKey

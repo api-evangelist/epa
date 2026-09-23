@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: QA Certification Management OpenAPI Specification Cycle Time Summary API
+  title: QA Certification Management OpenAPI Specification Cycle…
   description: QA & Certification management API endpoints for qa test data, qa cert events, and test extension & exemption data
   version: 'v2.0.80 published: Thu Mar 26 2026'
   contact: {}
@@ -51,6 +51,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      summary: Cycle time summary controller get cycle time summaries
+      x-summary-source: derived
   /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/cycle-time-summaries/{id}:
     get:
       operationId: CycleTimeSummaryController_getCycleTimeSummary
@@ -94,8 +96,48 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      summary: Cycle time summary controller get cycle time summary
+      x-summary-source: derived
 components:
   schemas:
+    CycleTimeSummaryDTO:
+      type: object
+      properties:
+        cycleTimeInjectionData:
+          type: array
+          items:
+            $ref: '#/components/schemas/CycleTimeInjectionDTO'
+          example:
+          - string
+        id:
+          type: string
+          example: '12345'
+        testSumId:
+          type: string
+          example: '12345'
+        calculatedTotalTime:
+          type: number
+          example: 35.5
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+        totalTime:
+          type: number
+          example: 0.0
+      required:
+      - cycleTimeInjectionData
+      - id
+      - testSumId
+      - calculatedTotalTime
+      - userId
+      - addDate
+      - updateDate
     CycleTimeInjectionDTO:
       type: object
       properties:
@@ -160,44 +202,6 @@ components:
       - addDate
       - updateDate
       - gasLevelCode
-    CycleTimeSummaryDTO:
-      type: object
-      properties:
-        cycleTimeInjectionData:
-          type: array
-          items:
-            $ref: '#/components/schemas/CycleTimeInjectionDTO'
-          example:
-          - string
-        id:
-          type: string
-          example: '12345'
-        testSumId:
-          type: string
-          example: '12345'
-        calculatedTotalTime:
-          type: number
-          example: 35.5
-        userId:
-          type: string
-          example: '12345'
-        addDate:
-          type: string
-          example: string
-        updateDate:
-          type: string
-          example: string
-        totalTime:
-          type: number
-          example: 0.0
-      required:
-      - cycleTimeInjectionData
-      - id
-      - testSumId
-      - calculatedTotalTime
-      - userId
-      - addDate
-      - updateDate
   securitySchemes:
     APIKey:
       type: apiKey

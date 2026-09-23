@@ -40,6 +40,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      summary: Monitor location controller get location
+      x-summary-source: derived
   /monitor-plan-mgmt/locations/{locId}/relationships:
     get:
       operationId: MonitorLocationController_getLocationRelationships
@@ -76,8 +78,636 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      summary: Monitor location controller get location relationships
+      x-summary-source: derived
 components:
   schemas:
+    SystemComponentDTO:
+      type: object
+      properties:
+        componentId:
+          type: string
+          description: The three digit code assigned by the source to identify the component.
+          example: '044'
+        beginDate:
+          format: date-time
+          type: string
+          description: Date on which information became effective or activity started.
+          example: '2008-12-31'
+        beginHour:
+          type: number
+          description: Hour in which information became effective.
+          example: 23
+        endDate:
+          format: date-time
+          type: string
+          description: Last date in which information was effective.  This date will be null for active records.
+          example: null
+        endHour:
+          type: number
+          description: Last hour in which information was effective.  This value will be null for active records.
+          example: null
+        id:
+          type: string
+          description: Unique identifier of a Monitoring System Component record.
+          example: MELISSARHO-3F31E53DE9B14764936BFB0AC7225847
+        locationId:
+          type: string
+          description: Unique identifier of a monitoring location record.
+          example: '5770'
+        monitoringSystemRecordId:
+          type: string
+          description: Unique identifier of a monitoring system record.
+          example: CAMD-4B0DC37051224A7AA9D8CA1E5BE6B4D4
+        userId:
+          type: string
+          description: User account or source of data that added or updated record.
+          example: abcde
+        addDate:
+          type: string
+          description: Date and time in which record was added.
+          example: '2009-02-20'
+        updateDate:
+          type: string
+          description: Date and time in which record was last updated.
+          example: '2009-02-20'
+        active:
+          type: boolean
+          description: Flag for active monitor location record
+          example: true
+      required:
+      - componentId
+      - beginDate
+      - beginHour
+      - endDate
+      - endHour
+      - id
+      - locationId
+      - monitoringSystemRecordId
+      - userId
+      - addDate
+      - updateDate
+      - active
+    DuctWafDTO:
+      type: object
+      properties:
+        wafDeterminationDate:
+          format: date-time
+          type: string
+          description: The date the WAF applied in column 20 was determined.
+          example: '2020-11-18'
+        wafBeginDate:
+          format: date-time
+          type: string
+          description: The date on which the WAF was first applied to the flow rate data.
+          example: '2020-11-28'
+        wafBeginHour:
+          type: number
+          description: The hour in which the WAF was first applied to the flow rate data.
+          example: 12
+        wafMethodCode:
+          type: string
+          description: Code used to identify the WAF determination method.
+          example: FT
+        wafValue:
+          type: number
+          description: The WAF applied to the flow rate data, to four decimal places.
+          example: 1.0454
+        numberOfTestRuns:
+          type: number
+          description: The number of runs in the WAF test (must be one for default WAF and at least three for a measured WAF)
+          example: 3
+        numberOfTraversePointsWAF:
+          type: number
+          description: The number of Method 1 traverse points in the WAF test runs.
+          example: 48
+        numberOfTestPorts:
+          type: number
+          description: The number of test ports at which measurements were made during the WAF test runs.
+          example: 4
+        numberOfTraversePointsRef:
+          type: number
+          description: The number of Method 1 traverse points in the reference flow RATA test runs.
+          example: 48
+        ductWidth:
+          type: number
+          description: The width of the rectangular duct at the test location.
+          example: 12
+        ductDepth:
+          type: number
+          description: The depth of the rectangular duct at the test location.
+          example: 18.5
+        wafEndDate:
+          format: date-time
+          type: string
+          description: The date on which the WAF was last applied to the flow rate data.
+          example: '2021-09-18'
+        wafEndHour:
+          type: number
+          description: The hour in which the WAF was last applied to the flow rate data.
+          example: 9
+        id:
+          type: string
+          description: Unique identifier of a rectangular duct WAF data record.
+          example: CAMD-6847FB7858174AD0ADF87FFBAF85EF9C
+        locationId:
+          type: string
+          description: Unique identifier of a monitoring location record.
+          example: '5'
+        userId:
+          type: string
+          description: User account or source of data that added or updated record.
+          example: abcde
+        addDate:
+          type: string
+          description: Date and time in which record was added.
+          example: '2009-02-20'
+        updateDate:
+          type: string
+          description: Date and time in which record was last updated.
+          example: '2009-02-20'
+        active:
+          type: boolean
+          example: true
+      required:
+      - wafDeterminationDate
+      - wafBeginDate
+      - wafBeginHour
+      - wafMethodCode
+      - wafValue
+      - numberOfTestRuns
+      - numberOfTraversePointsWAF
+      - numberOfTestPorts
+      - numberOfTraversePointsRef
+      - ductWidth
+      - ductDepth
+      - wafEndDate
+      - wafEndHour
+      - id
+      - locationId
+      - userId
+      - addDate
+      - updateDate
+      - active
+    MonitorSystemDTO:
+      type: object
+      properties:
+        monitoringSystemId:
+          type: string
+          description: The three digit code used by the source to identify the monitoring system.
+          example: C42
+        systemTypeCode:
+          type: string
+          description: Code used to identify the type (parameter) of the system.
+          example: FLOW
+        systemDesignationCode:
+          type: string
+          description: Code used to indicate designation of monitoring system as primary, backup etc.
+          example: P
+        fuelCode:
+          type: string
+          description: Code used to identify the type of fuel.
+          example: NFS
+        beginDate:
+          format: date-time
+          type: string
+          description: Date on which information became effective or activity started.
+          example: '2007-11-28'
+        endDate:
+          format: date-time
+          type: string
+          description: Last date in which information was effective.  This date will be null for active records.
+          example: null
+        beginHour:
+          type: number
+          description: Hour in which information became effective or activity started.
+          example: 17
+        endHour:
+          type: number
+          description: Last hour in which information was effective.  This value will be null for active records.
+          example: null
+        id:
+          type: string
+          description: Unique identifier of a monitoring system record.
+          example: CAMD-4B0DC37051224A7AA9D8CA1E5BE6B4D4
+        locationId:
+          type: string
+          description: Unique identifier of a monitoring location record.
+          example: '5770'
+        userId:
+          type: string
+          description: User account or source of data that added or updated record.
+          example: abcde
+        addDate:
+          type: string
+          description: Date and time in which record was added.
+          example: '2009-02-20'
+        updateDate:
+          type: string
+          description: Date and time in which record was last updated.
+          example: '2009-02-20'
+        active:
+          type: boolean
+          description: Flag for active monitor location record
+          example: true
+        monitoringSystemComponentData:
+          type: array
+          items:
+            $ref: '#/components/schemas/SystemComponentDTO'
+          example:
+          - string
+        monitoringSystemFuelFlowData:
+          type: array
+          items:
+            $ref: '#/components/schemas/SystemFuelFlowDTO'
+          example:
+          - string
+      required:
+      - monitoringSystemId
+      - systemTypeCode
+      - systemDesignationCode
+      - fuelCode
+      - beginDate
+      - endDate
+      - beginHour
+      - endHour
+      - id
+      - locationId
+      - userId
+      - addDate
+      - updateDate
+      - active
+      - monitoringSystemComponentData
+      - monitoringSystemFuelFlowData
+    UnitStackConfigurationDTO:
+      type: object
+      properties:
+        beginDate:
+          format: date-time
+          type: string
+          description: Date in which information became effective or activity started.
+          example: '1995-01-01'
+        endDate:
+          format: date-time
+          type: string
+          description: Last date in which information was effective or date in which activity ended. This value will be null for active records.
+          example: '2020-12-31'
+        id:
+          type: string
+          description: Unique identifier of a monitoring configuration record.
+          example: CAMD-18DD175CE7EF4256B78469865D84F576
+        unitRecordId:
+          type: number
+          description: Unique identifier of a unit record which is generated by the EPA Host System.
+          example: '2'
+        stackPipeRecordId:
+          type: string
+          description: Unique identifier of a stack or pipe record.
+          example: MDC-CCB8D6D0D4E34D24A99C01DCD14078DF
+        userId:
+          type: string
+          description: User account or source of data that added or updated record.
+          example: abcde
+        addDate:
+          type: string
+          description: Date and time in which record was added.
+          example: '2009-02-20'
+        updateDate:
+          type: string
+          description: Date and time in which record was last updated.
+          example: '2009-02-20'
+        active:
+          type: boolean
+          description: Flag for active monitor location record
+          example: true
+        unitId:
+          type: string
+          example: '12345'
+        stackPipeId:
+          type: string
+          example: '12345'
+      required:
+      - beginDate
+      - endDate
+      - id
+      - unitRecordId
+      - stackPipeRecordId
+      - userId
+      - addDate
+      - updateDate
+      - active
+      - unitId
+      - stackPipeId
+    PCTQualificationDTO:
+      type: object
+      properties:
+        qualificationYear:
+          type: number
+          description: The calendar year during which activity occurred.
+          example: 2020
+        averagePercentValue:
+          type: number
+          description: The average percent capacity or heat input usage.
+          example: 100
+        yr1QualificationDataYear:
+          type: number
+          description: The first year corresponding to the qualification data.
+          example: 2018
+        yr1QualificationDataTypeCode:
+          type: string
+          description: Code used to identify the type qualification in the first year.
+          example: A
+        yr1PercentageValue:
+          type: number
+          description: The percent capacity or heat input usage in the first year.
+          example: 100
+        yr2QualificationDataYear:
+          type: number
+          description: The second year corresponding to the qualification data.
+          example: 2019
+        yr2QualificationDataTypeCode:
+          type: string
+          description: Code used to identify the type qualification in the second year.
+          example: A
+        yr2PercentageValue:
+          type: number
+          description: The percent capacity or heat input usage in the second year.
+          example: 100
+        yr3QualificationDataYear:
+          type: number
+          description: The third year corresponding to the qualification data.
+          example: 2020
+        yr3QualificationDataTypeCode:
+          type: string
+          description: Code used to indicate type of data for year (actual or projected) used to determine peaking or gas-fired qualification.
+          example: A
+        yr3PercentageValue:
+          type: number
+          description: The percent capacity or heat input usage in the third year.
+          example: 100
+        id:
+          type: string
+          description: Unique identifier of a monitoring qualification percentage record.
+          example: 02227-BSGR-56EB0D4D400642A4860D6402698BBE16
+        qualificationId:
+          type: string
+          description: Unique identifier of a monitoring qualification record.
+          example: 02022-614W-608B84AEDB8148C7B3935EE935AB835F
+        userId:
+          type: string
+          description: User account or source of data that added or updated record.
+          example: abcde
+        addDate:
+          type: string
+          description: Date and time in which record was added.
+          example: '2021-04-01'
+        updateDate:
+          type: string
+          description: Date and time in which record was last updated.
+          example: '2021-04-01'
+      required:
+      - qualificationYear
+      - averagePercentValue
+      - yr1QualificationDataYear
+      - yr1QualificationDataTypeCode
+      - yr1PercentageValue
+      - yr2QualificationDataYear
+      - yr2QualificationDataTypeCode
+      - yr2PercentageValue
+      - yr3QualificationDataYear
+      - yr3QualificationDataTypeCode
+      - yr3PercentageValue
+      - id
+      - qualificationId
+      - userId
+      - addDate
+      - updateDate
+    ComponentDTO:
+      type: object
+      properties:
+        componentId:
+          type: string
+          description: The three digit code assigned by the source to identify the component.
+          example: '027'
+        componentTypeCode:
+          type: string
+          description: Code used to identify the component type.
+          example: SO2
+        sampleAcquisitionMethodCode:
+          type: string
+          description: Code used to identify the sample acquisition method.
+          example: DOU
+        basisCode:
+          type: string
+          description: Code used to identify the moisture basis.
+          example: W
+        manufacturer:
+          type: string
+          maxLength: 25
+          description: Name of the manufacturer or developer of the component.
+          example: TECO
+        modelVersion:
+          type: string
+          maxLength: 15
+          description: The model of any hardware component or the version number of the software component.
+          example: 43I
+        serialNumber:
+          type: string
+          maxLength: 20
+          description: Serial number of the component.
+          example: '631819420'
+        hgConverterIndicator:
+          type: number
+          description: For an Hg component, indicates whether the analyzer has a converter.
+          example: '1'
+        id:
+          type: string
+          description: Unique identifier of a monitoring component record.
+          example: CAMD-646D15E327E1480D814D48286DA7F073
+        locationId:
+          type: string
+          description: Unique identifier of a monitoring location record.
+          example: '5770'
+        userId:
+          type: string
+          description: User account or source of data that added or updated record.
+          example: abcde
+        addDate:
+          type: string
+          description: Date and time in which record was added.
+          example: '2009-02-20'
+        updateDate:
+          type: string
+          description: Date and time in which record was last updated.
+          example: '2009-02-20'
+        analyzerRangeData:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnalyzerRangeDTO'
+          example:
+          - string
+      required:
+      - componentId
+      - componentTypeCode
+      - sampleAcquisitionMethodCode
+      - basisCode
+      - manufacturer
+      - modelVersion
+      - serialNumber
+      - hgConverterIndicator
+      - id
+      - locationId
+      - userId
+      - addDate
+      - updateDate
+      - analyzerRangeData
+    SystemFuelFlowDTO:
+      type: object
+      properties:
+        maximumFuelFlowRate:
+          type: number
+          description: Maximum fuel flow rate.
+          example: 30667
+        systemFuelFlowUOMCode:
+          type: string
+          description: Code used to identify the fuel flow units of measure.
+          example: HSCF
+        maximumFuelFlowRateSourceCode:
+          type: string
+          description: Code used to identify the source of maximum fuel flow.
+          example: URV
+        beginDate:
+          format: date-time
+          type: string
+          description: Date on which information became effective or activity started.
+          example: '2010-08-01'
+        beginHour:
+          type: number
+          description: Hour in which information became effective.
+          example: 12
+        endDate:
+          format: date-time
+          type: string
+          description: Last date in which information was effective.  This date will be null for active records.
+          example: null
+        endHour:
+          type: number
+          description: Last hour in which information was effective or hour in which activity ended. This value will be null for active records.
+          example: null
+        id:
+          type: string
+          description: Unique identifier of a system fuel flow record.
+          example: WS150071-0C5A8F50F7F24DB8B73E65C18C2063E3
+        monitoringSystemRecordId:
+          type: string
+          description: Unique identifier of a monitoring system record.
+          example: WS150071-1BCDEDC4D2944376ACA55FCABE9D60A1
+        fuelCode:
+          type: string
+          description: The type of fuel measured by the system.
+          example: PNG
+        systemTypeCode:
+          type: string
+          description: Code used to identify the type (parameter) of the system.
+          example: GAS
+        userId:
+          type: string
+          description: User account or source of data that added or updated record.
+          example: abcde
+        addDate:
+          type: string
+          description: Date and time in which record was added.
+          example: '2009-02-20'
+        updateDate:
+          type: string
+          description: Date and time in which record was last updated.
+          example: '2010-09-01'
+        active:
+          type: boolean
+          description: Flag for active monitor location record
+          example: true
+      required:
+      - maximumFuelFlowRate
+      - systemFuelFlowUOMCode
+      - maximumFuelFlowRateSourceCode
+      - beginDate
+      - beginHour
+      - endDate
+      - endHour
+      - id
+      - monitoringSystemRecordId
+      - fuelCode
+      - systemTypeCode
+      - userId
+      - addDate
+      - updateDate
+      - active
+    AnalyzerRangeDTO:
+      type: object
+      properties:
+        analyzerRangeCode:
+          type: string
+          description: Code used to identify the analyzer range.
+          example: A
+        dualRangeIndicator:
+          type: number
+          description: Used to indicate whether the component is a dual-range analyzer.
+          example: '1'
+        beginDate:
+          format: date-time
+          type: string
+          description: Date in which information became effective or activity started.
+          example: '2008-05-17'
+        beginHour:
+          type: number
+          description: Hour in which information became effective or activity started.
+          example: '14'
+        endDate:
+          format: date-time
+          type: string
+          description: Last date in which information was effective or date in which activity ended. This value will be null if active record.
+          example: null
+        endHour:
+          type: number
+          description: Last hour in which information was effective or hour in which activity ended. This value will be null if active record.
+          example: null
+        id:
+          type: string
+          description: Unique identifier of an analyzer range history record.
+          example: MRHODES16-10C1A63683D34BA7A0833475C802CF91
+        componentRecordId:
+          type: string
+          description: Unique identifier of a monitoring component record.
+          example: CAMD-646D15E327E1480D814D48286DA7F073
+        userId:
+          type: string
+          description: User account or source of data that added or updated record.
+          example: abcde
+        addDate:
+          type: string
+          description: Date and time in which record was added.
+          example: '2009-02-20'
+        updateDate:
+          type: string
+          description: Date and time in which record was last updated.
+          example: '2009-02-20'
+        active:
+          type: boolean
+          description: Flag for active monitor location record
+          example: true
+      required:
+      - analyzerRangeCode
+      - dualRangeIndicator
+      - beginDate
+      - beginHour
+      - endDate
+      - endHour
+      - id
+      - componentRecordId
+      - userId
+      - addDate
+      - updateDate
+      - active
     MonitorQualificationDTO:
       type: object
       properties:
@@ -150,408 +780,6 @@ components:
       - monitoringQualificationLEEData
       - monitoringQualificationLMEData
       - monitoringQualificationPercentData
-    MatsMethodDTO:
-      type: object
-      properties:
-        supplementalMATSParameterCode:
-          type: string
-          description: Code used to identify the MATS parameter.
-          example: QST
-        supplementalMATSMonitoringMethodCode:
-          type: string
-          description: Code used to identify the MATS compliance methodology.
-          example: TNHGM
-        beginDate:
-          format: date-time
-          type: string
-          description: Date on which information became effective or activity started.
-          example: '2016-04-28'
-        beginHour:
-          type: number
-          description: Hour in which information became effective.
-          example: 1
-        endDate:
-          format: date-time
-          type: string
-          description: Last date in which information was effective. This date will be null for active records.
-          example: '2020-04-28'
-        endHour:
-          type: number
-          description: Last hour in which information was effective. This value will be null for active records.
-          example: 23
-        id:
-          type: string
-          description: Unique identifier of a MATS compliance method record.
-          example: MELISSARHO-FD768B60E4D343158F7AD52EFD704D0E
-        locationId:
-          type: string
-          description: Unique identifier of a monitoring location record.
-          example: '5770'
-        userId:
-          type: string
-          description: User account or source of data that added or updated record.
-          example: abcde
-        addDate:
-          type: string
-          description: Date and time in which record was added.
-          example: '2016-02-23'
-        updateDate:
-          type: string
-          description: Date and time in which record was last updated.
-          example: '2016-02-23'
-        active:
-          type: boolean
-          description: Flag for active monitor location record
-          example: true
-      required:
-      - supplementalMATSParameterCode
-      - supplementalMATSMonitoringMethodCode
-      - beginDate
-      - beginHour
-      - endDate
-      - endHour
-      - id
-      - locationId
-      - userId
-      - addDate
-      - updateDate
-      - active
-    MonitorDefaultDTO:
-      type: object
-      properties:
-        parameterCode:
-          type: string
-          description: Code used to identify the parameter.
-          example: CO2N
-        defaultValue:
-          type: number
-          description: Value of default, maximum, minimum or constant.
-          example: 5
-        defaultUnitsOfMeasureCode:
-          type: string
-          description: Code used to identify the hourly parameter units of measure.
-          example: PCT
-        defaultPurposeCode:
-          type: string
-          description: Code used to identify the purpose or intended use of defaults, maximums and constants.
-          example: DC
-        fuelCode:
-          type: string
-          description: Code used to identify the type of fuel.
-          example: NFS
-        operatingConditionCode:
-          type: string
-          description: Code used to identify the operating condition.
-          example: A
-        defaultSourceCode:
-          type: string
-          description: Code used to identify the source of the default value.
-          example: DEF
-        groupId:
-          type: string
-          maxLength: 10
-          description: For a group of identical LME units using testing to determine default NOx rate, this ID identifies the group.
-          example: GP2249
-        beginDate:
-          format: date-time
-          type: string
-          description: Date on which information became effective or activity started.
-          example: '2008-01-01'
-        beginHour:
-          type: number
-          description: Hour in which information became effective.
-          example: 1
-        endDate:
-          format: date-time
-          type: string
-          description: Last date in which information was effective.  This date will be null for active records.
-          example: null
-        endHour:
-          type: number
-          description: Last hour in which information was effective.  This value will be null for active records.
-          example: null
-        id:
-          type: string
-          description: Unique identifier of a monitoring default record.
-          example: MELISSAMAT-65FB5323A47A459B8FF3E2996EA4EB78
-        locationId:
-          type: string
-          description: Unique identifier of a monitoring location record.
-          example: '5770'
-        userId:
-          type: string
-          description: User account or source of data that added or updated record.
-          example: abcde
-        addDate:
-          type: string
-          description: Date and time in which record was added.
-          example: '2009-02-20'
-        updateDate:
-          type: string
-          description: Date and time in which record was last updated.
-          example: '2009-02-20'
-        active:
-          type: boolean
-          description: Flag for active monitor location record
-          example: 'true'
-      required:
-      - parameterCode
-      - defaultValue
-      - defaultUnitsOfMeasureCode
-      - defaultPurposeCode
-      - fuelCode
-      - operatingConditionCode
-      - defaultSourceCode
-      - groupId
-      - beginDate
-      - beginHour
-      - endDate
-      - endHour
-      - id
-      - locationId
-      - userId
-      - addDate
-      - updateDate
-      - active
-    UnitFuelDTO:
-      type: object
-      properties:
-        fuelCode:
-          type: string
-          description: The type of fuel which a UNIT is capable or will be capable of combusting.
-          example: C
-        indicatorCode:
-          type: string
-          description: Code that indicates fuel or control type.
-          example: P
-        ozoneSeasonIndicator:
-          type: number
-          description: Indicator that FUEL is used during ozone season.
-          example: '0'
-        demGCV:
-          type: string
-          description: Demonstration method to qualify for monthly GCV fuel sampling.
-          example: GGC
-        demSO2:
-          type: string
-          description: Demonstration method to qualify for daily fuel sampling for percent sulfur.
-          example: SGC
-        beginDate:
-          format: date-time
-          type: string
-          description: Date on which a relationship or an activity began.
-          example: '1995-01-01'
-        endDate:
-          format: date-time
-          type: string
-          description: Date on which a relationship or an activity ended.
-          example: '2015-03-30'
-        id:
-          type: string
-          description: Identity key for UNIT_FUEL table.
-          example: EXPCH0876-C97319A3E96540BF92077C58DB9E2A17
-        unitId:
-          type: number
-          description: Identity key for UNIT table.
-          example: '91233'
-        actualOrProjectCode:
-          type: string
-          description: Indicator of whether the begin date for the fuel type is an actual date or a projected date.
-          example: ''
-        sulfurContent:
-          type: number
-          description: The percent sulfur content of the fuel, by weight.
-          example: ''
-        userId:
-          type: string
-          description: The user name of the person or process that created the record if the Update Date is empty.  Otherwise this is the user name of the person or process that made the last update.
-          example: abcde
-        addDate:
-          type: string
-          description: Date the record was created.
-          example: '2009-02-20'
-        updateDate:
-          type: string
-          description: Date of the last record update.
-          example: '2015-04-16'
-        active:
-          type: boolean
-          description: Flag for active monitor location record
-          example: true
-      required:
-      - fuelCode
-      - indicatorCode
-      - ozoneSeasonIndicator
-      - demGCV
-      - demSO2
-      - beginDate
-      - endDate
-      - id
-      - unitId
-      - actualOrProjectCode
-      - sulfurContent
-      - userId
-      - addDate
-      - updateDate
-      - active
-    MonitorLocationDTO:
-      type: object
-      properties:
-        unitId:
-          type: string
-          maxLength: 6
-          description: Unique identifier of a unit record which is generated by the EPA Host System. This value will be null if the record contains stack configuration.
-          example: null
-        stackPipeId:
-          type: string
-          description: Unique identifier of a stack or pipe record.
-          example: CS0AAN
-        activeDate:
-          format: date-time
-          type: string
-          description: The date that emissions first went through the stack or the effective date for data reporting.
-          example: '1995-01-01'
-        retireDate:
-          format: date-time
-          type: string
-          description: The actual date that the stack or pipe was last used for emissions measurement or estimation purposes.
-          example: '2015-08-24'
-        nonLoadBasedIndicator:
-          type: number
-          description: Used to indicate whether the unit is classified as a non-load based unit.
-          example: '1'
-        id:
-          type: string
-          description: Unique identifier of a monitoring location record.
-          example: '5'
-        unitRecordId:
-          type: number
-          description: Unique identifier of a unit record which is generated by the EPA Host System.
-          example: '3'
-        stackPipeRecordId:
-          type: string
-          description: Unique identifier of a stack or pipe record.
-          example: MDC-CCB8D6D0D4E34D24A99C01DCD14078DF
-        name:
-          type: string
-          description: Character codes source assigned to identify a stack, pipe and/or unit.
-          example: CS0AAN
-        type:
-          type: string
-          description: Configuration type, unit or stack
-          example: stack
-        active:
-          type: boolean
-          description: Flag for active monitor location record
-          example: true
-        monitoringLocationAttribData:
-          type: array
-          items:
-            $ref: '#/components/schemas/MonitorAttributeDTO'
-          example:
-          - string
-        unitCapacityData:
-          type: array
-          items:
-            $ref: '#/components/schemas/UnitCapacityDTO'
-          example:
-          - Raleigh
-        unitControlData:
-          type: array
-          items:
-            $ref: '#/components/schemas/UnitControlDTO'
-          example:
-          - string
-        unitFuelData:
-          type: array
-          items:
-            $ref: '#/components/schemas/UnitFuelDTO'
-          example:
-          - string
-        monitoringMethodData:
-          type: array
-          items:
-            $ref: '#/components/schemas/MonitorMethodDTO'
-          example:
-          - string
-        supplementalMATSMonitoringMethodData:
-          type: array
-          items:
-            $ref: '#/components/schemas/MatsMethodDTO'
-          example:
-          - string
-        monitoringFormulaData:
-          type: array
-          items:
-            $ref: '#/components/schemas/MonitorFormulaDTO'
-          example:
-          - string
-        monitoringDefaultData:
-          type: array
-          items:
-            $ref: '#/components/schemas/MonitorDefaultDTO'
-          example:
-          - string
-        monitoringSpanData:
-          type: array
-          items:
-            $ref: '#/components/schemas/MonitorSpanDTO'
-          example:
-          - string
-        rectangularDuctWAFData:
-          type: array
-          items:
-            $ref: '#/components/schemas/DuctWafDTO'
-          example:
-          - string
-        monitoringLoadData:
-          type: array
-          items:
-            $ref: '#/components/schemas/MonitorLoadDTO'
-          example:
-          - string
-        componentData:
-          type: array
-          items:
-            $ref: '#/components/schemas/ComponentDTO'
-          example:
-          - string
-        monitoringSystemData:
-          type: array
-          items:
-            $ref: '#/components/schemas/MonitorSystemDTO'
-          example:
-          - string
-        monitoringQualificationData:
-          type: array
-          items:
-            $ref: '#/components/schemas/MonitorQualificationDTO'
-          example:
-          - string
-      required:
-      - unitId
-      - stackPipeId
-      - nonLoadBasedIndicator
-      - id
-      - unitRecordId
-      - stackPipeRecordId
-      - name
-      - type
-      - active
-      - monitoringLocationAttribData
-      - unitCapacityData
-      - unitControlData
-      - unitFuelData
-      - monitoringMethodData
-      - supplementalMATSMonitoringMethodData
-      - monitoringFormulaData
-      - monitoringDefaultData
-      - monitoringSpanData
-      - rectangularDuctWAFData
-      - monitoringLoadData
-      - componentData
-      - monitoringSystemData
-      - monitoringQualificationData
     UnitControlDTO:
       type: object
       properties:
@@ -744,31 +972,270 @@ components:
       - addDate
       - updateDate
       - active
-    UnitStackConfigurationDTO:
+    UnitCapacityDTO:
       type: object
       properties:
+        maximumHourlyHeatInputCapacity:
+          type: number
+          description: The design heat input capacity (in mmBtu/hr) for the unit or the highest hourly heat input rate observed in the past five years, whichever is greater.
+          example: 2322.1
         beginDate:
           format: date-time
           type: string
-          description: Date in which information became effective or activity started.
-          example: '1995-01-01'
+          description: Date on which a relationship or an activity began.
+          example: '2009-01-01'
         endDate:
           format: date-time
           type: string
-          description: Last date in which information was effective or date in which activity ended. This value will be null for active records.
-          example: '2020-12-31'
+          description: Date on which a relationship or an activity ended. This value will be null for active records.
+          example: null
         id:
           type: string
-          description: Unique identifier of a monitoring configuration record.
-          example: CAMD-18DD175CE7EF4256B78469865D84F576
+          description: Identity key for UNIT_CAPACITY table.
+          example: '50233'
+        unitId:
+          type: number
+          description: Identity key for UNIT table.
+          example: '4705'
+        commercialOperationDate:
+          format: date-time
+          type: string
+          description: The date a unit began, or will begin to generate electricity for sale, including the sale of test generation. It is the first date that a unit serves a generator and produces electricity when connected to the grid, even if the owners are not compensated for that electricity.
+          example: '1977-04-01'
+        date:
+          format: date-time
+          type: string
+          description: Date on which activity occurred.
+          example: '2019-01-01'
+        boilerTurbineBeginDate:
+          format: date-time
+          type: string
+          description: Date on which monitoring began for a boiler or turbine unit.
+          example: '2009-01-01'
+        boilerTurbineEndDate:
+          format: date-time
+          type: string
+          description: Date on which monitoring ended for a boiler or turbine unit.
+          example: '2009-01-01'
+        userId:
+          type: string
+          description: The user name of the person or process that created the record if the Update Date is empty.  Otherwise this is the user name of the person or process that made the last update.
+          example: abcde
+        addDate:
+          type: string
+          description: Date the record was created.
+          example: '2009-02-20'
+        updateDate:
+          type: string
+          description: Date of the last record update.
+          example: '2009-02-20'
+        active:
+          type: boolean
+          description: Flag for active monitor location record
+          example: true
+        boilerTurbineType:
+          type: string
+          example: string
+      required:
+      - maximumHourlyHeatInputCapacity
+      - beginDate
+      - endDate
+      - id
+      - unitId
+      - commercialOperationDate
+      - date
+      - boilerTurbineBeginDate
+      - boilerTurbineEndDate
+      - userId
+      - addDate
+      - updateDate
+      - active
+      - boilerTurbineType
+    MonitorLocationDTO:
+      type: object
+      properties:
+        unitId:
+          type: string
+          maxLength: 6
+          description: Unique identifier of a unit record which is generated by the EPA Host System. This value will be null if the record contains stack configuration.
+          example: null
+        stackPipeId:
+          type: string
+          description: Unique identifier of a stack or pipe record.
+          example: CS0AAN
+        activeDate:
+          format: date-time
+          type: string
+          description: The date that emissions first went through the stack or the effective date for data reporting.
+          example: '1995-01-01'
+        retireDate:
+          format: date-time
+          type: string
+          description: The actual date that the stack or pipe was last used for emissions measurement or estimation purposes.
+          example: '2015-08-24'
+        nonLoadBasedIndicator:
+          type: number
+          description: Used to indicate whether the unit is classified as a non-load based unit.
+          example: '1'
+        id:
+          type: string
+          description: Unique identifier of a monitoring location record.
+          example: '5'
         unitRecordId:
           type: number
           description: Unique identifier of a unit record which is generated by the EPA Host System.
-          example: '2'
+          example: '3'
         stackPipeRecordId:
           type: string
           description: Unique identifier of a stack or pipe record.
           example: MDC-CCB8D6D0D4E34D24A99C01DCD14078DF
+        name:
+          type: string
+          description: Character codes source assigned to identify a stack, pipe and/or unit.
+          example: CS0AAN
+        type:
+          type: string
+          description: Configuration type, unit or stack
+          example: stack
+        active:
+          type: boolean
+          description: Flag for active monitor location record
+          example: true
+        monitoringLocationAttribData:
+          type: array
+          items:
+            $ref: '#/components/schemas/MonitorAttributeDTO'
+          example:
+          - string
+        unitCapacityData:
+          type: array
+          items:
+            $ref: '#/components/schemas/UnitCapacityDTO'
+          example:
+          - Raleigh
+        unitControlData:
+          type: array
+          items:
+            $ref: '#/components/schemas/UnitControlDTO'
+          example:
+          - string
+        unitFuelData:
+          type: array
+          items:
+            $ref: '#/components/schemas/UnitFuelDTO'
+          example:
+          - string
+        monitoringMethodData:
+          type: array
+          items:
+            $ref: '#/components/schemas/MonitorMethodDTO'
+          example:
+          - string
+        supplementalMATSMonitoringMethodData:
+          type: array
+          items:
+            $ref: '#/components/schemas/MatsMethodDTO'
+          example:
+          - string
+        monitoringFormulaData:
+          type: array
+          items:
+            $ref: '#/components/schemas/MonitorFormulaDTO'
+          example:
+          - string
+        monitoringDefaultData:
+          type: array
+          items:
+            $ref: '#/components/schemas/MonitorDefaultDTO'
+          example:
+          - string
+        monitoringSpanData:
+          type: array
+          items:
+            $ref: '#/components/schemas/MonitorSpanDTO'
+          example:
+          - string
+        rectangularDuctWAFData:
+          type: array
+          items:
+            $ref: '#/components/schemas/DuctWafDTO'
+          example:
+          - string
+        monitoringLoadData:
+          type: array
+          items:
+            $ref: '#/components/schemas/MonitorLoadDTO'
+          example:
+          - string
+        componentData:
+          type: array
+          items:
+            $ref: '#/components/schemas/ComponentDTO'
+          example:
+          - string
+        monitoringSystemData:
+          type: array
+          items:
+            $ref: '#/components/schemas/MonitorSystemDTO'
+          example:
+          - string
+        monitoringQualificationData:
+          type: array
+          items:
+            $ref: '#/components/schemas/MonitorQualificationDTO'
+          example:
+          - string
+      required:
+      - unitId
+      - stackPipeId
+      - nonLoadBasedIndicator
+      - id
+      - unitRecordId
+      - stackPipeRecordId
+      - name
+      - type
+      - active
+      - monitoringLocationAttribData
+      - unitCapacityData
+      - unitControlData
+      - unitFuelData
+      - monitoringMethodData
+      - supplementalMATSMonitoringMethodData
+      - monitoringFormulaData
+      - monitoringDefaultData
+      - monitoringSpanData
+      - rectangularDuctWAFData
+      - monitoringLoadData
+      - componentData
+      - monitoringSystemData
+      - monitoringQualificationData
+    LMEQualificationDTO:
+      type: object
+      properties:
+        qualificationDataYear:
+          type: number
+          description: Year corresponding to the qualification data.
+          example: '2015'
+        operatingHours:
+          type: number
+          description: Annual number of operating hours used to determine qualification.
+          example: 105
+        so2Tons:
+          type: number
+          description: Annual SO2 value used to determine qualification.
+          example: 0.9
+        noxTons:
+          type: number
+          description: Annual NOX emissions to determine qualification.
+          example: 6.4
+        id:
+          type: string
+          description: Unique identifier of a monitoring qualification LME record.
+          example: NJCHQLAPA3-C89F6E1CE9D447A298B7D5E428ADD1AC
+        qualificationId:
+          type: string
+          description: Unique identifier of a monitoring qualification record.
+          example: NJCHQLAPA3-82CD1A0A9D2A48BFB5203F82D390183E
         userId:
           type: string
           description: User account or source of data that added or updated record.
@@ -776,57 +1243,66 @@ components:
         addDate:
           type: string
           description: Date and time in which record was added.
-          example: '2009-02-20'
+          example: '2015-07-20'
         updateDate:
           type: string
           description: Date and time in which record was last updated.
-          example: '2009-02-20'
-        active:
-          type: boolean
-          description: Flag for active monitor location record
-          example: true
-        unitId:
-          type: string
-          example: '12345'
-        stackPipeId:
-          type: string
-          example: '12345'
+          example: '2015-07-20'
       required:
-      - beginDate
-      - endDate
+      - qualificationDataYear
+      - operatingHours
+      - so2Tons
+      - noxTons
       - id
-      - unitRecordId
-      - stackPipeRecordId
+      - qualificationId
       - userId
       - addDate
       - updateDate
-      - active
-      - unitId
-      - stackPipeId
-    SystemFuelFlowDTO:
+    MonitorDefaultDTO:
       type: object
       properties:
-        maximumFuelFlowRate:
+        parameterCode:
+          type: string
+          description: Code used to identify the parameter.
+          example: CO2N
+        defaultValue:
           type: number
-          description: Maximum fuel flow rate.
-          example: 30667
-        systemFuelFlowUOMCode:
+          description: Value of default, maximum, minimum or constant.
+          example: 5
+        defaultUnitsOfMeasureCode:
           type: string
-          description: Code used to identify the fuel flow units of measure.
-          example: HSCF
-        maximumFuelFlowRateSourceCode:
+          description: Code used to identify the hourly parameter units of measure.
+          example: PCT
+        defaultPurposeCode:
           type: string
-          description: Code used to identify the source of maximum fuel flow.
-          example: URV
+          description: Code used to identify the purpose or intended use of defaults, maximums and constants.
+          example: DC
+        fuelCode:
+          type: string
+          description: Code used to identify the type of fuel.
+          example: NFS
+        operatingConditionCode:
+          type: string
+          description: Code used to identify the operating condition.
+          example: A
+        defaultSourceCode:
+          type: string
+          description: Code used to identify the source of the default value.
+          example: DEF
+        groupId:
+          type: string
+          maxLength: 10
+          description: For a group of identical LME units using testing to determine default NOx rate, this ID identifies the group.
+          example: GP2249
         beginDate:
           format: date-time
           type: string
           description: Date on which information became effective or activity started.
-          example: '2010-08-01'
+          example: '2008-01-01'
         beginHour:
           type: number
           description: Hour in which information became effective.
-          example: 12
+          example: 1
         endDate:
           format: date-time
           type: string
@@ -834,24 +1310,16 @@ components:
           example: null
         endHour:
           type: number
-          description: Last hour in which information was effective or hour in which activity ended. This value will be null for active records.
+          description: Last hour in which information was effective.  This value will be null for active records.
           example: null
         id:
           type: string
-          description: Unique identifier of a system fuel flow record.
-          example: WS150071-0C5A8F50F7F24DB8B73E65C18C2063E3
-        monitoringSystemRecordId:
+          description: Unique identifier of a monitoring default record.
+          example: MELISSAMAT-65FB5323A47A459B8FF3E2996EA4EB78
+        locationId:
           type: string
-          description: Unique identifier of a monitoring system record.
-          example: WS150071-1BCDEDC4D2944376ACA55FCABE9D60A1
-        fuelCode:
-          type: string
-          description: The type of fuel measured by the system.
-          example: PNG
-        systemTypeCode:
-          type: string
-          description: Code used to identify the type (parameter) of the system.
-          example: GAS
+          description: Unique identifier of a monitoring location record.
+          example: '5770'
         userId:
           type: string
           description: User account or source of data that added or updated record.
@@ -863,64 +1331,157 @@ components:
         updateDate:
           type: string
           description: Date and time in which record was last updated.
-          example: '2010-09-01'
+          example: '2009-02-20'
         active:
           type: boolean
           description: Flag for active monitor location record
-          example: true
+          example: 'true'
       required:
-      - maximumFuelFlowRate
-      - systemFuelFlowUOMCode
-      - maximumFuelFlowRateSourceCode
+      - parameterCode
+      - defaultValue
+      - defaultUnitsOfMeasureCode
+      - defaultPurposeCode
+      - fuelCode
+      - operatingConditionCode
+      - defaultSourceCode
+      - groupId
       - beginDate
       - beginHour
       - endDate
       - endHour
       - id
-      - monitoringSystemRecordId
-      - fuelCode
-      - systemTypeCode
+      - locationId
       - userId
       - addDate
       - updateDate
       - active
-    AnalyzerRangeDTO:
+    UnitFuelDTO:
       type: object
       properties:
-        analyzerRangeCode:
+        fuelCode:
           type: string
-          description: Code used to identify the analyzer range.
-          example: A
-        dualRangeIndicator:
+          description: The type of fuel which a UNIT is capable or will be capable of combusting.
+          example: C
+        indicatorCode:
+          type: string
+          description: Code that indicates fuel or control type.
+          example: P
+        ozoneSeasonIndicator:
           type: number
-          description: Used to indicate whether the component is a dual-range analyzer.
-          example: '1'
+          description: Indicator that FUEL is used during ozone season.
+          example: '0'
+        demGCV:
+          type: string
+          description: Demonstration method to qualify for monthly GCV fuel sampling.
+          example: GGC
+        demSO2:
+          type: string
+          description: Demonstration method to qualify for daily fuel sampling for percent sulfur.
+          example: SGC
         beginDate:
           format: date-time
           type: string
-          description: Date in which information became effective or activity started.
-          example: '2008-05-17'
-        beginHour:
-          type: number
-          description: Hour in which information became effective or activity started.
-          example: '14'
+          description: Date on which a relationship or an activity began.
+          example: '1995-01-01'
         endDate:
           format: date-time
           type: string
-          description: Last date in which information was effective or date in which activity ended. This value will be null if active record.
+          description: Date on which a relationship or an activity ended.
+          example: '2015-03-30'
+        id:
+          type: string
+          description: Identity key for UNIT_FUEL table.
+          example: EXPCH0876-C97319A3E96540BF92077C58DB9E2A17
+        unitId:
+          type: number
+          description: Identity key for UNIT table.
+          example: '91233'
+        actualOrProjectCode:
+          type: string
+          description: Indicator of whether the begin date for the fuel type is an actual date or a projected date.
+          example: ''
+        sulfurContent:
+          type: number
+          description: The percent sulfur content of the fuel, by weight.
+          example: ''
+        userId:
+          type: string
+          description: The user name of the person or process that created the record if the Update Date is empty.  Otherwise this is the user name of the person or process that made the last update.
+          example: abcde
+        addDate:
+          type: string
+          description: Date the record was created.
+          example: '2009-02-20'
+        updateDate:
+          type: string
+          description: Date of the last record update.
+          example: '2015-04-16'
+        active:
+          type: boolean
+          description: Flag for active monitor location record
+          example: true
+      required:
+      - fuelCode
+      - indicatorCode
+      - ozoneSeasonIndicator
+      - demGCV
+      - demSO2
+      - beginDate
+      - endDate
+      - id
+      - unitId
+      - actualOrProjectCode
+      - sulfurContent
+      - userId
+      - addDate
+      - updateDate
+      - active
+    MonitorFormulaDTO:
+      type: object
+      properties:
+        formulaId:
+          type: string
+          description: The three character formula ID assigned by the source.
+          example: '140'
+        parameterCode:
+          type: string
+          description: Code used to identify the parameter.
+          example: SO2
+        formulaCode:
+          type: string
+          description: Code used to identify the equation as defined in Part 75.
+          example: F-1
+        formulaText:
+          type: string
+          maxLength: 200
+          description: The equation used to calculate the parameter.
+          example: 1.667 * 10**-7 * S#(027-C40) * S#(029-C42)
+        beginDate:
+          format: date-time
+          type: string
+          description: Date on which information became effective or activity started.
+          example: '2007-11-08'
+        beginHour:
+          type: number
+          description: Hour in which information became effective.
+          example: 17
+        endDate:
+          format: date-time
+          type: string
+          description: Last date in which information was effective.  This date will be null for active records.
           example: null
         endHour:
           type: number
-          description: Last hour in which information was effective or hour in which activity ended. This value will be null if active record.
+          description: Last hour in which information was effective.  This value will be null for active records.
           example: null
         id:
           type: string
-          description: Unique identifier of an analyzer range history record.
-          example: MRHODES16-10C1A63683D34BA7A0833475C802CF91
-        componentRecordId:
+          description: Unique identifier of a monitoring formula record.
+          example: CAMD-1CDAA10B7D6A41BBA6BCFF5534F5C5CA
+        locationId:
           type: string
-          description: Unique identifier of a monitoring component record.
-          example: CAMD-646D15E327E1480D814D48286DA7F073
+          description: Unique identifier of a monitoring location record.
+          example: '5770'
         userId:
           type: string
           description: User account or source of data that added or updated record.
@@ -938,58 +1499,73 @@ components:
           description: Flag for active monitor location record
           example: true
       required:
-      - analyzerRangeCode
-      - dualRangeIndicator
+      - formulaId
+      - parameterCode
+      - formulaCode
+      - formulaText
       - beginDate
       - beginHour
       - endDate
       - endHour
       - id
-      - componentRecordId
+      - locationId
       - userId
       - addDate
       - updateDate
       - active
-    LEEQualificationDTO:
+    MonitorAttributeDTO:
       type: object
       properties:
-        qualificationTestDate:
+        ductIndicator:
+          type: number
+          description: Used to indicate that this location is a duct.
+          example: '1'
+        bypassIndicator:
+          type: number
+          description: Used to indicate that the stack is used for bypass.
+          example: '1'
+        groundElevation:
+          type: number
+          description: The number of feet above sea level at ground level of the stack or unit.
+          example: 40
+        stackHeight:
+          type: number
+          description: The height in feet of a stack exit above ground level.
+          example: 400
+        materialCode:
+          type: string
+          description: Code used to identify the material that is used in the monitoring location.
+          example: OTHER
+        shapeCode:
+          type: string
+          description: Code identifying the shape of a monitor location.
+          example: ROUND
+        crossAreaFlow:
+          type: number
+          description: The reported inside cross-sectional area in square feet of the stack or duct at the flow monitoring location.
+          example: 306
+        crossAreaStackExit:
+          type: number
+          description: The inside cross-sectional area in square feet of the stack at the exit.
+          example: 306
+        beginDate:
           format: date-time
           type: string
-          description: End date of the initial LEE qualifying test or a retest.
-          example: '2018-07-15'
-        parameterCode:
+          description: Date on which information became effective or activity started.
+          example: '2008-01-01'
+        endDate:
+          format: date-time
           type: string
-          description: Parameter code associated with the LEE qualification.
-          example: HG
-        qualificationTestType:
-          type: string
-          description: Indication of whether the qualifying test was an initial test or retest.
-          example: INITIAL
-        potentialAnnualHgMassEmissions:
-          type: number
-          description: Potential annual Hg mass emissions used for LEE qualification.
-          example: 10.2
-        applicableEmissionStandard:
-          type: number
-          description: Applicable Emission Standard used for LEE qualification.
-          example: 29
-        unitsOfStandard:
-          type: string
-          description: units of the Applicable Emission Standard.
-          example: LBGWH
-        percentageOfEmissionStandard:
-          type: number
-          description: Result of initial test or retest as a percentage of the Applicable Emission Standard.
-          example: 72.8
+          description: Last date in which information was effective.  This date will be null for active records.
+          example: null
         id:
           type: string
-          description: Unique identifier of a monitoring qualification LEE record.
-          example: MIKE-DELL-CFEDE4EB21124391BE13E7FB5A56081C
-        qualificationId:
+          description: Unique combination of DB_Token and identity key generated by sequence generator.
+          example: MELISSAMAT-E496678DE19E4827ADE4D541B18B5756
+        locationId:
           type: string
-          description: Unique identifier of a monitoring qualification record.
-          example: MIKE-DELL-E4CE3931A24E4C1395B3C81457B300CC
+          description: Unique identifier of a monitoring location record.
+          example: '5770'
         userId:
           type: string
           description: User account or source of data that added or updated record.
@@ -997,24 +1573,32 @@ components:
         addDate:
           type: string
           description: Date and time in which record was added.
-          example: '2018-10-25'
+          example: '2009-02-20'
         updateDate:
           type: string
           description: Date and time in which record was last updated.
-          example: '2018-10-25'
+          example: '2009-02-20'
+        active:
+          type: boolean
+          description: Flag for active monitor location record
+          example: true
       required:
-      - qualificationTestDate
-      - parameterCode
-      - qualificationTestType
-      - potentialAnnualHgMassEmissions
-      - applicableEmissionStandard
-      - unitsOfStandard
-      - percentageOfEmissionStandard
+      - ductIndicator
+      - bypassIndicator
+      - groundElevation
+      - stackHeight
+      - materialCode
+      - shapeCode
+      - crossAreaFlow
+      - crossAreaStackExit
+      - beginDate
+      - endDate
       - id
-      - qualificationId
+      - locationId
       - userId
       - addDate
       - updateDate
+      - active
     MonitorLoadDTO:
       type: object
       properties:
@@ -1112,298 +1696,43 @@ components:
       - addDate
       - updateDate
       - active
-    MonitorAttributeDTO:
+    MatsMethodDTO:
       type: object
       properties:
-        ductIndicator:
-          type: number
-          description: Used to indicate that this location is a duct.
-          example: '1'
-        bypassIndicator:
-          type: number
-          description: Used to indicate that the stack is used for bypass.
-          example: '1'
-        groundElevation:
-          type: number
-          description: The number of feet above sea level at ground level of the stack or unit.
-          example: 40
-        stackHeight:
-          type: number
-          description: The height in feet of a stack exit above ground level.
-          example: 400
-        materialCode:
+        supplementalMATSParameterCode:
           type: string
-          description: Code used to identify the material that is used in the monitoring location.
-          example: OTHER
-        shapeCode:
+          description: Code used to identify the MATS parameter.
+          example: QST
+        supplementalMATSMonitoringMethodCode:
           type: string
-          description: Code identifying the shape of a monitor location.
-          example: ROUND
-        crossAreaFlow:
-          type: number
-          description: The reported inside cross-sectional area in square feet of the stack or duct at the flow monitoring location.
-          example: 306
-        crossAreaStackExit:
-          type: number
-          description: The inside cross-sectional area in square feet of the stack at the exit.
-          example: 306
+          description: Code used to identify the MATS compliance methodology.
+          example: TNHGM
         beginDate:
           format: date-time
           type: string
           description: Date on which information became effective or activity started.
-          example: '2008-01-01'
-        endDate:
-          format: date-time
-          type: string
-          description: Last date in which information was effective.  This date will be null for active records.
-          example: null
-        id:
-          type: string
-          description: Unique combination of DB_Token and identity key generated by sequence generator.
-          example: MELISSAMAT-E496678DE19E4827ADE4D541B18B5756
-        locationId:
-          type: string
-          description: Unique identifier of a monitoring location record.
-          example: '5770'
-        userId:
-          type: string
-          description: User account or source of data that added or updated record.
-          example: abcde
-        addDate:
-          type: string
-          description: Date and time in which record was added.
-          example: '2009-02-20'
-        updateDate:
-          type: string
-          description: Date and time in which record was last updated.
-          example: '2009-02-20'
-        active:
-          type: boolean
-          description: Flag for active monitor location record
-          example: true
-      required:
-      - ductIndicator
-      - bypassIndicator
-      - groundElevation
-      - stackHeight
-      - materialCode
-      - shapeCode
-      - crossAreaFlow
-      - crossAreaStackExit
-      - beginDate
-      - endDate
-      - id
-      - locationId
-      - userId
-      - addDate
-      - updateDate
-      - active
-    MonitorSystemDTO:
-      type: object
-      properties:
-        monitoringSystemId:
-          type: string
-          description: The three digit code used by the source to identify the monitoring system.
-          example: C42
-        systemTypeCode:
-          type: string
-          description: Code used to identify the type (parameter) of the system.
-          example: FLOW
-        systemDesignationCode:
-          type: string
-          description: Code used to indicate designation of monitoring system as primary, backup etc.
-          example: P
-        fuelCode:
-          type: string
-          description: Code used to identify the type of fuel.
-          example: NFS
-        beginDate:
-          format: date-time
-          type: string
-          description: Date on which information became effective or activity started.
-          example: '2007-11-28'
-        endDate:
-          format: date-time
-          type: string
-          description: Last date in which information was effective.  This date will be null for active records.
-          example: null
-        beginHour:
-          type: number
-          description: Hour in which information became effective or activity started.
-          example: 17
-        endHour:
-          type: number
-          description: Last hour in which information was effective.  This value will be null for active records.
-          example: null
-        id:
-          type: string
-          description: Unique identifier of a monitoring system record.
-          example: CAMD-4B0DC37051224A7AA9D8CA1E5BE6B4D4
-        locationId:
-          type: string
-          description: Unique identifier of a monitoring location record.
-          example: '5770'
-        userId:
-          type: string
-          description: User account or source of data that added or updated record.
-          example: abcde
-        addDate:
-          type: string
-          description: Date and time in which record was added.
-          example: '2009-02-20'
-        updateDate:
-          type: string
-          description: Date and time in which record was last updated.
-          example: '2009-02-20'
-        active:
-          type: boolean
-          description: Flag for active monitor location record
-          example: true
-        monitoringSystemComponentData:
-          type: array
-          items:
-            $ref: '#/components/schemas/SystemComponentDTO'
-          example:
-          - string
-        monitoringSystemFuelFlowData:
-          type: array
-          items:
-            $ref: '#/components/schemas/SystemFuelFlowDTO'
-          example:
-          - string
-      required:
-      - monitoringSystemId
-      - systemTypeCode
-      - systemDesignationCode
-      - fuelCode
-      - beginDate
-      - endDate
-      - beginHour
-      - endHour
-      - id
-      - locationId
-      - userId
-      - addDate
-      - updateDate
-      - active
-      - monitoringSystemComponentData
-      - monitoringSystemFuelFlowData
-    ComponentDTO:
-      type: object
-      properties:
-        componentId:
-          type: string
-          description: The three digit code assigned by the source to identify the component.
-          example: '027'
-        componentTypeCode:
-          type: string
-          description: Code used to identify the component type.
-          example: SO2
-        sampleAcquisitionMethodCode:
-          type: string
-          description: Code used to identify the sample acquisition method.
-          example: DOU
-        basisCode:
-          type: string
-          description: Code used to identify the moisture basis.
-          example: W
-        manufacturer:
-          type: string
-          maxLength: 25
-          description: Name of the manufacturer or developer of the component.
-          example: TECO
-        modelVersion:
-          type: string
-          maxLength: 15
-          description: The model of any hardware component or the version number of the software component.
-          example: 43I
-        serialNumber:
-          type: string
-          maxLength: 20
-          description: Serial number of the component.
-          example: '631819420'
-        hgConverterIndicator:
-          type: number
-          description: For an Hg component, indicates whether the analyzer has a converter.
-          example: '1'
-        id:
-          type: string
-          description: Unique identifier of a monitoring component record.
-          example: CAMD-646D15E327E1480D814D48286DA7F073
-        locationId:
-          type: string
-          description: Unique identifier of a monitoring location record.
-          example: '5770'
-        userId:
-          type: string
-          description: User account or source of data that added or updated record.
-          example: abcde
-        addDate:
-          type: string
-          description: Date and time in which record was added.
-          example: '2009-02-20'
-        updateDate:
-          type: string
-          description: Date and time in which record was last updated.
-          example: '2009-02-20'
-        analyzerRangeData:
-          type: array
-          items:
-            $ref: '#/components/schemas/AnalyzerRangeDTO'
-          example:
-          - string
-      required:
-      - componentId
-      - componentTypeCode
-      - sampleAcquisitionMethodCode
-      - basisCode
-      - manufacturer
-      - modelVersion
-      - serialNumber
-      - hgConverterIndicator
-      - id
-      - locationId
-      - userId
-      - addDate
-      - updateDate
-      - analyzerRangeData
-    SystemComponentDTO:
-      type: object
-      properties:
-        componentId:
-          type: string
-          description: The three digit code assigned by the source to identify the component.
-          example: '044'
-        beginDate:
-          format: date-time
-          type: string
-          description: Date on which information became effective or activity started.
-          example: '2008-12-31'
+          example: '2016-04-28'
         beginHour:
           type: number
           description: Hour in which information became effective.
-          example: 23
+          example: 1
         endDate:
           format: date-time
           type: string
-          description: Last date in which information was effective.  This date will be null for active records.
-          example: null
+          description: Last date in which information was effective. This date will be null for active records.
+          example: '2020-04-28'
         endHour:
           type: number
-          description: Last hour in which information was effective.  This value will be null for active records.
-          example: null
+          description: Last hour in which information was effective. This value will be null for active records.
+          example: 23
         id:
           type: string
-          description: Unique identifier of a Monitoring System Component record.
-          example: MELISSARHO-3F31E53DE9B14764936BFB0AC7225847
+          description: Unique identifier of a MATS compliance method record.
+          example: MELISSARHO-FD768B60E4D343158F7AD52EFD704D0E
         locationId:
           type: string
           description: Unique identifier of a monitoring location record.
           example: '5770'
-        monitoringSystemRecordId:
-          type: string
-          description: Unique identifier of a monitoring system record.
-          example: CAMD-4B0DC37051224A7AA9D8CA1E5BE6B4D4
         userId:
           type: string
           description: User account or source of data that added or updated record.
@@ -1411,161 +1740,28 @@ components:
         addDate:
           type: string
           description: Date and time in which record was added.
-          example: '2009-02-20'
+          example: '2016-02-23'
         updateDate:
           type: string
           description: Date and time in which record was last updated.
-          example: '2009-02-20'
+          example: '2016-02-23'
         active:
           type: boolean
           description: Flag for active monitor location record
           example: true
       required:
-      - componentId
+      - supplementalMATSParameterCode
+      - supplementalMATSMonitoringMethodCode
       - beginDate
       - beginHour
       - endDate
       - endHour
       - id
       - locationId
-      - monitoringSystemRecordId
       - userId
       - addDate
       - updateDate
       - active
-    PCTQualificationDTO:
-      type: object
-      properties:
-        qualificationYear:
-          type: number
-          description: The calendar year during which activity occurred.
-          example: 2020
-        averagePercentValue:
-          type: number
-          description: The average percent capacity or heat input usage.
-          example: 100
-        yr1QualificationDataYear:
-          type: number
-          description: The first year corresponding to the qualification data.
-          example: 2018
-        yr1QualificationDataTypeCode:
-          type: string
-          description: Code used to identify the type qualification in the first year.
-          example: A
-        yr1PercentageValue:
-          type: number
-          description: The percent capacity or heat input usage in the first year.
-          example: 100
-        yr2QualificationDataYear:
-          type: number
-          description: The second year corresponding to the qualification data.
-          example: 2019
-        yr2QualificationDataTypeCode:
-          type: string
-          description: Code used to identify the type qualification in the second year.
-          example: A
-        yr2PercentageValue:
-          type: number
-          description: The percent capacity or heat input usage in the second year.
-          example: 100
-        yr3QualificationDataYear:
-          type: number
-          description: The third year corresponding to the qualification data.
-          example: 2020
-        yr3QualificationDataTypeCode:
-          type: string
-          description: Code used to indicate type of data for year (actual or projected) used to determine peaking or gas-fired qualification.
-          example: A
-        yr3PercentageValue:
-          type: number
-          description: The percent capacity or heat input usage in the third year.
-          example: 100
-        id:
-          type: string
-          description: Unique identifier of a monitoring qualification percentage record.
-          example: 02227-BSGR-56EB0D4D400642A4860D6402698BBE16
-        qualificationId:
-          type: string
-          description: Unique identifier of a monitoring qualification record.
-          example: 02022-614W-608B84AEDB8148C7B3935EE935AB835F
-        userId:
-          type: string
-          description: User account or source of data that added or updated record.
-          example: abcde
-        addDate:
-          type: string
-          description: Date and time in which record was added.
-          example: '2021-04-01'
-        updateDate:
-          type: string
-          description: Date and time in which record was last updated.
-          example: '2021-04-01'
-      required:
-      - qualificationYear
-      - averagePercentValue
-      - yr1QualificationDataYear
-      - yr1QualificationDataTypeCode
-      - yr1PercentageValue
-      - yr2QualificationDataYear
-      - yr2QualificationDataTypeCode
-      - yr2PercentageValue
-      - yr3QualificationDataYear
-      - yr3QualificationDataTypeCode
-      - yr3PercentageValue
-      - id
-      - qualificationId
-      - userId
-      - addDate
-      - updateDate
-    LMEQualificationDTO:
-      type: object
-      properties:
-        qualificationDataYear:
-          type: number
-          description: Year corresponding to the qualification data.
-          example: '2015'
-        operatingHours:
-          type: number
-          description: Annual number of operating hours used to determine qualification.
-          example: 105
-        so2Tons:
-          type: number
-          description: Annual SO2 value used to determine qualification.
-          example: 0.9
-        noxTons:
-          type: number
-          description: Annual NOX emissions to determine qualification.
-          example: 6.4
-        id:
-          type: string
-          description: Unique identifier of a monitoring qualification LME record.
-          example: NJCHQLAPA3-C89F6E1CE9D447A298B7D5E428ADD1AC
-        qualificationId:
-          type: string
-          description: Unique identifier of a monitoring qualification record.
-          example: NJCHQLAPA3-82CD1A0A9D2A48BFB5203F82D390183E
-        userId:
-          type: string
-          description: User account or source of data that added or updated record.
-          example: abcde
-        addDate:
-          type: string
-          description: Date and time in which record was added.
-          example: '2015-07-20'
-        updateDate:
-          type: string
-          description: Date and time in which record was last updated.
-          example: '2015-07-20'
-      required:
-      - qualificationDataYear
-      - operatingHours
-      - so2Tons
-      - noxTons
-      - id
-      - qualificationId
-      - userId
-      - addDate
-      - updateDate
     MonitorMethodDTO:
       type: object
       properties:
@@ -1642,52 +1838,46 @@ components:
       - addDate
       - updateDate
       - active
-    MonitorFormulaDTO:
+    LEEQualificationDTO:
       type: object
       properties:
-        formulaId:
+        qualificationTestDate:
+          format: date-time
           type: string
-          description: The three character formula ID assigned by the source.
-          example: '140'
+          description: End date of the initial LEE qualifying test or a retest.
+          example: '2018-07-15'
         parameterCode:
           type: string
-          description: Code used to identify the parameter.
-          example: SO2
-        formulaCode:
+          description: Parameter code associated with the LEE qualification.
+          example: HG
+        qualificationTestType:
           type: string
-          description: Code used to identify the equation as defined in Part 75.
-          example: F-1
-        formulaText:
-          type: string
-          maxLength: 200
-          description: The equation used to calculate the parameter.
-          example: 1.667 * 10**-7 * S#(027-C40) * S#(029-C42)
-        beginDate:
-          format: date-time
-          type: string
-          description: Date on which information became effective or activity started.
-          example: '2007-11-08'
-        beginHour:
+          description: Indication of whether the qualifying test was an initial test or retest.
+          example: INITIAL
+        potentialAnnualHgMassEmissions:
           type: number
-          description: Hour in which information became effective.
-          example: 17
-        endDate:
-          format: date-time
-          type: string
-          description: Last date in which information was effective.  This date will be null for active records.
-          example: null
-        endHour:
+          description: Potential annual Hg mass emissions used for LEE qualification.
+          example: 10.2
+        applicableEmissionStandard:
           type: number
-          description: Last hour in which information was effective.  This value will be null for active records.
-          example: null
+          description: Applicable Emission Standard used for LEE qualification.
+          example: 29
+        unitsOfStandard:
+          type: string
+          description: units of the Applicable Emission Standard.
+          example: LBGWH
+        percentageOfEmissionStandard:
+          type: number
+          description: Result of initial test or retest as a percentage of the Applicable Emission Standard.
+          example: 72.8
         id:
           type: string
-          description: Unique identifier of a monitoring formula record.
-          example: CAMD-1CDAA10B7D6A41BBA6BCFF5534F5C5CA
-        locationId:
+          description: Unique identifier of a monitoring qualification LEE record.
+          example: MIKE-DELL-CFEDE4EB21124391BE13E7FB5A56081C
+        qualificationId:
           type: string
-          description: Unique identifier of a monitoring location record.
-          example: '5770'
+          description: Unique identifier of a monitoring qualification record.
+          example: MIKE-DELL-E4CE3931A24E4C1395B3C81457B300CC
         userId:
           type: string
           description: User account or source of data that added or updated record.
@@ -1695,210 +1885,24 @@ components:
         addDate:
           type: string
           description: Date and time in which record was added.
-          example: '2009-02-20'
+          example: '2018-10-25'
         updateDate:
           type: string
           description: Date and time in which record was last updated.
-          example: '2009-02-20'
-        active:
-          type: boolean
-          description: Flag for active monitor location record
-          example: true
+          example: '2018-10-25'
       required:
-      - formulaId
+      - qualificationTestDate
       - parameterCode
-      - formulaCode
-      - formulaText
-      - beginDate
-      - beginHour
-      - endDate
-      - endHour
+      - qualificationTestType
+      - potentialAnnualHgMassEmissions
+      - applicableEmissionStandard
+      - unitsOfStandard
+      - percentageOfEmissionStandard
       - id
-      - locationId
+      - qualificationId
       - userId
       - addDate
       - updateDate
-      - active
-    DuctWafDTO:
-      type: object
-      properties:
-        wafDeterminationDate:
-          format: date-time
-          type: string
-          description: The date the WAF applied in column 20 was determined.
-          example: '2020-11-18'
-        wafBeginDate:
-          format: date-time
-          type: string
-          description: The date on which the WAF was first applied to the flow rate data.
-          example: '2020-11-28'
-        wafBeginHour:
-          type: number
-          description: The hour in which the WAF was first applied to the flow rate data.
-          example: 12
-        wafMethodCode:
-          type: string
-          description: Code used to identify the WAF determination method.
-          example: FT
-        wafValue:
-          type: number
-          description: The WAF applied to the flow rate data, to four decimal places.
-          example: 1.0454
-        numberOfTestRuns:
-          type: number
-          description: The number of runs in the WAF test (must be one for default WAF and at least three for a measured WAF)
-          example: 3
-        numberOfTraversePointsWAF:
-          type: number
-          description: The number of Method 1 traverse points in the WAF test runs.
-          example: 48
-        numberOfTestPorts:
-          type: number
-          description: The number of test ports at which measurements were made during the WAF test runs.
-          example: 4
-        numberOfTraversePointsRef:
-          type: number
-          description: The number of Method 1 traverse points in the reference flow RATA test runs.
-          example: 48
-        ductWidth:
-          type: number
-          description: The width of the rectangular duct at the test location.
-          example: 12
-        ductDepth:
-          type: number
-          description: The depth of the rectangular duct at the test location.
-          example: 18.5
-        wafEndDate:
-          format: date-time
-          type: string
-          description: The date on which the WAF was last applied to the flow rate data.
-          example: '2021-09-18'
-        wafEndHour:
-          type: number
-          description: The hour in which the WAF was last applied to the flow rate data.
-          example: 9
-        id:
-          type: string
-          description: Unique identifier of a rectangular duct WAF data record.
-          example: CAMD-6847FB7858174AD0ADF87FFBAF85EF9C
-        locationId:
-          type: string
-          description: Unique identifier of a monitoring location record.
-          example: '5'
-        userId:
-          type: string
-          description: User account or source of data that added or updated record.
-          example: abcde
-        addDate:
-          type: string
-          description: Date and time in which record was added.
-          example: '2009-02-20'
-        updateDate:
-          type: string
-          description: Date and time in which record was last updated.
-          example: '2009-02-20'
-        active:
-          type: boolean
-          example: true
-      required:
-      - wafDeterminationDate
-      - wafBeginDate
-      - wafBeginHour
-      - wafMethodCode
-      - wafValue
-      - numberOfTestRuns
-      - numberOfTraversePointsWAF
-      - numberOfTestPorts
-      - numberOfTraversePointsRef
-      - ductWidth
-      - ductDepth
-      - wafEndDate
-      - wafEndHour
-      - id
-      - locationId
-      - userId
-      - addDate
-      - updateDate
-      - active
-    UnitCapacityDTO:
-      type: object
-      properties:
-        maximumHourlyHeatInputCapacity:
-          type: number
-          description: The design heat input capacity (in mmBtu/hr) for the unit or the highest hourly heat input rate observed in the past five years, whichever is greater.
-          example: 2322.1
-        beginDate:
-          format: date-time
-          type: string
-          description: Date on which a relationship or an activity began.
-          example: '2009-01-01'
-        endDate:
-          format: date-time
-          type: string
-          description: Date on which a relationship or an activity ended. This value will be null for active records.
-          example: null
-        id:
-          type: string
-          description: Identity key for UNIT_CAPACITY table.
-          example: '50233'
-        unitId:
-          type: number
-          description: Identity key for UNIT table.
-          example: '4705'
-        commercialOperationDate:
-          format: date-time
-          type: string
-          description: The date a unit began, or will begin to generate electricity for sale, including the sale of test generation. It is the first date that a unit serves a generator and produces electricity when connected to the grid, even if the owners are not compensated for that electricity.
-          example: '1977-04-01'
-        date:
-          format: date-time
-          type: string
-          description: Date on which activity occurred.
-          example: '2019-01-01'
-        boilerTurbineBeginDate:
-          format: date-time
-          type: string
-          description: Date on which monitoring began for a boiler or turbine unit.
-          example: '2009-01-01'
-        boilerTurbineEndDate:
-          format: date-time
-          type: string
-          description: Date on which monitoring ended for a boiler or turbine unit.
-          example: '2009-01-01'
-        userId:
-          type: string
-          description: The user name of the person or process that created the record if the Update Date is empty.  Otherwise this is the user name of the person or process that made the last update.
-          example: abcde
-        addDate:
-          type: string
-          description: Date the record was created.
-          example: '2009-02-20'
-        updateDate:
-          type: string
-          description: Date of the last record update.
-          example: '2009-02-20'
-        active:
-          type: boolean
-          description: Flag for active monitor location record
-          example: true
-        boilerTurbineType:
-          type: string
-          example: string
-      required:
-      - maximumHourlyHeatInputCapacity
-      - beginDate
-      - endDate
-      - id
-      - unitId
-      - commercialOperationDate
-      - date
-      - boilerTurbineBeginDate
-      - boilerTurbineEndDate
-      - userId
-      - addDate
-      - updateDate
-      - active
-      - boilerTurbineType
   securitySchemes:
     APIKey:
       type: apiKey

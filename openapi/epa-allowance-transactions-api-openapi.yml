@@ -350,6 +350,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      summary: Allowance transactions controller get allowance transactions
+      x-summary-source: derived
     servers:
     - url: https://api.epa.gov/easey
   /account-mgmt/allowance-transactions/attributes/applicable:
@@ -402,6 +404,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      summary: Allowance transactions controller get all applicable allowance transactions…
+      x-summary-source: derived
     servers:
     - url: https://api.epa.gov/easey
   /account-mgmt/allowance-transactions/owner-operators:
@@ -438,6 +442,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      summary: Allowance transactions controller get all owner operators
+      x-summary-source: derived
     servers:
     - url: https://api.epa.gov/easey
   /streaming-services/allowance-transactions:
@@ -786,10 +792,26 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      summary: Allowance transactions controller stream allowance transactions
+      x-summary-source: derived
     servers:
     - url: https://api.epa.gov/easey
 components:
   schemas:
+    OwnerOperatorsDTO:
+      type: object
+      properties:
+        ownerOperator:
+          type: string
+          description: The name of any company that owns an allowance account or an affected unit.The name of any company that operates an affected unit.
+          example: Alabama Power Company
+        ownType:
+          type: string
+          description: Owner/Operator type. Either Owner, Operator, or Both.
+          example: OPR
+      required:
+      - ownerOperator
+      - ownType
     ApplicableAllowanceTransactionsAttributesDTO:
       type: object
       properties:
@@ -857,20 +879,6 @@ components:
       - sellState
       - transactionTypeCode
       - ownerOperator
-    OwnerOperatorsDTO:
-      type: object
-      properties:
-        ownerOperator:
-          type: string
-          description: The name of any company that owns an allowance account or an affected unit.The name of any company that operates an affected unit.
-          example: Alabama Power Company
-        ownType:
-          type: string
-          description: Owner/Operator type. Either Owner, Operator, or Both.
-          example: OPR
-      required:
-      - ownerOperator
-      - ownType
     AllowanceTransactionsDTO:
       type: object
       properties:

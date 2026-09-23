@@ -38,6 +38,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      operationId: getApiTreatmentTechnologies
+      x-operation-id-source: derived
   /api/treatmentTechnologyCategories:
     get:
       summary: Treatment Technology Categories
@@ -61,6 +63,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      operationId: getApiTreatmentTechnologyCategories
+      x-operation-id-source: derived
   /api/treatmentTechnology/{id}:
     get:
       summary: Treatment Technology
@@ -149,6 +153,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      operationId: getApiTreatmentTechnologyById
+      x-operation-id-source: derived
   /api/treatmentTechnologyCategory/{id}:
     get:
       summary: Treatment Technology Category
@@ -189,6 +195,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      operationId: getApiTreatmentTechnologyCategoryById
+      x-operation-id-source: derived
   /api/treatmentTechnologyLimitations:
     get:
       summary: Treatment Technology Limitations
@@ -302,6 +310,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      operationId: getApiTreatmentTechnologyLimitations
+      x-operation-id-source: derived
   /api/treatmentTechnologyCategoryLimitations:
     get:
       summary: Treatment Technology Category Limitations
@@ -367,31 +377,11 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      operationId: getApiTreatmentTechnologyCategoryLimitations
+      x-operation-id-source: derived
 components:
   schemas:
-    treatmentTechnology.readCategory:
-      type: object
-      description: Placeholder
-      properties:
-        Dummy:
-          type: string
-          title: Dummy
-          example: Dummy
-          description: Dummy
-      required:
-      - Dummy
-    treatmentTechnology.listCategories:
-      type: object
-      description: Placeholder
-      properties:
-        Dummy:
-          type: string
-          title: Dummy
-          example: Dummy
-          description: Dummy
-      required:
-      - Dummy
-    treatmentTechnology.read:
+    treatmentTechnology.limitations:
       type: object
       description: Placeholder
       properties:
@@ -413,6 +403,17 @@ components:
           description: Dummy
       required:
       - Dummy
+    treatmentTechnology.readCategory:
+      type: object
+      description: Placeholder
+      properties:
+        Dummy:
+          type: string
+          title: Dummy
+          example: Dummy
+          description: Dummy
+      required:
+      - Dummy
     treatmentTechnology.list:
       type: object
       description: Placeholder
@@ -424,7 +425,18 @@ components:
           description: Dummy
       required:
       - Dummy
-    treatmentTechnology.limitations:
+    treatmentTechnology.read:
+      type: object
+      description: Placeholder
+      properties:
+        Dummy:
+          type: string
+          title: Dummy
+          example: Dummy
+          description: Dummy
+      required:
+      - Dummy
+    treatmentTechnology.listCategories:
       type: object
       description: Placeholder
       properties:
@@ -436,6 +448,13 @@ components:
       required:
       - Dummy
   parameters:
+    limit:
+      name: limit
+      in: query
+      description: Placeholder.
+      required: false
+      schema:
+        type: integer
     pointSourceCategoryCode:
       name: pointSourceCategoryCode
       in: query
@@ -523,22 +542,8 @@ components:
         enum:
         - 'true'
         - 'false'
-    treatmentId:
-      name: treatmentId
-      in: query
-      description: Placeholder.
-      required: false
-      schema:
-        type: integer
     offset:
       name: offset
-      in: query
-      description: Placeholder.
-      required: false
-      schema:
-        type: integer
-    limit:
-      name: limit
       in: query
       description: Placeholder.
       required: false
@@ -585,6 +590,13 @@ components:
         - longTermAverageCount
         - pointSourceCategoryCode
         - pointSourceCategoryName
+    treatmentId:
+      name: treatmentId
+      in: query
+      description: Placeholder.
+      required: false
+      schema:
+        type: integer
   securitySchemes:
     basicAuth:
       type: http

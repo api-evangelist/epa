@@ -7,9 +7,7 @@ info:
 
     from thousands of monitors across the United States. The API exposes monitor metadata,
 
-    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
-
-    '
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.'
   version: '1.0'
   contact:
     name: AQS Data Mart Support
@@ -195,14 +193,14 @@ paths:
         dispatcher: FALLBACK
 components:
   parameters:
-    Email:
-      name: email
+    State:
+      name: state
       in: query
       required: true
       schema:
         type: string
-        format: email
-      description: Registered email address.
+        pattern: ^\d{2}$
+      description: 2-digit state FIPS code.
     Edate:
       name: edate
       in: query
@@ -211,13 +209,14 @@ components:
         type: string
         pattern: ^\d{8}$
       description: End date (YYYYMMDD). Must be in the same year as bdate for most services.
-    MaxLat:
-      name: maxlat
+    Cedate:
+      name: cedate
       in: query
-      required: true
+      required: false
       schema:
-        type: number
-        format: float
+        type: string
+        pattern: ^\d{8}$
+      description: Optional change end date.
     Key:
       name: key
       in: query
@@ -225,6 +224,22 @@ components:
       schema:
         type: string
       description: Account-specific access key.
+    Email:
+      name: email
+      in: query
+      required: true
+      schema:
+        type: string
+        format: email
+      description: Registered email address.
+    Site:
+      name: site
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{4}$
+      description: 4-digit site code.
     MaxLon:
       name: maxlon
       in: query
@@ -240,68 +255,6 @@ components:
         type: string
         pattern: ^\d{3}$
       description: 3-digit county code.
-    Cbdate:
-      name: cbdate
-      in: query
-      required: false
-      schema:
-        type: string
-        pattern: ^\d{8}$
-      description: Optional change begin date (returns records updated since cbdate).
-    State:
-      name: state
-      in: query
-      required: true
-      schema:
-        type: string
-        pattern: ^\d{2}$
-      description: 2-digit state FIPS code.
-    Param:
-      name: param
-      in: query
-      required: true
-      schema:
-        type: string
-      description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
-    MinLon:
-      name: minlon
-      in: query
-      required: true
-      schema:
-        type: number
-        format: float
-    Bdate:
-      name: bdate
-      in: query
-      required: true
-      schema:
-        type: string
-        pattern: ^\d{8}$
-      description: Begin date (YYYYMMDD).
-    Cedate:
-      name: cedate
-      in: query
-      required: false
-      schema:
-        type: string
-        pattern: ^\d{8}$
-      description: Optional change end date.
-    Cbsa:
-      name: cbsa
-      in: query
-      required: true
-      schema:
-        type: string
-        pattern: ^\d{5}$
-      description: 5-digit Core Based Statistical Area code.
-    Site:
-      name: site
-      in: query
-      required: true
-      schema:
-        type: string
-        pattern: ^\d{4}$
-      description: 4-digit site code.
     MinLat:
       name: minlat
       in: query
@@ -310,7 +263,70 @@ components:
         type: number
         format: float
       description: Minimum latitude of bounding box.
+    Cbdate:
+      name: cbdate
+      in: query
+      required: false
+      schema:
+        type: string
+        pattern: ^\d{8}$
+      description: Optional change begin date (returns records updated since cbdate).
+    MinLon:
+      name: minlon
+      in: query
+      required: true
+      schema:
+        type: number
+        format: float
+    MaxLat:
+      name: maxlat
+      in: query
+      required: true
+      schema:
+        type: number
+        format: float
+    Param:
+      name: param
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
+    Bdate:
+      name: bdate
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{8}$
+      description: Begin date (YYYYMMDD).
+    Cbsa:
+      name: cbsa
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{5}$
+      description: 5-digit Core Based Statistical Area code.
   schemas:
+    Envelope:
+      type: object
+      required:
+      - Header
+      - Data
+      properties:
+        Header:
+          type: array
+          items:
+            $ref: '#/components/schemas/Header'
+          example:
+          - string
+        Data:
+          type: array
+          items:
+            type: object
+          example:
+          - {}
     Header:
       type: object
       properties:
@@ -332,24 +348,6 @@ components:
             type: string
           example:
           - string
-    Envelope:
-      type: object
-      required:
-      - Header
-      - Data
-      properties:
-        Header:
-          type: array
-          items:
-            $ref: '#/components/schemas/Header'
-          example:
-          - string
-        Data:
-          type: array
-          items:
-            type: object
-          example:
-          - {}
   securitySchemes:
     emailKey:
       type: apiKey

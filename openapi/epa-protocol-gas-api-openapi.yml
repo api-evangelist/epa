@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: QA Certification Management OpenAPI Specification Protocol Gas API
+  title: QA Certification Management OpenAPI Specification Protocol…
   description: QA & Certification management API endpoints for qa test data, qa cert events, and test extension & exemption data
   version: 'v2.0.80 published: Thu Mar 26 2026'
   contact: {}
@@ -51,6 +51,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      summary: Protocol gas controller get protocol gases
+      x-summary-source: derived
   /qa-certification-mgmt/locations/{locId}/test-summary/{testSumId}/protocol-gases/{id}:
     get:
       operationId: ProtocolGasController_getProtocolGas
@@ -94,9 +96,11 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      summary: Protocol gas controller get protocol gas
+      x-summary-source: derived
 components:
   schemas:
-    ProtocolGasRecordDTO:
+    ProtocolGasDTO:
       type: object
       properties:
         gasTypeCode:
@@ -140,7 +144,7 @@ components:
       - addDate
       - updateDate
       - gasLevelCode
-    ProtocolGasDTO:
+    ProtocolGasRecordDTO:
       type: object
       properties:
         gasTypeCode:

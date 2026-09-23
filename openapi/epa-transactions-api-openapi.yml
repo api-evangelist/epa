@@ -7,9 +7,7 @@ info:
 
     from thousands of monitors across the United States. The API exposes monitor metadata,
 
-    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.
-
-    '
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.'
   version: '1.0'
   contact:
     name: AQS Data Mart Support
@@ -125,45 +123,6 @@ paths:
         dispatcher: FALLBACK
 components:
   parameters:
-    Email:
-      name: email
-      in: query
-      required: true
-      schema:
-        type: string
-        format: email
-      description: Registered email address.
-    Edate:
-      name: edate
-      in: query
-      required: true
-      schema:
-        type: string
-        pattern: ^\d{8}$
-      description: End date (YYYYMMDD). Must be in the same year as bdate for most services.
-    Key:
-      name: key
-      in: query
-      required: true
-      schema:
-        type: string
-      description: Account-specific access key.
-    County:
-      name: county
-      in: query
-      required: true
-      schema:
-        type: string
-        pattern: ^\d{3}$
-      description: 3-digit county code.
-    Cbdate:
-      name: cbdate
-      in: query
-      required: false
-      schema:
-        type: string
-        pattern: ^\d{8}$
-      description: Optional change begin date (returns records updated since cbdate).
     State:
       name: state
       in: query
@@ -172,21 +131,14 @@ components:
         type: string
         pattern: ^\d{2}$
       description: 2-digit state FIPS code.
-    Param:
-      name: param
-      in: query
-      required: true
-      schema:
-        type: string
-      description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
-    Bdate:
-      name: bdate
+    Edate:
+      name: edate
       in: query
       required: true
       schema:
         type: string
         pattern: ^\d{8}$
-      description: Begin date (YYYYMMDD).
+      description: End date (YYYYMMDD). Must be in the same year as bdate for most services.
     Cedate:
       name: cedate
       in: query
@@ -195,6 +147,21 @@ components:
         type: string
         pattern: ^\d{8}$
       description: Optional change end date.
+    Key:
+      name: key
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Account-specific access key.
+    Email:
+      name: email
+      in: query
+      required: true
+      schema:
+        type: string
+        format: email
+      description: Registered email address.
     Site:
       name: site
       in: query
@@ -203,7 +170,56 @@ components:
         type: string
         pattern: ^\d{4}$
       description: 4-digit site code.
+    County:
+      name: county
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{3}$
+      description: 3-digit county code.
+    Bdate:
+      name: bdate
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{8}$
+      description: Begin date (YYYYMMDD).
+    Cbdate:
+      name: cbdate
+      in: query
+      required: false
+      schema:
+        type: string
+        pattern: ^\d{8}$
+      description: Optional change begin date (returns records updated since cbdate).
+    Param:
+      name: param
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
   schemas:
+    Envelope:
+      type: object
+      required:
+      - Header
+      - Data
+      properties:
+        Header:
+          type: array
+          items:
+            $ref: '#/components/schemas/Header'
+          example:
+          - string
+        Data:
+          type: array
+          items:
+            type: object
+          example:
+          - {}
     Header:
       type: object
       properties:
@@ -225,24 +241,6 @@ components:
             type: string
           example:
           - string
-    Envelope:
-      type: object
-      required:
-      - Header
-      - Data
-      properties:
-        Header:
-          type: array
-          items:
-            $ref: '#/components/schemas/Header'
-          example:
-          - string
-        Data:
-          type: array
-          items:
-            type: object
-          example:
-          - {}
   securitySchemes:
     emailKey:
       type: apiKey

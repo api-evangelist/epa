@@ -1,19 +1,140 @@
 openapi: 3.2.0
 info:
-  title: Epa Metadata API
-  x-refined-note:
-  - x-apisguru-categories differs across the merged source definitions and was not carried
-  - x-logo differs across the merged source definitions and was not carried
-  - x-origin differs across the merged source definitions and was not carried
-  - x-providerName differs across the merged source definitions and was not carried
-  - x-serviceName differs across the merged source definitions and was not carried
+  title: EPA Air Quality System (AQS) Meta Data API
+  description: 'The Air Quality System (AQS) Data Mart API provides programmatic access to ambient air
+
+    sample data collected by state, local, tribal and federal air pollution control agencies
+
+    from thousands of monitors across the United States. The API exposes monitor metadata,
+
+    raw sample observations, daily/quarterly/annual aggregates, and quality assurance results.'
   version: '1.0'
-  description: 'Operations tagged Metadata across 7 of this provider''s published API definitions: csb-rebate-openapi.json, echo-air-openapi.json, echo-all-openapi.json, echo-case-openapi.json, echo-cwa-openapi.json, echo-rcra-openapi.json, echo-sdw-openapi.json. Each path carries the servers of the definition it was published in.'
+  contact:
+    name: AQS Data Mart Support
+    email: aqsdatamart@epa.gov
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
+  license:
+    name: U.S. Government Work / Public Domain
+    url: https://www.usa.gov/government-works
 servers:
-- url: https://echodata.epa.gov/echo
+- url: https://aqs.epa.gov/data/api
+  description: Production AQS Data Mart API
+security:
+- emailKey: []
 tags:
 - name: Metadata
+  description: API availability, change history, field definitions, known issues.
 paths:
+  /metaData/isAvailable:
+    get:
+      tags:
+      - Metadata
+      summary: Check API Availability
+      operationId: metaDataIsAvailable
+      parameters:
+      - $ref: '#/components/parameters/Email'
+      - $ref: '#/components/parameters/Key'
+      responses:
+        '200':
+          description: API status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+              examples:
+                metaDataIsAvailable200Example:
+                  summary: Default metaDataIsAvailable 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /metaData/revisionHistory:
+    get:
+      tags:
+      - Metadata
+      summary: Get Revision History
+      operationId: metaDataRevisionHistory
+      parameters:
+      - $ref: '#/components/parameters/Email'
+      - $ref: '#/components/parameters/Key'
+      responses:
+        '200':
+          description: API change log
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+              examples:
+                metaDataRevisionHistory200Example:
+                  summary: Default metaDataRevisionHistory 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /metaData/fieldsByService:
+    get:
+      tags:
+      - Metadata
+      summary: List Fields by Service
+      operationId: metaDataFieldsByService
+      parameters:
+      - $ref: '#/components/parameters/Email'
+      - $ref: '#/components/parameters/Key'
+      - name: service
+        in: query
+        required: true
+        schema:
+          type: string
+        example: string
+      responses:
+        '200':
+          description: Field definitions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+              examples:
+                metaDataFieldsByService200Example:
+                  summary: Default metaDataFieldsByService 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /metaData/issues:
+    get:
+      tags:
+      - Metadata
+      summary: List Known Issues
+      operationId: metaDataIssues
+      parameters:
+      - $ref: '#/components/parameters/Email'
+      - $ref: '#/components/parameters/Key'
+      responses:
+        '200':
+          description: Known issues
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+              examples:
+                metaDataIssues200Example:
+                  summary: Default metaDataIssues 200 response
+                  x-microcks-default: true
+                  value:
+                    status: ok
+                    message: Example response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /metadata:
     get:
       summary: /metadata
@@ -37,6 +158,8 @@ paths:
         dispatcher: FALLBACK
       tags:
       - Metadata
+      operationId: getMetadata
+      x-operation-id-source: derived
   /air_rest_services.metadata:
     get:
       description: Returns the JSON Object Name and ColumnId for usage with the qcolumns parameter for get_qid, get_facility_info and other service endpoints.
@@ -85,6 +208,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      operationId: getAirRestServicesMetadata
+      x-operation-id-source: derived
     post:
       description: Returns the JSON Object Name and ColumnId for usage with the qcolumns parameter for get_qid, get_facility_info and other service endpoints.
       parameters:
@@ -134,6 +259,8 @@ paths:
                   - JSON
                   - XML
                   description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+      operationId: postAirRestServicesMetadata
+      x-operation-id-source: derived
     servers:
     - url: https://echodata.epa.gov/echo
   /echo_rest_services.metadata:
@@ -184,6 +311,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      operationId: getEchoRestServicesMetadata
+      x-operation-id-source: derived
     post:
       description: Returns the JSON Object Name and ColumnId for usage with the qcolumns parameter for get_qid, get_facility_info and other service endpoints.
       parameters:
@@ -233,6 +362,8 @@ paths:
                   - JSON
                   - XML
                   description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+      operationId: postEchoRestServicesMetadata
+      x-operation-id-source: derived
     servers:
     - url: https://echodata.epa.gov/echo
   /case_rest_services.metadata:
@@ -283,6 +414,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      operationId: getCaseRestServicesMetadata
+      x-operation-id-source: derived
     post:
       description: Returns the JSON Object Name and ColumnId for usage with the qcolumns parameter for get_cases endpoint.
       parameters:
@@ -332,6 +465,8 @@ paths:
                   - JSON
                   - XML
                   description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+      operationId: postCaseRestServicesMetadata
+      x-operation-id-source: derived
     servers:
     - url: https://echodata.epa.gov/echo
   /cwa_rest_services.metadata:
@@ -382,6 +517,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      operationId: getCwaRestServicesMetadata
+      x-operation-id-source: derived
     post:
       description: Returns the JSON Object Name and ColumnId for usage with the qcolumns parameter for get_qid, get_facility_info and other service endpoints.
       parameters:
@@ -431,6 +568,8 @@ paths:
                   - JSON
                   - XML
                   description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+      operationId: postCwaRestServicesMetadata
+      x-operation-id-source: derived
     servers:
     - url: https://echodata.epa.gov/echo
   /rcra_rest_services.metadata:
@@ -481,6 +620,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      operationId: getRcraRestServicesMetadata
+      x-operation-id-source: derived
     post:
       description: Returns the JSON Object Name and ColumnId for usage with the qcolumns parameter for get_qid, get_facility_info and other service endpoints.
       parameters:
@@ -530,6 +671,8 @@ paths:
                   - JSON
                   - XML
                   description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+      operationId: postRcraRestServicesMetadata
+      x-operation-id-source: derived
     servers:
     - url: https://echodata.epa.gov/echo
   /sdw_rest_services.metadata:
@@ -580,6 +723,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      operationId: getSdwRestServicesMetadata
+      x-operation-id-source: derived
     post:
       description: Returns the JSON Object Name and ColumnId for usage with the qcolumns parameter for get_systems endpoint.
       parameters:
@@ -629,16 +774,27 @@ paths:
                   - JSON
                   - XML
                   description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+      operationId: postSdwRestServicesMetadata
+      x-operation-id-source: derived
     servers:
     - url: https://echodata.epa.gov/echo
 components:
   parameters:
-    f.callback:
-      description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
-      in: formData
-      name: callback
-      required: false
-      type: string
+    Key:
+      name: key
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Account-specific access key.
+    Email:
+      name: email
+      in: query
+      required: true
+      schema:
+        type: string
+        format: email
+      description: Registered email address.
     q.callback:
       description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
       in: query
@@ -646,28 +802,52 @@ components:
       required: false
       schema:
         type: string
+    f.callback:
+      description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
+      in: formData
+      name: callback
+      required: false
+      type: string
   schemas:
-    meta1:
-      description: Results Object
+    Header:
+      type: object
       properties:
-        Message:
-          description: Field to record messages (typically performance-related) about packet processing
-          example: Success
-          title: Message
+        status:
           type: string
-        ResultColumns:
-          items:
-            $ref: '#/components/schemas/meta3'
-          title: Result Columns
+          example: active
+        request_time:
+          type: string
+          example: string
+        url:
+          type: string
+          example: https://example.com
+        rows:
+          type: integer
+          example: 100
+        error:
           type: array
-          xml:
-            name: ResultColumns
-            wrapped: true
+          items:
+            type: string
           example:
           - string
-      required:
-      - Message
+    Envelope:
       type: object
+      required:
+      - Header
+      - Data
+      properties:
+        Header:
+          type: array
+          items:
+            $ref: '#/components/schemas/Header'
+          example:
+          - string
+        Data:
+          type: array
+          items:
+            type: object
+          example:
+          - {}
     meta3:
       description: Results Column Object
       properties:
@@ -708,6 +888,27 @@ components:
       type: object
       xml:
         name: ResultColumn
+    meta1:
+      description: Results Object
+      properties:
+        Message:
+          description: Field to record messages (typically performance-related) about packet processing
+          example: Success
+          title: Message
+          type: string
+        ResultColumns:
+          items:
+            $ref: '#/components/schemas/meta3'
+          title: Result Columns
+          type: array
+          xml:
+            name: ResultColumns
+            wrapped: true
+          example:
+          - string
+      required:
+      - Message
+      type: object
     met2:
       description: Results Column Object
       properties:
@@ -770,11 +971,13 @@ components:
       required:
       - Message
       type: object
-x-refined-from:
-- csb-rebate-openapi.json
-- echo-air-openapi.json
-- echo-all-openapi.json
-- echo-case-openapi.json
-- echo-cwa-openapi.json
-- echo-rcra-openapi.json
-- echo-sdw-openapi.json
+  securitySchemes:
+    emailKey:
+      type: apiKey
+      in: query
+      name: key
+      description: 'AQS requires `email` and `key` query parameters on every request. Register at
+
+        `/signup?email=YOUR_EMAIL` to receive a key by email.
+
+        '

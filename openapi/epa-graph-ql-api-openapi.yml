@@ -3,26 +3,7 @@ info:
   title: EPA Envirofacts Data Service Graph QL API
   description: 'The Envirofacts Data Service API (DMAP-EF) is a programmatic interface for querying the EPA''s
 
-    Envirofacts warehouse. It exposes data from multiple regulatory programs including
-
-    RCRA (hazardous waste), GHG (greenhouse gases), TRI (toxic release inventory), SEMS (Superfund),
-
-    NEI (National Emissions Inventory), SDWIS (drinking water) and more, plus UV index forecasts.
-
-
-    The service uses path-encoded queries instead of conventional query strings. The general pattern is:
-
-
-    ```
-
-    /efservice/{table}/{column}{operator}{value}/{join}/{first}:{last}/{sort}/{format}
-
-    ```
-
-
-    All components except `{table}` are optional. Queries must complete within 15 minutes.
-
-    '
+    Envirofacts warehouse.'
   version: '1.0'
   contact:
     name: Envirofacts Support
@@ -31,13 +12,13 @@ servers:
 - url: https://data.epa.gov
   description: Envirofacts data service
 tags:
-- name: GraphQL
+- name: Graph QL
   description: GraphQL endpoint for complex queries beyond REST capabilities.
 paths:
   /enviro/dmap-graphql-api:
     post:
       tags:
-      - GraphQL
+      - Graph QL
       summary: Execute Envirofacts GraphQL Query
       operationId: envirofactsGraphQL
       requestBody:

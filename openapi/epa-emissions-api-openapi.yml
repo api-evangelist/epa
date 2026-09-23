@@ -88,6 +88,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      summary: Emissions controller submission progress
+      x-summary-source: derived
     servers:
     - url: https://api.epa.gov/easey
   /emissions-mgmt/emissions:
@@ -167,6 +169,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      summary: Emissions controller get emissions
+      x-summary-source: derived
     servers:
     - url: https://api.epa.gov/easey
   /streaming-services/emissions/summary-values:
@@ -231,6 +235,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      summary: Summary value controller summary value stream
+      x-summary-source: derived
     servers:
     - url: https://api.epa.gov/easey
   /streaming-services/emissions/supplemental-operating:
@@ -295,6 +301,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      summary: Supplemental operating controller supplemental operating stream
+      x-summary-source: derived
     servers:
     - url: https://api.epa.gov/easey
   /streaming-services/emissions/hourly/derived-values:
@@ -358,6 +366,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      summary: Derived hourly controller derived hourly stream
+      x-summary-source: derived
     servers:
     - url: https://api.epa.gov/easey
   /streaming-services/emissions/hourly/operating:
@@ -421,6 +431,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      summary: Hourly operating controller hourly operating stream
+      x-summary-source: derived
     servers:
     - url: https://api.epa.gov/easey
 components:
@@ -489,7 +501,7 @@ components:
       - windowStatus
       - windowExpiredDate
       - periodAbbreviation
-    SummaryValueBaseDTO:
+    SupplementalOperatingDTO:
       type: object
       properties:
         id:
@@ -501,16 +513,13 @@ components:
         reportPeriodId:
           type: number
           example: 0.0
-        parameterCode:
+        operatingTypeCode:
           type: string
           example: string
-        quarterlyValue:
-          type: number
-          example: 0.0
-        yearTotal:
-          type: number
-          example: 2024
-        ozoneSeasonTotal:
+        fuelCode:
+          type: string
+          example: string
+        operatingValue:
           type: number
           example: 0.0
         userId:
@@ -526,10 +535,9 @@ components:
       - id
       - locationId
       - reportPeriodId
-      - parameterCode
-      - quarterlyValue
-      - yearTotal
-      - ozoneSeasonTotal
+      - operatingTypeCode
+      - fuelCode
+      - operatingValue
       - userId
       - addDate
       - updateDate
@@ -574,6 +582,50 @@ components:
       - modcCode
       - locationId
       - reportPeriodId
+      - userId
+      - addDate
+      - updateDate
+    SummaryValueBaseDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '12345'
+        locationId:
+          type: string
+          example: '12345'
+        reportPeriodId:
+          type: number
+          example: 0.0
+        parameterCode:
+          type: string
+          example: string
+        quarterlyValue:
+          type: number
+          example: 0.0
+        yearTotal:
+          type: number
+          example: 2024
+        ozoneSeasonTotal:
+          type: number
+          example: 0.0
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+      required:
+      - id
+      - locationId
+      - reportPeriodId
+      - parameterCode
+      - quarterlyValue
+      - yearTotal
+      - ozoneSeasonTotal
       - userId
       - addDate
       - updateDate
@@ -625,46 +677,6 @@ components:
       - operatingTime
       - hourLoad
       - loadUnitsOfMeasureCode
-      - userId
-      - addDate
-      - updateDate
-    SupplementalOperatingDTO:
-      type: object
-      properties:
-        id:
-          type: string
-          example: '12345'
-        locationId:
-          type: string
-          example: '12345'
-        reportPeriodId:
-          type: number
-          example: 0.0
-        operatingTypeCode:
-          type: string
-          example: string
-        fuelCode:
-          type: string
-          example: string
-        operatingValue:
-          type: number
-          example: 0.0
-        userId:
-          type: string
-          example: '12345'
-        addDate:
-          type: string
-          example: string
-        updateDate:
-          type: string
-          example: string
-      required:
-      - id
-      - locationId
-      - reportPeriodId
-      - operatingTypeCode
-      - fuelCode
-      - operatingValue
       - userId
       - addDate
       - updateDate

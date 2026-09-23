@@ -3,11 +3,11 @@ info:
   contact:
     name: U.S. EPA, OECA Integration, Targeting and Access Branch
     url: https://echo.epa.gov/resources/general-info/contact-us
-  description: "Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use.\n  ECHO provides integrated compliance and enforcement information for over 1 million regulated facilities nationwide.\n   EFF Rest Services provides the data for ECHO's Effluent Charts, a set of dynamic charts and tables of permitted effluent limits, releases, and violations over time for Clean Water Act (CWA) wastewater discharge permits issued under the National Pollutant Discharge Elimination System (NPDES).  \n\nSee Effluent Charts Help (https://echo.epa.gov/help/reports/effluent-charts-help) for additional information.\n\\\nThe are 3 service end points for Effluent Charts:  get_summary_chart, get_effluent_chart, and download_effluent_chart.\n\\\n <b>1)</b>  Use get_summary_chart to retrieve a summary matrix of effluent parameters by effluent outfall and an overall violation status for a provided NPDES Permit and date range.\n <b>2)</b>  Use get_effluent_chart to retrieve detailed Discharge Limit, DMR and NPDES Violation information for a provided NPDES Permit, date range, effluent parameter, or outfall.\n <b>3)</b>  Use download_effluent_chart to generate a Comma Separated Value (CSV) file of the detailed data provided with get_effluent chart, for a provided NPDES Permit, date range, effluent parameter, or outfall.\n\\\nAdditional ECHO Resources:   <a href=\"https://echo.epa.gov/tools/web-services\">Web Services</a>, <a href=\"https://echo.epa.gov/resources/echo-data/about-the-data\">About ECHO's Data</a>, <a href=\"https://echo.epa.gov/tools/data-downloads\">Data Downloads</a>\n "
+  description: Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use.
   license:
     name: U.S. Public Domain License
     url: https://edg.epa.gov/EPA_Data_License.html
-  title: U.S. EPA Enforcement and Compliance History Online (ECHO) - Effluent Charting and Reporting Effluent Charts API
+  title: U.S.
   version: 2019.10.15
   x-apisguru-categories:
   - open_data
@@ -52,6 +52,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      operationId: getEffRestServicesDownloadEffluentChart
+      x-operation-id-source: derived
     post:
       description: Downloads tabular Discharge Monitoring Report (DMR) and compliance data for one NPDES permit as a CSV.
       parameters:
@@ -78,9 +80,11 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      operationId: postEffRestServicesDownloadEffluentChart
+      x-operation-id-source: derived
   /eff_rest_services.get_effluent_chart:
     get:
-      description: "Discharge Monitoring Report (DMR) data supporting each effluent chart for one NPDES permit. Includes Discharge Monitoring Reports and NPDES Violations. \n\n"
+      description: Discharge Monitoring Report (DMR) data supporting each effluent chart for one NPDES permit. Includes Discharge Monitoring Reports and NPDES Violations.
       parameters:
       - $ref: '#/components/parameters/q.p_id'
       - $ref: '#/components/parameters/q.outfall'
@@ -121,8 +125,10 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      operationId: getEffRestServicesGetEffluentChart
+      x-operation-id-source: derived
     post:
-      description: "Discharge Monitoring Report (DMR) data supporting each effluent chart for one NPDES permit. Includes Discharge Monitoring Reports and NPDES Violations. \n\n"
+      description: Discharge Monitoring Report (DMR) data supporting each effluent chart for one NPDES permit. Includes Discharge Monitoring Reports and NPDES Violations.
       parameters:
       - $ref: '#/components/parameters/f.p_id'
       - $ref: '#/components/parameters/f.outfall'
@@ -163,6 +169,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      operationId: postEffRestServicesGetEffluentChart
+      x-operation-id-source: derived
   /eff_rest_services.get_summary_chart:
     get:
       description: Summary of compliance status each outfall and parameter for one NPDES permit. Provides the current compliance status and overall compliance status for the date range of interest. This service supports the Summary Matrix on the Effluent Charts.
@@ -204,6 +212,8 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      operationId: getEffRestServicesGetSummaryChart
+      x-operation-id-source: derived
     post:
       description: Summary of compliance status each outfall and parameter for one NPDES permit. Provides the current compliance status and overall compliance status for the date range of interest. This service supports the Summary Matrix on the Effluent Charts.
       parameters:
@@ -244,139 +254,46 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      operationId: postEffRestServicesGetSummaryChart
+      x-operation-id-source: derived
 components:
-  parameters:
-    f.p_id:
-      description: Identifier for the service.
-      in: formData
-      name: p_id
-      required: true
-      type: string
-    q.p_id:
-      description: Identifier for the service.
-      in: query
-      name: p_id
-      required: true
-      schema:
-        type: string
-    f.output:
-      description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
-      enum:
-      - JSONP
-      - JSON
-      - XML
-      in: formData
-      name: output
-      required: false
-      type: string
-    q.parameter_code:
-      description: Five-digit numeric code identifying the parameter. See Parameter Lookup documentation for a complete list of codes.
-      in: query
-      name: parameter_code
-      required: false
-      schema:
-        type: string
-    f.start_date:
-      description: The start date (mm/dd/yyyy) for the date range of interest. Must be used in conjunction with end_date. If start_date and end_date are not specified, the service will return the last three years of data.
-      in: formData
-      name: start_date
-      required: false
-      type: string
-    q.start_date:
-      description: The start date (mm/dd/yyyy) for the date range of interest. Must be used in conjunction with end_date. If start_date and end_date are not specified, the service will return the last three years of data.
-      in: query
-      name: start_date
-      required: false
-      schema:
-        type: string
-    q.end_date:
-      description: The end date (mm/dd/yyyy) for the date range of interest. Must be used in conjunction with start_date. If start_date and end_date are not specified, the service will return the last three years of data.
-      in: query
-      name: end_date
-      required: false
-      schema:
-        type: string
-    f.end_date:
-      description: The end date (mm/dd/yyyy) for the date range of interest. Must be used in conjunction with start_date. If start_date and end_date are not specified, the service will return the last three years of data.
-      in: formData
-      name: end_date
-      required: false
-      type: string
-    f.callback:
-      description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
-      in: formData
-      name: callback
-      required: false
-      type: string
-    q.output:
-      description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
-      in: query
-      name: output
-      required: false
-      schema:
-        type: string
-        enum:
-        - JSONP
-        - JSON
-        - XML
-    q.outfall:
-      description: Three-character code that identifies the point of discharge (e.g., pipe or outfall) for a facility. A single NPDES ID may have multiple points of discharge.
-      in: query
-      name: outfall
-      required: false
-      schema:
-        type: string
-    q.callback:
-      description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
-      in: query
-      name: callback
-      required: false
-      schema:
-        type: string
-    f.parameter_code:
-      description: Five-digit numeric code identifying the parameter. See Parameter Lookup documentation for a complete list of codes.
-      in: formData
-      name: parameter_code
-      required: false
-      type: string
-    f.outfall:
-      description: Three-character code that identifies the point of discharge (e.g., pipe or outfall) for a facility. A single NPDES ID may have multiple points of discharge.
-      in: formData
-      name: outfall
-      required: false
-      type: string
   schemas:
-    eff07:
-      description: Parameters Object
+    eff08:
+      description: Permit Features Object
       properties:
-        CurrentVioStatus:
-          description: The most severe compliance status for an outfall and parameter during the current monitoring period
-          example: In Violation
-          title: Current Violation Status
+        Parameters:
+          items:
+            $ref: '#/components/schemas/eff07'
+          title: Parameters
+          type: array
+          xml:
+            name: Parameters
+            wrapped: true
+          example:
+          - string
+        PermFeatureNmbr:
+          description: A three-character code in ICIS-NPDES that identifies the point of discharge (e.g., outfall) for a facility. A NPDES permit may have multiple points of discharge. If the code is less than three characters in the .CSV, append zeros to the beginning of the number (e.g., 1 is equivalent to 001)
+          example: '001'
+          title: Discharge Point
           type: string
-        MaxVioStatus:
-          description: The most severe compliance status for an outfall and parameter during the entire selected date range
-          example: In Violation
-          title: Most Severe Compliance Status
+        PermFeatureTypeCode:
+          description: The code indicating the type of permitted feature (e.g., EXO)
+          example: EXO
+          title: Permit Feature Type Code
           type: string
-        ParameterCode:
-          description: The unique 5 digit numeric code identifying the parameter. If the code is less than 5 digits in the .CSV, append zeros to the beginning of the number (e.g., 100 is equivalent to 00100)
-          example: '00400'
-          title: Parameter Code
-          type: string
-        ParameterDesc:
-          description: The pollutant name and form (e.g., dissolved, suspended) associated with the parameter code
-          example: pH
-          title: Parameter Description
+        PermFeatureTypeDesc:
+          description: The description indicating the type of permitted feature (e.g., External Outfall, Internal Outfall, Sum)
+          example: External Outfall
+          title: Permit Feature Type
           type: string
       required:
-      - ParameterCode
-      - ParameterDesc
-      - MaxVioStatus
-      - CurrentVioStatus
+      - PermFeatureNmbr
+      - PermFeatureTypeCode
+      - PermFeatureTypeDesc
+      - Parameters
       type: object
       xml:
-        name: Parameter
+        name: PermFeature
     eff02:
       description: NPDES Violations Object
       properties:
@@ -547,42 +464,394 @@ components:
       type: object
       xml:
         name: PermFeature
-    eff08:
-      description: Permit Features Object
+    eff09:
+      description: Results Object
       properties:
-        Parameters:
+        CWPCity:
+          description: City in which the facility is located.
+          example: HUNTSVILLE
+          title: City
+          type: string
+        CWPCurrentSNCStatus:
+          description: The type of noncompliance when a major source is in significant violation or a minor source has a Category 1 violation.
+          example: D (DMR NR)
+          type: string
+        CWPMajorMinorStatusFlag:
+          description: 'Facilities marked "M" for major refers to CWA major permittees.
+
+            - M = Major
+
+            - N = Minor'
+          example: N
+          title: Major/Minor Status Flag
+          type: string
+        CWPName:
+          description: Facility or permit holder name, as maintained in ICIS-NPDES.
+          example: REDSTONE ARSENAL
+          title: Facility Name
+          type: string
+        CWPPermitStatusDesc:
+          description: The current stage/status in the NPDES permit life cycle.
+          example: Effective
+          title: Permit Status Description
+          type: string
+        CWPPermitTypeDesc:
+          description: 'NPDES facility permit classification:
+
+            - NPDES Individual Permit
+
+            - General Permit Covered Facility
+
+            - NPDES Master General Permit
+
+            - Associated Permit Record
+
+            - Individual Industrial User Permit
+
+            - Individual State Issued Permit
+
+            - State Issued Master General Permit
+
+            - Unpermitted Facility'
+          example: General Permit Covered Facility
+          title: Permit Type Description
+          type: string
+        CWPState:
+          description: Facility location - two-digit state abbreviation.
+          example: AL
+          title: State
+          type: string
+        CWPStreet:
+          description: Facility street address
+          example: BUILDING 3240 AREA
+          title: Street Address
+          type: string
+        CWPZip:
+          description: Facility ZIP code
+          example: '35898'
+          title: Zip
+          type: string
+        EPASystem:
+          description: "The EPA data system in which permit and facility records are kept. EPA's Facility Registry System (FRS) links all program database records (such as permit IDs and IDs facilities use in reporting to EPA) together. The following list describes the individual data systems that are linked to from the detailed facility report: \n\n- AFS: Air Facility System for Clean Air Act stationary source programs.\n- ICP: Integrated Compliance Information System for Clean Water Act programs monitoring National Pollutant Discharge Elimination System (NPDES) permits.\n- RCR: Resource Conservation and Recovery Act Information System (RCRAInfo) for tracking the Resource Conservation and Recovery Act (RCRA) programs.\n- NCDB: National Compliance Database System for monitoring national performance of the Toxic Substance Control Act (TSCA); the Emergency Planning and Right-to-Know Act, Section 313 (EPCRA); the Asbestos Hazard Emergency Response (AHERA); and the Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA).\n- TRI: Toxics Release Inventory for Emergency Planning and Community Right-to-Know Act, Section 313 submissions.\n- NEI: National Emissions Inventory database contains information on stationary and mobile sources that emit criteria air pollutants and their precursors, as well as hazardous air pollutants (HAPs). The database includes estimates of annual emissions, by source, of air pollutants in each area of the country, on an annual basis.\n- TSCA: Toxic Substances Control Act addressing the production, importation, use, and disposal of specific chemicals."
+          example: ICP
+          title: EPA Data System
+          type: string
+        EndDate:
+          description: End date for the date range of interest. Formatted as mm/dd/yyyy
+          example: 01/01/2016
+          title: End Date
+          type: string
+        LinkedPermits:
           items:
-            $ref: '#/components/schemas/eff07'
-          title: Parameters
+            $ref: '#/components/schemas/eff06'
+          title: Linked Permits
           type: array
           xml:
-            name: Parameters
+            name: LinkedPermits
             wrapped: true
           example:
           - string
-        PermFeatureNmbr:
-          description: A three-character code in ICIS-NPDES that identifies the point of discharge (e.g., outfall) for a facility. A NPDES permit may have multiple points of discharge. If the code is less than three characters in the .CSV, append zeros to the beginning of the number (e.g., 1 is equivalent to 001)
-          example: '001'
-          title: Discharge Point
+        Message:
+          description: Field to record messages (typically performance-related) about packet processing
+          example: Success
+          title: Message
           type: string
-        PermFeatureTypeCode:
-          description: The code indicating the type of permitted feature (e.g., EXO)
-          example: EXO
-          title: Permit Feature Type Code
+        PermFeatures:
+          items:
+            $ref: '#/components/schemas/eff08'
+          title: Permitted Features (Pipe Outfalls)
+          type: array
+          xml:
+            name: PermFeatures
+            wrapped: true
+          example:
+          - string
+        RegistryId:
+          description: 12-digit Facility Registry Service (FRS) identification number.  FRS uniquely identifies a facility by assigning an identification number (FRS ID), and uses this FRS ID to link together all EPA regulatory program database records
+          example: '110020837601'
+          title: FRS Registry ID
           type: string
-        PermFeatureTypeDesc:
-          description: The description indicating the type of permitted feature (e.g., External Outfall, Internal Outfall, Sum)
-          example: External Outfall
-          title: Permit Feature Type
+        SourceId:
+          description: Unique Identifier assigned by EPA.
+          example: ALR040033
+          title: EPA Source Identifier
+          type: string
+        StartDate:
+          description: Starting date for the date range of interest. Formatted as mm/dd/yyyy
+          example: 01/01/2016
+          title: Start Date
+          type: string
+        Statute:
+          description: "The name of the statute associated with each of the permits and identifiers linked to the facility: \n- CAA = the Clean Air Act\n- CWA = the Clean Water Act\n- RCRA = the Resource Conservation and Recovery Act\n- EP313 = the Emergency Planning and Community Right-to-Know Act, Section 313 (also known as the Toxics Release Inventory Program)\n- TSCA = the Toxic Substances Control Act\n- SDWA = the Safe Drinking Water Act"
+          example: CWA
+          title: Regulatory Statute
           type: string
       required:
-      - PermFeatureNmbr
-      - PermFeatureTypeCode
-      - PermFeatureTypeDesc
-      - Parameters
+      - Message
+      - SourceId
+      - EPASystem
+      - RegistryId
+      - Statute
+      - CWPName
+      - CWPStreet
+      - CWPCity
+      - CWPState
+      - CWPZip
+      - CWPPermitStatusDesc
+      - CWPMajorMinorStatusFlag
+      - CWPPermitTypeDesc
+      - CWPCurrentSNCStatus
+      - StartDate
+      - EndDate
+      type: object
+    eff06:
+      description: Linked Permits Object
+      properties:
+        CWPCity:
+          description: City in which the facility is located.
+          example: HUNTSVILLE
+          title: City
+          type: string
+        CWPCurrentSNCStatus:
+          description: The type of noncompliance when a major source is in significant violation or a minor source has a Category 1 violation.
+          example: D (DMR NR)
+          type: string
+        CWPMajorMinorStatusFlag:
+          description: 'Facilities marked "M" for major refers to CWA major permittees.
+
+            - M = Major
+
+            - N = Minor'
+          example: N
+          title: Major/Minor Status Flag
+          type: string
+        CWPName:
+          description: Facility or permit holder name, as maintained in ICIS-NPDES.
+          example: REDSTONE ARSENAL
+          title: Facility Name
+          type: string
+        CWPPermitStatusDesc:
+          description: The current stage/status in the NPDES permit life cycle.
+          example: Effective
+          title: Permit Status Description
+          type: string
+        CWPPermitTypeDesc:
+          description: 'NPDES facility permit classification:
+
+            - NPDES Individual Permit
+
+            - General Permit Covered Facility
+
+            - NPDES Master General Permit
+
+            - Associated Permit Record
+
+            - Individual Industrial User Permit
+
+            - Individual State Issued Permit
+
+            - State Issued Master General Permit
+
+            - Unpermitted Facility'
+          example: General Permit Covered Facility
+          title: Permit Type Description
+          type: string
+        CWPState:
+          description: Facility location - two-digit state abbreviation.
+          example: AL
+          title: State
+          type: string
+        CWPStreet:
+          description: Facility street address
+          example: BUILDING 3240 AREA
+          title: Street Address
+          type: string
+        CWPZip:
+          description: Facility ZIP code
+          example: '35898'
+          title: Zip
+          type: string
+        SourceId:
+          description: Unique Identifier assigned by EPA.
+          example: ALR040033
+          title: EPA Source Identifier
+          type: string
+      required:
+      - SourceId
+      - CWPName
+      - CWPStreet
+      - CWPCity
+      - CWPState
+      - CWPZip
+      - CWPPermitStatusDesc
+      - CWPMajorMinorStatusFlag
+      - CWPPermitTypeDesc
+      - CWPCurrentSNCStatus
       type: object
       xml:
-        name: PermFeature
+        name: LinkedPermit
+    eff07:
+      description: Parameters Object
+      properties:
+        CurrentVioStatus:
+          description: The most severe compliance status for an outfall and parameter during the current monitoring period
+          example: In Violation
+          title: Current Violation Status
+          type: string
+        MaxVioStatus:
+          description: The most severe compliance status for an outfall and parameter during the entire selected date range
+          example: In Violation
+          title: Most Severe Compliance Status
+          type: string
+        ParameterCode:
+          description: The unique 5 digit numeric code identifying the parameter. If the code is less than 5 digits in the .CSV, append zeros to the beginning of the number (e.g., 100 is equivalent to 00100)
+          example: '00400'
+          title: Parameter Code
+          type: string
+        ParameterDesc:
+          description: The pollutant name and form (e.g., dissolved, suspended) associated with the parameter code
+          example: pH
+          title: Parameter Description
+          type: string
+      required:
+      - ParameterCode
+      - ParameterDesc
+      - MaxVioStatus
+      - CurrentVioStatus
+      type: object
+      xml:
+        name: Parameter
+    eff05:
+      description: Results Object
+      properties:
+        CWPCity:
+          description: City in which the facility is located.
+          example: HUNTSVILLE
+          title: City
+          type: string
+        CWPCurrentSNCStatus:
+          description: The type of noncompliance when a major source is in significant violation or a minor source has a Category 1 violation.
+          example: D (DMR NR)
+          type: string
+        CWPMajorMinorStatusFlag:
+          description: 'Facilities marked "M" for major refers to CWA major permittees.
+
+            - M = Major
+
+            - N = Minor'
+          example: N
+          title: Major/Minor Status Flag
+          type: string
+        CWPName:
+          description: Facility or permit holder name, as maintained in ICIS-NPDES.
+          example: REDSTONE ARSENAL
+          title: Facility Name
+          type: string
+        CWPPermitStatusDesc:
+          description: The current stage/status in the NPDES permit life cycle.
+          example: Effective
+          title: Permit Status Description
+          type: string
+        CWPPermitTypeDesc:
+          description: 'NPDES facility permit classification:
+
+            - NPDES Individual Permit
+
+            - General Permit Covered Facility
+
+            - NPDES Master General Permit
+
+            - Associated Permit Record
+
+            - Individual Industrial User Permit
+
+            - Individual State Issued Permit
+
+            - State Issued Master General Permit
+
+            - Unpermitted Facility'
+          example: General Permit Covered Facility
+          title: Permit Type Description
+          type: string
+        CWPState:
+          description: Facility location - two-digit state abbreviation.
+          example: AL
+          title: State
+          type: string
+        CWPStreet:
+          description: Facility street address
+          example: BUILDING 3240 AREA
+          title: Street Address
+          type: string
+        CWPZip:
+          description: Facility ZIP code
+          example: '35898'
+          title: Zip
+          type: string
+        EPASystem:
+          description: "The EPA data system in which permit and facility records are kept. EPA's Facility Registry System (FRS) links all program database records (such as permit IDs and IDs facilities use in reporting to EPA) together. The following list describes the individual data systems that are linked to from the detailed facility report: \n\n- AFS: Air Facility System for Clean Air Act stationary source programs.\n- ICP: Integrated Compliance Information System for Clean Water Act programs monitoring National Pollutant Discharge Elimination System (NPDES) permits.\n- RCR: Resource Conservation and Recovery Act Information System (RCRAInfo) for tracking the Resource Conservation and Recovery Act (RCRA) programs.\n- NCDB: National Compliance Database System for monitoring national performance of the Toxic Substance Control Act (TSCA); the Emergency Planning and Right-to-Know Act, Section 313 (EPCRA); the Asbestos Hazard Emergency Response (AHERA); and the Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA).\n- TRI: Toxics Release Inventory for Emergency Planning and Community Right-to-Know Act, Section 313 submissions.\n- NEI: National Emissions Inventory database contains information on stationary and mobile sources that emit criteria air pollutants and their precursors, as well as hazardous air pollutants (HAPs). The database includes estimates of annual emissions, by source, of air pollutants in each area of the country, on an annual basis.\n- TSCA: Toxic Substances Control Act addressing the production, importation, use, and disposal of specific chemicals."
+          example: ICP
+          title: EPA Data System
+          type: string
+        EndDate:
+          description: End date for the date range of interest. Formatted as mm/dd/yyyy
+          example: 01/01/2016
+          title: End Date
+          type: string
+        Message:
+          description: Field to record messages (typically performance-related) about packet processing
+          example: Success
+          title: Message
+          type: string
+        PermFeatures:
+          description: Array of Permitted Features
+          items:
+            $ref: '#/components/schemas/eff04'
+          title: Permitted Features (Pipe Outfalls)
+          type: array
+          xml:
+            name: PermFeatures
+            wrapped: true
+          example:
+          - string
+        RegistryId:
+          description: 12-digit Facility Registry Service (FRS) identification number.  FRS uniquely identifies a facility by assigning an identification number (FRS ID), and uses this FRS ID to link together all EPA regulatory program database records
+          example: '110020837601'
+          title: FRS Registry ID
+          type: string
+        SourceId:
+          description: Unique Identifier assigned by EPA.
+          example: ALR040033
+          title: EPA Source Identifier
+          type: string
+        StartDate:
+          description: Starting date for the date range of interest. Formatted as mm/dd/yyyy
+          example: 01/01/2016
+          title: Start Date
+          type: string
+        Statute:
+          description: "The name of the statute associated with each of the permits and identifiers linked to the facility: \n- CAA = the Clean Air Act\n- CWA = the Clean Water Act\n- RCRA = the Resource Conservation and Recovery Act\n- EP313 = the Emergency Planning and Community Right-to-Know Act, Section 313 (also known as the Toxics Release Inventory Program)\n- TSCA = the Toxic Substances Control Act\n- SDWA = the Safe Drinking Water Act"
+          example: CWA
+          title: Regulatory Statute
+          type: string
+      required:
+      - Message
+      - SourceId
+      - EPASystem
+      - RegistryId
+      - Statute
+      - CWPName
+      - CWPStreet
+      - CWPCity
+      - CWPState
+      - CWPZip
+      - CWPPermitStatusDesc
+      - CWPMajorMinorStatusFlag
+      - CWPPermitTypeDesc
+      - CWPCurrentSNCStatus
+      - StartDate
+      - EndDate
+      type: object
     eff01:
       description: Discharge Monitoring Reports Object
       properties:
@@ -835,146 +1104,6 @@ components:
       type: object
       xml:
         name: DischargeMonitoringReport
-    eff09:
-      description: Results Object
-      properties:
-        CWPCity:
-          description: City in which the facility is located.
-          example: HUNTSVILLE
-          title: City
-          type: string
-        CWPCurrentSNCStatus:
-          description: The type of noncompliance when a major source is in significant violation or a minor source has a Category 1 violation.
-          example: D (DMR NR)
-          type: string
-        CWPMajorMinorStatusFlag:
-          description: 'Facilities marked "M" for major refers to CWA major permittees.
-
-            - M = Major
-
-            - N = Minor'
-          example: N
-          title: Major/Minor Status Flag
-          type: string
-        CWPName:
-          description: Facility or permit holder name, as maintained in ICIS-NPDES.
-          example: REDSTONE ARSENAL
-          title: Facility Name
-          type: string
-        CWPPermitStatusDesc:
-          description: The current stage/status in the NPDES permit life cycle.
-          example: Effective
-          title: Permit Status Description
-          type: string
-        CWPPermitTypeDesc:
-          description: 'NPDES facility permit classification:
-
-            - NPDES Individual Permit
-
-            - General Permit Covered Facility
-
-            - NPDES Master General Permit
-
-            - Associated Permit Record
-
-            - Individual Industrial User Permit
-
-            - Individual State Issued Permit
-
-            - State Issued Master General Permit
-
-            - Unpermitted Facility'
-          example: General Permit Covered Facility
-          title: Permit Type Description
-          type: string
-        CWPState:
-          description: Facility location - two-digit state abbreviation.
-          example: AL
-          title: State
-          type: string
-        CWPStreet:
-          description: Facility street address
-          example: BUILDING 3240 AREA
-          title: Street Address
-          type: string
-        CWPZip:
-          description: Facility ZIP code
-          example: '35898'
-          title: Zip
-          type: string
-        EPASystem:
-          description: "The EPA data system in which permit and facility records are kept. EPA's Facility Registry System (FRS) links all program database records (such as permit IDs and IDs facilities use in reporting to EPA) together. The following list describes the individual data systems that are linked to from the detailed facility report: \n\n- AFS: Air Facility System for Clean Air Act stationary source programs.\n- ICP: Integrated Compliance Information System for Clean Water Act programs monitoring National Pollutant Discharge Elimination System (NPDES) permits.\n- RCR: Resource Conservation and Recovery Act Information System (RCRAInfo) for tracking the Resource Conservation and Recovery Act (RCRA) programs.\n- NCDB: National Compliance Database System for monitoring national performance of the Toxic Substance Control Act (TSCA); the Emergency Planning and Right-to-Know Act, Section 313 (EPCRA); the Asbestos Hazard Emergency Response (AHERA); and the Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA).\n- TRI: Toxics Release Inventory for Emergency Planning and Community Right-to-Know Act, Section 313 submissions.\n- NEI: National Emissions Inventory database contains information on stationary and mobile sources that emit criteria air pollutants and their precursors, as well as hazardous air pollutants (HAPs). The database includes estimates of annual emissions, by source, of air pollutants in each area of the country, on an annual basis.\n- TSCA: Toxic Substances Control Act addressing the production, importation, use, and disposal of specific chemicals."
-          example: ICP
-          title: EPA Data System
-          type: string
-        EndDate:
-          description: End date for the date range of interest. Formatted as mm/dd/yyyy
-          example: 01/01/2016
-          title: End Date
-          type: string
-        LinkedPermits:
-          items:
-            $ref: '#/components/schemas/eff06'
-          title: Linked Permits
-          type: array
-          xml:
-            name: LinkedPermits
-            wrapped: true
-          example:
-          - string
-        Message:
-          description: Field to record messages (typically performance-related) about packet processing
-          example: Success
-          title: Message
-          type: string
-        PermFeatures:
-          items:
-            $ref: '#/components/schemas/eff08'
-          title: Permitted Features (Pipe Outfalls)
-          type: array
-          xml:
-            name: PermFeatures
-            wrapped: true
-          example:
-          - string
-        RegistryId:
-          description: 12-digit Facility Registry Service (FRS) identification number.  FRS uniquely identifies a facility by assigning an identification number (FRS ID), and uses this FRS ID to link together all EPA regulatory program database records
-          example: '110020837601'
-          title: FRS Registry ID
-          type: string
-        SourceId:
-          description: Unique Identifier assigned by EPA.
-          example: ALR040033
-          title: EPA Source Identifier
-          type: string
-        StartDate:
-          description: Starting date for the date range of interest. Formatted as mm/dd/yyyy
-          example: 01/01/2016
-          title: Start Date
-          type: string
-        Statute:
-          description: "The name of the statute associated with each of the permits and identifiers linked to the facility: \n- CAA = the Clean Air Act\n- CWA = the Clean Water Act\n- RCRA = the Resource Conservation and Recovery Act\n- EP313 = the Emergency Planning and Community Right-to-Know Act, Section 313 (also known as the Toxics Release Inventory Program)\n- TSCA = the Toxic Substances Control Act\n- SDWA = the Safe Drinking Water Act"
-          example: CWA
-          title: Regulatory Statute
-          type: string
-      required:
-      - Message
-      - SourceId
-      - EPASystem
-      - RegistryId
-      - Statute
-      - CWPName
-      - CWPStreet
-      - CWPCity
-      - CWPState
-      - CWPZip
-      - CWPPermitStatusDesc
-      - CWPMajorMinorStatusFlag
-      - CWPPermitTypeDesc
-      - CWPCurrentSNCStatus
-      - StartDate
-      - EndDate
-      type: object
     eff03:
       description: Parameters Object
       properties:
@@ -1030,220 +1159,103 @@ components:
       type: object
       xml:
         name: Parameter
-    eff06:
-      description: Linked Permits Object
-      properties:
-        CWPCity:
-          description: City in which the facility is located.
-          example: HUNTSVILLE
-          title: City
-          type: string
-        CWPCurrentSNCStatus:
-          description: The type of noncompliance when a major source is in significant violation or a minor source has a Category 1 violation.
-          example: D (DMR NR)
-          type: string
-        CWPMajorMinorStatusFlag:
-          description: 'Facilities marked "M" for major refers to CWA major permittees.
-
-            - M = Major
-
-            - N = Minor'
-          example: N
-          title: Major/Minor Status Flag
-          type: string
-        CWPName:
-          description: Facility or permit holder name, as maintained in ICIS-NPDES.
-          example: REDSTONE ARSENAL
-          title: Facility Name
-          type: string
-        CWPPermitStatusDesc:
-          description: The current stage/status in the NPDES permit life cycle.
-          example: Effective
-          title: Permit Status Description
-          type: string
-        CWPPermitTypeDesc:
-          description: 'NPDES facility permit classification:
-
-            - NPDES Individual Permit
-
-            - General Permit Covered Facility
-
-            - NPDES Master General Permit
-
-            - Associated Permit Record
-
-            - Individual Industrial User Permit
-
-            - Individual State Issued Permit
-
-            - State Issued Master General Permit
-
-            - Unpermitted Facility'
-          example: General Permit Covered Facility
-          title: Permit Type Description
-          type: string
-        CWPState:
-          description: Facility location - two-digit state abbreviation.
-          example: AL
-          title: State
-          type: string
-        CWPStreet:
-          description: Facility street address
-          example: BUILDING 3240 AREA
-          title: Street Address
-          type: string
-        CWPZip:
-          description: Facility ZIP code
-          example: '35898'
-          title: Zip
-          type: string
-        SourceId:
-          description: Unique Identifier assigned by EPA.
-          example: ALR040033
-          title: EPA Source Identifier
-          type: string
-      required:
-      - SourceId
-      - CWPName
-      - CWPStreet
-      - CWPCity
-      - CWPState
-      - CWPZip
-      - CWPPermitStatusDesc
-      - CWPMajorMinorStatusFlag
-      - CWPPermitTypeDesc
-      - CWPCurrentSNCStatus
-      type: object
-      xml:
-        name: LinkedPermit
-    eff05:
-      description: Results Object
-      properties:
-        CWPCity:
-          description: City in which the facility is located.
-          example: HUNTSVILLE
-          title: City
-          type: string
-        CWPCurrentSNCStatus:
-          description: The type of noncompliance when a major source is in significant violation or a minor source has a Category 1 violation.
-          example: D (DMR NR)
-          type: string
-        CWPMajorMinorStatusFlag:
-          description: 'Facilities marked "M" for major refers to CWA major permittees.
-
-            - M = Major
-
-            - N = Minor'
-          example: N
-          title: Major/Minor Status Flag
-          type: string
-        CWPName:
-          description: Facility or permit holder name, as maintained in ICIS-NPDES.
-          example: REDSTONE ARSENAL
-          title: Facility Name
-          type: string
-        CWPPermitStatusDesc:
-          description: The current stage/status in the NPDES permit life cycle.
-          example: Effective
-          title: Permit Status Description
-          type: string
-        CWPPermitTypeDesc:
-          description: 'NPDES facility permit classification:
-
-            - NPDES Individual Permit
-
-            - General Permit Covered Facility
-
-            - NPDES Master General Permit
-
-            - Associated Permit Record
-
-            - Individual Industrial User Permit
-
-            - Individual State Issued Permit
-
-            - State Issued Master General Permit
-
-            - Unpermitted Facility'
-          example: General Permit Covered Facility
-          title: Permit Type Description
-          type: string
-        CWPState:
-          description: Facility location - two-digit state abbreviation.
-          example: AL
-          title: State
-          type: string
-        CWPStreet:
-          description: Facility street address
-          example: BUILDING 3240 AREA
-          title: Street Address
-          type: string
-        CWPZip:
-          description: Facility ZIP code
-          example: '35898'
-          title: Zip
-          type: string
-        EPASystem:
-          description: "The EPA data system in which permit and facility records are kept. EPA's Facility Registry System (FRS) links all program database records (such as permit IDs and IDs facilities use in reporting to EPA) together. The following list describes the individual data systems that are linked to from the detailed facility report: \n\n- AFS: Air Facility System for Clean Air Act stationary source programs.\n- ICP: Integrated Compliance Information System for Clean Water Act programs monitoring National Pollutant Discharge Elimination System (NPDES) permits.\n- RCR: Resource Conservation and Recovery Act Information System (RCRAInfo) for tracking the Resource Conservation and Recovery Act (RCRA) programs.\n- NCDB: National Compliance Database System for monitoring national performance of the Toxic Substance Control Act (TSCA); the Emergency Planning and Right-to-Know Act, Section 313 (EPCRA); the Asbestos Hazard Emergency Response (AHERA); and the Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA).\n- TRI: Toxics Release Inventory for Emergency Planning and Community Right-to-Know Act, Section 313 submissions.\n- NEI: National Emissions Inventory database contains information on stationary and mobile sources that emit criteria air pollutants and their precursors, as well as hazardous air pollutants (HAPs). The database includes estimates of annual emissions, by source, of air pollutants in each area of the country, on an annual basis.\n- TSCA: Toxic Substances Control Act addressing the production, importation, use, and disposal of specific chemicals."
-          example: ICP
-          title: EPA Data System
-          type: string
-        EndDate:
-          description: End date for the date range of interest. Formatted as mm/dd/yyyy
-          example: 01/01/2016
-          title: End Date
-          type: string
-        Message:
-          description: Field to record messages (typically performance-related) about packet processing
-          example: Success
-          title: Message
-          type: string
-        PermFeatures:
-          description: Array of Permitted Features
-          items:
-            $ref: '#/components/schemas/eff04'
-          title: Permitted Features (Pipe Outfalls)
-          type: array
-          xml:
-            name: PermFeatures
-            wrapped: true
-          example:
-          - string
-        RegistryId:
-          description: 12-digit Facility Registry Service (FRS) identification number.  FRS uniquely identifies a facility by assigning an identification number (FRS ID), and uses this FRS ID to link together all EPA regulatory program database records
-          example: '110020837601'
-          title: FRS Registry ID
-          type: string
-        SourceId:
-          description: Unique Identifier assigned by EPA.
-          example: ALR040033
-          title: EPA Source Identifier
-          type: string
-        StartDate:
-          description: Starting date for the date range of interest. Formatted as mm/dd/yyyy
-          example: 01/01/2016
-          title: Start Date
-          type: string
-        Statute:
-          description: "The name of the statute associated with each of the permits and identifiers linked to the facility: \n- CAA = the Clean Air Act\n- CWA = the Clean Water Act\n- RCRA = the Resource Conservation and Recovery Act\n- EP313 = the Emergency Planning and Community Right-to-Know Act, Section 313 (also known as the Toxics Release Inventory Program)\n- TSCA = the Toxic Substances Control Act\n- SDWA = the Safe Drinking Water Act"
-          example: CWA
-          title: Regulatory Statute
-          type: string
-      required:
-      - Message
-      - SourceId
-      - EPASystem
-      - RegistryId
-      - Statute
-      - CWPName
-      - CWPStreet
-      - CWPCity
-      - CWPState
-      - CWPZip
-      - CWPPermitStatusDesc
-      - CWPMajorMinorStatusFlag
-      - CWPPermitTypeDesc
-      - CWPCurrentSNCStatus
-      - StartDate
-      - EndDate
-      type: object
+  parameters:
+    q.callback:
+      description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
+      in: query
+      name: callback
+      required: false
+      schema:
+        type: string
+    q.output:
+      description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+      in: query
+      name: output
+      required: false
+      schema:
+        type: string
+        enum:
+        - JSONP
+        - JSON
+        - XML
+    f.callback:
+      description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
+      in: formData
+      name: callback
+      required: false
+      type: string
+    q.parameter_code:
+      description: Five-digit numeric code identifying the parameter. See Parameter Lookup documentation for a complete list of codes.
+      in: query
+      name: parameter_code
+      required: false
+      schema:
+        type: string
+    q.start_date:
+      description: The start date (mm/dd/yyyy) for the date range of interest. Must be used in conjunction with end_date. If start_date and end_date are not specified, the service will return the last three years of data.
+      in: query
+      name: start_date
+      required: false
+      schema:
+        type: string
+    f.outfall:
+      description: Three-character code that identifies the point of discharge (e.g., pipe or outfall) for a facility. A single NPDES ID may have multiple points of discharge.
+      in: formData
+      name: outfall
+      required: false
+      type: string
+    q.p_id:
+      description: Identifier for the service.
+      in: query
+      name: p_id
+      required: true
+      schema:
+        type: string
+    q.outfall:
+      description: Three-character code that identifies the point of discharge (e.g., pipe or outfall) for a facility. A single NPDES ID may have multiple points of discharge.
+      in: query
+      name: outfall
+      required: false
+      schema:
+        type: string
+    f.p_id:
+      description: Identifier for the service.
+      in: formData
+      name: p_id
+      required: true
+      type: string
+    f.output:
+      description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+      enum:
+      - JSONP
+      - JSON
+      - XML
+      in: formData
+      name: output
+      required: false
+      type: string
+    f.parameter_code:
+      description: Five-digit numeric code identifying the parameter. See Parameter Lookup documentation for a complete list of codes.
+      in: formData
+      name: parameter_code
+      required: false
+      type: string
+    f.end_date:
+      description: The end date (mm/dd/yyyy) for the date range of interest. Must be used in conjunction with start_date. If start_date and end_date are not specified, the service will return the last three years of data.
+      in: formData
+      name: end_date
+      required: false
+      type: string
+    f.start_date:
+      description: The start date (mm/dd/yyyy) for the date range of interest. Must be used in conjunction with end_date. If start_date and end_date are not specified, the service will return the last three years of data.
+      in: formData
+      name: start_date
+      required: false
+      type: string
+    q.end_date:
+      description: The end date (mm/dd/yyyy) for the date range of interest. Must be used in conjunction with start_date. If start_date and end_date are not specified, the service will return the last three years of data.
+      in: query
+      name: end_date
+      required: false
+      schema:
+        type: string
