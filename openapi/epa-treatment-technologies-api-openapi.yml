@@ -381,6 +381,17 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    treatmentTechnology.categoryLimitations:
+      type: object
+      description: Placeholder
+      properties:
+        Dummy:
+          type: string
+          title: Dummy
+          example: Dummy
+          description: Dummy
+      required:
+      - Dummy
     treatmentTechnology.limitations:
       type: object
       description: Placeholder
@@ -392,7 +403,7 @@ components:
           description: Dummy
       required:
       - Dummy
-    treatmentTechnology.categoryLimitations:
+    treatmentTechnology.read:
       type: object
       description: Placeholder
       properties:
@@ -425,17 +436,6 @@ components:
           description: Dummy
       required:
       - Dummy
-    treatmentTechnology.read:
-      type: object
-      description: Placeholder
-      properties:
-        Dummy:
-          type: string
-          title: Dummy
-          example: Dummy
-          description: Dummy
-      required:
-      - Dummy
     treatmentTechnology.listCategories:
       type: object
       description: Placeholder
@@ -448,6 +448,81 @@ components:
       required:
       - Dummy
   parameters:
+    sortCol:
+      name: sortCol
+      in: query
+      description: Placeholder.
+      required: false
+      schema:
+        type: string
+        enum:
+        - limitationId
+        - controlTechnologyCode
+        - controlTechnologyCfrSection
+        - comboSubcategory
+        - wastestreamProcessId
+        - wastestreamProcessTitle
+        - wastestreamProcessSecondary
+        - wastestreamProcessCfrSection
+        - cfrSectionAnchor
+        - wastestreamProcessDescription
+        - wastestreamProcessLimitCalculationDescription
+        - wastestreamProcessTypoFlagLimitCalculationDescription
+        - pollutantDescription
+        - dischargeFrequency
+        - limitationValue
+        - typoFlagLimitationValue
+        - minimumValue
+        - maximumValue
+        - zeroDischarge
+        - limitationDurationDescription
+        - limitationDurationBaseType
+        - limitationDurationTypeDisplay
+        - limitationUnitCode
+        - limitationUnitDescription
+        - limitationUnitBasis
+        - alternateLimitFlag
+        - alternateLimitDescription
+        - limitRequirementDescription
+        - limitationLimitCalculationDescription
+        - limitationPollutantNotes
+        - longTermAverageCount
+        - pointSourceCategoryCode
+        - pointSourceCategoryName
+    download:
+      name: download
+      in: query
+      description: Placeholder.
+      required: false
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    sortDir:
+      name: sortDir
+      in: query
+      description: Placeholder.
+      required: false
+      schema:
+        type: string
+        enum:
+        - asc
+        - desc
+    treatmentId:
+      name: treatmentId
+      in: query
+      description: Placeholder.
+      required: false
+      schema:
+        type: integer
+    offset:
+      name: offset
+      in: query
+      description: Placeholder.
+      required: false
+      schema:
+        type: integer
     limit:
       name: limit
       in: query
@@ -522,81 +597,6 @@ components:
         - 468
         - 469
         - 471
-    sortDir:
-      name: sortDir
-      in: query
-      description: Placeholder.
-      required: false
-      schema:
-        type: string
-        enum:
-        - asc
-        - desc
-    download:
-      name: download
-      in: query
-      description: Placeholder.
-      required: false
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    offset:
-      name: offset
-      in: query
-      description: Placeholder.
-      required: false
-      schema:
-        type: integer
-    sortCol:
-      name: sortCol
-      in: query
-      description: Placeholder.
-      required: false
-      schema:
-        type: string
-        enum:
-        - limitationId
-        - controlTechnologyCode
-        - controlTechnologyCfrSection
-        - comboSubcategory
-        - wastestreamProcessId
-        - wastestreamProcessTitle
-        - wastestreamProcessSecondary
-        - wastestreamProcessCfrSection
-        - cfrSectionAnchor
-        - wastestreamProcessDescription
-        - wastestreamProcessLimitCalculationDescription
-        - wastestreamProcessTypoFlagLimitCalculationDescription
-        - pollutantDescription
-        - dischargeFrequency
-        - limitationValue
-        - typoFlagLimitationValue
-        - minimumValue
-        - maximumValue
-        - zeroDischarge
-        - limitationDurationDescription
-        - limitationDurationBaseType
-        - limitationDurationTypeDisplay
-        - limitationUnitCode
-        - limitationUnitDescription
-        - limitationUnitBasis
-        - alternateLimitFlag
-        - alternateLimitDescription
-        - limitRequirementDescription
-        - limitationLimitCalculationDescription
-        - limitationPollutantNotes
-        - longTermAverageCount
-        - pointSourceCategoryCode
-        - pointSourceCategoryName
-    treatmentId:
-      name: treatmentId
-      in: query
-      description: Placeholder.
-      required: false
-      schema:
-        type: integer
   securitySchemes:
     basicAuth:
       type: http

@@ -193,6 +193,44 @@ paths:
         dispatcher: FALLBACK
 components:
   parameters:
+    Key:
+      name: key
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Account-specific access key.
+    Cbdate:
+      name: cbdate
+      in: query
+      required: false
+      schema:
+        type: string
+        pattern: ^\d{8}$
+      description: Optional change begin date (returns records updated since cbdate).
+    Param:
+      name: param
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
+    Cbsa:
+      name: cbsa
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{5}$
+      description: 5-digit Core Based Statistical Area code.
+    Bdate:
+      name: bdate
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{8}$
+      description: Begin date (YYYYMMDD).
     State:
       name: state
       in: query
@@ -201,37 +239,28 @@ components:
         type: string
         pattern: ^\d{2}$
       description: 2-digit state FIPS code.
-    Edate:
-      name: edate
+    MinLat:
+      name: minlat
       in: query
       required: true
       schema:
-        type: string
-        pattern: ^\d{8}$
-      description: End date (YYYYMMDD). Must be in the same year as bdate for most services.
-    Cedate:
-      name: cedate
-      in: query
-      required: false
-      schema:
-        type: string
-        pattern: ^\d{8}$
-      description: Optional change end date.
-    Key:
-      name: key
+        type: number
+        format: float
+      description: Minimum latitude of bounding box.
+    MaxLat:
+      name: maxlat
       in: query
       required: true
       schema:
-        type: string
-      description: Account-specific access key.
-    Email:
-      name: email
+        type: number
+        format: float
+    MinLon:
+      name: minlon
       in: query
       required: true
       schema:
-        type: string
-        format: email
-      description: Registered email address.
+        type: number
+        format: float
     Site:
       name: site
       in: query
@@ -247,6 +276,14 @@ components:
       schema:
         type: number
         format: float
+    Edate:
+      name: edate
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{8}$
+      description: End date (YYYYMMDD). Must be in the same year as bdate for most services.
     County:
       name: county
       in: query
@@ -255,59 +292,22 @@ components:
         type: string
         pattern: ^\d{3}$
       description: 3-digit county code.
-    MinLat:
-      name: minlat
+    Email:
+      name: email
       in: query
       required: true
       schema:
-        type: number
-        format: float
-      description: Minimum latitude of bounding box.
-    Cbdate:
-      name: cbdate
+        type: string
+        format: email
+      description: Registered email address.
+    Cedate:
+      name: cedate
       in: query
       required: false
       schema:
         type: string
         pattern: ^\d{8}$
-      description: Optional change begin date (returns records updated since cbdate).
-    MinLon:
-      name: minlon
-      in: query
-      required: true
-      schema:
-        type: number
-        format: float
-    MaxLat:
-      name: maxlat
-      in: query
-      required: true
-      schema:
-        type: number
-        format: float
-    Param:
-      name: param
-      in: query
-      required: true
-      schema:
-        type: string
-      description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
-    Bdate:
-      name: bdate
-      in: query
-      required: true
-      schema:
-        type: string
-        pattern: ^\d{8}$
-      description: Begin date (YYYYMMDD).
-    Cbsa:
-      name: cbsa
-      in: query
-      required: true
-      schema:
-        type: string
-        pattern: ^\d{5}$
-      description: 5-digit Core Based Statistical Area code.
+      description: Optional change end date.
   schemas:
     Envelope:
       type: object

@@ -49,55 +49,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    LMEQualificationDTO:
-      type: object
-      properties:
-        qualificationDataYear:
-          type: number
-          description: Year corresponding to the qualification data.
-          example: '2015'
-        operatingHours:
-          type: number
-          description: Annual number of operating hours used to determine qualification.
-          example: 105
-        so2Tons:
-          type: number
-          description: Annual SO2 value used to determine qualification.
-          example: 0.9
-        noxTons:
-          type: number
-          description: Annual NOX emissions to determine qualification.
-          example: 6.4
-        id:
-          type: string
-          description: Unique identifier of a monitoring qualification LME record.
-          example: NJCHQLAPA3-C89F6E1CE9D447A298B7D5E428ADD1AC
-        qualificationId:
-          type: string
-          description: Unique identifier of a monitoring qualification record.
-          example: NJCHQLAPA3-82CD1A0A9D2A48BFB5203F82D390183E
-        userId:
-          type: string
-          description: User account or source of data that added or updated record.
-          example: abcde
-        addDate:
-          type: string
-          description: Date and time in which record was added.
-          example: '2015-07-20'
-        updateDate:
-          type: string
-          description: Date and time in which record was last updated.
-          example: '2015-07-20'
-      required:
-      - qualificationDataYear
-      - operatingHours
-      - so2Tons
-      - noxTons
-      - id
-      - qualificationId
-      - userId
-      - addDate
-      - updateDate
     MonitorQualificationDTO:
       type: object
       properties:
@@ -170,71 +121,6 @@ components:
       - monitoringQualificationLEEData
       - monitoringQualificationLMEData
       - monitoringQualificationPercentData
-    LEEQualificationDTO:
-      type: object
-      properties:
-        qualificationTestDate:
-          format: date-time
-          type: string
-          description: End date of the initial LEE qualifying test or a retest.
-          example: '2018-07-15'
-        parameterCode:
-          type: string
-          description: Parameter code associated with the LEE qualification.
-          example: HG
-        qualificationTestType:
-          type: string
-          description: Indication of whether the qualifying test was an initial test or retest.
-          example: INITIAL
-        potentialAnnualHgMassEmissions:
-          type: number
-          description: Potential annual Hg mass emissions used for LEE qualification.
-          example: 10.2
-        applicableEmissionStandard:
-          type: number
-          description: Applicable Emission Standard used for LEE qualification.
-          example: 29
-        unitsOfStandard:
-          type: string
-          description: units of the Applicable Emission Standard.
-          example: LBGWH
-        percentageOfEmissionStandard:
-          type: number
-          description: Result of initial test or retest as a percentage of the Applicable Emission Standard.
-          example: 72.8
-        id:
-          type: string
-          description: Unique identifier of a monitoring qualification LEE record.
-          example: MIKE-DELL-CFEDE4EB21124391BE13E7FB5A56081C
-        qualificationId:
-          type: string
-          description: Unique identifier of a monitoring qualification record.
-          example: MIKE-DELL-E4CE3931A24E4C1395B3C81457B300CC
-        userId:
-          type: string
-          description: User account or source of data that added or updated record.
-          example: abcde
-        addDate:
-          type: string
-          description: Date and time in which record was added.
-          example: '2018-10-25'
-        updateDate:
-          type: string
-          description: Date and time in which record was last updated.
-          example: '2018-10-25'
-      required:
-      - qualificationTestDate
-      - parameterCode
-      - qualificationTestType
-      - potentialAnnualHgMassEmissions
-      - applicableEmissionStandard
-      - unitsOfStandard
-      - percentageOfEmissionStandard
-      - id
-      - qualificationId
-      - userId
-      - addDate
-      - updateDate
     PCTQualificationDTO:
       type: object
       properties:
@@ -314,6 +200,120 @@ components:
       - yr3QualificationDataYear
       - yr3QualificationDataTypeCode
       - yr3PercentageValue
+      - id
+      - qualificationId
+      - userId
+      - addDate
+      - updateDate
+    LMEQualificationDTO:
+      type: object
+      properties:
+        qualificationDataYear:
+          type: number
+          description: Year corresponding to the qualification data.
+          example: '2015'
+        operatingHours:
+          type: number
+          description: Annual number of operating hours used to determine qualification.
+          example: 105
+        so2Tons:
+          type: number
+          description: Annual SO2 value used to determine qualification.
+          example: 0.9
+        noxTons:
+          type: number
+          description: Annual NOX emissions to determine qualification.
+          example: 6.4
+        id:
+          type: string
+          description: Unique identifier of a monitoring qualification LME record.
+          example: NJCHQLAPA3-C89F6E1CE9D447A298B7D5E428ADD1AC
+        qualificationId:
+          type: string
+          description: Unique identifier of a monitoring qualification record.
+          example: NJCHQLAPA3-82CD1A0A9D2A48BFB5203F82D390183E
+        userId:
+          type: string
+          description: User account or source of data that added or updated record.
+          example: abcde
+        addDate:
+          type: string
+          description: Date and time in which record was added.
+          example: '2015-07-20'
+        updateDate:
+          type: string
+          description: Date and time in which record was last updated.
+          example: '2015-07-20'
+      required:
+      - qualificationDataYear
+      - operatingHours
+      - so2Tons
+      - noxTons
+      - id
+      - qualificationId
+      - userId
+      - addDate
+      - updateDate
+    LEEQualificationDTO:
+      type: object
+      properties:
+        qualificationTestDate:
+          format: date-time
+          type: string
+          description: End date of the initial LEE qualifying test or a retest.
+          example: '2018-07-15'
+        parameterCode:
+          type: string
+          description: Parameter code associated with the LEE qualification.
+          example: HG
+        qualificationTestType:
+          type: string
+          description: Indication of whether the qualifying test was an initial test or retest.
+          example: INITIAL
+        potentialAnnualHgMassEmissions:
+          type: number
+          description: Potential annual Hg mass emissions used for LEE qualification.
+          example: 10.2
+        applicableEmissionStandard:
+          type: number
+          description: Applicable Emission Standard used for LEE qualification.
+          example: 29
+        unitsOfStandard:
+          type: string
+          description: units of the Applicable Emission Standard.
+          example: LBGWH
+        percentageOfEmissionStandard:
+          type: number
+          description: Result of initial test or retest as a percentage of the Applicable Emission Standard.
+          example: 72.8
+        id:
+          type: string
+          description: Unique identifier of a monitoring qualification LEE record.
+          example: MIKE-DELL-CFEDE4EB21124391BE13E7FB5A56081C
+        qualificationId:
+          type: string
+          description: Unique identifier of a monitoring qualification record.
+          example: MIKE-DELL-E4CE3931A24E4C1395B3C81457B300CC
+        userId:
+          type: string
+          description: User account or source of data that added or updated record.
+          example: abcde
+        addDate:
+          type: string
+          description: Date and time in which record was added.
+          example: '2018-10-25'
+        updateDate:
+          type: string
+          description: Date and time in which record was last updated.
+          example: '2018-10-25'
+      required:
+      - qualificationTestDate
+      - parameterCode
+      - qualificationTestType
+      - potentialAnnualHgMassEmissions
+      - applicableEmissionStandard
+      - unitsOfStandard
+      - percentageOfEmissionStandard
       - id
       - qualificationId
       - userId

@@ -138,6 +138,28 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    ReportDTO:
+      type: object
+      properties:
+        displayName:
+          type: string
+          example: EPA Facility
+        columns:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReportColumnDTO'
+          example:
+          - string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReportDetailDTO'
+          example:
+          - string
+      required:
+      - displayName
+      - columns
+      - details
     ReportDetailDTO:
       type: object
       properties:
@@ -176,28 +198,6 @@ components:
       required:
       - code
       - values
-    ReportDTO:
-      type: object
-      properties:
-        displayName:
-          type: string
-          example: EPA Facility
-        columns:
-          type: array
-          items:
-            $ref: '#/components/schemas/ReportColumnDTO'
-          example:
-          - string
-        details:
-          type: array
-          items:
-            $ref: '#/components/schemas/ReportDetailDTO'
-          example:
-          - string
-      required:
-      - displayName
-      - columns
-      - details
   securitySchemes:
     APIKey:
       type: apiKey

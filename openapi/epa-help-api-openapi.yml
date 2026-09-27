@@ -238,14 +238,6 @@ paths:
     - url: https://owapps-stage.app.cloud.gov/elg
 components:
   parameters:
-    formType:
-      in: path
-      name: formType
-      description: The Formio form type (frf, prf, crf).
-      required: true
-      example: frf
-      schema:
-        type: string
     key:
       in: query
       name: key
@@ -260,6 +252,14 @@ components:
       description: The Clean School Bus Rebate year (2022, 2023, 2024).
       required: true
       example: '2022'
+      schema:
+        type: string
+    formId:
+      in: path
+      name: formId
+      description: The Formio form's MongoDB ObjectId.
+      required: true
+      example: '000000000000000000000000'
       schema:
         type: string
     mongoId:
@@ -278,12 +278,12 @@ components:
       example: cleanschoolbus
       schema:
         type: string
-    formId:
+    formType:
       in: path
-      name: formId
-      description: The Formio form's MongoDB ObjectId.
+      name: formType
+      description: The Formio form type (frf, prf, crf).
       required: true
-      example: '000000000000000000000000'
+      example: frf
       schema:
         type: string
   responses:

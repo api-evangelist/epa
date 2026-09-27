@@ -1676,12 +1676,12 @@ components:
       example: '000000'
       schema:
         type: string
-    formType:
-      in: path
-      name: formType
-      description: The Formio form type (frf, prf, crf).
+    key:
+      in: query
+      name: key
+      description: The S3 object key for the file.
       required: true
-      example: frf
+      example: placeholder-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.png
       schema:
         type: string
     comboKey:
@@ -1690,14 +1690,6 @@ components:
       description: The SAM.gov entity's UEI/EFTI combo key.
       required: true
       example: '0000000000000000'
-      schema:
-        type: string
-    key:
-      in: query
-      name: key
-      description: The S3 object key for the file.
-      required: true
-      example: placeholder-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.png
       schema:
         type: string
     mongoId:
@@ -1716,6 +1708,25 @@ components:
       example: cleanschoolbus
       schema:
         type: string
+    formType:
+      in: path
+      name: formType
+      description: The Formio form type (frf, prf, crf).
+      required: true
+      example: frf
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: Unauthorized
   schemas:
     FormioSchemaAndSubmission:
       type: object
@@ -1731,14 +1742,3 @@ components:
         submission:
           type: object
           example: {}
-  responses:
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              message:
-                type: string
-                example: Unauthorized

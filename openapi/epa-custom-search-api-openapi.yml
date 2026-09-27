@@ -602,6 +602,74 @@ paths:
       x-operation-id-source: derived
 components:
   parameters:
+    sortCol:
+      name: sortCol
+      in: query
+      description: Placeholder.
+      required: false
+      schema:
+        type: string
+        enum:
+        - limitationId
+        - controlTechnologyCode
+        - controlTechnologyCfrSection
+        - comboSubcategory
+        - wastestreamProcessId
+        - wastestreamProcessTitle
+        - wastestreamProcessSecondary
+        - wastestreamProcessCfrSection
+        - cfrSectionAnchor
+        - wastestreamProcessDescription
+        - wastestreamProcessLimitCalculationDescription
+        - wastestreamProcessTypoFlagLimitCalculationDescription
+        - pollutantDescription
+        - dischargeFrequency
+        - limitationValue
+        - typoFlagLimitationValue
+        - minimumValue
+        - maximumValue
+        - zeroDischarge
+        - limitationDurationDescription
+        - limitationDurationBaseType
+        - limitationDurationTypeDisplay
+        - limitationUnitCode
+        - limitationUnitDescription
+        - limitationUnitBasis
+        - alternateLimitFlag
+        - alternateLimitDescription
+        - limitRequirementDescription
+        - limitationLimitCalculationDescription
+        - limitationPollutantNotes
+        - longTermAverageCount
+        - pointSourceCategoryCode
+        - pointSourceCategoryName
+    download:
+      name: download
+      in: query
+      description: Placeholder.
+      required: false
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    sortDir:
+      name: sortDir
+      in: query
+      description: Placeholder.
+      required: false
+      schema:
+        type: string
+        enum:
+        - asc
+        - desc
+    offset:
+      name: offset
+      in: query
+      description: Placeholder.
+      required: false
+      schema:
+        type: integer
     limit:
       name: limit
       in: query
@@ -676,74 +744,6 @@ components:
         - 468
         - 469
         - 471
-    sortDir:
-      name: sortDir
-      in: query
-      description: Placeholder.
-      required: false
-      schema:
-        type: string
-        enum:
-        - asc
-        - desc
-    sortCol:
-      name: sortCol
-      in: query
-      description: Placeholder.
-      required: false
-      schema:
-        type: string
-        enum:
-        - limitationId
-        - controlTechnologyCode
-        - controlTechnologyCfrSection
-        - comboSubcategory
-        - wastestreamProcessId
-        - wastestreamProcessTitle
-        - wastestreamProcessSecondary
-        - wastestreamProcessCfrSection
-        - cfrSectionAnchor
-        - wastestreamProcessDescription
-        - wastestreamProcessLimitCalculationDescription
-        - wastestreamProcessTypoFlagLimitCalculationDescription
-        - pollutantDescription
-        - dischargeFrequency
-        - limitationValue
-        - typoFlagLimitationValue
-        - minimumValue
-        - maximumValue
-        - zeroDischarge
-        - limitationDurationDescription
-        - limitationDurationBaseType
-        - limitationDurationTypeDisplay
-        - limitationUnitCode
-        - limitationUnitDescription
-        - limitationUnitBasis
-        - alternateLimitFlag
-        - alternateLimitDescription
-        - limitRequirementDescription
-        - limitationLimitCalculationDescription
-        - limitationPollutantNotes
-        - longTermAverageCount
-        - pointSourceCategoryCode
-        - pointSourceCategoryName
-    offset:
-      name: offset
-      in: query
-      description: Placeholder.
-      required: false
-      schema:
-        type: integer
-    download:
-      name: download
-      in: query
-      description: Placeholder.
-      required: false
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
   schemas:
     customSearch.multiCriteriaSearchCriteria:
       type: object
@@ -756,7 +756,7 @@ components:
           description: Dummy
       required:
       - Dummy
-    customSearch.keywordSearch:
+    customSearch.multiCriteriaSearch:
       type: object
       description: Placeholder
       properties:
@@ -767,7 +767,7 @@ components:
           description: Dummy
       required:
       - Dummy
-    customSearch.multiCriteriaSearch:
+    customSearch.keywordSearch:
       type: object
       description: Placeholder
       properties:

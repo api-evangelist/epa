@@ -123,6 +123,36 @@ paths:
         dispatcher: FALLBACK
 components:
   parameters:
+    Key:
+      name: key
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Account-specific access key.
+    Cbdate:
+      name: cbdate
+      in: query
+      required: false
+      schema:
+        type: string
+        pattern: ^\d{8}$
+      description: Optional change begin date (returns records updated since cbdate).
+    Param:
+      name: param
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
+    Bdate:
+      name: bdate
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{8}$
+      description: Begin date (YYYYMMDD).
     State:
       name: state
       in: query
@@ -131,29 +161,6 @@ components:
         type: string
         pattern: ^\d{2}$
       description: 2-digit state FIPS code.
-    Edate:
-      name: edate
-      in: query
-      required: true
-      schema:
-        type: string
-        pattern: ^\d{8}$
-      description: End date (YYYYMMDD). Must be in the same year as bdate for most services.
-    Cedate:
-      name: cedate
-      in: query
-      required: false
-      schema:
-        type: string
-        pattern: ^\d{8}$
-      description: Optional change end date.
-    Key:
-      name: key
-      in: query
-      required: true
-      schema:
-        type: string
-      description: Account-specific access key.
     Email:
       name: email
       in: query
@@ -170,6 +177,14 @@ components:
         type: string
         pattern: ^\d{4}$
       description: 4-digit site code.
+    Edate:
+      name: edate
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{8}$
+      description: End date (YYYYMMDD). Must be in the same year as bdate for most services.
     County:
       name: county
       in: query
@@ -178,29 +193,14 @@ components:
         type: string
         pattern: ^\d{3}$
       description: 3-digit county code.
-    Bdate:
-      name: bdate
-      in: query
-      required: true
-      schema:
-        type: string
-        pattern: ^\d{8}$
-      description: Begin date (YYYYMMDD).
-    Cbdate:
-      name: cbdate
+    Cedate:
+      name: cedate
       in: query
       required: false
       schema:
         type: string
         pattern: ^\d{8}$
-      description: Optional change begin date (returns records updated since cbdate).
-    Param:
-      name: param
-      in: query
-      required: true
-      schema:
-        type: string
-      description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
+      description: Optional change end date.
   schemas:
     Envelope:
       type: object

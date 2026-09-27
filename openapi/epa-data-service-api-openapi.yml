@@ -128,6 +128,13 @@ components:
         - PDF
         - XML
       description: Output format (default JSON).
+    Table:
+      name: table
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Envirofacts table in `program.table` format (e.g., `rcra.rcra_facility`, `tri.tri_facility`, `sems.envirofacts_site`).
     Range:
       name: range
       in: path
@@ -136,13 +143,6 @@ components:
         type: string
         pattern: ^\d+:\d+$
       description: Optional pagination range `first:last` (e.g., `1:100`).
-    Table:
-      name: table
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Envirofacts table in `program.table` format (e.g., `rcra.rcra_facility`, `tri.tri_facility`, `sems.envirofacts_site`).
   schemas:
     Row:
       type: object

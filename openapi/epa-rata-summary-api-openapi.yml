@@ -112,16 +112,22 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    RataTraverseDTO:
+    RataRunDTO:
       type: object
       properties:
+        flowRataRunData:
+          type: array
+          items:
+            $ref: '#/components/schemas/FlowRataRunDTO'
+          example:
+          - string
         id:
           type: string
           example: '12345'
-        flowRataRunId:
+        rataSumId:
           type: string
           example: '12345'
-        calculatedCalculatedVelocity:
+        calculatedRataReferenceValue:
           type: number
           example: 35.5
         userId:
@@ -133,69 +139,57 @@ components:
         updateDate:
           type: string
           example: string
-        probeId:
-          type: string
-          maxLength: 11
-          example: '12345'
-        probeTypeCode:
-          type: string
-          example: string
-        pressureMeasureCode:
-          type: string
-          example: string
-        methodTraversePointId:
-          type: string
-          minLength: 1
-          maxLength: 3
-          example: '12345'
-        velocityCalibrationCoefficient:
+        runNumber:
           type: number
           example: 0.0
-        lastProbeDate:
+        beginDate:
           format: date-time
           type: string
           example: '2024-01-15T12:00:00Z'
-        averageVelocityDifferencePressure:
+        beginHour:
           type: number
           example: 0.0
-        averageSquareVelocityDifferencePressure:
+        beginMinute:
           type: number
           example: 0.0
-        tStackTemperature:
+        endDate:
+          format: date-time
+          type: string
+          example: '2024-01-15T12:00:00Z'
+        endHour:
           type: number
           example: 0.0
-        pointUsedIndicator:
+        endMinute:
           type: number
           example: 0.0
-        numberWallEffectsPoints:
+        cemValue:
           type: number
           example: 0.0
-        yawAngle:
+        rataReferenceValue:
           type: number
           example: 0.0
-        pitchAngle:
+        grossUnitLoad:
           type: number
           example: 0.0
-        calculatedVelocity:
-          type: number
-          example: 35.5
-        replacementVelocity:
-          type: number
-          example: 0.0
+        runStatusCode:
+          type: string
+          example: active
       required:
+      - flowRataRunData
       - id
-      - flowRataRunId
-      - calculatedCalculatedVelocity
+      - rataSumId
+      - calculatedRataReferenceValue
       - userId
       - addDate
       - updateDate
-      - probeId
-      - probeTypeCode
-      - pressureMeasureCode
-      - methodTraversePointId
-      - velocityCalibrationCoefficient
-      - lastProbeDate
-      - tStackTemperature
+      - runNumber
+      - beginDate
+      - beginHour
+      - beginMinute
+      - endDate
+      - endHour
+      - endMinute
+      - runStatusCode
     FlowRataRunDTO:
       type: object
       properties:
@@ -453,84 +447,6 @@ components:
       - userId
       - addDate
       - updateDate
-    RataRunDTO:
-      type: object
-      properties:
-        flowRataRunData:
-          type: array
-          items:
-            $ref: '#/components/schemas/FlowRataRunDTO'
-          example:
-          - string
-        id:
-          type: string
-          example: '12345'
-        rataSumId:
-          type: string
-          example: '12345'
-        calculatedRataReferenceValue:
-          type: number
-          example: 35.5
-        userId:
-          type: string
-          example: '12345'
-        addDate:
-          type: string
-          example: string
-        updateDate:
-          type: string
-          example: string
-        runNumber:
-          type: number
-          example: 0.0
-        beginDate:
-          format: date-time
-          type: string
-          example: '2024-01-15T12:00:00Z'
-        beginHour:
-          type: number
-          example: 0.0
-        beginMinute:
-          type: number
-          example: 0.0
-        endDate:
-          format: date-time
-          type: string
-          example: '2024-01-15T12:00:00Z'
-        endHour:
-          type: number
-          example: 0.0
-        endMinute:
-          type: number
-          example: 0.0
-        cemValue:
-          type: number
-          example: 0.0
-        rataReferenceValue:
-          type: number
-          example: 0.0
-        grossUnitLoad:
-          type: number
-          example: 0.0
-        runStatusCode:
-          type: string
-          example: active
-      required:
-      - flowRataRunData
-      - id
-      - rataSumId
-      - calculatedRataReferenceValue
-      - userId
-      - addDate
-      - updateDate
-      - runNumber
-      - beginDate
-      - beginHour
-      - beginMinute
-      - endDate
-      - endHour
-      - endMinute
-      - runStatusCode
     RataSummaryRecordDTO:
       type: object
       properties:
@@ -681,6 +597,90 @@ components:
       - userId
       - addDate
       - updateDate
+    RataTraverseDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '12345'
+        flowRataRunId:
+          type: string
+          example: '12345'
+        calculatedCalculatedVelocity:
+          type: number
+          example: 35.5
+        userId:
+          type: string
+          example: '12345'
+        addDate:
+          type: string
+          example: string
+        updateDate:
+          type: string
+          example: string
+        probeId:
+          type: string
+          maxLength: 11
+          example: '12345'
+        probeTypeCode:
+          type: string
+          example: string
+        pressureMeasureCode:
+          type: string
+          example: string
+        methodTraversePointId:
+          type: string
+          minLength: 1
+          maxLength: 3
+          example: '12345'
+        velocityCalibrationCoefficient:
+          type: number
+          example: 0.0
+        lastProbeDate:
+          format: date-time
+          type: string
+          example: '2024-01-15T12:00:00Z'
+        averageVelocityDifferencePressure:
+          type: number
+          example: 0.0
+        averageSquareVelocityDifferencePressure:
+          type: number
+          example: 0.0
+        tStackTemperature:
+          type: number
+          example: 0.0
+        pointUsedIndicator:
+          type: number
+          example: 0.0
+        numberWallEffectsPoints:
+          type: number
+          example: 0.0
+        yawAngle:
+          type: number
+          example: 0.0
+        pitchAngle:
+          type: number
+          example: 0.0
+        calculatedVelocity:
+          type: number
+          example: 35.5
+        replacementVelocity:
+          type: number
+          example: 0.0
+      required:
+      - id
+      - flowRataRunId
+      - calculatedCalculatedVelocity
+      - userId
+      - addDate
+      - updateDate
+      - probeId
+      - probeTypeCode
+      - pressureMeasureCode
+      - methodTraversePointId
+      - velocityCalibrationCoefficient
+      - lastProbeDate
+      - tStackTemperature
   securitySchemes:
     APIKey:
       type: apiKey

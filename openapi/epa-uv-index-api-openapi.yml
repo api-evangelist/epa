@@ -131,20 +131,6 @@ paths:
         dispatcher: FALLBACK
 components:
   parameters:
-    State:
-      name: STATE
-      in: path
-      required: true
-      schema:
-        type: string
-        pattern: ^[A-Z]{2}$
-      description: 2-letter state abbreviation.
-    City:
-      name: CITY
-      in: path
-      required: true
-      schema:
-        type: string
     Format:
       name: format
       in: path
@@ -161,6 +147,12 @@ components:
         - PDF
         - XML
       description: Output format (default JSON).
+    City:
+      name: CITY
+      in: path
+      required: true
+      schema:
+        type: string
     Zip:
       name: ZIP
       in: path
@@ -169,6 +161,14 @@ components:
         type: string
         pattern: ^\d{5}$
       description: 5-digit ZIP code.
+    State:
+      name: STATE
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: ^[A-Z]{2}$
+      description: 2-letter state abbreviation.
   schemas:
     UvDaily:
       type: object
