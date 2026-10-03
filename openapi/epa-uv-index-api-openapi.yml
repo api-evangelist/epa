@@ -130,7 +130,60 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  schemas:
+    UvHourly:
+      type: object
+      properties:
+        CITY:
+          type: string
+          example: Raleigh
+        STATE:
+          type: string
+          example: NC
+        ZIP:
+          type: string
+          example: '20460'
+        DATE_TIME:
+          type: string
+          example: string
+        UV_VALUE:
+          type: integer
+          example: 0
+    UvDaily:
+      type: object
+      properties:
+        CITY:
+          type: string
+          example: Raleigh
+        STATE:
+          type: string
+          example: NC
+        ZIP:
+          type: string
+          example: '20460'
+        DATE:
+          type: string
+          example: string
+        UV_INDEX:
+          type: integer
+          example: 0
   parameters:
+    Zip:
+      name: ZIP
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{5}$
+      description: 5-digit ZIP code.
+    State:
+      name: STATE
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: ^[A-Z]{2}$
+      description: 2-letter state abbreviation.
     Format:
       name: format
       in: path
@@ -153,56 +206,3 @@ components:
       required: true
       schema:
         type: string
-    Zip:
-      name: ZIP
-      in: path
-      required: true
-      schema:
-        type: string
-        pattern: ^\d{5}$
-      description: 5-digit ZIP code.
-    State:
-      name: STATE
-      in: path
-      required: true
-      schema:
-        type: string
-        pattern: ^[A-Z]{2}$
-      description: 2-letter state abbreviation.
-  schemas:
-    UvDaily:
-      type: object
-      properties:
-        CITY:
-          type: string
-          example: Raleigh
-        STATE:
-          type: string
-          example: NC
-        ZIP:
-          type: string
-          example: '20460'
-        DATE:
-          type: string
-          example: string
-        UV_INDEX:
-          type: integer
-          example: 0
-    UvHourly:
-      type: object
-      properties:
-        CITY:
-          type: string
-          example: Raleigh
-        STATE:
-          type: string
-          example: NC
-        ZIP:
-          type: string
-          example: '20460'
-        DATE_TIME:
-          type: string
-          example: string
-        UV_VALUE:
-          type: integer
-          example: 0

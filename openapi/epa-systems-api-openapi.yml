@@ -49,22 +49,30 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    SystemComponentDTO:
+    SystemFuelFlowDTO:
       type: object
       properties:
-        componentId:
+        maximumFuelFlowRate:
+          type: number
+          description: Maximum fuel flow rate.
+          example: 30667
+        systemFuelFlowUOMCode:
           type: string
-          description: The three digit code assigned by the source to identify the component.
-          example: '044'
+          description: Code used to identify the fuel flow units of measure.
+          example: HSCF
+        maximumFuelFlowRateSourceCode:
+          type: string
+          description: Code used to identify the source of maximum fuel flow.
+          example: URV
         beginDate:
           format: date-time
           type: string
           description: Date on which information became effective or activity started.
-          example: '2008-12-31'
+          example: '2010-08-01'
         beginHour:
           type: number
           description: Hour in which information became effective.
-          example: 23
+          example: 12
         endDate:
           format: date-time
           type: string
@@ -72,20 +80,24 @@ components:
           example: null
         endHour:
           type: number
-          description: Last hour in which information was effective.  This value will be null for active records.
+          description: Last hour in which information was effective or hour in which activity ended. This value will be null for active records.
           example: null
         id:
           type: string
-          description: Unique identifier of a Monitoring System Component record.
-          example: MELISSARHO-3F31E53DE9B14764936BFB0AC7225847
-        locationId:
-          type: string
-          description: Unique identifier of a monitoring location record.
-          example: '5770'
+          description: Unique identifier of a system fuel flow record.
+          example: WS150071-0C5A8F50F7F24DB8B73E65C18C2063E3
         monitoringSystemRecordId:
           type: string
           description: Unique identifier of a monitoring system record.
-          example: CAMD-4B0DC37051224A7AA9D8CA1E5BE6B4D4
+          example: WS150071-1BCDEDC4D2944376ACA55FCABE9D60A1
+        fuelCode:
+          type: string
+          description: The type of fuel measured by the system.
+          example: PNG
+        systemTypeCode:
+          type: string
+          description: Code used to identify the type (parameter) of the system.
+          example: GAS
         userId:
           type: string
           description: User account or source of data that added or updated record.
@@ -97,20 +109,23 @@ components:
         updateDate:
           type: string
           description: Date and time in which record was last updated.
-          example: '2009-02-20'
+          example: '2010-09-01'
         active:
           type: boolean
           description: Flag for active monitor location record
           example: true
       required:
-      - componentId
+      - maximumFuelFlowRate
+      - systemFuelFlowUOMCode
+      - maximumFuelFlowRateSourceCode
       - beginDate
       - beginHour
       - endDate
       - endHour
       - id
-      - locationId
       - monitoringSystemRecordId
+      - fuelCode
+      - systemTypeCode
       - userId
       - addDate
       - updateDate
@@ -205,30 +220,22 @@ components:
       - active
       - monitoringSystemComponentData
       - monitoringSystemFuelFlowData
-    SystemFuelFlowDTO:
+    SystemComponentDTO:
       type: object
       properties:
-        maximumFuelFlowRate:
-          type: number
-          description: Maximum fuel flow rate.
-          example: 30667
-        systemFuelFlowUOMCode:
+        componentId:
           type: string
-          description: Code used to identify the fuel flow units of measure.
-          example: HSCF
-        maximumFuelFlowRateSourceCode:
-          type: string
-          description: Code used to identify the source of maximum fuel flow.
-          example: URV
+          description: The three digit code assigned by the source to identify the component.
+          example: '044'
         beginDate:
           format: date-time
           type: string
           description: Date on which information became effective or activity started.
-          example: '2010-08-01'
+          example: '2008-12-31'
         beginHour:
           type: number
           description: Hour in which information became effective.
-          example: 12
+          example: 23
         endDate:
           format: date-time
           type: string
@@ -236,24 +243,20 @@ components:
           example: null
         endHour:
           type: number
-          description: Last hour in which information was effective or hour in which activity ended. This value will be null for active records.
+          description: Last hour in which information was effective.  This value will be null for active records.
           example: null
         id:
           type: string
-          description: Unique identifier of a system fuel flow record.
-          example: WS150071-0C5A8F50F7F24DB8B73E65C18C2063E3
+          description: Unique identifier of a Monitoring System Component record.
+          example: MELISSARHO-3F31E53DE9B14764936BFB0AC7225847
+        locationId:
+          type: string
+          description: Unique identifier of a monitoring location record.
+          example: '5770'
         monitoringSystemRecordId:
           type: string
           description: Unique identifier of a monitoring system record.
-          example: WS150071-1BCDEDC4D2944376ACA55FCABE9D60A1
-        fuelCode:
-          type: string
-          description: The type of fuel measured by the system.
-          example: PNG
-        systemTypeCode:
-          type: string
-          description: Code used to identify the type (parameter) of the system.
-          example: GAS
+          example: CAMD-4B0DC37051224A7AA9D8CA1E5BE6B4D4
         userId:
           type: string
           description: User account or source of data that added or updated record.
@@ -265,23 +268,20 @@ components:
         updateDate:
           type: string
           description: Date and time in which record was last updated.
-          example: '2010-09-01'
+          example: '2009-02-20'
         active:
           type: boolean
           description: Flag for active monitor location record
           example: true
       required:
-      - maximumFuelFlowRate
-      - systemFuelFlowUOMCode
-      - maximumFuelFlowRateSourceCode
+      - componentId
       - beginDate
       - beginHour
       - endDate
       - endHour
       - id
+      - locationId
       - monitoringSystemRecordId
-      - fuelCode
-      - systemTypeCode
       - userId
       - addDate
       - updateDate

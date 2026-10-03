@@ -138,6 +138,21 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    ReportColumnDTO:
+      type: object
+      properties:
+        code:
+          type: string
+          example: string
+        values:
+          type: array
+          items:
+            type: object
+          example:
+          - {}
+      required:
+      - code
+      - values
     ReportDTO:
       type: object
       properties:
@@ -183,21 +198,6 @@ components:
       - templateCode
       - templateType
       - results
-    ReportColumnDTO:
-      type: object
-      properties:
-        code:
-          type: string
-          example: string
-        values:
-          type: array
-          items:
-            type: object
-          example:
-          - {}
-      required:
-      - code
-      - values
   securitySchemes:
     APIKey:
       type: apiKey

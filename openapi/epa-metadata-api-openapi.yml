@@ -779,35 +779,6 @@ paths:
     servers:
     - url: https://echodata.epa.gov/echo
 components:
-  parameters:
-    Key:
-      name: key
-      in: query
-      required: true
-      schema:
-        type: string
-      description: Account-specific access key.
-    Email:
-      name: email
-      in: query
-      required: true
-      schema:
-        type: string
-        format: email
-      description: Registered email address.
-    f.callback:
-      description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
-      in: formData
-      name: callback
-      required: false
-      type: string
-    q.callback:
-      description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
-      in: query
-      name: callback
-      required: false
-      schema:
-        type: string
   schemas:
     Header:
       type: object
@@ -971,6 +942,35 @@ components:
       required:
       - Message
       type: object
+  parameters:
+    Email:
+      name: email
+      in: query
+      required: true
+      schema:
+        type: string
+        format: email
+      description: Registered email address.
+    Key:
+      name: key
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Account-specific access key.
+    f.callback:
+      description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
+      in: formData
+      name: callback
+      required: false
+      type: string
+    q.callback:
+      description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
+      in: query
+      name: callback
+      required: false
+      schema:
+        type: string
   securitySchemes:
     emailKey:
       type: apiKey

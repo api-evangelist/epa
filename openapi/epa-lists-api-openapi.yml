@@ -244,21 +244,6 @@ paths:
         dispatcher: FALLBACK
 components:
   parameters:
-    Key:
-      name: key
-      in: query
-      required: true
-      schema:
-        type: string
-      description: Account-specific access key.
-    State:
-      name: state
-      in: query
-      required: true
-      schema:
-        type: string
-        pattern: ^\d{2}$
-      description: 2-digit state FIPS code.
     Email:
       name: email
       in: query
@@ -267,6 +252,21 @@ components:
         type: string
         format: email
       description: Registered email address.
+    State:
+      name: state
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{2}$
+      description: 2-digit state FIPS code.
+    Key:
+      name: key
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Account-specific access key.
     County:
       name: county
       in: query
@@ -276,24 +276,6 @@ components:
         pattern: ^\d{3}$
       description: 3-digit county code.
   schemas:
-    Envelope:
-      type: object
-      required:
-      - Header
-      - Data
-      properties:
-        Header:
-          type: array
-          items:
-            $ref: '#/components/schemas/Header'
-          example:
-          - string
-        Data:
-          type: array
-          items:
-            type: object
-          example:
-          - {}
     Header:
       type: object
       properties:
@@ -315,6 +297,24 @@ components:
             type: string
           example:
           - string
+    Envelope:
+      type: object
+      required:
+      - Header
+      - Data
+      properties:
+        Header:
+          type: array
+          items:
+            $ref: '#/components/schemas/Header'
+          example:
+          - string
+        Data:
+          type: array
+          items:
+            type: object
+          example:
+          - {}
   securitySchemes:
     emailKey:
       type: apiKey
