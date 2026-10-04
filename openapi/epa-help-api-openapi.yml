@@ -237,32 +237,13 @@ paths:
     servers:
     - url: https://owapps-stage.app.cloud.gov/elg
 components:
-  responses:
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              message:
-                type: string
-                example: Unauthorized
   parameters:
-    mongoId:
-      in: path
-      name: mongoId
-      description: The Formio submission's MongoDB ObjectId.
+    key:
+      in: query
+      name: key
+      description: The S3 object key for the file.
       required: true
-      example: '000000000000000000000000'
-      schema:
-        type: string
-    rebateYear:
-      in: path
-      name: rebateYear
-      description: The Clean School Bus Rebate year (2022, 2023, 2024).
-      required: true
-      example: '2022'
+      example: placeholder-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.png
       schema:
         type: string
     formType:
@@ -273,12 +254,12 @@ components:
       example: frf
       schema:
         type: string
-    key:
-      in: query
-      name: key
-      description: The S3 object key for the file.
+    rebateYear:
+      in: path
+      name: rebateYear
+      description: The Clean School Bus Rebate year (2022, 2023, 2024).
       required: true
-      example: placeholder-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.png
+      example: '2022'
       schema:
         type: string
     bucket:
@@ -297,6 +278,25 @@ components:
       example: '000000000000000000000000'
       schema:
         type: string
+    mongoId:
+      in: path
+      name: mongoId
+      description: The Formio submission's MongoDB ObjectId.
+      required: true
+      example: '000000000000000000000000'
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: Unauthorized
   schemas:
     glossary.help:
       type: object

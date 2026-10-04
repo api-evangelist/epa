@@ -780,6 +780,24 @@ paths:
     - url: https://echodata.epa.gov/echo
 components:
   schemas:
+    Envelope:
+      type: object
+      required:
+      - Header
+      - Data
+      properties:
+        Header:
+          type: array
+          items:
+            $ref: '#/components/schemas/Header'
+          example:
+          - string
+        Data:
+          type: array
+          items:
+            type: object
+          example:
+          - {}
     Header:
       type: object
       properties:
@@ -801,24 +819,6 @@ components:
             type: string
           example:
           - string
-    Envelope:
-      type: object
-      required:
-      - Header
-      - Data
-      properties:
-        Header:
-          type: array
-          items:
-            $ref: '#/components/schemas/Header'
-          example:
-          - string
-        Data:
-          type: array
-          items:
-            type: object
-          example:
-          - {}
     meta3:
       description: Results Column Object
       properties:
@@ -880,6 +880,27 @@ components:
       required:
       - Message
       type: object
+    met1:
+      description: Results Object
+      properties:
+        Message:
+          description: Field to record messages (typically performance-related) about packet processing
+          example: Success
+          title: Message
+          type: string
+        ResultColumns:
+          items:
+            $ref: '#/components/schemas/met2'
+          title: Result Columns
+          type: array
+          xml:
+            name: ResultColumns
+            wrapped: true
+          example:
+          - string
+      required:
+      - Message
+      type: object
     met2:
       description: Results Column Object
       properties:
@@ -921,28 +942,14 @@ components:
       type: object
       xml:
         name: ResultColumn
-    met1:
-      description: Results Object
-      properties:
-        Message:
-          description: Field to record messages (typically performance-related) about packet processing
-          example: Success
-          title: Message
-          type: string
-        ResultColumns:
-          items:
-            $ref: '#/components/schemas/met2'
-          title: Result Columns
-          type: array
-          xml:
-            name: ResultColumns
-            wrapped: true
-          example:
-          - string
-      required:
-      - Message
-      type: object
   parameters:
+    Key:
+      name: key
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Account-specific access key.
     Email:
       name: email
       in: query
@@ -951,19 +958,6 @@ components:
         type: string
         format: email
       description: Registered email address.
-    Key:
-      name: key
-      in: query
-      required: true
-      schema:
-        type: string
-      description: Account-specific access key.
-    f.callback:
-      description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
-      in: formData
-      name: callback
-      required: false
-      type: string
     q.callback:
       description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
       in: query
@@ -971,6 +965,12 @@ components:
       required: false
       schema:
         type: string
+    f.callback:
+      description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
+      in: formData
+      name: callback
+      required: false
+      type: string
   securitySchemes:
     emailKey:
       type: apiKey

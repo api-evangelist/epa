@@ -104,11 +104,6 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  schemas:
-    Row:
-      type: object
-      additionalProperties: true
-      description: A single Envirofacts row; columns depend on the queried table.
   parameters:
     Range:
       name: range
@@ -118,6 +113,13 @@ components:
         type: string
         pattern: ^\d+:\d+$
       description: Optional pagination range `first:last` (e.g., `1:100`).
+    Table:
+      name: table
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Envirofacts table in `program.table` format (e.g., `rcra.rcra_facility`, `tri.tri_facility`, `sems.envirofacts_site`).
     Filter:
       name: filter
       in: path
@@ -141,10 +143,8 @@ components:
         - PDF
         - XML
       description: Output format (default JSON).
-    Table:
-      name: table
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Envirofacts table in `program.table` format (e.g., `rcra.rcra_facility`, `tri.tri_facility`, `sems.envirofacts_site`).
+  schemas:
+    Row:
+      type: object
+      additionalProperties: true
+      description: A single Envirofacts row; columns depend on the queried table.

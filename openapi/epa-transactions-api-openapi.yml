@@ -123,45 +123,6 @@ paths:
         dispatcher: FALLBACK
 components:
   parameters:
-    Email:
-      name: email
-      in: query
-      required: true
-      schema:
-        type: string
-        format: email
-      description: Registered email address.
-    State:
-      name: state
-      in: query
-      required: true
-      schema:
-        type: string
-        pattern: ^\d{2}$
-      description: 2-digit state FIPS code.
-    Bdate:
-      name: bdate
-      in: query
-      required: true
-      schema:
-        type: string
-        pattern: ^\d{8}$
-      description: Begin date (YYYYMMDD).
-    Key:
-      name: key
-      in: query
-      required: true
-      schema:
-        type: string
-      description: Account-specific access key.
-    County:
-      name: county
-      in: query
-      required: true
-      schema:
-        type: string
-        pattern: ^\d{3}$
-      description: 3-digit county code.
     Site:
       name: site
       in: query
@@ -170,14 +131,6 @@ components:
         type: string
         pattern: ^\d{4}$
       description: 4-digit site code.
-    Cedate:
-      name: cedate
-      in: query
-      required: false
-      schema:
-        type: string
-        pattern: ^\d{8}$
-      description: Optional change end date.
     Cbdate:
       name: cbdate
       in: query
@@ -193,6 +146,14 @@ components:
       schema:
         type: string
       description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
+    Cedate:
+      name: cedate
+      in: query
+      required: false
+      schema:
+        type: string
+        pattern: ^\d{8}$
+      description: Optional change end date.
     Edate:
       name: edate
       in: query
@@ -201,6 +162,45 @@ components:
         type: string
         pattern: ^\d{8}$
       description: End date (YYYYMMDD). Must be in the same year as bdate for most services.
+    Key:
+      name: key
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Account-specific access key.
+    Bdate:
+      name: bdate
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{8}$
+      description: Begin date (YYYYMMDD).
+    State:
+      name: state
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{2}$
+      description: 2-digit state FIPS code.
+    Email:
+      name: email
+      in: query
+      required: true
+      schema:
+        type: string
+        format: email
+      description: Registered email address.
+    County:
+      name: county
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{3}$
+      description: 3-digit county code.
   schemas:
     Header:
       type: object

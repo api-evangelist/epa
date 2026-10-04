@@ -193,45 +193,255 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    indexed_catchment_properties:
+      type: object
+      properties:
+        nhdplusid:
+          $ref: '#/components/schemas/nhdplusid'
+        catchmentstatecode:
+          type: string
+          example: NC
+        xwalk_huc12:
+          type:
+          - string
+          - 'null'
+          minLength: 12
+          maxLength: 12
+          example: string
+        areasqkm:
+          type: number
+          example: 0.0
+    hydroseq:
+      description: NHDPlus int64 hydro sequence identifier.
+      type: integer
+      format: int64
+    geojson_feature:
+      type:
+      - object
+      - 'null'
+      title: GeoJSON Feature
+      required:
+      - type
+      - geometry
+      - properties
+      externalDocs:
+        url: https://tools.ietf.org/html/rfc7946#section-3.2
+      properties:
+        bbox:
+          $ref: '#/components/schemas/geojson_bbox'
+        geometry:
+          $ref: '#/components/schemas/geojson_geometry'
+        obj_type:
+          type: string
+          example: string
+        properties:
+          discriminator:
+            propertyName: obj_type
+            mapping:
+              event_feature_properties: '#/components/schemas/event_feature_properties'
+              indexed_catchment_properties: '#/components/schemas/indexed_catchment_properties'
+              indexed_flowline_properties: '#/components/schemas/indexed_flowline_properties'
+              navigated_flowline_properties: '#/components/schemas/navigated_flowline_properties'
+              delineated_area_properties: '#/components/schemas/delineated_area_properties'
+              end_point_properties: '#/components/schemas/end_point_properties'
+              indexing_line_properties: '#/components/schemas/indexing_line_properties'
+          oneOf:
+          - $ref: '#/components/schemas/event_feature_properties'
+          - $ref: '#/components/schemas/indexed_catchment_properties'
+          - $ref: '#/components/schemas/indexed_flowline_properties'
+          - $ref: '#/components/schemas/navigated_flowline_properties'
+          - $ref: '#/components/schemas/delineated_area_properties'
+          - $ref: '#/components/schemas/end_point_properties'
+          - $ref: '#/components/schemas/indexing_line_properties'
+          example: string
+        type:
+          type: string
+          enum:
+          - Feature
+          example: Feature
+    delineated_area_properties:
+      type: object
+      properties:
+        areasqkm:
+          type: number
+          example: 0.0
+        hydroseq:
+          $ref: '#/components/schemas/hydroseq'
+        sourcefc:
+          description: identifier of the delineation area source.
+          type: string
+          example: string
+        nhdplusid:
+          $ref: '#/components/schemas/nhdplusid'
+    reachcode:
+      type: string
+      minLength: 14
+      maxLength: 14
+    coordinates3:
+      type: array
+      title: GeoJSON Coordinates 3
+      items:
+        $ref: '#/components/schemas/coordinates2'
+    measure:
+      type: number
+      minimum: 0
+      maximum: 100
+    event_feature_properties:
+      type: object
+      properties:
+        globalid:
+          $ref: '#/components/schemas/globalid'
+        lengthkm:
+          type: number
+          example: 0.0
+        areasqkm:
+          type: number
+          example: 0.0
+        converted_to_ring:
+          type: boolean
+          example: true
+        indexing_method_used:
+          type: string
+          example: string
+        line_threshold_used:
+          type: number
+          example: 0.0
+        areacat_threshold_used:
+          type: number
+          example: 0.0
+        areaevt_threshold_used:
+          type: number
+          example: 0.0
+    globalid:
+      type: string
+      examples:
+      - '{E374E06D-3A16-662D-E053-42DE4386FFB0}'
     randompoint_resp:
       type: object
       properties:
         point:
           $ref: '#/components/schemas/geojson_feature'
-    coordinates2:
+    coordinates1:
       type: array
-      title: GeoJSON Coordinates 2
+      title: GeoJSON Coordinates 1
       items:
-        $ref: '#/components/schemas/coordinates1'
+        $ref: '#/components/schemas/ordinate'
+    randomnav_resp:
+      type: object
+      properties:
+        navpoint:
+          $ref: '#/components/schemas/geojson_feature'
+    randomcatchment_rb:
+      type: object
+      properties:
+        nhdplus_version:
+          default: nhdplus_h
+          $ref: '#/components/schemas/nhdplus_version'
     randompoint_rb:
       type: object
       properties:
         nhdplus_version:
           default: nhdplus_h
           $ref: '#/components/schemas/nhdplus_version'
-    randomppnav_rb:
-      type: object
-      properties:
-        nhdplus_version:
-          default: nhdplus_h
-          $ref: '#/components/schemas/nhdplus_version'
-    randomhuc12_resp:
-      type: object
-      properties:
-        huc12:
-          $ref: '#/components/schemas/geojson_feature'
+    ordinate:
+      type: number
+      title: GeoJSON Ordinate
+      examples:
+      - -89.5327
     randomhuc12_rb:
       type: object
       properties:
         nhdplus_version:
           default: nhdplus_h
           $ref: '#/components/schemas/nhdplus_version'
+    randomppnav_resp:
+      type: object
+      properties:
+        navpoint1:
+          $ref: '#/components/schemas/geojson_feature'
+        navpoint2:
+          $ref: '#/components/schemas/geojson_feature'
+    nhdplus_version:
+      description: NHDPlus version used in CIP indexing.
+      type: string
+      enum:
+      - nhdplus_m
+      - nhdplus_h
+      examples:
+      - nhdplus_h
+    coordinates2:
+      type: array
+      title: GeoJSON Coordinates 2
+      items:
+        $ref: '#/components/schemas/coordinates1'
+    geojson_bbox:
+      type: array
+      title: GeoJSON BBox
+      maxItems: 4
+      minItems: 4
+      items:
+        $ref: '#/components/schemas/ordinate'
+    randomhuc12_resp:
+      type: object
+      properties:
+        huc12:
+          $ref: '#/components/schemas/geojson_feature'
+    randomcatchment_resp:
+      type: object
+      properties:
+        catchment:
+          $ref: '#/components/schemas/geojson_feature'
     randomnav_rb:
       type: object
       properties:
         nhdplus_version:
           default: nhdplus_h
           $ref: '#/components/schemas/nhdplus_version'
+    indexing_line_properties:
+      type: object
+      properties:
+        nhdplus:
+          description: NHDPlus int64 flowline identifier.
+          type: integer
+          format: int64
+          example: 0
+    nhdplusid:
+      description: NHDPlus int64 nhdplus identifier.
+      type: integer
+      format: int64
+    indexed_flowline_properties:
+      type: object
+      properties:
+        nhdplusid:
+          $ref: '#/components/schemas/nhdplusid'
+        gnis_id:
+          description: NHD GNIS identifier
+          type: string
+          example: '12345'
+        gnis_name:
+          description: NHD GNIS name
+          type: string
+          example: EPA Facility
+        reachcode:
+          $ref: '#/components/schemas/reachcode'
+        fmeasure:
+          description: NHD flowline from measure.
+          $ref: '#/components/schemas/measure'
+        tmeasure:
+          description: NHD flowline to measure.
+          $ref: '#/components/schemas/measure'
+    end_point_properties:
+      type: object
+      properties:
+        nhdplus:
+          description: NHDPlus int64 flowline identifier.
+          type: integer
+          format: int64
+          example: 0
+        reachcode:
+          $ref: '#/components/schemas/reachcode'
+        measure:
+          $ref: '#/components/schemas/measure'
     navigated_flowline_properties:
       type: object
       properties:
@@ -326,29 +536,12 @@ components:
           type: integer
           format: int32
           example: 0
-    coordinates1:
-      type: array
-      title: GeoJSON Coordinates 1
-      items:
-        $ref: '#/components/schemas/ordinate'
-    ordinate:
-      type: number
-      title: GeoJSON Ordinate
-      examples:
-      - -89.5327
-    randomcatchment_rb:
+    randomppnav_rb:
       type: object
       properties:
         nhdplus_version:
           default: nhdplus_h
           $ref: '#/components/schemas/nhdplus_version'
-    geojson_bbox:
-      type: array
-      title: GeoJSON BBox
-      maxItems: 4
-      minItems: 4
-      items:
-        $ref: '#/components/schemas/ordinate'
     geojson_geometry:
       type:
       - object
@@ -378,196 +571,3 @@ components:
           - MultiPolygon
           description: the geometry type
           example: Point
-    reachcode:
-      type: string
-      minLength: 14
-      maxLength: 14
-    coordinates3:
-      type: array
-      title: GeoJSON Coordinates 3
-      items:
-        $ref: '#/components/schemas/coordinates2'
-    nhdplusid:
-      description: NHDPlus int64 nhdplus identifier.
-      type: integer
-      format: int64
-    measure:
-      type: number
-      minimum: 0
-      maximum: 100
-    indexed_catchment_properties:
-      type: object
-      properties:
-        nhdplusid:
-          $ref: '#/components/schemas/nhdplusid'
-        catchmentstatecode:
-          type: string
-          example: NC
-        xwalk_huc12:
-          type:
-          - string
-          - 'null'
-          minLength: 12
-          maxLength: 12
-          example: string
-        areasqkm:
-          type: number
-          example: 0.0
-    globalid:
-      type: string
-      examples:
-      - '{E374E06D-3A16-662D-E053-42DE4386FFB0}'
-    nhdplus_version:
-      description: NHDPlus version used in CIP indexing.
-      type: string
-      enum:
-      - nhdplus_m
-      - nhdplus_h
-      examples:
-      - nhdplus_h
-    randomcatchment_resp:
-      type: object
-      properties:
-        catchment:
-          $ref: '#/components/schemas/geojson_feature'
-    indexing_line_properties:
-      type: object
-      properties:
-        nhdplus:
-          description: NHDPlus int64 flowline identifier.
-          type: integer
-          format: int64
-          example: 0
-    indexed_flowline_properties:
-      type: object
-      properties:
-        nhdplusid:
-          $ref: '#/components/schemas/nhdplusid'
-        gnis_id:
-          description: NHD GNIS identifier
-          type: string
-          example: '12345'
-        gnis_name:
-          description: NHD GNIS name
-          type: string
-          example: EPA Facility
-        reachcode:
-          $ref: '#/components/schemas/reachcode'
-        fmeasure:
-          description: NHD flowline from measure.
-          $ref: '#/components/schemas/measure'
-        tmeasure:
-          description: NHD flowline to measure.
-          $ref: '#/components/schemas/measure'
-    randomnav_resp:
-      type: object
-      properties:
-        navpoint:
-          $ref: '#/components/schemas/geojson_feature'
-    event_feature_properties:
-      type: object
-      properties:
-        globalid:
-          $ref: '#/components/schemas/globalid'
-        lengthkm:
-          type: number
-          example: 0.0
-        areasqkm:
-          type: number
-          example: 0.0
-        converted_to_ring:
-          type: boolean
-          example: true
-        indexing_method_used:
-          type: string
-          example: string
-        line_threshold_used:
-          type: number
-          example: 0.0
-        areacat_threshold_used:
-          type: number
-          example: 0.0
-        areaevt_threshold_used:
-          type: number
-          example: 0.0
-    geojson_feature:
-      type:
-      - object
-      - 'null'
-      title: GeoJSON Feature
-      required:
-      - type
-      - geometry
-      - properties
-      externalDocs:
-        url: https://tools.ietf.org/html/rfc7946#section-3.2
-      properties:
-        bbox:
-          $ref: '#/components/schemas/geojson_bbox'
-        geometry:
-          $ref: '#/components/schemas/geojson_geometry'
-        obj_type:
-          type: string
-          example: string
-        properties:
-          discriminator:
-            propertyName: obj_type
-            mapping:
-              event_feature_properties: '#/components/schemas/event_feature_properties'
-              indexed_catchment_properties: '#/components/schemas/indexed_catchment_properties'
-              indexed_flowline_properties: '#/components/schemas/indexed_flowline_properties'
-              navigated_flowline_properties: '#/components/schemas/navigated_flowline_properties'
-              delineated_area_properties: '#/components/schemas/delineated_area_properties'
-              end_point_properties: '#/components/schemas/end_point_properties'
-              indexing_line_properties: '#/components/schemas/indexing_line_properties'
-          oneOf:
-          - $ref: '#/components/schemas/event_feature_properties'
-          - $ref: '#/components/schemas/indexed_catchment_properties'
-          - $ref: '#/components/schemas/indexed_flowline_properties'
-          - $ref: '#/components/schemas/navigated_flowline_properties'
-          - $ref: '#/components/schemas/delineated_area_properties'
-          - $ref: '#/components/schemas/end_point_properties'
-          - $ref: '#/components/schemas/indexing_line_properties'
-          example: string
-        type:
-          type: string
-          enum:
-          - Feature
-          example: Feature
-    hydroseq:
-      description: NHDPlus int64 hydro sequence identifier.
-      type: integer
-      format: int64
-    end_point_properties:
-      type: object
-      properties:
-        nhdplus:
-          description: NHDPlus int64 flowline identifier.
-          type: integer
-          format: int64
-          example: 0
-        reachcode:
-          $ref: '#/components/schemas/reachcode'
-        measure:
-          $ref: '#/components/schemas/measure'
-    randomppnav_resp:
-      type: object
-      properties:
-        navpoint1:
-          $ref: '#/components/schemas/geojson_feature'
-        navpoint2:
-          $ref: '#/components/schemas/geojson_feature'
-    delineated_area_properties:
-      type: object
-      properties:
-        areasqkm:
-          type: number
-          example: 0.0
-        hydroseq:
-          $ref: '#/components/schemas/hydroseq'
-        sourcefc:
-          description: identifier of the delineation area source.
-          type: string
-          example: string
-        nhdplusid:
-          $ref: '#/components/schemas/nhdplusid'

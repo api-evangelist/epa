@@ -209,13 +209,16 @@ paths:
       x-operation-id-source: derived
 components:
   parameters:
-    pollutantId:
-      name: pollutantId
+    download:
+      name: download
       in: query
       description: Placeholder.
       required: false
       schema:
-        type: integer
+        type: string
+        enum:
+        - 'true'
+        - 'false'
     pointSourceCategoryCode:
       name: pointSourceCategoryCode
       in: query
@@ -283,18 +286,15 @@ components:
         - 468
         - 469
         - 471
-    download:
-      name: download
+    pollutantId:
+      name: pollutantId
       in: query
       description: Placeholder.
       required: false
       schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
+        type: integer
   schemas:
-    pollutant.read:
+    limitation.read:
       type: object
       description: Placeholder
       properties:
@@ -327,7 +327,7 @@ components:
           description: Dummy
       required:
       - Dummy
-    limitation.read:
+    pollutant.limitations:
       type: object
       description: Placeholder
       properties:
@@ -349,7 +349,7 @@ components:
           description: Dummy
       required:
       - Dummy
-    pollutant.limitations:
+    pollutant.read:
       type: object
       description: Placeholder
       properties:

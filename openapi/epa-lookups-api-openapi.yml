@@ -1095,34 +1095,10 @@ paths:
     - url: https://echodata.epa.gov/echo
 components:
   parameters:
-    q.search_term:
-      description: Enter a partial or complete search phrase or word.
-      in: query
-      name: search_term
-      required: false
-      schema:
-        type: string
-    f.callback:
+    q.callback:
       description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
-      in: formData
+      in: query
       name: callback
-      required: false
-      type: string
-    f.status_flag:
-      in: formData
-      name: status_flag
-      required: false
-      type: string
-    q.search_code:
-      description: Enter a partial or complete code value.
-      in: query
-      name: search_code
-      required: false
-      schema:
-        type: string
-    q.status_flag:
-      in: query
-      name: status_flag
       required: false
       schema:
         type: string
@@ -1132,15 +1108,35 @@ components:
       name: search_term
       required: false
       type: string
+    f.search_code:
+      description: Enter a partial or complete code value.
+      in: formData
+      name: search_code
+      required: false
+      type: string
     f.statute_code:
       in: formData
       name: statute_code
       required: false
       type: string
-    f.search_code:
+    q.search_term:
+      description: Enter a partial or complete search phrase or word.
+      in: query
+      name: search_term
+      required: false
+      schema:
+        type: string
+    q.search_code:
       description: Enter a partial or complete code value.
-      in: formData
+      in: query
       name: search_code
+      required: false
+      schema:
+        type: string
+    f.callback:
+      description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
+      in: formData
+      name: callback
       required: false
       type: string
     q.sort_order:
@@ -1149,16 +1145,20 @@ components:
       required: false
       schema:
         type: number
-    q.callback:
-      description: JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response.
-      in: query
-      name: callback
-      required: false
-      schema:
-        type: string
     q.statute_code:
       in: query
       name: statute_code
+      required: false
+      schema:
+        type: string
+    f.status_flag:
+      in: formData
+      name: status_flag
+      required: false
+      type: string
+    q.status_flag:
+      in: query
+      name: status_flag
       required: false
       schema:
         type: string
@@ -1167,10 +1167,10 @@ components:
       name: sort_order
       required: false
       type: number
-    f.wbd_level:
-      description: The number of digits of the watershed code [Hydrologic Unit Code (HUC)] returned in the ValueCode. Must be an even number between 4 and 12.
+    f.wbd_code:
+      description: Two-digit watershed code [Hydrologic Unit Code (HUC)].
       in: formData
-      name: wbd_level
+      name: wbd_code
       required: false
       type: string
     q.wbd_code:
@@ -1180,16 +1180,10 @@ components:
       required: false
       schema:
         type: string
-    f.wbd_name:
-      description: Watershed Name Filter.
+    f.wbd_level:
+      description: The number of digits of the watershed code [Hydrologic Unit Code (HUC)] returned in the ValueCode. Must be an even number between 4 and 12.
       in: formData
-      name: wbd_name
-      required: true
-      type: string
-    f.wbd_code:
-      description: Two-digit watershed code [Hydrologic Unit Code (HUC)].
-      in: formData
-      name: wbd_code
+      name: wbd_level
       required: false
       type: string
     q.wbd_name:
@@ -1206,6 +1200,22 @@ components:
       required: false
       schema:
         type: string
+    f.wbd_name:
+      description: Watershed Name Filter.
+      in: formData
+      name: wbd_name
+      required: true
+      type: string
+    f.output:
+      description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+      enum:
+      - JSONP
+      - JSON
+      - XML
+      in: formData
+      name: output
+      required: false
+      type: string
     q.output:
       description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
       in: query
@@ -1217,34 +1227,7 @@ components:
         - JSONP
         - JSON
         - XML
-    f.output:
-      description: "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
-      enum:
-      - JSONP
-      - JSON
-      - XML
-      in: formData
-      name: output
-      required: false
-      type: string
   schemas:
-    rlk00_LuValues:
-      description: Lookup Values
-      properties:
-        ValueCode:
-          example: '77034'
-          title: Value Code
-          type: string
-        ValueDescription:
-          example: 1-Butanol
-          title: Value Description
-          type: string
-      required:
-      - ValueCode
-      - ValueDescription
-      type: object
-      xml:
-        name: LuValue
     rlk51_Results:
       description: Results Object
       properties:
@@ -1265,7 +1248,7 @@ components:
       required:
       - Message
       type: object
-    rlup01:
+    rlk00_LuValues:
       description: Lookup Values
       properties:
         ValueCode:
@@ -1282,167 +1265,7 @@ components:
       type: object
       xml:
         name: LuValue
-    rlup75:
-      description: Results Object
-      properties:
-        LuValues:
-          items:
-            $ref: '#/components/schemas/rlup01'
-          type: array
-          xml:
-            name: LuValues
-            wrapped: true
-          example:
-          - string
-        Message:
-          description: Field to record messages (typically performance-related) about packet processing
-          example: Success
-          title: Message
-          type: string
-      required:
-      - Message
-      type: object
-    rlup77:
-      description: Results Object
-      properties:
-        LuValues:
-          items:
-            $ref: '#/components/schemas/rlup01'
-          type: array
-          xml:
-            name: LuValues
-            wrapped: true
-          example:
-          - string
-        Message:
-          description: Field to record messages (typically performance-related) about packet processing
-          example: Success
-          title: Message
-          type: string
-      required:
-      - Message
-      type: object
-    rlup54:
-      description: Results Object
-      properties:
-        LuValues:
-          items:
-            $ref: '#/components/schemas/rlup01'
-          type: array
-          xml:
-            name: LuValues
-            wrapped: true
-          example:
-          - string
-        Message:
-          description: Field to record messages (typically performance-related) about packet processing
-          example: Success
-          title: Message
-          type: string
-      required:
-      - Message
-      type: object
-    rlup58:
-      description: Results Object
-      properties:
-        LuValues:
-          items:
-            $ref: '#/components/schemas/rlup01'
-          type: array
-          xml:
-            name: LuValues
-            wrapped: true
-          example:
-          - string
-        Message:
-          description: Field to record messages (typically performance-related) about packet processing
-          example: Success
-          title: Message
-          type: string
-      required:
-      - Message
-      type: object
     rlup65:
-      description: Results Object
-      properties:
-        LuValues:
-          items:
-            $ref: '#/components/schemas/rlup01'
-          type: array
-          xml:
-            name: LuValues
-            wrapped: true
-          example:
-          - string
-        Message:
-          description: Field to record messages (typically performance-related) about packet processing
-          example: Success
-          title: Message
-          type: string
-      required:
-      - Message
-      type: object
-    rlup61:
-      description: Results Object
-      properties:
-        LuValues:
-          items:
-            $ref: '#/components/schemas/rlup01'
-          type: array
-          xml:
-            name: LuValues
-            wrapped: true
-          example:
-          - string
-        Message:
-          description: Field to record messages (typically performance-related) about packet processing
-          example: Success
-          title: Message
-          type: string
-      required:
-      - Message
-      type: object
-    rlup20:
-      description: Results Object
-      properties:
-        LuValues:
-          items:
-            $ref: '#/components/schemas/rlup01'
-          type: array
-          xml:
-            name: LuValues
-            wrapped: true
-          example:
-          - string
-        Message:
-          description: Field to record messages (typically performance-related) about packet processing
-          example: Success
-          title: Message
-          type: string
-      required:
-      - Message
-      type: object
-    rlup24:
-      description: Results Object
-      properties:
-        LuValues:
-          items:
-            $ref: '#/components/schemas/rlup01'
-          type: array
-          xml:
-            name: LuValues
-            wrapped: true
-          example:
-          - string
-        Message:
-          description: Field to record messages (typically performance-related) about packet processing
-          example: Success
-          title: Message
-          type: string
-      required:
-      - Message
-      type: object
-    rlup59:
       description: Results Object
       properties:
         LuValues:
@@ -1482,6 +1305,183 @@ components:
       required:
       - Message
       type: object
+    rlup61:
+      description: Results Object
+      properties:
+        LuValues:
+          items:
+            $ref: '#/components/schemas/rlup01'
+          type: array
+          xml:
+            name: LuValues
+            wrapped: true
+          example:
+          - string
+        Message:
+          description: Field to record messages (typically performance-related) about packet processing
+          example: Success
+          title: Message
+          type: string
+      required:
+      - Message
+      type: object
+    rlup54:
+      description: Results Object
+      properties:
+        LuValues:
+          items:
+            $ref: '#/components/schemas/rlup01'
+          type: array
+          xml:
+            name: LuValues
+            wrapped: true
+          example:
+          - string
+        Message:
+          description: Field to record messages (typically performance-related) about packet processing
+          example: Success
+          title: Message
+          type: string
+      required:
+      - Message
+      type: object
+    rlup59:
+      description: Results Object
+      properties:
+        LuValues:
+          items:
+            $ref: '#/components/schemas/rlup01'
+          type: array
+          xml:
+            name: LuValues
+            wrapped: true
+          example:
+          - string
+        Message:
+          description: Field to record messages (typically performance-related) about packet processing
+          example: Success
+          title: Message
+          type: string
+      required:
+      - Message
+      type: object
+    rlup75:
+      description: Results Object
+      properties:
+        LuValues:
+          items:
+            $ref: '#/components/schemas/rlup01'
+          type: array
+          xml:
+            name: LuValues
+            wrapped: true
+          example:
+          - string
+        Message:
+          description: Field to record messages (typically performance-related) about packet processing
+          example: Success
+          title: Message
+          type: string
+      required:
+      - Message
+      type: object
+    rlup58:
+      description: Results Object
+      properties:
+        LuValues:
+          items:
+            $ref: '#/components/schemas/rlup01'
+          type: array
+          xml:
+            name: LuValues
+            wrapped: true
+          example:
+          - string
+        Message:
+          description: Field to record messages (typically performance-related) about packet processing
+          example: Success
+          title: Message
+          type: string
+      required:
+      - Message
+      type: object
+    rlup77:
+      description: Results Object
+      properties:
+        LuValues:
+          items:
+            $ref: '#/components/schemas/rlup01'
+          type: array
+          xml:
+            name: LuValues
+            wrapped: true
+          example:
+          - string
+        Message:
+          description: Field to record messages (typically performance-related) about packet processing
+          example: Success
+          title: Message
+          type: string
+      required:
+      - Message
+      type: object
+    rlup24:
+      description: Results Object
+      properties:
+        LuValues:
+          items:
+            $ref: '#/components/schemas/rlup01'
+          type: array
+          xml:
+            name: LuValues
+            wrapped: true
+          example:
+          - string
+        Message:
+          description: Field to record messages (typically performance-related) about packet processing
+          example: Success
+          title: Message
+          type: string
+      required:
+      - Message
+      type: object
+    rlup20:
+      description: Results Object
+      properties:
+        LuValues:
+          items:
+            $ref: '#/components/schemas/rlup01'
+          type: array
+          xml:
+            name: LuValues
+            wrapped: true
+          example:
+          - string
+        Message:
+          description: Field to record messages (typically performance-related) about packet processing
+          example: Success
+          title: Message
+          type: string
+      required:
+      - Message
+      type: object
+    rlup01:
+      description: Lookup Values
+      properties:
+        ValueCode:
+          example: '77034'
+          title: Value Code
+          type: string
+        ValueDescription:
+          example: 1-Butanol
+          title: Value Description
+          type: string
+      required:
+      - ValueCode
+      - ValueDescription
+      type: object
+      xml:
+        name: LuValue
 x-refined-from:
 - echo-case-openapi.json
 - echo-cwa-openapi.json

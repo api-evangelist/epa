@@ -1667,40 +1667,13 @@ paths:
       operationId: getApiFormio2024ChangeByMongoId
       x-operation-id-source: derived
 components:
-  responses:
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              message:
-                type: string
-                example: Unauthorized
   parameters:
-    mongoId:
+    rebateId:
       in: path
-      name: mongoId
-      description: The Formio submission's MongoDB ObjectId.
+      name: rebateId
+      description: The CSB Rebate ID
       required: true
-      example: '000000000000000000000000'
-      schema:
-        type: string
-    comboKey:
-      in: path
-      name: comboKey
-      description: The SAM.gov entity's UEI/EFTI combo key.
-      required: true
-      example: '0000000000000000'
-      schema:
-        type: string
-    bucket:
-      in: query
-      name: bucket
-      description: The S3 bucket name where the file is stored.
-      required: true
-      example: cleanschoolbus
+      example: '000000'
       schema:
         type: string
     key:
@@ -1719,12 +1692,28 @@ components:
       example: frf
       schema:
         type: string
-    rebateId:
+    comboKey:
       in: path
-      name: rebateId
-      description: The CSB Rebate ID
+      name: comboKey
+      description: The SAM.gov entity's UEI/EFTI combo key.
       required: true
-      example: '000000'
+      example: '0000000000000000'
+      schema:
+        type: string
+    bucket:
+      in: query
+      name: bucket
+      description: The S3 bucket name where the file is stored.
+      required: true
+      example: cleanschoolbus
+      schema:
+        type: string
+    mongoId:
+      in: path
+      name: mongoId
+      description: The Formio submission's MongoDB ObjectId.
+      required: true
+      example: '000000000000000000000000'
       schema:
         type: string
   schemas:
@@ -1742,3 +1731,14 @@ components:
         submission:
           type: object
           example: {}
+  responses:
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: Unauthorized

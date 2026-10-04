@@ -183,14 +183,14 @@ paths:
         dispatcher: FALLBACK
 components:
   parameters:
-    Email:
-      name: email
+    Site:
+      name: site
       in: query
       required: true
       schema:
         type: string
-        format: email
-      description: Registered email address.
+        pattern: ^\d{4}$
+      description: 4-digit site code.
     MinLat:
       name: minlat
       in: query
@@ -199,13 +199,13 @@ components:
         type: number
         format: float
       description: Minimum latitude of bounding box.
-    MaxLat:
-      name: maxlat
+    Param:
+      name: param
       in: query
       required: true
       schema:
-        type: number
-        format: float
+        type: string
+      description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
     State:
       name: state
       in: query
@@ -214,6 +214,51 @@ components:
         type: string
         pattern: ^\d{2}$
       description: 2-digit state FIPS code.
+    Edate:
+      name: edate
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{8}$
+      description: End date (YYYYMMDD). Must be in the same year as bdate for most services.
+    Key:
+      name: key
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Account-specific access key.
+    MaxLat:
+      name: maxlat
+      in: query
+      required: true
+      schema:
+        type: number
+        format: float
+    MinLon:
+      name: minlon
+      in: query
+      required: true
+      schema:
+        type: number
+        format: float
+    Cbsa:
+      name: cbsa
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{5}$
+      description: 5-digit Core Based Statistical Area code.
+    Email:
+      name: email
+      in: query
+      required: true
+      schema:
+        type: string
+        format: email
+      description: Registered email address.
     Bdate:
       name: bdate
       in: query
@@ -222,13 +267,6 @@ components:
         type: string
         pattern: ^\d{8}$
       description: Begin date (YYYYMMDD).
-    Key:
-      name: key
-      in: query
-      required: true
-      schema:
-        type: string
-      description: Account-specific access key.
     MaxLon:
       name: maxlon
       in: query
@@ -244,44 +282,6 @@ components:
         type: string
         pattern: ^\d{3}$
       description: 3-digit county code.
-    Cbsa:
-      name: cbsa
-      in: query
-      required: true
-      schema:
-        type: string
-        pattern: ^\d{5}$
-      description: 5-digit Core Based Statistical Area code.
-    Site:
-      name: site
-      in: query
-      required: true
-      schema:
-        type: string
-        pattern: ^\d{4}$
-      description: 4-digit site code.
-    Param:
-      name: param
-      in: query
-      required: true
-      schema:
-        type: string
-      description: Comma-separated list of up to 5 AQS 5-digit parameter codes.
-    Edate:
-      name: edate
-      in: query
-      required: true
-      schema:
-        type: string
-        pattern: ^\d{8}$
-      description: End date (YYYYMMDD). Must be in the same year as bdate for most services.
-    MinLon:
-      name: minlon
-      in: query
-      required: true
-      schema:
-        type: number
-        format: float
   schemas:
     Header:
       type: object
