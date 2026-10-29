@@ -1,4 +1,4 @@
-# EPA — U.S. Environmental Protection Agency (epa)
+# EPA — U.S. Environmental Protection Agency
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,2923 +66,431 @@
 
 Web services, data products, and open data spanning the U.S. Environmental Protection Agency. Programmatic access to air quality, water quality, hazardous waste, toxic releases, facility compliance, power-sector emissions, computational toxicology, and watershed assessments through dozens of public APIs.
 
-**APIs.json:** [https://www.epa.gov/developers/data-data-products](https://www.epa.gov/developers/data-data-products)
-
-## Tags
-
-- Government
-- Environmental
-- OpenData
-- AirQuality
-- WaterQuality
-- HazardousWaste
-- Compliance
-- Emissions
-
-## Timestamps
-
-- **Created:** 2026-05-28
-- **Modified:** 2026-05-29
-
-## APIs
-
-### AQS — Air Quality System Data Mart API
-
-Programmatic access to ambient air pollution monitoring data — sites, monitors, sample/daily/quarterly/annual aggregates, and quality assurance results for criteria and hazardous air pollutants.
-
-- **Human URL:** [https://aqs.epa.gov/aqsweb/documents/data_api.html](https://aqs.epa.gov/aqsweb/documents/data_api.html)
-- **Base URL:** `https://aqs.epa.gov/data/api`
-
-#### Tags
-
-- Government
-- Environmental
-- AirQuality
-- Monitoring
-
-#### Properties
-
-- [Documentation](https://aqs.epa.gov/aqsweb/documents/data_api.html)
-- [OpenAPI](openapi/aqs-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/aqs.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/aqs.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/aqs-envelope-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/aqs-header-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/aqs-envelope-structure.json)
-- [JSON Structure](json-structure/aqs-header-structure.json)
-- [Example](examples/aqs-envelope-example.json)
-- [Example](examples/aqs-header-example.json)
-
-### Envirofacts Data Service API
-
-EPA's cross-program REST data warehouse covering RCRA, GHG, TRI, SEMS, NEI, SDWIS and more, plus a GraphQL endpoint and UV index forecast feeds.
-
-- **Human URL:** [https://www.epa.gov/enviro/envirofacts-data-service-api](https://www.epa.gov/enviro/envirofacts-data-service-api)
-- **Base URL:** `https://data.epa.gov`
-
-#### Tags
-
-- Government
-- Environmental
-- OpenData
-- UVIndex
-
-#### Properties
-
-- [Documentation](https://www.epa.gov/enviro/envirofacts-data-service-api)
-- [OpenAPI](openapi/envirofacts-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/envirofacts.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/envirofacts.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/envirofacts-row-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/envirofacts-uv-daily-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/envirofacts-uv-hourly-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/envirofacts-row-structure.json)
-- [JSON Structure](json-structure/envirofacts-uv-daily-structure.json)
-- [JSON Structure](json-structure/envirofacts-uv-hourly-structure.json)
-- [Example](examples/envirofacts-row-example.json)
-- [Example](examples/envirofacts-uv-daily-example.json)
-- [Example](examples/envirofacts-uv-hourly-example.json)
-
-### ECHO — All Media Programs Facility Search
-
-Cross-program facility compliance search returning regulated facilities across air, water, waste, and drinking-water programs.
-
-- **Human URL:** [https://echo.epa.gov/tools/web-services](https://echo.epa.gov/tools/web-services)
-- **Base URL:** `https://echodata.epa.gov`
-
-#### Tags
-
-- Government
-- Compliance
-- Facilities
-
-#### Properties
-
-- [Documentation](https://echo.epa.gov/tools/web-services)
-- [OpenAPI](openapi/echo-all-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/echo-all.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-all.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/echo-all-echo01-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-all-echo02-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-all-echo03-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-all-echo04-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-all-echo05-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-all-echo06-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-all-echo07-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-all-echo08-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-all-echo09-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-all-echo10-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-all-echo11-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-all-geo-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-all-meta1-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-all-meta3-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-all-qp0-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/echo-all-echo01-structure.json)
-- [JSON Structure](json-structure/echo-all-echo02-structure.json)
-- [JSON Structure](json-structure/echo-all-echo03-structure.json)
-- [JSON Structure](json-structure/echo-all-echo04-structure.json)
-- [JSON Structure](json-structure/echo-all-echo05-structure.json)
-- [JSON Structure](json-structure/echo-all-echo06-structure.json)
-- [JSON Structure](json-structure/echo-all-echo07-structure.json)
-- [JSON Structure](json-structure/echo-all-echo08-structure.json)
-- [JSON Structure](json-structure/echo-all-echo09-structure.json)
-- [JSON Structure](json-structure/echo-all-echo10-structure.json)
-- [JSON Structure](json-structure/echo-all-echo11-structure.json)
-- [JSON Structure](json-structure/echo-all-geo-structure.json)
-- [JSON Structure](json-structure/echo-all-meta1-structure.json)
-- [JSON Structure](json-structure/echo-all-meta3-structure.json)
-- [JSON Structure](json-structure/echo-all-qp0-structure.json)
-- [Example](examples/echo-all-echo01-example.json)
-- [Example](examples/echo-all-echo02-example.json)
-- [Example](examples/echo-all-echo03-example.json)
-- [Example](examples/echo-all-echo04-example.json)
-- [Example](examples/echo-all-echo05-example.json)
-- [Example](examples/echo-all-echo06-example.json)
-- [Example](examples/echo-all-echo07-example.json)
-- [Example](examples/echo-all-echo08-example.json)
-- [Example](examples/echo-all-echo09-example.json)
-- [Example](examples/echo-all-echo10-example.json)
-- [Example](examples/echo-all-echo11-example.json)
-- [Example](examples/echo-all-geo-example.json)
-- [Example](examples/echo-all-meta1-example.json)
-- [Example](examples/echo-all-meta3-example.json)
-- [Example](examples/echo-all-qp0-example.json)
-
-### ECHO — Clean Air Act Facility Search
-
-CAA stationary-source facility compliance search.
-
-- **Human URL:** [https://echo.epa.gov/tools/web-services/facility-search-air](https://echo.epa.gov/tools/web-services/facility-search-air)
-- **Base URL:** `https://echodata.epa.gov`
-
-#### Tags
-
-- Government
-- AirQuality
-- Compliance
-
-#### Properties
-
-- [Documentation](https://echo.epa.gov/tools/web-services/facility-search-air)
-- [OpenAPI](openapi/echo-air-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/echo-air.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-air.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/echo-air-air00-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-air-air01-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-air-air02-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-air-air03-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-air-air04-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-air-air05-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-air-air06-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-air-air08-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-air-air09-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-air-air10-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-air-air11-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-air-air12-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-air-geo-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-air-meta1-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-air-meta3-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-air-qp0-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/echo-air-air00-structure.json)
-- [JSON Structure](json-structure/echo-air-air01-structure.json)
-- [JSON Structure](json-structure/echo-air-air02-structure.json)
-- [JSON Structure](json-structure/echo-air-air03-structure.json)
-- [JSON Structure](json-structure/echo-air-air04-structure.json)
-- [JSON Structure](json-structure/echo-air-air05-structure.json)
-- [JSON Structure](json-structure/echo-air-air06-structure.json)
-- [JSON Structure](json-structure/echo-air-air08-structure.json)
-- [JSON Structure](json-structure/echo-air-air09-structure.json)
-- [JSON Structure](json-structure/echo-air-air10-structure.json)
-- [JSON Structure](json-structure/echo-air-air11-structure.json)
-- [JSON Structure](json-structure/echo-air-air12-structure.json)
-- [JSON Structure](json-structure/echo-air-geo-structure.json)
-- [JSON Structure](json-structure/echo-air-meta1-structure.json)
-- [JSON Structure](json-structure/echo-air-meta3-structure.json)
-- [JSON Structure](json-structure/echo-air-qp0-structure.json)
-- [Example](examples/echo-air-air00-example.json)
-- [Example](examples/echo-air-air01-example.json)
-- [Example](examples/echo-air-air02-example.json)
-- [Example](examples/echo-air-air03-example.json)
-- [Example](examples/echo-air-air04-example.json)
-- [Example](examples/echo-air-air05-example.json)
-- [Example](examples/echo-air-air06-example.json)
-- [Example](examples/echo-air-air08-example.json)
-- [Example](examples/echo-air-air09-example.json)
-- [Example](examples/echo-air-air10-example.json)
-- [Example](examples/echo-air-air11-example.json)
-- [Example](examples/echo-air-air12-example.json)
-- [Example](examples/echo-air-geo-example.json)
-- [Example](examples/echo-air-meta1-example.json)
-- [Example](examples/echo-air-meta3-example.json)
-- [Example](examples/echo-air-qp0-example.json)
-
-### ECHO — Clean Water Act Facility Search
-
-NPDES wastewater, stormwater, and biosolids discharger search and compliance data.
-
-- **Human URL:** [https://echo.epa.gov/tools/web-services/facility-search-water](https://echo.epa.gov/tools/web-services/facility-search-water)
-- **Base URL:** `https://echodata.epa.gov`
-
-#### Tags
-
-- Government
-- WaterQuality
-- Compliance
-
-#### Properties
-
-- [Documentation](https://echo.epa.gov/tools/web-services/facility-search-water)
-- [OpenAPI](openapi/echo-cwa-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/echo-cwa.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-cwa.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/echo-cwa-cwa01-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-cwa-cwa02-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-cwa-cwa03-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-cwa-cwa04-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-cwa-cwa05-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-cwa-cwa06-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-cwa-cwa07-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-cwa-cwa08-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-cwa-cwa09-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-cwa-cwa10-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-cwa-cwa11-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-cwa-cwa12-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-cwa-cwa13-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-cwa-geo-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-cwa-meta1-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-cwa-meta3-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-cwa-qp0-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-cwa-rlup01-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-cwa-rlup20-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-cwa-rlup23-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-cwa-rlup24-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-cwa-rlup54-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-cwa-rlup58-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-cwa-rlup59-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-cwa-rlup61-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-cwa-rlup65-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-cwa-rlup75-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-cwa-rlup77-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/echo-cwa-cwa01-structure.json)
-- [JSON Structure](json-structure/echo-cwa-cwa02-structure.json)
-- [JSON Structure](json-structure/echo-cwa-cwa03-structure.json)
-- [JSON Structure](json-structure/echo-cwa-cwa04-structure.json)
-- [JSON Structure](json-structure/echo-cwa-cwa05-structure.json)
-- [JSON Structure](json-structure/echo-cwa-cwa06-structure.json)
-- [JSON Structure](json-structure/echo-cwa-cwa07-structure.json)
-- [JSON Structure](json-structure/echo-cwa-cwa08-structure.json)
-- [JSON Structure](json-structure/echo-cwa-cwa09-structure.json)
-- [JSON Structure](json-structure/echo-cwa-cwa10-structure.json)
-- [JSON Structure](json-structure/echo-cwa-cwa11-structure.json)
-- [JSON Structure](json-structure/echo-cwa-cwa12-structure.json)
-- [JSON Structure](json-structure/echo-cwa-cwa13-structure.json)
-- [JSON Structure](json-structure/echo-cwa-geo-structure.json)
-- [JSON Structure](json-structure/echo-cwa-meta1-structure.json)
-- [JSON Structure](json-structure/echo-cwa-meta3-structure.json)
-- [JSON Structure](json-structure/echo-cwa-qp0-structure.json)
-- [JSON Structure](json-structure/echo-cwa-rlup01-structure.json)
-- [JSON Structure](json-structure/echo-cwa-rlup20-structure.json)
-- [JSON Structure](json-structure/echo-cwa-rlup23-structure.json)
-- [JSON Structure](json-structure/echo-cwa-rlup24-structure.json)
-- [JSON Structure](json-structure/echo-cwa-rlup54-structure.json)
-- [JSON Structure](json-structure/echo-cwa-rlup58-structure.json)
-- [JSON Structure](json-structure/echo-cwa-rlup59-structure.json)
-- [JSON Structure](json-structure/echo-cwa-rlup61-structure.json)
-- [JSON Structure](json-structure/echo-cwa-rlup65-structure.json)
-- [JSON Structure](json-structure/echo-cwa-rlup75-structure.json)
-- [JSON Structure](json-structure/echo-cwa-rlup77-structure.json)
-- [Example](examples/echo-cwa-cwa01-example.json)
-- [Example](examples/echo-cwa-cwa02-example.json)
-- [Example](examples/echo-cwa-cwa03-example.json)
-- [Example](examples/echo-cwa-cwa04-example.json)
-- [Example](examples/echo-cwa-cwa05-example.json)
-- [Example](examples/echo-cwa-cwa06-example.json)
-- [Example](examples/echo-cwa-cwa07-example.json)
-- [Example](examples/echo-cwa-cwa08-example.json)
-- [Example](examples/echo-cwa-cwa09-example.json)
-- [Example](examples/echo-cwa-cwa10-example.json)
-- [Example](examples/echo-cwa-cwa11-example.json)
-- [Example](examples/echo-cwa-cwa12-example.json)
-- [Example](examples/echo-cwa-cwa13-example.json)
-- [Example](examples/echo-cwa-geo-example.json)
-- [Example](examples/echo-cwa-meta1-example.json)
-- [Example](examples/echo-cwa-meta3-example.json)
-- [Example](examples/echo-cwa-qp0-example.json)
-- [Example](examples/echo-cwa-rlup01-example.json)
-- [Example](examples/echo-cwa-rlup20-example.json)
-- [Example](examples/echo-cwa-rlup23-example.json)
-- [Example](examples/echo-cwa-rlup24-example.json)
-- [Example](examples/echo-cwa-rlup54-example.json)
-- [Example](examples/echo-cwa-rlup58-example.json)
-- [Example](examples/echo-cwa-rlup59-example.json)
-- [Example](examples/echo-cwa-rlup61-example.json)
-- [Example](examples/echo-cwa-rlup65-example.json)
-- [Example](examples/echo-cwa-rlup75-example.json)
-- [Example](examples/echo-cwa-rlup77-example.json)
-
-### ECHO — Safe Drinking Water Act System Search
-
-SDWA public water system search and compliance reporting.
-
-- **Human URL:** [https://echo.epa.gov/tools/web-services/facility-search-drinking-water](https://echo.epa.gov/tools/web-services/facility-search-drinking-water)
-- **Base URL:** `https://echodata.epa.gov`
-
-#### Tags
-
-- Government
-- DrinkingWater
-- Compliance
-
-#### Properties
-
-- [Documentation](https://echo.epa.gov/tools/web-services/facility-search-drinking-water)
-- [OpenAPI](openapi/echo-sdw-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/echo-sdw.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-sdw.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/echo-sdw-meta1-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-sdw-meta3-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-sdw-sdw02-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-sdw-sdw03-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-sdw-sdw04-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/echo-sdw-meta1-structure.json)
-- [JSON Structure](json-structure/echo-sdw-meta3-structure.json)
-- [JSON Structure](json-structure/echo-sdw-sdw02-structure.json)
-- [JSON Structure](json-structure/echo-sdw-sdw03-structure.json)
-- [JSON Structure](json-structure/echo-sdw-sdw04-structure.json)
-- [Example](examples/echo-sdw-meta1-example.json)
-- [Example](examples/echo-sdw-meta3-example.json)
-- [Example](examples/echo-sdw-sdw02-example.json)
-- [Example](examples/echo-sdw-sdw03-example.json)
-- [Example](examples/echo-sdw-sdw04-example.json)
-
-### ECHO — RCRA Hazardous Waste Facility Search
-
-RCRA hazardous waste generator/handler/TSD facility search and compliance data.
-
-- **Human URL:** [https://echo.epa.gov/tools/web-services/facility-search-hazardous-waste](https://echo.epa.gov/tools/web-services/facility-search-hazardous-waste)
-- **Base URL:** `https://echodata.epa.gov`
-
-#### Tags
-
-- Government
-- HazardousWaste
-- Compliance
-
-#### Properties
-
-- [Documentation](https://echo.epa.gov/tools/web-services/facility-search-hazardous-waste)
-- [OpenAPI](openapi/echo-rcra-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/echo-rcra.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-rcra.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/echo-rcra-geo-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-rcra-meta1-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-rcra-meta3-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-rcra-qp0-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-rcra-rcra01-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-rcra-rcra02-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-rcra-rcra03-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-rcra-rcra04-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-rcra-rcra05-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-rcra-rcra06-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-rcra-rcra07-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-rcra-rcra08-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-rcra-rcra09-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-rcra-rcra10-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-rcra-rcra11-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-rcra-rcra12-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-rcra-rcra13-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/echo-rcra-geo-structure.json)
-- [JSON Structure](json-structure/echo-rcra-meta1-structure.json)
-- [JSON Structure](json-structure/echo-rcra-meta3-structure.json)
-- [JSON Structure](json-structure/echo-rcra-qp0-structure.json)
-- [JSON Structure](json-structure/echo-rcra-rcra01-structure.json)
-- [JSON Structure](json-structure/echo-rcra-rcra02-structure.json)
-- [JSON Structure](json-structure/echo-rcra-rcra03-structure.json)
-- [JSON Structure](json-structure/echo-rcra-rcra04-structure.json)
-- [JSON Structure](json-structure/echo-rcra-rcra05-structure.json)
-- [JSON Structure](json-structure/echo-rcra-rcra06-structure.json)
-- [JSON Structure](json-structure/echo-rcra-rcra07-structure.json)
-- [JSON Structure](json-structure/echo-rcra-rcra08-structure.json)
-- [JSON Structure](json-structure/echo-rcra-rcra09-structure.json)
-- [JSON Structure](json-structure/echo-rcra-rcra10-structure.json)
-- [JSON Structure](json-structure/echo-rcra-rcra11-structure.json)
-- [JSON Structure](json-structure/echo-rcra-rcra12-structure.json)
-- [JSON Structure](json-structure/echo-rcra-rcra13-structure.json)
-- [Example](examples/echo-rcra-geo-example.json)
-- [Example](examples/echo-rcra-meta1-example.json)
-- [Example](examples/echo-rcra-meta3-example.json)
-- [Example](examples/echo-rcra-qp0-example.json)
-- [Example](examples/echo-rcra-rcra01-example.json)
-- [Example](examples/echo-rcra-rcra02-example.json)
-- [Example](examples/echo-rcra-rcra03-example.json)
-- [Example](examples/echo-rcra-rcra04-example.json)
-- [Example](examples/echo-rcra-rcra05-example.json)
-- [Example](examples/echo-rcra-rcra06-example.json)
-- [Example](examples/echo-rcra-rcra07-example.json)
-- [Example](examples/echo-rcra-rcra08-example.json)
-- [Example](examples/echo-rcra-rcra09-example.json)
-- [Example](examples/echo-rcra-rcra10-example.json)
-- [Example](examples/echo-rcra-rcra11-example.json)
-- [Example](examples/echo-rcra-rcra12-example.json)
-- [Example](examples/echo-rcra-rcra13-example.json)
-
-### ECHO — Enforcement Case Search
-
-Civil and criminal enforcement case search and reporting.
-
-- **Human URL:** [https://echo.epa.gov/tools/web-services/enforcement-case-search](https://echo.epa.gov/tools/web-services/enforcement-case-search)
-- **Base URL:** `https://echodata.epa.gov`
-
-#### Tags
-
-- Government
-- Enforcement
-- Compliance
-
-#### Properties
-
-- [Documentation](https://echo.epa.gov/tools/web-services/enforcement-case-search)
-- [OpenAPI](openapi/echo-case-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/echo-case.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-case.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/echo-case-crs0-cases-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-case-crs0-cluster-data-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-case-crs0-cluster-output-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-case-crs0-get-case-info.results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-case-crs0-get-cases-from-facility.case-number-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-case-crs0-get-cases-from-facility.case-numbers-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-case-crs0-get-cases-from-facility.results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-case-crs0-get-facilities-from-case.registry-id-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-case-crs0-get-facilities-from-case.registry-ids-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-case-crs0-get-facilities-from-case.results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-case-crs0-map-data-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-case-crs0-map-output-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-case-crs1-caeddocuments-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-case-crs1-case-information-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-case-crs1-case-milestones-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-case-crs1-citations-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-case-crs1-compliance-schedules-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-case-crs1-complying-actions-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-case-crs1-defendants-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-case-crs1-enforcement-conclusions-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-case-crs1-facilities-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-case-crs1-final-order-statuses-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-case-crs1-laws-and-sections-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-case-crs1-pollutant-reductions-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-case-crs1-pollutants-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-case-crs1-program-links-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-case-crs1-related-activities-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-case-crs1-results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-case-crs1-supplemental-environmental-projects-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-case-crs2-results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-case-crs3-case-information-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-case-crs3-crdefendants-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-case-crs3-crdetails-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-case-crs3-locations-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-case-crs3-results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-case-crs5-results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-case-met1-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-case-met2-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-case-qp0-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-case-rlk00-lu-values-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-case-rlk51-results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/echo-case-crs0-cases-structure.json)
-- [JSON Structure](json-structure/echo-case-crs0-cluster-data-structure.json)
-- [JSON Structure](json-structure/echo-case-crs0-cluster-output-structure.json)
-- [JSON Structure](json-structure/echo-case-crs0-get-case-info.results-structure.json)
-- [JSON Structure](json-structure/echo-case-crs0-get-cases-from-facility.case-number-structure.json)
-- [JSON Structure](json-structure/echo-case-crs0-get-cases-from-facility.case-numbers-structure.json)
-- [JSON Structure](json-structure/echo-case-crs0-get-cases-from-facility.results-structure.json)
-- [JSON Structure](json-structure/echo-case-crs0-get-facilities-from-case.registry-id-structure.json)
-- [JSON Structure](json-structure/echo-case-crs0-get-facilities-from-case.registry-ids-structure.json)
-- [JSON Structure](json-structure/echo-case-crs0-get-facilities-from-case.results-structure.json)
-- [JSON Structure](json-structure/echo-case-crs0-map-data-structure.json)
-- [JSON Structure](json-structure/echo-case-crs0-map-output-structure.json)
-- [JSON Structure](json-structure/echo-case-crs1-caeddocuments-structure.json)
-- [JSON Structure](json-structure/echo-case-crs1-case-information-structure.json)
-- [JSON Structure](json-structure/echo-case-crs1-case-milestones-structure.json)
-- [JSON Structure](json-structure/echo-case-crs1-citations-structure.json)
-- [JSON Structure](json-structure/echo-case-crs1-compliance-schedules-structure.json)
-- [JSON Structure](json-structure/echo-case-crs1-complying-actions-structure.json)
-- [JSON Structure](json-structure/echo-case-crs1-defendants-structure.json)
-- [JSON Structure](json-structure/echo-case-crs1-enforcement-conclusions-structure.json)
-- [JSON Structure](json-structure/echo-case-crs1-facilities-structure.json)
-- [JSON Structure](json-structure/echo-case-crs1-final-order-statuses-structure.json)
-- [JSON Structure](json-structure/echo-case-crs1-laws-and-sections-structure.json)
-- [JSON Structure](json-structure/echo-case-crs1-pollutant-reductions-structure.json)
-- [JSON Structure](json-structure/echo-case-crs1-pollutants-structure.json)
-- [JSON Structure](json-structure/echo-case-crs1-program-links-structure.json)
-- [JSON Structure](json-structure/echo-case-crs1-related-activities-structure.json)
-- [JSON Structure](json-structure/echo-case-crs1-results-structure.json)
-- [JSON Structure](json-structure/echo-case-crs1-supplemental-environmental-projects-structure.json)
-- [JSON Structure](json-structure/echo-case-crs2-results-structure.json)
-- [JSON Structure](json-structure/echo-case-crs3-case-information-structure.json)
-- [JSON Structure](json-structure/echo-case-crs3-crdefendants-structure.json)
-- [JSON Structure](json-structure/echo-case-crs3-crdetails-structure.json)
-- [JSON Structure](json-structure/echo-case-crs3-locations-structure.json)
-- [JSON Structure](json-structure/echo-case-crs3-results-structure.json)
-- [JSON Structure](json-structure/echo-case-crs5-results-structure.json)
-- [JSON Structure](json-structure/echo-case-met1-structure.json)
-- [JSON Structure](json-structure/echo-case-met2-structure.json)
-- [JSON Structure](json-structure/echo-case-qp0-structure.json)
-- [JSON Structure](json-structure/echo-case-rlk00-lu-values-structure.json)
-- [JSON Structure](json-structure/echo-case-rlk51-results-structure.json)
-- [Example](examples/echo-case-crs0-cases-example.json)
-- [Example](examples/echo-case-crs0-cluster-data-example.json)
-- [Example](examples/echo-case-crs0-cluster-output-example.json)
-- [Example](examples/echo-case-crs0-get-case-info.results-example.json)
-- [Example](examples/echo-case-crs0-get-cases-from-facility.case-number-example.json)
-- [Example](examples/echo-case-crs0-get-cases-from-facility.case-numbers-example.json)
-- [Example](examples/echo-case-crs0-get-cases-from-facility.results-example.json)
-- [Example](examples/echo-case-crs0-get-facilities-from-case.registry-id-example.json)
-- [Example](examples/echo-case-crs0-get-facilities-from-case.registry-ids-example.json)
-- [Example](examples/echo-case-crs0-get-facilities-from-case.results-example.json)
-- [Example](examples/echo-case-crs0-map-data-example.json)
-- [Example](examples/echo-case-crs0-map-output-example.json)
-- [Example](examples/echo-case-crs1-caeddocuments-example.json)
-- [Example](examples/echo-case-crs1-case-information-example.json)
-- [Example](examples/echo-case-crs1-case-milestones-example.json)
-- [Example](examples/echo-case-crs1-citations-example.json)
-- [Example](examples/echo-case-crs1-compliance-schedules-example.json)
-- [Example](examples/echo-case-crs1-complying-actions-example.json)
-- [Example](examples/echo-case-crs1-defendants-example.json)
-- [Example](examples/echo-case-crs1-enforcement-conclusions-example.json)
-- [Example](examples/echo-case-crs1-facilities-example.json)
-- [Example](examples/echo-case-crs1-final-order-statuses-example.json)
-- [Example](examples/echo-case-crs1-laws-and-sections-example.json)
-- [Example](examples/echo-case-crs1-pollutant-reductions-example.json)
-- [Example](examples/echo-case-crs1-pollutants-example.json)
-- [Example](examples/echo-case-crs1-program-links-example.json)
-- [Example](examples/echo-case-crs1-related-activities-example.json)
-- [Example](examples/echo-case-crs1-results-example.json)
-- [Example](examples/echo-case-crs1-supplemental-environmental-projects-example.json)
-- [Example](examples/echo-case-crs2-results-example.json)
-- [Example](examples/echo-case-crs3-case-information-example.json)
-- [Example](examples/echo-case-crs3-crdefendants-example.json)
-- [Example](examples/echo-case-crs3-crdetails-example.json)
-- [Example](examples/echo-case-crs3-locations-example.json)
-- [Example](examples/echo-case-crs3-results-example.json)
-- [Example](examples/echo-case-crs5-results-example.json)
-- [Example](examples/echo-case-met1-example.json)
-- [Example](examples/echo-case-met2-example.json)
-- [Example](examples/echo-case-qp0-example.json)
-- [Example](examples/echo-case-rlk00-lu-values-example.json)
-- [Example](examples/echo-case-rlk51-results-example.json)
-
-### ECHO — Detailed Facility Report
-
-Comprehensive 5-year compliance and enforcement history for a single facility, spanning every program ECHO indexes.
-
-- **Human URL:** [https://echo.epa.gov/detailed-facility-report](https://echo.epa.gov/detailed-facility-report)
-- **Base URL:** `https://echodata.epa.gov`
-
-#### Tags
-
-- Government
-- Facilities
-- Compliance
-
-#### Properties
-
-- [Documentation](https://echo.epa.gov/detailed-facility-report)
-- [OpenAPI](openapi/echo-dfr-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/echo-dfr.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-dfr.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/echo-dfr-dfr0-get-aws-docs.results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr0-get-cwa-eff-alr-exp.results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr0-get-cwa-eff-compliance-exp.results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr0-get-d80d90s-details.d80-d90s-details-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr0-get-d80d90s-details.d80-d90s-details.sources-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr0-get-d80d90s-details.results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr0-get-ejscreen-indexes.results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr0-qtr12-header-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr0-qtr12-header39-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr0-qtr12-status-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr0-qtr13-header-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr0-qtr13-status-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr001-results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr002-results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr004-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr005-results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr006-results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr007-results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr009-results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr010-results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr011-results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr012-results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr013-results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr014-results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr015-results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr017-results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr018-caeddocuments-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr018-ejscreen-indexes-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr018-map-data-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr018-multiple-frsfacilities-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr018-naics-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr018-permits-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr018-program-dates-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr018-registry-ids-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr018-reports-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr018-results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr018-summaries-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr018-web-fire-documents-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr019-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr020-.hpvhistory-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr020-.permit-history-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr020-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr021-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr022-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr023-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr024-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr025-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr026-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr027-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr029-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr030-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr031-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr032-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr034-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr035-exp-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr035-exp.parameters-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr035-exp.sources-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr035-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr036-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr037-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr038-exp-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr038-exp.parameters-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr038-exp.sources-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr038-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr040-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr041-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr042-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr043-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr045-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr046-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr047-.status-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr049-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr050-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr051-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr052-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr053-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr054-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr055-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr057-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr058-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr059-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr060-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr061-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr062-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr063-s-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr064-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr065-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr066-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr067-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr068-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr069-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr070-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr071-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr072-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr073-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr074-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr075-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr076-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr077-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr078-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr079-s-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr079-s.evaluations-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr079-s.status-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr079-s.violations-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr081-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr083-s-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr083-s.rules-violated-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr084-codes-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr084-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr085-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr086-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr088-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr089-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr090-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr092-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr093-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr094-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr095-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr096-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr098-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr100-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr101-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr102-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr103-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr104-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr105-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr106-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr108-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr109-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr110-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr111-details-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr111-details.sources-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr111-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr112-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr114-results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr115-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr116-results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr117-results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr118-results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr119-results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr120-results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr122-results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr123-results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr124-results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr125-results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr126-results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr127-results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr128-results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr129-results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr130-results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr131-results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr132-results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr133-results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr134-results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr135-results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-dfr-dfr136-results-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/echo-dfr-dfr0-get-aws-docs.results-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr0-get-cwa-eff-alr-exp.results-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr0-get-cwa-eff-compliance-exp.results-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr0-get-d80d90s-details.d80-d90s-details-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr0-get-d80d90s-details.d80-d90s-details.sources-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr0-get-d80d90s-details.results-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr0-get-ejscreen-indexes.results-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr0-qtr12-header-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr0-qtr12-header39-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr0-qtr12-status-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr0-qtr13-header-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr0-qtr13-status-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr001-results-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr002-results-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr004-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr005-results-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr006-results-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr007-results-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr009-results-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr010-results-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr011-results-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr012-results-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr013-results-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr014-results-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr015-results-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr017-results-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr018-caeddocuments-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr018-ejscreen-indexes-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr018-map-data-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr018-multiple-frsfacilities-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr018-naics-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr018-permits-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr018-program-dates-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr018-registry-ids-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr018-reports-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr018-results-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr018-summaries-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr018-web-fire-documents-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr019-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr020-.hpvhistory-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr020-.permit-history-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr020-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr021-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr022-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr023-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr024-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr025-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr026-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr027-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr029-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr030-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr031-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr032-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr034-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr035-exp-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr035-exp.parameters-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr035-exp.sources-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr035-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr036-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr037-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr038-exp-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr038-exp.parameters-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr038-exp.sources-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr038-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr040-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr041-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr042-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr043-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr045-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr046-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr047-.status-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr049-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr050-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr051-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr052-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr053-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr054-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr055-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr057-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr058-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr059-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr060-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr061-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr062-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr063-s-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr064-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr065-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr066-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr067-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr068-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr069-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr070-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr071-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr072-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr073-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr074-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr075-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr076-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr077-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr078-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr079-s-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr079-s.evaluations-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr079-s.status-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr079-s.violations-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr081-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr083-s-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr083-s.rules-violated-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr084-codes-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr084-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr085-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr086-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr088-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr089-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr090-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr092-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr093-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr094-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr095-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr096-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr098-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr100-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr101-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr102-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr103-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr104-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr105-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr106-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr108-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr109-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr110-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr111-details-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr111-details.sources-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr111-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr112-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr114-results-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr115-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr116-results-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr117-results-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr118-results-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr119-results-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr120-results-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr122-results-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr123-results-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr124-results-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr125-results-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr126-results-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr127-results-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr128-results-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr129-results-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr130-results-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr131-results-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr132-results-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr133-results-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr134-results-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr135-results-structure.json)
-- [JSON Structure](json-structure/echo-dfr-dfr136-results-structure.json)
-- [Example](examples/echo-dfr-dfr0-get-aws-docs.results-example.json)
-- [Example](examples/echo-dfr-dfr0-get-cwa-eff-alr-exp.results-example.json)
-- [Example](examples/echo-dfr-dfr0-get-cwa-eff-compliance-exp.results-example.json)
-- [Example](examples/echo-dfr-dfr0-get-d80d90s-details.d80-d90s-details-example.json)
-- [Example](examples/echo-dfr-dfr0-get-d80d90s-details.d80-d90s-details.sources-example.json)
-- [Example](examples/echo-dfr-dfr0-get-d80d90s-details.results-example.json)
-- [Example](examples/echo-dfr-dfr0-get-ejscreen-indexes.results-example.json)
-- [Example](examples/echo-dfr-dfr0-qtr12-header-example.json)
-- [Example](examples/echo-dfr-dfr0-qtr12-header39-example.json)
-- [Example](examples/echo-dfr-dfr0-qtr12-status-example.json)
-- [Example](examples/echo-dfr-dfr0-qtr13-header-example.json)
-- [Example](examples/echo-dfr-dfr0-qtr13-status-example.json)
-- [Example](examples/echo-dfr-dfr001-results-example.json)
-- [Example](examples/echo-dfr-dfr002-results-example.json)
-- [Example](examples/echo-dfr-dfr004-example.json)
-- [Example](examples/echo-dfr-dfr005-results-example.json)
-- [Example](examples/echo-dfr-dfr006-results-example.json)
-- [Example](examples/echo-dfr-dfr007-results-example.json)
-- [Example](examples/echo-dfr-dfr009-results-example.json)
-- [Example](examples/echo-dfr-dfr010-results-example.json)
-- [Example](examples/echo-dfr-dfr011-results-example.json)
-- [Example](examples/echo-dfr-dfr012-results-example.json)
-- [Example](examples/echo-dfr-dfr013-results-example.json)
-- [Example](examples/echo-dfr-dfr014-results-example.json)
-- [Example](examples/echo-dfr-dfr015-results-example.json)
-- [Example](examples/echo-dfr-dfr017-results-example.json)
-- [Example](examples/echo-dfr-dfr018-caeddocuments-example.json)
-- [Example](examples/echo-dfr-dfr018-ejscreen-indexes-example.json)
-- [Example](examples/echo-dfr-dfr018-map-data-example.json)
-- [Example](examples/echo-dfr-dfr018-multiple-frsfacilities-example.json)
-- [Example](examples/echo-dfr-dfr018-naics-example.json)
-- [Example](examples/echo-dfr-dfr018-permits-example.json)
-- [Example](examples/echo-dfr-dfr018-program-dates-example.json)
-- [Example](examples/echo-dfr-dfr018-registry-ids-example.json)
-- [Example](examples/echo-dfr-dfr018-reports-example.json)
-- [Example](examples/echo-dfr-dfr018-results-example.json)
-- [Example](examples/echo-dfr-dfr018-summaries-example.json)
-- [Example](examples/echo-dfr-dfr018-web-fire-documents-example.json)
-- [Example](examples/echo-dfr-dfr019-example.json)
-- [Example](examples/echo-dfr-dfr020-.hpvhistory-example.json)
-- [Example](examples/echo-dfr-dfr020-.permit-history-example.json)
-- [Example](examples/echo-dfr-dfr020-example.json)
-- [Example](examples/echo-dfr-dfr021-example.json)
-- [Example](examples/echo-dfr-dfr022-example.json)
-- [Example](examples/echo-dfr-dfr023-example.json)
-- [Example](examples/echo-dfr-dfr024-example.json)
-- [Example](examples/echo-dfr-dfr025-example.json)
-- [Example](examples/echo-dfr-dfr026-example.json)
-- [Example](examples/echo-dfr-dfr027-example.json)
-- [Example](examples/echo-dfr-dfr029-example.json)
-- [Example](examples/echo-dfr-dfr030-example.json)
-- [Example](examples/echo-dfr-dfr031-example.json)
-- [Example](examples/echo-dfr-dfr032-example.json)
-- [Example](examples/echo-dfr-dfr034-example.json)
-- [Example](examples/echo-dfr-dfr035-example.json)
-- [Example](examples/echo-dfr-dfr035-exp-example.json)
-- [Example](examples/echo-dfr-dfr035-exp.parameters-example.json)
-- [Example](examples/echo-dfr-dfr035-exp.sources-example.json)
-- [Example](examples/echo-dfr-dfr036-example.json)
-- [Example](examples/echo-dfr-dfr037-example.json)
-- [Example](examples/echo-dfr-dfr038-example.json)
-- [Example](examples/echo-dfr-dfr038-exp-example.json)
-- [Example](examples/echo-dfr-dfr038-exp.parameters-example.json)
-- [Example](examples/echo-dfr-dfr038-exp.sources-example.json)
-- [Example](examples/echo-dfr-dfr040-example.json)
-- [Example](examples/echo-dfr-dfr041-example.json)
-- [Example](examples/echo-dfr-dfr042-example.json)
-- [Example](examples/echo-dfr-dfr043-example.json)
-- [Example](examples/echo-dfr-dfr045-example.json)
-- [Example](examples/echo-dfr-dfr046-example.json)
-- [Example](examples/echo-dfr-dfr047-.status-example.json)
-- [Example](examples/echo-dfr-dfr049-example.json)
-- [Example](examples/echo-dfr-dfr050-example.json)
-- [Example](examples/echo-dfr-dfr051-example.json)
-- [Example](examples/echo-dfr-dfr052-example.json)
-- [Example](examples/echo-dfr-dfr053-example.json)
-- [Example](examples/echo-dfr-dfr054-example.json)
-- [Example](examples/echo-dfr-dfr055-example.json)
-- [Example](examples/echo-dfr-dfr057-example.json)
-- [Example](examples/echo-dfr-dfr058-example.json)
-- [Example](examples/echo-dfr-dfr059-example.json)
-- [Example](examples/echo-dfr-dfr060-example.json)
-- [Example](examples/echo-dfr-dfr061-example.json)
-- [Example](examples/echo-dfr-dfr062-example.json)
-- [Example](examples/echo-dfr-dfr063-s-example.json)
-- [Example](examples/echo-dfr-dfr064-example.json)
-- [Example](examples/echo-dfr-dfr065-example.json)
-- [Example](examples/echo-dfr-dfr066-example.json)
-- [Example](examples/echo-dfr-dfr067-example.json)
-- [Example](examples/echo-dfr-dfr068-example.json)
-- [Example](examples/echo-dfr-dfr069-example.json)
-- [Example](examples/echo-dfr-dfr070-example.json)
-- [Example](examples/echo-dfr-dfr071-example.json)
-- [Example](examples/echo-dfr-dfr072-example.json)
-- [Example](examples/echo-dfr-dfr073-example.json)
-- [Example](examples/echo-dfr-dfr074-example.json)
-- [Example](examples/echo-dfr-dfr075-example.json)
-- [Example](examples/echo-dfr-dfr076-example.json)
-- [Example](examples/echo-dfr-dfr077-example.json)
-- [Example](examples/echo-dfr-dfr078-example.json)
-- [Example](examples/echo-dfr-dfr079-s-example.json)
-- [Example](examples/echo-dfr-dfr079-s.evaluations-example.json)
-- [Example](examples/echo-dfr-dfr079-s.status-example.json)
-- [Example](examples/echo-dfr-dfr079-s.violations-example.json)
-- [Example](examples/echo-dfr-dfr081-example.json)
-- [Example](examples/echo-dfr-dfr083-s-example.json)
-- [Example](examples/echo-dfr-dfr083-s.rules-violated-example.json)
-- [Example](examples/echo-dfr-dfr084-codes-example.json)
-- [Example](examples/echo-dfr-dfr084-example.json)
-- [Example](examples/echo-dfr-dfr085-example.json)
-- [Example](examples/echo-dfr-dfr086-example.json)
-- [Example](examples/echo-dfr-dfr088-example.json)
-- [Example](examples/echo-dfr-dfr089-example.json)
-- [Example](examples/echo-dfr-dfr090-example.json)
-- [Example](examples/echo-dfr-dfr092-example.json)
-- [Example](examples/echo-dfr-dfr093-example.json)
-- [Example](examples/echo-dfr-dfr094-example.json)
-- [Example](examples/echo-dfr-dfr095-example.json)
-- [Example](examples/echo-dfr-dfr096-example.json)
-- [Example](examples/echo-dfr-dfr098-example.json)
-- [Example](examples/echo-dfr-dfr100-example.json)
-- [Example](examples/echo-dfr-dfr101-example.json)
-- [Example](examples/echo-dfr-dfr102-example.json)
-- [Example](examples/echo-dfr-dfr103-example.json)
-- [Example](examples/echo-dfr-dfr104-example.json)
-- [Example](examples/echo-dfr-dfr105-example.json)
-- [Example](examples/echo-dfr-dfr106-example.json)
-- [Example](examples/echo-dfr-dfr108-example.json)
-- [Example](examples/echo-dfr-dfr109-example.json)
-- [Example](examples/echo-dfr-dfr110-example.json)
-- [Example](examples/echo-dfr-dfr111-details-example.json)
-- [Example](examples/echo-dfr-dfr111-details.sources-example.json)
-- [Example](examples/echo-dfr-dfr111-example.json)
-- [Example](examples/echo-dfr-dfr112-example.json)
-- [Example](examples/echo-dfr-dfr114-results-example.json)
-- [Example](examples/echo-dfr-dfr115-example.json)
-- [Example](examples/echo-dfr-dfr116-results-example.json)
-- [Example](examples/echo-dfr-dfr117-results-example.json)
-- [Example](examples/echo-dfr-dfr118-results-example.json)
-- [Example](examples/echo-dfr-dfr119-results-example.json)
-- [Example](examples/echo-dfr-dfr120-results-example.json)
-- [Example](examples/echo-dfr-dfr122-results-example.json)
-- [Example](examples/echo-dfr-dfr123-results-example.json)
-- [Example](examples/echo-dfr-dfr124-results-example.json)
-- [Example](examples/echo-dfr-dfr125-results-example.json)
-- [Example](examples/echo-dfr-dfr126-results-example.json)
-- [Example](examples/echo-dfr-dfr127-results-example.json)
-- [Example](examples/echo-dfr-dfr128-results-example.json)
-- [Example](examples/echo-dfr-dfr129-results-example.json)
-- [Example](examples/echo-dfr-dfr130-results-example.json)
-- [Example](examples/echo-dfr-dfr131-results-example.json)
-- [Example](examples/echo-dfr-dfr132-results-example.json)
-- [Example](examples/echo-dfr-dfr133-results-example.json)
-- [Example](examples/echo-dfr-dfr134-results-example.json)
-- [Example](examples/echo-dfr-dfr135-results-example.json)
-- [Example](examples/echo-dfr-dfr136-results-example.json)
-
-### ECHO — Effluent Charting and Reporting
-
-NPDES permit effluent monitoring time-series charts and download services.
-
-- **Human URL:** [https://echo.epa.gov/trends/loading-tool/water-pollution-search](https://echo.epa.gov/trends/loading-tool/water-pollution-search)
-- **Base URL:** `https://echodata.epa.gov`
-
-#### Tags
-
-- Government
-- WaterQuality
-- Enforcement
-
-#### Properties
-
-- [Documentation](https://echo.epa.gov/trends/loading-tool/water-pollution-search)
-- [OpenAPI](openapi/echo-effluent-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/echo-effluent.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-effluent.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/echo-effluent-eff01-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-effluent-eff02-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-effluent-eff03-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-effluent-eff04-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-effluent-eff05-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-effluent-eff06-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-effluent-eff07-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-effluent-eff08-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-effluent-eff09-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-effluent-rlup01-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/echo-effluent-rlup23-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/echo-effluent-eff01-structure.json)
-- [JSON Structure](json-structure/echo-effluent-eff02-structure.json)
-- [JSON Structure](json-structure/echo-effluent-eff03-structure.json)
-- [JSON Structure](json-structure/echo-effluent-eff04-structure.json)
-- [JSON Structure](json-structure/echo-effluent-eff05-structure.json)
-- [JSON Structure](json-structure/echo-effluent-eff06-structure.json)
-- [JSON Structure](json-structure/echo-effluent-eff07-structure.json)
-- [JSON Structure](json-structure/echo-effluent-eff08-structure.json)
-- [JSON Structure](json-structure/echo-effluent-eff09-structure.json)
-- [JSON Structure](json-structure/echo-effluent-rlup01-structure.json)
-- [JSON Structure](json-structure/echo-effluent-rlup23-structure.json)
-- [Example](examples/echo-effluent-eff01-example.json)
-- [Example](examples/echo-effluent-eff02-example.json)
-- [Example](examples/echo-effluent-eff03-example.json)
-- [Example](examples/echo-effluent-eff04-example.json)
-- [Example](examples/echo-effluent-eff05-example.json)
-- [Example](examples/echo-effluent-eff06-example.json)
-- [Example](examples/echo-effluent-eff07-example.json)
-- [Example](examples/echo-effluent-eff08-example.json)
-- [Example](examples/echo-effluent-eff09-example.json)
-- [Example](examples/echo-effluent-rlup01-example.json)
-- [Example](examples/echo-effluent-rlup23-example.json)
-
-### CAM — Account Management
-
-Clean Air Markets account holdings, allowance transactions, and compliance positions.
-
-- **Human URL:** [https://api.epa.gov/easey/account-mgmt/swagger](https://api.epa.gov/easey/account-mgmt/swagger)
-- **Base URL:** `https://api.epa.gov/easey/account-mgmt`
-
-#### Tags
-
-- Government
-- PowerSector
-- Emissions
-
-#### Properties
-
-- [Documentation](https://api.epa.gov/easey/account-mgmt/swagger)
-- [OpenAPI](openapi/cam-account-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/cam-account.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-account.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/cam-account-account-attributes-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-account-account-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-account-allowance-compliance-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-account-allowance-holdings-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-account-allowance-transactions-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-account-applicable-account-attributes-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-account-applicable-allowance-compliance-attributes-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-account-applicable-allowance-holdings-attributes-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-account-applicable-allowance-transactions-attributes-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-account-applicable-compliance-attributes-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-account-emissions-compliance-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-account-owner-operators-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/cam-account-account-attributes-dto-structure.json)
-- [JSON Structure](json-structure/cam-account-account-dto-structure.json)
-- [JSON Structure](json-structure/cam-account-allowance-compliance-dto-structure.json)
-- [JSON Structure](json-structure/cam-account-allowance-holdings-dto-structure.json)
-- [JSON Structure](json-structure/cam-account-allowance-transactions-dto-structure.json)
-- [JSON Structure](json-structure/cam-account-applicable-account-attributes-dto-structure.json)
-- [JSON Structure](json-structure/cam-account-applicable-allowance-compliance-attributes-dto-structure.json)
-- [JSON Structure](json-structure/cam-account-applicable-allowance-holdings-attributes-dto-structure.json)
-- [JSON Structure](json-structure/cam-account-applicable-allowance-transactions-attributes-dto-structure.json)
-- [JSON Structure](json-structure/cam-account-applicable-compliance-attributes-dto-structure.json)
-- [JSON Structure](json-structure/cam-account-emissions-compliance-dto-structure.json)
-- [JSON Structure](json-structure/cam-account-owner-operators-dto-structure.json)
-- [Example](examples/cam-account-account-attributes-dto-example.json)
-- [Example](examples/cam-account-account-dto-example.json)
-- [Example](examples/cam-account-allowance-compliance-dto-example.json)
-- [Example](examples/cam-account-allowance-holdings-dto-example.json)
-- [Example](examples/cam-account-allowance-transactions-dto-example.json)
-- [Example](examples/cam-account-applicable-account-attributes-dto-example.json)
-- [Example](examples/cam-account-applicable-allowance-compliance-attributes-dto-example.json)
-- [Example](examples/cam-account-applicable-allowance-holdings-attributes-dto-example.json)
-- [Example](examples/cam-account-applicable-allowance-transactions-attributes-dto-example.json)
-- [Example](examples/cam-account-applicable-compliance-attributes-dto-example.json)
-- [Example](examples/cam-account-emissions-compliance-dto-example.json)
-- [Example](examples/cam-account-owner-operators-dto-example.json)
-
-### CAM — CAMD Administrative & General Services
-
-Clean Air Markets prepackaged bulk datasets and admin services.
-
-- **Human URL:** [https://api.epa.gov/easey/camd-services/swagger](https://api.epa.gov/easey/camd-services/swagger)
-- **Base URL:** `https://api.epa.gov/easey/camd-services`
-
-#### Tags
-
-- Government
-- PowerSector
-- BulkData
-
-#### Properties
-
-- [Documentation](https://api.epa.gov/easey/camd-services/swagger)
-- [OpenAPI](openapi/cam-camd-services-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/cam-camd-services.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-camd-services.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/cam-camd-services-bulk-file-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-camd-services-email-recipient-list-request-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-camd-services-email-recipient-list-response-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-camd-services-report-column-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-camd-services-report-detail-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-camd-services-report-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/cam-camd-services-bulk-file-dto-structure.json)
-- [JSON Structure](json-structure/cam-camd-services-email-recipient-list-request-dto-structure.json)
-- [JSON Structure](json-structure/cam-camd-services-email-recipient-list-response-dto-structure.json)
-- [JSON Structure](json-structure/cam-camd-services-report-column-dto-structure.json)
-- [JSON Structure](json-structure/cam-camd-services-report-detail-dto-structure.json)
-- [JSON Structure](json-structure/cam-camd-services-report-dto-structure.json)
-- [Example](examples/cam-camd-services-bulk-file-dto-example.json)
-- [Example](examples/cam-camd-services-email-recipient-list-request-dto-example.json)
-- [Example](examples/cam-camd-services-email-recipient-list-response-dto-example.json)
-- [Example](examples/cam-camd-services-report-column-dto-example.json)
-- [Example](examples/cam-camd-services-report-detail-dto-example.json)
-- [Example](examples/cam-camd-services-report-dto-example.json)
-
-### CAM — Emissions Management
-
-Continuous emissions monitoring data submission and retrieval for fossil power plants.
-
-- **Human URL:** [https://api.epa.gov/easey/emissions-mgmt/swagger](https://api.epa.gov/easey/emissions-mgmt/swagger)
-- **Base URL:** `https://api.epa.gov/easey/emissions-mgmt`
-
-#### Tags
-
-- Government
-- PowerSector
-- Emissions
-
-#### Properties
-
-- [Documentation](https://api.epa.gov/easey/emissions-mgmt/swagger)
-- [OpenAPI](openapi/cam-emissions-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/cam-emissions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-emissions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/cam-emissions-annual-apportioned-emissions-aggregation-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-emissions-annual-apportioned-emissions-facility-aggregation-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-emissions-annual-apportioned-emissions-state-aggregation-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-emissions-annual-unit-data-view-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-emissions-applicable-apportioned-emissions-attributes-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-emissions-daily-apportioned-emissions-facility-aggregation-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-emissions-daily-apportioned-emissions-national-aggregation-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-emissions-daily-apportioned-emissions-state-aggregation-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-emissions-day-unit-data-view-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-emissions-emissions-review-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-emissions-emissions-submissions-progress-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-emissions-emissions-view-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-emissions-hour-unit-data-view-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-emissions-hour-unit-mats-data-view-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-emissions-hourly-apportioned-emissions-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-emissions-hourly-apportioned-emissions-facility-aggregation-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-emissions-hourly-apportioned-emissions-national-aggregation-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-emissions-hourly-apportioned-emissions-state-aggregation-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-emissions-hourly-mats-apportioned-emissions-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-emissions-month-unit-data-view-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-emissions-monthly-apportioned-emissions-facility-aggregation-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-emissions-monthly-apportioned-emissions-national-aggregation-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-emissions-monthly-apportioned-emissions-state-aggregation-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-emissions-ozone-apportioned-emissions-facility-aggregation-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-emissions-ozone-apportioned-emissions-national-aggregation-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-emissions-ozone-apportioned-emissions-state-aggregation-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-emissions-ozone-unit-data-view-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-emissions-quarter-unit-data-view-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-emissions-quarterly-apportioned-emissions-facility-aggregation-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-emissions-quarterly-apportioned-emissions-national-aggregation-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-emissions-quarterly-apportioned-emissions-state-aggregation-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/cam-emissions-annual-apportioned-emissions-aggregation-dto-structure.json)
-- [JSON Structure](json-structure/cam-emissions-annual-apportioned-emissions-facility-aggregation-dto-structure.json)
-- [JSON Structure](json-structure/cam-emissions-annual-apportioned-emissions-state-aggregation-dto-structure.json)
-- [JSON Structure](json-structure/cam-emissions-annual-unit-data-view-structure.json)
-- [JSON Structure](json-structure/cam-emissions-applicable-apportioned-emissions-attributes-dto-structure.json)
-- [JSON Structure](json-structure/cam-emissions-daily-apportioned-emissions-facility-aggregation-dto-structure.json)
-- [JSON Structure](json-structure/cam-emissions-daily-apportioned-emissions-national-aggregation-dto-structure.json)
-- [JSON Structure](json-structure/cam-emissions-daily-apportioned-emissions-state-aggregation-dto-structure.json)
-- [JSON Structure](json-structure/cam-emissions-day-unit-data-view-structure.json)
-- [JSON Structure](json-structure/cam-emissions-emissions-review-dto-structure.json)
-- [JSON Structure](json-structure/cam-emissions-emissions-submissions-progress-dto-structure.json)
-- [JSON Structure](json-structure/cam-emissions-emissions-view-dto-structure.json)
-- [JSON Structure](json-structure/cam-emissions-hour-unit-data-view-structure.json)
-- [JSON Structure](json-structure/cam-emissions-hour-unit-mats-data-view-structure.json)
-- [JSON Structure](json-structure/cam-emissions-hourly-apportioned-emissions-dto-structure.json)
-- [JSON Structure](json-structure/cam-emissions-hourly-apportioned-emissions-facility-aggregation-dto-structure.json)
-- [JSON Structure](json-structure/cam-emissions-hourly-apportioned-emissions-national-aggregation-dto-structure.json)
-- [JSON Structure](json-structure/cam-emissions-hourly-apportioned-emissions-state-aggregation-dto-structure.json)
-- [JSON Structure](json-structure/cam-emissions-hourly-mats-apportioned-emissions-dto-structure.json)
-- [JSON Structure](json-structure/cam-emissions-month-unit-data-view-structure.json)
-- [JSON Structure](json-structure/cam-emissions-monthly-apportioned-emissions-facility-aggregation-dto-structure.json)
-- [JSON Structure](json-structure/cam-emissions-monthly-apportioned-emissions-national-aggregation-dto-structure.json)
-- [JSON Structure](json-structure/cam-emissions-monthly-apportioned-emissions-state-aggregation-dto-structure.json)
-- [JSON Structure](json-structure/cam-emissions-ozone-apportioned-emissions-facility-aggregation-dto-structure.json)
-- [JSON Structure](json-structure/cam-emissions-ozone-apportioned-emissions-national-aggregation-dto-structure.json)
-- [JSON Structure](json-structure/cam-emissions-ozone-apportioned-emissions-state-aggregation-dto-structure.json)
-- [JSON Structure](json-structure/cam-emissions-ozone-unit-data-view-structure.json)
-- [JSON Structure](json-structure/cam-emissions-quarter-unit-data-view-structure.json)
-- [JSON Structure](json-structure/cam-emissions-quarterly-apportioned-emissions-facility-aggregation-dto-structure.json)
-- [JSON Structure](json-structure/cam-emissions-quarterly-apportioned-emissions-national-aggregation-dto-structure.json)
-- [JSON Structure](json-structure/cam-emissions-quarterly-apportioned-emissions-state-aggregation-dto-structure.json)
-- [Example](examples/cam-emissions-annual-apportioned-emissions-aggregation-dto-example.json)
-- [Example](examples/cam-emissions-annual-apportioned-emissions-facility-aggregation-dto-example.json)
-- [Example](examples/cam-emissions-annual-apportioned-emissions-state-aggregation-dto-example.json)
-- [Example](examples/cam-emissions-annual-unit-data-view-example.json)
-- [Example](examples/cam-emissions-applicable-apportioned-emissions-attributes-dto-example.json)
-- [Example](examples/cam-emissions-daily-apportioned-emissions-facility-aggregation-dto-example.json)
-- [Example](examples/cam-emissions-daily-apportioned-emissions-national-aggregation-dto-example.json)
-- [Example](examples/cam-emissions-daily-apportioned-emissions-state-aggregation-dto-example.json)
-- [Example](examples/cam-emissions-day-unit-data-view-example.json)
-- [Example](examples/cam-emissions-emissions-review-dto-example.json)
-- [Example](examples/cam-emissions-emissions-submissions-progress-dto-example.json)
-- [Example](examples/cam-emissions-emissions-view-dto-example.json)
-- [Example](examples/cam-emissions-hour-unit-data-view-example.json)
-- [Example](examples/cam-emissions-hour-unit-mats-data-view-example.json)
-- [Example](examples/cam-emissions-hourly-apportioned-emissions-dto-example.json)
-- [Example](examples/cam-emissions-hourly-apportioned-emissions-facility-aggregation-dto-example.json)
-- [Example](examples/cam-emissions-hourly-apportioned-emissions-national-aggregation-dto-example.json)
-- [Example](examples/cam-emissions-hourly-apportioned-emissions-state-aggregation-dto-example.json)
-- [Example](examples/cam-emissions-hourly-mats-apportioned-emissions-dto-example.json)
-- [Example](examples/cam-emissions-month-unit-data-view-example.json)
-- [Example](examples/cam-emissions-monthly-apportioned-emissions-facility-aggregation-dto-example.json)
-- [Example](examples/cam-emissions-monthly-apportioned-emissions-national-aggregation-dto-example.json)
-- [Example](examples/cam-emissions-monthly-apportioned-emissions-state-aggregation-dto-example.json)
-- [Example](examples/cam-emissions-ozone-apportioned-emissions-facility-aggregation-dto-example.json)
-- [Example](examples/cam-emissions-ozone-apportioned-emissions-national-aggregation-dto-example.json)
-- [Example](examples/cam-emissions-ozone-apportioned-emissions-state-aggregation-dto-example.json)
-- [Example](examples/cam-emissions-ozone-unit-data-view-example.json)
-- [Example](examples/cam-emissions-quarter-unit-data-view-example.json)
-- [Example](examples/cam-emissions-quarterly-apportioned-emissions-facility-aggregation-dto-example.json)
-- [Example](examples/cam-emissions-quarterly-apportioned-emissions-national-aggregation-dto-example.json)
-- [Example](examples/cam-emissions-quarterly-apportioned-emissions-state-aggregation-dto-example.json)
-
-### CAM — Facilities Management
-
-Power plant facility, unit, stack, and owner attributes for CAM-regulated sources.
-
-- **Human URL:** [https://api.epa.gov/easey/facilities-mgmt/swagger](https://api.epa.gov/easey/facilities-mgmt/swagger)
-- **Base URL:** `https://api.epa.gov/easey/facilities-mgmt`
-
-#### Tags
-
-- Government
-- PowerSector
-- Facilities
-
-#### Properties
-
-- [Documentation](https://api.epa.gov/easey/facilities-mgmt/swagger)
-- [OpenAPI](openapi/cam-facilities-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/cam-facilities.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-facilities.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/cam-facilities-applicable-facility-attributes-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-facilities-facility-attributes-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-facilities-facility-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/cam-facilities-applicable-facility-attributes-dto-structure.json)
-- [JSON Structure](json-structure/cam-facilities-facility-attributes-dto-structure.json)
-- [JSON Structure](json-structure/cam-facilities-facility-dto-structure.json)
-- [Example](examples/cam-facilities-applicable-facility-attributes-dto-example.json)
-- [Example](examples/cam-facilities-facility-attributes-dto-example.json)
-- [Example](examples/cam-facilities-facility-dto-example.json)
-
-### CAM — Master Data Management
-
-Lookup codes and reference data spanning the CAM domain.
-
-- **Human URL:** [https://api.epa.gov/easey/master-data-mgmt/swagger](https://api.epa.gov/easey/master-data-mgmt/swagger)
-- **Base URL:** `https://api.epa.gov/easey/master-data-mgmt`
-
-#### Tags
-
-- Government
-- PowerSector
-- MasterData
-
-#### Properties
-
-- [Documentation](https://api.epa.gov/easey/master-data-mgmt/swagger)
-- [OpenAPI](openapi/cam-master-data-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/cam-master-data.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-master-data.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/cam-master-data-account-type-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-master-data-code-table-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-master-data-control-technology-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-master-data-data-column-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-master-data-data-set-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-master-data-data-table-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-master-data-fuel-type-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-master-data-program-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-master-data-reporting-period-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-master-data-unit-type-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/cam-master-data-account-type-dto-structure.json)
-- [JSON Structure](json-structure/cam-master-data-code-table-dto-structure.json)
-- [JSON Structure](json-structure/cam-master-data-control-technology-dto-structure.json)
-- [JSON Structure](json-structure/cam-master-data-data-column-dto-structure.json)
-- [JSON Structure](json-structure/cam-master-data-data-set-dto-structure.json)
-- [JSON Structure](json-structure/cam-master-data-data-table-dto-structure.json)
-- [JSON Structure](json-structure/cam-master-data-fuel-type-dto-structure.json)
-- [JSON Structure](json-structure/cam-master-data-program-dto-structure.json)
-- [JSON Structure](json-structure/cam-master-data-reporting-period-dto-structure.json)
-- [JSON Structure](json-structure/cam-master-data-unit-type-dto-structure.json)
-- [Example](examples/cam-master-data-account-type-dto-example.json)
-- [Example](examples/cam-master-data-code-table-dto-example.json)
-- [Example](examples/cam-master-data-control-technology-dto-example.json)
-- [Example](examples/cam-master-data-data-column-dto-example.json)
-- [Example](examples/cam-master-data-data-set-dto-example.json)
-- [Example](examples/cam-master-data-data-table-dto-example.json)
-- [Example](examples/cam-master-data-fuel-type-dto-example.json)
-- [Example](examples/cam-master-data-program-dto-example.json)
-- [Example](examples/cam-master-data-reporting-period-dto-example.json)
-- [Example](examples/cam-master-data-unit-type-dto-example.json)
-
-### CAM — Monitoring Plan Management
-
-Continuous emissions monitoring plan retrieval and submission.
-
-- **Human URL:** [https://api.epa.gov/easey/monitor-plan-mgmt/swagger](https://api.epa.gov/easey/monitor-plan-mgmt/swagger)
-- **Base URL:** `https://api.epa.gov/easey/monitor-plan-mgmt`
-
-#### Tags
-
-- Government
-- PowerSector
-- Emissions
-
-#### Properties
-
-- [Documentation](https://api.epa.gov/easey/monitor-plan-mgmt/swagger)
-- [OpenAPI](openapi/cam-monitor-plan-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/cam-monitor-plan.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-monitor-plan.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/cam-monitor-plan-analyzer-range-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-analyzer-range-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-component-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-component-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-duct-waf-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-duct-waf-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-emission-evaluation-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-last-updated-config-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-leequalification-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-leequalification-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-lmequalification-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-lmequalification-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-mats-method-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-mats-method-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-monitor-attribute-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-monitor-attribute-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-monitor-default-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-monitor-default-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-monitor-formula-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-monitor-formula-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-monitor-load-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-monitor-load-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-monitor-location-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-monitor-location-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-monitor-method-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-monitor-method-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-monitor-plan-comment-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-monitor-plan-comment-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-monitor-plan-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-monitor-plan-reporting-freq-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-monitor-plan-reporting-frequency-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-monitor-plan-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-monitor-qualification-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-monitor-qualification-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-monitor-span-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-monitor-span-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-monitor-system-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-monitor-system-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-pctqualification-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-pctqualification-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-plant-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-program-code-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-program-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-reporting-freq-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-reporting-period-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-stack-pipe-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-system-component-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-system-component-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-system-fuel-flow-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-system-fuel-flow-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-unit-boiler-type-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-unit-capacity-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-unit-capacity-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-unit-control-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-unit-control-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-unit-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-unit-fuel-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-unit-fuel-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-unit-op-status-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-unit-program-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-unit-program-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-unit-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-unit-stack-configuration-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-monitor-plan-unit-stack-configuration-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/cam-monitor-plan-analyzer-range-dto-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-analyzer-range-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-component-dto-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-component-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-duct-waf-dto-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-duct-waf-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-emission-evaluation-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-last-updated-config-dto-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-leequalification-dto-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-leequalification-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-lmequalification-dto-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-lmequalification-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-mats-method-dto-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-mats-method-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-monitor-attribute-dto-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-monitor-attribute-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-monitor-default-dto-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-monitor-default-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-monitor-formula-dto-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-monitor-formula-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-monitor-load-dto-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-monitor-load-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-monitor-location-dto-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-monitor-location-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-monitor-method-dto-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-monitor-method-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-monitor-plan-comment-dto-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-monitor-plan-comment-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-monitor-plan-dto-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-monitor-plan-reporting-freq-dto-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-monitor-plan-reporting-frequency-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-monitor-plan-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-monitor-qualification-dto-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-monitor-qualification-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-monitor-span-dto-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-monitor-span-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-monitor-system-dto-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-monitor-system-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-pctqualification-dto-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-pctqualification-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-plant-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-program-code-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-program-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-reporting-freq-dto-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-reporting-period-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-stack-pipe-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-system-component-dto-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-system-component-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-system-fuel-flow-dto-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-system-fuel-flow-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-unit-boiler-type-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-unit-capacity-dto-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-unit-capacity-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-unit-control-dto-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-unit-control-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-unit-dto-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-unit-fuel-dto-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-unit-fuel-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-unit-op-status-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-unit-program-dto-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-unit-program-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-unit-stack-configuration-dto-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-unit-stack-configuration-structure.json)
-- [JSON Structure](json-structure/cam-monitor-plan-unit-structure.json)
-- [Example](examples/cam-monitor-plan-analyzer-range-dto-example.json)
-- [Example](examples/cam-monitor-plan-analyzer-range-example.json)
-- [Example](examples/cam-monitor-plan-component-dto-example.json)
-- [Example](examples/cam-monitor-plan-component-example.json)
-- [Example](examples/cam-monitor-plan-duct-waf-dto-example.json)
-- [Example](examples/cam-monitor-plan-duct-waf-example.json)
-- [Example](examples/cam-monitor-plan-emission-evaluation-example.json)
-- [Example](examples/cam-monitor-plan-last-updated-config-dto-example.json)
-- [Example](examples/cam-monitor-plan-leequalification-dto-example.json)
-- [Example](examples/cam-monitor-plan-leequalification-example.json)
-- [Example](examples/cam-monitor-plan-lmequalification-dto-example.json)
-- [Example](examples/cam-monitor-plan-lmequalification-example.json)
-- [Example](examples/cam-monitor-plan-mats-method-dto-example.json)
-- [Example](examples/cam-monitor-plan-mats-method-example.json)
-- [Example](examples/cam-monitor-plan-monitor-attribute-dto-example.json)
-- [Example](examples/cam-monitor-plan-monitor-attribute-example.json)
-- [Example](examples/cam-monitor-plan-monitor-default-dto-example.json)
-- [Example](examples/cam-monitor-plan-monitor-default-example.json)
-- [Example](examples/cam-monitor-plan-monitor-formula-dto-example.json)
-- [Example](examples/cam-monitor-plan-monitor-formula-example.json)
-- [Example](examples/cam-monitor-plan-monitor-load-dto-example.json)
-- [Example](examples/cam-monitor-plan-monitor-load-example.json)
-- [Example](examples/cam-monitor-plan-monitor-location-dto-example.json)
-- [Example](examples/cam-monitor-plan-monitor-location-example.json)
-- [Example](examples/cam-monitor-plan-monitor-method-dto-example.json)
-- [Example](examples/cam-monitor-plan-monitor-method-example.json)
-- [Example](examples/cam-monitor-plan-monitor-plan-comment-dto-example.json)
-- [Example](examples/cam-monitor-plan-monitor-plan-comment-example.json)
-- [Example](examples/cam-monitor-plan-monitor-plan-dto-example.json)
-- [Example](examples/cam-monitor-plan-monitor-plan-example.json)
-- [Example](examples/cam-monitor-plan-monitor-plan-reporting-freq-dto-example.json)
-- [Example](examples/cam-monitor-plan-monitor-plan-reporting-frequency-example.json)
-- [Example](examples/cam-monitor-plan-monitor-qualification-dto-example.json)
-- [Example](examples/cam-monitor-plan-monitor-qualification-example.json)
-- [Example](examples/cam-monitor-plan-monitor-span-dto-example.json)
-- [Example](examples/cam-monitor-plan-monitor-span-example.json)
-- [Example](examples/cam-monitor-plan-monitor-system-dto-example.json)
-- [Example](examples/cam-monitor-plan-monitor-system-example.json)
-- [Example](examples/cam-monitor-plan-pctqualification-dto-example.json)
-- [Example](examples/cam-monitor-plan-pctqualification-example.json)
-- [Example](examples/cam-monitor-plan-plant-example.json)
-- [Example](examples/cam-monitor-plan-program-code-example.json)
-- [Example](examples/cam-monitor-plan-program-example.json)
-- [Example](examples/cam-monitor-plan-reporting-freq-dto-example.json)
-- [Example](examples/cam-monitor-plan-reporting-period-example.json)
-- [Example](examples/cam-monitor-plan-stack-pipe-example.json)
-- [Example](examples/cam-monitor-plan-system-component-dto-example.json)
-- [Example](examples/cam-monitor-plan-system-component-example.json)
-- [Example](examples/cam-monitor-plan-system-fuel-flow-dto-example.json)
-- [Example](examples/cam-monitor-plan-system-fuel-flow-example.json)
-- [Example](examples/cam-monitor-plan-unit-boiler-type-example.json)
-- [Example](examples/cam-monitor-plan-unit-capacity-dto-example.json)
-- [Example](examples/cam-monitor-plan-unit-capacity-example.json)
-- [Example](examples/cam-monitor-plan-unit-control-dto-example.json)
-- [Example](examples/cam-monitor-plan-unit-control-example.json)
-- [Example](examples/cam-monitor-plan-unit-dto-example.json)
-- [Example](examples/cam-monitor-plan-unit-example.json)
-- [Example](examples/cam-monitor-plan-unit-fuel-dto-example.json)
-- [Example](examples/cam-monitor-plan-unit-fuel-example.json)
-- [Example](examples/cam-monitor-plan-unit-op-status-example.json)
-- [Example](examples/cam-monitor-plan-unit-program-dto-example.json)
-- [Example](examples/cam-monitor-plan-unit-program-example.json)
-- [Example](examples/cam-monitor-plan-unit-stack-configuration-dto-example.json)
-- [Example](examples/cam-monitor-plan-unit-stack-configuration-example.json)
-
-### CAM — QA & Certifications Management
-
-Quality assurance test and certification data for CAM-regulated emissions monitoring systems.
-
-- **Human URL:** [https://api.epa.gov/easey/qa-certification-mgmt/swagger](https://api.epa.gov/easey/qa-certification-mgmt/swagger)
-- **Base URL:** `https://api.epa.gov/easey/qa-certification-mgmt`
-
-#### Tags
-
-- Government
-- PowerSector
-- QualityAssurance
-
-#### Properties
-
-- [Documentation](https://api.epa.gov/easey/qa-certification-mgmt/swagger)
-- [OpenAPI](openapi/cam-qa-cert-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/cam-qa-cert.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-qa-cert.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/cam-qa-cert-air-emission-testing-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-app-ecorrelation-test-run-base-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-app-ecorrelation-test-run-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-app-ecorrelation-test-run-record-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-app-ecorrelation-test-summary-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-app-ecorrelation-test-summary-record-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-app-eheat-input-from-gas-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-app-eheat-input-from-gas-record-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-app-eheat-input-from-oil-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-app-eheat-input-from-oil-record-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-calibration-injection-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-cert-event-review-and-submit-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-cycle-time-injection-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-cycle-time-injection-record-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-cycle-time-summary-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-flow-rata-run-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-flow-to-load-check-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-flow-to-load-check-record-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-flow-to-load-reference-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-flow-to-load-reference-record-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-fuel-flow-to-load-baseline-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-fuel-flow-to-load-test-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-fuel-flowmeter-accuracy-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-fuel-flowmeter-accuracy-record-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-hg-injection-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-hg-injection-record-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-hg-summary-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-linearity-injection-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-linearity-injection-record-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-linearity-summary-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-linearity-summary-record-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-online-offline-calibration-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-online-offline-calibration-record-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-protocol-gas-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-protocol-gas-record-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-qacertification-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-qacertification-event-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-rata-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-rata-record-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-rata-run-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-rata-summary-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-rata-summary-record-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-rata-traverse-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-rata-traverse-record-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-review-and-submit-test-summary-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-tee-review-and-submit-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-test-extension-exemption-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-test-extension-exemption-record-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-test-qualification-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-test-qualification-record-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-test-summary-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-test-summary-record-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-transmitter-transducer-accuracy-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-unit-default-test-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-unit-default-test-record-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-unit-default-test-run-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-qa-cert-unit-default-test-run-record-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/cam-qa-cert-air-emission-testing-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-app-ecorrelation-test-run-base-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-app-ecorrelation-test-run-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-app-ecorrelation-test-run-record-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-app-ecorrelation-test-summary-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-app-ecorrelation-test-summary-record-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-app-eheat-input-from-gas-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-app-eheat-input-from-gas-record-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-app-eheat-input-from-oil-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-app-eheat-input-from-oil-record-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-calibration-injection-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-cert-event-review-and-submit-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-cycle-time-injection-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-cycle-time-injection-record-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-cycle-time-summary-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-flow-rata-run-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-flow-to-load-check-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-flow-to-load-check-record-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-flow-to-load-reference-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-flow-to-load-reference-record-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-fuel-flow-to-load-baseline-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-fuel-flow-to-load-test-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-fuel-flowmeter-accuracy-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-fuel-flowmeter-accuracy-record-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-hg-injection-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-hg-injection-record-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-hg-summary-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-linearity-injection-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-linearity-injection-record-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-linearity-summary-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-linearity-summary-record-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-online-offline-calibration-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-online-offline-calibration-record-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-protocol-gas-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-protocol-gas-record-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-qacertification-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-qacertification-event-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-rata-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-rata-record-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-rata-run-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-rata-summary-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-rata-summary-record-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-rata-traverse-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-rata-traverse-record-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-review-and-submit-test-summary-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-tee-review-and-submit-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-test-extension-exemption-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-test-extension-exemption-record-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-test-qualification-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-test-qualification-record-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-test-summary-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-test-summary-record-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-transmitter-transducer-accuracy-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-unit-default-test-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-unit-default-test-record-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-unit-default-test-run-dto-structure.json)
-- [JSON Structure](json-structure/cam-qa-cert-unit-default-test-run-record-dto-structure.json)
-- [Example](examples/cam-qa-cert-air-emission-testing-dto-example.json)
-- [Example](examples/cam-qa-cert-app-ecorrelation-test-run-base-dto-example.json)
-- [Example](examples/cam-qa-cert-app-ecorrelation-test-run-dto-example.json)
-- [Example](examples/cam-qa-cert-app-ecorrelation-test-run-record-dto-example.json)
-- [Example](examples/cam-qa-cert-app-ecorrelation-test-summary-dto-example.json)
-- [Example](examples/cam-qa-cert-app-ecorrelation-test-summary-record-dto-example.json)
-- [Example](examples/cam-qa-cert-app-eheat-input-from-gas-dto-example.json)
-- [Example](examples/cam-qa-cert-app-eheat-input-from-gas-record-dto-example.json)
-- [Example](examples/cam-qa-cert-app-eheat-input-from-oil-dto-example.json)
-- [Example](examples/cam-qa-cert-app-eheat-input-from-oil-record-dto-example.json)
-- [Example](examples/cam-qa-cert-calibration-injection-dto-example.json)
-- [Example](examples/cam-qa-cert-cert-event-review-and-submit-dto-example.json)
-- [Example](examples/cam-qa-cert-cycle-time-injection-dto-example.json)
-- [Example](examples/cam-qa-cert-cycle-time-injection-record-dto-example.json)
-- [Example](examples/cam-qa-cert-cycle-time-summary-dto-example.json)
-- [Example](examples/cam-qa-cert-flow-rata-run-dto-example.json)
-- [Example](examples/cam-qa-cert-flow-to-load-check-dto-example.json)
-- [Example](examples/cam-qa-cert-flow-to-load-check-record-dto-example.json)
-- [Example](examples/cam-qa-cert-flow-to-load-reference-dto-example.json)
-- [Example](examples/cam-qa-cert-flow-to-load-reference-record-dto-example.json)
-- [Example](examples/cam-qa-cert-fuel-flow-to-load-baseline-dto-example.json)
-- [Example](examples/cam-qa-cert-fuel-flow-to-load-test-dto-example.json)
-- [Example](examples/cam-qa-cert-fuel-flowmeter-accuracy-dto-example.json)
-- [Example](examples/cam-qa-cert-fuel-flowmeter-accuracy-record-dto-example.json)
-- [Example](examples/cam-qa-cert-hg-injection-dto-example.json)
-- [Example](examples/cam-qa-cert-hg-injection-record-dto-example.json)
-- [Example](examples/cam-qa-cert-hg-summary-dto-example.json)
-- [Example](examples/cam-qa-cert-linearity-injection-dto-example.json)
-- [Example](examples/cam-qa-cert-linearity-injection-record-dto-example.json)
-- [Example](examples/cam-qa-cert-linearity-summary-dto-example.json)
-- [Example](examples/cam-qa-cert-linearity-summary-record-dto-example.json)
-- [Example](examples/cam-qa-cert-online-offline-calibration-dto-example.json)
-- [Example](examples/cam-qa-cert-online-offline-calibration-record-dto-example.json)
-- [Example](examples/cam-qa-cert-protocol-gas-dto-example.json)
-- [Example](examples/cam-qa-cert-protocol-gas-record-dto-example.json)
-- [Example](examples/cam-qa-cert-qacertification-dto-example.json)
-- [Example](examples/cam-qa-cert-qacertification-event-dto-example.json)
-- [Example](examples/cam-qa-cert-rata-dto-example.json)
-- [Example](examples/cam-qa-cert-rata-record-dto-example.json)
-- [Example](examples/cam-qa-cert-rata-run-dto-example.json)
-- [Example](examples/cam-qa-cert-rata-summary-dto-example.json)
-- [Example](examples/cam-qa-cert-rata-summary-record-dto-example.json)
-- [Example](examples/cam-qa-cert-rata-traverse-dto-example.json)
-- [Example](examples/cam-qa-cert-rata-traverse-record-dto-example.json)
-- [Example](examples/cam-qa-cert-review-and-submit-test-summary-dto-example.json)
-- [Example](examples/cam-qa-cert-tee-review-and-submit-dto-example.json)
-- [Example](examples/cam-qa-cert-test-extension-exemption-dto-example.json)
-- [Example](examples/cam-qa-cert-test-extension-exemption-record-dto-example.json)
-- [Example](examples/cam-qa-cert-test-qualification-dto-example.json)
-- [Example](examples/cam-qa-cert-test-qualification-record-dto-example.json)
-- [Example](examples/cam-qa-cert-test-summary-dto-example.json)
-- [Example](examples/cam-qa-cert-test-summary-record-dto-example.json)
-- [Example](examples/cam-qa-cert-transmitter-transducer-accuracy-dto-example.json)
-- [Example](examples/cam-qa-cert-unit-default-test-dto-example.json)
-- [Example](examples/cam-qa-cert-unit-default-test-record-dto-example.json)
-- [Example](examples/cam-qa-cert-unit-default-test-run-dto-example.json)
-- [Example](examples/cam-qa-cert-unit-default-test-run-record-dto-example.json)
-
-### CAM — Streaming Services
-
-High-throughput streaming endpoints for accounts, allowances, facilities, and apportioned/raw emissions.
-
-- **Human URL:** [https://api.epa.gov/easey/streaming-services/swagger](https://api.epa.gov/easey/streaming-services/swagger)
-- **Base URL:** `https://api.epa.gov/easey/streaming-services`
-
-#### Tags
-
-- Government
-- PowerSector
-- Streaming
-
-#### Properties
-
-- [Documentation](https://api.epa.gov/easey/streaming-services/swagger)
-- [OpenAPI](openapi/cam-streaming-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/cam-streaming.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-streaming.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/cam-streaming-account-attributes-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-streaming-allowance-compliance-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-streaming-allowance-holdings-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-streaming-allowance-transactions-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-streaming-annual-apportioned-emissions-aggregation-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-streaming-annual-apportioned-emissions-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-streaming-annual-apportioned-emissions-facility-aggregation-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-streaming-annual-apportioned-emissions-state-aggregation-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-streaming-daily-apportioned-emissions-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-streaming-daily-apportioned-emissions-facility-aggregation-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-streaming-daily-apportioned-emissions-national-aggregation-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-streaming-daily-apportioned-emissions-state-aggregation-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-streaming-derived-hourly-value-base-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-streaming-emissions-compliance-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-streaming-facility-attributes-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-streaming-hourly-apportioned-emissions-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-streaming-hourly-apportioned-emissions-facility-aggregation-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-streaming-hourly-apportioned-emissions-national-aggregation-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-streaming-hourly-apportioned-emissions-state-aggregation-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-streaming-hourly-mats-apportioned-emissions-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-streaming-hourly-operating-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-streaming-monthly-apportioned-emissions-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-streaming-monthly-apportioned-emissions-facility-aggregation-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-streaming-monthly-apportioned-emissions-national-aggregation-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-streaming-monthly-apportioned-emissions-state-aggregation-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-streaming-ozone-apportioned-emissions-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-streaming-ozone-apportioned-emissions-facility-aggregation-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-streaming-ozone-apportioned-emissions-national-aggregation-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-streaming-ozone-apportioned-emissions-state-aggregation-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-streaming-quarterly-apportioned-emissions-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-streaming-quarterly-apportioned-emissions-facility-aggregation-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-streaming-quarterly-apportioned-emissions-national-aggregation-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-streaming-quarterly-apportioned-emissions-state-aggregation-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-streaming-summary-value-base-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cam-streaming-supplemental-operating-dto-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/cam-streaming-account-attributes-dto-structure.json)
-- [JSON Structure](json-structure/cam-streaming-allowance-compliance-dto-structure.json)
-- [JSON Structure](json-structure/cam-streaming-allowance-holdings-dto-structure.json)
-- [JSON Structure](json-structure/cam-streaming-allowance-transactions-dto-structure.json)
-- [JSON Structure](json-structure/cam-streaming-annual-apportioned-emissions-aggregation-dto-structure.json)
-- [JSON Structure](json-structure/cam-streaming-annual-apportioned-emissions-dto-structure.json)
-- [JSON Structure](json-structure/cam-streaming-annual-apportioned-emissions-facility-aggregation-dto-structure.json)
-- [JSON Structure](json-structure/cam-streaming-annual-apportioned-emissions-state-aggregation-dto-structure.json)
-- [JSON Structure](json-structure/cam-streaming-daily-apportioned-emissions-dto-structure.json)
-- [JSON Structure](json-structure/cam-streaming-daily-apportioned-emissions-facility-aggregation-dto-structure.json)
-- [JSON Structure](json-structure/cam-streaming-daily-apportioned-emissions-national-aggregation-dto-structure.json)
-- [JSON Structure](json-structure/cam-streaming-daily-apportioned-emissions-state-aggregation-dto-structure.json)
-- [JSON Structure](json-structure/cam-streaming-derived-hourly-value-base-dto-structure.json)
-- [JSON Structure](json-structure/cam-streaming-emissions-compliance-dto-structure.json)
-- [JSON Structure](json-structure/cam-streaming-facility-attributes-dto-structure.json)
-- [JSON Structure](json-structure/cam-streaming-hourly-apportioned-emissions-dto-structure.json)
-- [JSON Structure](json-structure/cam-streaming-hourly-apportioned-emissions-facility-aggregation-dto-structure.json)
-- [JSON Structure](json-structure/cam-streaming-hourly-apportioned-emissions-national-aggregation-dto-structure.json)
-- [JSON Structure](json-structure/cam-streaming-hourly-apportioned-emissions-state-aggregation-dto-structure.json)
-- [JSON Structure](json-structure/cam-streaming-hourly-mats-apportioned-emissions-dto-structure.json)
-- [JSON Structure](json-structure/cam-streaming-hourly-operating-dto-structure.json)
-- [JSON Structure](json-structure/cam-streaming-monthly-apportioned-emissions-dto-structure.json)
-- [JSON Structure](json-structure/cam-streaming-monthly-apportioned-emissions-facility-aggregation-dto-structure.json)
-- [JSON Structure](json-structure/cam-streaming-monthly-apportioned-emissions-national-aggregation-dto-structure.json)
-- [JSON Structure](json-structure/cam-streaming-monthly-apportioned-emissions-state-aggregation-dto-structure.json)
-- [JSON Structure](json-structure/cam-streaming-ozone-apportioned-emissions-dto-structure.json)
-- [JSON Structure](json-structure/cam-streaming-ozone-apportioned-emissions-facility-aggregation-dto-structure.json)
-- [JSON Structure](json-structure/cam-streaming-ozone-apportioned-emissions-national-aggregation-dto-structure.json)
-- [JSON Structure](json-structure/cam-streaming-ozone-apportioned-emissions-state-aggregation-dto-structure.json)
-- [JSON Structure](json-structure/cam-streaming-quarterly-apportioned-emissions-dto-structure.json)
-- [JSON Structure](json-structure/cam-streaming-quarterly-apportioned-emissions-facility-aggregation-dto-structure.json)
-- [JSON Structure](json-structure/cam-streaming-quarterly-apportioned-emissions-national-aggregation-dto-structure.json)
-- [JSON Structure](json-structure/cam-streaming-quarterly-apportioned-emissions-state-aggregation-dto-structure.json)
-- [JSON Structure](json-structure/cam-streaming-summary-value-base-dto-structure.json)
-- [JSON Structure](json-structure/cam-streaming-supplemental-operating-dto-structure.json)
-- [Example](examples/cam-streaming-account-attributes-dto-example.json)
-- [Example](examples/cam-streaming-allowance-compliance-dto-example.json)
-- [Example](examples/cam-streaming-allowance-holdings-dto-example.json)
-- [Example](examples/cam-streaming-allowance-transactions-dto-example.json)
-- [Example](examples/cam-streaming-annual-apportioned-emissions-aggregation-dto-example.json)
-- [Example](examples/cam-streaming-annual-apportioned-emissions-dto-example.json)
-- [Example](examples/cam-streaming-annual-apportioned-emissions-facility-aggregation-dto-example.json)
-- [Example](examples/cam-streaming-annual-apportioned-emissions-state-aggregation-dto-example.json)
-- [Example](examples/cam-streaming-daily-apportioned-emissions-dto-example.json)
-- [Example](examples/cam-streaming-daily-apportioned-emissions-facility-aggregation-dto-example.json)
-- [Example](examples/cam-streaming-daily-apportioned-emissions-national-aggregation-dto-example.json)
-- [Example](examples/cam-streaming-daily-apportioned-emissions-state-aggregation-dto-example.json)
-- [Example](examples/cam-streaming-derived-hourly-value-base-dto-example.json)
-- [Example](examples/cam-streaming-emissions-compliance-dto-example.json)
-- [Example](examples/cam-streaming-facility-attributes-dto-example.json)
-- [Example](examples/cam-streaming-hourly-apportioned-emissions-dto-example.json)
-- [Example](examples/cam-streaming-hourly-apportioned-emissions-facility-aggregation-dto-example.json)
-- [Example](examples/cam-streaming-hourly-apportioned-emissions-national-aggregation-dto-example.json)
-- [Example](examples/cam-streaming-hourly-apportioned-emissions-state-aggregation-dto-example.json)
-- [Example](examples/cam-streaming-hourly-mats-apportioned-emissions-dto-example.json)
-- [Example](examples/cam-streaming-hourly-operating-dto-example.json)
-- [Example](examples/cam-streaming-monthly-apportioned-emissions-dto-example.json)
-- [Example](examples/cam-streaming-monthly-apportioned-emissions-facility-aggregation-dto-example.json)
-- [Example](examples/cam-streaming-monthly-apportioned-emissions-national-aggregation-dto-example.json)
-- [Example](examples/cam-streaming-monthly-apportioned-emissions-state-aggregation-dto-example.json)
-- [Example](examples/cam-streaming-ozone-apportioned-emissions-dto-example.json)
-- [Example](examples/cam-streaming-ozone-apportioned-emissions-facility-aggregation-dto-example.json)
-- [Example](examples/cam-streaming-ozone-apportioned-emissions-national-aggregation-dto-example.json)
-- [Example](examples/cam-streaming-ozone-apportioned-emissions-state-aggregation-dto-example.json)
-- [Example](examples/cam-streaming-quarterly-apportioned-emissions-dto-example.json)
-- [Example](examples/cam-streaming-quarterly-apportioned-emissions-facility-aggregation-dto-example.json)
-- [Example](examples/cam-streaming-quarterly-apportioned-emissions-national-aggregation-dto-example.json)
-- [Example](examples/cam-streaming-quarterly-apportioned-emissions-state-aggregation-dto-example.json)
-- [Example](examples/cam-streaming-summary-value-base-dto-example.json)
-- [Example](examples/cam-streaming-supplemental-operating-dto-example.json)
-
-### CIP — Catchment Index Processing Service
-
-StreamCat / LakeCat catchment indexing and metric services.
-
-- **Human URL:** [https://github.com/USEPA/CIP-service](https://github.com/USEPA/CIP-service)
-- **Base URL:** `https://cipservice.app.cloud.gov`
-
-#### Tags
-
-- Government
-- Watersheds
-- GIS
-
-#### Properties
-
-- [Documentation](https://github.com/USEPA/CIP-service)
-- [OpenAPI](openapi/cip-service-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/cip-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cip-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/cip-service-aggregation-engine-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-cipsrv-domains-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-cipsrv-domains-state-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-cipsrv-domains-states-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-cipsrv-domains-tribe-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-cipsrv-domains-tribes-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-cipsrv-index-rb-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-cipsrv-index-resp-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-cipsrv-registry-components-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-cipsrv-registry-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-coordinates1-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-coordinates2-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-coordinates3-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-delineate-rb-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-delineate-resp-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-delineated-area-properties-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-end-point-properties-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-event-feature-properties-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-fcode-allow-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-fcode-deny-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-fill-basin-holes-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-flow-accumulation-rb-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-flow-accumulation-resp-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-flowline-count-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-geojson-bbox-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-geojson-feature-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-geojson-featurecollection-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-geojson-geometry-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-globalid-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-hydroseq-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-image-format-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-indexed-catchment-properties-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-indexed-flowline-properties-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-indexing-engine-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-indexing-line-properties-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-indexing-summary-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-known-region-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-linked-data-program-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-linked-data-wqp-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-max-distancekm-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-max-flowtimeday-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-measure-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-navigate-rb-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-navigate-resp-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-navigated-flowline-properties-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-nhdplus-version-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-nhdplusid-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-ordinate-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-permanent-identifier-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-pointindexing-rb-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-pointindexing-resp-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-randomcatchment-rb-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-randomcatchment-resp-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-randomhuc12-rb-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-randomhuc12-resp-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-randomnav-rb-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-randomnav-resp-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-randompoint-rb-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-randompoint-resp-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-randomppnav-rb-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-randomppnav-resp-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-reachcode-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-return-code-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-return-delineation-geometry-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-return-flowline-details-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-return-flowline-geometry-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-search-type-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-split-initial-catchment-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-start-hydroseq-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-start-measure-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-start-nhdplusid-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-start-permanent-identifier-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-start-reachcode-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-status-message-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-stop-hydroseq-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-stop-measure-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-stop-nhdplusid-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-stop-permanent-identifier-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-stop-reachcode-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-upstreamdownstream-rb-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-upstreamdownstream-resp-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cip-service-wbd-version-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/cip-service-aggregation-engine-structure.json)
-- [JSON Structure](json-structure/cip-service-cipsrv-domains-state-structure.json)
-- [JSON Structure](json-structure/cip-service-cipsrv-domains-states-structure.json)
-- [JSON Structure](json-structure/cip-service-cipsrv-domains-structure.json)
-- [JSON Structure](json-structure/cip-service-cipsrv-domains-tribe-structure.json)
-- [JSON Structure](json-structure/cip-service-cipsrv-domains-tribes-structure.json)
-- [JSON Structure](json-structure/cip-service-cipsrv-index-rb-structure.json)
-- [JSON Structure](json-structure/cip-service-cipsrv-index-resp-structure.json)
-- [JSON Structure](json-structure/cip-service-cipsrv-registry-components-structure.json)
-- [JSON Structure](json-structure/cip-service-cipsrv-registry-structure.json)
-- [JSON Structure](json-structure/cip-service-coordinates1-structure.json)
-- [JSON Structure](json-structure/cip-service-coordinates2-structure.json)
-- [JSON Structure](json-structure/cip-service-coordinates3-structure.json)
-- [JSON Structure](json-structure/cip-service-delineate-rb-structure.json)
-- [JSON Structure](json-structure/cip-service-delineate-resp-structure.json)
-- [JSON Structure](json-structure/cip-service-delineated-area-properties-structure.json)
-- [JSON Structure](json-structure/cip-service-end-point-properties-structure.json)
-- [JSON Structure](json-structure/cip-service-event-feature-properties-structure.json)
-- [JSON Structure](json-structure/cip-service-fcode-allow-structure.json)
-- [JSON Structure](json-structure/cip-service-fcode-deny-structure.json)
-- [JSON Structure](json-structure/cip-service-fill-basin-holes-structure.json)
-- [JSON Structure](json-structure/cip-service-flow-accumulation-rb-structure.json)
-- [JSON Structure](json-structure/cip-service-flow-accumulation-resp-structure.json)
-- [JSON Structure](json-structure/cip-service-flowline-count-structure.json)
-- [JSON Structure](json-structure/cip-service-geojson-bbox-structure.json)
-- [JSON Structure](json-structure/cip-service-geojson-feature-structure.json)
-- [JSON Structure](json-structure/cip-service-geojson-featurecollection-structure.json)
-- [JSON Structure](json-structure/cip-service-geojson-geometry-structure.json)
-- [JSON Structure](json-structure/cip-service-globalid-structure.json)
-- [JSON Structure](json-structure/cip-service-hydroseq-structure.json)
-- [JSON Structure](json-structure/cip-service-image-format-structure.json)
-- [JSON Structure](json-structure/cip-service-indexed-catchment-properties-structure.json)
-- [JSON Structure](json-structure/cip-service-indexed-flowline-properties-structure.json)
-- [JSON Structure](json-structure/cip-service-indexing-engine-structure.json)
-- [JSON Structure](json-structure/cip-service-indexing-line-properties-structure.json)
-- [JSON Structure](json-structure/cip-service-indexing-summary-structure.json)
-- [JSON Structure](json-structure/cip-service-known-region-structure.json)
-- [JSON Structure](json-structure/cip-service-linked-data-program-structure.json)
-- [JSON Structure](json-structure/cip-service-linked-data-wqp-structure.json)
-- [JSON Structure](json-structure/cip-service-max-distancekm-structure.json)
-- [JSON Structure](json-structure/cip-service-max-flowtimeday-structure.json)
-- [JSON Structure](json-structure/cip-service-measure-structure.json)
-- [JSON Structure](json-structure/cip-service-navigate-rb-structure.json)
-- [JSON Structure](json-structure/cip-service-navigate-resp-structure.json)
-- [JSON Structure](json-structure/cip-service-navigated-flowline-properties-structure.json)
-- [JSON Structure](json-structure/cip-service-nhdplus-version-structure.json)
-- [JSON Structure](json-structure/cip-service-nhdplusid-structure.json)
-- [JSON Structure](json-structure/cip-service-ordinate-structure.json)
-- [JSON Structure](json-structure/cip-service-permanent-identifier-structure.json)
-- [JSON Structure](json-structure/cip-service-pointindexing-rb-structure.json)
-- [JSON Structure](json-structure/cip-service-pointindexing-resp-structure.json)
-- [JSON Structure](json-structure/cip-service-randomcatchment-rb-structure.json)
-- [JSON Structure](json-structure/cip-service-randomcatchment-resp-structure.json)
-- [JSON Structure](json-structure/cip-service-randomhuc12-rb-structure.json)
-- [JSON Structure](json-structure/cip-service-randomhuc12-resp-structure.json)
-- [JSON Structure](json-structure/cip-service-randomnav-rb-structure.json)
-- [JSON Structure](json-structure/cip-service-randomnav-resp-structure.json)
-- [JSON Structure](json-structure/cip-service-randompoint-rb-structure.json)
-- [JSON Structure](json-structure/cip-service-randompoint-resp-structure.json)
-- [JSON Structure](json-structure/cip-service-randomppnav-rb-structure.json)
-- [JSON Structure](json-structure/cip-service-randomppnav-resp-structure.json)
-- [JSON Structure](json-structure/cip-service-reachcode-structure.json)
-- [JSON Structure](json-structure/cip-service-return-code-structure.json)
-- [JSON Structure](json-structure/cip-service-return-delineation-geometry-structure.json)
-- [JSON Structure](json-structure/cip-service-return-flowline-details-structure.json)
-- [JSON Structure](json-structure/cip-service-return-flowline-geometry-structure.json)
-- [JSON Structure](json-structure/cip-service-search-type-structure.json)
-- [JSON Structure](json-structure/cip-service-split-initial-catchment-structure.json)
-- [JSON Structure](json-structure/cip-service-start-hydroseq-structure.json)
-- [JSON Structure](json-structure/cip-service-start-measure-structure.json)
-- [JSON Structure](json-structure/cip-service-start-nhdplusid-structure.json)
-- [JSON Structure](json-structure/cip-service-start-permanent-identifier-structure.json)
-- [JSON Structure](json-structure/cip-service-start-reachcode-structure.json)
-- [JSON Structure](json-structure/cip-service-status-message-structure.json)
-- [JSON Structure](json-structure/cip-service-stop-hydroseq-structure.json)
-- [JSON Structure](json-structure/cip-service-stop-measure-structure.json)
-- [JSON Structure](json-structure/cip-service-stop-nhdplusid-structure.json)
-- [JSON Structure](json-structure/cip-service-stop-permanent-identifier-structure.json)
-- [JSON Structure](json-structure/cip-service-stop-reachcode-structure.json)
-- [JSON Structure](json-structure/cip-service-upstreamdownstream-rb-structure.json)
-- [JSON Structure](json-structure/cip-service-upstreamdownstream-resp-structure.json)
-- [JSON Structure](json-structure/cip-service-wbd-version-structure.json)
-- [Example](examples/cip-service-aggregation-engine-example.json)
-- [Example](examples/cip-service-cipsrv-domains-example.json)
-- [Example](examples/cip-service-cipsrv-domains-state-example.json)
-- [Example](examples/cip-service-cipsrv-domains-states-example.json)
-- [Example](examples/cip-service-cipsrv-domains-tribe-example.json)
-- [Example](examples/cip-service-cipsrv-domains-tribes-example.json)
-- [Example](examples/cip-service-cipsrv-index-rb-example.json)
-- [Example](examples/cip-service-cipsrv-index-resp-example.json)
-- [Example](examples/cip-service-cipsrv-registry-components-example.json)
-- [Example](examples/cip-service-cipsrv-registry-example.json)
-- [Example](examples/cip-service-coordinates1-example.json)
-- [Example](examples/cip-service-coordinates2-example.json)
-- [Example](examples/cip-service-coordinates3-example.json)
-- [Example](examples/cip-service-delineate-rb-example.json)
-- [Example](examples/cip-service-delineate-resp-example.json)
-- [Example](examples/cip-service-delineated-area-properties-example.json)
-- [Example](examples/cip-service-end-point-properties-example.json)
-- [Example](examples/cip-service-event-feature-properties-example.json)
-- [Example](examples/cip-service-fcode-allow-example.json)
-- [Example](examples/cip-service-fcode-deny-example.json)
-- [Example](examples/cip-service-fill-basin-holes-example.json)
-- [Example](examples/cip-service-flow-accumulation-rb-example.json)
-- [Example](examples/cip-service-flow-accumulation-resp-example.json)
-- [Example](examples/cip-service-flowline-count-example.json)
-- [Example](examples/cip-service-geojson-bbox-example.json)
-- [Example](examples/cip-service-geojson-feature-example.json)
-- [Example](examples/cip-service-geojson-featurecollection-example.json)
-- [Example](examples/cip-service-geojson-geometry-example.json)
-- [Example](examples/cip-service-globalid-example.json)
-- [Example](examples/cip-service-hydroseq-example.json)
-- [Example](examples/cip-service-image-format-example.json)
-- [Example](examples/cip-service-indexed-catchment-properties-example.json)
-- [Example](examples/cip-service-indexed-flowline-properties-example.json)
-- [Example](examples/cip-service-indexing-engine-example.json)
-- [Example](examples/cip-service-indexing-line-properties-example.json)
-- [Example](examples/cip-service-indexing-summary-example.json)
-- [Example](examples/cip-service-known-region-example.json)
-- [Example](examples/cip-service-linked-data-program-example.json)
-- [Example](examples/cip-service-linked-data-wqp-example.json)
-- [Example](examples/cip-service-max-distancekm-example.json)
-- [Example](examples/cip-service-max-flowtimeday-example.json)
-- [Example](examples/cip-service-measure-example.json)
-- [Example](examples/cip-service-navigate-rb-example.json)
-- [Example](examples/cip-service-navigate-resp-example.json)
-- [Example](examples/cip-service-navigated-flowline-properties-example.json)
-- [Example](examples/cip-service-nhdplus-version-example.json)
-- [Example](examples/cip-service-nhdplusid-example.json)
-- [Example](examples/cip-service-ordinate-example.json)
-- [Example](examples/cip-service-permanent-identifier-example.json)
-- [Example](examples/cip-service-pointindexing-rb-example.json)
-- [Example](examples/cip-service-pointindexing-resp-example.json)
-- [Example](examples/cip-service-randomcatchment-rb-example.json)
-- [Example](examples/cip-service-randomcatchment-resp-example.json)
-- [Example](examples/cip-service-randomhuc12-rb-example.json)
-- [Example](examples/cip-service-randomhuc12-resp-example.json)
-- [Example](examples/cip-service-randomnav-rb-example.json)
-- [Example](examples/cip-service-randomnav-resp-example.json)
-- [Example](examples/cip-service-randompoint-rb-example.json)
-- [Example](examples/cip-service-randompoint-resp-example.json)
-- [Example](examples/cip-service-randomppnav-rb-example.json)
-- [Example](examples/cip-service-randomppnav-resp-example.json)
-- [Example](examples/cip-service-reachcode-example.json)
-- [Example](examples/cip-service-return-code-example.json)
-- [Example](examples/cip-service-return-delineation-geometry-example.json)
-- [Example](examples/cip-service-return-flowline-details-example.json)
-- [Example](examples/cip-service-return-flowline-geometry-example.json)
-- [Example](examples/cip-service-search-type-example.json)
-- [Example](examples/cip-service-split-initial-catchment-example.json)
-- [Example](examples/cip-service-start-hydroseq-example.json)
-- [Example](examples/cip-service-start-measure-example.json)
-- [Example](examples/cip-service-start-nhdplusid-example.json)
-- [Example](examples/cip-service-start-permanent-identifier-example.json)
-- [Example](examples/cip-service-start-reachcode-example.json)
-- [Example](examples/cip-service-status-message-example.json)
-- [Example](examples/cip-service-stop-hydroseq-example.json)
-- [Example](examples/cip-service-stop-measure-example.json)
-- [Example](examples/cip-service-stop-nhdplusid-example.json)
-- [Example](examples/cip-service-stop-permanent-identifier-example.json)
-- [Example](examples/cip-service-stop-reachcode-example.json)
-- [Example](examples/cip-service-upstreamdownstream-rb-example.json)
-- [Example](examples/cip-service-upstreamdownstream-resp-example.json)
-- [Example](examples/cip-service-wbd-version-example.json)
-
-### CSB — Clean School Bus Rebate Forms
-
-Internal-facing API for the Clean School Bus rebate program — eligibility, applications, and award tracking.
-
-- **Human URL:** [https://github.com/USEPA/csb-rebate-forms-app](https://github.com/USEPA/csb-rebate-forms-app)
-- **Base URL:** `https://www.epa.gov/cleanschoolbus`
-
-#### Tags
-
-- Government
-- Transportation
-- Rebates
-
-#### Properties
-
-- [Documentation](https://github.com/USEPA/csb-rebate-forms-app)
-- [OpenAPI](openapi/csb-rebate-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/csb-rebate.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/csb-rebate.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/csb-rebate-formio-schema-and-submission-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/csb-rebate-formio-schema-and-submission-structure.json)
-- [Example](examples/csb-rebate-formio-schema-and-submission-example.json)
-
-### ELG — Effluent Guidelines Search
-
-WaterSense Effluent Limitations Guidelines search across point source categories, pollutants, and treatment technologies.
-
-- **Human URL:** [https://www.epa.gov/eg](https://www.epa.gov/eg)
-- **Base URL:** `https://owapps.epa.gov/elg-search-tools-api`
-
-#### Tags
-
-- Government
-- WaterQuality
-- WaterSense
-
-#### Properties
-
-- [Documentation](https://www.epa.gov/eg)
-- [OpenAPI](openapi/elg-search-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/elg-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/elg-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/elg-search-custom-search.keyword-search-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/elg-search-custom-search.multi-criteria-search-criteria-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/elg-search-custom-search.multi-criteria-search-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/elg-search-glossary.contact-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/elg-search-glossary.help-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/elg-search-glossary.list-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/elg-search-limitation.read-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/elg-search-point-source-category.cfr-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/elg-search-point-source-category.citation-history-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/elg-search-point-source-category.definitions-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/elg-search-point-source-category.list-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/elg-search-point-source-category.read-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/elg-search-point-source-subcategory.read-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/elg-search-pollutant.limitations-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/elg-search-pollutant.list-categories-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/elg-search-pollutant.list-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/elg-search-pollutant.read-category-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/elg-search-pollutant.read-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/elg-search-treatment-technology.category-limitations-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/elg-search-treatment-technology.limitations-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/elg-search-treatment-technology.list-categories-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/elg-search-treatment-technology.list-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/elg-search-treatment-technology.read-category-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/elg-search-treatment-technology.read-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/elg-search-wastestream-process.limitations-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/elg-search-custom-search.keyword-search-structure.json)
-- [JSON Structure](json-structure/elg-search-custom-search.multi-criteria-search-criteria-structure.json)
-- [JSON Structure](json-structure/elg-search-custom-search.multi-criteria-search-structure.json)
-- [JSON Structure](json-structure/elg-search-glossary.contact-structure.json)
-- [JSON Structure](json-structure/elg-search-glossary.help-structure.json)
-- [JSON Structure](json-structure/elg-search-glossary.list-structure.json)
-- [JSON Structure](json-structure/elg-search-limitation.read-structure.json)
-- [JSON Structure](json-structure/elg-search-point-source-category.cfr-structure.json)
-- [JSON Structure](json-structure/elg-search-point-source-category.citation-history-structure.json)
-- [JSON Structure](json-structure/elg-search-point-source-category.definitions-structure.json)
-- [JSON Structure](json-structure/elg-search-point-source-category.list-structure.json)
-- [JSON Structure](json-structure/elg-search-point-source-category.read-structure.json)
-- [JSON Structure](json-structure/elg-search-point-source-subcategory.read-structure.json)
-- [JSON Structure](json-structure/elg-search-pollutant.limitations-structure.json)
-- [JSON Structure](json-structure/elg-search-pollutant.list-categories-structure.json)
-- [JSON Structure](json-structure/elg-search-pollutant.list-structure.json)
-- [JSON Structure](json-structure/elg-search-pollutant.read-category-structure.json)
-- [JSON Structure](json-structure/elg-search-pollutant.read-structure.json)
-- [JSON Structure](json-structure/elg-search-treatment-technology.category-limitations-structure.json)
-- [JSON Structure](json-structure/elg-search-treatment-technology.limitations-structure.json)
-- [JSON Structure](json-structure/elg-search-treatment-technology.list-categories-structure.json)
-- [JSON Structure](json-structure/elg-search-treatment-technology.list-structure.json)
-- [JSON Structure](json-structure/elg-search-treatment-technology.read-category-structure.json)
-- [JSON Structure](json-structure/elg-search-treatment-technology.read-structure.json)
-- [JSON Structure](json-structure/elg-search-wastestream-process.limitations-structure.json)
-- [Example](examples/elg-search-custom-search.keyword-search-example.json)
-- [Example](examples/elg-search-custom-search.multi-criteria-search-criteria-example.json)
-- [Example](examples/elg-search-custom-search.multi-criteria-search-example.json)
-- [Example](examples/elg-search-glossary.contact-example.json)
-- [Example](examples/elg-search-glossary.help-example.json)
-- [Example](examples/elg-search-glossary.list-example.json)
-- [Example](examples/elg-search-limitation.read-example.json)
-- [Example](examples/elg-search-point-source-category.cfr-example.json)
-- [Example](examples/elg-search-point-source-category.citation-history-example.json)
-- [Example](examples/elg-search-point-source-category.definitions-example.json)
-- [Example](examples/elg-search-point-source-category.list-example.json)
-- [Example](examples/elg-search-point-source-category.read-example.json)
-- [Example](examples/elg-search-point-source-subcategory.read-example.json)
-- [Example](examples/elg-search-pollutant.limitations-example.json)
-- [Example](examples/elg-search-pollutant.list-categories-example.json)
-- [Example](examples/elg-search-pollutant.list-example.json)
-- [Example](examples/elg-search-pollutant.read-category-example.json)
-- [Example](examples/elg-search-pollutant.read-example.json)
-- [Example](examples/elg-search-treatment-technology.category-limitations-example.json)
-- [Example](examples/elg-search-treatment-technology.limitations-example.json)
-- [Example](examples/elg-search-treatment-technology.list-categories-example.json)
-- [Example](examples/elg-search-treatment-technology.list-example.json)
-- [Example](examples/elg-search-treatment-technology.read-category-example.json)
-- [Example](examples/elg-search-treatment-technology.read-example.json)
-- [Example](examples/elg-search-wastestream-process.limitations-example.json)
-
-### How's My Waterway
-
-Public access to local water quality status (rivers, lakes, beaches, drinking water) via the ATTAINS data layer.
-
-- **Human URL:** [https://mywaterway.epa.gov](https://mywaterway.epa.gov)
-- **Base URL:** `https://mywaterway.epa.gov/api`
-
-#### Tags
-
-- Government
-- WaterQuality
-- PublicAccess
-
-#### Properties
-
-- [Documentation](https://mywaterway.epa.gov)
-- [OpenAPI](openapi/mywaterway-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/mywaterway.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mywaterway.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/mywaterway-generic-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/mywaterway-generic-structure.json)
-- [Example](examples/mywaterway-generic-example.json)
-
-### EPA Facility Registry Service (FRS) API
-
-Master inventory of EPA-regulated facilities cross-walked across air, water, waste, and drinking-water programs. Production query and submit endpoints require a NAAS account.
-
-- **Human URL:** [https://www.epa.gov/frs/facility-registry-service-frs-api](https://www.epa.gov/frs/facility-registry-service-frs-api)
-- **Base URL:** `https://frsqueryprd-api.epa.gov/facilityiptqueryprd`
-
-#### Tags
-
-- Government
-- Facilities
-- MasterData
-
-#### Properties
-
-- [Documentation](https://www.epa.gov/frs/facility-registry-service-frs-api)
-- [Authentication](https://www.epa.gov/frs/facility-registry-service-frs-api)
-- [Postman Collection](collections/aqs.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/aqs.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-account.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-account.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-camd-services.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-camd-services.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-emissions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-emissions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-facilities.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-facilities.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-master-data.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-master-data.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-monitor-plan.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-monitor-plan.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-qa-cert.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-qa-cert.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-streaming.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-streaming.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cip-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cip-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/csb-rebate.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/csb-rebate.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-air.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-air.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-all.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-all.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-case.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-case.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-cwa.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-cwa.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-dfr.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-dfr.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-effluent.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-effluent.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-rcra.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-rcra.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-sdw.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-sdw.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/elg-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/elg-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/envirofacts.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/envirofacts.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/mywaterway.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mywaterway.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### EPA TRI (Toxics Release Inventory) Web Service
-
-Toxic chemical release and transfer reporting (Form R / Form A) covering ~770 listed chemicals at TRI-covered facilities. Exposed primarily via the Envirofacts data service over the `tri.*` tables.
-
-- **Human URL:** [https://www.epa.gov/enviro/tri-customized-search](https://www.epa.gov/enviro/tri-customized-search)
-- **Base URL:** `https://data.epa.gov/efservice/tri`
-
-#### Tags
-
-- Government
-- ToxicRelease
-- EnvironmentalReporting
-
-#### Properties
-
-- [Documentation](https://www.epa.gov/toxics-release-inventory-tri-program)
-- [API Reference](https://www.epa.gov/enviro/envirofacts-model-tri)
-- [Postman Collection](collections/aqs.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/aqs.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-account.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-account.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-camd-services.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-camd-services.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-emissions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-emissions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-facilities.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-facilities.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-master-data.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-master-data.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-monitor-plan.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-monitor-plan.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-qa-cert.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-qa-cert.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-streaming.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-streaming.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cip-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cip-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/csb-rebate.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/csb-rebate.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-air.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-air.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-all.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-all.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-case.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-case.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-cwa.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-cwa.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-dfr.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-dfr.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-effluent.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-effluent.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-rcra.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-rcra.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-sdw.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-sdw.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/elg-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/elg-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/envirofacts.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/envirofacts.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/mywaterway.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mywaterway.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### EPA ATTAINS Web Services
-
-Assessment, Total Maximum Daily Load Tracking and Implementation System — REST/JSON services for state water quality assessments, impaired waters, TMDLs, and actions.
-
-- **Human URL:** [https://www.epa.gov/waterdata/get-data-access-public-attains-data](https://www.epa.gov/waterdata/get-data-access-public-attains-data)
-- **Base URL:** `https://attains.epa.gov/attains-public/api`
-
-#### Tags
-
-- Government
-- WaterQuality
-- Assessments
-
-#### Properties
-
-- [Documentation](https://www.epa.gov/waterdata/get-data-access-public-attains-data)
-- [GitHub Repository](https://github.com/USEPA/rExpertQuery)
-- [Postman Collection](collections/aqs.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/aqs.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-account.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-account.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-camd-services.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-camd-services.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-emissions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-emissions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-facilities.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-facilities.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-master-data.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-master-data.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-monitor-plan.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-monitor-plan.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-qa-cert.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-qa-cert.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-streaming.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-streaming.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cip-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cip-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/csb-rebate.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/csb-rebate.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-air.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-air.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-all.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-all.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-case.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-case.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-cwa.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-cwa.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-dfr.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-dfr.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-effluent.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-effluent.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-rcra.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-rcra.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-sdw.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-sdw.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/elg-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/elg-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/envirofacts.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/envirofacts.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/mywaterway.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mywaterway.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### EPA WATERS — Watershed Assessment, Tracking & Environmental Results
-
-Geospatial water program services including StreamCat, NHDPlus, and ATTAINS overlays.
-
-- **Human URL:** [https://www.epa.gov/waterdata/waters-watershed-assessment-tracking-environmental-results-system](https://www.epa.gov/waterdata/waters-watershed-assessment-tracking-environmental-results-system)
-- **Base URL:** `https://watersgeo.epa.gov/openapi/waters`
-
-#### Tags
-
-- Government
-- WaterQuality
-- GIS
-- Watersheds
-
-#### Properties
-
-- [Documentation](https://www.epa.gov/waterdata/waters-watershed-assessment-tracking-environmental-results-system)
-- [Postman Collection](collections/aqs.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/aqs.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-account.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-account.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-camd-services.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-camd-services.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-emissions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-emissions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-facilities.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-facilities.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-master-data.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-master-data.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-monitor-plan.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-monitor-plan.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-qa-cert.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-qa-cert.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-streaming.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-streaming.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cip-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cip-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/csb-rebate.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/csb-rebate.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-air.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-air.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-all.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-all.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-case.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-case.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-cwa.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-cwa.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-dfr.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-dfr.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-effluent.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-effluent.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-rcra.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-rcra.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-sdw.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-sdw.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/elg-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/elg-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/envirofacts.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/envirofacts.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/mywaterway.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mywaterway.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### EPA Grants API
-
-Internal-with-key access to NGGS grant programs — applications, obligations, place of performance, and funding opportunities. GraphQL plus REST format dispatchers (JSON/XML/CSV/Excel/PDF/HTML).
-
-- **Human URL:** [https://www.epa.gov/data/grants-api](https://www.epa.gov/data/grants-api)
-- **Base URL:** `https://data.epa.gov/dmapinternalservice/query`
-
-#### Tags
-
-- Government
-- Grants
-- Funding
-
-#### Properties
-
-- [Documentation](https://www.epa.gov/data/grants-api)
-- [Authentication](https://www.epa.gov/data/grants-api)
-- [Postman Collection](collections/aqs.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/aqs.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-account.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-account.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-camd-services.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-camd-services.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-emissions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-emissions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-facilities.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-facilities.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-master-data.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-master-data.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-monitor-plan.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-monitor-plan.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-qa-cert.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-qa-cert.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-streaming.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-streaming.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cip-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cip-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/csb-rebate.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/csb-rebate.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-air.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-air.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-all.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-all.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-case.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-case.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-cwa.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-cwa.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-dfr.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-dfr.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-effluent.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-effluent.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-rcra.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-rcra.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-sdw.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-sdw.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/elg-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/elg-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/envirofacts.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/envirofacts.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/mywaterway.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mywaterway.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### EPA Insect Repellents API
-
-Searchable inventory of EPA-registered insect repellent products with active ingredient, target pest, and duration data.
-
-- **Human URL:** [https://www.epa.gov/developers/data-data-products-insect-repellents-api](https://www.epa.gov/developers/data-data-products-insect-repellents-api)
-- **Base URL:** `https://www.epa.gov/insect-repellents`
-
-#### Tags
-
-- Government
-- PublicHealth
-- Pesticides
-
-#### Properties
-
-- [Documentation](https://www.epa.gov/developers/data-data-products-insect-repellents-api)
-- [Postman Collection](collections/aqs.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/aqs.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-account.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-account.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-camd-services.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-camd-services.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-emissions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-emissions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-facilities.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-facilities.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-master-data.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-master-data.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-monitor-plan.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-monitor-plan.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-qa-cert.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-qa-cert.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-streaming.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-streaming.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cip-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cip-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/csb-rebate.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/csb-rebate.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-air.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-air.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-all.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-all.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-case.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-case.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-cwa.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-cwa.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-dfr.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-dfr.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-effluent.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-effluent.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-rcra.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-rcra.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-sdw.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-sdw.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/elg-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/elg-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/envirofacts.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/envirofacts.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/mywaterway.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mywaterway.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### EPA e-Manifest Hazardous Waste Tracking
-
-Electronic hazardous waste manifest tracking system with REST APIs for manifest creation, retrieval, search, and lifecycle management. Production access via NAAS/CDX.
-
-- **Human URL:** [https://github.com/USEPA/e-manifest](https://github.com/USEPA/e-manifest)
-- **Base URL:** `https://rcrainfopreprod.epa.gov/rcrainfo/rest/api/v1/emanifest`
-
-#### Tags
-
-- Government
-- HazardousWaste
-- Manifests
-
-#### Properties
-
-- [Documentation](https://github.com/USEPA/e-manifest)
-- [SDK](https://www.npmjs.com/package/emanifest)
-- [SDK](https://pypi.org/project/emanifest/)
-- [Postman Collection](collections/aqs.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/aqs.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-account.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-account.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-camd-services.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-camd-services.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-emissions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-emissions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-facilities.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-facilities.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-master-data.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-master-data.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-monitor-plan.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-monitor-plan.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-qa-cert.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-qa-cert.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-streaming.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-streaming.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cip-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cip-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/csb-rebate.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/csb-rebate.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-air.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-air.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-all.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-all.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-case.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-case.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-cwa.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-cwa.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-dfr.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-dfr.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-effluent.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-effluent.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-rcra.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-rcra.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-sdw.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-sdw.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/elg-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/elg-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/envirofacts.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/envirofacts.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/mywaterway.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mywaterway.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### EPA System of Registries (SoR)
-
-Authoritative registries of substances, regulatory programs, terminology, and crosswalks used across EPA systems.
-
-- **Human URL:** [https://sor.epa.gov/sor_internet/registry/sysofreg/home/overview/home.do](https://sor.epa.gov/sor_internet/registry/sysofreg/home/overview/home.do)
-- **Base URL:** `https://sor.epa.gov/sor_internet/registry`
-
-#### Tags
-
-- Government
-- Registries
-- MasterData
-
-#### Properties
-
-- [Documentation](https://sor.epa.gov/sor_internet/registry/sysofreg/sorservices/sorServices.html)
-- [Postman Collection](collections/aqs.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/aqs.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-account.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-account.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-camd-services.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-camd-services.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-emissions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-emissions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-facilities.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-facilities.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-master-data.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-master-data.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-monitor-plan.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-monitor-plan.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-qa-cert.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-qa-cert.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-streaming.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-streaming.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cip-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cip-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/csb-rebate.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/csb-rebate.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-air.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-air.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-all.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-all.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-case.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-case.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-cwa.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-cwa.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-dfr.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-dfr.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-effluent.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-effluent.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-rcra.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-rcra.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-sdw.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-sdw.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/elg-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/elg-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/envirofacts.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/envirofacts.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/mywaterway.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mywaterway.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### CTX — Center for Computational Toxicology and Exposure APIs
-
-Chemical, hazard, bioactivity, and exposure data covering tens of thousands of chemicals. Includes Chemical, Bioactivity, Hazard, Exposure, and ToxRefDB endpoints.
-
-- **Human URL:** [https://comptox.epa.gov/ctx-api/docs/](https://comptox.epa.gov/ctx-api/docs/)
-- **Base URL:** `https://api-ccte.epa.gov`
-
-#### Tags
-
-- Government
-- ChemicalSafety
-- Toxicology
-
-#### Properties
-
-- [Documentation](https://comptox.epa.gov/ctx-api/docs/)
-- [GitHub Repository](https://github.com/USEPA/ccte-api-chemical)
-- [GitHub Repository](https://github.com/USEPA/ccte-api-bioactivity)
-- [GitHub Repository](https://github.com/USEPA/ccte-api-hazard)
-- [GitHub Repository](https://github.com/USEPA/ccte-api-exposure)
-- [SDK](https://pypi.org/project/ctx-python/)
-- [SDK](https://github.com/USEPA/ctxR)
-- [Postman Collection](collections/aqs.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/aqs.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-account.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-account.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-camd-services.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-camd-services.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-emissions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-emissions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-facilities.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-facilities.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-master-data.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-master-data.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-monitor-plan.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-monitor-plan.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-qa-cert.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-qa-cert.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cam-streaming.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cam-streaming.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/cip-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cip-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/csb-rebate.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/csb-rebate.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-air.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-air.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-all.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-all.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-case.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-case.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-cwa.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-cwa.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-dfr.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-dfr.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-effluent.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-effluent.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-rcra.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-rcra.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/echo-sdw.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/echo-sdw.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/elg-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/elg-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/envirofacts.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/envirofacts.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/mywaterway.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mywaterway.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
+**Areas:** Government · Environmental · Open Data · Air Quality · Water Quality · Hazardous Waste · Compliance · Emissions
+
+## EPA — U.S. Environmental Protection Agency on APIs.io
+
+Everything profiled for EPA — U.S. Environmental Protection Agency is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/epa/](https://apis.io/providers/epa/)** — or go straight to one of the APIs or properties below.
+
+### APIs (136)
+
+- [EPA Facility Registry Service (FRS) API](https://apis.io/apis/epa/epa-facility-registry-service-frs-api/) — Master inventory of EPA-regulated facilities cross-walked across air, water, waste, and drinking-water programs. Production query and submit endpoints…
+- [EPA TRI (Toxics Release Inventory) Web Service](https://apis.io/apis/epa/epa-tri-toxics-release-inventory-web-service/) — Toxic chemical release and transfer reporting (Form R / Form A) covering ~770 listed chemicals at TRI-covered facilities. Exposed primarily via the…
+- [EPA ATTAINS Web Services](https://apis.io/apis/epa/epa-attains-web-services/) — Assessment, Total Maximum Daily Load Tracking and Implementation System — REST/JSON services for state water quality assessments, impaired waters, TMDLs,…
+- [EPA WATERS — Watershed Assessment, Tracking & Environmental Results](https://apis.io/apis/epa/epa-waters-watershed-assessment-tracking-environmental-results/) — Geospatial water program services including StreamCat, NHDPlus, and ATTAINS overlays.
+- [EPA Grants API](https://apis.io/apis/epa/epa-grants-api/) — Internal-with-key access to NGGS grant programs — applications, obligations, place of performance, and funding opportunities. GraphQL plus REST format…
+- [EPA Insect Repellents API](https://apis.io/apis/epa/epa-insect-repellents-api/) — Searchable inventory of EPA-registered insect repellent products with active ingredient, target pest, and duration data.
+- [EPA e-Manifest Hazardous Waste Tracking](https://apis.io/apis/epa/epa-e-manifest-hazardous-waste-tracking/) — Electronic hazardous waste manifest tracking system with REST APIs for manifest creation, retrieval, search, and lifecycle management. Production access via…
+- [EPA System of Registries (SoR)](https://apis.io/apis/epa/epa-system-of-registries-sor/) — Authoritative registries of substances, regulatory programs, terminology, and crosswalks used across EPA systems.
+- [CTX — Center for Computational Toxicology and Exposure APIs](https://apis.io/apis/epa/ctx-center-for-computational-toxicology-and-exposure-apis/) — Chemical, hazard, bioactivity, and exposure data covering tens of thousands of chemicals. Includes Chemical, Bioactivity, Hazard, Exposure, and ToxRefDB…
+- [EPA — U.S. Environmental Protection Agency Account Type Codes API](https://apis.io/apis/epa/epa-account-type-codes-api/) — The Account Type Codes API from EPA — U.S. Environmental Protection Agency — 1 operation(s) for account type codes.
+- [EPA — U.S. Environmental Protection Agency Accounts API](https://apis.io/apis/epa/epa-accounts-api/) — The Accounts API from EPA — U.S. Environmental Protection Agency — 5 operation(s) for accounts.
+- [EPA — U.S. Environmental Protection Agency Air Emission Testing API](https://apis.io/apis/epa/epa-air-emission-testing-api/) — The Air Emission Testing API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for air emission testing.
+- [EPA — U.S. Environmental Protection Agency Allowance Compliance API](https://apis.io/apis/epa/epa-allowance-compliance-api/) — The Allowance Compliance API from EPA — U.S. Environmental Protection Agency — 4 operation(s) for allowance compliance.
+- [EPA — U.S. Environmental Protection Agency Allowance Holdings API](https://apis.io/apis/epa/epa-allowance-holdings-api/) — The Allowance Holdings API from EPA — U.S. Environmental Protection Agency — 4 operation(s) for allowance holdings.
+- [EPA — U.S. Environmental Protection Agency Allowance Transactions API](https://apis.io/apis/epa/epa-allowance-transactions-api/) — The Allowance Transactions API from EPA — U.S. Environmental Protection Agency — 4 operation(s) for allowance transactions.
+- [EPA — U.S. Environmental Protection Agency Analysis Services API](https://apis.io/apis/epa/epa-analysis-services-api/) — The Analysis Services API from EPA — U.S. Environmental Protection Agency — 5 operation(s) for analysis services.
+- [EPA — U.S. Environmental Protection Agency Analyzer Ranges API](https://apis.io/apis/epa/epa-analyzer-ranges-api/) — The Analyzer Ranges API from EPA — U.S. Environmental Protection Agency — 1 operation(s) for analyzer ranges.
+- [EPA — U.S. Environmental Protection Agency Annual Data API](https://apis.io/apis/epa/epa-annual-data-api/) — Annual aggregated values.
+- [EPA — U.S. Environmental Protection Agency Appendix E Correlation Test Run API](https://apis.io/apis/epa/epa-appendix-e-correlation-test-run-api/) — The Appendix E Correlation Test Run API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for appendix e correlation test run.
+- [EPA — U.S. Environmental Protection Agency Appendix E Correlation Test Summary API](https://apis.io/apis/epa/epa-appendix-e-correlation-test-summary-api/) — The Appendix E Correlation Test Summary API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for appendix e correlation test summary.
+- [EPA — U.S. Environmental Protection Agency Appendix E Heat Input From Gas API](https://apis.io/apis/epa/epa-appendix-e-heat-input-from-gas-api/) — The Appendix E Heat Input From Gas API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for appendix e heat input from gas.
+- [EPA — U.S. Environmental Protection Agency Appendix E Heat Input From Oil API](https://apis.io/apis/epa/epa-appendix-e-heat-input-from-oil-api/) — The Appendix E Heat Input From Oil API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for appendix e heat input from oil.
+- [EPA — U.S. Environmental Protection Agency Apportioned Annual Emissions API](https://apis.io/apis/epa/epa-apportioned-annual-emissions-api/) — The Apportioned Annual Emissions API from EPA — U.S. Environmental Protection Agency — 8 operation(s) for apportioned annual emissions.
+- [EPA — U.S. Environmental Protection Agency Apportioned Daily Emissions API](https://apis.io/apis/epa/epa-apportioned-daily-emissions-api/) — The Apportioned Daily Emissions API from EPA — U.S. Environmental Protection Agency — 8 operation(s) for apportioned daily emissions.
+- [EPA — U.S. Environmental Protection Agency Apportioned Emissions API](https://apis.io/apis/epa/epa-apportioned-emissions-api/) — The Apportioned Emissions API from EPA — U.S. Environmental Protection Agency — 1 operation(s) for apportioned emissions.
+- [EPA — U.S. Environmental Protection Agency Apportioned Hourly Emissions API](https://apis.io/apis/epa/epa-apportioned-hourly-emissions-api/) — The Apportioned Hourly Emissions API from EPA — U.S. Environmental Protection Agency — 8 operation(s) for apportioned hourly emissions.
+- [EPA — U.S. Environmental Protection Agency Apportioned Hourly MATS Emissions API](https://apis.io/apis/epa/epa-apportioned-hourly-mats-emissions-api/) — The Apportioned Hourly MATS Emissions API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for apportioned hourly mats emissions.
+- [EPA — U.S. Environmental Protection Agency Apportioned MATS Emissions API](https://apis.io/apis/epa/epa-apportioned-mats-emissions-api/) — The Apportioned MATS Emissions API from EPA — U.S. Environmental Protection Agency — 1 operation(s) for apportioned mats emissions.
+- [EPA — U.S. Environmental Protection Agency Apportioned Monthly Emissions API](https://apis.io/apis/epa/epa-apportioned-monthly-emissions-api/) — The Apportioned Monthly Emissions API from EPA — U.S. Environmental Protection Agency — 8 operation(s) for apportioned monthly emissions.
+- [EPA — U.S. Environmental Protection Agency Apportioned Ozone Emissions API](https://apis.io/apis/epa/epa-apportioned-ozone-emissions-api/) — The Apportioned Ozone Emissions API from EPA — U.S. Environmental Protection Agency — 8 operation(s) for apportioned ozone emissions.
+- [EPA — U.S. Environmental Protection Agency Apportioned Quarterly Emissions API](https://apis.io/apis/epa/epa-apportioned-quarterly-emissions-api/) — The Apportioned Quarterly Emissions API from EPA — U.S. Environmental Protection Agency — 9 operation(s) for apportioned quarterly emissions.
+- [EPA — U.S. Environmental Protection Agency Attributes API](https://apis.io/apis/epa/epa-attributes-api/) — The Attributes API from EPA — U.S. Environmental Protection Agency — 1 operation(s) for attributes.
+- [EPA — U.S. Environmental Protection Agency Bap API](https://apis.io/apis/epa/epa-bap-api/) — The Bap API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for bap.
+- [EPA — U.S. Environmental Protection Agency Bulk Files API](https://apis.io/apis/epa/epa-bulk-files-api/) — The Bulk Files API from EPA — U.S. Environmental Protection Agency — 1 operation(s) for bulk files.
+- [EPA — U.S. Environmental Protection Agency Calibration Injection API](https://apis.io/apis/epa/epa-calibration-injection-api/) — The Calibration Injection API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for calibration injection.
+- [EPA — U.S. Environmental Protection Agency Case Enforcement API](https://apis.io/apis/epa/epa-case-enforcement-api/) — The Case Enforcement API from EPA — U.S. Environmental Protection Agency — 9 operation(s) for case enforcement.
+- [EPA — U.S. Environmental Protection Agency CIP Indexing Services API](https://apis.io/apis/epa/epa-cip-indexing-services-api/) — The CIP Indexing Services API from EPA — U.S. Environmental Protection Agency — 3 operation(s) for cip indexing services.
+- [EPA — U.S. Environmental Protection Agency Codes & Descriptions API](https://apis.io/apis/epa/epa-codes-descriptions-api/) — The Codes & Descriptions API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for codes & descriptions.
+- [EPA — U.S. Environmental Protection Agency Comments API](https://apis.io/apis/epa/epa-comments-api/) — The Comments API from EPA — U.S. Environmental Protection Agency — 1 operation(s) for comments.
+- [EPA — U.S. Environmental Protection Agency Components API](https://apis.io/apis/epa/epa-components-api/) — The Components API from EPA — U.S. Environmental Protection Agency — 1 operation(s) for components.
+- [EPA — U.S. Environmental Protection Agency Config API](https://apis.io/apis/epa/epa-config-api/) — The Config API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for config.
+- [EPA — U.S. Environmental Protection Agency Configurations API](https://apis.io/apis/epa/epa-configurations-api/) — The Configurations API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for configurations.
+- [EPA — U.S. Environmental Protection Agency Contact API](https://apis.io/apis/epa/epa-contact-api/) — The Contact API from EPA — U.S. Environmental Protection Agency — 1 operation(s) for contact.
+- [EPA — U.S. Environmental Protection Agency Control Codes API](https://apis.io/apis/epa/epa-control-codes-api/) — The Control Codes API from EPA — U.S. Environmental Protection Agency — 1 operation(s) for control codes.
+- [EPA — U.S. Environmental Protection Agency Custom Search API](https://apis.io/apis/epa/epa-custom-search-api/) — The Custom Search API from EPA — U.S. Environmental Protection Agency — 3 operation(s) for custom search.
+- [EPA — U.S. Environmental Protection Agency Cycle Time Injection API](https://apis.io/apis/epa/epa-cycle-time-injection-api/) — The Cycle Time Injection API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for cycle time injection.
+- [EPA — U.S. Environmental Protection Agency Cycle Time Summary API](https://apis.io/apis/epa/epa-cycle-time-summary-api/) — The Cycle Time Summary API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for cycle time summary.
+- [EPA — U.S. Environmental Protection Agency Daily Data API](https://apis.io/apis/epa/epa-daily-data-api/) — Daily aggregated values.
+- [EPA — U.S. Environmental Protection Agency Data Service API](https://apis.io/apis/epa/epa-data-service-api/) — Generic Envirofacts REST data service supporting any program.table.
+- [EPA — U.S. Environmental Protection Agency Defaults API](https://apis.io/apis/epa/epa-defaults-api/) — The Defaults API from EPA — U.S. Environmental Protection Agency — 1 operation(s) for defaults.
+- [EPA — U.S. Environmental Protection Agency Detailed Facility Report API](https://apis.io/apis/epa/epa-detailed-facility-report-api/) — The Detailed Facility Report API from EPA — U.S. Environmental Protection Agency — 47 operation(s) for detailed facility report.
+- [EPA — U.S. Environmental Protection Agency Effluent Charts API](https://apis.io/apis/epa/epa-effluent-charts-api/) — The Effluent Charts API from EPA — U.S. Environmental Protection Agency — 3 operation(s) for effluent charts.
+- [EPA — U.S. Environmental Protection Agency Emissions API](https://apis.io/apis/epa/epa-emissions-api/) — The Emissions API from EPA — U.S. Environmental Protection Agency — 7 operation(s) for emissions.
+- [EPA — U.S. Environmental Protection Agency Emissions Compliance API](https://apis.io/apis/epa/epa-emissions-compliance-api/) — The Emissions Compliance API from EPA — U.S. Environmental Protection Agency — 4 operation(s) for emissions compliance.
+- [EPA — U.S. Environmental Protection Agency Emissions Views API](https://apis.io/apis/epa/epa-emissions-views-api/) — The Emissions Views API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for emissions views.
+- [EPA — U.S. Environmental Protection Agency Facilities API](https://apis.io/apis/epa/epa-facilities-api/) — The Facilities API from EPA — U.S. Environmental Protection Agency — 12 operation(s) for facilities.
+- [EPA — U.S. Environmental Protection Agency Facility Info API](https://apis.io/apis/epa/epa-facility-info-api/) — The Facility Info API from EPA — U.S. Environmental Protection Agency — 7 operation(s) for facility info.
+- [EPA — U.S. Environmental Protection Agency Facility Information API](https://apis.io/apis/epa/epa-facility-information-api/) — The Facility Information API from EPA — U.S. Environmental Protection Agency — 7 operation(s) for facility information.
+- [EPA — U.S. Environmental Protection Agency Flow Rata Run API](https://apis.io/apis/epa/epa-flow-rata-run-api/) — The Flow Rata Run API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for flow rata run.
+- [EPA — U.S. Environmental Protection Agency Flow To Load Check API](https://apis.io/apis/epa/epa-flow-to-load-check-api/) — The Flow To Load Check API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for flow to load check.
+- [EPA — U.S. Environmental Protection Agency Flow To Load Reference API](https://apis.io/apis/epa/epa-flow-to-load-reference-api/) — The Flow To Load Reference API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for flow to load reference.
+- [EPA — U.S. Environmental Protection Agency Formio API](https://apis.io/apis/epa/epa-formio-api/) — The Formio API from EPA — U.S. Environmental Protection Agency — 43 operation(s) for formio.
+- [EPA — U.S. Environmental Protection Agency Formulas API](https://apis.io/apis/epa/epa-formulas-api/) — The Formulas API from EPA — U.S. Environmental Protection Agency — 1 operation(s) for formulas.
+- [EPA — U.S. Environmental Protection Agency Fuel Flow To Load Baseline API](https://apis.io/apis/epa/epa-fuel-flow-to-load-baseline-api/) — The Fuel Flow To Load Baseline API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for fuel flow to load baseline.
+- [EPA — U.S. Environmental Protection Agency Fuel Flow To Load Test API](https://apis.io/apis/epa/epa-fuel-flow-to-load-test-api/) — The Fuel Flow To Load Test API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for fuel flow to load test.
+- [EPA — U.S. Environmental Protection Agency Fuel Flowmeter Accuracy API](https://apis.io/apis/epa/epa-fuel-flowmeter-accuracy-api/) — The Fuel Flowmeter Accuracy API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for fuel flowmeter accuracy.
+- [EPA — U.S. Environmental Protection Agency Fuel Type Codes API](https://apis.io/apis/epa/epa-fuel-type-codes-api/) — The Fuel Type Codes API from EPA — U.S. Environmental Protection Agency — 1 operation(s) for fuel type codes.
+- [EPA — U.S. Environmental Protection Agency Glossary API](https://apis.io/apis/epa/epa-glossary-api/) — The Glossary API from EPA — U.S. Environmental Protection Agency — 1 operation(s) for glossary.
+- [EPA — U.S. Environmental Protection Agency Health API](https://apis.io/apis/epa/epa-health-api/) — The Health API from EPA — U.S. Environmental Protection Agency — 8 operation(s) for health.
+- [EPA — U.S. Environmental Protection Agency Help API](https://apis.io/apis/epa/epa-help-api/) — The Help API from EPA — U.S. Environmental Protection Agency — 5 operation(s) for help.
+- [EPA — U.S. Environmental Protection Agency Hg Injection API](https://apis.io/apis/epa/epa-hg-injection-api/) — The Hg Injection API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for hg injection.
+- [EPA — U.S. Environmental Protection Agency Hg Summary API](https://apis.io/apis/epa/epa-hg-summary-api/) — The Hg Summary API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for hg summary.
+- [EPA — U.S. Environmental Protection Agency How's My Waterway API](https://apis.io/apis/epa/epa-how-s-my-waterway-api/) — The How's My Waterway API from EPA — U.S. Environmental Protection Agency — 3 operation(s) for how's my waterway.
+- [EPA — U.S. Environmental Protection Agency LEE Qualifications API](https://apis.io/apis/epa/epa-lee-qualifications-api/) — The LEE Qualifications API from EPA — U.S. Environmental Protection Agency — 1 operation(s) for lee qualifications.
+- [EPA — U.S. Environmental Protection Agency Linearity Injection API](https://apis.io/apis/epa/epa-linearity-injection-api/) — The Linearity Injection API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for linearity injection.
+- [EPA — U.S. Environmental Protection Agency Linearity Summary API](https://apis.io/apis/epa/epa-linearity-summary-api/) — The Linearity Summary API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for linearity summary.
+- [EPA — U.S. Environmental Protection Agency Lists API](https://apis.io/apis/epa/epa-lists-api/) — Reference lookups (states, counties, sites, CBSAs, parameter classes, agencies).
+- [EPA — U.S. Environmental Protection Agency LME Qualifications API](https://apis.io/apis/epa/epa-lme-qualifications-api/) — The LME Qualifications API from EPA — U.S. Environmental Protection Agency — 1 operation(s) for lme qualifications.
+- [EPA — U.S. Environmental Protection Agency Loads API](https://apis.io/apis/epa/epa-loads-api/) — The Loads API from EPA — U.S. Environmental Protection Agency — 1 operation(s) for loads.
+- [EPA — U.S. Environmental Protection Agency Locations API](https://apis.io/apis/epa/epa-locations-api/) — The Locations API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for locations.
+- [EPA — U.S. Environmental Protection Agency Login API](https://apis.io/apis/epa/epa-login-api/) — The Login API from EPA — U.S. Environmental Protection Agency — 3 operation(s) for login.
+- [EPA — U.S. Environmental Protection Agency Logout API](https://apis.io/apis/epa/epa-logout-api/) — The Logout API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for logout.
+- [EPA — U.S. Environmental Protection Agency Lookups API](https://apis.io/apis/epa/epa-lookups-api/) — The Lookups API from EPA — U.S. Environmental Protection Agency — 10 operation(s) for lookups.
+- [EPA — U.S. Environmental Protection Agency MATS Methods API](https://apis.io/apis/epa/epa-mats-methods-api/) — The MATS Methods API from EPA — U.S. Environmental Protection Agency — 1 operation(s) for mats methods.
+- [EPA — U.S. Environmental Protection Agency Metadata API](https://apis.io/apis/epa/epa-metadata-api/) — The Metadata API from EPA — U.S. Environmental Protection Agency — 7 operation(s) for metadata.
+- [EPA — U.S. Environmental Protection Agency Methods API](https://apis.io/apis/epa/epa-methods-api/) — The Methods API from EPA — U.S. Environmental Protection Agency — 1 operation(s) for methods.
+- [EPA — U.S. Environmental Protection Agency Monitors API](https://apis.io/apis/epa/epa-monitors-api/) — Monitor metadata filtered by site, county, state, bounding box, or CBSA.
+- [EPA — U.S. Environmental Protection Agency Online Offline Calibration API](https://apis.io/apis/epa/epa-online-offline-calibration-api/) — The Online Offline Calibration API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for online offline calibration.
+- [EPA — U.S. Environmental Protection Agency PCT Qualifications API](https://apis.io/apis/epa/epa-pct-qualifications-api/) — The PCT Qualifications API from EPA — U.S. Environmental Protection Agency — 1 operation(s) for pct qualifications.
+- [EPA — U.S. Environmental Protection Agency Plans API](https://apis.io/apis/epa/epa-plans-api/) — The Plans API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for plans.
+- [EPA — U.S. Environmental Protection Agency Point Source Categories API](https://apis.io/apis/epa/epa-point-source-categories-api/) — The Point Source Categories API from EPA — U.S. Environmental Protection Agency — 7 operation(s) for point source categories.
+- [EPA — U.S. Environmental Protection Agency Pollutants API](https://apis.io/apis/epa/epa-pollutants-api/) — The Pollutants API from EPA — U.S. Environmental Protection Agency — 6 operation(s) for pollutants.
+- [EPA — U.S. Environmental Protection Agency Program Codes API](https://apis.io/apis/epa/epa-program-codes-api/) — The Program Codes API from EPA — U.S. Environmental Protection Agency — 1 operation(s) for program codes.
+- [EPA — U.S. Environmental Protection Agency Protocol Gas API](https://apis.io/apis/epa/epa-protocol-gas-api/) — The Protocol Gas API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for protocol gas.
+- [EPA — U.S. Environmental Protection Agency QA Certification API](https://apis.io/apis/epa/epa-qa-certification-api/) — The QA Certification API from EPA — U.S. Environmental Protection Agency — 4 operation(s) for qa certification.
+- [EPA — U.S. Environmental Protection Agency QA Certification Event API](https://apis.io/apis/epa/epa-qa-certification-event-api/) — The QA Certification Event API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for qa certification event.
+- [EPA — U.S. Environmental Protection Agency Qualifications API](https://apis.io/apis/epa/epa-qualifications-api/) — The Qualifications API from EPA — U.S. Environmental Protection Agency — 1 operation(s) for qualifications.
+- [EPA — U.S. Environmental Protection Agency Quality Assurance API](https://apis.io/apis/epa/epa-quality-assurance-api/) — QA performance evaluations, blanks, audits, collocated assessments.
+- [EPA — U.S. Environmental Protection Agency Quarterly Data API](https://apis.io/apis/epa/epa-quarterly-data-api/) — Quarterly aggregated values.
+- [EPA — U.S. Environmental Protection Agency Rata API](https://apis.io/apis/epa/epa-rata-api/) — The Rata API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for rata.
+- [EPA — U.S. Environmental Protection Agency Rata Run API](https://apis.io/apis/epa/epa-rata-run-api/) — The Rata Run API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for rata run.
+- [EPA — U.S. Environmental Protection Agency Rata Summary API](https://apis.io/apis/epa/epa-rata-summary-api/) — The Rata Summary API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for rata summary.
+- [EPA — U.S. Environmental Protection Agency Rata Traverse API](https://apis.io/apis/epa/epa-rata-traverse-api/) — The Rata Traverse API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for rata traverse.
+- [EPA — U.S. Environmental Protection Agency Rectangular Duct WAF API](https://apis.io/apis/epa/epa-rectangular-duct-waf-api/) — The Rectangular Duct WAF API from EPA — U.S. Environmental Protection Agency — 1 operation(s) for rectangular duct waf.
+- [EPA — U.S. Environmental Protection Agency Relationships API](https://apis.io/apis/epa/epa-relationships-api/) — The Relationships API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for relationships.
+- [EPA — U.S. Environmental Protection Agency Reporting Frequencies API](https://apis.io/apis/epa/epa-reporting-frequencies-api/) — The Reporting Frequencies API from EPA — U.S. Environmental Protection Agency — 1 operation(s) for reporting frequencies.
+- [EPA — U.S. Environmental Protection Agency Reporting Periods API](https://apis.io/apis/epa/epa-reporting-periods-api/) — The Reporting Periods API from EPA — U.S. Environmental Protection Agency — 1 operation(s) for reporting periods.
+- [EPA — U.S. Environmental Protection Agency Reports API](https://apis.io/apis/epa/epa-reports-api/) — The Reports API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for reports.
+- [EPA — U.S. Environmental Protection Agency Resource Conservation and Recovery Act API](https://apis.io/apis/epa/epa-resource-conservation-and-recovery-act-api/) — The Resource Conservation and Recovery Act API from EPA — U.S. Environmental Protection Agency — 7 operation(s) for resource conservation and recovery act.
+- [EPA — U.S. Environmental Protection Agency Safe Drinking Water API](https://apis.io/apis/epa/epa-safe-drinking-water-api/) — The Safe Drinking Water API from EPA — U.S. Environmental Protection Agency — 3 operation(s) for safe drinking water.
+- [EPA — U.S. Environmental Protection Agency Sample Data API](https://apis.io/apis/epa/epa-sample-data-api/) — Raw sample observations.
+- [EPA — U.S. Environmental Protection Agency Spans API](https://apis.io/apis/epa/epa-spans-api/) — The Spans API from EPA — U.S. Environmental Protection Agency — 1 operation(s) for spans.
+- [EPA — U.S. Environmental Protection Agency Status API](https://apis.io/apis/epa/epa-status-api/) — The Status API from EPA — U.S. Environmental Protection Agency — 12 operation(s) for status.
+- [EPA — U.S. Environmental Protection Agency Support API](https://apis.io/apis/epa/epa-support-api/) — The Support API from EPA — U.S. Environmental Protection Agency — 1 operation(s) for support.
+- [EPA — U.S. Environmental Protection Agency System Components API](https://apis.io/apis/epa/epa-system-components-api/) — The System Components API from EPA — U.S. Environmental Protection Agency — 1 operation(s) for system components.
+- [EPA — U.S. Environmental Protection Agency System Fuel Flows API](https://apis.io/apis/epa/epa-system-fuel-flows-api/) — The System Fuel Flows API from EPA — U.S. Environmental Protection Agency — 1 operation(s) for system fuel flows.
+- [EPA — U.S. Environmental Protection Agency Systems API](https://apis.io/apis/epa/epa-systems-api/) — The Systems API from EPA — U.S. Environmental Protection Agency — 1 operation(s) for systems.
+- [EPA — U.S. Environmental Protection Agency Test Extension Exemption API](https://apis.io/apis/epa/epa-test-extension-exemption-api/) — The Test Extension Exemption API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for test extension exemption.
+- [EPA — U.S. Environmental Protection Agency Test Qualification API](https://apis.io/apis/epa/epa-test-qualification-api/) — The Test Qualification API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for test qualification.
+- [EPA — U.S. Environmental Protection Agency Test Summary API](https://apis.io/apis/epa/epa-test-summary-api/) — The Test Summary API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for test summary.
+- [EPA — U.S. Environmental Protection Agency Transactions API](https://apis.io/apis/epa/epa-transactions-api/) — Raw transaction-format exports.
+- [EPA — U.S. Environmental Protection Agency Transmitter Transducer Accuracy API](https://apis.io/apis/epa/epa-transmitter-transducer-accuracy-api/) — The Transmitter Transducer Accuracy API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for transmitter transducer accuracy.
+- [EPA — U.S. Environmental Protection Agency Treatment Technologies API](https://apis.io/apis/epa/epa-treatment-technologies-api/) — The Treatment Technologies API from EPA — U.S. Environmental Protection Agency — 6 operation(s) for treatment technologies.
+- [EPA — U.S. Environmental Protection Agency Unit Capacities API](https://apis.io/apis/epa/epa-unit-capacities-api/) — The Unit Capacities API from EPA — U.S. Environmental Protection Agency — 1 operation(s) for unit capacities.
+- [EPA — U.S. Environmental Protection Agency Unit Controls API](https://apis.io/apis/epa/epa-unit-controls-api/) — The Unit Controls API from EPA — U.S. Environmental Protection Agency — 1 operation(s) for unit controls.
+- [EPA — U.S. Environmental Protection Agency Unit Default Test API](https://apis.io/apis/epa/epa-unit-default-test-api/) — The Unit Default Test API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for unit default test.
+- [EPA — U.S. Environmental Protection Agency Unit Default Test Run API](https://apis.io/apis/epa/epa-unit-default-test-run-api/) — The Unit Default Test Run API from EPA — U.S. Environmental Protection Agency — 2 operation(s) for unit default test run.
+- [EPA — U.S. Environmental Protection Agency Unit Fuels API](https://apis.io/apis/epa/epa-unit-fuels-api/) — The Unit Fuels API from EPA — U.S. Environmental Protection Agency — 1 operation(s) for unit fuels.
+- [EPA — U.S. Environmental Protection Agency Unit Programs API](https://apis.io/apis/epa/epa-unit-programs-api/) — The Unit Programs API from EPA — U.S. Environmental Protection Agency — 1 operation(s) for unit programs.
+- [EPA — U.S. Environmental Protection Agency Unit Type Codes API](https://apis.io/apis/epa/epa-unit-type-codes-api/) — The Unit Type Codes API from EPA — U.S. Environmental Protection Agency — 1 operation(s) for unit type codes.
+- [EPA — U.S. Environmental Protection Agency Units API](https://apis.io/apis/epa/epa-units-api/) — The Units API from EPA — U.S. Environmental Protection Agency — 1 operation(s) for units.
+- [EPA — U.S. Environmental Protection Agency User API](https://apis.io/apis/epa/epa-user-api/) — The User API from EPA — U.S. Environmental Protection Agency — 1 operation(s) for user.
+- [EPA — U.S. Environmental Protection Agency Utility Services API](https://apis.io/apis/epa/epa-utility-services-api/) — The Utility Services API from EPA — U.S. Environmental Protection Agency — 5 operation(s) for utility services.
+- [EPA — U.S. Environmental Protection Agency UV Index API](https://apis.io/apis/epa/epa-uv-index-api/) — UV index hourly and daily forecast endpoints.
+- [EPA — U.S. Environmental Protection Agency Graph QL API](https://apis.io/apis/epa/epa-graph-ql-api/) — GraphQL endpoint for complex queries beyond REST capabilities.
+- [EPA — U.S. Environmental Protection Agency Signup API](https://apis.io/apis/epa/epa-signup-api/) — Account registration.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### GraphQL (1)
+
+GraphQL schemas.
+
+- [Moved to /providers/epa/](https://apis.io/graphqls/epa/epa-graphql/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Epa Agentic Access](https://apis.io/agentic-access/epa/epa-agentic-access/)
+
+#### JSON Schema (621)
+
+The data models the API reads and writes.
+
+- [Envelope](https://apis.io/schemas/epa/aqs-envelope/)
+- [Header](https://apis.io/schemas/epa/aqs-header/)
+- [AccountAttributesDTO](https://apis.io/schemas/epa/cam-account-account-attributes-dto/)
+- [AccountDTO](https://apis.io/schemas/epa/cam-account-account-dto/)
+- [AllowanceComplianceDTO](https://apis.io/schemas/epa/cam-account-allowance-compliance-dto/)
+- [AllowanceHoldingsDTO](https://apis.io/schemas/epa/cam-account-allowance-holdings-dto/)
+- [AllowanceTransactionsDTO](https://apis.io/schemas/epa/cam-account-allowance-transactions-dto/)
+- [ApplicableAccountAttributesDTO](https://apis.io/schemas/epa/cam-account-applicable-account-attributes-dto/)
+- [ApplicableAllowanceComplianceAttributesDTO](https://apis.io/schemas/epa/cam-account-applicable-allowance-compliance-attributes-dto/)
+- [ApplicableAllowanceHoldingsAttributesDTO](https://apis.io/schemas/epa/cam-account-applicable-allowance-holdings-attributes-dto/)
+- [ApplicableAllowanceTransactionsAttributesDTO](https://apis.io/schemas/epa/cam-account-applicable-allowance-transactions-attributes-dto/)
+- [ApplicableComplianceAttributesDTO](https://apis.io/schemas/epa/cam-account-applicable-compliance-attributes-dto/)
+- [EmissionsComplianceDTO](https://apis.io/schemas/epa/cam-account-emissions-compliance-dto/)
+- [OwnerOperatorsDTO](https://apis.io/schemas/epa/cam-account-owner-operators-dto/)
+- [BulkFileDTO](https://apis.io/schemas/epa/cam-camd-services-bulk-file-dto/)
+- [EmailRecipientListRequestDto](https://apis.io/schemas/epa/cam-camd-services-email-recipient-list-request-dto/)
+- [EmailRecipientListResponseDto](https://apis.io/schemas/epa/cam-camd-services-email-recipient-list-response-dto/)
+- [ReportColumnDTO](https://apis.io/schemas/epa/cam-camd-services-report-column-dto/)
+- [ReportDetailDTO](https://apis.io/schemas/epa/cam-camd-services-report-detail-dto/)
+- [ReportDTO](https://apis.io/schemas/epa/cam-camd-services-report-dto/)
+- [AnnualApportionedEmissionsAggregationDTO](https://apis.io/schemas/epa/cam-emissions-annual-apportioned-emissions-aggregation-dto/)
+- [AnnualApportionedEmissionsFacilityAggregationDTO](https://apis.io/schemas/epa/cam-emissions-annual-apportioned-emissions-facility-aggregation-dto/)
+- [AnnualApportionedEmissionsStateAggregationDTO](https://apis.io/schemas/epa/cam-emissions-annual-apportioned-emissions-state-aggregation-dto/)
+- [AnnualUnitDataView](https://apis.io/schemas/epa/cam-emissions-annual-unit-data-view/)
+- [ApplicableApportionedEmissionsAttributesDTO](https://apis.io/schemas/epa/cam-emissions-applicable-apportioned-emissions-attributes-dto/)
+- …and 596 more published on APIs.io
+
+#### JSON Structure (621)
+
+Data models expressed in JSON Structure.
+
+- [Aqs Envelope Structure](https://apis.io/json-structure/epa/aqs-envelope-structure/)
+- [Aqs Header Structure](https://apis.io/json-structure/epa/aqs-header-structure/)
+- [Cam Account Account Attributes Dto Structure](https://apis.io/json-structure/epa/cam-account-account-attributes-dto-structure/)
+- [Cam Account Account Dto Structure](https://apis.io/json-structure/epa/cam-account-account-dto-structure/)
+- [Cam Account Allowance Compliance Dto Structure](https://apis.io/json-structure/epa/cam-account-allowance-compliance-dto-structure/)
+- [Cam Account Allowance Holdings Dto Structure](https://apis.io/json-structure/epa/cam-account-allowance-holdings-dto-structure/)
+- [Cam Account Allowance Transactions Dto Structure](https://apis.io/json-structure/epa/cam-account-allowance-transactions-dto-structure/)
+- [Cam Account Applicable Account Attributes Dto Structure](https://apis.io/json-structure/epa/cam-account-applicable-account-attributes-dto-structure/)
+- [Cam Account Applicable Allowance Compliance Attributes Dto Structure](https://apis.io/json-structure/epa/cam-account-applicable-allowance-compliance-attributes-dto-structure/)
+- [Cam Account Applicable Allowance Holdings Attributes Dto Structure](https://apis.io/json-structure/epa/cam-account-applicable-allowance-holdings-attributes-dto-structure/)
+- [Cam Account Applicable Allowance Transactions Attributes Dto Structure](https://apis.io/json-structure/epa/cam-account-applicable-allowance-transactions-attributes-dto-structure/)
+- [Cam Account Applicable Compliance Attributes Dto Structure](https://apis.io/json-structure/epa/cam-account-applicable-compliance-attributes-dto-structure/)
+- [Cam Account Emissions Compliance Dto Structure](https://apis.io/json-structure/epa/cam-account-emissions-compliance-dto-structure/)
+- [Cam Account Owner Operators Dto Structure](https://apis.io/json-structure/epa/cam-account-owner-operators-dto-structure/)
+- [Cam Camd Services Bulk File Dto Structure](https://apis.io/json-structure/epa/cam-camd-services-bulk-file-dto-structure/)
+- [Cam Camd Services Email Recipient List Request Dto Structure](https://apis.io/json-structure/epa/cam-camd-services-email-recipient-list-request-dto-structure/)
+- [Cam Camd Services Email Recipient List Response Dto Structure](https://apis.io/json-structure/epa/cam-camd-services-email-recipient-list-response-dto-structure/)
+- [Cam Camd Services Report Column Dto Structure](https://apis.io/json-structure/epa/cam-camd-services-report-column-dto-structure/)
+- [Cam Camd Services Report Detail Dto Structure](https://apis.io/json-structure/epa/cam-camd-services-report-detail-dto-structure/)
+- [Cam Camd Services Report Dto Structure](https://apis.io/json-structure/epa/cam-camd-services-report-dto-structure/)
+- [Cam Emissions Annual Apportioned Emissions Aggregation Dto Structure](https://apis.io/json-structure/epa/cam-emissions-annual-apportioned-emissions-aggregation-dto-structure/)
+- [Cam Emissions Annual Apportioned Emissions Facility Aggregation Dto Structure](https://apis.io/json-structure/epa/cam-emissions-annual-apportioned-emissions-facility-aggregation-dto-structure/)
+- [Cam Emissions Annual Apportioned Emissions State Aggregation Dto Structure](https://apis.io/json-structure/epa/cam-emissions-annual-apportioned-emissions-state-aggregation-dto-structure/)
+- [Cam Emissions Annual Unit Data View Structure](https://apis.io/json-structure/epa/cam-emissions-annual-unit-data-view-structure/)
+- [Cam Emissions Applicable Apportioned Emissions Attributes Dto Structure](https://apis.io/json-structure/epa/cam-emissions-applicable-apportioned-emissions-attributes-dto-structure/)
+- …and 596 more published on APIs.io
+
+#### JSON-LD (23)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Epa Aqs Context](https://apis.io/jsonld/epa/epa-aqs-context/)
+- [Epa Cam Account Context](https://apis.io/jsonld/epa/epa-cam-account-context/)
+- [Epa Cam Camd Services Context](https://apis.io/jsonld/epa/epa-cam-camd-services-context/)
+- [Epa Cam Emissions Context](https://apis.io/jsonld/epa/epa-cam-emissions-context/)
+- [Epa Cam Facilities Context](https://apis.io/jsonld/epa/epa-cam-facilities-context/)
+- [Epa Cam Master Data Context](https://apis.io/jsonld/epa/epa-cam-master-data-context/)
+- [Epa Cam Monitor Plan Context](https://apis.io/jsonld/epa/epa-cam-monitor-plan-context/)
+- [Epa Cam Qa Cert Context](https://apis.io/jsonld/epa/epa-cam-qa-cert-context/)
+- [Epa Cam Streaming Context](https://apis.io/jsonld/epa/epa-cam-streaming-context/)
+- [Epa Cip Service Context](https://apis.io/jsonld/epa/epa-cip-service-context/)
+- [Epa Context](https://apis.io/jsonld/epa/epa-context/)
+- [Epa Csb Rebate Context](https://apis.io/jsonld/epa/epa-csb-rebate-context/)
+- [Epa Echo Air Context](https://apis.io/jsonld/epa/epa-echo-air-context/)
+- [Epa Echo All Context](https://apis.io/jsonld/epa/epa-echo-all-context/)
+- [Epa Echo Case Context](https://apis.io/jsonld/epa/epa-echo-case-context/)
+- [Epa Echo Cwa Context](https://apis.io/jsonld/epa/epa-echo-cwa-context/)
+- [Epa Echo Dfr Context](https://apis.io/jsonld/epa/epa-echo-dfr-context/)
+- [Epa Echo Effluent Context](https://apis.io/jsonld/epa/epa-echo-effluent-context/)
+- [Epa Echo Rcra Context](https://apis.io/jsonld/epa/epa-echo-rcra-context/)
+- [Epa Echo Sdw Context](https://apis.io/jsonld/epa/epa-echo-sdw-context/)
+- [Epa Elg Search Context](https://apis.io/jsonld/epa/epa-elg-search-context/)
+- [Epa Envirofacts Context](https://apis.io/jsonld/epa/epa-envirofacts-context/)
+- [Epa Mywaterway Context](https://apis.io/jsonld/epa/epa-mywaterway-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [EPA Vocabulary](https://apis.io/vocabularies/epa/epa-vocabulary/)
+
+#### Examples (578)
+
+Example requests and responses.
+
+- [Aqs Envelope Example](https://apis.io/examples/epa/aqs-envelope-example/)
+- [Aqs Header Example](https://apis.io/examples/epa/aqs-header-example/)
+- [Cam Account Account Attributes Dto Example](https://apis.io/examples/epa/cam-account-account-attributes-dto-example/)
+- [Cam Account Account Dto Example](https://apis.io/examples/epa/cam-account-account-dto-example/)
+- [Cam Account Allowance Compliance Dto Example](https://apis.io/examples/epa/cam-account-allowance-compliance-dto-example/)
+- [Cam Account Allowance Holdings Dto Example](https://apis.io/examples/epa/cam-account-allowance-holdings-dto-example/)
+- [Cam Account Allowance Transactions Dto Example](https://apis.io/examples/epa/cam-account-allowance-transactions-dto-example/)
+- [Cam Account Applicable Account Attributes Dto Example](https://apis.io/examples/epa/cam-account-applicable-account-attributes-dto-example/)
+- [Cam Account Applicable Allowance Compliance Attributes Dto Example](https://apis.io/examples/epa/cam-account-applicable-allowance-compliance-attributes-dto-example/)
+- [Cam Account Applicable Allowance Holdings Attributes Dto Example](https://apis.io/examples/epa/cam-account-applicable-allowance-holdings-attributes-dto-example/)
+- [Cam Account Applicable Allowance Transactions Attributes Dto Example](https://apis.io/examples/epa/cam-account-applicable-allowance-transactions-attributes-dto-example/)
+- [Cam Account Applicable Compliance Attributes Dto Example](https://apis.io/examples/epa/cam-account-applicable-compliance-attributes-dto-example/)
+- [Cam Account Emissions Compliance Dto Example](https://apis.io/examples/epa/cam-account-emissions-compliance-dto-example/)
+- [Cam Account Owner Operators Dto Example](https://apis.io/examples/epa/cam-account-owner-operators-dto-example/)
+- [Cam Camd Services Bulk File Dto Example](https://apis.io/examples/epa/cam-camd-services-bulk-file-dto-example/)
+- [Cam Camd Services Email Recipient List Request Dto Example](https://apis.io/examples/epa/cam-camd-services-email-recipient-list-request-dto-example/)
+- [Cam Camd Services Email Recipient List Response Dto Example](https://apis.io/examples/epa/cam-camd-services-email-recipient-list-response-dto-example/)
+- [Cam Camd Services Report Column Dto Example](https://apis.io/examples/epa/cam-camd-services-report-column-dto-example/)
+- [Cam Camd Services Report Detail Dto Example](https://apis.io/examples/epa/cam-camd-services-report-detail-dto-example/)
+- [Cam Camd Services Report Dto Example](https://apis.io/examples/epa/cam-camd-services-report-dto-example/)
+- [Cam Emissions Annual Apportioned Emissions Aggregation Dto Example](https://apis.io/examples/epa/cam-emissions-annual-apportioned-emissions-aggregation-dto-example/)
+- [Cam Emissions Annual Apportioned Emissions Facility Aggregation Dto Example](https://apis.io/examples/epa/cam-emissions-annual-apportioned-emissions-facility-aggregation-dto-example/)
+- [Cam Emissions Annual Apportioned Emissions State Aggregation Dto Example](https://apis.io/examples/epa/cam-emissions-annual-apportioned-emissions-state-aggregation-dto-example/)
+- [Cam Emissions Annual Unit Data View Example](https://apis.io/examples/epa/cam-emissions-annual-unit-data-view-example/)
+- [Cam Emissions Applicable Apportioned Emissions Attributes Dto Example](https://apis.io/examples/epa/cam-emissions-applicable-apportioned-emissions-attributes-dto-example/)
+- …and 553 more published on APIs.io
+
+#### Collections (278)
+
+Postman and Open Collection request collections.
+
+- [EPA Air Quality System (AQS) API](https://apis.io/collections/epa/open-aqs/)
+- [Account Management OpenAPI Specification](https://apis.io/collections/epa/open-cam-account/)
+- [CAMD Administrative & General Services OpenAPI Specification](https://apis.io/collections/epa/open-cam-camd-services/)
+- [Emissions Management OpenAPI Specification](https://apis.io/collections/epa/open-cam-emissions/)
+- [Facilities Management OpenAPI Specification](https://apis.io/collections/epa/open-cam-facilities/)
+- [Master Data Management OpenAPI Specification](https://apis.io/collections/epa/open-cam-master-data/)
+- [Monitor Plan Management OpenAPI Specification](https://apis.io/collections/epa/open-cam-monitor-plan/)
+- [QA Certification Management OpenAPI Specification](https://apis.io/collections/epa/open-cam-qa-cert/)
+- [Streaming Services OpenAPI Specification](https://apis.io/collections/epa/open-cam-streaming/)
+- [CIP-service Indexing API](https://apis.io/collections/epa/open-cip-service/)
+- [epa-csb-server](https://apis.io/collections/epa/open-csb-rebate/)
+- [U.S. EPA Enforcement and Compliance History Online (ECHO) - Clean Air Act](https://apis.io/collections/epa/open-echo-air/)
+- [U.S. EPA Enforcement and Compliance History Online (ECHO) - All Data](https://apis.io/collections/epa/open-echo-all/)
+- [U.S. EPA Enforcement and Compliance History Online (ECHO) - Enforcement Case Search](https://apis.io/collections/epa/open-echo-case/)
+- [U.S. EPA Enforcement and Compliance History Online (ECHO) - Clean Water Act (CWA) Rest Services](https://apis.io/collections/epa/open-echo-cwa/)
+- [U.S. EPA Enforcement and Compliance History Online (ECHO) - Detailed Facility Report (DFR)](https://apis.io/collections/epa/open-echo-dfr/)
+- [U.S. EPA Enforcement and Compliance History Online (ECHO) - Effluent Charting and Reporting](https://apis.io/collections/epa/open-echo-effluent/)
+- [U.S. EPA Enforcement and Compliance History Online (ECHO) - Resource Conservation and Recovery Act](https://apis.io/collections/epa/open-echo-rcra/)
+- [U.S. EPA Enforcement and Compliance History Online (ECHO) - Safe Drinking Water Act](https://apis.io/collections/epa/open-echo-sdw/)
+- [U.S. EPA WaterSense](https://apis.io/collections/epa/open-elg-search/)
+- [EPA Envirofacts Data Service API](https://apis.io/collections/epa/open-envirofacts/)
+- [EPA Air Quality System (AQS) Account Type Codes API](https://apis.io/collections/epa/open-epa-account-type-codes-api/)
+- [EPA Air Quality System (AQS) Account Type Codes Accounts API](https://apis.io/collections/epa/open-epa-accounts-api/)
+- [EPA Air Quality System (AQS) Account Type Codes Air Emission Testing API](https://apis.io/collections/epa/open-epa-air-emission-testing-api/)
+- [EPA Air Quality System (AQS) Account Type Codes Allowance Compliance API](https://apis.io/collections/epa/open-epa-allowance-compliance-api/)
+- …and 253 more published on APIs.io
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Epa Easey Emissions Mgmt Overlay](https://apis.io/overlays/epa/epa-easey-emissions-mgmt-overlay/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [EPA — U.S. Environmental Protection Agency — jsonschema rules](https://apis.io/rules/epa/epa-jsonschema-spectral-rules/)
+- [EPA — U.S. Environmental Protection Agency API Rules](https://apis.io/rules/epa/epa-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Epa Authentication](https://apis.io/security/epa/epa-authentication/)
+- [Epa Domain Security](https://apis.io/security/epa/epa-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Epa Plans Pricing](https://apis.io/plans/epa/epa-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Epa Rate Limits](https://apis.io/rate-limits/epa/epa-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Epa Finops](https://apis.io/finops/epa/epa-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.epa.gov)
-- [Developer Portal](https://www.epa.gov/developers)
-- [API Reference](https://www.epa.gov/data/application-programming-interface-api)
-- [Getting Started](https://www.epa.gov/data)
 - [Documentation](https://www.epa.gov/developers/data-data-products)
-- [GitHub Organization](https://github.com/USEPA)
-- [Blog](https://www.epa.gov/newsroom)
-- [YouTube](https://www.youtube.com/c/USEPAgov)
-- [X (Twitter)](https://twitter.com/EPA)
-- [LinkedIn](https://www.linkedin.com/company/u-s--environmental-protection-agency/)
+- [Getting started](https://www.epa.gov/data)
+- [API reference](https://www.epa.gov/data/application-programming-interface-api)
+- [Sign up](https://api.data.gov/signup/)
 - [Support](https://www.epa.gov/home/forms/contact-epa)
-- [Contact](https://www.epa.gov/aboutepa/forms/contact-us-about-epa)
-- [Privacy Policy](https://www.epa.gov/privacy)
-- [Terms of Service](https://www.epa.gov/privacy/privacy-and-security-notice)
-- [Status Page](https://status.epa.gov/)
-- [Newsletter](https://www.epa.gov/newsroom/email-subscriptions-epa-news-releases)
+- [Blog](https://www.epa.gov/newsroom)
 - [Compliance](https://echo.epa.gov/)
-- [Stack Overflow](https://stackoverflow.com/questions/tagged/epa)
-- [Spectral Rules](rules/epa-rules.yml)
-- [Vocabulary](vocabulary/epa-vocabulary.yml)
-- [Rate Limits](rate-limits/epa-rate-limits.yml)
-- [JSON-LD](json-ld/epa-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
-- [Solutions](undefined)
+- [Terms of service](https://www.epa.gov/privacy/privacy-and-security-notice)
+- [Privacy policy](https://www.epa.gov/privacy)
+- [GitHub](https://github.com/USEPA)
+- [Status](https://status.epa.gov/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 57.0** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 78.6 |
+| Contract quality | 64.1 |
+| Contract governance | 31.8 |
+| Operational transparency | 18.4 |
+| Developer ergonomics | 83.9 |
+| Access clarity | 42.1 |
+
+**Agent readiness 23.2** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | — |
+
+**Regulatory alignment 29.4** — Government & Public Sector
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/epa/](https://apis.io/providers/epa/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for EPA — U.S. Environmental Protection Agency: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/epa/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
